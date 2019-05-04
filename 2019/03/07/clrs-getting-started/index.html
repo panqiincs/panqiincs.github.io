@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="主要内容本章的标题是：算法基础。本章介绍了一个贯穿全书的算法设计与分析的框架。正文中介绍了插入排序和归并排序两种排序算法，以它们为例，介绍了用循环不变式证明算法正确性的方法和分治法的思想。还介绍了如何分析算法的运行时间。 插入排序本书介绍的第一个算法是插入排序算法。插入排序的工作机理和很多人打牌时，整理手中牌时的做法差不多。它的基本思想是，通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫">
+  <meta name="description" content="主要内容本章介绍了一个贯穿全书的算法设计与分析的框架。正文中介绍了插入排序和归并排序两种排序算法，以它们为例，介绍了用循环不变式证明算法正确性的方法和分治法的思想。还介绍了如何分析算法的运行时间。 插入排序本书介绍的第一个算法是插入排序算法。插入排序的工作机理和很多人打牌时，整理手中牌时的做法差不多。它的基本思想是，通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。">
 <meta name="keywords" content="分治法,排序算法,插入排序,循环不变量,归并排序,选择排序,冒泡排序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="『算法导论』第 2 章">
+<meta property="og:title" content="『算法导论』第 2 章：算法基础">
 <meta property="og:url" content="http://panqiincs.me/2019/03/07/clrs-getting-started/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="主要内容本章的标题是：算法基础。本章介绍了一个贯穿全书的算法设计与分析的框架。正文中介绍了插入排序和归并排序两种排序算法，以它们为例，介绍了用循环不变式证明算法正确性的方法和分治法的思想。还介绍了如何分析算法的运行时间。 插入排序本书介绍的第一个算法是插入排序算法。插入排序的工作机理和很多人打牌时，整理手中牌时的做法差不多。它的基本思想是，通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫">
+<meta property="og:description" content="主要内容本章介绍了一个贯穿全书的算法设计与分析的框架。正文中介绍了插入排序和归并排序两种排序算法，以它们为例，介绍了用循环不变式证明算法正确性的方法和分治法的思想。还介绍了如何分析算法的运行时间。 插入排序本书介绍的第一个算法是插入排序算法。插入排序的工作机理和很多人打牌时，整理手中牌时的做法差不多。它的基本思想是，通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-01T01:44:21.000Z">
+<meta property="og:updated_time" content="2019-05-04T07:11:01.742Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="『算法导论』第 2 章">
-<meta name="twitter:description" content="主要内容本章的标题是：算法基础。本章介绍了一个贯穿全书的算法设计与分析的框架。正文中介绍了插入排序和归并排序两种排序算法，以它们为例，介绍了用循环不变式证明算法正确性的方法和分治法的思想。还介绍了如何分析算法的运行时间。 插入排序本书介绍的第一个算法是插入排序算法。插入排序的工作机理和很多人打牌时，整理手中牌时的做法差不多。它的基本思想是，通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫">
+<meta name="twitter:title" content="『算法导论』第 2 章：算法基础">
+<meta name="twitter:description" content="主要内容本章介绍了一个贯穿全书的算法设计与分析的框架。正文中介绍了插入排序和归并排序两种排序算法，以它们为例，介绍了用循环不变式证明算法正确性的方法和分治法的思想。还介绍了如何分析算法的运行时间。 插入排序本书介绍的第一个算法是插入排序算法。插入排序的工作机理和很多人打牌时，整理手中牌时的做法差不多。它的基本思想是，通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。">
 
 
 
@@ -131,7 +131,7 @@
   };
 </script>
 
-  <title>『算法导论』第 2 章 | 辛未羊的博客</title>
+  <title>『算法导论』第 2 章：算法基础 | 辛未羊的博客</title>
   
 
 
@@ -392,7 +392,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">『算法导论』第 2 章
+          <h1 class="post-title" itemprop="name headline">『算法导论』第 2 章：算法基础
 
               
             
@@ -484,7 +484,7 @@
       
 
       
-        <h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>本章的标题是：算法基础。本章介绍了一个贯穿全书的算法设计与分析的框架。正文中介绍了插入排序和归并排序两种排序算法，以它们为例，介绍了用<strong>循环不变式</strong>证明算法正确性的方法和<strong>分治法</strong>的思想。还介绍了如何分析算法的运行时间。</p>
+        <h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>本章介绍了一个贯穿全书的算法设计与分析的框架。正文中介绍了插入排序和归并排序两种排序算法，以它们为例，介绍了用<strong>循环不变式</strong>证明算法正确性的方法和<strong>分治法</strong>的思想。还介绍了如何分析算法的运行时间。</p>
 <h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>本书介绍的第一个算法是<strong>插入排序</strong>算法。插入排序的工作机理和很多人打牌时，整理手中牌时的做法差不多。它的基本思想是，通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。根据伪代码，给出如下的C语言实现：</p>
 <a id="more"></a>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span> nums[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> key = nums[i];</span><br><span class="line">        <span class="keyword">int</span> j;</span><br><span class="line">        <span class="keyword">for</span> (j = i - <span class="number">1</span>; key &lt; nums[j] &amp;&amp; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">            nums[j+<span class="number">1</span>] = nums[j];</span><br><span class="line">        &#125;</span><br><span class="line">        nums[j+<span class="number">1</span>] = key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -569,14 +569,14 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/03/14/clrs-divide-and-conquer/" rel="bookmark">『算法导论』第 4 章</a></div>
+      <div class="popular-posts-title"><a href="/2019/03/14/clrs-divide-and-conquer/" rel="bookmark">『算法导论』第 4 章：分治策略</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/04/11/clrs-heapsort/" rel="bookmark">『算法导论』第 6 章</a></div>
+      <div class="popular-posts-title"><a href="/2019/04/11/clrs-heapsort/" rel="bookmark">『算法导论』第 6 章：堆排序</a></div>
       
     </li>
   
@@ -613,7 +613,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://panqiincs.me/2019/03/07/clrs-getting-started/" title="『算法导论』第 2 章">http://panqiincs.me/2019/03/07/clrs-getting-started/</a>
+    <a href="http://panqiincs.me/2019/03/07/clrs-getting-started/" title="『算法导论』第 2 章：算法基础">http://panqiincs.me/2019/03/07/clrs-getting-started/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -651,8 +651,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/06/clrs-role-of-algorithms/" rel="next" title="『算法导论』第 1 章">
-                <i class="fa fa-chevron-left"></i> 『算法导论』第 1 章
+              <a href="/2019/03/06/clrs-role-of-algorithms/" rel="next" title="『算法导论』第 1 章：算法在计算中的作用">
+                <i class="fa fa-chevron-left"></i> 『算法导论』第 1 章：算法在计算中的作用
               </a>
             
           </div>
@@ -661,8 +661,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/10/clrs-growth-of-functions/" rel="prev" title="『算法导论』第 3 章">
-                『算法导论』第 3 章 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/10/clrs-growth-of-functions/" rel="prev" title="『算法导论』第 3 章：函数的增长">
+                『算法导论』第 3 章：函数的增长 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1322,7 +1322,7 @@
   var disqus_config = function() {
     this.page.url = "http://panqiincs.me/2019/03/07/clrs-getting-started/";
     this.page.identifier = "2019/03/07/clrs-getting-started/";
-    this.page.title = '『算法导论』第 2 章';
+    this.page.title = '『算法导论』第 2 章：算法基础';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');

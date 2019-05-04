@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="主要内容本章的标题是：分治法。本章介绍的第一个算法求解最大子序列和问题，第二个算法求解矩阵乘法问题。递归式与分治法紧密相关，本章介绍三种方法求解递归式：代入法、递归树法和主方法。 最大子序列和问题买股票问题可以转化为最大子序列和问题。只有当序列中包含负数，最大子序列和问题才有意义。">
+  <meta name="description" content="主要内容本章介绍的第一个算法求解最大子序列和问题，第二个算法求解矩阵乘法问题。递归式与分治法紧密相关，本章介绍三种方法求解递归式：代入法、递归树法和主方法。 最大子序列和问题买股票问题可以转化为最大子序列和问题。只有当序列中包含负数，最大子序列和问题才有意义。">
 <meta name="keywords" content="分治法,递归式,最大子序列和,矩阵乘法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="『算法导论』第 4 章">
+<meta property="og:title" content="『算法导论』第 4 章：分治策略">
 <meta property="og:url" content="http://panqiincs.me/2019/03/14/clrs-divide-and-conquer/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="主要内容本章的标题是：分治法。本章介绍的第一个算法求解最大子序列和问题，第二个算法求解矩阵乘法问题。递归式与分治法紧密相关，本章介绍三种方法求解递归式：代入法、递归树法和主方法。 最大子序列和问题买股票问题可以转化为最大子序列和问题。只有当序列中包含负数，最大子序列和问题才有意义。">
+<meta property="og:description" content="主要内容本章介绍的第一个算法求解最大子序列和问题，第二个算法求解矩阵乘法问题。递归式与分治法紧密相关，本章介绍三种方法求解递归式：代入法、递归树法和主方法。 最大子序列和问题买股票问题可以转化为最大子序列和问题。只有当序列中包含负数，最大子序列和问题才有意义。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-29T00:31:06.000Z">
+<meta property="og:updated_time" content="2019-05-04T07:14:55.575Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="『算法导论』第 4 章">
-<meta name="twitter:description" content="主要内容本章的标题是：分治法。本章介绍的第一个算法求解最大子序列和问题，第二个算法求解矩阵乘法问题。递归式与分治法紧密相关，本章介绍三种方法求解递归式：代入法、递归树法和主方法。 最大子序列和问题买股票问题可以转化为最大子序列和问题。只有当序列中包含负数，最大子序列和问题才有意义。">
+<meta name="twitter:title" content="『算法导论』第 4 章：分治策略">
+<meta name="twitter:description" content="主要内容本章介绍的第一个算法求解最大子序列和问题，第二个算法求解矩阵乘法问题。递归式与分治法紧密相关，本章介绍三种方法求解递归式：代入法、递归树法和主方法。 最大子序列和问题买股票问题可以转化为最大子序列和问题。只有当序列中包含负数，最大子序列和问题才有意义。">
 
 
 
@@ -131,7 +131,7 @@
   };
 </script>
 
-  <title>『算法导论』第 4 章 | 辛未羊的博客</title>
+  <title>『算法导论』第 4 章：分治策略 | 辛未羊的博客</title>
   
 
 
@@ -392,7 +392,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">『算法导论』第 4 章
+          <h1 class="post-title" itemprop="name headline">『算法导论』第 4 章：分治策略
 
               
             
@@ -484,7 +484,7 @@
       
 
       
-        <h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>本章的标题是：分治法。本章介绍的第一个算法求解<strong>最大子序列和</strong>问题，第二个算法求解<strong>矩阵乘法</strong>问题。递归式与分治法紧密相关，本章介绍三种方法求解递归式：代入法、递归树法和主方法。</p>
+        <h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>本章介绍的第一个算法求解<strong>最大子序列和</strong>问题，第二个算法求解<strong>矩阵乘法</strong>问题。递归式与分治法紧密相关，本章介绍三种方法求解递归式：代入法、递归树法和主方法。</p>
 <h3 id="最大子序列和问题"><a href="#最大子序列和问题" class="headerlink" title="最大子序列和问题"></a>最大子序列和问题</h3><p>买股票问题可以转化为最大子序列和问题。只有当序列中包含负数，最大子序列和问题才有意义。</p>
 <a id="more"></a>
 <p>用暴力解法求解该问题，运行时间为$\Theta(n^2)$。还可以用分治法求解最大子序列和问题。将序列等分为左右两个子序列，任何连续子序列所处的位置必然式如下三种情况之一：完全位于左子序列中、完全位于右子序列中以及跨越了左右序列的中点。那么，算法的工作就是先递归求解两个子序列，然后寻找跨越中点的最大子序列，最后在三种情况中选取和最大者。</p>
@@ -543,7 +543,7 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/03/07/clrs-getting-started/" rel="bookmark">『算法导论』第 2 章</a></div>
+      <div class="popular-posts-title"><a href="/2019/03/07/clrs-getting-started/" rel="bookmark">『算法导论』第 2 章：算法基础</a></div>
       
     </li>
   
@@ -580,7 +580,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://panqiincs.me/2019/03/14/clrs-divide-and-conquer/" title="『算法导论』第 4 章">http://panqiincs.me/2019/03/14/clrs-divide-and-conquer/</a>
+    <a href="http://panqiincs.me/2019/03/14/clrs-divide-and-conquer/" title="『算法导论』第 4 章：分治策略">http://panqiincs.me/2019/03/14/clrs-divide-and-conquer/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -612,8 +612,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/10/clrs-growth-of-functions/" rel="next" title="『算法导论』第 3 章">
-                <i class="fa fa-chevron-left"></i> 『算法导论』第 3 章
+              <a href="/2019/03/10/clrs-growth-of-functions/" rel="next" title="『算法导论』第 3 章：函数的增长">
+                <i class="fa fa-chevron-left"></i> 『算法导论』第 3 章：函数的增长
               </a>
             
           </div>
@@ -1283,7 +1283,7 @@
   var disqus_config = function() {
     this.page.url = "http://panqiincs.me/2019/03/14/clrs-divide-and-conquer/";
     this.page.identifier = "2019/03/14/clrs-divide-and-conquer/";
-    this.page.title = '『算法导论』第 4 章';
+    this.page.title = '『算法导论』第 4 章：分治策略';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');
