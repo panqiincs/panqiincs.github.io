@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+
+
+
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="主要内容本章的标题是：函数的增长。本章讲解如何简化算法的渐近分析，介绍了几类渐近记号。最后简单介绍了常用函数的性质。本章的内容在这里描述得非常简略，但为了保持整个系列的完整性，还是贴出来了。 渐近记号本章介绍了如下渐近记号，它们的严格定义分别如下：">
+<meta name="keywords" content="渐近记号">
+<meta property="og:type" content="article">
+<meta property="og:title" content="『算法导论』第 3 章">
+<meta property="og:url" content="http://panqiincs.me/2019/03/10/clrs-growth-of-functions/index.html">
+<meta property="og:site_name" content="辛未羊的博客">
+<meta property="og:description" content="主要内容本章的标题是：函数的增长。本章讲解如何简化算法的渐近分析，介绍了几类渐近记号。最后简单介绍了常用函数的性质。本章的内容在这里描述得非常简略，但为了保持整个系列的完整性，还是贴出来了。 渐近记号本章介绍了如下渐近记号，它们的严格定义分别如下：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-29T00:31:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="『算法导论』第 3 章">
+<meta name="twitter:description" content="主要内容本章的标题是：函数的增长。本章讲解如何简化算法的渐近分析，介绍了几类渐近记号。最后简单介绍了常用函数的性质。本章的内容在这里描述得非常简略，但为了保持整个系列的完整性，还是贴出来了。 渐近记号本章介绍了如下渐近记号，它们的严格定义分别如下：">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://panqiincs.me/2019/03/10/clrs-growth-of-functions/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>『算法导论』第 3 章 | 辛未羊的博客</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-39536948-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">辛未羊的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-series">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/series/" rel="section"><i class="menu-item-icon fa fa-fw fa-list"></i> <br>系列</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2019/03/10/clrs-growth-of-functions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Krist Pan">
+      <meta itemprop="description" content="人生如逆旅，我亦是行人">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">『算法导论』第 3 章
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-10 14:06:12" itemprop="dateCreated datePublished" datetime="2019-03-10T14:06:12+08:00">2019-03-10</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/03/10/clrs-growth-of-functions/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/10/clrs-growth-of-functions/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>本章的标题是：函数的增长。本章讲解如何简化算法的<strong>渐近分析</strong>，介绍了几类渐近记号。最后简单介绍了常用函数的性质。本章的内容在这里描述得非常简略，但为了保持整个系列的完整性，还是贴出来了。</p>
+<h3 id="渐近记号"><a href="#渐近记号" class="headerlink" title="渐近记号"></a>渐近记号</h3><p>本章介绍了如下渐近记号，它们的严格定义分别如下：</p>
+<a id="more"></a>
+<ol>
+<li>若$f(n) = \Theta(g(n))$，则存在正常量$c_1$、$c_2$和$n_0$，使得对所有$n \ge n_0$，有$0 \le c_1 g(n) \le f(n) \le c_2 g(n)$</li>
+<li>若$f(n) = O(g(n))$，则存在正常量$c$和$n_0$，使得对所有$n \ge n_0$，有$0 \le f(n) \le c g(n)$</li>
+<li>若$f(n) = \Omega(g(n))$，则存在正常量$c$和$n_0$，使得对所有$n \ge n_0$，有$0 \le c g(n) \le f(n)$</li>
+<li>若$f(n) = o(g(n))$，则对任意$c&gt;0$，存在常量$n_0&gt;0$，使得对所有$n \ge n_0$，有$0 \le f(n) &lt; c g(n)$</li>
+<li>若$f(n) = \omega(g(n))$，则对任意$c&gt;0$，存在常量$n_0&gt;0$，使得对所有$n \ge n_0$，有$0 \le c g(n) &lt; f(n)$</li>
+</ol>
+<p>为了更形象地理解本节介绍的几种渐近记号，可以在两个函数的渐近比较和两个实数的比较之间做一种类比：</p>
+<ul>
+<li>$f(n) = O(g(n))$类似于$a \le b$</li>
+<li>$f(n) = \Omega(g(n))$类似于$a \ge b$</li>
+<li>$f(n) = \Theta(g(n))$类似于$a = b$</li>
+<li>$f(n) = o(g(n))$类似于$a &lt; b$</li>
+<li>$f(n) = \omega(g(n))$类似于$a &gt; b$</li>
+</ul>
+<h3 id="标准记号与常用函数"><a href="#标准记号与常用函数" class="headerlink" title="标准记号与常用函数"></a>标准记号与常用函数</h3><p>本节主要讲解了常用的数学函数和记号，涉及到高中数学和基础微积分的知识。</p>
+<h2 id="习题解答"><a href="#习题解答" class="headerlink" title="习题解答"></a>习题解答</h2><h3 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h3><p><strong>3.1-1</strong> 解答：即需证明存在正常数$c_1$，$c_2$和$n_0$，使得当$n \ge n_0$时有：</p>
+<p>$$ c_1(f(n)+g(n)) \le \max(f(n), g(n)) \le c_2(f(n)+g(n)) $$</p>
+<p>由于$f(n)$和$g(n)$均是渐近非负函数，所以存在$n_0$，使得当$n \ge n_0$时，有$f(n) \ge 0$和$g(n) \ge 0$。令</p>
+<p>$$ h(x) = \max(f(n), g(n))$$</p>
+<p>则</p>
+<p>$$ 0 \le f(n) \le h(n) \\<br>0 \le g(n) \le h(n) $$</p>
+<p>所以有</p>
+<p>$$ 0 \le f(n)+g(n) \le 2h(n) \\<br>0 \le (f(n)+g(n))/2 \le h(n) $$</p>
+<p>又有</p>
+<p>$$ h(n) \le f(n)+g(n) $$</p>
+<p>所以存在$c_1 = 1/2$，$c_2 = 1$和$n_0 \ge 0$满足条件，得证。</p>
+<p><strong>3.1-2</strong> 解答：即需证明存在正常数$c_1$，$c_2$和$n_0$，使得当$n \ge n_0$时有：</p>
+<p>$$ c_1 n^b \le (n+a)^b \le c_2 n^b $$</p>
+<p>即</p>
+<p>$$ c_1 \le (1+a/n)^b \le c_2 $$</p>
+<p>当$b &gt; 0$时，幂函数在$[0, +\infty)$上单调递增。下面根据$a$的符号分情况讨论：</p>
+<ol>
+<li>当$a &gt; 0$时，令$n \ge n_0 = a$，则有$1 \le 1+a/n \le 2$，即$c_1 = 1, c_2 = 2$，根据幂函数的单调性，上式成立；</li>
+<li>当$a &lt; 0$时，$1+a/n = 1-|a|/n$，令$n \ge n_0 = 2|a|$，则有$1/2 \le (1-|a|/n) \le 1$，即$c_1 = 1/2, c_2 = 1$，根据幂函数的单调性，上式成立。</li>
+</ol>
+<p>所以得证。</p>
+<p><strong>3.1-3</strong> 解答：因为$O$符号没有提供一个下界。</p>
+<p><strong>3.1-4</strong> 解答：$2^{n+1} = O(2^n)$成立，$2^{2n} = O(2^n)$不成立。</p>
+<p><strong>3.1-5</strong> 解答：要证明的公式是：</p>
+<p>$$ \lim_{n \to \infty}f(n)/g(n) = 0 $$</p>
+<p>根据数列极限的$\epsilon-N$定义，对任意$\epsilon &gt; 0$，存在自然数$N$使得当$n &gt; N$时，有$|f(n)/g(n)| &lt; \epsilon$。</p>
+<p>根据$f(n) = o(g(n))$的定义，对任意正常量$c &gt; 0$，存在$n_0 &gt; 0$，使得对所有$n \ge n_0$，有$0 \le f(n) &lt; cg(n)$，即$|f(n)/g(n)| &lt; c$，取$\epsilon = c$，$N = n_0$，得证。</p>
+<p><strong>3.1-6</strong> 解答：$O$记号提供了一个渐近上界，$\Omega$记号提供了渐近下界，所以为$\Theta(g(n))$。严格证明略。</p>
+<p><strong>3.1-7</strong> 解答：类似于$a &lt; b$和$a &gt; b$不可能同时成立。</p>
+<p><strong>3.1-8</strong> 解答：如下：</p>
+<p>$f(n, m) = \Omega(g(n, m))$，则存在正常量$c$, $n_0$和$m_0$，使得对所有的$n \ge n_0$或$m \ge m_0$，有$0 \le cg(n, m) \le f(n, m)$.<br>$f(n, m) = \Theta(g(n, m))$，则存在正常量$c_1$，$c_2$，$n_0$和$m_0$，使得对所有的$n \ge n_0$或$m \ge m_0$，有 $c_1 g(n, m)  \le f(n, m) \le c_2 g(n, m)$.</p>
+<p><strong>3.2-1</strong> 解答：按照单调性的定义即可证明，略。</p>
+<p><strong>3.2-2</strong> 解答：由公式$a = b^{\log_b a}$得：</p>
+<p>$$<br>a^{\log_b c} = (b^{\log_b a})^{\log_b c} = b^{\log_b a \log_b c}  \\<br>c^{\log_b a} = (b^{\log_b c})^{\log_b a} = b^{\log_b c \log_b a}<br>$$</p>
+<p>得证。</p>
+<p><strong>3.2-3</strong> 解答：要证明的(3.19)式为$n! = \Theta(n \lg n)$，借助斯特林近似公式，证明如下：</p>
+<p>$$<br>\lg(n!) = \lg \sqrt{2 \pi n} + \lg (n/e)^n + \lg (1+\Theta(1/n)) = \Theta(\lg n) + \Theta(n \lg n) = \Theta(n \lg n)<br>$$</p>
+<p>要证明$n! = o(n^n)$，证明$\lim_{n \to \infty}n!/n^n = 0$即可，代入斯特林近似公式即得证。</p>
+<p>要证明$n! = \omega(2^n)$，证明$\lim_{n \to \infty}n!/2^n = \infty$即可。令$h(n) = n!/2^n$，则：</p>
+<p>$$h(n) = \frac{n!}{2^n} = \frac{(n-1)!}{2^{n-1}} \frac{n}{2} = h(n-1) \frac{n}{2}$$</p>
+<p>当$n=4$时，$h(n)&gt;1$，当$n&gt;4$时，$n/2 &gt; 2$，所以$h(n) &gt; 2^{n-4}$，所以$h(n)$的极限为$\infty$。</p>
+<p><strong>3.2-4</strong> 解答：星号题，略。</p>
+<p><strong>3.2-5</strong> 解答：星号题，略。</p>
+<p><strong>3.2-6</strong> 解答：根据黄金分割率的定义有：$\phi / 1 = \phi / (1 - \phi)$，即满足方程$x^2 = x + 1$，得证。</p>
+<p><strong>3.2-7</strong> 解答：归纳法的步骤如下：</p>
+<ol>
+<li>初始情况$i = 0$时，$F_0 = (\phi^0 - \hat{\phi^0})/\sqrt{5} = 0$，$i = 1$时，$F_1 = (\phi - \hat{\phi})/\sqrt{5} = 1$，符合</li>
+<li>证明当$n=k-2$和$n=k-1$成立，$n = k$时也成立，代入公式，符合</li>
+</ol>
+<p>即可得证。</p>
+<p><strong>3.2-8</strong> 解答：<strong>待完成</strong>。</p>
+<h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><p>待完成。</p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Krist Pan</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://panqiincs.me/2019/03/10/clrs-growth-of-functions/" title="『算法导论』第 3 章">http://panqiincs.me/2019/03/10/clrs-growth-of-functions/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/渐近记号/" rel="tag"># 渐近记号</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/07/clrs-getting-started/" rel="next" title="『算法导论』第 2 章">
+                <i class="fa fa-chevron-left"></i> 『算法导论』第 2 章
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/14/clrs-divide-and-conquer/" rel="prev" title="『算法导论』第 4 章">
+                『算法导论』第 4 章 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Krist Pan">
+            
+              <p class="site-author-name" itemprop="name">Krist Pan</p>
+              <div class="site-description motion-element" itemprop="description">人生如逆旅，我亦是行人</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">72</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">124</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/panqiincs" title="GitHub &rarr; https://github.com/panqiincs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:panqihg@hotmail.com" title="E-Mail &rarr; mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/3850393415" title="Weibo &rarr; https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/panqihg" title="Twitter &rarr; https://twitter.com/panqihg" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.sciencenet.cn/u/qhliu" title="http://blog.sciencenet.cn/u/qhliu" rel="noopener" target="_blank">湖南土著</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.sina.com.cn/u/1307478894" title="http://blog.sina.com.cn/u/1307478894" rel="noopener" target="_blank">农民进城</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.kawabangga.com/" title="https://www.kawabangga.com/" rel="noopener" target="_blank">卡瓦邦噶！</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tumutanzi.com/" title="https://tumutanzi.com/" rel="noopener" target="_blank">土木坛子</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#主要内容"><span class="nav-number">1.</span> <span class="nav-text">主要内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#渐近记号"><span class="nav-number">1.1.</span> <span class="nav-text">渐近记号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标准记号与常用函数"><span class="nav-number">1.2.</span> <span class="nav-text">标准记号与常用函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#习题解答"><span class="nav-number">2.</span> <span class="nav-text">习题解答</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#练习题"><span class="nav-number">2.1.</span> <span class="nav-text">练习题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考题"><span class="nav-number">2.2.</span> <span class="nav-text">思考题</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2013 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Krist Pan</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://panqiincs.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://panqiincs.me/2019/03/10/clrs-growth-of-functions/";
+    this.page.identifier = "2019/03/10/clrs-growth-of-functions/";
+    this.page.title = '『算法导论』第 3 章';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://panqiincs.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

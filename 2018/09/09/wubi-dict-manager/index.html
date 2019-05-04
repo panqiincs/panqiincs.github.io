@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+
+
+
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="缘起最近学会了五笔输入法。我学的是新世纪版，因版权原因，网络上的码表资源不多，很多爱好者都自己制作码表，而且很少对外传播。作为程序员，在这方面有得天独厚的优势，于是用C++写了个五笔码表管理工具RimeWubiDictMngr。我没有使用C++标准库，而是用的Qt基础库，主要原因是QString对Unicode支持很好，处理汉字很方便。该工具暂时没有界面，只能称作一个功能简单的库，以后有必要再添加">
+<meta name="keywords" content="五笔,rime">
+<meta property="og:type" content="article">
+<meta property="og:title" content="写了个五笔码表管理器">
+<meta property="og:url" content="http://panqiincs.me/2018/09/09/wubi-dict-manager/index.html">
+<meta property="og:site_name" content="辛未羊的博客">
+<meta property="og:description" content="缘起最近学会了五笔输入法。我学的是新世纪版，因版权原因，网络上的码表资源不多，很多爱好者都自己制作码表，而且很少对外传播。作为程序员，在这方面有得天独厚的优势，于是用C++写了个五笔码表管理工具RimeWubiDictMngr。我没有使用C++标准库，而是用的Qt基础库，主要原因是QString对Unicode支持很好，处理汉字很方便。该工具暂时没有界面，只能称作一个功能简单的库，以后有必要再添加">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-31T01:17:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="写了个五笔码表管理器">
+<meta name="twitter:description" content="缘起最近学会了五笔输入法。我学的是新世纪版，因版权原因，网络上的码表资源不多，很多爱好者都自己制作码表，而且很少对外传播。作为程序员，在这方面有得天独厚的优势，于是用C++写了个五笔码表管理工具RimeWubiDictMngr。我没有使用C++标准库，而是用的Qt基础库，主要原因是QString对Unicode支持很好，处理汉字很方便。该工具暂时没有界面，只能称作一个功能简单的库，以后有必要再添加">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://panqiincs.me/2018/09/09/wubi-dict-manager/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>写了个五笔码表管理器 | 辛未羊的博客</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-39536948-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">辛未羊的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-series">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/series/" rel="section"><i class="menu-item-icon fa fa-fw fa-list"></i> <br>系列</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2018/09/09/wubi-dict-manager/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Krist Pan">
+      <meta itemprop="description" content="人生如逆旅，我亦是行人">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">写了个五笔码表管理器
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-09 22:24:41" itemprop="dateCreated datePublished" datetime="2018-09-09T22:24:41+08:00">2018-09-09</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具使用/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/09/09/wubi-dict-manager/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/09/09/wubi-dict-manager/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>最近学会了五笔输入法。我学的是新世纪版，因版权原因，网络上的码表资源不多，很多爱好者都自己制作码表，而且很少对外传播。作为程序员，在这方面有得天独厚的优势，于是用C++写了个五笔码表管理工具<a href="https://github.com/panqiincs/RimeWubiDictMngr" target="_blank" rel="noopener">RimeWubiDictMngr</a>。我没有使用C++标准库，而是用的Qt基础库，主要原因是<code>QString</code>对Unicode支持很好，处理汉字很方便。该工具暂时没有界面，只能称作一个功能简单的库，以后有必要再添加界面。</p>
+<a id="more"></a>
+<h2 id="码表格式"><a href="#码表格式" class="headerlink" title="码表格式"></a>码表格式</h2><p>我用的是Rime输入法，它的优点在于，码表包含权重（weight）信息，码表文件<code>wubinc.dict.yaml</code>的部分条目如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">剖</span>	<span class="string">ukj</span>	<span class="number">113738</span></span><br><span class="line"><span class="string">问题</span>	<span class="string">ukjg</span>	<span class="number">20455144</span></span><br><span class="line"><span class="string">总是</span>	<span class="string">ukjg</span>	<span class="number">2866329</span></span><br><span class="line"><span class="string">总量</span>	<span class="string">ukjg</span>	<span class="number">751184</span></span><br><span class="line"><span class="string">剖</span>	<span class="string">ukjh</span>	<span class="number">90990</span></span><br></pre></td></tr></table></figure>
+<p>每一行包含三个字段，依次是：词语（text），编码（code）和权重（weight），用制表符<code>\t</code>隔开。当出现重码时，例如，编码<code>ukjg</code>对应三个词，“问题”一词的权重最大，会排在候选框的最前面。</p>
+<h2 id="必备资源"><a href="#必备资源" class="headerlink" title="必备资源"></a>必备资源</h2><p>对五笔输入法而言，编码表是最核心的。编码表的内容是汉字对应的五笔编码，有了单字的五笔编码，就能根据规则生成词组的编码。不同的版本（86版、98版和新世纪版）对应不同的编码表。本文以新世纪版为例，如果需要生成其它版本的码表，更换编码表即可。项目<code>resource</code>目录中的<code>hanzi_code.txt</code>文件即为编码表（由于版权原因，未提供完整文件，请自行解决）。文件内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">工</span>	<span class="string">a</span></span><br><span class="line"><span class="string">工</span>	<span class="string">aa</span></span><br><span class="line"><span class="string">工</span>	<span class="string">aaa</span></span><br><span class="line"><span class="string">㠭</span>	<span class="string">aaaa</span></span><br><span class="line"><span class="string">工</span>	<span class="string">aaaa</span></span><br><span class="line"><span class="string">㐂</span>	<span class="string">aaab</span></span><br></pre></td></tr></table></figure>
+<p>要生成高质量的码表，少不了词频表。词频表是字词使用频率的信息，词频越高，字词越常见。本工具以词频为依据分配权重。词频表来自<a href="https://www.plecoforums.com/threads/word-frequency-list-based-on-a-15-billion-character-corpus-bcc-blcu-chinese-corpus.5859/" target="_blank" rel="noopener">BLCU Chinese Corpus</a>和<a href="https://github.com/ling0322/webdict" target="_blank" rel="noopener">webdict</a>。我将它们合并得到了一个总表，有超过150万个词。舍弃词频小于1000的词语，最后剩下141810个。项目<code>resource</code>目录中的<code>word_freq.txt</code>文件即为词频表，它的部分内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">的</span>	<span class="number">1017399760</span></span><br><span class="line"><span class="string">了</span>	<span class="number">269794532</span></span><br><span class="line"><span class="string">.</span></span><br><span class="line"><span class="string">.</span> <span class="comment"># 省略若干 </span></span><br><span class="line"><span class="string">.</span></span><br><span class="line"><span class="string">我们</span>	<span class="number">44509105</span></span><br><span class="line"><span class="string">.</span></span><br><span class="line"><span class="string">.</span> <span class="comment"># 省略很多</span></span><br><span class="line"><span class="string">.</span></span><br><span class="line"><span class="string">文过饰非</span>	<span class="number">3220</span></span><br><span class="line"><span class="string">.</span></span><br><span class="line"><span class="string">.</span> <span class="comment"># 省略很多</span></span><br><span class="line"><span class="string">.</span></span><br><span class="line"><span class="string">不合格率</span>	<span class="number">1000</span></span><br><span class="line"><span class="string">不入耳</span>	<span class="number">1000</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="扩充基础词库"><a href="#扩充基础词库" class="headerlink" title="扩充基础词库"></a>扩充基础词库</h3><p>以其它软件（如QQ五笔，极点五笔）的词库（必须为文本文件）为参考，添加其中的词汇，扩充码表。如果已有的码表文件为空，那么实际上是从零开始构建基础码表。使用示例如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">RimeWubiDictMngr rwdm;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加载已有码表，如果文件为空，则从零开始生成码表</span></span><br><span class="line">rwdm.loadMainDict(<span class="string">"dict.yaml"</span>);</span><br><span class="line"><span class="comment">// 扩充码表，ADD_HIGH表示只提取高频词（以词频表为依据），其它舍弃</span></span><br><span class="line">rwdm.expandMainDict(<span class="string">"qq_wubi.txt"</span>, RimeWubiDictMngr::ADD_HIGH);</span><br><span class="line"><span class="comment">// 保存码表到文件</span></span><br><span class="line">rwdm.saveMainDict(<span class="string">"full_result.txt"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="添加自定义词组"><a href="#添加自定义词组" class="headerlink" title="添加自定义词组"></a>添加自定义词组</h3><p>例如专业词汇、朋友姓名等。如果文件中的词汇在词频表中，根据词频分配权重；如果不在，分配默认权重。使用方法如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">RimeWubiDictMngr rwdm;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加载已有码表</span></span><br><span class="line">rwdm.loadMainDict(<span class="string">"dict.yaml"</span>);</span><br><span class="line"><span class="comment">// 添加用户词汇，ADD_ALL表示提取文件中所有词汇</span></span><br><span class="line">rwdm.expandMainDict(<span class="string">"names.txt"</span>, RimeWubiDictMngr::ADD_ALL);</span><br><span class="line"><span class="comment">// 将添加进去的用户词汇单独保存</span></span><br><span class="line">rwdm.saveUserDict(<span class="string">"names.dict.txt"</span>);</span><br><span class="line"><span class="comment">// 保存总码表到文件</span></span><br><span class="line">rwdm.saveMainDict(<span class="string">"full_result.txt"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="制作码表文件"><a href="#制作码表文件" class="headerlink" title="制作码表文件"></a>制作码表文件</h3><p>项目的<code>resource</code>目录下分别有后缀为<code>head</code>和<code>tail</code>的文件，是Rime五笔码表文件的头部和尾部内容。为上述步骤中生成的<code>full_result.txt</code>文件添加头部和尾部，即为标准可用的码表文件。</p>
+<h3 id="码表格式转换"><a href="#码表格式转换" class="headerlink" title="码表格式转换"></a>码表格式转换</h3><p>不同五笔输入法软件的码表格式不同，可以通过<a href="https://github.com/studyzy/imewlconverter" target="_blank" rel="noopener">深蓝词库转换</a>工具将Rime的码表转换成其它软件的格式。</p>
+
+      
+    </div>
+
+    
+      
+
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2018/08/28/start-to-use-wubi/" rel="bookmark">学会了五笔输入法</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Krist Pan</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://panqiincs.me/2018/09/09/wubi-dict-manager/" title="写了个五笔码表管理器">http://panqiincs.me/2018/09/09/wubi-dict-manager/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/五笔/" rel="tag"># 五笔</a>
+          
+            <a href="/tags/rime/" rel="tag"># rime</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/28/start-to-use-wubi/" rel="next" title="学会了五笔输入法">
+                <i class="fa fa-chevron-left"></i> 学会了五笔输入法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/27/say-goodbye-to-iphone/" rel="prev" title="告别iPhone">
+                告别iPhone <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Krist Pan">
+            
+              <p class="site-author-name" itemprop="name">Krist Pan</p>
+              <div class="site-description motion-element" itemprop="description">人生如逆旅，我亦是行人</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">72</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">124</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/panqiincs" title="GitHub &rarr; https://github.com/panqiincs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:panqihg@hotmail.com" title="E-Mail &rarr; mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/3850393415" title="Weibo &rarr; https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/panqihg" title="Twitter &rarr; https://twitter.com/panqihg" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.sciencenet.cn/u/qhliu" title="http://blog.sciencenet.cn/u/qhliu" rel="noopener" target="_blank">湖南土著</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.sina.com.cn/u/1307478894" title="http://blog.sina.com.cn/u/1307478894" rel="noopener" target="_blank">农民进城</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.kawabangga.com/" title="https://www.kawabangga.com/" rel="noopener" target="_blank">卡瓦邦噶！</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tumutanzi.com/" title="https://tumutanzi.com/" rel="noopener" target="_blank">土木坛子</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#缘起"><span class="nav-number">1.</span> <span class="nav-text">缘起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#码表格式"><span class="nav-number">2.</span> <span class="nav-text">码表格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#必备资源"><span class="nav-number">3.</span> <span class="nav-text">必备资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法"><span class="nav-number">4.</span> <span class="nav-text">使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#扩充基础词库"><span class="nav-number">4.1.</span> <span class="nav-text">扩充基础词库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加自定义词组"><span class="nav-number">4.2.</span> <span class="nav-text">添加自定义词组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#制作码表文件"><span class="nav-number">4.3.</span> <span class="nav-text">制作码表文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#码表格式转换"><span class="nav-number">4.4.</span> <span class="nav-text">码表格式转换</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2013 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Krist Pan</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://panqiincs.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://panqiincs.me/2018/09/09/wubi-dict-manager/";
+    this.page.identifier = "2018/09/09/wubi-dict-manager/";
+    this.page.title = '写了个五笔码表管理器';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://panqiincs.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
