@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/2019/03/07/clrs-getting-started/</loc>
+    
+    <lastmod>2019-05-04T09:25:43.088Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2019/05/04/renovate-my-computer/</loc>
     
-    <lastmod>2019-05-04T09:16:28.998Z</lastmod>
+    <lastmod>2019-05-04T09:20:28.495Z</lastmod>
     
   </url>
   
@@ -47,13 +54,6 @@
     <loc>http://panqiincs.me/2019/03/10/clrs-growth-of-functions/</loc>
     
     <lastmod>2019-05-04T07:11:22.249Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/03/07/clrs-getting-started/</loc>
-    
-    <lastmod>2019-05-04T07:11:01.742Z</lastmod>
     
   </url>
   
