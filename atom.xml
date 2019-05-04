@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://panqiincs.me/"/>
-  <updated>2019-05-01T13:43:32.000Z</updated>
+  <updated>2019-05-04T09:10:37.062Z</updated>
   <id>http://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>台式机翻新记</title>
+    <link href="http://panqiincs.me/2019/05/04/renovate-my-computer/"/>
+    <id>http://panqiincs.me/2019/05/04/renovate-my-computer/</id>
+    <published>2019-05-04T07:25:12.000Z</published>
+    <updated>2019-05-04T09:10:37.062Z</updated>
+    
+    <content type="html"><![CDATA[<p>我的台式机是2014年配的，是我这几年唯一的电脑，五年以来为我立下了汗马功劳。2016年毕业后，我把她快递到深圳，结果机箱外壳在运输途中损坏。用胶布把破损处粘起来，几年下来，使用基本正常。今年本来打算配一台新机器，但把她闲置又觉得可惜，于是决定把她翻新一下，争取再战五年。</p><p>翻新主要是换了新机箱以及把机械硬盘换成固态硬盘。</p><a id="more"></a><p>我换了一个体积更小、重量更轻的机箱，安装非常顺利，还顺便把里面的灰尘清理干净了。去年以来，固态硬盘价格一路跳水，所以我能够买一个500GB的固态硬盘。我之前用的是OpenSUSE的滚动发行版Tumbleweed，装在机械硬盘上，开机要花几分钟。这次既然要重装系统，就尝试了排名第一的Manjaro发行版。500GB空间够大，所以把整个系统都安装在固态硬盘上。为根目录<code>/</code>分配了50GB，swap空间分配了4GB，剩下的全部分给<code>/home</code>目录。装在固态硬盘上的系统启动只需要10多秒，下载安装飞快，打开文件都是秒开，真爽！之前的OpenSUSE系统还完整保留在机械硬盘上，可以在BIOS中选择启动机械硬盘中的系统。等迁移工作全部完成，就把机械硬盘格式化，当做备份盘使用。</p><p>Manjaro给我的第一感觉是软件齐全，WPS Office和上网用的软件都可以直接从软件仓库中安装，还有搜狗拼音可以用，真是方便，怪不得大家都推荐它。这几天准备把Manjaro环境搭建的过程总结出来，写一篇记录文章。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我的台式机是2014年配的，是我这几年唯一的电脑，五年以来为我立下了汗马功劳。2016年毕业后，我把她快递到深圳，结果机箱外壳在运输途中损坏。用胶布把破损处粘起来，几年下来，使用基本正常。今年本来打算配一台新机器，但把她闲置又觉得可惜，于是决定把她翻新一下，争取再战五年。&lt;/p&gt;
+&lt;p&gt;翻新主要是换了新机箱以及把机械硬盘换成固态硬盘。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活记录" scheme="http://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="固态硬盘" scheme="http://panqiincs.me/tags/%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98/"/>
+    
+      <category term="manjaro" scheme="http://panqiincs.me/tags/manjaro/"/>
+    
+  </entry>
   
   <entry>
     <title>分析Nginx日志并存入MySQL</title>
@@ -530,33 +555,6 @@
       <category term="教材" scheme="http://panqiincs.me/tags/%E6%95%99%E6%9D%90/"/>
     
       <category term="读书" scheme="http://panqiincs.me/tags/%E8%AF%BB%E4%B9%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在线地图推荐</title>
-    <link href="http://panqiincs.me/2018/07/22/awesome-online-maps/"/>
-    <id>http://panqiincs.me/2018/07/22/awesome-online-maps/</id>
-    <published>2018-07-22T12:38:06.000Z</published>
-    <updated>2019-04-20T03:45:09.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>我是个地理爱好者，闲来无事时喜欢看各种地图。现在网络上各种类型的地图很多，大名鼎鼎的谷歌地图以及现在常用的导航地图就不用我介绍了，我主要给大家推荐几个不太知名，但非常有用、有趣的地图。</p><h2 id="Relief-Map"><a href="#Relief-Map" class="headerlink" title="Relief Map"></a>Relief Map</h2><p><a href="https://maps-for-free.com/" target="_blank" rel="noopener">Relief Map</a>是地形图，用不同的颜色来表示不同的海拔高度（或者海洋深度）。从一个地区的地形图能够大致判断其人口承载能力、交通是否便利以及军事上是否安全，深刻地反映了其“天赋”，所以地形图常用于政治、军事和经济的分析当中。我最喜欢的公众号之一——“地球知识局”中的很多地图就取材于此。</p><a id="more"></a><p>比如通过下面的地形图，你就理解了，为什么很多王朝选择定都关中和洛阳，为什么金兵轻易就攻陷了北宋都城开封，为什么南宋抗金抗蒙古要死守襄阳：</p><p><img src="http://wx3.sinaimg.cn/large/e5805747gy1g187he971fj20xc0m81ky.jpg" alt="map_topographic_center"></p><h2 id="The-TRUE-SIZE"><a href="#The-TRUE-SIZE" class="headerlink" title="The TRUE SIZE"></a>The TRUE SIZE</h2><p><a href="https://thetruesize.com/" target="_blank" rel="noopener">The TRUE SIZE</a>很有趣，你可以将一个国家或地区拖拽到地图上的任意位置，还可以旋转，如图所示：</p><p><img src="http://wx4.sinaimg.cn/large/e5805747gy1g187hv0w7vj21400nc16w.jpg" alt="map_truesize_of_world"></p><p>很多地图是使用<a href="https://en.wikipedia.org/wiki/Mercator_projection" target="_blank" rel="noopener">墨卡托投影</a>制作而成的，这种投影会使面积产生变形，越靠近两级，放大比例越大。因此，这种地图无法反映真实的大小，<a href="https://thetruesize.com/" target="_blank" rel="noopener">The TRUE SIZE</a>的意义就在于此。</p><p>比如上面地图左上角的格陵兰岛，尺寸非常夸张。我们将格陵兰拖到中国旁边，实际大小也不过如此：</p><p><img src="http://wx4.sinaimg.cn/large/e5805747gy1g187hneljmj20rs0go46k.jpg" alt="map_truesize_of_greenland"></p><p>在中国和俄罗斯旁边，“小日本”这个称号名副其实，但拖到欧洲比划比划，无论从国土面积还是GDP来看，日本都能称霸一方，难怪想脱亚入欧呢：</p><p><img src="http://wx2.sinaimg.cn/large/e5805747gy1g187hrx28lj20rs0m8tln.jpg" alt="map_truesize_of_japan"></p><p>还有，智利作为世界上最狭长的国家，到底有多长，看，比黑龙江到海南岛的距离还长：</p><p><img src="http://wx1.sinaimg.cn/large/e5805747gy1g187hhawj2j20rs0go46k.jpg" alt="map_truesize_of_chile"></p><p>国内用户可能需要特殊工具才能正常访问该网站。</p><h2 id="GLOBELAND30"><a href="#GLOBELAND30" class="headerlink" title="GLOBELAND30"></a>GLOBELAND30</h2><p><a href="http://www.globallandcover.com/GLC30Download/index.aspx" target="_blank" rel="noopener">GLOBELAND30</a>是地表覆盖地图，展示了建筑、耕地、森林、草原、荒漠、湿地等地表类型的分布情况。从地表覆盖地图可以大概了解一个国家的自然条件和人口分布情况。</p><p>从下图可以看到，日本和韩国国土大部分被森林覆盖（因为山地太多），可耕地很少，而我们有大片适合耕种的土地。而且中国的气候还拥有雨热同期的特点，虽然住起来不舒适，但更适合农作物生长，得以养活更多的人口。中国人占据了东亚最富饶的一块土地。</p><p><img src="http://wx4.sinaimg.cn/large/e5805747gy1g187gt8lf3j218g0m8gtn.jpg" alt="map_globeland30_cjk"></p><p>很多人可能不太相信，国土面积只有中国三分之一的印度，耕地比中国还多，看完下图你就不觉得奇怪了。南亚次大陆农业条件很好，所以印度才得以养育十几亿的人口：</p><p><img src="http://wx1.sinaimg.cn/large/e5805747gy1g187gq5z2fj20p00hsdjl.jpg" alt="map_globeland30_china_india"></p><p>我们将目光从富饶转向贫瘠。中东地区除了荒漠还是荒漠，只有新月沃地和土耳其有连片的大面积耕地。尼罗河携带肥沃的泥沙，在茫茫沙漠中冲积出了埃及的精华区域，不过这形状太诡异了。想想看，如果他们没有石油，该多么绝望。生活在沙漠地区的人们真不容易！</p><p><img src="http://wx2.sinaimg.cn/large/e5805747gy1g187gmr380j20rs0jgwhh.jpg" alt="map_globeland30_arab"></p><h2 id="其他地图"><a href="#其他地图" class="headerlink" title="其他地图"></a>其他地图</h2><p>另外几个在线地图，请各位自行欣赏：</p><ul><li>唐宋文人的旅行路线图：<a href="https://sou-yun.com/poetlifemap.html" target="_blank" rel="noopener">唐宋文学编年地图</a></li><li>光污染地图：<a href="https://www.lightpollutionmap.info" target="_blank" rel="noopener">Light Pollution Map</a></li></ul><p>如果你知道其他有趣的地图，欢迎发邮件或留言告诉我。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;我是个地理爱好者，闲来无事时喜欢看各种地图。现在网络上各种类型的地图很多，大名鼎鼎的谷歌地图以及现在常用的导航地图就不用我介绍了，我主要给大家推荐几个不太知名，但非常有用、有趣的地图。&lt;/p&gt;
-&lt;h2 id=&quot;Relief-Map&quot;&gt;&lt;a href=&quot;#Relief-Map&quot; class=&quot;headerlink&quot; title=&quot;Relief Map&quot;&gt;&lt;/a&gt;Relief Map&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://maps-for-free.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Relief Map&lt;/a&gt;是地形图，用不同的颜色来表示不同的海拔高度（或者海洋深度）。从一个地区的地形图能够大致判断其人口承载能力、交通是否便利以及军事上是否安全，深刻地反映了其“天赋”，所以地形图常用于政治、军事和经济的分析当中。我最喜欢的公众号之一——“地球知识局”中的很多地图就取材于此。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="胡言乱语" scheme="http://panqiincs.me/categories/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/"/>
-    
-    
-      <category term="地图" scheme="http://panqiincs.me/tags/%E5%9C%B0%E5%9B%BE/"/>
-    
-      <category term="地形图" scheme="http://panqiincs.me/tags/%E5%9C%B0%E5%BD%A2%E5%9B%BE/"/>
-    
-      <category term="地表覆盖" scheme="http://panqiincs.me/tags/%E5%9C%B0%E8%A1%A8%E8%A6%86%E7%9B%96/"/>
     
   </entry>
   
