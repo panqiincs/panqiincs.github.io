@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/2019/03/14/clrs-divide-and-conquer/</loc>
+    
+    <lastmod>2019-05-04T14:13:28.121Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2019/05/04/renovate-my-computer/</loc>
     
     <lastmod>2019-05-04T13:49:46.421Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://panqiincs.me/series/index.html</loc>
     
     <lastmod>2019-05-04T07:16:35.639Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/03/14/clrs-divide-and-conquer/</loc>
-    
-    <lastmod>2019-05-04T07:14:55.575Z</lastmod>
     
   </url>
   
