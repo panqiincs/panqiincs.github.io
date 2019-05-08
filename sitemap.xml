@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/series/index.html</loc>
+    
+    <lastmod>2019-05-08T07:00:38.248Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/05/08/clrs-quicksort/</loc>
+    
+    <lastmod>2019-05-08T06:58:34.268Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2019/04/11/clrs-heapsort/</loc>
     
     <lastmod>2019-05-07T13:01:12.712Z</lastmod>
@@ -40,13 +54,6 @@
     <loc>http://panqiincs.me/2016/10/23/an-application-of-bayes-theorem/</loc>
     
     <lastmod>2019-05-04T07:22:41.915Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/series/index.html</loc>
-    
-    <lastmod>2019-05-04T07:16:35.639Z</lastmod>
     
   </url>
   
