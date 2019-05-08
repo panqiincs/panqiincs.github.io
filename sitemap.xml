@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/about/index.html</loc>
+    
+    <lastmod>2019-05-08T09:57:01.365Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2019/05/08/clrs-quicksort/</loc>
     
     <lastmod>2019-05-08T07:04:38.168Z</lastmod>
@@ -89,13 +96,6 @@
     <loc>http://panqiincs.me/2018/06/13/dpt-rp1-user-experience/</loc>
     
     <lastmod>2019-04-29T11:31:35.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/about/index.html</loc>
-    
-    <lastmod>2019-04-27T12:32:10.000Z</lastmod>
     
   </url>
   
