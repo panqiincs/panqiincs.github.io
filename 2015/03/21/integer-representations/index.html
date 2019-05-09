@@ -101,14 +101,14 @@
 
 
   <meta name="description" content="位模式不同类型的数据，比如数字、文本、图片、视频等都以二进制形式（即一连串的1和0）存储在计算机中，我们称之为位模式。将位模式以不同的解析方式还原出来时，用户便看到了不同类型的数据。例如位模式01000001既可以表示数字65，也可以表示字符A。 下面的show_bytes函数用来打印数据的位模式，打印结果以十六进制形式给出：">
-<meta name="keywords" content="类型转换,编码,补码,C语言">
+<meta name="keywords" content="类型转换,整数编码,位模式,补码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="整数的表示">
 <meta property="og:url" content="http://panqiincs.me/2015/03/21/integer-representations/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
 <meta property="og:description" content="位模式不同类型的数据，比如数字、文本、图片、视频等都以二进制形式（即一连串的1和0）存储在计算机中，我们称之为位模式。将位模式以不同的解析方式还原出来时，用户便看到了不同类型的数据。例如位模式01000001既可以表示数字65，也可以表示字符A。 下面的show_bytes函数用来打印数据的位模式，打印结果以十六进制形式给出：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-19T08:41:08.000Z">
+<meta property="og:updated_time" content="2019-05-09T16:34:44.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="整数的表示">
 <meta name="twitter:description" content="位模式不同类型的数据，比如数字、文本、图片、视频等都以二进制形式（即一连串的1和0）存储在计算机中，我们称之为位模式。将位模式以不同的解析方式还原出来时，用户便看到了不同类型的数据。例如位模式01000001既可以表示数字65，也可以表示字符A。 下面的show_bytes函数用来打印数据的位模式，打印结果以十六进制形式给出：">
@@ -490,19 +490,19 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *byte_pointer;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show_bytes</span><span class="params">(byte_pointer start, <span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">" %.2x"</span>, start[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>将数据转换成位模式的过程称为<strong>编码</strong>（encoding），整数的编码方式主要有两种，无符号编码（Unsigned Encoding）和补码编码（Two’s Complement Encoding）。</p>
 <h2 id="编码类型"><a href="#编码类型" class="headerlink" title="编码类型"></a>编码类型</h2><h3 id="无符号编码"><a href="#无符号编码" class="headerlink" title="无符号编码"></a>无符号编码</h3><p>把位模式$\vec{x} = [x_{w-1}, x_{w-2}, … , x_0]$看做一个二进制表示的数，用函数$B2U_w$（Binary to Unsigned）来表示从位模式到无符号编码表示的整数数值的转换关系：</p>
-<p>$$B2U_w(\vec{x}) \doteq \sum_{i=0}^{w-1} x_i 2^i$$</p>
+<p>$$<br>B2U_w(\vec{x}) \doteq \sum_{i=0}^{w-1} x_i 2^i<br>$$</p>
 <p>因此，宽度为$w$的位模式用无符号编码方式表示的无符号整数的范围是$0$到$2^w-1$。C语言中，<code>unsigned</code>类型的数据采用无符号编码。</p>
 <h3 id="补码编码"><a href="#补码编码" class="headerlink" title="补码编码"></a>补码编码</h3><p>表示有符号数一般采用补码编码方式。用函数$B2T_w$（Binary to Two’s Complement）来表示从位模式到补码编码表示的整数数值的转换关系：</p>
-<p>$$B2T_w(\vec{x}) \doteq -x_{w-1} 2^{w-1} + \sum_{i=1}^{w-2} x_i2^i$$</p>
+<p>$$<br>B2T_w(\vec{x}) \doteq -x_{w-1} 2^{w-1} + \sum_{i=1}^{w-2} x_i2^i<br>$$</p>
 <p>最高位$x_{w-1}$称为<strong>符号位</strong>，符号位为0时表示为非负数，为1时表示为负数。补码编码方式表示的整数范围是$-2^{w-1}$到$2^{w-1}-1$。</p>
 <h2 id="整数类型转换"><a href="#整数类型转换" class="headerlink" title="整数类型转换"></a>整数类型转换</h2><h3 id="符号数和无符号数之间的转换"><a href="#符号数和无符号数之间的转换" class="headerlink" title="符号数和无符号数之间的转换"></a>符号数和无符号数之间的转换</h3><p>在C语言中，不同数据类型之间可以转换。例如，强制类型转换运算<code>(unsigned)x</code>将<code>x</code>转化成一个无符号类型。下面的C代码打印两个变量的数值以及它们的位模式：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">short</span> <span class="keyword">int</span> v = <span class="number">-12345</span>;</span><br><span class="line">usigned <span class="keyword">short</span> uv = (<span class="keyword">unsigned</span> <span class="keyword">short</span>) v;</span><br><span class="line"><span class="comment">/* 打印数值和位模式 */</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"v = %d:"</span>);</span><br><span class="line">show_bytes((byte_pointer)&amp;v, <span class="keyword">sizeof</span>(v));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"uv = %u:"</span>);</span><br><span class="line">show_bytes((byte_pointer)&amp;uv, <span class="keyword">sizeof</span>(uv));</span><br></pre></td></tr></table></figure>
 <p>编译运行之后得到如下结果：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">v = -12345: c7 cf</span><br><span class="line">uv = 53191: c7 cf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">v = -12345: c7 cf</span><br><span class="line">uv = 53191: c7 cf</span><br></pre></td></tr></table></figure>
 <p>即转换前后的<strong>位模式没有改变</strong>，解析方式的不同造成了不同的结果。类似地，<code>0xff</code>用无符号编码表示正数<code>255</code>，用补码编码表示负数<code>-1</code>。依照转换前后位模式不变的原则，可以得到从有符号数到无符号数的转换函数$T2U_w$（Two’s Complement to Unsigned）：</p>
-<p>$$T2U_w(x) = B2U_w(T2B_w(x)) = x_{w-1} 2^w + x$$</p>
+<p>$$<br>T2U_w(x) = B2U_w(T2B_w(x)) = x_{w-1} 2^w + x<br>$$</p>
 <p>类似地，从无符号数到有符号数的转换函数$U2T_w$（Unsigned to Two’s Complement）为：</p>
-<p>$$U2T_w(u) = B2T_w(U2B_w(u)) = -u_{w-1} 2^w + u$$</p>
+<p>$$<br>U2T_w(u) = B2T_w(U2B_w(u)) = -u_{w-1} 2^w + u<br>$$</p>
 <p>C语言中，大多数常数默认为符号数（signed），在末尾加上<code>U</code>或<code>u</code>即声明该数字为无符号常数。C语言允许无符号数和有符号数之间的转换，转换前后位模式保持不变，结果的差异由解析方式的不同造成。从无符号数转换到有符号数时，使用函数$U2T_w$，从符号数转换为无符号数时，使用函数$T2U_w$。</p>
 <p>另外，执行运算时，如果一个是有符号数而另一个是无符号数，那么C语言会隐式地<strong>将有符号参数强制类型转换为无符号数</strong>。例如，考虑比较式<code>-1 &lt; 0U</code> ，因为第二个运算是为无符号的，第一个运算数会被隐式地转换成无符号数，<code>-1</code>变成了一个很大的正数，表达式等价于<code>4294967295U &lt; 0U</code>，得到了和预想中不一样的结果，这一点尤其要注意。</p>
 <h3 id="扩展位模式"><a href="#扩展位模式" class="headerlink" title="扩展位模式"></a>扩展位模式</h3><p>一种常见的运算是在不同字长的整数之间转换，同时保持数值不变。将一个无符号数转换成一个更大的数据类型，执行<strong>零扩展</strong>（zero extension），即在开头添加<code>0</code>。将一个补码数字转换为一个更大的数据类型执行<strong>符号扩展</strong>（sign extension），即在开头添加符号位，如果是负数，则添加1，如果是正数，则添加0。如果转换中不仅有字长的扩展还有符号的改变，则转换的原则如下：<strong>首先改变大小，然后完成符号转换</strong>。例如下面的C代码：</p>
@@ -524,13 +524,6 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2015/04/06/integer-arithmetic/" rel="bookmark">整数的运算</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
       <div class="popular-posts-title"><a href="/2014/05/21/cpp-explicit-keyword/" rel="bookmark">C++的explicit关键字</a></div>
       
     </li>
@@ -545,7 +538,7 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2015/05/19/little-and-big-endian/" rel="bookmark">大小端字节序</a></div>
+      <div class="popular-posts-title"><a href="/2015/04/06/integer-arithmetic/" rel="bookmark">整数的运算</a></div>
       
     </li>
   
@@ -597,11 +590,11 @@
           
             <a href="/tags/类型转换/" rel="tag"># 类型转换</a>
           
-            <a href="/tags/编码/" rel="tag"># 编码</a>
+            <a href="/tags/整数编码/" rel="tag"># 整数编码</a>
+          
+            <a href="/tags/位模式/" rel="tag"># 位模式</a>
           
             <a href="/tags/补码/" rel="tag"># 补码</a>
-          
-            <a href="/tags/C语言/" rel="tag"># C语言</a>
           
         </div>
       
@@ -1002,7 +995,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">123</span>
+                      
+                    
+                    <span class="site-state-item-count">124</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
