@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/2017/06/26/common-linux-commands/</loc>
+    
+    <lastmod>2019-05-11T13:47:42.223Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/05/08/clrs-quicksort/</loc>
+    
+    <lastmod>2019-05-11T03:49:01.867Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2017/01/07/year-end-summary-of-2016/</loc>
     
     <lastmod>2019-05-09T16:46:31.744Z</lastmod>
@@ -61,13 +75,6 @@
     <loc>http://panqiincs.me/about/index.html</loc>
     
     <lastmod>2019-05-08T09:57:01.365Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/05/08/clrs-quicksort/</loc>
-    
-    <lastmod>2019-05-08T07:04:38.168Z</lastmod>
     
   </url>
   
@@ -306,13 +313,6 @@
     <loc>http://panqiincs.me/2017/11/02/fall-in-love-with-tea/</loc>
     
     <lastmod>2019-04-14T01:58:45.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2017/06/26/common-linux-commands/</loc>
-    
-    <lastmod>2019-04-13T07:31:31.000Z</lastmod>
     
   </url>
   

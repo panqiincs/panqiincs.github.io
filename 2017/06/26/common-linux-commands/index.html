@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="辛未羊的博客">
 <meta property="og:description" content="基本操作常用的基础命令： 123456789$ cd -                     # 切换到上一次的工作目录$ Ctrl-R(keyboard)         # 查找历史命令$ cp -a /source/. /dest    # 将一个目录下的所有文件拷贝到另一个目录$ ln -s target soft_link   # 为名为target的文件创建一个软链接，target">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-13T07:31:31.000Z">
+<meta property="og:updated_time" content="2019-05-11T13:47:42.223Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实用Linux命令">
 <meta name="twitter:description" content="基本操作常用的基础命令： 123456789$ cd -                     # 切换到上一次的工作目录$ Ctrl-R(keyboard)         # 查找历史命令$ cp -a /source/. /dest    # 将一个目录下的所有文件拷贝到另一个目录$ ln -s target soft_link   # 为名为target的文件创建一个软链接，target">
@@ -547,8 +547,10 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ grep -<span class="keyword">in</span> <span class="string">"error"</span> *.<span class="built_in">log</span>                <span class="comment"># 匹配文件中包含字符（不区分大小写）的内容，并打印行号 </span></span><br><span class="line">$ grep -e <span class="string">"[Aa]rsenal"</span> teams.txt        <span class="comment"># 匹配符合正则表达式的内容</span></span><br><span class="line">$ grep <span class="string">"fork"</span> ./src -R -n               <span class="comment"># 在目录中对文本进行递归搜索</span></span><br></pre></td></tr></table></figure>
 <h2 id="网络相关"><a href="#网络相关" class="headerlink" title="网络相关"></a>网络相关</h2><p>下面是常用的网络管理命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -npt                          <span class="comment"># 查看所有TCP连接及其相关进程信息</span></span><br><span class="line">$ sudo iftop -i eth0                    <span class="comment"># 监控eth0上的流量</span></span><br><span class="line">$ nslookup panqiincs.me                 <span class="comment"># 查询域名解析（DNS）信息</span></span><br><span class="line">$ curl -I https://panqiincs.me          <span class="comment"># 查看HTTP Header</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 防火墙开启service和port</span></span><br><span class="line">$ sudo firewall-cmd --permanent --zone=public --add-service=http</span><br><span class="line">$ sudo firewall-cmd --permanent --zone=public --add-service=https</span><br><span class="line">$ sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp</span><br><span class="line">$ sudo firewall-cmd --reload</span><br><span class="line">$ sudo systemctl restart firewalld.service</span><br></pre></td></tr></table></figure>
-<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>对pdf文件进行裁边：</p>
+<h2 id="编辑pdf"><a href="#编辑pdf" class="headerlink" title="编辑pdf"></a>编辑pdf</h2><p>对pdf文件进行裁边：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pdfjam --keepinfo --trim <span class="string">"10mm 15mm 10mm 15mm"</span> --clip <span class="literal">true</span> --suffix <span class="string">"cropped"</span> input.pdf</span><br></pre></td></tr></table></figure>
+<p>提取pdf部分页：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 提取第1、2、3、5、6、7页</span></span><br><span class="line">$ pdftk myoldfile.pdf cat 1-3 5-7 output mynewfile.pdf</span><br></pre></td></tr></table></figure>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="https://linux.die.net/man/" target="_blank" rel="noopener">Linux man pages</a></li>
 <li><a href="http://www.cnblogs.com/jyaray/archive/2011/04/30/2033362.html" target="_blank" rel="noopener">tar压缩解压缩命令详解</a></li>
@@ -577,14 +579,14 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2015/08/05/multiplexing-and-nonblocking-io/" rel="bookmark">为什么多路复用要搭配非阻塞I/O</a></div>
+      <div class="popular-posts-title"><a href="/2015/08/01/io-multiplexing-with-epoll/" rel="bookmark">I/O多路复用之epoll</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2015/08/01/io-multiplexing-with-epoll/" rel="bookmark">I/O多路复用之epoll</a></div>
+      <div class="popular-posts-title"><a href="/2015/08/05/multiplexing-and-nonblocking-io/" rel="bookmark">为什么多路复用要搭配非阻塞I/O</a></div>
       
     </li>
   
@@ -1172,7 +1174,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本操作"><span class="nav-number">1.</span> <span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件管理"><span class="nav-number">2.</span> <span class="nav-text">软件管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程管理"><span class="nav-number">3.</span> <span class="nav-text">进程管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#压缩解压缩"><span class="nav-number">4.</span> <span class="nav-text">压缩解压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件查找"><span class="nav-number">5.</span> <span class="nav-text">文件查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本搜索"><span class="nav-number">6.</span> <span class="nav-text">文本搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络相关"><span class="nav-number">7.</span> <span class="nav-text">网络相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它"><span class="nav-number">8.</span> <span class="nav-text">其它</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">9.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本操作"><span class="nav-number">1.</span> <span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件管理"><span class="nav-number">2.</span> <span class="nav-text">软件管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程管理"><span class="nav-number">3.</span> <span class="nav-text">进程管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#压缩解压缩"><span class="nav-number">4.</span> <span class="nav-text">压缩解压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件查找"><span class="nav-number">5.</span> <span class="nav-text">文件查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本搜索"><span class="nav-number">6.</span> <span class="nav-text">文本搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络相关"><span class="nav-number">7.</span> <span class="nav-text">网络相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑pdf"><span class="nav-number">8.</span> <span class="nav-text">编辑pdf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">9.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
