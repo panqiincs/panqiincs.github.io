@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="辛未羊的博客">
 <meta property="og:description" content="主要内容快速排序通常是实际排序应用中最好的选择。它在最坏情况下的时间复杂度很差，但是平均性能非常好。另外，它能够进行原址排序。 快速排序的描述与归并排序一样，快速排序也用到了分治思想。其主过程的代码如下：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-13T05:55:26.901Z">
+<meta property="og:updated_time" content="2019-05-13T06:15:18.775Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="『算法导论』第 7 章：快速排序">
 <meta name="twitter:description" content="主要内容快速排序通常是实际排序应用中最好的选择。它在最坏情况下的时间复杂度很差，但是平均性能非常好。另外，它能够进行原址排序。 快速排序的描述与归并排序一样，快速排序也用到了分治思想。其主过程的代码如下：">
@@ -499,7 +499,8 @@
 <p>上述递归式的解为$T(n) = \Theta(n \lg n)$，通过在每一层递归中都平衡划分子数组，我们得到了渐近时间上更快的算法。</p>
 <p>实际上，只要划分是常数比例的，算法的运行时间总是$O(n \lg n)$，即使是$99:1$的划分，其时间复杂度仍然是$O(n \lg n)$。当对一个随机输入的数组进行快速排序时，平均情况下，划分同时混合有“好”和“差”的划分。当好和差的划分交替出现时，快速排序的复杂度和全是好的划分时一样，仍然是$O(n \lg n)$，区别只在于隐含的常数因子要略大一些。</p>
 <h2 id="快速排序的随机化版本"><a href="#快速排序的随机化版本" class="headerlink" title="快速排序的随机化版本"></a>快速排序的随机化版本</h2><p>前面的讨论基于一个前提：输入数据的所有排列都是等概率的。实际工程中并不总是这样的，所以我们可以通过在算法中引入随机性，从而使得算法对于所有的输入都能获得较好的期望性能。</p>
-<p>可以从子数组$A[p…r]$中随机选择一个元素作为主元，这通过将$A[r]$与从$A[p…r]$中随机选出的一个元素交换来实现。由于主元元素是随机选取的，在平均情况下，对数组的划分是比较均衡的。代码略。</p>
+<p>可以从子数组$A[p…r]$中随机选择一个元素作为主元，这通过将$A[r]$与从$A[p…r]$中随机选出的一个元素交换来实现。由于主元元素是随机选取的，在平均情况下，对数组的划分是比较均衡的。随机化版本的划分函数实现代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">randomized_partition(<span class="keyword">int</span> A[], <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> i = rand() % (r - p + <span class="number">1</span>) + r;  <span class="comment">// 生成从p到r的随机数</span></span><br><span class="line">    Exch(A, r, i);                     <span class="comment">// 将被选的主元交换到数组末尾</span></span><br><span class="line">    <span class="keyword">return</span> partion(A, p, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="快速排序分析"><a href="#快速排序分析" class="headerlink" title="快速排序分析"></a>快速排序分析</h2><p>本节用严格的数学推导计算了快速排序算法的运行时间。在输入元素互异的情况下，随机化版本的期望运行时间为$O(n \lg n)$。</p>
 <h2 id="习题解答"><a href="#习题解答" class="headerlink" title="习题解答"></a>习题解答</h2><h3 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h3><p><strong>7.1-1</strong> 解答：略。</p>
 <p><strong>7.1-2</strong> 解答：返回的$q$值等于$r$。可以加一个条件判断，如果$A[\lfloor (p+r)/2 \rfloor]$等于$A[r]$，则返回$q = \lfloor (p+r)/2 \rfloor$。</p>
@@ -522,7 +523,10 @@
 <h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><p><strong>7-1</strong> （Hoare划分的正确性） 根据题干中PARTITION过程的伪代码，我给出如下的代码实现：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">hoare_partition</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = A[p];</span><br><span class="line">    <span class="keyword">int</span> i = p - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> j = r + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            --j;</span><br><span class="line">        &#125; <span class="keyword">while</span> (A[j] &gt; x);</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            ++i;</span><br><span class="line">        &#125; <span class="keyword">while</span> (A[i] &lt; x);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; j) &#123;</span><br><span class="line">            Exch(A, i, j);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>习题解答如下：<br>a）略。<br>b）因为两端的下表$i$和$j$分别递增和递减向中间靠拢，而且一旦有$i \ge j$，函数即返回，所以不会访问到数组外的元素。<br>c）因为只有$i \ge j$函数才会返回，所以返回值$j$不可能等于$r$，有可能等于$p$。<br>d）当$A[i]&gt;x$且$A[j]&lt;x$时，会交换两个元素的位置，所以满足题目中的条件。<br>e）要将主程序稍微修改一下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p &lt; r) &#123;</span><br><span class="line">        <span class="keyword">int</span> q = hoare_partition(A, p, r);  <span class="comment">// 调用hoare_partition</span></span><br><span class="line">        quicksort(A, p, q);                <span class="comment">// 排序比主元小的部分，此行有修改</span></span><br><span class="line">        quicksort(A, q+<span class="number">1</span>, r);              <span class="comment">// 排序比主元大的部分</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p &lt; r) &#123;</span><br><span class="line">        <span class="keyword">int</span> q = hoare_partition(A, p, r);  <span class="comment">// 调用hoare_partition</span></span><br><span class="line">        quicksort(A, p, q);                <span class="comment">// 排序小于主元的部分，此行有修改</span></span><br><span class="line">        quicksort(A, q+<span class="number">1</span>, r);              <span class="comment">// 排序大于等于主元的部分</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>7-2</strong> （针对相同元素值的快速排序） 对随机化快速排序的分析中，我们假设输入元素的值是互异的，本题中，看看这一假设不成立会出现什么情况。</p>
+<p>a）如果所有输入元素的值都相同，主元的位置是随机的，所以运行时间是$\Theta(n \lg n)$。<br>b）代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">partition_new</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> p, <span class="keyword">int</span> r, <span class="keyword">int</span> *q, <span class="keyword">int</span> *t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -618,6 +622,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/05/13/stroke-order/" rel="prev" title="汉字笔顺总结">
+                汉字笔顺总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -694,7 +702,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-count">75</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -994,7 +1002,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">124</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">126</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
