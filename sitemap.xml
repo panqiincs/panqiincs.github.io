@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://panqiincs.me/2017/06/26/common-linux-commands/</loc>
+    <loc>http://panqiincs.me/2019/05/08/clrs-quicksort/</loc>
     
-    <lastmod>2019-05-11T13:47:42.223Z</lastmod>
+    <lastmod>2019-05-13T05:55:26.901Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2019/05/08/clrs-quicksort/</loc>
+    <loc>http://panqiincs.me/2018/07/31/list-of-computer-books/</loc>
     
-    <lastmod>2019-05-11T03:49:01.867Z</lastmod>
+    <lastmod>2019-05-13T05:28:02.978Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2017/06/26/common-linux-commands/</loc>
+    
+    <lastmod>2019-05-11T13:47:42.223Z</lastmod>
     
   </url>
   
@@ -222,13 +229,6 @@
     <loc>http://panqiincs.me/2018/07/22/awesome-online-maps/</loc>
     
     <lastmod>2019-04-20T03:45:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2018/07/31/list-of-computer-books/</loc>
-    
-    <lastmod>2019-04-20T03:36:21.000Z</lastmod>
     
   </url>
   
