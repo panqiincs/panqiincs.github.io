@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="辛未羊的博客">
 <meta property="og:description" content="主要内容快速排序通常是实际排序应用中最好的选择。它在最坏情况下的时间复杂度很差，但是平均性能非常好。另外，它能够进行原址排序。 快速排序的描述与归并排序一样，快速排序也用到了分治思想。其主过程的代码如下：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-13T06:15:18.775Z">
+<meta property="og:updated_time" content="2019-05-14T06:46:52.565Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="『算法导论』第 7 章：快速排序">
 <meta name="twitter:description" content="主要内容快速排序通常是实际排序应用中最好的选择。它在最坏情况下的时间复杂度很差，但是平均性能非常好。另外，它能够进行原址排序。 快速排序的描述与归并排序一样，快速排序也用到了分治思想。其主过程的代码如下：">
@@ -524,9 +524,6 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">hoare_partition</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = A[p];</span><br><span class="line">    <span class="keyword">int</span> i = p - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> j = r + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            --j;</span><br><span class="line">        &#125; <span class="keyword">while</span> (A[j] &gt; x);</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            ++i;</span><br><span class="line">        &#125; <span class="keyword">while</span> (A[i] &lt; x);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; j) &#123;</span><br><span class="line">            Exch(A, i, j);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>习题解答如下：<br>a）略。<br>b）因为两端的下表$i$和$j$分别递增和递减向中间靠拢，而且一旦有$i \ge j$，函数即返回，所以不会访问到数组外的元素。<br>c）因为只有$i \ge j$函数才会返回，所以返回值$j$不可能等于$r$，有可能等于$p$。<br>d）当$A[i]&gt;x$且$A[j]&lt;x$时，会交换两个元素的位置，所以满足题目中的条件。<br>e）要将主程序稍微修改一下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p &lt; r) &#123;</span><br><span class="line">        <span class="keyword">int</span> q = hoare_partition(A, p, r);  <span class="comment">// 调用hoare_partition</span></span><br><span class="line">        quicksort(A, p, q);                <span class="comment">// 排序小于主元的部分，此行有修改</span></span><br><span class="line">        quicksort(A, q+<span class="number">1</span>, r);              <span class="comment">// 排序大于等于主元的部分</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>7-2</strong> （针对相同元素值的快速排序） 对随机化快速排序的分析中，我们假设输入元素的值是互异的，本题中，看看这一假设不成立会出现什么情况。</p>
-<p>a）如果所有输入元素的值都相同，主元的位置是随机的，所以运行时间是$\Theta(n \lg n)$。<br>b）代码如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">partition_new</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> p, <span class="keyword">int</span> r, <span class="keyword">int</span> *q, <span class="keyword">int</span> *t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -622,8 +619,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/13/stroke-order/" rel="prev" title="汉字笔顺总结">
-                汉字笔顺总结 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/13/english-is-important/" rel="prev" title="英语的重要性">
+                英语的重要性 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1002,11 +999,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">126</span>
+                    <span class="site-state-item-count">124</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
