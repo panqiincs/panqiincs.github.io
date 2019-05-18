@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/about/index.html</loc>
+    
+    <lastmod>2019-05-18T12:08:50.728Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2019/05/17/dpt-rp1-toc/</loc>
     
     <lastmod>2019-05-17T14:27:28.012Z</lastmod>
@@ -103,13 +110,6 @@
     <loc>http://panqiincs.me/2019/04/25/nginx-log-to-mysql/</loc>
     
     <lastmod>2019-05-09T16:18:51.065Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/about/index.html</loc>
-    
-    <lastmod>2019-05-08T09:57:01.365Z</lastmod>
     
   </url>
   
