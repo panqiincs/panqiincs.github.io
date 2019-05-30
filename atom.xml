@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://panqiincs.me/"/>
-  <updated>2019-05-24T03:50:03.231Z</updated>
+  <updated>2019-05-30T03:51:01.953Z</updated>
   <id>http://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>童年的覆盆子</title>
+    <link href="http://panqiincs.me/2019/05/30/childhood-raspberries/"/>
+    <id>http://panqiincs.me/2019/05/30/childhood-raspberries/</id>
+    <published>2019-05-30T02:12:16.000Z</published>
+    <updated>2019-05-30T03:51:01.953Z</updated>
+    
+    <content type="html"><![CDATA[<p>我在五月中旬更换了网站的图标。之前的图标是岳麓书院后门的爱晚亭，纪念我的大学；现在的图标是名为覆盆子的植物，纪念我的童年。</p><p>覆盆子的英文名称是raspberry，也就是树莓派的那个树莓。树莓是欧美常见的食物，有很多品种，但很多和我见到的覆盆子不一样。其实它们是亲戚，都是悬钩子属的植物。这是覆盆子的照片（图片来源：<a href="https://upload.wikimedia.org/wikipedia/commons/a/a2/Raspberries_%28Rubus_Idaeus%29.jpg" target="_blank" rel="noopener">维基百科</a>）：</p><a id="more"></a><p><img src="http://wx2.sinaimg.cn/large/e5805747ly1g3j6aqcuo0j20kl0gojv0.jpg" alt="fupenzi"></p><p>我的童年在湖北的农村度过，覆盆子在我们那里很常见，是我小时候最爱的野果。我问过湖南、江西、安徽等地的同学，他们都认识，我在岳麓山上也发现过它。鲁迅先生的《从百草园到三味书屋》中就有过描述：</p><blockquote><p>如果不怕刺，还可以摘到覆盆子，像小珊瑚珠攒成的小球，又酸又甜，色味都比桑葚要好得远。</p></blockquote><p>每年的五一节前后，覆盆子开始成熟。放学回家的土路边就有不少，那时候我们放学后一路收割，把这些长在荆棘上的红色果实摘下来往嘴里塞，酸酸甜甜，非常好吃。到了周末，我经常约小伙伴去树林里找覆盆子吃。越是人迹罕至的树林深处，收获越大，偶尔还会遇到受惊吓的野鸡突然从草丛中窜出，飞向空中。唯一遗憾的是，覆盆子不好保存，揣一把在口袋里，还没到家，一粒粒的珍珠就破了，色香味俱损。</p><p>我初中和高中在黄州城区上学，五一节放假回家还偶尔去山野里尝尝覆盆子。上大学之后，五一节很少回去，好不容易有次回家，发现那条土路已经修成了水泥路，荆棘丛不见踪影，想去熟悉的树林里找，结果上山的路被杂草堵得严严实实（农村现在很少用柴火，所以没人去割草）。好多年没尝过家乡的覆盆子了。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我在五月中旬更换了网站的图标。之前的图标是岳麓书院后门的爱晚亭，纪念我的大学；现在的图标是名为覆盆子的植物，纪念我的童年。&lt;/p&gt;
+&lt;p&gt;覆盆子的英文名称是raspberry，也就是树莓派的那个树莓。树莓是欧美常见的食物，有很多品种，但很多和我见到的覆盆子不一样。其实它们是亲戚，都是悬钩子属的植物。这是覆盆子的照片（图片来源：&lt;a href=&quot;https://upload.wikimedia.org/wikipedia/commons/a/a2/Raspberries_%28Rubus_Idaeus%29.jpg&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;维基百科&lt;/a&gt;）：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活记录" scheme="http://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="覆盆子" scheme="http://panqiincs.me/tags/%E8%A6%86%E7%9B%86%E5%AD%90/"/>
+    
+      <category term="童年" scheme="http://panqiincs.me/tags/%E7%AB%A5%E5%B9%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>DPT-RP1终于支持目录跳转</title>
@@ -518,31 +543,6 @@
     
     
       <category term="opengrok" scheme="http://panqiincs.me/tags/opengrok/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>告别iPhone</title>
-    <link href="http://panqiincs.me/2018/12/27/say-goodbye-to-iphone/"/>
-    <id>http://panqiincs.me/2018/12/27/say-goodbye-to-iphone/</id>
-    <published>2018-12-27T07:05:56.000Z</published>
-    <updated>2019-04-19T00:31:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>我的iPhone 5s手机服役四年，一直用得比较满意，但随着系统和应用的日渐臃肿，16G的容量实在无法容忍，于是我换了部老东家生产的安卓手机。</p><p>安卓系统有很多方便之处，不需要下载一个废物软件（没错，说的就是你，iTunes）就可以传输文件，不需要越狱就能从软件包安装APP。我第一时间就搭好了梯子，在手机上就能用Google，苹果的iOS系统就没这么便捷。科学上网软件的开关还能拖到下拉列表里，真方便！</p><a id="more"></a><p><img style="margin: auto" src="http://wx3.sinaimg.cn/large/e5805747gy1g187eguzimj20u01qcndr.jpg" width="50%" height="50%" align="center"></p><p>令人惊喜的是，应用商店里竟然能安装Google Play，于是我可以从Google Play里安装应用市场里没有的软件，比如Twitter，Instagram，Google地球等。</p><p><img style="margin: auto" src="http://wx2.sinaimg.cn/large/e5805747gy1g187ejzliej20u01qcalh.jpg" width="50%" height="50%" align="center"></p><p>另外，国内厂商定制的安卓系统本土化做得不错，比如垃圾短信拦截、骚扰电话标注功能非常实用。国产手机的用户体验越来越好，苹果的优势几乎不复存在，再考虑到苹果手机昂贵的价格，我以后应该就一直用安卓手机了。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;我的iPhone 5s手机服役四年，一直用得比较满意，但随着系统和应用的日渐臃肿，16G的容量实在无法容忍，于是我换了部老东家生产的安卓手机。&lt;/p&gt;
-&lt;p&gt;安卓系统有很多方便之处，不需要下载一个废物软件（没错，说的就是你，iTunes）就可以传输文件，不需要越狱就能从软件包安装APP。我第一时间就搭好了梯子，在手机上就能用Google，苹果的iOS系统就没这么便捷。科学上网软件的开关还能拖到下拉列表里，真方便！&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="生活记录" scheme="http://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
-    
-    
-      <category term="手机" scheme="http://panqiincs.me/tags/%E6%89%8B%E6%9C%BA/"/>
-    
-      <category term="安卓" scheme="http://panqiincs.me/tags/%E5%AE%89%E5%8D%93/"/>
     
   </entry>
   
