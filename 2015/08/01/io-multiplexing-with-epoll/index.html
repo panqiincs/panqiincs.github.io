@@ -101,7 +101,7 @@
 
 
   <meta name="description" content="简介I/O多路复用（I/O multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I/O操作。能够进行I/O操作，具体来说就是，在描述符上执行I/O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。 在Linux系统中，多路复用由select，poll和epoll三个函数支持。它们的作用相同，特别地，poll和epol">
-<meta name="keywords" content="linux,多路复用,非阻塞I&#x2F;O,epoll">
+<meta name="keywords" content="linux,多路复用,epoll,非阻塞I&#x2F;O">
 <meta property="og:type" content="article">
 <meta property="og:title" content="I&#x2F;O多路复用之epoll">
 <meta property="og:url" content="http://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/index.html">
@@ -613,9 +613,9 @@
           
             <a href="/tags/多路复用/" rel="tag"># 多路复用</a>
           
-            <a href="/tags/非阻塞I-O/" rel="tag"># 非阻塞I/O</a>
-          
             <a href="/tags/epoll/" rel="tag"># epoll</a>
+          
+            <a href="/tags/非阻塞I-O/" rel="tag"># 非阻塞I/O</a>
           
         </div>
       
@@ -718,7 +718,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">77</span>
+                    <span class="site-state-item-count">78</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1020,7 +1020,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">125</span>
+                      
+                    
+                    <span class="site-state-item-count">126</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
