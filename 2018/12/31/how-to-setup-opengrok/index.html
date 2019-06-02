@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="辛未羊的博客">
 <meta property="og:description" content="OpenGrok是跨平台、开源免费的源码阅读工具。OpenGrok生成源码的索引，Apache Tomcat提供Web服务，用户即可在浏览器中阅读代码，使用体验可以去看看这里。Linux下好用的源码阅读工具极少，OpenGrok可以一试。 本文是一篇没有技术含量的笔记，之所以贴出来是因为我找到的其它教程都失效了。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-26T02:21:09.000Z">
+<meta property="og:updated_time" content="2019-06-02T23:08:41.596Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGrok安装和配置">
 <meta name="twitter:description" content="OpenGrok是跨平台、开源免费的源码阅读工具。OpenGrok生成源码的索引，Apache Tomcat提供Web服务，用户即可在浏览器中阅读代码，使用体验可以去看看这里。Linux下好用的源码阅读工具极少，OpenGrok可以一试。 本文是一篇没有技术含量的笔记，之所以贴出来是因为我找到的其它教程都失效了。">
@@ -494,11 +494,11 @@
 <li>Tomcat 8，请参考<a href="https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-8-on-ubuntu-16-04" target="_blank" rel="noopener">这里</a>，<strong>非常重要</strong>的步骤，请认真执行每一步，一定要执行配置systemd那步</li>
 </ul>
 <p>在OpenGrok的<a href="https://github.com/oracle/opengrok" target="_blank" rel="noopener">Github项目主页</a>下载二进制安装包，当前最新的稳定版本为1.1。解压安装包到<code>/opt/opengrok</code>目录下即可。OpenGrok安装目录下的<code>source.war</code>文件很重要，Tomcat检测到该配置文件后部署应用。如果遵从默认配置，不需修改，直接拷贝到Tomcat的安装目录下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo cp /opt/opengrok/lib/source.war /opt/tomcat/webapps</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /opt/opengrok/lib/source.war /opt/tomcat/webapps</span><br></pre></td></tr></table></figure>
 <p>源码目录和索引目录默认存放在<code>/var/opengrok</code>下，建立如下文件夹：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir -p /var/opengrok/data</span><br><span class="line">$ mkdir -p /var/opengrok/src</span><br><span class="line">$ mkdir -p /var/opengrok/etc</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /var/opengrok/data</span><br><span class="line">mkdir -p /var/opengrok/src</span><br><span class="line">mkdir -p /var/opengrok/etc</span><br></pre></td></tr></table></figure>
 <p>将源码文件夹都放在<code>src</code>目录下，运行下面的命令生成索引：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ java -Djava.util.logging.config.file=/var/opengrok/logging.properties \</span><br><span class="line">     -jar /opt/opengrok/lib/opengrok.jar \</span><br><span class="line">     -c /usr/bin/universal-ctags \</span><br><span class="line">     -s /var/opengrok/src -d /var/opengrok/data -H -P -S -G \</span><br><span class="line">     -W /var/opengrok/etc/configuration.xml -U http://localhost:8080</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">java -Djava.util.logging.config.file=/var/opengrok/logging.properties \</span><br><span class="line">     -jar /opt/opengrok/lib/opengrok.jar \</span><br><span class="line">     -c /usr/bin/universal-ctags \</span><br><span class="line">     -s /var/opengrok/src -d /var/opengrok/data -H -P -S -G \</span><br><span class="line">     -W /var/opengrok/etc/configuration.xml -U http://localhost:8080</span><br></pre></td></tr></table></figure>
 <p>可以看到<code>data</code>目录下有文件生成，即为索引文件。在浏览器中打开<code>http://localhost:8080/source</code>，应该就能阅读源码了。当<code>src</code>目录发生变化时，需重新运行上面的命令更新索引。</p>
 
       

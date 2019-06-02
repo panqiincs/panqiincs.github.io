@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="辛未羊的博客">
 <meta property="og:description" content="请注意，本文的安装方法针对的3.x版本的内核，对4.x版本内核可能不起作用，4.x内核下的安装步骤请参考下文中给出的Github页面。 TP-LINK TL-WN823N无线网卡在我的Linux（内核版本3.18）系统下无法正常使用，因为没有对应的驱动。官方网站上也很难找到可用的驱动，需要手动从源代码编译安装。 首先查看网卡信息，运行lsusb得到如下信息：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-09T01:56:00.000Z">
+<meta property="og:updated_time" content="2019-06-02T22:59:26.216Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux下安装TL-WN823N无线网卡驱动">
 <meta name="twitter:description" content="请注意，本文的安装方法针对的3.x版本的内核，对4.x版本内核可能不起作用，4.x内核下的安装步骤请参考下文中给出的Github页面。 TP-LINK TL-WN823N无线网卡在我的Linux（内核版本3.18）系统下无法正常使用，因为没有对应的驱动。官方网站上也很难找到可用的驱动，需要手动从源代码编译安装。 首先查看网卡信息，运行lsusb得到如下信息：">
@@ -488,15 +488,15 @@
 <p><code>TP-LINK TL-WN823N</code>无线网卡在我的Linux（内核版本3.18）系统下无法正常使用，因为没有对应的驱动。官方网站上也很难找到可用的驱动，需要手动从源代码编译安装。</p>
 <p>首先查看网卡信息，运行<code>lsusb</code>得到如下信息：</p>
 <a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ lsusb</span><br><span class="line">Bus 003 Device 002: ID 0bda:818b Realtek Semiconductor Corp.</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bus 003 Device 002: ID 0bda:818b Realtek Semiconductor Corp.</span><br></pre></td></tr></table></figure>
 <p>Google一下发现网卡使用的是<code>Realtek RTL8192EU</code>芯片：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Realtek RTL8192EU ID 0BDA:818B</span><br></pre></td></tr></table></figure>
 <p>在<a href="https://github.com/Mange/rtl8192eu-linux-driver" target="_blank" rel="noopener">Github</a>上找到了驱动的源代码，下载到本地：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/Mange/rtl8192eu-linux-driver</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/Mange/rtl8192eu-linux-driver</span><br></pre></td></tr></table></figure>
 <p>编译之前要安装<code>kernel-devel</code>组件，否则会编译报错。在openSUSE运行下面的命令安装<code>kernel-devel</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo zypper install kernel-devel</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper install kernel-devel</span><br></pre></td></tr></table></figure>
 <p>最后编译安装驱动程序：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> rtl8192eu-linux-driver/</span><br><span class="line">$ make</span><br><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> rtl8192eu-linux-driver/</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
 <p>升级内核之后，网卡驱动可能会失效，需要在新的内核下重新编译一次才能使用。</p>
 
       
