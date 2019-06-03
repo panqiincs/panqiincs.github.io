@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://panqiincs.me/"/>
-  <updated>2019-06-02T13:02:05.053Z</updated>
+  <updated>2019-06-03T04:42:54.565Z</updated>
   <id>http://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>『算法导论』第 8 章：线性时间排序</title>
+    <link href="http://panqiincs.me/2019/06/03/clrs-linear-time-sort/"/>
+    <id>http://panqiincs.me/2019/06/03/clrs-linear-time-sort/</id>
+    <published>2019-06-03T01:38:02.000Z</published>
+    <updated>2019-06-03T04:42:54.565Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>本章介绍几种线性时间复杂度的排序算法。我们前面介绍的排序算法都是通过比较元素大小来确定排序顺序的，本章介绍的算法通过运算来确定排序顺序。</p><h2 id="排序算法的下界"><a href="#排序算法的下界" class="headerlink" title="排序算法的下界"></a>排序算法的下界</h2><p>比较排序可以抽象成一颗决策树。<strong>决策树</strong>是一颗完全二叉树，它可以表示在给定输入规模情况下，某一特定算法对所有元素的比较操作。</p><a id="more"></a><p>通过决策树模型我们可以证明，在最坏情况下，任何比较排序算法都要做$\Omega(n \lg n)$次比较。也就是说，归并排序和堆排序都是渐进最优的，而且，任何已知的比较排序算法最多就是在常数因子上优于它们。</p><h2 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h2><p><strong>计数排序</strong>（counting sort）假设$n$个元素中每一个都是在$0$到$k$区间内的一个整数，其中$k$为某个整数。计数排序的基本思想是：对于每一个输入元素，确定小于它的元素的个数。利用这一信息，就可以直接把它放到输出数组中的位置上。</p><p>在计数排序算法的代码实现中，假设输入是数组$A[1…n]$，我们还需要两个数组：$B[1…n]$存放排序的输出，$C[0…k]$提供临时存储空间。下面是实现代码：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CountingSort</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> B[], <span class="keyword">int</span> n, <span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *C = <span class="built_in">malloc</span>((k+<span class="number">1</span>)*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k+<span class="number">1</span>; i++) &#123;</span><br><span class="line">        C[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">        C[A[j]]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// C[i]现在包含等于i的元素的个数</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; k+<span class="number">1</span>; i++) &#123;</span><br><span class="line">        C[i] = C[i] + C[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// C[i]现在包含小于等于i的元素的个数</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = n<span class="number">-1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">        B[C[A[j]]<span class="number">-1</span>] = A[j];    <span class="comment">// 如果有m个元素小于等于A[j]，将它放在数组第m个位置</span></span><br><span class="line">        C[A[j]] = C[A[j]] - <span class="number">1</span>;  <span class="comment">// 处理有相同元素的情况</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(C);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>很容易分析得到，当$k=O(n)$时，计数排序的运行时间为$\Theta(n)$。它的代码中完全没有输入元素之间的比较操作，用输入元素的实际值来确定其在数组中的位置。计数排序的一个重要特征是它是<strong>稳定的</strong>：具有相同值的元素在输出数组中的相对次序与它们在输入数组中的相对次序相同。计数排序经常用于基数排序算法的一个子过程，正因为它是稳定的。</p><h2 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h2><p><strong>基数排序</strong>（radix sort）是一种用在卡片排序机上的算法。基数排序从最低有效位到最高有效位依次排序每一个位。为了确保正确性，一位数排序算法必须是稳定的，可以选择上述的计数排序。</p><p>基数排序的思想很简单，代码从略。可以证明，给定$n$个$d$位数，其中每个数有$k$个可能的取值，如果基数排序使用的稳定排序方法耗时$\Theta(n+k)$，那么它可以在$\Theta(d(n+k)$时间内将这些数排好序。</p><h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2><p><strong>桶排序</strong>（bucket sort）假设输入数据服从均匀分布，平均情况下它的时间代价为$O(n)$。与计数排序类似，因为对数据作了某种假设，桶排序的速度也很快。桶排序假设输入是由一个随机过程产生，元素均匀分布在$[0,1)$区间上。</p><p>桶排序将$[0,1)$区间划分为$n$个相同大小的子区间，称之为<strong>桶</strong>。然后将$n$个输入数分别放到各个桶中。由于分布是均匀的，一般不会出现很多落在同一个桶中的情况。为了得到输出结果，先对每个桶中的数进行排序（比如使用插入排序算法），然后遍历每个桶，按照次序把各个桶中的元素列出来即可。</p><p>代码实现需要用到链表，代码从略。可以分析得到，桶排序的期望运行时间为$\Theta(n)$。即使输入数据不服从均匀分布，只要输入数据满足下列性质：所有桶的大小的平方和与总的元素个数呈线性关系，桶排序就能在线性时间完成。</p><h2 id="习题解答"><a href="#习题解答" class="headerlink" title="习题解答"></a>习题解答</h2><p>待完成。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;主要内容&quot;&gt;&lt;a href=&quot;#主要内容&quot; class=&quot;headerlink&quot; title=&quot;主要内容&quot;&gt;&lt;/a&gt;主要内容&lt;/h2&gt;&lt;p&gt;本章介绍几种线性时间复杂度的排序算法。我们前面介绍的排序算法都是通过比较元素大小来确定排序顺序的，本章介绍的算法通过运算来确定排序顺序。&lt;/p&gt;
+&lt;h2 id=&quot;排序算法的下界&quot;&gt;&lt;a href=&quot;#排序算法的下界&quot; class=&quot;headerlink&quot; title=&quot;排序算法的下界&quot;&gt;&lt;/a&gt;排序算法的下界&lt;/h2&gt;&lt;p&gt;比较排序可以抽象成一颗决策树。&lt;strong&gt;决策树&lt;/strong&gt;是一颗完全二叉树，它可以表示在给定输入规模情况下，某一特定算法对所有元素的比较操作。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数据结构" scheme="http://panqiincs.me/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="排序算法" scheme="http://panqiincs.me/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="计数排序" scheme="http://panqiincs.me/tags/%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/"/>
+    
+      <category term="基数排序" scheme="http://panqiincs.me/tags/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/"/>
+    
+      <category term="桶排序" scheme="http://panqiincs.me/tags/%E6%A1%B6%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>童年的小龙虾</title>
@@ -515,36 +544,6 @@
       <category term="计划" scheme="http://panqiincs.me/tags/%E8%AE%A1%E5%88%92/"/>
     
       <category term="算法导论" scheme="http://panqiincs.me/tags/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数理趁年华</title>
-    <link href="http://panqiincs.me/2019/02/13/learn-science-at-young-age/"/>
-    <id>http://panqiincs.me/2019/02/13/learn-science-at-young-age/</id>
-    <published>2019-02-13T10:22:36.000Z</published>
-    <updated>2019-06-01T07:48:41.652Z</updated>
-    
-    <content type="html"><![CDATA[<p>东坡先生作有一曲《望江南·超然台作》，词云：</p><blockquote><p>春未老，风细柳斜斜。试上超然台上望，半壕春水一城花。烟雨暗千家。<br>寒食后，酒醒却咨嗟。休对故人思故国，且将新火试新茶。诗酒趁年华。</p></blockquote><p>诗酒趁年华，东坡先生道：不要荒废了这大好的年华，就应该饮酒作诗才不算辜负时光。</p><a id="more"></a><p>今年过年我送了一套《费恩曼物理学讲义》给姐夫，他是中学物理老师。这是最负盛名的物理学教材，也是大学物理老师推荐的辅助阅读材料，本科班上那位极其优秀的同学埋头阅读这套书的情景还历历在目。书到了后，我翻了几章，大呼过瘾，但是爽了一会儿后问自己：你看这书有啥用，有这时间干嘛不去看看算法导论？</p><p>数学和物理是所有理工科专业的基础课，我个人认为也是最有意思的课，基础科学太美了！大一大二时，我们班的课程设置非常注重数理能力的培养，学校安排最优秀的老师上课。现在想起来，我真的浪费了这么好的条件。尽管非常喜欢数学和物理，但由于惰性，没有努力学好这两门课。一旦错过这单纯的岁月，就很难有心境花大块时间去钻研这些课程了！</p><p>我告诫每个对学习有追求的理工科大学生，大学前两年可能是一生中仅有的能拿出大块时间专心学习基础课程的时间。找本好教材，安心钻研这些基础课程，努力把握，才不辜负这风华正茂的年纪，正所谓“数理趁年华”。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;东坡先生作有一曲《望江南·超然台作》，词云：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;春未老，风细柳斜斜。试上超然台上望，半壕春水一城花。烟雨暗千家。&lt;br&gt;寒食后，酒醒却咨嗟。休对故人思故国，且将新火试新茶。诗酒趁年华。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;诗酒趁年华，东坡先生道：不要荒废了这大好的年华，就应该饮酒作诗才不算辜负时光。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="胡言乱语" scheme="http://panqiincs.me/categories/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/"/>
-    
-    
-      <category term="大学" scheme="http://panqiincs.me/tags/%E5%A4%A7%E5%AD%A6/"/>
-    
-      <category term="教材" scheme="http://panqiincs.me/tags/%E6%95%99%E6%9D%90/"/>
-    
-      <category term="理工科" scheme="http://panqiincs.me/tags/%E7%90%86%E5%B7%A5%E7%A7%91/"/>
     
   </entry>
   
