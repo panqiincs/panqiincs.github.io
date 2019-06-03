@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/series/index.html</loc>
+    
+    <lastmod>2019-06-03T04:48:14.012Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2019/06/03/clrs-linear-time-sort/</loc>
     
     <lastmod>2019-06-03T04:42:54.565Z</lastmod>
@@ -257,13 +264,6 @@
     <loc>http://panqiincs.me/2019/04/25/nginx-log-to-mysql/</loc>
     
     <lastmod>2019-05-09T16:18:51.065Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/series/index.html</loc>
-    
-    <lastmod>2019-05-08T07:00:38.248Z</lastmod>
     
   </url>
   
