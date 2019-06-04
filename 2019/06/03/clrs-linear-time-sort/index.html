@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="辛未羊的博客">
 <meta property="og:description" content="主要内容本章介绍几种线性时间复杂度的排序算法。我们前面介绍的排序算法都是通过比较元素大小来确定排序顺序的，本章介绍的算法通过运算来确定排序顺序。 排序算法的下界比较排序可以抽象成一颗决策树。决策树是一颗完全二叉树，它可以表示在给定输入规模情况下，某一特定算法对所有元素的比较操作。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-03T04:42:54.565Z">
+<meta property="og:updated_time" content="2019-06-04T02:56:39.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="『算法导论』第 8 章：线性时间排序">
 <meta name="twitter:description" content="主要内容本章介绍几种线性时间复杂度的排序算法。我们前面介绍的排序算法都是通过比较元素大小来确定排序顺序的，本章介绍的算法通过运算来确定排序顺序。 排序算法的下界比较排序可以抽象成一颗决策树。决策树是一颗完全二叉树，它可以表示在给定输入规模情况下，某一特定算法对所有元素的比较操作。">
@@ -489,7 +489,7 @@
 <a id="more"></a>
 <p>通过决策树模型我们可以证明，在最坏情况下，任何比较排序算法都要做$\Omega(n \lg n)$次比较。也就是说，归并排序和堆排序都是渐进最优的，而且，任何已知的比较排序算法最多就是在常数因子上优于它们。</p>
 <h2 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h2><p><strong>计数排序</strong>（counting sort）假设$n$个元素中每一个都是在$0$到$k$区间内的一个整数，其中$k$为某个整数。计数排序的基本思想是：对于每一个输入元素，确定小于它的元素的个数。利用这一信息，就可以直接把它放到输出数组中的位置上。</p>
-<p>在计数排序算法的代码实现中，假设输入是数组$A[1…n]$，我们还需要两个数组：$B[1…n]$存放排序的输出，$C[0…k]$提供临时存储空间。下面是实现代码：</p>
+<p>在计数排序算法的代码实现中，假设输入是数组$A[1..n]$，我们还需要两个数组：$B[1..n]$存放排序的输出，$C[0..k]$提供临时存储空间。下面是实现代码：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CountingSort</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> B[], <span class="keyword">int</span> n, <span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *C = <span class="built_in">malloc</span>((k+<span class="number">1</span>)*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k+<span class="number">1</span>; i++) &#123;</span><br><span class="line">        C[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">        C[A[j]]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// C[i]现在包含等于i的元素的个数</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; k+<span class="number">1</span>; i++) &#123;</span><br><span class="line">        C[i] = C[i] + C[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// C[i]现在包含小于等于i的元素的个数</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = n<span class="number">-1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">        B[C[A[j]]<span class="number">-1</span>] = A[j];    <span class="comment">// 如果有m个元素小于等于A[j]，将它放在数组第m个位置</span></span><br><span class="line">        C[A[j]] = C[A[j]] - <span class="number">1</span>;  <span class="comment">// 处理有相同元素的情况</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(C);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>很容易分析得到，当$k=O(n)$时，计数排序的运行时间为$\Theta(n)$。它的代码中完全没有输入元素之间的比较操作，用输入元素的实际值来确定其在数组中的位置。计数排序的一个重要特征是它是<strong>稳定的</strong>：具有相同值的元素在输出数组中的相对次序与它们在输入数组中的相对次序相同。计数排序经常用于基数排序算法的一个子过程，正因为它是稳定的。</p>
 <h2 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h2><p><strong>基数排序</strong>（radix sort）是一种用在卡片排序机上的算法。基数排序从最低有效位到最高有效位依次排序每一个位。为了确保正确性，一位数排序算法必须是稳定的，可以选择上述的计数排序。</p>
@@ -1023,7 +1023,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">129</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">132</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

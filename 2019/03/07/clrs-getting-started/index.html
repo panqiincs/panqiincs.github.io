@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="辛未羊的博客">
 <meta property="og:description" content="主要内容本章介绍了一个贯穿全书的算法设计与分析的框架。正文中介绍了插入排序和归并排序两种排序算法，以它们为例，介绍了用循环不变式证明算法正确性的方法和分治法的思想。还介绍了如何分析算法的运行时间。 插入排序本书介绍的第一个算法是插入排序算法。插入排序的工作机理和很多人打牌时，整理手中牌时的做法差不多。它的基本思想是，通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-04T09:25:43.088Z">
+<meta property="og:updated_time" content="2019-06-04T02:54:51.900Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="『算法导论』第 2 章：算法基础">
 <meta name="twitter:description" content="主要内容本章介绍了一个贯穿全书的算法设计与分析的框架。正文中介绍了插入排序和归并排序两种排序算法，以它们为例，介绍了用循环不变式证明算法正确性的方法和分治法的思想。还介绍了如何分析算法的运行时间。 插入排序本书介绍的第一个算法是插入排序算法。插入排序的工作机理和很多人打牌时，整理手中牌时的做法差不多。它的基本思想是，通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。">
@@ -516,11 +516,11 @@
 <p><strong>2.1-2</strong> 解答：将大于号改为小于号即可。</p>
 <p><strong>2.1-3</strong> 解答：用代码更简单。注意CLRS的伪代码下标从1开始，主流编程语言下标从0开始。线性查找算法的实现如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LinearFind</span><span class="params">(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;A, <span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> i = <span class="number">0</span>; i &lt; A.size(); i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (v == A[i]) &#123;</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>循环不变量</strong>为：$A[1…i-1]$不包含$v$。根据该循环不变量证明算法正确性如下：</p>
+<p><strong>循环不变量</strong>为：$A[1..i-1]$不包含$v$。根据该循环不变量证明算法正确性如下：</p>
 <ul>
-<li>初始化：当$i=1$时，$A[1…i-1]$为空，不包含$v$，这表明第一次循环迭代之前循环不变式成立</li>
-<li>保持：当下标为$i$的值不等于$v$时，则$A[1…i]$不包含$v$；当下标为$i$的值等于$v$时，循环立即结束。那么在下一次迭代之前，循环不变式依然成立</li>
-<li>终止：循环终止的条件是找到$v$后函数返回或$i&gt;A.length$。第一种情况下，函数找到$v$，正确；第二种情况下有$i=A.length+1$，循环不变式为$A[1…n]$，不包含$v$，返回$NIL$，算法正确。</li>
+<li>初始化：当$i=1$时，$A[1..i-1]$为空，不包含$v$，这表明第一次循环迭代之前循环不变式成立</li>
+<li>保持：当下标为$i$的值不等于$v$时，则$A[1..i]$不包含$v$；当下标为$i$的值等于$v$时，循环立即结束。那么在下一次迭代之前，循环不变式依然成立</li>
+<li>终止：循环终止的条件是找到$v$后函数返回或$i&gt;A.length$。第一种情况下，函数找到$v$，正确；第二种情况下有$i=A.length+1$，循环不变式为$A[1..n]$，不包含$v$，返回$NIL$，算法正确。</li>
 </ul>
 <p><strong>2.1-4</strong> 解答：代码实现如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; AddBinary(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;A, <span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;B)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; C(A.size()+<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> i = <span class="number">0</span>; i &lt; A.size(); i++) &#123;</span><br><span class="line">        C[i] = (A[i] + B[i] + carry) % <span class="number">2</span>;</span><br><span class="line">        carry = (A[i] + B[i] + carry) / <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    C[A.size()] = carry;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> C;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -554,7 +554,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组a[]的大小应该为n + 1</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">horner</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> y = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = n; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        y = a[i] + x * y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>问题如下：</p>
 <p>a）借助$\Theta$符号，实现Horner规则的以上代码片段的运行时间是多少？<br>解答：$\Theta(n)$。<br>b）朴素的多项式求值算法从头开始计算多项式的每个项，算法的运行时间是多少？<br>解答：$\Theta(n^2)$，性能比Horner规则差。<br>c）考虑循环不变式：在循环每次迭代的开始有$y = \sum_{k=0}^{n-(i+1)} a_{k+i+1}x^k$，不包含任何项的和视为等于0，证明在终止时有$y = \sum_{k=0}^n a_k x^k$<br>解答：<strong>待完成</strong>。</p>
-<p><strong>2-4</strong> （逆序对） 对数组$A[1…n]$，若$i &lt; j$且$A[i] &gt; A[j]$，则对偶$(i, j)$称为$A$的一个逆序对。问题如下：</p>
+<p><strong>2-4</strong> （逆序对） 对数组$A[1..n]$，若$i &lt; j$且$A[i] &gt; A[j]$，则对偶$(i, j)$称为$A$的一个逆序对。问题如下：</p>
 <p>a）列出数组$[2, 3, 8, 6, 1]$的5个逆序对。<br>解答：$(2, 1)$，$(3, 1)$，$(8, 6)$，$(8, 1)$，$(6, 1)$<br>b）由集合$1, 2, …, n$中的元素组成的什么数组具有最多的逆序对？它有多少逆序对？<br>解答：倒序数组$[n, …, 2, 1]$有最多的逆序对，有$n(n-1)/2$对。<br>c）插入排序的运行时间与输入数组中逆序对的数量之间有什么关系？证明你的回答。<br>解答：逆序对的数量越多，插入排序的运行时间越长。因为内循环中移动元素的次数会增多。<br>d）给出一个算法，它能用$\Theta(n \lg n)$的最坏情况运行时间，确定$n$个元素的任何排列中逆序对的数量。（提示：修改合并排序）<br>解答：总的逆序数量等于两个子序列逆序数量之和加上跨越两个子序列的逆序的数量。原来的排序过程保持不变，需增加对逆序进行计数的操作。由于子序列是排序过的，计数操作的运行时间也是$\Theta(n)$，所以算法总的运行时间为$\Theta(n \lg n)$。</p>
 
       
@@ -1092,7 +1092,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">129</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">132</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="辛未羊的博客">
 <meta property="og:description" content="主要内容快速排序通常是实际排序应用中最好的选择。它在最坏情况下的时间复杂度很差，但是平均性能非常好。另外，它能够进行原址排序。 快速排序的描述与归并排序一样，快速排序也用到了分治思想。其主过程的代码如下：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-02T12:08:56.826Z">
+<meta property="og:updated_time" content="2019-06-04T02:56:17.358Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="『算法导论』第 7 章：快速排序">
 <meta name="twitter:description" content="主要内容快速排序通常是实际排序应用中最好的选择。它在最坏情况下的时间复杂度很差，但是平均性能非常好。另外，它能够进行原址排序。 快速排序的描述与归并排序一样，快速排序也用到了分治思想。其主过程的代码如下：">
@@ -488,9 +488,9 @@
 <h2 id="快速排序的描述"><a href="#快速排序的描述" class="headerlink" title="快速排序的描述"></a>快速排序的描述</h2><p>与归并排序一样，快速排序也用到了分治思想。其主过程的代码如下：</p>
 <a id="more"></a>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p &lt; r) &#123;</span><br><span class="line">        <span class="keyword">int</span> q = partition(A, p, r);</span><br><span class="line">        quicksort(A, p, q<span class="number">-1</span>);</span><br><span class="line">        quicksort(A, q+<span class="number">1</span>, r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>算法的关键是数组划分过程PARTITION，它实现了对子数组$A[p…r]$的原址重排。选择$x=A[r]$作为主元，围绕它来划分数组$A[p…r]$。完成划分后，$A[p…q-1]$的每一个元素都小于等于$A[q]$，而$A[q]$也小于等于$A[q+1…r]$中的每个元素。程序最后返回主元的新小标。代码如下：</p>
+<p>算法的关键是数组划分过程PARTITION，它实现了对子数组$A[p..r]$的原址重排。选择$x=A[r]$作为主元，围绕它来划分数组$A[p..r]$。完成划分后，$A[p..q-1]$的每一个元素都小于等于$A[q]$，而$A[q]$也小于等于$A[q+1..r]$中的每个元素。程序最后返回主元的新小标。代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Exch</span><span class="params">(<span class="keyword">int</span> *arr, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = arr[i];</span><br><span class="line">    arr[i] = arr[j];</span><br><span class="line">    arr[j] = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = A[r];</span><br><span class="line">    <span class="keyword">int</span> i = p - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = p; j &lt; r; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (A[j] &lt;= x) &#123;</span><br><span class="line">            ++i;</span><br><span class="line">            Exch(A, i, j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Exch(A, i+<span class="number">1</span>, r);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> (i + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>PARTITION在子数组$A[p…r]$上的复杂度为$\Theta(n)$，其中$n=r-p+1$。</p>
+<p>PARTITION在子数组$A[p..r]$上的复杂度为$\Theta(n)$，其中$n=r-p+1$。</p>
 <h2 id="快速排序的性能"><a href="#快速排序的性能" class="headerlink" title="快速排序的性能"></a>快速排序的性能</h2><p>当划分产生的两个子问题分别包含了$n-1$个元素和$0$个元素时，快速排序的<strong>最坏情况</strong>就发生了。假设算法的每一次递归调用中都出现了这种不平衡划分，可以得到如下的递归式：</p>
 <p>$$<br>T(n) = T(n-1) + T(0) + \Theta(n) = T(n-1) + \Theta(n)<br>$$</p>
 <p>可以得到时间复杂度为$T(n) = \Theta(n^2)$，也就是说，最坏情况下，快速排序的运行时间并不比插入排序好。当输入数组已经完全有序时，快速排序的时间复杂度为$\Theta(n^2)$，而这种情况下插入排序的时间复杂度为$O(n)$。</p>
@@ -499,7 +499,7 @@
 <p>上述递归式的解为$T(n) = \Theta(n \lg n)$，通过在每一层递归中都平衡划分子数组，我们得到了渐近时间上更快的算法。</p>
 <p>实际上，只要划分是常数比例的，算法的运行时间总是$O(n \lg n)$，即使是$99:1$的划分，其时间复杂度仍然是$O(n \lg n)$。当对一个随机输入的数组进行快速排序时，平均情况下，划分同时混合有“好”和“差”的划分。当好和差的划分交替出现时，快速排序的复杂度和全是好的划分时一样，仍然是$O(n \lg n)$，区别只在于隐含的常数因子要略大一些。</p>
 <h2 id="快速排序的随机化版本"><a href="#快速排序的随机化版本" class="headerlink" title="快速排序的随机化版本"></a>快速排序的随机化版本</h2><p>前面的讨论基于一个前提：输入数据的所有排列都是等概率的。实际工程中并不总是这样的，所以我们可以通过在算法中引入随机性，从而使得算法对于所有的输入都能获得较好的期望性能。</p>
-<p>可以从子数组$A[p…r]$中随机选择一个元素作为主元，这通过将$A[r]$与从$A[p…r]$中随机选出的一个元素交换来实现。由于主元元素是随机选取的，在平均情况下，对数组的划分是比较均衡的。随机化版本的划分函数实现代码如下：</p>
+<p>可以从子数组$A[p..r]$中随机选择一个元素作为主元，这通过将$A[r]$与从$A[p..r]$中随机选出的一个元素交换来实现。由于主元元素是随机选取的，在平均情况下，对数组的划分是比较均衡的。随机化版本的划分函数实现代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">randomized_partition</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = rand() % (r - p + <span class="number">1</span>) + r;  <span class="comment">// 生成从p到r的随机数</span></span><br><span class="line">    Exch(A, r, i);                     <span class="comment">// 将被选的主元交换到数组末尾</span></span><br><span class="line">    <span class="keyword">return</span> partion(A, p, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="快速排序分析"><a href="#快速排序分析" class="headerlink" title="快速排序分析"></a>快速排序分析</h2><p>本节用严格的数学推导计算了快速排序算法的运行时间。在输入元素互异的情况下，随机化版本的期望运行时间为$O(n \lg n)$。</p>
 <h2 id="习题解答"><a href="#习题解答" class="headerlink" title="习题解答"></a>习题解答</h2><h3 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h3><p><strong>7.1-1</strong> 解答：略。</p>
@@ -1049,7 +1049,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">129</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">132</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
