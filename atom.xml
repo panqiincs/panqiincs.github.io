@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://panqiincs.me/"/>
-  <updated>2019-06-04T07:50:45.233Z</updated>
+  <updated>2019-06-05T07:53:44.396Z</updated>
   <id>http://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>安装Manjaro之后的配置</title>
+    <link href="http://panqiincs.me/2019/06/05/after-installing-manjaro/"/>
+    <id>http://panqiincs.me/2019/06/05/after-installing-manjaro/</id>
+    <published>2019-06-05T02:07:43.000Z</published>
+    <updated>2019-06-05T07:53:44.396Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="基本设置"><a href="#基本设置" class="headerlink" title="基本设置"></a>基本设置</h2><h3 id="更换国内源"><a href="#更换国内源" class="headerlink" title="更换国内源"></a>更换国内源</h3><p>使用国内源能够获取更快的下载速度：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syy</span><br><span class="line">sudo pacman-mirrors -i -c China -m rank  <span class="comment"># 我选择的是上海交大sjtu的源</span></span><br><span class="line">sudo pacman -Syyu</span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="添加arch源"><a href="#添加arch源" class="headerlink" title="添加arch源"></a>添加arch源</h3><p>编辑<code>/etc/pacman.conf</code>文件，加入下面的内容：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">SigLevel = Optional TrustedOnly</span><br><span class="line">Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux-cn/$arch</span><br></pre></td></tr></table></figure><p>然后</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring</span><br></pre></td></tr></table></figure><p>现在可以升级一下系统：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Su</span><br></pre></td></tr></table></figure><h3 id="pacman"><a href="#pacman" class="headerlink" title="pacman"></a>pacman</h3><p>包管理工具pacman的常见用法需要学习一下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">pacman -S package_name        <span class="comment"># 安装软件  </span></span><br><span class="line">pacman -S extra/package_name  <span class="comment"># 安装不同仓库中的版本</span></span><br><span class="line">pacman -Syu                   <span class="comment"># 升级整个系统，y是更新数据库，yy是强制更新，u是升级软件</span></span><br><span class="line">pacman -Ss string             <span class="comment"># 在包数据库中查询软件</span></span><br><span class="line">pacman -Si package_name       <span class="comment"># 显示软件的详细信息</span></span><br><span class="line">pacman -Sc                    <span class="comment"># 清除软件缓存，即/var/cache/pacman/pkg目录下的文件</span></span><br><span class="line">pacman -R package_name        <span class="comment"># 删除单个软件</span></span><br><span class="line">pacman -Rs package_name       <span class="comment"># 删除指定软件及其没有被其他已安装软件使用的依赖关系</span></span><br><span class="line">pacman -Qs string             <span class="comment"># 查询已安装的软件包</span></span><br><span class="line">pacman -Qi package_name       <span class="comment"># 查询本地安装包的详细信息</span></span><br><span class="line">pacman -Ql package_name       <span class="comment"># 获取已安装软件所包含的文件的列表</span></span><br><span class="line">pactree package_name          <span class="comment"># 显示软件的依赖树</span></span><br></pre></td></tr></table></figure><h2 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h2><p>下面是我安装的常用软件：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S yay                     <span class="comment"># AUR助手</span></span><br><span class="line">sudo pacman -S vim                     <span class="comment"># 命令行编辑器</span></span><br><span class="line">sudo pacman -S git                     <span class="comment"># 版本管理工具</span></span><br><span class="line">sudo pacman -S google-chrome           <span class="comment"># 最流行的浏览器</span></span><br><span class="line">sudo pacman -S netease-cloud-music     <span class="comment"># 网易云音乐</span></span><br><span class="line">sudo pacman -S clang make cmake gdb    <span class="comment"># 编译调试环境</span></span><br><span class="line">sudo pacman -S octave                  <span class="comment"># Matlab的开源替代</span></span><br><span class="line">sudo pacman -S visual-studio-code-bin  <span class="comment"># 牛逼的编辑器</span></span><br><span class="line">sudo pacman -S qtcreator               <span class="comment"># IDE for Qt</span></span><br><span class="line">sudo pacman -S wireshark-qt            <span class="comment"># 抓包工具</span></span><br></pre></td></tr></table></figure><p>直接安装完Wireshark后启动，会提示<code>/usr/bin/dumpcap</code>无权限，运行下面的命令即可解决问题：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gpasswd -a username wireshark  <span class="comment"># username是你的用户名</span></span><br></pre></td></tr></table></figure><h2 id="中文环境"><a href="#中文环境" class="headerlink" title="中文环境"></a>中文环境</h2><h3 id="输入法"><a href="#输入法" class="headerlink" title="输入法"></a>输入法</h3><p>安装fcitx和搜狗拼音输入法：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S fcitx-sogoupinyin</span><br><span class="line">sudo pacman -S fcitx-im</span><br><span class="line">sudo pacman -S fcitx-configtool</span><br></pre></td></tr></table></figure><p>设置环境变量，在<code>~/.xprofile</code>文件末尾加上：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> GTK_IM_MODULE=fcitx</span><br><span class="line"><span class="built_in">export</span> QT_IM_MODULE=fcitx</span><br><span class="line"><span class="built_in">export</span> XMODIFIERS=<span class="string">"@im=fcitx"</span></span><br></pre></td></tr></table></figure><h3 id="中文字体"><a href="#中文字体" class="headerlink" title="中文字体"></a>中文字体</h3><p>思源宋体和思源黑体是Linux下必装的中文字体。该字体是Adobe和Google合作推出的开源免费字体，但是它们使用不同的名称。考虑到Manjaro默认安装了大量Noto开头的各国文字的字体，为保持一致，我们也安装以Noto开头的字体：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S noto-fonts-cjk</span><br></pre></td></tr></table></figure><h2 id="办公软件"><a href="#办公软件" class="headerlink" title="办公软件"></a>办公软件</h2><h3 id="WPS-Office"><a href="#WPS-Office" class="headerlink" title="WPS Office"></a>WPS Office</h3><p>WPS Office是金山公司开放办公套件，兼容M$ Office格式，真乃良心之作！前不久刚退出WPS Office 2019 For Linux，我觉得非常不错。WPS可以直接从Manjaro的软件仓库中安装：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S wps-office</span><br></pre></td></tr></table></figure><p>安装完后启动WPS，可能会弹出窗口，提示“系统缺失字体”。问题原因是WPS For Linux没有自带Windows的字体。其他发行版可能需要自己找字体安装，Manjaro可以用一条命令搞定：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S ttf-wps-fonts</span><br></pre></td></tr></table></figure><p>如果需要修改WPS的界面语言，先打开WPS Writer，新建一个文件，界面的右上方有个A字符的按钮，点进去后，取消勾选“跟随系统语言”选项，然后选择你想要的语言即可。</p><h3 id="TeXLive"><a href="#TeXLive" class="headerlink" title="TeXLive"></a>TeXLive</h3><p>LaTeX是学术出版的标准排版软件。可以直接从软件仓库中安装，不需要完全安装，安装基础组件以及中文语言包即可：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S texlive-most texlive-langchinese</span><br></pre></td></tr></table></figure><p>编辑器TexStudio也是必备的：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S texstudio</span><br></pre></td></tr></table></figure><h2 id="桌面操作"><a href="#桌面操作" class="headerlink" title="桌面操作"></a>桌面操作</h2><p>默认设置下，单击鼠标即打开文件，依次进入System Settings – Desktop Behavior – Workspace，改成双击打开文件。</p><p>默认设置下，按Del键删除文件没有确认提示。依次进入Configure Dolphin – General – Confirmations，勾选对应项即可。</p><h2 id="使用感受"><a href="#使用感受" class="headerlink" title="使用感受"></a>使用感受</h2><p>Manjaro的软件太丰富了，好多直接可以从软件仓库中安装，太方便了！虽然同是滚动发行版，但Manjaro更新没有openSUSE Tumbleweed那么频繁，内核也依然停留在4.x版本。但有过几次锁屏后卡死的情况，不知道这个问题在最近的更新中解决了没有。总体来说，体验非常完美，不愧是世界排名第一的发行版！</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol><li><a href="https://zhuanlan.zhihu.com/p/50918522" target="_blank" rel="noopener">人生苦短，我用Manjaro</a></li><li><a href="https://wiki.archlinux.org/index.php/Pacman#Usage" target="_blank" rel="noopener">pacman - ArchWiki</a></li><li><a href="https://queensferry.coding.me/2018/06/22/Manjaro-Linux-KDE-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/" target="_blank" rel="noopener">Manjaro Linux + KDE 安装使用手记</a></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;基本设置&quot;&gt;&lt;a href=&quot;#基本设置&quot; class=&quot;headerlink&quot; title=&quot;基本设置&quot;&gt;&lt;/a&gt;基本设置&lt;/h2&gt;&lt;h3 id=&quot;更换国内源&quot;&gt;&lt;a href=&quot;#更换国内源&quot; class=&quot;headerlink&quot; title=&quot;更换国内源&quot;&gt;&lt;/a&gt;更换国内源&lt;/h3&gt;&lt;p&gt;使用国内源能够获取更快的下载速度：&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo pacman -Syy&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo pacman-mirrors -i -c China -m rank  &lt;span class=&quot;comment&quot;&gt;# 我选择的是上海交大sjtu的源&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo pacman -Syyu&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="工具使用" scheme="http://panqiincs.me/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="中文字体" scheme="http://panqiincs.me/tags/%E4%B8%AD%E6%96%87%E5%AD%97%E4%BD%93/"/>
+    
+      <category term="manjaro" scheme="http://panqiincs.me/tags/manjaro/"/>
+    
+      <category term="pacman" scheme="http://panqiincs.me/tags/pacman/"/>
+    
+      <category term="wps" scheme="http://panqiincs.me/tags/wps/"/>
+    
+      <category term="wireshark" scheme="http://panqiincs.me/tags/wireshark/"/>
+    
+  </entry>
   
   <entry>
     <title>『算法导论』第 9 章：中位数与顺序统计量</title>
@@ -516,29 +547,6 @@
       <category term="插入排序" scheme="http://panqiincs.me/tags/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/"/>
     
       <category term="归并排序" scheme="http://panqiincs.me/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>『算法导论』第 1 章：算法在计算中的作用</title>
-    <link href="http://panqiincs.me/2019/03/06/clrs-role-of-algorithms/"/>
-    <id>http://panqiincs.me/2019/03/06/clrs-role-of-algorithms/</id>
-    <published>2019-03-06T06:55:58.000Z</published>
-    <updated>2019-05-04T07:09:55.595Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>本章介绍了算法的定义、作用和重要性。</p><p>简单地说，算法（algorithm）是定义良好的计算过程。算法是一系列的计算步骤，用来将输入数据转换成输出结果。算法能够解决各种类型的问题，应用面很广。计算机的计算资源和存储资源是有限的，时间和空间上有效的算法能够有效地利用这些有限的资源。解决同一问题的不同算法，效率常常相差很大，这种效率上差距的影响往往比硬件和软件的差距还要大。拥有扎实的算法知识和技术基础对程序员来说非常重要。</p><a id="more"></a><h2 id="习题解答"><a href="#习题解答" class="headerlink" title="习题解答"></a>习题解答</h2><p>本章习题完成于2018年3月6日。</p><h3 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h3><p><strong>1.1-1</strong> 解答：奥运会的奖牌榜根据金银铜牌的个数排序。</p><p><strong>1.1-2</strong> 解答：除了速度之外，耗费存储资源的大小也是效率的量度。</p><p><strong>1.1-3</strong> 解答：链表的优势在于，可以按需分配存储资源，可以在任意位置插入和删除节点；局限在于，每个节点需要额外的空间存储指针变量，无法用下标快速访问节点。</p><p><strong>1.1-4</strong> 解答：相似之处在于，它们都要寻找最短路径；不同之处在于，最短路径问题有最优算法，旅行商问题只有近似算法。</p><p><strong>1.1-5</strong> 解答：导航软件给出的最短路径，只有最佳解才行；排版软件断行算法，近似最佳也可以。</p><p><strong>1.2-1</strong> 解答：比如排版软件，当出现一长串英文单词时，需要算法计算在哪个位置断行最美观。</p><p><strong>1.2-2</strong> 解答：当$n \le 42$时，$8n^2&lt;64n\log_{2}n$成立。</p><p><strong>1.2-3</strong> 解答：当$n \ge 15$时，$100n^2&lt;2^n$成立。</p><h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><p><strong>1.1</strong> 解答：即求取$f(n) = t$的解。计算结果略。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;主要内容&quot;&gt;&lt;a href=&quot;#主要内容&quot; class=&quot;headerlink&quot; title=&quot;主要内容&quot;&gt;&lt;/a&gt;主要内容&lt;/h2&gt;&lt;p&gt;本章介绍了算法的定义、作用和重要性。&lt;/p&gt;
-&lt;p&gt;简单地说，算法（algorithm）是定义良好的计算过程。算法是一系列的计算步骤，用来将输入数据转换成输出结果。算法能够解决各种类型的问题，应用面很广。计算机的计算资源和存储资源是有限的，时间和空间上有效的算法能够有效地利用这些有限的资源。解决同一问题的不同算法，效率常常相差很大，这种效率上差距的影响往往比硬件和软件的差距还要大。拥有扎实的算法知识和技术基础对程序员来说非常重要。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="数据结构" scheme="http://panqiincs.me/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="算法导论" scheme="http://panqiincs.me/tags/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/"/>
     
   </entry>
   
