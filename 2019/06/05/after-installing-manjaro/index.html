@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="基本设置更换国内源使用国内源能够获取更快的下载速度： 123sudo pacman -Syysudo pacman-mirrors -i -c China -m rank  # 我选择的是上海交大sjtu的源sudo pacman -Syyu">
+  <meta name="description" content="基本设置更换国内源使用国内的源能够获取更快的下载速度，pacman能够测试不同源的速度并给它们排名，从中选择一个快的即可。我选择的是上海交大sjtu的源，下载速度能够达到10兆每秒。">
 <meta name="keywords" content="中文字体,manjaro,pacman,wps,wireshark">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安装Manjaro之后的配置">
 <meta property="og:url" content="http://panqiincs.me/2019/06/05/after-installing-manjaro/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="基本设置更换国内源使用国内源能够获取更快的下载速度： 123sudo pacman -Syysudo pacman-mirrors -i -c China -m rank  # 我选择的是上海交大sjtu的源sudo pacman -Syyu">
+<meta property="og:description" content="基本设置更换国内源使用国内的源能够获取更快的下载速度，pacman能够测试不同源的速度并给它们排名，从中选择一个快的即可。我选择的是上海交大sjtu的源，下载速度能够达到10兆每秒。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-05T07:53:44.396Z">
+<meta property="og:updated_time" content="2019-06-06T00:12:08.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装Manjaro之后的配置">
-<meta name="twitter:description" content="基本设置更换国内源使用国内源能够获取更快的下载速度： 123sudo pacman -Syysudo pacman-mirrors -i -c China -m rank  # 我选择的是上海交大sjtu的源sudo pacman -Syyu">
+<meta name="twitter:description" content="基本设置更换国内源使用国内的源能够获取更快的下载速度，pacman能够测试不同源的速度并给它们排名，从中选择一个快的即可。我选择的是上海交大sjtu的源，下载速度能够达到10兆每秒。">
 
 
 
@@ -484,9 +484,9 @@
       
 
       
-        <h2 id="基本设置"><a href="#基本设置" class="headerlink" title="基本设置"></a>基本设置</h2><h3 id="更换国内源"><a href="#更换国内源" class="headerlink" title="更换国内源"></a>更换国内源</h3><p>使用国内源能够获取更快的下载速度：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syy</span><br><span class="line">sudo pacman-mirrors -i -c China -m rank  <span class="comment"># 我选择的是上海交大sjtu的源</span></span><br><span class="line">sudo pacman -Syyu</span><br></pre></td></tr></table></figure>
+        <h2 id="基本设置"><a href="#基本设置" class="headerlink" title="基本设置"></a>基本设置</h2><h3 id="更换国内源"><a href="#更换国内源" class="headerlink" title="更换国内源"></a>更换国内源</h3><p>使用国内的源能够获取更快的下载速度，pacman能够测试不同源的速度并给它们排名，从中选择一个快的即可。我选择的是上海交大sjtu的源，下载速度能够达到10兆每秒。</p>
 <a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syy</span><br><span class="line">sudo pacman-mirrors -i -c China -m rank</span><br><span class="line">sudo pacman -Syyu</span><br></pre></td></tr></table></figure>
 <h3 id="添加arch源"><a href="#添加arch源" class="headerlink" title="添加arch源"></a>添加arch源</h3><p>编辑<code>/etc/pacman.conf</code>文件，加入下面的内容：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">SigLevel = Optional TrustedOnly</span><br><span class="line">Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux-cn/$arch</span><br></pre></td></tr></table></figure>
 <p>然后</p>
