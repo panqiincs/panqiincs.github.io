@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="问题I/O多路复用之epoll一文简单介绍了I/O多路复用。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行read或write都不会阻塞。按照这个思路，即使描述符是默认的阻塞方式，也没有问题。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果不搭配非阻塞I/O，在下面几种情况下会出错。">
-<meta name="keywords" content="linux,多路复用,非阻塞I&#x2F;O">
+  <meta name="description" content="问题I/O多路复用之epoll一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行read或write都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果多路复用不搭配非阻塞I/O，在下面几种">
+<meta name="keywords" content="linux,多路复用,epoll,非阻塞I&#x2F;O">
 <meta property="og:type" content="article">
 <meta property="og:title" content="为什么多路复用要搭配非阻塞I&#x2F;O">
 <meta property="og:url" content="http://panqiincs.me/2015/08/05/multiplexing-and-nonblocking-io/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="问题I/O多路复用之epoll一文简单介绍了I/O多路复用。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行read或write都不会阻塞。按照这个思路，即使描述符是默认的阻塞方式，也没有问题。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果不搭配非阻塞I/O，在下面几种情况下会出错。">
+<meta property="og:description" content="问题I/O多路复用之epoll一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行read或write都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果多路复用不搭配非阻塞I/O，在下面几种">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-12T10:51:26.000Z">
+<meta property="og:updated_time" content="2019-06-06T03:33:16.323Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="为什么多路复用要搭配非阻塞I&#x2F;O">
-<meta name="twitter:description" content="问题I/O多路复用之epoll一文简单介绍了I/O多路复用。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行read或write都不会阻塞。按照这个思路，即使描述符是默认的阻塞方式，也没有问题。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果不搭配非阻塞I/O，在下面几种情况下会出错。">
+<meta name="twitter:description" content="问题I/O多路复用之epoll一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行read或write都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果多路复用不搭配非阻塞I/O，在下面几种">
 
 
 
@@ -484,7 +484,7 @@
       
 
       
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I/O多路复用之epoll</a>一文简单介绍了I/O多路复用。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行<code>read</code>或<code>write</code>都不会阻塞。按照这个思路，即使描述符是默认的阻塞方式，也没有问题。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果不搭配非阻塞I/O，在下面几种情况下会出错。</p>
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I/O多路复用之epoll</a>一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行<code>read</code>或<code>write</code>都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果多路复用不搭配非阻塞I/O，在下面几种情况下会出现问题。</p>
 <a id="more"></a>
 <h2 id="边沿触发"><a href="#边沿触发" class="headerlink" title="边沿触发"></a>边沿触发</h2><p>在<a href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I/O多路复用之epoll</a>一文有描述一种情况：当使用epoll的边沿触发模式时，必须要将描述符设置为非阻塞。</p>
 <h2 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h2><p>当多个进程（或线程）在同一个描述符上执行I/O时，从单个进程的视角看，在收到描述符就绪的通知和接下来的I/O调用之间这段时间内，描述符的就绪状态有可能改变。所以，如果描述符是默认的阻塞方式，I/O操作有可能会阻塞，使得进程不能够监测其它描述符。</p>
@@ -626,6 +626,8 @@
             <a href="/tags/linux/" rel="tag"># linux</a>
           
             <a href="/tags/多路复用/" rel="tag"># 多路复用</a>
+          
+            <a href="/tags/epoll/" rel="tag"># epoll</a>
           
             <a href="/tags/非阻塞I-O/" rel="tag"># 非阻塞I/O</a>
           

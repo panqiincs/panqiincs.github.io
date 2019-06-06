@@ -1373,7 +1373,7 @@
 
       
         
-          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I/O多路复用之epoll</a>一文简单介绍了I/O多路复用。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行<code>read</code>或<code>write</code>都不会阻塞。按照这个思路，即使描述符是默认的阻塞方式，也没有问题。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果不搭配非阻塞I/O，在下面几种情况下会出错。</p>
+          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I/O多路复用之epoll</a>一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行<code>read</code>或<code>write</code>都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果多路复用不搭配非阻塞I/O，在下面几种情况下会出现问题。</p>
           <!--noindex-->
           
             <div class="post-button text-center">

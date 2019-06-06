@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/2015/08/05/multiplexing-and-nonblocking-io/</loc>
+    
+    <lastmod>2019-06-06T03:33:16.323Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2019/06/05/after-installing-manjaro/</loc>
     
     <lastmod>2019-06-06T00:12:08.091Z</lastmod>
@@ -481,13 +488,6 @@
     <loc>http://panqiincs.me/2015/08/10/tcp-connection-management/</loc>
     
     <lastmod>2019-04-12T10:53:07.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2015/08/05/multiplexing-and-nonblocking-io/</loc>
-    
-    <lastmod>2019-04-12T10:51:26.000Z</lastmod>
     
   </url>
   
