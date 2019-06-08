@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="基本设置更换国内源使用国内的源能够获取更快的下载速度，pacman能够测试不同源的速度并给它们排名，从中选择一个快的即可。我选择的是上海交大sjtu的源，下载速度能够达到10兆每秒。">
+  <meta name="description" content="基本设置更换国内源使用国内的源有更快的下载速度，pacman能够测试不同源的速度并给它们排名，从中选择一个快的即可。我选择的是上海交大sjtu的源，下载速度能够达到10兆每秒。">
 <meta name="keywords" content="中文字体,manjaro,pacman,wps,wireshark">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安装Manjaro之后的配置">
 <meta property="og:url" content="http://panqiincs.me/2019/06/05/after-installing-manjaro/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="基本设置更换国内源使用国内的源能够获取更快的下载速度，pacman能够测试不同源的速度并给它们排名，从中选择一个快的即可。我选择的是上海交大sjtu的源，下载速度能够达到10兆每秒。">
+<meta property="og:description" content="基本设置更换国内源使用国内的源有更快的下载速度，pacman能够测试不同源的速度并给它们排名，从中选择一个快的即可。我选择的是上海交大sjtu的源，下载速度能够达到10兆每秒。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-06T00:12:08.091Z">
+<meta property="og:updated_time" content="2019-06-08T06:36:03.672Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装Manjaro之后的配置">
-<meta name="twitter:description" content="基本设置更换国内源使用国内的源能够获取更快的下载速度，pacman能够测试不同源的速度并给它们排名，从中选择一个快的即可。我选择的是上海交大sjtu的源，下载速度能够达到10兆每秒。">
+<meta name="twitter:description" content="基本设置更换国内源使用国内的源有更快的下载速度，pacman能够测试不同源的速度并给它们排名，从中选择一个快的即可。我选择的是上海交大sjtu的源，下载速度能够达到10兆每秒。">
 
 
 
@@ -484,7 +484,7 @@
       
 
       
-        <h2 id="基本设置"><a href="#基本设置" class="headerlink" title="基本设置"></a>基本设置</h2><h3 id="更换国内源"><a href="#更换国内源" class="headerlink" title="更换国内源"></a>更换国内源</h3><p>使用国内的源能够获取更快的下载速度，pacman能够测试不同源的速度并给它们排名，从中选择一个快的即可。我选择的是上海交大sjtu的源，下载速度能够达到10兆每秒。</p>
+        <h2 id="基本设置"><a href="#基本设置" class="headerlink" title="基本设置"></a>基本设置</h2><h3 id="更换国内源"><a href="#更换国内源" class="headerlink" title="更换国内源"></a>更换国内源</h3><p>使用国内的源有更快的下载速度，pacman能够测试不同源的速度并给它们排名，从中选择一个快的即可。我选择的是上海交大sjtu的源，下载速度能够达到10兆每秒。</p>
 <a id="more"></a>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syy</span><br><span class="line">sudo pacman-mirrors -i -c China -m rank</span><br><span class="line">sudo pacman -Syyu</span><br></pre></td></tr></table></figure>
 <h3 id="添加arch源"><a href="#添加arch源" class="headerlink" title="添加arch源"></a>添加arch源</h3><p>编辑<code>/etc/pacman.conf</code>文件，加入下面的内容：</p>
@@ -501,9 +501,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gpasswd -a username wireshark  <span class="comment"># username是你的用户名</span></span><br></pre></td></tr></table></figure>
 <h2 id="中文环境"><a href="#中文环境" class="headerlink" title="中文环境"></a>中文环境</h2><h3 id="输入法"><a href="#输入法" class="headerlink" title="输入法"></a>输入法</h3><p>安装fcitx和搜狗拼音输入法：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S fcitx-sogoupinyin</span><br><span class="line">sudo pacman -S fcitx-im</span><br><span class="line">sudo pacman -S fcitx-configtool</span><br></pre></td></tr></table></figure>
-<p>设置环境变量，在<code>~/.xprofile</code>文件末尾加上：</p>
+<p>设置环境变量，在<code>~/.xprofile</code>文件（如果文件不存在就新建一个）末尾加上：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> GTK_IM_MODULE=fcitx</span><br><span class="line"><span class="built_in">export</span> QT_IM_MODULE=fcitx</span><br><span class="line"><span class="built_in">export</span> XMODIFIERS=<span class="string">"@im=fcitx"</span></span><br></pre></td></tr></table></figure>
-<h3 id="中文字体"><a href="#中文字体" class="headerlink" title="中文字体"></a>中文字体</h3><p>思源宋体和思源黑体是Linux下必装的中文字体。该字体是Adobe和Google合作推出的开源免费字体，但是它们使用不同的名称。考虑到Manjaro默认安装了大量Noto开头的各国文字的字体，为保持一致，我们也安装以Noto开头的字体：</p>
+<h3 id="中文字体"><a href="#中文字体" class="headerlink" title="中文字体"></a>中文字体</h3><p>思源宋体和思源黑体是Linux下必装的中文字体。该字体是Adobe和Google合作推出的开源免费字体，但是它们使用不同的名称。考虑到Manjaro默认安装了大量Noto开头的各国文字的字体，我们也安装以Noto开头的字体：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S noto-fonts-cjk</span><br></pre></td></tr></table></figure>
 <h2 id="办公软件"><a href="#办公软件" class="headerlink" title="办公软件"></a>办公软件</h2><h3 id="WPS-Office"><a href="#WPS-Office" class="headerlink" title="WPS Office"></a>WPS Office</h3><p>WPS Office是金山公司开放办公套件，兼容M$ Office格式，真乃良心之作！前不久刚退出WPS Office 2019 For Linux，我觉得非常不错。WPS可以直接从Manjaro的软件仓库中安装：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S wps-office</span><br></pre></td></tr></table></figure>
