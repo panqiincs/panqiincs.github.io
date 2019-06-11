@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://panqiincs.me/"/>
-  <updated>2019-06-11T03:46:37.145Z</updated>
+  <updated>2019-06-11T08:06:29.193Z</updated>
   <id>http://panqiincs.me/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>博客用上了Cloudflare CDN</title>
+    <title>博客用上了CDN</title>
     <link href="http://panqiincs.me/2019/06/10/website-with-cdn/"/>
     <id>http://panqiincs.me/2019/06/10/website-with-cdn/</id>
     <published>2019-06-10T13:16:37.000Z</published>
-    <updated>2019-06-11T03:46:37.145Z</updated>
+    <updated>2019-06-11T08:06:29.193Z</updated>
     
     <content type="html"><![CDATA[<p>我的博客托管在Vultr的虚拟主机上，稳定运行快两年了。最近Vultr的日本机房全线崩溃，于是我又忙着把博客迁回到Github上。托管在Github上，丧失了自主性，但省却了维护的麻烦，还节约了一笔费用。以前还有换动态框架的念头，经历此事后，唉，能简单就简单。</p><a id="more"></a><p>看到有个独立博客也有类似的经历，他还用上了Cloudflare的免费CDN，网站速度比以前还快了不少。Cloudflare的配置比较简单，不停点下一步，去域名服务商的网站上修改DNS服务器就搞定了。等待域名解析生效后，跟踪一下路由，发现网站已经定位到Cloudflare的美国机房了。下面是晚上上网高峰期的测速图，以前托管在Github上时，可是黄橙橙红通通一大片，现在大部分地区都是绿油油的，华南地区的速度更好一些：</p><p><img src="http://wx1.sinaimg.cn/large/e5805747ly1g3x1zv9chvj20ku0g0goi.jpg" alt="website_speed"></p><p>Github + Cloudflare，放心省事，速度还比以前快，后面真的不折腾了。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol><li><a href="https://jiajunhuang.com/articles/2019_06_06-ip_ban.md.html" target="_blank" rel="noopener">服务器IP被ban学到的经验</a></li><li><a href="https://zhuanlan.zhihu.com/p/29891330" target="_blank" rel="noopener">CloudFlare免费CDN加速使用方法</a></li></ol>]]></content>
     
