@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="本文译自：A Brief Introduction to Rvalue Reference，有少量修改。 介绍本文简要介绍了C++的新特性——右值引用（rvalue reference），更多细节请参考这里。 右值引用右值引用是一种复合类型，和传统的C++引用类似。为了更好地区分它们，我们将传统的引用称之为左值引用。引用一词同时包括左值引用和右值引用。 在类型名前加上&amp;amp;符号表示左值引用：">
+  <meta name="description" content="本文译自：A Brief Introduction to Rvalue Reference，有少量修改。 介绍本文简要介绍了C++的新特性——右值引用（rvalue reference），更多细节请参考这里。 右值引用右值引用是一种复合类型，和传统的C++引用类似。为了更好地区分它们，我们将传统的引用称之为左值引用。引用一词同时包括左值引用和右值引用。">
 <meta name="keywords" content="C++,拷贝控制,右值引用,移动语义,引用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++右值引用简介">
 <meta property="og:url" content="http://panqiincs.me/2016/11/20/cpp-rvalue-reference-intro/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="本文译自：A Brief Introduction to Rvalue Reference，有少量修改。 介绍本文简要介绍了C++的新特性——右值引用（rvalue reference），更多细节请参考这里。 右值引用右值引用是一种复合类型，和传统的C++引用类似。为了更好地区分它们，我们将传统的引用称之为左值引用。引用一词同时包括左值引用和右值引用。 在类型名前加上&amp;amp;符号表示左值引用：">
+<meta property="og:description" content="本文译自：A Brief Introduction to Rvalue Reference，有少量修改。 介绍本文简要介绍了C++的新特性——右值引用（rvalue reference），更多细节请参考这里。 右值引用右值引用是一种复合类型，和传统的C++引用类似。为了更好地区分它们，我们将传统的引用称之为左值引用。引用一词同时包括左值引用和右值引用。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-19T08:49:02.000Z">
+<meta property="og:updated_time" content="2019-06-19T07:01:13.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++右值引用简介">
-<meta name="twitter:description" content="本文译自：A Brief Introduction to Rvalue Reference，有少量修改。 介绍本文简要介绍了C++的新特性——右值引用（rvalue reference），更多细节请参考这里。 右值引用右值引用是一种复合类型，和传统的C++引用类似。为了更好地区分它们，我们将传统的引用称之为左值引用。引用一词同时包括左值引用和右值引用。 在类型名前加上&amp;amp;符号表示左值引用：">
+<meta name="twitter:description" content="本文译自：A Brief Introduction to Rvalue Reference，有少量修改。 介绍本文简要介绍了C++的新特性——右值引用（rvalue reference），更多细节请参考这里。 右值引用右值引用是一种复合类型，和传统的C++引用类似。为了更好地区分它们，我们将传统的引用称之为左值引用。引用一词同时包括左值引用和右值引用。">
 
 
 
@@ -487,8 +487,8 @@
         <p>本文译自：<a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n2027.html" target="_blank" rel="noopener">A Brief Introduction to Rvalue Reference</a>，有少量修改。</p>
 <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>本文简要介绍了C++的新特性——右值引用（rvalue reference），更多细节请参考<a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n2027.html#Wrap_Up" target="_blank" rel="noopener">这里</a>。</p>
 <h2 id="右值引用"><a href="#右值引用" class="headerlink" title="右值引用"></a>右值引用</h2><p>右值引用是一种复合类型，和传统的C++引用类似。为了更好地区分它们，我们将传统的引用称之为左值引用。引用一词同时包括左值引用和右值引用。</p>
-<p>在类型名前加上<code>&amp;</code>符号表示左值引用：</p>
 <a id="more"></a>
+<p>在类型名前加上<code>&amp;</code>符号表示左值引用：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A a;</span><br><span class="line">A &amp;ref1 = a;   <span class="comment">// ref1是左值引用</span></span><br></pre></td></tr></table></figure>
 <p>在类型前加上<code>&amp;&amp;</code>符号表示右值引用：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A a;</span><br><span class="line">A &amp;&amp;ref2 = a;  <span class="comment">// ref2是右值引用</span></span><br></pre></td></tr></table></figure>

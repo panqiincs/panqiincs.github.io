@@ -488,7 +488,6 @@
       
         
           <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>在<a href="https://panqiincs.me/2016/02/18/process-picamera-video-on-pc/">上一篇文章</a>中，我介绍了将树莓派打造成一个rtsp视频流服务器的方法，这样就可以在远程看到树莓派摄像头的实时图像。使用网络上现成的程序固然方便，但丧失了可控性。比如，如果想在远程PC上得到每一帧图像的时间戳，上一篇文章中的方法就无能为力了。本文介绍如何一帧帧读取picamera的图像，压缩后通过网络发送出去的方法。</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>我使用<a href="https://github.com/cedricve/raspicam" target="_blank" rel="noopener">RaspiCam</a>来获取picamera的图像。这是一个C++库，我使用它的OpenCV接口，将图像数据存储到一个<code>cv::Mat</code>对象中。假设采集640x480的彩色图像，帧率为25fps，那么每秒需要传输的数据大小是：640×480×3×25 = 23040000字节，大约22MB，这显然太大了，实测效果也是非常卡。因此图像必须经过压缩再传输。压缩和解压分别使用OpenCV的<code>imencode</code>和<code>imdecode</code>函数。由于每张图像压缩后大小不一样，所以传输每一帧的图像（压缩过的）之前先发送数据的大小。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1020,8 +1019,6 @@
         
           <h2 id="旧式的类型转换"><a href="#旧式的类型转换" class="headerlink" title="旧式的类型转换"></a>旧式的类型转换</h2><p>在变量或表达式前加上类型转换符强制进行显式的类型转换，例如：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n = <span class="number">61</span>;</span><br><span class="line"><span class="keyword">char</span> c = (<span class="keyword">char</span>)n;     <span class="comment">// int强制转换为char，有精度损失</span></span><br><span class="line"><span class="keyword">char</span> *pc = &amp;c;</span><br><span class="line"><span class="keyword">int</span> *pi = (<span class="keyword">int</span> *)pc;  <span class="comment">// char *强制转换为int *</span></span><br></pre></td></tr></table></figure>
-<p>一般来说，将较大的算术类型赋值给较小的类型时，有潜在的精度损失，编译器一般会给出警告信息。强制类型转换明确地告诉代码的读者和编译器，代码的作者知道并且不在乎精度损失，编译器的警告信息也会关闭。</p>
-<p>C++也提供了四种命名的强制类型转换符，分别是static_cast，const_cast，reinterpret_cast和dynamic_cast。</p>
           <!--noindex-->
           
             <div class="post-button text-center">

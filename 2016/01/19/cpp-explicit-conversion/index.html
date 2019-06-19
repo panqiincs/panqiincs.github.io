@@ -100,18 +100,18 @@
 
 
 
-  <meta name="description" content="旧式的类型转换在变量或表达式前加上类型转换符强制进行显式的类型转换，例如： 1234int n = 61;char c = (char)n;     // int强制转换为char，有精度损失char *pc = &amp;amp;c;int *pi = (int *)pc;  // char *强制转换为int * 一般来说，将较大的算术类型赋值给较小的类型时，有潜在的精度损失，编译器一般会给出警告信息">
+  <meta name="description" content="旧式的类型转换在变量或表达式前加上类型转换符强制进行显式的类型转换，例如： 1234int n = 61;char c = (char)n;     // int强制转换为char，有精度损失char *pc = &amp;amp;c;int *pi = (int *)pc;  // char *强制转换为int *">
 <meta name="keywords" content="C++,类型转换">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++的显式类型转换">
 <meta property="og:url" content="http://panqiincs.me/2016/01/19/cpp-explicit-conversion/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="旧式的类型转换在变量或表达式前加上类型转换符强制进行显式的类型转换，例如： 1234int n = 61;char c = (char)n;     // int强制转换为char，有精度损失char *pc = &amp;amp;c;int *pi = (int *)pc;  // char *强制转换为int * 一般来说，将较大的算术类型赋值给较小的类型时，有潜在的精度损失，编译器一般会给出警告信息">
+<meta property="og:description" content="旧式的类型转换在变量或表达式前加上类型转换符强制进行显式的类型转换，例如： 1234int n = 61;char c = (char)n;     // int强制转换为char，有精度损失char *pc = &amp;amp;c;int *pi = (int *)pc;  // char *强制转换为int *">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-08T08:00:55.000Z">
+<meta property="og:updated_time" content="2019-06-19T06:56:55.263Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++的显式类型转换">
-<meta name="twitter:description" content="旧式的类型转换在变量或表达式前加上类型转换符强制进行显式的类型转换，例如： 1234int n = 61;char c = (char)n;     // int强制转换为char，有精度损失char *pc = &amp;amp;c;int *pi = (int *)pc;  // char *强制转换为int * 一般来说，将较大的算术类型赋值给较小的类型时，有潜在的精度损失，编译器一般会给出警告信息">
+<meta name="twitter:description" content="旧式的类型转换在变量或表达式前加上类型转换符强制进行显式的类型转换，例如： 1234int n = 61;char c = (char)n;     // int强制转换为char，有精度损失char *pc = &amp;amp;c;int *pi = (int *)pc;  // char *强制转换为int *">
 
 
 
@@ -486,9 +486,9 @@
       
         <h2 id="旧式的类型转换"><a href="#旧式的类型转换" class="headerlink" title="旧式的类型转换"></a>旧式的类型转换</h2><p>在变量或表达式前加上类型转换符强制进行显式的类型转换，例如：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n = <span class="number">61</span>;</span><br><span class="line"><span class="keyword">char</span> c = (<span class="keyword">char</span>)n;     <span class="comment">// int强制转换为char，有精度损失</span></span><br><span class="line"><span class="keyword">char</span> *pc = &amp;c;</span><br><span class="line"><span class="keyword">int</span> *pi = (<span class="keyword">int</span> *)pc;  <span class="comment">// char *强制转换为int *</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>一般来说，将较大的算术类型赋值给较小的类型时，有潜在的精度损失，编译器一般会给出警告信息。强制类型转换明确地告诉代码的读者和编译器，代码的作者知道并且不在乎精度损失，编译器的警告信息也会关闭。</p>
 <p>C++也提供了四种命名的强制类型转换符，分别是static_cast，const_cast，reinterpret_cast和dynamic_cast。</p>
-<a id="more"></a>
 <h2 id="static-cast"><a href="#static-cast" class="headerlink" title="static_cast"></a>static_cast</h2><p>任何有明确意义的类型转换，只要不包含底层const（即所引用的对象为常量），都可以用static_cast。上面的旧式类型转换语句分别可以等效替换如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n = <span class="number">61</span>;</span><br><span class="line"><span class="keyword">char</span> c = <span class="keyword">static_cast</span>&lt;<span class="keyword">char</span>&gt;(n);</span><br><span class="line"><span class="keyword">char</span> *pc = &amp;c;</span><br><span class="line"><span class="keyword">int</span> *pi = <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span> *&gt;(pc);</span><br></pre></td></tr></table></figure>
 <h2 id="const-cast"><a href="#const-cast" class="headerlink" title="const_cast"></a>const_cast</h2><p>const_cast只能改变运算对象的底层const，也只有const_cast才能改变表达式的常量属性。它常用于有函数重载的场合，例如，下面的函数是常量版本，参数和返回类型都是<code>const string</code>的引用：</p>
