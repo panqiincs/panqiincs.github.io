@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+
+
+
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="导言本文是《经济学原理：微观经济学分册》的笔记。微观经济学研究家庭和企业如何做出决策，以及它们如何在特定市场上相互交易。宏观经济学则研究整体经济现象。 稀缺性指的社会拥有的资源是有限的，经济学研究社会如何管理自己的稀缺资源。经济学十大原理：">
+<meta name="keywords" content="经济学,微观经济学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="曼昆『经济学原理』内容总结">
+<meta property="og:url" content="http://panqiincs.me/2018/03/31/microeconomics-notes/index.html">
+<meta property="og:site_name" content="辛未羊的博客">
+<meta property="og:description" content="导言本文是《经济学原理：微观经济学分册》的笔记。微观经济学研究家庭和企业如何做出决策，以及它们如何在特定市场上相互交易。宏观经济学则研究整体经济现象。 稀缺性指的社会拥有的资源是有限的，经济学研究社会如何管理自己的稀缺资源。经济学十大原理：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-29T12:27:23.581Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="曼昆『经济学原理』内容总结">
+<meta name="twitter:description" content="导言本文是《经济学原理：微观经济学分册》的笔记。微观经济学研究家庭和企业如何做出决策，以及它们如何在特定市场上相互交易。宏观经济学则研究整体经济现象。 稀缺性指的社会拥有的资源是有限的，经济学研究社会如何管理自己的稀缺资源。经济学十大原理：">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://panqiincs.me/2018/03/31/microeconomics-notes/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>曼昆『经济学原理』内容总结 | 辛未羊的博客</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-39536948-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">辛未羊的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-series">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/series/" rel="section"><i class="menu-item-icon fa fa-fw fa-list"></i> <br>系列</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2018/03/31/microeconomics-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Krist Pan">
+      <meta itemprop="description" content="人生如逆旅，我亦是行人">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">曼昆『经济学原理』内容总结
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-03-31 09:23:39" itemprop="dateCreated datePublished" datetime="2018-03-31T09:23:39+08:00">2018-03-31</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2018/03/31/microeconomics-notes/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/31/microeconomics-notes/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="导言"><a href="#导言" class="headerlink" title="导言"></a>导言</h2><p>本文是<a href="https://book.douban.com/subject/3719533/" target="_blank" rel="noopener">《经济学原理：微观经济学分册》</a>的笔记。<strong>微观经济学</strong>研究家庭和企业如何做出决策，以及它们如何在特定市场上相互交易。<strong>宏观经济学</strong>则研究整体经济现象。</p>
+<p><strong>稀缺性</strong>指的社会拥有的资源是有限的，<strong>经济学</strong>研究社会如何管理自己的稀缺资源。经济学十大原理：</p>
+<a id="more"></a>
+<ol>
+<li>人们面临权衡取舍</li>
+<li>某种东西的成本是为了得到它所放弃的东西：做决策时需考虑<strong>机会成本</strong></li>
+<li>理性人考虑边际量：理性人通常通过对比<strong>边际效益</strong>与<strong>边际成本</strong>来做决策</li>
+<li>人们会对激励做出反应</li>
+<li>贸易可以使每个人的状况都变得更好：贸易使得各国可以专门从事自己擅长的活动，通过交易可以按较低的成本获得各种物品与劳务</li>
+<li>市场通常是组织经济活动的一种好办法：价格作为“看不见的手”用来指引买者和卖者，在大多数情况下实现整个社会福利的最大化</li>
+<li>政府有时可以改善市场结果：政府实施规则并维持制度，看不见的手才能施展魔力</li>
+<li>一国的生活水平取决于它生产物品和劳务的能力</li>
+<li>当政府发行了过多货币时，物价上升：通货膨胀</li>
+<li>社会面临通货膨胀与失业之间的短期权衡取舍：经济周期</li>
+</ol>
+<p>其中1、2、3、4条描述人们如何做决策，5、6、7条描述人们如何相互交易，8、9、10描述整体经济如何运行。</p>
+<p>当比较生产率时，生产率高的一方具有<strong>绝对优势</strong>；当比较机会成本时，机会成本低的一方具有<strong>比较优势</strong>。某一方可能在两种物品的生产上都拥有绝对优势，但是不可能在两种物品的生产上都拥有比较优势，因为一种物品的机会成本是另一种物品机会成本的倒数。专业化和贸易的好处基于比较优势，每一方都专门生产自己有比较优势的物品时，经济的总产量就增加了，可以改善每个人的状况。对某物品进行贸易，当价格定在双方的机会成本之间时，双方都能够从贸易中获益。</p>
+<h2 id="市场的运作"><a href="#市场的运作" class="headerlink" title="市场的运作"></a>市场的运作</h2><p>在<strong>完全竞争市场</strong>上，价格是由市场决定的。<strong>需求曲线</strong>和<strong>供给曲线</strong>分别描述价格对需求量和供给量的影响。需求曲线和供给曲线相交于一点，该点称为市场的均衡，此时的价格和数量分别称之为均衡价格和均衡数量。在均衡价格时，买者愿意且能购买的物品量正好与卖者愿意且能够出售的数量相平衡。</p>
+<p>当某种条件导致需求曲线和供给曲线左右（或上下）移动时，均衡被破坏，需求量和供给量不相等，会造成物品的短缺或过剩。此时买方或卖方会对激励做出反应，使市场价格向均衡价格靠拢，需求量和供给量也会随之“沿着曲线移动”，又达到新的均衡点和均衡价格。供给和需求共同决定了经济中许多不同物品和劳务的价格，而价格又是引导资源配置的信号。亚当斯密说的那只“看不见的手”引导着市场经济，价格制度就是这只看不见的手的指挥棒。</p>
+<p>弹性衡量买者和卖者对市场条件变化的反应程度。需求价格弹性衡量的是需求量对价格变动的反应程度，供给价格弹性衡量供给量对价格变动的反应程度。对于缺乏弹性的需求曲线，总收益随着价格的上升而增加，对于富有弹性的需求弹性，总收益随着价格的上升而减少。</p>
+<p>当政府对竞争市场实行限制性价格上限时，就产生了物品的短缺，而且，卖者必须在大量潜在买者中配给稀缺物品。限制性价格下限引起物品的过剩。政府征税时，无论是买者还是卖者支付税款，一旦市场达到新平衡，都是买者与卖者分摊税收负担。税收负担更多地落在缺乏弹性的市场一方身上，因为在本质上，弹性衡量当条件变得不利时，买者或卖者离开市场的意愿，当对这种物品征税时，适当替代品较少的市场一方不太愿意离开市场，从而必须承担更多的税收负担。</p>
+<h2 id="市场和福利"><a href="#市场和福利" class="headerlink" title="市场和福利"></a>市场和福利</h2><p>买者愿意支付的最高价格称为支付意愿，它衡量买者对物品的评价。<strong>消费者剩余</strong>是买者愿意为物品支付的量减去其为此实际支付的量，消费者剩余衡量买者从参与市场中得到的利益。<strong>生产者剩余</strong>是卖者得到的量减去其生产成本，生产者剩余衡量卖者从参与市场中得到的利益。供给和需求的均衡使消费者剩余与生产者剩余的总和最大化，看不见的手指引着买者与卖者有效地配置资源。在存在市场势力或外部性等市场失灵情况下，市场不能有效地配置资源。</p>
+<p>未完待续。</p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>还是贴出付款码吧，没准真有人打赏呢！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="Krist Pan 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="Krist Pan 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Krist Pan</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://panqiincs.me/2018/03/31/microeconomics-notes/" title="曼昆『经济学原理』内容总结">http://panqiincs.me/2018/03/31/microeconomics-notes/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/经济学/" rel="tag"># 经济学</a>
+          
+            <a href="/tags/微观经济学/" rel="tag"># 微观经济学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/04/cpp-const-member-functions/" rel="next" title="C++的const成员函数">
+                <i class="fa fa-chevron-left"></i> C++的const成员函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/26/process-pdf-using-imagemagick/" rel="prev" title="用ImageMagick处理pdf">
+                用ImageMagick处理pdf <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Krist Pan">
+            
+              <p class="site-author-name" itemprop="name">Krist Pan</p>
+              <div class="site-description motion-element" itemprop="description">人生如逆旅，我亦是行人</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">91</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">149</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/panqiincs" title="GitHub &rarr; https://github.com/panqiincs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:panqihg@hotmail.com" title="E-Mail &rarr; mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/3850393415" title="Weibo &rarr; https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/panqihg" title="Twitter &rarr; https://twitter.com/panqihg" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.sciencenet.cn/u/qhliu" title="http://blog.sciencenet.cn/u/qhliu" rel="noopener" target="_blank">湖南土著</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.sina.com.cn/u/1307478894" title="http://blog.sina.com.cn/u/1307478894" rel="noopener" target="_blank">农民进城</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.kawabangga.com/" title="https://www.kawabangga.com/" rel="noopener" target="_blank">卡瓦邦噶！</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tumutanzi.com/" title="https://tumutanzi.com/" rel="noopener" target="_blank">土木坛子</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://yuzhouwan.com/" title="https://yuzhouwan.com/" rel="noopener" target="_blank">宇宙湾</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.boatsky.com/" title="https://www.boatsky.com/" rel="noopener" target="_blank">太空船</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#导言"><span class="nav-number">1.</span> <span class="nav-text">导言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#市场的运作"><span class="nav-number">2.</span> <span class="nav-text">市场的运作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#市场和福利"><span class="nav-number">3.</span> <span class="nav-text">市场和福利</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2013 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Krist Pan</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://panqiincs.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://panqiincs.me/2018/03/31/microeconomics-notes/";
+    this.page.identifier = "2018/03/31/microeconomics-notes/";
+    this.page.title = '曼昆『经济学原理』内容总结';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://panqiincs.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
