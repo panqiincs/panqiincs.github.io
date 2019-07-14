@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/about/index.html</loc>
+    
+    <lastmod>2019-07-14T02:11:29.615Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2016/07/06/hello-shenzhen/</loc>
     
     <lastmod>2019-07-08T15:15:36.845Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>http://panqiincs.me/2018/07/31/list-of-computer-books/</loc>
     
     <lastmod>2019-06-29T12:50:49.428Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/06/10/website-with-cdn/</loc>
-    
-    <lastmod>2019-06-29T12:43:49.849Z</lastmod>
     
   </url>
   
@@ -327,13 +327,6 @@
     <loc>http://panqiincs.me/2017/08/06/hexo-blog-code-management/</loc>
     
     <lastmod>2019-06-02T23:04:40.177Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/about/index.html</loc>
-    
-    <lastmod>2019-06-02T14:37:05.287Z</lastmod>
     
   </url>
   
