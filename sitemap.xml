@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/series/index.html</loc>
+    
+    <lastmod>2019-07-19T04:25:43.173Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/about/index.html</loc>
     
     <lastmod>2019-07-18T03:15:13.472Z</lastmod>
@@ -114,13 +121,6 @@
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2016/01/19/cpp-explicit-conversion/</loc>
-    
-    <lastmod>2019-06-19T06:56:55.263Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://panqiincs.me/2016/04/21/about-ros/</loc>
     
     <lastmod>2019-06-08T12:16:28.816Z</lastmod>
@@ -180,13 +180,6 @@
     <loc>http://panqiincs.me/2016/03/27/love-yuelu-mountain/</loc>
     
     <lastmod>2019-06-04T13:54:25.233Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/series/index.html</loc>
-    
-    <lastmod>2019-06-04T07:54:53.597Z</lastmod>
     
   </url>
   
@@ -506,13 +499,6 @@
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2015/09/01/tinyhttpd-code-analysis/</loc>
-    
-    <lastmod>2019-04-19T08:59:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://panqiincs.me/2016/01/27/stl-source-analysis-notes/</loc>
     
     <lastmod>2019-04-19T08:55:15.000Z</lastmod>
@@ -558,13 +544,6 @@
     <loc>http://panqiincs.me/2018/09/09/wubi-dict-manager/</loc>
     
     <lastmod>2019-03-31T01:17:10.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2014/06/26/singly-linked-list-operations/</loc>
-    
-    <lastmod>2019-03-30T14:05:16.000Z</lastmod>
     
   </url>
   
@@ -621,13 +600,6 @@
     <loc>http://panqiincs.me/2017/08/13/python-crawler-lifeofpix/</loc>
     
     <lastmod>2019-03-08T08:00:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2014/05/21/cpp-explicit-keyword/</loc>
-    
-    <lastmod>2019-02-24T02:13:34.000Z</lastmod>
     
   </url>
   
