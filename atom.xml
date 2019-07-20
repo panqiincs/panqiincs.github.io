@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://panqiincs.me/"/>
-  <updated>2019-07-01T07:23:22.895Z</updated>
+  <updated>2019-07-20T15:10:57.940Z</updated>
   <id>http://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>买了台笔记本电脑</title>
+    <link href="http://panqiincs.me/2019/07/19/bought-a-new-laptop/"/>
+    <id>http://panqiincs.me/2019/07/19/bought-a-new-laptop/</id>
+    <published>2019-07-19T14:23:04.000Z</published>
+    <updated>2019-07-20T15:10:57.940Z</updated>
+    
+    <content type="html"><![CDATA[<p>昨天晚上下单的惠普笔记本电脑今天中午就送到了，某东的次日达服务真心不错。这是我十年以来的第三台计算机。第一台是2010年买的笔记本，配置早就落伍了，电源坏了也没管，放在家里吃灰好多年了；第二台是2014年配的台式机，五月份给它<a href="https://panqiincs.me/2019/05/04/renovate-my-computer/">换了个固态硬盘</a>，性能有质的飞跃，每天都在用。毫不夸张，电子产品在我手上真的是物尽其用。</p><a id="more"></a><p>这台新买的笔记本电脑主要用于办公，它本身的定位也是商务本。附带正版的Windows系统和Office全家桶，以后就用它聊QQ、写文档、做单片机软硬件开发。所以啊，为了解决所有的兼容问题，Linux爱好者应当配两台电脑，一台装Windows，一台装Linux，或者一台电脑装双系统也可以。笔记本也配的固态硬盘，开机速度飞快，操作也非常顺畅。固态硬盘真的可以显著提升生活质量，我家里人三年前花3500块钱买的ThinkPad笔记本卡得基本不能用，买了块固态硬盘换上后，性能有脱胎换骨的提升，省下了买一台新电脑的钱。</p><p>不过看惯了台式机的显示器后，很不适应笔记本的屏幕，看来还需配一台大屏显示器。不过最近买了几个大件物品，穷得响叮当，还买买买会有点肉疼，缓一段时间吧！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;昨天晚上下单的惠普笔记本电脑今天中午就送到了，某东的次日达服务真心不错。这是我十年以来的第三台计算机。第一台是2010年买的笔记本，配置早就落伍了，电源坏了也没管，放在家里吃灰好多年了；第二台是2014年配的台式机，五月份给它&lt;a href=&quot;https://panqiincs.me/2019/05/04/renovate-my-computer/&quot;&gt;换了个固态硬盘&lt;/a&gt;，性能有质的飞跃，每天都在用。毫不夸张，电子产品在我手上真的是物尽其用。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活记录" scheme="http://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="固态硬盘" scheme="http://panqiincs.me/tags/%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98/"/>
+    
+      <category term="电脑" scheme="http://panqiincs.me/tags/%E7%94%B5%E8%84%91/"/>
+    
+  </entry>
   
   <entry>
     <title>盛夏来临，去游泳吧</title>
@@ -248,7 +272,7 @@
     <link href="http://panqiincs.me/2019/05/04/renovate-my-computer/"/>
     <id>http://panqiincs.me/2019/05/04/renovate-my-computer/</id>
     <published>2019-05-04T07:25:12.000Z</published>
-    <updated>2019-06-03T14:35:01.394Z</updated>
+    <updated>2019-07-20T14:41:27.511Z</updated>
     
     <content type="html"><![CDATA[<p>我的台式机是2014年配的，是我这几年唯一的电脑，五年以来为我立下了汗马功劳。2016年毕业后，我把它快递到深圳，结果机箱外壳在运输途中损坏。用胶布把破损处粘起来，几年下来，使用基本正常。今年本来打算配一台新机器，但把它闲置又觉得可惜，于是决定翻新一下。翻新主要是两件事，换新机箱以及把机械硬盘换成固态硬盘。</p><a id="more"></a><p>我换了一个体积更小、重量更轻的机箱，安装非常顺利，还顺便把灰尘清理干净了。去年以来，固态硬盘价格一路下跌，所以我买得起500GB容量的盘，无需采用SSD+HDD的方案。之前用的是OpenSUSE的滚动发行版Tumbleweed，装在机械硬盘上，开机要花几分钟。趁着这次重装系统，尝试了排名第一的Manjaro发行版。换成固态硬盘后，开机启动只需要10多秒，下载安装软件飞快，文件都是秒开，有效地弥补了CPU性能的不足，真香！OpenSUSE系统还完整保留在机械硬盘上，可以在BIOS中选择启动机械硬盘中的系统。等迁移工作全部完成，就把机械硬盘格式化，当做备份盘使用。和之前一样，我选的KDE桌面环境，所以新系统用起来很习惯。目前来看，Manjaro最大的优点是软件齐全，WPS Office和搜狗拼音等软件都能直接从软件仓库中安装，真是方便，怪不得大家都推荐它。</p><p>好家伙，这台机子估计还能再战五年！</p>]]></content>
     
@@ -264,6 +288,8 @@
       <category term="固态硬盘" scheme="http://panqiincs.me/tags/%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98/"/>
     
       <category term="manjaro" scheme="http://panqiincs.me/tags/manjaro/"/>
+    
+      <category term="电脑" scheme="http://panqiincs.me/tags/%E7%94%B5%E8%84%91/"/>
     
   </entry>
   
@@ -517,29 +543,6 @@
       <category term="最大子序列和" scheme="http://panqiincs.me/tags/%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/"/>
     
       <category term="矩阵乘法" scheme="http://panqiincs.me/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>『算法导论』第 3 章：函数的增长</title>
-    <link href="http://panqiincs.me/2019/03/10/clrs-growth-of-functions/"/>
-    <id>http://panqiincs.me/2019/03/10/clrs-growth-of-functions/</id>
-    <published>2019-03-10T06:06:12.000Z</published>
-    <updated>2019-05-04T07:11:22.249Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>本章讲解如何简化算法的<strong>渐近分析</strong>，介绍了几类渐近记号。最后简单介绍了常用函数的性质。本章的内容在这里描述得非常简略，但为了保持整个系列的完整性，还是贴出来了。</p><h3 id="渐近记号"><a href="#渐近记号" class="headerlink" title="渐近记号"></a>渐近记号</h3><p>本章介绍了如下渐近记号，它们的严格定义分别如下：</p><a id="more"></a><ol><li>若$f(n) = \Theta(g(n))$，则存在正常量$c_1$、$c_2$和$n_0$，使得对所有$n \ge n_0$，有$0 \le c_1 g(n) \le f(n) \le c_2 g(n)$</li><li>若$f(n) = O(g(n))$，则存在正常量$c$和$n_0$，使得对所有$n \ge n_0$，有$0 \le f(n) \le c g(n)$</li><li>若$f(n) = \Omega(g(n))$，则存在正常量$c$和$n_0$，使得对所有$n \ge n_0$，有$0 \le c g(n) \le f(n)$</li><li>若$f(n) = o(g(n))$，则对任意$c&gt;0$，存在常量$n_0&gt;0$，使得对所有$n \ge n_0$，有$0 \le f(n) &lt; c g(n)$</li><li>若$f(n) = \omega(g(n))$，则对任意$c&gt;0$，存在常量$n_0&gt;0$，使得对所有$n \ge n_0$，有$0 \le c g(n) &lt; f(n)$</li></ol><p>为了更形象地理解本节介绍的几种渐近记号，可以在两个函数的渐近比较和两个实数的比较之间做一种类比：</p><ul><li>$f(n) = O(g(n))$类似于$a \le b$</li><li>$f(n) = \Omega(g(n))$类似于$a \ge b$</li><li>$f(n) = \Theta(g(n))$类似于$a = b$</li><li>$f(n) = o(g(n))$类似于$a &lt; b$</li><li>$f(n) = \omega(g(n))$类似于$a &gt; b$</li></ul><h3 id="标准记号与常用函数"><a href="#标准记号与常用函数" class="headerlink" title="标准记号与常用函数"></a>标准记号与常用函数</h3><p>本节主要讲解了常用的数学函数和记号，涉及到高中数学和基础微积分的知识。</p><h2 id="习题解答"><a href="#习题解答" class="headerlink" title="习题解答"></a>习题解答</h2><h3 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h3><p><strong>3.1-1</strong> 解答：即需证明存在正常数$c_1$，$c_2$和$n_0$，使得当$n \ge n_0$时有：</p><p>$$ c_1(f(n)+g(n)) \le \max(f(n), g(n)) \le c_2(f(n)+g(n)) $$</p><p>由于$f(n)$和$g(n)$均是渐近非负函数，所以存在$n_0$，使得当$n \ge n_0$时，有$f(n) \ge 0$和$g(n) \ge 0$。令</p><p>$$ h(x) = \max(f(n), g(n))$$</p><p>则</p><p>$$ 0 \le f(n) \le h(n) \\<br>0 \le g(n) \le h(n) $$</p><p>所以有</p><p>$$ 0 \le f(n)+g(n) \le 2h(n) \\<br>0 \le (f(n)+g(n))/2 \le h(n) $$</p><p>又有</p><p>$$ h(n) \le f(n)+g(n) $$</p><p>所以存在$c_1 = 1/2$，$c_2 = 1$和$n_0 \ge 0$满足条件，得证。</p><p><strong>3.1-2</strong> 解答：即需证明存在正常数$c_1$，$c_2$和$n_0$，使得当$n \ge n_0$时有：</p><p>$$ c_1 n^b \le (n+a)^b \le c_2 n^b $$</p><p>即</p><p>$$ c_1 \le (1+a/n)^b \le c_2 $$</p><p>当$b &gt; 0$时，幂函数在$[0, +\infty)$上单调递增。下面根据$a$的符号分情况讨论：</p><ol><li>当$a &gt; 0$时，令$n \ge n_0 = a$，则有$1 \le 1+a/n \le 2$，即$c_1 = 1, c_2 = 2$，根据幂函数的单调性，上式成立；</li><li>当$a &lt; 0$时，$1+a/n = 1-|a|/n$，令$n \ge n_0 = 2|a|$，则有$1/2 \le (1-|a|/n) \le 1$，即$c_1 = 1/2, c_2 = 1$，根据幂函数的单调性，上式成立。</li></ol><p>所以得证。</p><p><strong>3.1-3</strong> 解答：因为$O$符号没有提供一个下界。</p><p><strong>3.1-4</strong> 解答：$2^{n+1} = O(2^n)$成立，$2^{2n} = O(2^n)$不成立。</p><p><strong>3.1-5</strong> 解答：要证明的公式是：</p><p>$$ \lim_{n \to \infty}f(n)/g(n) = 0 $$</p><p>根据数列极限的$\epsilon-N$定义，对任意$\epsilon &gt; 0$，存在自然数$N$使得当$n &gt; N$时，有$|f(n)/g(n)| &lt; \epsilon$。</p><p>根据$f(n) = o(g(n))$的定义，对任意正常量$c &gt; 0$，存在$n_0 &gt; 0$，使得对所有$n \ge n_0$，有$0 \le f(n) &lt; cg(n)$，即$|f(n)/g(n)| &lt; c$，取$\epsilon = c$，$N = n_0$，得证。</p><p><strong>3.1-6</strong> 解答：$O$记号提供了一个渐近上界，$\Omega$记号提供了渐近下界，所以为$\Theta(g(n))$。严格证明略。</p><p><strong>3.1-7</strong> 解答：类似于$a &lt; b$和$a &gt; b$不可能同时成立。</p><p><strong>3.1-8</strong> 解答：如下：</p><p>$f(n, m) = \Omega(g(n, m))$，则存在正常量$c$, $n_0$和$m_0$，使得对所有的$n \ge n_0$或$m \ge m_0$，有$0 \le cg(n, m) \le f(n, m)$.<br>$f(n, m) = \Theta(g(n, m))$，则存在正常量$c_1$，$c_2$，$n_0$和$m_0$，使得对所有的$n \ge n_0$或$m \ge m_0$，有 $c_1 g(n, m)  \le f(n, m) \le c_2 g(n, m)$.</p><p><strong>3.2-1</strong> 解答：按照单调性的定义即可证明，略。</p><p><strong>3.2-2</strong> 解答：由公式$a = b^{\log_b a}$得：</p><p>$$<br>a^{\log_b c} = (b^{\log_b a})^{\log_b c} = b^{\log_b a \log_b c}  \\<br>c^{\log_b a} = (b^{\log_b c})^{\log_b a} = b^{\log_b c \log_b a}<br>$$</p><p>得证。</p><p><strong>3.2-3</strong> 解答：要证明的(3.19)式为$n! = \Theta(n \lg n)$，借助斯特林近似公式，证明如下：</p><p>$$<br>\lg(n!) = \lg \sqrt{2 \pi n} + \lg (n/e)^n + \lg (1+\Theta(1/n)) = \Theta(\lg n) + \Theta(n \lg n) = \Theta(n \lg n)<br>$$</p><p>要证明$n! = o(n^n)$，证明$\lim_{n \to \infty}n!/n^n = 0$即可，代入斯特林近似公式即得证。</p><p>要证明$n! = \omega(2^n)$，证明$\lim_{n \to \infty}n!/2^n = \infty$即可。令$h(n) = n!/2^n$，则：</p><p>$$h(n) = \frac{n!}{2^n} = \frac{(n-1)!}{2^{n-1}} \frac{n}{2} = h(n-1) \frac{n}{2}$$</p><p>当$n=4$时，$h(n)&gt;1$，当$n&gt;4$时，$n/2 &gt; 2$，所以$h(n) &gt; 2^{n-4}$，所以$h(n)$的极限为$\infty$。</p><p><strong>3.2-4</strong> 解答：星号题，略。</p><p><strong>3.2-5</strong> 解答：星号题，略。</p><p><strong>3.2-6</strong> 解答：根据黄金分割率的定义有：$\phi / 1 = \phi / (1 - \phi)$，即满足方程$x^2 = x + 1$，得证。</p><p><strong>3.2-7</strong> 解答：归纳法的步骤如下：</p><ol><li>初始情况$i = 0$时，$F_0 = (\phi^0 - \hat{\phi^0})/\sqrt{5} = 0$，$i = 1$时，$F_1 = (\phi - \hat{\phi})/\sqrt{5} = 1$，符合</li><li>证明当$n=k-2$和$n=k-1$成立，$n = k$时也成立，代入公式，符合</li></ol><p>即可得证。</p><p><strong>3.2-8</strong> 解答：<strong>待完成</strong>。</p><h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><p>待完成。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;主要内容&quot;&gt;&lt;a href=&quot;#主要内容&quot; class=&quot;headerlink&quot; title=&quot;主要内容&quot;&gt;&lt;/a&gt;主要内容&lt;/h2&gt;&lt;p&gt;本章讲解如何简化算法的&lt;strong&gt;渐近分析&lt;/strong&gt;，介绍了几类渐近记号。最后简单介绍了常用函数的性质。本章的内容在这里描述得非常简略，但为了保持整个系列的完整性，还是贴出来了。&lt;/p&gt;
-&lt;h3 id=&quot;渐近记号&quot;&gt;&lt;a href=&quot;#渐近记号&quot; class=&quot;headerlink&quot; title=&quot;渐近记号&quot;&gt;&lt;/a&gt;渐近记号&lt;/h3&gt;&lt;p&gt;本章介绍了如下渐近记号，它们的严格定义分别如下：&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="数据结构" scheme="http://panqiincs.me/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="渐近记号" scheme="http://panqiincs.me/tags/%E6%B8%90%E8%BF%91%E8%AE%B0%E5%8F%B7/"/>
     
   </entry>
   
