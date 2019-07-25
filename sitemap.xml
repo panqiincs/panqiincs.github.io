@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/2019/06/05/after-installing-manjaro/</loc>
+    
+    <lastmod>2019-07-25T05:14:21.292Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2019/06/30/summer-swimming/</loc>
     
     <lastmod>2019-07-24T12:11:05.829Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>http://panqiincs.me/2016/01/27/stl-source-analysis-notes/</loc>
     
     <lastmod>2019-07-24T12:07:57.770Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/06/05/after-installing-manjaro/</loc>
-    
-    <lastmod>2019-07-24T10:48:23.144Z</lastmod>
     
   </url>
   
