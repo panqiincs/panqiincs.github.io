@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+
+
+
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="方案最近在学习STM32单片机开发。我手头有一块开发板，附带的教程中调用官方的固件库开发软件，将MDK作为集成开发环境。MDK将代码编辑、编译和构建全包了，这固然方便，但是配置一个新项目的过程非常繁琐，我甚至都不太想尝试一遍。于是我萌生了使用其他开发环境的想法。果然，可以使用ARMGCC + STM32CubeMX + VSCode的方案：">
+<meta name="keywords" content="linux,vscode,stm32,armgcc,stm32cubemx,stm32flash">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Linux下搭建STM32开发环境">
+<meta property="og:url" content="http://panqiincs.me/2019/07/26/stm32-linux-dev/index.html">
+<meta property="og:site_name" content="辛未羊的博客">
+<meta property="og:description" content="方案最近在学习STM32单片机开发。我手头有一块开发板，附带的教程中调用官方的固件库开发软件，将MDK作为集成开发环境。MDK将代码编辑、编译和构建全包了，这固然方便，但是配置一个新项目的过程非常繁琐，我甚至都不太想尝试一遍。于是我萌生了使用其他开发环境的想法。果然，可以使用ARMGCC + STM32CubeMX + VSCode的方案：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://wx3.sinaimg.cn/large/e5805747ly1g5e6fnlt53j213y0mltba.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/large/e5805747ly1g5e6fo9jxrj21hc0soznf.jpg">
+<meta property="og:image" content="http://wx2.sinaimg.cn/large/e5805747ly1g5e6foy4ljj213y0mmdie.jpg">
+<meta property="og:image" content="http://wx2.sinaimg.cn/large/e5805747ly1g5e6fpiym8j20ya0m9q7n.jpg">
+<meta property="og:updated_time" content="2019-07-27T02:39:07.597Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在Linux下搭建STM32开发环境">
+<meta name="twitter:description" content="方案最近在学习STM32单片机开发。我手头有一块开发板，附带的教程中调用官方的固件库开发软件，将MDK作为集成开发环境。MDK将代码编辑、编译和构建全包了，这固然方便，但是配置一个新项目的过程非常繁琐，我甚至都不太想尝试一遍。于是我萌生了使用其他开发环境的想法。果然，可以使用ARMGCC + STM32CubeMX + VSCode的方案：">
+<meta name="twitter:image" content="http://wx3.sinaimg.cn/large/e5805747ly1g5e6fnlt53j213y0mltba.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://panqiincs.me/2019/07/26/stm32-linux-dev/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>在Linux下搭建STM32开发环境 | 辛未羊的博客</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-39536948-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">辛未羊的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-series">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/series/" rel="section"><i class="menu-item-icon fa fa-fw fa-list"></i> <br>系列</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2019/07/26/stm32-linux-dev/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Krist Pan">
+      <meta itemprop="description" content="人生如逆旅，我亦是行人">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">在Linux下搭建STM32开发环境
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-26 22:41:37" itemprop="dateCreated datePublished" datetime="2019-07-26T22:41:37+08:00">2019-07-26</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具使用/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/07/26/stm32-linux-dev/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/26/stm32-linux-dev/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>最近在学习STM32单片机开发。我手头有一块开发板，附带的教程中调用官方的固件库开发软件，将MDK作为集成开发环境。MDK将代码编辑、编译和构建全包了，这固然方便，但是配置一个新项目的过程非常繁琐，我甚至都不太想尝试一遍。于是我萌生了使用其他开发环境的想法。果然，可以使用ARMGCC + STM32CubeMX + VSCode的方案：</p>
+<a id="more"></a>
+<ul>
+<li>ARMGCC：包括编译器、链接器、调试器和C语言标准库在内的一整套工具链</li>
+<li>STM32CubeMX：是一个图形化的软件配置工具，用来生成STM32初始化代码工程。标准库已经停止更新，STM32CubeMX是ST推荐的开发方式</li>
+<li>VSCode：牛逼哄哄的代码编辑器，搭配数量繁多的插件，从此忘记Vim和Emacs</li>
+</ul>
+<p>上述的三个工具都是跨平台的，在Linux和Windows下都可以搭建，在Linux下搭建更方便一些。本文以Manjaro Linux为例，其他Linux发行版和Windows用户可以仿照着搭建环境。</p>
+<h2 id="ARMGCC"><a href="#ARMGCC" class="headerlink" title="ARMGCC"></a>ARMGCC</h2><p>我这里说的ARMGCC指的是<a href="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm" target="_blank" rel="noopener">GNU Arm Embedded Toolchain</a>，是专为Arm嵌入式处理器开发的工具链软件。一般要安装编译器、调试器和函数库三个组件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S arm-none-eabi-gcc arm-none-eabi-gdb arm-none-eabi-newlib</span><br></pre></td></tr></table></figure>
+<p>其中<code>arm-none-eabi-newlib</code>是嵌入式平台下的C语言标准函数库，如果不安装可能会产生编译错误。Windows用户可以通过安装包来安装这套工具链，安装完之后还需要配置环境变量。</p>
+<h2 id="STM32CubeMX"><a href="#STM32CubeMX" class="headerlink" title="STM32CubeMX"></a>STM32CubeMX</h2><p>用STM32CubeMX生成初始化代码比配置固件库方便多了！STM32CubeMX依赖Java运行环境，要安装JRE 1.8：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S jdk8-openjdk</span><br></pre></td></tr></table></figure>
+<p>在ST的<a href="https://www.st.com/zh/development-tools/stm32cubemx.html" target="_blank" rel="noopener">官方网站</a>上下载安装文件，我下载的是5.3.0版本。解压后有三个文件，Windows通过运行exe文件安装，Linux通过运行<code>.linux</code>后缀的文件安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./SetupSTM32CubeMX-5.3.0.linux</span><br></pre></td></tr></table></figure>
+<p>会跳出一个图形化安装界面，整个过程非常简单。安装完成后启动软件，点击File - New Project新建一个工程。此时会有选择芯片型号的界面，可以通过勾选条件筛选出自己用的芯片。芯片选择好之后，点击Start Project，会有一个配置引脚的界面。我的板子上，PA8和PD2驱动两个LED灯，点击对应的引脚，将它们配置为<code>GPIO_Output</code>，即GPIO输出。</p>
+<p><img src="http://wx3.sinaimg.cn/large/e5805747ly1g5e6fnlt53j213y0mltba.jpg" alt="gpio_config"></p>
+<p>接下来是时钟配置，可以保持默认。</p>
+<p><img src="http://wx1.sinaimg.cn/large/e5805747ly1g5e6fo9jxrj21hc0soznf.jpg" alt="clock_config"></p>
+<p>再接下来是项目配置，比较重要是的Toolchain/IDE那一项的选择。在Linux下我选择的是Makefile，即使用make来管理项目，点击右上方的Generate Code就生成项目的代码。还可以选择MDK，最后会生成代码以及MDK的项目文件，打开后就可以用MDK来编辑和构建工程。</p>
+<p><img src="http://wx2.sinaimg.cn/large/e5805747ly1g5e6foy4ljj213y0mmdie.jpg" alt="project_config"></p>
+<p>项目目录下生成了如下文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls -F</span><br><span class="line">Drivers/  Inc/  LedTest.ioc  Makefile  Src/  startup_stm32f103xe.s  STM32F103RCTx_FLASH.ld</span><br></pre></td></tr></table></figure>
+<p>可以看到有个Makefile文件，<code>startup_stm32f103xe.s</code>是芯片的启动代码，<code>Drivers/</code>文件夹中是自动生成的芯片底层代码，和固件库的组织很类似。</p>
+<h2 id="VSCode"><a href="#VSCode" class="headerlink" title="VSCode"></a>VSCode</h2><p>用VSCode打开项目文件夹和<code>Src/</code>目录下的<code>main.c</code>文件，并在main函数的while循环中加入控制流水灯的代码：</p>
+<p><img src="http://wx2.sinaimg.cn/large/e5805747ly1g5e6fpiym8j20ya0m9q7n.jpg" alt="vscode"></p>
+<p>生成的代码都以HAL开头，函数名称和固件库里的也非常类似。可以看到，STM32CubeMX在main函数中自动添加了初始化的代码。打开<code>MX_GPIO_Init</code>函数还可以看到将PA8和PD2两个GPIO口设置为输出的配置代码。STM32CubeMX真是太方便了！</p>
+<p>接下来是工程的构建，在项目的根目录下直接运行make即可构建软件，最后在<code>build/</code>目录下会找到我们需要的<code>LedTest.bin</code>文件。</p>
+<h2 id="stm32flash"><a href="#stm32flash" class="headerlink" title="stm32flash"></a>stm32flash</h2><p>接下来要将二进制文件烧写到芯片中。一般来说，用JLink是最方便的，不仅可以烧写软件还能够进行硬件调试，在Linux下可以用。但是我手头只有一根USB转串口线，只有供电和烧写软件的功能，所以我介绍的是另一款名为stm32flash的烧写软件。stm32flash需要自己下载<a href="https://github.com/stm32duino/stm32flash" target="_blank" rel="noopener">源码</a>后编译安装，也就三个步骤：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> stm32flash/</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<p>我用USB转串口线将板子和电脑连接并上电。我的Linux系统默认就有CH340芯片的驱动，所以多了一个名为<code>/dev/ttyUSB0</code>的设备。将BOOT0接地，BOOT1接高电平，用stm32flash查看串口的信息，得到如下结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ sudo stm32flash /dev/ttyUSB0</span><br><span class="line">stm32flash STM32duino_0.5.1</span><br><span class="line"></span><br><span class="line">https://github.com/stm32duino/stm32flash</span><br><span class="line"></span><br><span class="line">Interface serial_posix: 57600 8E1</span><br><span class="line">Version      : 0x22</span><br><span class="line">Option 1     : 0x00</span><br><span class="line">Option 2     : 0x00</span><br><span class="line">Device ID    : 0x0414 (STM32F10xxx High-density)</span><br><span class="line">- RAM        : Up to 64KiB  (512b reserved by bootloader)</span><br><span class="line">- Flash      : Up to 512KiB (size first sector: 2x2048)</span><br><span class="line">- Option RAM : 16b</span><br><span class="line">- System RAM : 2KiB</span><br></pre></td></tr></table></figure>
+<p>一切正常，然后用stm32flash将编译生成的二进制文件烧写入芯片中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$ sudo stm32flash -w LedTest.bin -v -g 0x00 /dev/ttyUSB0</span><br><span class="line">stm32flash STM32duino_0.5.1</span><br><span class="line"></span><br><span class="line">https://github.com/stm32duino/stm32flash</span><br><span class="line"></span><br><span class="line">Using Parser : Raw BINARY</span><br><span class="line">Interface serial_posix: 57600 8E1</span><br><span class="line">Version      : 0x22</span><br><span class="line">Option 1     : 0x00</span><br><span class="line">Option 2     : 0x00</span><br><span class="line">Device ID    : 0x0414 (STM32F10xxx High-density)</span><br><span class="line">- RAM        : Up to 64KiB  (512b reserved by bootloader)</span><br><span class="line">- Flash      : Up to 512KiB (size first sector: 2x2048)</span><br><span class="line">- Option RAM : 16b</span><br><span class="line">- System RAM : 2KiB</span><br><span class="line">Write to memory</span><br><span class="line">Erasing memory</span><br><span class="line">Wrote and verified address 0x08000ea4 (100.00%) Done.</span><br><span class="line"></span><br><span class="line">Starting execution at address 0x08000000... done.</span><br></pre></td></tr></table></figure>
+<p>烧写完后就可以在板子上看到LED闪烁的效果。如想了解stm32flash其它的用法运行<code>stm32flash -h</code>命令查看。</p>
+
+      
+    </div>
+
+    
+      
+
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2017/09/10/after-installing-opensuse-leap/" rel="bookmark">安装OpenSUSE Leap之后</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2015/06/11/iterative-and-concurrent-server/" rel="bookmark">迭代和并发服务器</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2015/08/01/io-multiplexing-with-epoll/" rel="bookmark">I/O多路复用之epoll</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2015/08/05/multiplexing-and-nonblocking-io/" rel="bookmark">为什么多路复用要搭配非阻塞I/O</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2016/08/28/install-tl-wn823n-wlan-driver/" rel="bookmark">Linux下安装TL-WN823N无线网卡驱动</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2017/02/26/write-a-shell-basic-functionality/" rel="bookmark">Shell实现：基本功能</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Krist Pan</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://panqiincs.me/2019/07/26/stm32-linux-dev/" title="在Linux下搭建STM32开发环境">http://panqiincs.me/2019/07/26/stm32-linux-dev/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/vscode/" rel="tag"># vscode</a>
+          
+            <a href="/tags/stm32/" rel="tag"># stm32</a>
+          
+            <a href="/tags/armgcc/" rel="tag"># armgcc</a>
+          
+            <a href="/tags/stm32cubemx/" rel="tag"># stm32cubemx</a>
+          
+            <a href="/tags/stm32flash/" rel="tag"># stm32flash</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/19/bought-a-laptop/" rel="next" title="买了台笔记本电脑">
+                <i class="fa fa-chevron-left"></i> 买了台笔记本电脑
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Krist Pan">
+            
+              <p class="site-author-name" itemprop="name">Krist Pan</p>
+              <div class="site-description motion-element" itemprop="description">人生如逆旅，我亦是行人</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">87</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">145</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/panqiincs" title="GitHub &rarr; https://github.com/panqiincs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:panqihg@hotmail.com" title="E-Mail &rarr; mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/3850393415" title="Weibo &rarr; https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.sciencenet.cn/u/qhliu" title="http://blog.sciencenet.cn/u/qhliu" rel="noopener" target="_blank">湖南土著</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.sina.com.cn/u/1307478894" title="http://blog.sina.com.cn/u/1307478894" rel="noopener" target="_blank">农民进城</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.kawabangga.com/" title="https://www.kawabangga.com/" rel="noopener" target="_blank">卡瓦邦噶！</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://tumutanzi.com/" title="https://tumutanzi.com/" rel="noopener" target="_blank">土木坛子</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://yuzhouwan.com/" title="https://yuzhouwan.com/" rel="noopener" target="_blank">宇宙湾</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.boatsky.com/" title="https://www.boatsky.com/" rel="noopener" target="_blank">太空船</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://geektutu.com/" title="https://geektutu.com/" rel="noopener" target="_blank">极客兔兔</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#方案"><span class="nav-number">1.</span> <span class="nav-text">方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARMGCC"><span class="nav-number">2.</span> <span class="nav-text">ARMGCC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#STM32CubeMX"><span class="nav-number">3.</span> <span class="nav-text">STM32CubeMX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VSCode"><span class="nav-number">4.</span> <span class="nav-text">VSCode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stm32flash"><span class="nav-number">5.</span> <span class="nav-text">stm32flash</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2013 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Krist Pan</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://panqiincs.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://panqiincs.me/2019/07/26/stm32-linux-dev/";
+    this.page.identifier = "2019/07/26/stm32-linux-dev/";
+    this.page.title = '在Linux下搭建STM32开发环境';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://panqiincs.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
