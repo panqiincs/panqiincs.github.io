@@ -103,22 +103,22 @@
   };
 </script>
 
-  <meta name="description" content="方案最近在学习STM32单片机开发。我手头有一块开发板，主控芯片的型号是STM32F103RCT6，ARM Cortex-M3架构。开发板附带的教程中使用官方的固件库来开发软件，将MDK作为集成开发环境。MDK将代码编辑和工程构建全包了，这固然很方便，但是配置一个新项目的过程非常繁琐，我甚至都不想尝试一遍。于是便萌生了使用其他开发环境的想法。果然，可以使用ARMGCC + STM32CubeMX">
+  <meta name="description" content="方案最近在学习STM32单片机开发。我手头有一块开发板，开发板附带的教程中使用官方的固件库来开发软件，将MDK作为集成开发环境。MDK将代码编辑和工程构建全包了，这固然很方便，但是配置一个新项目的过程非常繁琐，而且MDK还是收费软件。于是便萌生了使用其他开发环境的想法。果然，有免费的高质量方案：ARMGCC + STM32CubeMX + VSCode：">
 <meta name="keywords" content="linux,vscode,stm32,armgcc,stm32cubemx,stm32flash">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux下搭建STM32开发环境">
 <meta property="og:url" content="http://panqiincs.me/2019/07/26/develop-stm32-on-linux/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="方案最近在学习STM32单片机开发。我手头有一块开发板，主控芯片的型号是STM32F103RCT6，ARM Cortex-M3架构。开发板附带的教程中使用官方的固件库来开发软件，将MDK作为集成开发环境。MDK将代码编辑和工程构建全包了，这固然很方便，但是配置一个新项目的过程非常繁琐，我甚至都不想尝试一遍。于是便萌生了使用其他开发环境的想法。果然，可以使用ARMGCC + STM32CubeMX">
+<meta property="og:description" content="方案最近在学习STM32单片机开发。我手头有一块开发板，开发板附带的教程中使用官方的固件库来开发软件，将MDK作为集成开发环境。MDK将代码编辑和工程构建全包了，这固然很方便，但是配置一个新项目的过程非常繁琐，而且MDK还是收费软件。于是便萌生了使用其他开发环境的想法。果然，有免费的高质量方案：ARMGCC + STM32CubeMX + VSCode：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://wx3.sinaimg.cn/large/e5805747ly1g5e6fnlt53j213y0mltba.jpg">
 <meta property="og:image" content="http://wx1.sinaimg.cn/large/e5805747ly1g5e6fo9jxrj21hc0soznf.jpg">
 <meta property="og:image" content="http://wx2.sinaimg.cn/large/e5805747ly1g5e6foy4ljj213y0mmdie.jpg">
 <meta property="og:image" content="http://wx2.sinaimg.cn/large/e5805747ly1g5e6fpiym8j20ya0m9q7n.jpg">
-<meta property="og:updated_time" content="2019-07-27T11:33:12.257Z">
+<meta property="og:updated_time" content="2019-07-28T01:34:56.995Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux下搭建STM32开发环境">
-<meta name="twitter:description" content="方案最近在学习STM32单片机开发。我手头有一块开发板，主控芯片的型号是STM32F103RCT6，ARM Cortex-M3架构。开发板附带的教程中使用官方的固件库来开发软件，将MDK作为集成开发环境。MDK将代码编辑和工程构建全包了，这固然很方便，但是配置一个新项目的过程非常繁琐，我甚至都不想尝试一遍。于是便萌生了使用其他开发环境的想法。果然，可以使用ARMGCC + STM32CubeMX">
+<meta name="twitter:description" content="方案最近在学习STM32单片机开发。我手头有一块开发板，开发板附带的教程中使用官方的固件库来开发软件，将MDK作为集成开发环境。MDK将代码编辑和工程构建全包了，这固然很方便，但是配置一个新项目的过程非常繁琐，而且MDK还是收费软件。于是便萌生了使用其他开发环境的想法。果然，有免费的高质量方案：ARMGCC + STM32CubeMX + VSCode：">
 <meta name="twitter:image" content="http://wx3.sinaimg.cn/large/e5805747ly1g5e6fnlt53j213y0mltba.jpg">
 
 
@@ -483,7 +483,7 @@
       
 
       
-        <h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>最近在学习STM32单片机开发。我手头有一块开发板，主控芯片的型号是STM32F103RCT6，ARM Cortex-M3架构。开发板附带的教程中使用官方的固件库来开发软件，将MDK作为集成开发环境。MDK将代码编辑和工程构建全包了，这固然很方便，但是配置一个新项目的过程非常繁琐，我甚至都不想尝试一遍。于是便萌生了使用其他开发环境的想法。果然，可以使用ARMGCC + STM32CubeMX + VSCode的方案：</p>
+        <h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>最近在学习STM32单片机开发。我手头有一块开发板，开发板附带的教程中使用官方的固件库来开发软件，将MDK作为集成开发环境。MDK将代码编辑和工程构建全包了，这固然很方便，但是配置一个新项目的过程非常繁琐，而且MDK还是收费软件。于是便萌生了使用其他开发环境的想法。果然，有免费的高质量方案：<strong>ARMGCC</strong> + <strong>STM32CubeMX</strong> + <strong>VSCode</strong>：</p>
 <a id="more"></a>
 <ul>
 <li>ARMGCC：包括编译器、链接器、调试器和C语言标准库在内的一整套工具链</li>
@@ -491,14 +491,14 @@
 <li>VSCode：牛逼哄哄的代码编辑器，搭配强大的插件，从此忘记Vim和Emacs</li>
 </ul>
 <p>上述的三个工具都是跨平台的，在Linux和Windows下都可以搭建，在Linux下搭建更方便。本文以Manjaro Linux为例，其他Linux发行版和Windows的搭建方法类似。</p>
-<h2 id="ARMGCC"><a href="#ARMGCC" class="headerlink" title="ARMGCC"></a>ARMGCC</h2><p>ARMGCC指的是<a href="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm" target="_blank" rel="noopener">GNU Arm Embedded Toolchain</a>，是专为ARM嵌入式处理器开发的工具链软件。一般要安装编译器、调试器和函数库三个组件：</p>
+<h2 id="ARMGCC"><a href="#ARMGCC" class="headerlink" title="ARMGCC"></a>ARMGCC</h2><p>ARMGCC指的是<a href="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm" target="_blank" rel="noopener">GNU Arm Embedded Toolchain</a>，是目标平台为ARM嵌入式处理器的工具链软件。一般要安装编译器、调试器和函数库三个组件：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S arm-none-eabi-gcc arm-none-eabi-gdb arm-none-eabi-newlib</span><br></pre></td></tr></table></figure>
 <p>其中<code>arm-none-eabi-newlib</code>是嵌入式平台下的C语言标准函数库，如果不安装可能会产生编译错误。Windows用户可以通过下载软件包来安装这套工具链，安装完后还需配置环境变量。</p>
 <h2 id="STM32CubeMX"><a href="#STM32CubeMX" class="headerlink" title="STM32CubeMX"></a>STM32CubeMX</h2><p>用STM32CubeMX生成初始化代码比配置固件库方便多了！STM32CubeMX依赖Java运行环境，要安装JRE 1.8：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S jdk8-openjdk</span><br></pre></td></tr></table></figure>
 <p>在ST的<a href="https://www.st.com/zh/development-tools/stm32cubemx.html" target="_blank" rel="noopener">官方网站</a>上下载安装文件，我下载的是5.3.0版本。解压后有三个文件，Windows通过运行exe文件安装，Linux通过运行<code>.linux</code>后缀的文件安装：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./SetupSTM32CubeMX-5.3.0.linux</span><br></pre></td></tr></table></figure>
-<p>会跳出一个图形化安装界面，不停地点下一步就行。安装完成后启动软件，点击File - New Project新建一个工程。此时会看到选择芯片型号的界面，可以通过勾选筛选条件过滤出目标芯片。芯片型号选择好之后，点击Start Project，会有配置引脚的界面。在我的开发板上，PA8和PD2驱动两个LED灯，点击对应的引脚，将它们配置为<code>GPIO_Output</code>，即GPIO输出。</p>
+<p>会跳出一个图形化安装界面，不停地点下一步就行。安装完成后启动软件，点击File - New Project新建一个工程。此时会看到选择芯片型号的界面，可以通过勾选筛选条件过滤出目标芯片，我的芯片型号是STM32F103RCT6，ARM Cortex-M3架构。芯片型号选择好之后，点击Start Project，会有配置引脚的界面。在我的开发板上，PA8和PD2两个GPIO口驱动两个LED灯，点击对应的引脚，将它们配置为<code>GPIO_Output</code>。</p>
 <p><img src="http://wx3.sinaimg.cn/large/e5805747ly1g5e6fnlt53j213y0mltba.jpg" alt="gpio_config"></p>
 <p>接下来是时钟配置，保持默认的配置即可。</p>
 <p><img src="http://wx1.sinaimg.cn/large/e5805747ly1g5e6fo9jxrj21hc0soznf.jpg" alt="clock_config"></p>
