@@ -4,7 +4,70 @@
   <url>
     <loc>http://panqiincs.me/2019/07/29/domain-name-two-years/</loc>
     
-    <lastmod>2019-07-29T04:02:30.007Z</lastmod>
+    <lastmod>2019-07-29T11:19:43.686Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2015/10/30/socket-address-structures/</loc>
+    
+    <lastmod>2019-07-29T04:20:45.753Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2016/01/27/stl-source-analysis-notes/</loc>
+    
+    <lastmod>2019-07-29T04:20:45.753Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2015/03/21/integer-representations/</loc>
+    
+    <lastmod>2019-07-29T04:20:45.750Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2015/04/06/integer-arithmetic/</loc>
+    
+    <lastmod>2019-07-29T04:20:45.750Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2015/05/19/little-and-big-endian/</loc>
+    
+    <lastmod>2019-07-29T04:20:45.750Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2015/06/11/iterative-and-concurrent-server/</loc>
+    
+    <lastmod>2019-07-29T04:20:45.750Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/</loc>
+    
+    <lastmod>2019-07-29T04:20:45.750Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2015/08/05/multiplexing-and-nonblocking-io/</loc>
+    
+    <lastmod>2019-07-29T04:20:45.750Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2015/08/10/tcp-connection-management/</loc>
+    
+    <lastmod>2019-07-29T04:20:45.750Z</lastmod>
     
   </url>
   
@@ -37,13 +100,6 @@
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2015/05/19/little-and-big-endian/</loc>
-    
-    <lastmod>2019-07-24T12:08:18.835Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://panqiincs.me/2018/02/04/cpp-const-member-functions/</loc>
     
     <lastmod>2019-07-24T12:07:57.790Z</lastmod>
@@ -68,13 +124,6 @@
     <loc>http://panqiincs.me/2016/11/20/cpp-rvalue-reference-intro/</loc>
     
     <lastmod>2019-07-24T12:07:57.773Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2016/01/27/stl-source-analysis-notes/</loc>
-    
-    <lastmod>2019-07-24T12:07:57.770Z</lastmod>
     
   </url>
   
@@ -194,13 +243,6 @@
     <loc>http://panqiincs.me/2018/10/16/enslaved-by-phone/</loc>
     
     <lastmod>2019-06-08T03:27:00.742Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2015/08/05/multiplexing-and-nonblocking-io/</loc>
-    
-    <lastmod>2019-06-06T03:33:16.323Z</lastmod>
     
   </url>
   
@@ -443,20 +485,6 @@
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2015/03/21/integer-representations/</loc>
-    
-    <lastmod>2019-05-09T16:34:44.758Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2015/04/06/integer-arithmetic/</loc>
-    
-    <lastmod>2019-05-09T16:33:32.864Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://panqiincs.me/2013/03/22/start-blogging/</loc>
     
     <lastmod>2019-05-09T16:19:16.225Z</lastmod>
@@ -527,13 +555,6 @@
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2015/10/30/socket-address-structures/</loc>
-    
-    <lastmod>2019-04-22T13:01:11.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/</loc>
     
     <lastmod>2019-04-19T08:59:29.000Z</lastmod>
@@ -544,27 +565,6 @@
     <loc>http://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/</loc>
     
     <lastmod>2019-04-19T08:51:28.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2015/06/11/iterative-and-concurrent-server/</loc>
-    
-    <lastmod>2019-04-19T08:45:12.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2015/08/10/tcp-connection-management/</loc>
-    
-    <lastmod>2019-04-12T10:53:07.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/</loc>
-    
-    <lastmod>2019-04-12T10:51:21.000Z</lastmod>
     
   </url>
   
