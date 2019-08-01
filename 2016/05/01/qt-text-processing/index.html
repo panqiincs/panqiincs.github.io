@@ -4,68 +4,24 @@
 
 
 
-
-
-
-
-
-
-
-  
-
-
 <html class="theme-next pisces use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hexo 3.8.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-
-
-
-
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg?v=7.3.0" color="#222">
   <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
-
-
-
   <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
 
-
-
-
-
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.2.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.2.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.2.0">
-
-
-  <link rel="mask-icon" href="/images/safari-pinned-tab.svg?v=7.2.0" color="#222">
-
-
-
-
-
-
-<link rel="stylesheet" href="/css/main.css?v=7.2.0">
-
-
-
-
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-
-
-
-
-
-
 
 
 <script id="hexo.configurations">
@@ -73,7 +29,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '7.2.0',
+    version: '7.3.0',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     copycode: {"enable":false,"show_result":false,"style":null},
@@ -115,17 +71,8 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用Qt基础库处理文本">
 <meta name="twitter:description" content="使用QtQt是一个跨平台的C++应用程序开发框架，广泛用于开发界面程序。Qt不仅仅是个强大的界面库，它的基础库同样强大，很多库用起来比STL还方便，所以我经常用Qt编写控制台（console）程序。本文介绍如何用Qt进行常用的文本操作，代码简单实用，无需太多的解释。 从文件逐行读取例如，数据保存在文本文件中，每行一个数字：">
-
-
-
   <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
-
-
-
-  
-  
   <link rel="canonical" href="http://panqiincs.me/2016/05/01/qt-text-processing/">
-
 
 
 <script id="page.configurations">
@@ -134,13 +81,8 @@
   };
 </script>
 
-  
   <title>用Qt基础库处理文本 | 辛未羊的博客</title>
   
-
-
-
-
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
   <script>
     var host = window.location.hostname;
@@ -151,7 +93,6 @@
       gtag('config', 'UA-39536948-1');
     }
   </script>
-
 
 
 
@@ -189,18 +130,12 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
-  
-  
-    
-  
-
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta">
-    
 
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
@@ -209,8 +144,6 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
-    
   </div>
 
   <div class="site-nav-toggle">
@@ -225,20 +158,13 @@
 
 
 <nav class="site-nav">
-  
     <ul id="menu" class="menu">
-      
         
         
         
           
           <li class="menu-item menu-item-home">
-
-    
-    
       
-    
-
     
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
@@ -249,12 +175,7 @@
         
           
           <li class="menu-item menu-item-archives">
-
-    
-    
       
-    
-
     
 
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
@@ -265,12 +186,7 @@
         
           
           <li class="menu-item menu-item-categories">
-
-    
-    
       
-    
-
     
 
     <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
@@ -281,12 +197,7 @@
         
           
           <li class="menu-item menu-item-tags">
-
-    
-    
       
-    
-
     
 
     <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
@@ -297,12 +208,7 @@
         
           
           <li class="menu-item menu-item-series">
-
-    
-    
       
-    
-
     
 
     <a href="/series/" rel="section"><i class="menu-item-icon fa fa-fw fa-list"></i> <br>系列</a>
@@ -313,29 +219,14 @@
         
           
           <li class="menu-item menu-item-about">
-
-    
-    
       
-    
-
     
 
     <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
-
-      
-      
     </ul>
-  
-
-  
-
-  
 </nav>
-
-
 
 </div>
     </header>
@@ -346,21 +237,13 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
             
 
-          
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
-      
-
-  
-  
-  
-
-  
+    
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
@@ -378,11 +261,8 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="辛未羊的博客">
     </span>
-
-    
       <header class="post-header">
 
-        
         
           <h1 class="post-title" itemprop="name headline">用Qt基础库处理文本
 
@@ -392,12 +272,6 @@
         
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -413,10 +287,6 @@
               <time title="创建时间：2016-05-01 21:33:13" itemprop="dateCreated datePublished" datetime="2016-05-01T21:33:13+08:00">2016-05-01</time>
             </span>
           
-
-          
-
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -431,11 +301,6 @@
                 
               
             </span>
-          
-
-          
-          
-
           
 
           
@@ -456,26 +321,15 @@
   </span>
   
   
-          
-
           <br>
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-      
 
       
         <h2 id="使用Qt"><a href="#使用Qt" class="headerlink" title="使用Qt"></a>使用Qt</h2><p>Qt是一个跨平台的C++应用程序开发框架，广泛用于开发界面程序。Qt不仅仅是个强大的界面库，它的基础库同样强大，很多库用起来比STL还方便，所以我经常用Qt编写控制台（console）程序。本文介绍如何用Qt进行常用的文本操作，代码简单实用，无需太多的解释。</p>
@@ -494,47 +348,21 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">QFile <span class="title">outfile</span><span class="params">(<span class="string">"output.txt"</span>)</span></span>;</span><br><span class="line"><span class="keyword">if</span> (!outfile.open(QIODevice::ReadWrite | QFile::Truncate)) &#123;</span><br><span class="line">    qDebug() &lt;&lt; <span class="string">"Openning file failed!"</span>;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">QTextStream <span class="title">ts</span><span class="params">(&amp;outfile)</span></span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> row = <span class="number">0</span>; row &lt; NROWS; ++row) &#123;</span><br><span class="line">    <span class="keyword">float</span> yaw   = data[row][<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">float</span> pitch = data[row][<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">float</span> roll  = data[row][<span class="number">2</span>];</span><br><span class="line">    ts &lt;&lt; yaw &lt;&lt; <span class="string">"\t"</span> &lt;&lt; pitch &lt;&lt; <span class="string">"\t"</span> &lt;&lt; roll &lt;&lt; <span class="built_in">endl</span>;  <span class="comment">// 分隔符为制表符</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">outfile.close();</span><br></pre></td></tr></table></figure>
 <p><code>open</code>函数打开写入的目标文件，参数一般需加上<code>QFile::Truncate</code>选项，将文件的内容清空。<code>endl</code>表示换行，在Windows系统下对应<code>\r\n</code>，在Linux系统下对应<code>\n</code>。</p>
 
-      
     </div>
-
-    
       
 
 
     
-
     
-      
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
     
       <div>
         
-
-
-
-
-  
-
-
 
 <ul class="post-copyright">
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Krist Pan</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    
     <a href="http://panqiincs.me/2016/05/01/qt-text-processing/" title="用Qt基础库处理文本">http://panqiincs.me/2016/05/01/qt-text-processing/</a>
   </li>
   <li class="post-copyright-license">
@@ -542,30 +370,18 @@
 </ul>
 
       </div>
-    
 
     <footer class="post-footer">
-      
-        
           
         
         <div class="post-tags">
-          
             <a href="/tags/qt/" rel="tag"># qt</a>
           
             <a href="/tags/文本处理/" rel="tag"># 文本处理</a>
           
         </div>
-      
-
-      
-      
-      
-
-      
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-            
               <a href="/2016/04/21/about-ros/" rel="next" title="机器人操作系统ROS">
                 <i class="fa fa-chevron-left"></i> 机器人操作系统ROS
               </a>
@@ -575,17 +391,12 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
               <a href="/2016/06/20/driving-license/" rel="prev" title="终于拿到驾照">
                 终于拿到驾照 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
         </div>
-      
-
-      
-      
     </footer>
   </div>
   
@@ -598,7 +409,6 @@
 
           </div>
           
-  
     
     
   <div class="comments" id="comments">
@@ -610,9 +420,7 @@
   
 
 
-
         </div>
-        
           
   
   <div class="sidebar-toggle">
@@ -625,10 +433,6 @@
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
-
-      
-
-      
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
@@ -643,16 +447,11 @@
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  
     <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Krist Pan">
-  
   <p class="site-author-name" itemprop="name">Krist Pan</p>
   <div class="site-description motion-element" itemprop="description">人生如逆旅，我亦是行人</div>
 </div>
-
-
   <nav class="site-state motion-element">
-    
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
@@ -661,8 +460,6 @@
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
-    
-
     
       
       
@@ -694,8 +491,6 @@
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
-    
-
     
       
       
@@ -1005,21 +800,12 @@
       </div>
     
   </nav>
-
-
-
   <div class="feed-link motion-element">
     <a href="/atom.xml" rel="alternate">
       <i class="fa fa-rss"></i>RSS
     </a>
   </div>
-
-
-
-
-
   <div class="links-of-author motion-element">
-    
       <span class="links-of-author-item">
       
       
@@ -1056,17 +842,12 @@
   </div>
 
 
-
-
-
-
   <div class="links-of-blogroll motion-element links-of-blogroll-block">
     <div class="links-of-blogroll-title">
       <i class="fa  fa-fw fa-link"></i>
       友链
     </div>
     <ul class="links-of-blogroll-list">
-      
         <li class="links-of-blogroll-item">
           <a href="http://blog.sciencenet.cn/u/qhliu" title="http://blog.sciencenet.cn/u/qhliu" rel="noopener" target="_blank">湖南土著</a>
         </li>
@@ -1098,13 +879,8 @@
     </ul>
   </div>
 
-
-          
-          
         </div>
       </div>
-
-      
       <!--noindex-->
         <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
@@ -1123,14 +899,11 @@
       <!--/noindex-->
       
 
-      
-
     </div>
   </aside>
   <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
@@ -1141,25 +914,10 @@
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Krist Pan</span>
-
-  
-
-  
 </div>
-
-
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
-
-
-
   <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.2.0</div>
-
-
-
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
 
         
 
@@ -1173,91 +931,34 @@
         
       </div>
     </footer>
-
-    
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
-        
       </div>
-    
-
-    
-
-    
 
     
 
   </div>
 
   
-
-<script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-  
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
-
-  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
 
-
-
-  <script src="/js/utils.js?v=7.2.0"></script>
-
-  <script src="/js/motion.js?v=7.2.0"></script>
-
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
 
 
   
-  
-
-
-  <script src="/js/affix.js?v=7.2.0"></script>
-
-  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
 
 
 
-  
-  <script src="/js/scrollspy.js?v=7.2.0"></script>
-<script src="/js/post-details.js?v=7.2.0"></script>
-
-
-
-  <script src="/js/next-boot.js?v=7.2.0"></script>
+  <script src="/js/next-boot.js?v=7.3.0"></script>
 
   
 
@@ -1267,51 +968,6 @@
 
 
   
-  
-
-  
-  
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
-
-window.addEventListener("message", function(e) {
-  var data = e.data;
-  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
-    var featureID = data.split(':')[1];
-    var height = data.split(':')[2];
-    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
-  }
-}, false);
-</script>
-
-
-
   <script>
     (function(){
       var bp = document.createElement('script');
@@ -1326,8 +982,38 @@ window.addEventListener("message", function(e) {
 
 
 
-
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 <script>
   function loadCount() {
@@ -1339,27 +1025,21 @@ window.addEventListener("message", function(e) {
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
 </script>
-
-
 <script>
   var disqus_config = function() {
     this.page.url = "http://panqiincs.me/2016/05/01/qt-text-processing/";
     this.page.identifier = "2016/05/01/qt-text-processing/";
-    this.page.title = '用Qt基础库处理文本';
-    };
+    this.page.title = '用Qt基础库处理文本';};
   function loadComments() {
     var d = document, s = d.createElement('script');
     s.src = 'https://panqiincs.disqus.com/embed.js';
     s.setAttribute('data-timestamp', '' + +new Date());
     (d.head || d.body).appendChild(s);
   }
-  
     window.addEventListener('load', loadComments, false);
   
 </script>
 
-
-  
 
 </body>
 </html>

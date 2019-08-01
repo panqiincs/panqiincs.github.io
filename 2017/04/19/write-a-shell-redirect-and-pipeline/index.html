@@ -4,68 +4,24 @@
 
 
 
-
-
-
-
-
-
-
-  
-
-
 <html class="theme-next pisces use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hexo 3.8.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-
-
-
-
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg?v=7.3.0" color="#222">
   <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
-
-
-
   <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
 
-
-
-
-
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.2.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.2.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.2.0">
-
-
-  <link rel="mask-icon" href="/images/safari-pinned-tab.svg?v=7.2.0" color="#222">
-
-
-
-
-
-
-<link rel="stylesheet" href="/css/main.css?v=7.2.0">
-
-
-
-
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-
-
-
-
-
-
 
 
 <script id="hexo.configurations">
@@ -73,7 +29,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '7.2.0',
+    version: '7.3.0',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     copycode: {"enable":false,"show_result":false,"style":null},
@@ -118,17 +74,8 @@
 <meta name="twitter:title" content="Shell实现：重定向和管道">
 <meta name="twitter:description" content="介绍Shell实现：基本功能一文介绍了如何实现shell的基本功能，本文介绍如何实现I/O重定向和管道。 I/O重定向使得程序可以自由地指定数据的流向，不一定从键盘读取数据或输出结果到屏幕上；管道使得一条命令的输出可以作为另一条命令的输入，多条命令可以配合完成一项任务。例如下面的命令：">
 <meta name="twitter:image" content="http://wx2.sinaimg.cn/large/e5805747gy1g187gc5m1jj20xc0eqwfp.jpg">
-
-
-
   <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
-
-
-
-  
-  
   <link rel="canonical" href="http://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/">
-
 
 
 <script id="page.configurations">
@@ -137,13 +84,8 @@
   };
 </script>
 
-  
   <title>Shell实现：重定向和管道 | 辛未羊的博客</title>
   
-
-
-
-
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
   <script>
     var host = window.location.hostname;
@@ -154,7 +96,6 @@
       gtag('config', 'UA-39536948-1');
     }
   </script>
-
 
 
 
@@ -192,18 +133,12 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
-  
-  
-    
-  
-
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta">
-    
 
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
@@ -212,8 +147,6 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
-    
   </div>
 
   <div class="site-nav-toggle">
@@ -228,20 +161,13 @@
 
 
 <nav class="site-nav">
-  
     <ul id="menu" class="menu">
-      
         
         
         
           
           <li class="menu-item menu-item-home">
-
-    
-    
       
-    
-
     
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
@@ -252,12 +178,7 @@
         
           
           <li class="menu-item menu-item-archives">
-
-    
-    
       
-    
-
     
 
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
@@ -268,12 +189,7 @@
         
           
           <li class="menu-item menu-item-categories">
-
-    
-    
       
-    
-
     
 
     <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
@@ -284,12 +200,7 @@
         
           
           <li class="menu-item menu-item-tags">
-
-    
-    
       
-    
-
     
 
     <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
@@ -300,12 +211,7 @@
         
           
           <li class="menu-item menu-item-series">
-
-    
-    
       
-    
-
     
 
     <a href="/series/" rel="section"><i class="menu-item-icon fa fa-fw fa-list"></i> <br>系列</a>
@@ -316,29 +222,14 @@
         
           
           <li class="menu-item menu-item-about">
-
-    
-    
       
-    
-
     
 
     <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
-
-      
-      
     </ul>
-  
-
-  
-
-  
 </nav>
-
-
 
 </div>
     </header>
@@ -349,21 +240,13 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
             
 
-          
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
-      
-
-  
-  
-  
-
-  
+    
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
@@ -381,11 +264,8 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="辛未羊的博客">
     </span>
-
-    
       <header class="post-header">
 
-        
         
           <h1 class="post-title" itemprop="name headline">Shell实现：重定向和管道
 
@@ -395,12 +275,6 @@
         
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -416,10 +290,6 @@
               <time title="创建时间：2017-04-19 21:13:18" itemprop="dateCreated datePublished" datetime="2017-04-19T21:13:18+08:00">2017-04-19</time>
             </span>
           
-
-          
-
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -434,11 +304,6 @@
                 
               
             </span>
-          
-
-          
-          
-
           
 
           
@@ -459,26 +324,15 @@
   </span>
   
   
-          
-
           <br>
-          
-
-          
-
-          
 
         </div>
       </header>
-    
 
     
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-      
 
       
         <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><a href="https://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/">Shell实现：基本功能</a>一文介绍了如何实现shell的基本功能，本文介绍如何实现I/O重定向和管道。</p>
@@ -520,15 +374,10 @@
 <li><a href="https://book.douban.com/subject/1219329/" target="_blank" rel="noopener">Unix/Linux编程实践教程</a></li>
 </ol>
 
-      
     </div>
-
-    
       
-
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
-  
     <li class="popular-posts-item">
       
       
@@ -567,7 +416,7 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2017/05/23/burn-pi-image-under-linux/" rel="bookmark">Linux下烧写树莓派系统</a></div>
+      <div class="popular-posts-title"><a href="/2017/06/26/common-linux-commands/" rel="bookmark">实用Linux命令</a></div>
       
     </li>
   
@@ -575,39 +424,16 @@
 
 
     
-
     
-      
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
     
       <div>
         
-
-
-
-
-  
-
-
 
 <ul class="post-copyright">
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Krist Pan</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    
     <a href="http://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/" title="Shell实现：重定向和管道">http://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/</a>
   </li>
   <li class="post-copyright-license">
@@ -615,15 +441,11 @@
 </ul>
 
       </div>
-    
 
     <footer class="post-footer">
-      
-        
           
         
         <div class="post-tags">
-          
             <a href="/tags/linux/" rel="tag"># linux</a>
           
             <a href="/tags/shell/" rel="tag"># shell</a>
@@ -635,16 +457,8 @@
             <a href="/tags/管道/" rel="tag"># 管道</a>
           
         </div>
-      
-
-      
-      
-      
-
-      
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-            
               <a href="/2017/03/11/gvim-monaco-font/" rel="next" title="配置GVim使用Monaco字体">
                 <i class="fa fa-chevron-left"></i> 配置GVim使用Monaco字体
               </a>
@@ -654,17 +468,12 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
               <a href="/2017/05/23/burn-pi-image-under-linux/" rel="prev" title="Linux下烧写树莓派系统">
                 Linux下烧写树莓派系统 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
         </div>
-      
-
-      
-      
     </footer>
   </div>
   
@@ -677,7 +486,6 @@
 
           </div>
           
-  
     
     
   <div class="comments" id="comments">
@@ -689,9 +497,7 @@
   
 
 
-
         </div>
-        
           
   
   <div class="sidebar-toggle">
@@ -704,10 +510,6 @@
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
-
-      
-
-      
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
@@ -722,16 +524,11 @@
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  
     <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Krist Pan">
-  
   <p class="site-author-name" itemprop="name">Krist Pan</p>
   <div class="site-description motion-element" itemprop="description">人生如逆旅，我亦是行人</div>
 </div>
-
-
   <nav class="site-state motion-element">
-    
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
@@ -740,8 +537,6 @@
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
-    
-
     
       
       
@@ -773,8 +568,6 @@
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
-    
-
     
       
       
@@ -1084,21 +877,12 @@
       </div>
     
   </nav>
-
-
-
   <div class="feed-link motion-element">
     <a href="/atom.xml" rel="alternate">
       <i class="fa fa-rss"></i>RSS
     </a>
   </div>
-
-
-
-
-
   <div class="links-of-author motion-element">
-    
       <span class="links-of-author-item">
       
       
@@ -1135,17 +919,12 @@
   </div>
 
 
-
-
-
-
   <div class="links-of-blogroll motion-element links-of-blogroll-block">
     <div class="links-of-blogroll-title">
       <i class="fa  fa-fw fa-link"></i>
       友链
     </div>
     <ul class="links-of-blogroll-list">
-      
         <li class="links-of-blogroll-item">
           <a href="http://blog.sciencenet.cn/u/qhliu" title="http://blog.sciencenet.cn/u/qhliu" rel="noopener" target="_blank">湖南土著</a>
         </li>
@@ -1177,13 +956,8 @@
     </ul>
   </div>
 
-
-          
-          
         </div>
       </div>
-
-      
       <!--noindex-->
         <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
@@ -1202,14 +976,11 @@
       <!--/noindex-->
       
 
-      
-
     </div>
   </aside>
   <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
@@ -1220,25 +991,10 @@
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Krist Pan</span>
-
-  
-
-  
 </div>
-
-
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
-
-
-
   <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.2.0</div>
-
-
-
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
 
         
 
@@ -1252,91 +1008,34 @@
         
       </div>
     </footer>
-
-    
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
-        
       </div>
-    
-
-    
-
-    
 
     
 
   </div>
 
   
-
-<script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-  
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
-
-  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
 
-
-
-  <script src="/js/utils.js?v=7.2.0"></script>
-
-  <script src="/js/motion.js?v=7.2.0"></script>
-
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
 
 
   
-  
-
-
-  <script src="/js/affix.js?v=7.2.0"></script>
-
-  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
 
 
 
-  
-  <script src="/js/scrollspy.js?v=7.2.0"></script>
-<script src="/js/post-details.js?v=7.2.0"></script>
-
-
-
-  <script src="/js/next-boot.js?v=7.2.0"></script>
+  <script src="/js/next-boot.js?v=7.3.0"></script>
 
   
 
@@ -1346,51 +1045,6 @@
 
 
   
-  
-
-  
-  
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
-
-window.addEventListener("message", function(e) {
-  var data = e.data;
-  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
-    var featureID = data.split(':')[1];
-    var height = data.split(':')[2];
-    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
-  }
-}, false);
-</script>
-
-
-
   <script>
     (function(){
       var bp = document.createElement('script');
@@ -1405,8 +1059,38 @@ window.addEventListener("message", function(e) {
 
 
 
-
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 <script>
   function loadCount() {
@@ -1418,27 +1102,21 @@ window.addEventListener("message", function(e) {
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
 </script>
-
-
 <script>
   var disqus_config = function() {
     this.page.url = "http://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/";
     this.page.identifier = "2017/04/19/write-a-shell-redirect-and-pipeline/";
-    this.page.title = 'Shell实现：重定向和管道';
-    };
+    this.page.title = 'Shell实现：重定向和管道';};
   function loadComments() {
     var d = document, s = d.createElement('script');
     s.src = 'https://panqiincs.disqus.com/embed.js';
     s.setAttribute('data-timestamp', '' + +new Date());
     (d.head || d.body).appendChild(s);
   }
-  
     window.addEventListener('load', loadComments, false);
   
 </script>
 
-
-  
 
 </body>
 </html>
