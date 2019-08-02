@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/2019/06/05/after-installing-manjaro/</loc>
+    
+    <lastmod>2019-08-02T09:00:48.983Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2015/08/05/multiplexing-and-nonblocking-io/</loc>
     
     <lastmod>2019-07-30T08:15:31.092Z</lastmod>
@@ -23,14 +30,14 @@
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2016/02/18/process-picamera-video-on-pc/</loc>
+    <loc>http://panqiincs.me/2016/01/27/stl-source-analysis-notes/</loc>
     
     <lastmod>2019-07-30T08:15:31.092Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2016/01/27/stl-source-analysis-notes/</loc>
+    <loc>http://panqiincs.me/2016/02/18/process-picamera-video-on-pc/</loc>
     
     <lastmod>2019-07-30T08:15:31.092Z</lastmod>
     
@@ -89,13 +96,6 @@
     <loc>http://panqiincs.me/2017/06/26/common-linux-commands/</loc>
     
     <lastmod>2019-07-27T15:45:36.491Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/06/05/after-installing-manjaro/</loc>
-    
-    <lastmod>2019-07-25T05:14:21.292Z</lastmod>
     
   </url>
   
