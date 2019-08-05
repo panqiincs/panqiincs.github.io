@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
-<script id="hexo.configurations">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
@@ -32,6 +32,7 @@
     version: '7.3.0',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
     copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: false,
     mediumzoom: false,
@@ -45,10 +46,7 @@
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
     localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    search: {
-      root: '/',
-      path: ''
-    },
+    path: '',
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -74,9 +72,14 @@
   <link rel="canonical" href="http://panqiincs.me/page/5/">
 
 
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
   };
 </script>
 
@@ -129,7 +132,7 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
-  <div class="container sidebar-position-left page-home">
+  <div class="container sidebar-position-left">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -155,78 +158,78 @@
 </div>
 
 
-
 <nav class="site-nav">
-    <ul id="menu" class="menu">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
         
-        
-        
-          
-          <li class="menu-item menu-item-home">
+        <li class="menu-item menu-item-home">
       
     
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
+      
+      
+      
         
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
       
     
 
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
+      
+      
+      
         
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-categories">
       
     
 
     <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
 
   </li>
+      
+      
+      
         
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
       
     
 
     <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
 
   </li>
+      
+      
+      
         
-        
-        
-          
-          <li class="menu-item menu-item-series">
+        <li class="menu-item menu-item-series">
       
     
 
     <a href="/series/" rel="section"><i class="menu-item-icon fa fa-fw fa-list"></i> <br>系列</a>
 
   </li>
+      
+      
+      
         
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-about">
       
     
 
     <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
-    </ul>
-</nav>
+  </ul>
 
+</nav>
 </div>
     </header>
 
@@ -238,7 +241,7 @@
         <div class="content-wrap">
             
 
-          <div id="content" class="content">
+          <div id="content" class="content page-home">
             
   <section id="posts" class="posts-expand">
       
@@ -263,10 +266,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/09/10/after-installing-opensuse-leap/" class="post-title-link" itemprop="url">安装OpenSUSE Leap之后</a>
               
+              <a href="/2017/09/10/after-installing-opensuse-leap/" class="post-title-link" itemprop="url">安装OpenSUSE Leap之后</a>
             
           </h1>
         
@@ -276,9 +277,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -291,9 +290,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具使用/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a></span>
 
@@ -311,9 +308,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2017/09/10/after-installing-opensuse-leap/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/09/10/after-installing-opensuse-leap/" itemprop="commentCount"></span>
@@ -321,7 +316,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -383,10 +378,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/09/01/host-hexo-blog-at-vps/" class="post-title-link" itemprop="url">将Hexo博客托管到VPS</a>
               
+              <a href="/2017/09/01/host-hexo-blog-at-vps/" class="post-title-link" itemprop="url">将Hexo博客托管到VPS</a>
             
           </h1>
         
@@ -396,9 +389,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -411,9 +402,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/网站维护/" itemprop="url" rel="index"><span itemprop="name">网站维护</span></a></span>
 
@@ -431,9 +420,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2017/09/01/host-hexo-blog-at-vps/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/09/01/host-hexo-blog-at-vps/" itemprop="commentCount"></span>
@@ -441,7 +428,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -503,10 +490,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/08/13/python-crawler-lifeofpix/" class="post-title-link" itemprop="url">Python爬虫：下载lifeofpix图片</a>
               
+              <a href="/2017/08/13/python-crawler-lifeofpix/" class="post-title-link" itemprop="url">Python爬虫：下载lifeofpix图片</a>
             
           </h1>
         
@@ -516,9 +501,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -531,9 +514,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a></span>
 
@@ -551,9 +532,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2017/08/13/python-crawler-lifeofpix/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/08/13/python-crawler-lifeofpix/" itemprop="commentCount"></span>
@@ -561,7 +540,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -623,10 +602,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/08/12/build-emacs-from-source/" class="post-title-link" itemprop="url">从源码编译安装Emacs</a>
               
+              <a href="/2017/08/12/build-emacs-from-source/" class="post-title-link" itemprop="url">从源码编译安装Emacs</a>
             
           </h1>
         
@@ -636,9 +613,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -651,9 +626,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具使用/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a></span>
 
@@ -671,9 +644,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2017/08/12/build-emacs-from-source/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/08/12/build-emacs-from-source/" itemprop="commentCount"></span>
@@ -681,7 +652,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -743,10 +714,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/08/06/hexo-blog-code-management/" class="post-title-link" itemprop="url">Hexo博客源码管理</a>
               
+              <a href="/2017/08/06/hexo-blog-code-management/" class="post-title-link" itemprop="url">Hexo博客源码管理</a>
             
           </h1>
         
@@ -756,9 +725,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -771,9 +738,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/网站维护/" itemprop="url" rel="index"><span itemprop="name">网站维护</span></a></span>
 
@@ -791,9 +756,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2017/08/06/hexo-blog-code-management/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/08/06/hexo-blog-code-management/" itemprop="commentCount"></span>
@@ -801,7 +764,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -862,10 +825,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/07/03/eliminate-unused-functions-in-ds5/" class="post-title-link" itemprop="url">DS5编译器优化未使用的函数</a>
               
+              <a href="/2017/07/03/eliminate-unused-functions-in-ds5/" class="post-title-link" itemprop="url">DS5编译器优化未使用的函数</a>
             
           </h1>
         
@@ -875,9 +836,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -890,9 +849,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具使用/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a></span>
 
@@ -910,9 +867,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2017/07/03/eliminate-unused-functions-in-ds5/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/03/eliminate-unused-functions-in-ds5/" itemprop="commentCount"></span>
@@ -920,7 +875,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -982,10 +937,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/06/26/common-linux-commands/" class="post-title-link" itemprop="url">实用Linux命令</a>
               
+              <a href="/2017/06/26/common-linux-commands/" class="post-title-link" itemprop="url">实用Linux命令</a>
             
           </h1>
         
@@ -995,9 +948,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -1010,9 +961,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具使用/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a></span>
 
@@ -1030,9 +979,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2017/06/26/common-linux-commands/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/26/common-linux-commands/" itemprop="commentCount"></span>
@@ -1040,7 +987,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -1102,10 +1049,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/06/17/linux-kernel-linked-list-explained/" class="post-title-link" itemprop="url">Linux内核中的链表</a>
               
+              <a href="/2017/06/17/linux-kernel-linked-list-explained/" class="post-title-link" itemprop="url">Linux内核中的链表</a>
             
           </h1>
         
@@ -1115,9 +1060,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -1130,9 +1073,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a></span>
 
@@ -1150,9 +1091,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2017/06/17/linux-kernel-linked-list-explained/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/17/linux-kernel-linked-list-explained/" itemprop="commentCount"></span>
@@ -1160,7 +1099,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -1223,10 +1162,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/05/23/burn-pi-image-under-linux/" class="post-title-link" itemprop="url">Linux下烧写树莓派系统</a>
               
+              <a href="/2017/05/23/burn-pi-image-under-linux/" class="post-title-link" itemprop="url">Linux下烧写树莓派系统</a>
             
           </h1>
         
@@ -1236,9 +1173,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -1251,9 +1186,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具使用/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a></span>
 
@@ -1271,9 +1204,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2017/05/23/burn-pi-image-under-linux/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/23/burn-pi-image-under-linux/" itemprop="commentCount"></span>
@@ -1281,7 +1212,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -1343,10 +1274,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/04/19/write-a-shell-redirect-and-pipeline/" class="post-title-link" itemprop="url">Shell实现：重定向和管道</a>
               
+              <a href="/2017/04/19/write-a-shell-redirect-and-pipeline/" class="post-title-link" itemprop="url">Shell实现：重定向和管道</a>
             
           </h1>
         
@@ -1356,9 +1285,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -1371,9 +1298,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a></span>
 
@@ -1391,9 +1316,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2017/04/19/write-a-shell-redirect-and-pipeline/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/19/write-a-shell-redirect-and-pipeline/" itemprop="commentCount"></span>
@@ -1401,7 +1324,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -1944,23 +1867,19 @@
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
-  <script src="/js/utils.js?v=7.3.0"></script>
+<script src="/js/utils.js?v=7.3.0"></script>
   <script src="/js/motion.js?v=7.3.0"></script>
 
-  
+
   <script src="/js/affix.js?v=7.3.0"></script>
   <script src="/js/schemes/pisces.js?v=7.3.0"></script>
 
 
-  
+<script src="/js/next-boot.js?v=7.3.0"></script>
 
-  <script src="/js/next-boot.js?v=7.3.0"></script>
 
-  
 
-  
 
-  
 
 
   
@@ -1978,6 +1897,31 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
   
     
       
@@ -2002,36 +1946,12 @@
     
   
 
+  
+
+  
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
     
 <script>
   function loadCount() {
@@ -2043,7 +1963,6 @@
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
 </script>
-
 
 </body>
 </html>

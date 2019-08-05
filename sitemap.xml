@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/2019/07/26/develop-stm32-on-linux/</loc>
+    
+    <lastmod>2019-08-04T15:28:27.579Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2019/06/05/after-installing-manjaro/</loc>
     
     <lastmod>2019-08-03T08:28:28.679Z</lastmod>
@@ -243,13 +250,6 @@
     <loc>http://panqiincs.me/2019/07/29/domain-name-two-years/</loc>
     
     <lastmod>2019-07-29T11:19:43.686Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/07/26/develop-stm32-on-linux/</loc>
-    
-    <lastmod>2019-07-28T01:34:56.995Z</lastmod>
     
   </url>
   

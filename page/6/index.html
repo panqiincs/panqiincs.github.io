@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
-<script id="hexo.configurations">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
@@ -32,6 +32,7 @@
     version: '7.3.0',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
     copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: false,
     mediumzoom: false,
@@ -45,10 +46,7 @@
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
     localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    search: {
-      root: '/',
-      path: ''
-    },
+    path: '',
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -74,9 +72,14 @@
   <link rel="canonical" href="http://panqiincs.me/page/6/">
 
 
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
   };
 </script>
 
@@ -129,7 +132,7 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
-  <div class="container sidebar-position-left page-home">
+  <div class="container sidebar-position-left">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -155,78 +158,78 @@
 </div>
 
 
-
 <nav class="site-nav">
-    <ul id="menu" class="menu">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
         
-        
-        
-          
-          <li class="menu-item menu-item-home">
+        <li class="menu-item menu-item-home">
       
     
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
+      
+      
+      
         
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+        <li class="menu-item menu-item-archives">
       
     
 
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
+      
+      
+      
         
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-categories">
       
     
 
     <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
 
   </li>
+      
+      
+      
         
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-tags">
       
     
 
     <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
 
   </li>
+      
+      
+      
         
-        
-        
-          
-          <li class="menu-item menu-item-series">
+        <li class="menu-item menu-item-series">
       
     
 
     <a href="/series/" rel="section"><i class="menu-item-icon fa fa-fw fa-list"></i> <br>系列</a>
 
   </li>
+      
+      
+      
         
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-about">
       
     
 
     <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
-    </ul>
-</nav>
+  </ul>
 
+</nav>
 </div>
     </header>
 
@@ -238,7 +241,7 @@
         <div class="content-wrap">
             
 
-          <div id="content" class="content">
+          <div id="content" class="content page-home">
             
   <section id="posts" class="posts-expand">
       
@@ -263,10 +266,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/03/11/gvim-monaco-font/" class="post-title-link" itemprop="url">配置GVim使用Monaco字体</a>
               
+              <a href="/2017/03/11/gvim-monaco-font/" class="post-title-link" itemprop="url">配置GVim使用Monaco字体</a>
             
           </h1>
         
@@ -276,9 +277,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -291,9 +290,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具使用/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a></span>
 
@@ -311,9 +308,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2017/03/11/gvim-monaco-font/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/11/gvim-monaco-font/" itemprop="commentCount"></span>
@@ -321,7 +316,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -382,10 +377,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/02/26/write-a-shell-basic-functionality/" class="post-title-link" itemprop="url">Shell实现：基本功能</a>
               
+              <a href="/2017/02/26/write-a-shell-basic-functionality/" class="post-title-link" itemprop="url">Shell实现：基本功能</a>
             
           </h1>
         
@@ -395,9 +388,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -410,9 +401,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a></span>
 
@@ -430,9 +419,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2017/02/26/write-a-shell-basic-functionality/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/26/write-a-shell-basic-functionality/" itemprop="commentCount"></span>
@@ -440,7 +427,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -507,10 +494,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/01/07/year-end-summary-of-2016/" class="post-title-link" itemprop="url">2016年终总结</a>
               
+              <a href="/2017/01/07/year-end-summary-of-2016/" class="post-title-link" itemprop="url">2016年终总结</a>
             
           </h1>
         
@@ -520,9 +505,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -535,9 +518,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/生活记录/" itemprop="url" rel="index"><span itemprop="name">生活记录</span></a></span>
 
@@ -555,9 +536,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2017/01/07/year-end-summary-of-2016/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/07/year-end-summary-of-2016/" itemprop="commentCount"></span>
@@ -565,7 +544,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -628,10 +607,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/01/03/small-goals-set-for-2017/" class="post-title-link" itemprop="url">2017年的几个小目标</a>
               
+              <a href="/2017/01/03/small-goals-set-for-2017/" class="post-title-link" itemprop="url">2017年的几个小目标</a>
             
           </h1>
         
@@ -641,9 +618,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -656,9 +631,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/生活记录/" itemprop="url" rel="index"><span itemprop="name">生活记录</span></a></span>
 
@@ -676,9 +649,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2017/01/03/small-goals-set-for-2017/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/03/small-goals-set-for-2017/" itemprop="commentCount"></span>
@@ -686,7 +657,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -752,10 +723,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/11/20/cpp-rvalue-reference-intro/" class="post-title-link" itemprop="url">C++右值引用简介</a>
               
+              <a href="/2016/11/20/cpp-rvalue-reference-intro/" class="post-title-link" itemprop="url">C++右值引用简介</a>
             
           </h1>
         
@@ -765,9 +734,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -780,9 +747,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a></span>
 
@@ -800,9 +765,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2016/11/20/cpp-rvalue-reference-intro/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/11/20/cpp-rvalue-reference-intro/" itemprop="commentCount"></span>
@@ -810,7 +773,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -873,10 +836,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/10/23/an-application-of-bayes-theorem/" class="post-title-link" itemprop="url">贝叶斯定理的有趣应用</a>
               
+              <a href="/2016/10/23/an-application-of-bayes-theorem/" class="post-title-link" itemprop="url">贝叶斯定理的有趣应用</a>
             
           </h1>
         
@@ -886,9 +847,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -901,9 +860,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/胡言乱语/" itemprop="url" rel="index"><span itemprop="name">胡言乱语</span></a></span>
 
@@ -921,9 +878,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2016/10/23/an-application-of-bayes-theorem/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/10/23/an-application-of-bayes-theorem/" itemprop="commentCount"></span>
@@ -931,7 +886,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -992,10 +947,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/09/17/a-new-start-for-life-and-blog/" class="post-title-link" itemprop="url">新生活，新博客</a>
               
+              <a href="/2016/09/17/a-new-start-for-life-and-blog/" class="post-title-link" itemprop="url">新生活，新博客</a>
             
           </h1>
         
@@ -1005,9 +958,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -1020,9 +971,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/网站维护/" itemprop="url" rel="index"><span itemprop="name">网站维护</span></a></span>
 
@@ -1040,9 +989,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2016/09/17/a-new-start-for-life-and-blog/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/17/a-new-start-for-life-and-blog/" itemprop="commentCount"></span>
@@ -1050,7 +997,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -1112,10 +1059,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/08/28/install-tl-wn823n-wlan-driver/" class="post-title-link" itemprop="url">Linux下安装TL-WN823N无线网卡驱动</a>
               
+              <a href="/2016/08/28/install-tl-wn823n-wlan-driver/" class="post-title-link" itemprop="url">Linux下安装TL-WN823N无线网卡驱动</a>
             
           </h1>
         
@@ -1125,9 +1070,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -1140,9 +1083,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具使用/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a></span>
 
@@ -1160,9 +1101,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2016/08/28/install-tl-wn823n-wlan-driver/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/28/install-tl-wn823n-wlan-driver/" itemprop="commentCount"></span>
@@ -1170,7 +1109,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -1233,10 +1172,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/08/04/the-first-working-day/" class="post-title-link" itemprop="url">第一个工作日</a>
               
+              <a href="/2016/08/04/the-first-working-day/" class="post-title-link" itemprop="url">第一个工作日</a>
             
           </h1>
         
@@ -1246,9 +1183,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -1261,9 +1196,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/生活记录/" itemprop="url" rel="index"><span itemprop="name">生活记录</span></a></span>
 
@@ -1281,9 +1214,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2016/08/04/the-first-working-day/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/04/the-first-working-day/" itemprop="commentCount"></span>
@@ -1291,7 +1222,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -1353,10 +1284,8 @@
 
         
           <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/07/06/hello-shenzhen/" class="post-title-link" itemprop="url">你好，深圳</a>
               
+              <a href="/2016/07/06/hello-shenzhen/" class="post-title-link" itemprop="url">你好，深圳</a>
             
           </h1>
         
@@ -1366,9 +1295,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -1381,9 +1308,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/生活记录/" itemprop="url" rel="index"><span itemprop="name">生活记录</span></a></span>
 
@@ -1401,9 +1326,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-comment-o"></i>
     </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
+    <span class="post-meta-item-text">评论数：</span>
   
     <a href="/2016/07/06/hello-shenzhen/#comments" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/06/hello-shenzhen/" itemprop="commentCount"></span>
@@ -1411,7 +1334,7 @@
   </span>
   
   
-          <br>
+          
 
         </div>
       </header>
@@ -1954,23 +1877,19 @@
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
-  <script src="/js/utils.js?v=7.3.0"></script>
+<script src="/js/utils.js?v=7.3.0"></script>
   <script src="/js/motion.js?v=7.3.0"></script>
 
-  
+
   <script src="/js/affix.js?v=7.3.0"></script>
   <script src="/js/schemes/pisces.js?v=7.3.0"></script>
 
 
-  
+<script src="/js/next-boot.js?v=7.3.0"></script>
 
-  <script src="/js/next-boot.js?v=7.3.0"></script>
 
-  
 
-  
 
-  
 
 
   
@@ -1987,6 +1906,31 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
   
     
@@ -2054,41 +1998,21 @@
     }
   });
 </script>
-<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', function() {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
 
     
   
 
+  
+
+  
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
     
 <script>
   function loadCount() {
@@ -2100,7 +2024,6 @@
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
 </script>
-
 
 </body>
 </html>
