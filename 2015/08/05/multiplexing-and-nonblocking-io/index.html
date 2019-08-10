@@ -58,7 +58,7 @@
 </script>
 
   <meta name="description" content="问题I/O多路复用之epoll一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行read或write都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果多路复用不搭配非阻塞I/O，在下面几种">
-<meta name="keywords" content="linux,多路复用,epoll,非阻塞I&#x2F;O">
+<meta name="keywords" content="linux,多路复用,非阻塞I&#x2F;O,epoll">
 <meta property="og:type" content="article">
 <meta property="og:title" content="为什么多路复用要搭配非阻塞I&#x2F;O">
 <meta property="og:url" content="http://panqiincs.me/2015/08/05/multiplexing-and-nonblocking-io/index.html">
@@ -420,9 +420,9 @@
           
             <a href="/tags/多路复用/" rel="tag"># 多路复用</a>
           
-            <a href="/tags/epoll/" rel="tag"># epoll</a>
-          
             <a href="/tags/非阻塞I-O/" rel="tag"># 非阻塞I/O</a>
+          
+            <a href="/tags/epoll/" rel="tag"># epoll</a>
           
         </div>
         <div class="post-nav">
@@ -501,7 +501,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">87</span>
+          <span class="site-state-item-count">86</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -831,9 +831,7 @@
         
           
         
-          
-        
-        <span class="site-state-item-count">146</span>
+        <span class="site-state-item-count">145</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
