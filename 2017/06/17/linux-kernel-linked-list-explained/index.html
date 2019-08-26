@@ -65,12 +65,12 @@
 <meta property="og:site_name" content="辛未羊的博客">
 <meta property="og:description" content="介绍Linux链表（linked list）的实现比较特别。通常来说，一个链表结构体会包含需要相互连接的数据，例如下面结构体中的my_item成员： 12345struct my_list &amp;#123;    void *my_item;    struct my_list *next;    struct my_list *prev;&amp;#125; Linux内核的实现仅仅定义了一个简单的结构体l">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://wx1.sinaimg.cn/large/e5805747gy1g187d2gaosg20dc07s3yl.gif">
-<meta property="og:updated_time" content="2019-08-03T08:23:26.737Z">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/linux_linked_list_head.gif">
+<meta property="og:updated_time" content="2019-08-26T11:51:55.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux内核中的链表">
 <meta name="twitter:description" content="介绍Linux链表（linked list）的实现比较特别。通常来说，一个链表结构体会包含需要相互连接的数据，例如下面结构体中的my_item成员： 12345struct my_list &amp;#123;    void *my_item;    struct my_list *next;    struct my_list *prev;&amp;#125; Linux内核的实现仅仅定义了一个简单的结构体l">
-<meta name="twitter:image" content="http://wx1.sinaimg.cn/large/e5805747gy1g187d2gaosg20dc07s3yl.gif">
+<meta name="twitter:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/linux_linked_list_head.gif">
   <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
   <link rel="canonical" href="http://panqiincs.me/2017/06/17/linux-kernel-linked-list-explained/">
 
@@ -346,7 +346,7 @@
 <p>上面示例中的宏调用展开如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((struct kool_list *)((<span class="keyword">char</span> *)(pos) - (<span class="keyword">unsigned</span> <span class="keyword">long</span>)(&amp;((struct kool_list *)<span class="number">0</span>)-&gt;<span class="built_in">list</span>)))</span><br></pre></td></tr></table></figure>
 <p>给出链表结构体<code>struct list_head</code>的地址<code>pos</code>，宏定义<code>list_entry</code>计算出了包含该链表成员的结构体<code>struct kool_list</code>的地址。首先必须得到成员<code>list</code>在结构体中的位置（内存偏移），然后根据该偏移量计算出结构体的地址。</p>
-<p><img src="http://wx1.sinaimg.cn/large/e5805747gy1g187d2gaosg20dc07s3yl.gif" alt="linux_linked_list_head"></p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/linux_linked_list_head.gif" alt="linux_linked_list_head"></p>
 <p>现在的问题是，这个偏移量是如何得到的。假设有一个结构体<code>struct foo_bar</code>，下面的表达式计算成员<code>boo</code>在结构体中的偏移：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">unsigned</span> <span class="keyword">long</span>)(&amp;((struct foo_bar *)<span class="number">0</span>)-&gt;boo)</span><br></pre></td></tr></table></figure>
 <p>将内存地址<code>0</code>转换成我们想要的类型<code>struct foo_bar</code>，然后得到我们感兴趣的成员的地址，也就是该成员在结构体中的偏移量。我们已经知道了这个成员在结构体实例中的绝对地址（即<code>pos</code>），于是可以推算出结构体实例的地址。下面的测试代码（文件来源：<a href="https://isis.poly.edu/kulesh/stuff/src/klist/compute_offset.c" target="_blank" rel="noopener">compute_offset.c</a>）验证了这一点：</p>

@@ -65,12 +65,12 @@
 <meta property="og:site_name" content="辛未羊的博客">
 <meta property="og:description" content="安装Emacs默认并没有Markdown模式。网络的智慧是无穷的，果然，我找到了Emacs Markdown Mode。接下来便是本文的主题，我只是一个蹩脚的翻译。将markdown-mode.el放到Emacs的load-path中，并在.emacs配置文件中添加如下内容，以支持后缀名为.markdown和.md的文件:">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://wx4.sinaimg.cn/large/e5805747gy1g187d8y2q7j20l30ie0vw.jpg">
-<meta property="og:updated_time" content="2019-03-23T07:38:01.000Z">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/markdown_edit.png">
+<meta property="og:updated_time" content="2019-08-26T11:47:15.048Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用Emacs编辑Markdown">
 <meta name="twitter:description" content="安装Emacs默认并没有Markdown模式。网络的智慧是无穷的，果然，我找到了Emacs Markdown Mode。接下来便是本文的主题，我只是一个蹩脚的翻译。将markdown-mode.el放到Emacs的load-path中，并在.emacs配置文件中添加如下内容，以支持后缀名为.markdown和.md的文件:">
-<meta name="twitter:image" content="http://wx4.sinaimg.cn/large/e5805747gy1g187d8y2q7j20l30ie0vw.jpg">
+<meta name="twitter:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/markdown_edit.png">
   <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
   <link rel="canonical" href="http://panqiincs.me/2015/06/15/edit-markdown-with-emacs/">
 
@@ -334,7 +334,7 @@
 <a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(autoload &apos;markdown-mode &quot;markdown-mode&quot;</span><br><span class="line">    &quot;Major mode for editing Markdown files&quot; t)</span><br><span class="line">(add-to-list &apos;auto-mode-alist &apos;(&quot;\\.markdown\\&apos;&quot;. markdown-mode))</span><br><span class="line">(add-to-list &apos;auto-mode-alist &apos;(&quot;\\.md\\&apos;&quot;. markdown-mode))</span><br></pre></td></tr></table></figure>
 <p>至此，大功告成，效果如下：</p>
-<p><img src="http://wx4.sinaimg.cn/large/e5805747gy1g187d8y2q7j20l30ie0vw.jpg" alt="markdown_edit"></p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/markdown_edit.png" alt="markdown_edit"></p>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>现在用Emacs写博文真是一种享受。会Emacs的人会发现，下面提到的快捷键大多和Emacs的基础快捷键相关，我只列出常用的：</p>
 <h3 id="在Emacs中预览效果"><a href="#在Emacs中预览效果" class="headerlink" title="在Emacs中预览效果"></a>在Emacs中预览效果</h3><p>使用该功能的前提是系统中有将Markdown文本转化为HTML的<strong>Markdown命令</strong>。配置方法请看<a href="https://panqiincs.me/2015/07/31/preview-markdown-with-emacs/">这里</a>。命令如下：</p>
 <ol>

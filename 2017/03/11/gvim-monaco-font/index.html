@@ -65,13 +65,13 @@
 <meta property="og:site_name" content="辛未羊的博客">
 <meta property="og:description" content="效果Mac系统下的Monaco字体非常适合编程。GVim（Ubuntu系统）使用Monaco字体的效果如下：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://wx1.sinaimg.cn/large/e5805747gy1g187cj2qvlj20fy0abwha.jpg">
-<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/e5805747gy1g187cmzaibj209v07xab1.jpg">
-<meta property="og:updated_time" content="2019-08-18T02:53:17.873Z">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/gvim_font_monaco.png">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/gvim_font_select.png">
+<meta property="og:updated_time" content="2019-08-26T11:50:31.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="配置GVim使用Monaco字体">
 <meta name="twitter:description" content="效果Mac系统下的Monaco字体非常适合编程。GVim（Ubuntu系统）使用Monaco字体的效果如下：">
-<meta name="twitter:image" content="http://wx1.sinaimg.cn/large/e5805747gy1g187cj2qvlj20fy0abwha.jpg">
+<meta name="twitter:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/gvim_font_monaco.png">
   <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
   <link rel="canonical" href="http://panqiincs.me/2017/03/11/gvim-monaco-font/">
 
@@ -333,10 +333,10 @@
       
         <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>Mac系统下的Monaco字体非常适合编程。GVim（Ubuntu系统）使用Monaco字体的效果如下：</p>
 <a id="more"></a>
-<p><img src="http://wx1.sinaimg.cn/large/e5805747gy1g187cj2qvlj20fy0abwha.jpg" alt="gvim_font_monaco"></p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/gvim_font_monaco.png" alt="gvim_font_monaco"></p>
 <h2 id="安装字体"><a href="#安装字体" class="headerlink" title="安装字体"></a>安装字体</h2><p>首先在<a href="https://github.com/cstrap/monaco-font" target="_blank" rel="noopener">Github</a>上下载Monaco字体。解压后有三个安装脚本，分别对应不同的系统：<code>install-font-centos.sh</code>，<code>install-font-centos.sh</code>，<code>install-font-centos.sh</code>，运行相应的脚本即可完成字体的安装。</p>
 <h2 id="配置字体"><a href="#配置字体" class="headerlink" title="配置字体"></a>配置字体</h2><p>Vim下配置字体需要设置<code>guifont</code>变量的值。在Vim的命令模式下输入<code>:set guifont=*</code>后回车，弹出如下的对话框：</p>
-<p><img src="http://wx2.sinaimg.cn/mw690/e5805747gy1g187cmzaibj209v07xab1.jpg" alt="gvim_font_select"></p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/gvim_font_select.png" alt="gvim_font_select"></p>
 <p>选择Monaco字体即可。然后输入<code>:set guifont?</code>后回车，GVim会返回<code>guifont=Manoca 11</code>，因此，配置语句如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> has(<span class="string">"gui_running"</span>)</span><br><span class="line">    <span class="built_in">set</span> guifont=Monaco\ 11</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
 <p>注意空格之前要加上一个转义字符<code>\</code>。将上面的配置语句加到<code>.vimrc</code>文件中即可看到效果。</p>

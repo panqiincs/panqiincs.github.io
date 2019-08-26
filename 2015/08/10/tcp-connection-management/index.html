@@ -65,13 +65,13 @@
 <meta property="og:site_name" content="辛未羊的博客">
 <meta property="og:description" content="理解协议Richard Stevens先生在UNP2e的前言中写道：  I have found when teaching network programming that about 80% of all network programming problems have nothing to do with network programming, per se. That is, the">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://wx3.sinaimg.cn/large/e5805747gy1g187fopx1gj20ii0budgf.jpg">
-<meta property="og:image" content="http://wx2.sinaimg.cn/large/e5805747gy1g187fkav71j20ii0fgq3p.jpg">
-<meta property="og:updated_time" content="2019-08-18T02:50:10.839Z">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/tcp_open.png">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/tcp_close.png">
+<meta property="og:updated_time" content="2019-08-26T11:48:15.744Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP连接的建立和终止">
 <meta name="twitter:description" content="理解协议Richard Stevens先生在UNP2e的前言中写道：  I have found when teaching network programming that about 80% of all network programming problems have nothing to do with network programming, per se. That is, the">
-<meta name="twitter:image" content="http://wx3.sinaimg.cn/large/e5805747gy1g187fopx1gj20ii0budgf.jpg">
+<meta name="twitter:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/tcp_open.png">
   <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
   <link rel="canonical" href="http://panqiincs.me/2015/08/10/tcp-connection-management/">
 
@@ -338,9 +338,9 @@
 <a id="more"></a>
 <p>作者阐述了这么一个事实：大部分网络编程问题与API函数的使用无关，问题多是因对网络协议理解不够而导致的。所以，学好TCP/IP协议非常重要，首选之作当属Stevens先生的<a href="https://book.douban.com/subject/1741925/" target="_blank" rel="noopener">TCP/IP Illustrated</a>。我觉得<a href="https://book.douban.com/subject/2129076/" target="_blank" rel="noopener">The TCP/IP Guide</a>对新手更友好，讲解细致，插图精美，这本书可以<a href="http://www.tcpipguide.com/free/index.htm" target="_blank" rel="noopener">在线阅读</a>，也有免费的pdf下载。</p>
 <h2 id="连接建立和终止的过程"><a href="#连接建立和终止的过程" class="headerlink" title="连接建立和终止的过程"></a>连接建立和终止的过程</h2><p>TCP连接的建立和终止过程就不用我蹩脚地重述一遍，The TCP/IP Guide的插图基本可以将全过程描述清楚。TCP连接建立的过程又称之为“三路握手”（Three-Way Handshake）（图片来源：<a href="http://www.tcpipguide.com/free/t_TCPConnectionEstablishmentProcessTheThreeWayHandsh-3.htm" target="_blank" rel="noopener">TCP Connection Establishment</a>）：</p>
-<p><img src="http://wx3.sinaimg.cn/large/e5805747gy1g187fopx1gj20ii0budgf.jpg" alt="tcp_open"></p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/tcp_open.png" alt="tcp_open"></p>
 <p>TCP连接终止的过程又称之为“四路握手”（Four-Way Handshake）（图片来源：<a href="http://www.tcpipguide.com/free/t_TCPConnectionTermination-2.htm" target="_blank" rel="noopener">TCP Connection Termination</a>）：</p>
-<p><img src="http://wx2.sinaimg.cn/large/e5805747gy1g187fkav71j20ii0fgq3p.jpg" alt="tcp_close"></p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/tcp_close.png" alt="tcp_close"></p>
 <h2 id="为什么是三路和四路"><a href="#为什么是三路和四路" class="headerlink" title="为什么是三路和四路"></a>为什么是三路和四路</h2><p>TCP必须保证通道双向都通畅，所以两端都要向对方发送数据并能收到对方的回复。握手的过程也要交流信息，双方都要知晓彼此的初始序列号（Initial Sequence Number）以及其它参数。这样来看，两端一共要传送四个分组。建立连接时，被动打开的一端可以将自己的SYN和回复给对方的ACK一起发送过去，所以只需要“三路握手”。终止连接时，被动关闭的一端收到FIN之后，要等待应用程序完成任务后才能关闭连接，所以只能先回复一个ACK，等待一段时间后再发送自己的FIN给对方，不能一起发送过去，所以需要“四路握手”。</p>
 <h2 id="TIME-WAIT状态"><a href="#TIME-WAIT状态" class="headerlink" title="TIME_WAIT状态"></a>TIME_WAIT状态</h2><p>主动关闭的一端发送ACK给对端后进入TIME_WAIT状态，然后才转到CLOSED状态。TIME_WAIT状态有两个存在的理由：</p>
 <ul>
