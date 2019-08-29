@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://panqiincs.me/2018/06/13/dpt-rp1-user-experience/</loc>
+    <loc>http://panqiincs.me/2019/08/29/learn-electronic-engineering/</loc>
     
-    <lastmod>2019-08-26T12:04:33.942Z</lastmod>
+    <lastmod>2019-08-29T04:11:45.415Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://panqiincs.me/2019/07/26/develop-stm32-on-linux/</loc>
     
-    <lastmod>2019-08-26T11:59:40.747Z</lastmod>
+    <lastmod>2019-08-28T11:54:18.693Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/06/05/after-installing-manjaro/</loc>
+    
+    <lastmod>2019-08-26T13:12:46.677Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2018/06/13/dpt-rp1-user-experience/</loc>
+    
+    <lastmod>2019-08-26T12:04:33.942Z</lastmod>
     
   </url>
   
@@ -131,13 +145,6 @@
     <loc>http://panqiincs.me/2013/06/05/finish-thesis-defense/</loc>
     
     <lastmod>2019-08-18T02:46:32.235Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/06/05/after-installing-manjaro/</loc>
-    
-    <lastmod>2019-08-18T02:45:54.849Z</lastmod>
     
   </url>
   
