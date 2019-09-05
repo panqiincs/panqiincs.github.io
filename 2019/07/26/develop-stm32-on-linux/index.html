@@ -69,7 +69,7 @@
 <meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/stm32de2.png">
 <meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/stm32de3.png">
 <meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/stm32de4.png">
-<meta property="og:updated_time" content="2019-08-28T11:54:18.693Z">
+<meta property="og:updated_time" content="2019-09-05T23:40:39.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux下搭建STM32开发环境">
 <meta name="twitter:description" content="方案最近在学习STM32单片机开发。我手头有一块开发板，开发板附带的教程中使用官方的固件库来开发软件，将MDK作为集成开发环境。MDK将代码编辑和工程构建全包了，这固然很方便，但是MDK的代码编辑功能较弱，而且MDK还是收费软件。于是便萌生了使用其他开发环境的想法。果然，有免费的高质量方案：GNU Toolchain + STM32CubeMX + VSCode：">
@@ -336,7 +336,7 @@
         <h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>最近在学习STM32单片机开发。我手头有一块开发板，开发板附带的教程中使用官方的固件库来开发软件，将MDK作为集成开发环境。MDK将代码编辑和工程构建全包了，这固然很方便，但是MDK的代码编辑功能较弱，而且MDK还是收费软件。于是便萌生了使用其他开发环境的想法。果然，有免费的高质量方案：<strong>GNU Toolchain</strong> + <strong>STM32CubeMX</strong> + <strong>VSCode</strong>：</p>
 <a id="more"></a>
 <ul>
-<li>ARMGCC：包括编译器、链接器、调试器和C语言标准库在内的一整套工具链</li>
+<li>GNU Toolchain：包括编译器、链接器、调试器和C语言标准库在内的一整套工具链</li>
 <li>STM32CubeMX：图形化的软件配置工具，用来生成STM32初始化代码工程。ST官方已经停止更新固件库，STM32CubeMX是推荐的开发方式</li>
 <li>VSCode：牛逼哄哄的代码编辑器，搭配强大的插件，从此忘记Vim和Emacs</li>
 </ul>
@@ -418,7 +418,7 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2017/05/23/burn-pi-image-under-linux/" rel="bookmark">Linux下烧写树莓派系统</a></div>
+      <div class="popular-posts-title"><a href="/2017/02/26/write-a-shell-basic-functionality/" rel="bookmark">Shell实现：基本功能</a></div>
       
     </li>
   
