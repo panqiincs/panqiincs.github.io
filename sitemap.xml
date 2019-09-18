@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/2019/08/29/learn-electronic-engineering/</loc>
+    
+    <lastmod>2019-09-18T03:29:03.920Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/about/index.html</loc>
     
     <lastmod>2019-09-05T23:41:17.702Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://panqiincs.me/2019/07/26/develop-stm32-on-linux/</loc>
     
     <lastmod>2019-09-05T23:40:39.527Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/08/29/learn-electronic-engineering/</loc>
-    
-    <lastmod>2019-09-03T05:52:53.570Z</lastmod>
     
   </url>
   
