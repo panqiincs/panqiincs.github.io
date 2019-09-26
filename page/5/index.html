@@ -1110,7 +1110,6 @@
 
       
           <h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>常用的基础命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> -                     <span class="comment"># 切换到上一次的工作目录</span></span><br><span class="line">Ctrl-R(keyboard)         <span class="comment"># 查找历史命令</span></span><br><span class="line">cp -a /<span class="built_in">source</span>/. /dest    <span class="comment"># 将一个目录下的所有文件拷贝到另一个目录</span></span><br><span class="line">ln -s target soft_link   <span class="comment"># 为名为target的文件创建一个软链接，target在前</span></span><br><span class="line">du -sh file_path         <span class="comment"># 查看文件夹的大小，不加s选项会列出每个子文件夹大小</span></span><br><span class="line"><span class="comment"># 通过用户名和密码登录远程主机</span></span><br><span class="line">sshpass -p your_password ssh username@hostname</span><br><span class="line"><span class="comment"># 在两个主机之间传输文件</span></span><br><span class="line">scp [options] username1@source_host:dir1/file1 username2@dest_host:dir2/file2</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1222,8 +1221,6 @@
 
       
           <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Linux链表（linked list）的实现比较特别。通常来说，一个链表结构体会包含需要相互连接的数据，例如下面结构体中的<code>my_item</code>成员：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">my_list</span> &#123;</span></span><br><span class="line">    <span class="keyword">void</span> *my_item;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">my_list</span> *<span class="title">next</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">my_list</span> *<span class="title">prev</span>;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Linux内核的实现仅仅定义了一个简单的结构体<code>list_head</code>，它是个双向链表：</p>
           <!--noindex-->
           
             <div class="post-button text-center">

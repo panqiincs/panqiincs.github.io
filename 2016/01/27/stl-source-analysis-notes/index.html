@@ -57,18 +57,18 @@
   };
 </script>
 
-  <meta name="description" content="STL概论与版本简介本书的开头，千言万语汇成一句话：STL很牛逼。STL有多种实现，本书剖析的SGI版本可读性很高，也是被GCC使用的版本。 这本书我粗略翻了一遍，个人认为本书的第二章和第三章是精华，也是我读得最仔细的部分。后面章节的内容则是数据结构和算法的具体实现。本书非常适合与讲算法的书搭配学习，看看工业级别的代码是怎么写的。">
+  <meta name="description" content="STL本书的开头，千言万语汇成一句话：STL很牛逼。STL有多种实现，本书剖析的SGI版本可读性很高，也是被GCC使用的版本。 这本书我粗略翻了一遍，个人认为本书的第二章和第三章是精华，也是我读得最仔细的部分。后面章节的内容则是数据结构和算法的具体实现。本书非常适合与讲算法的书搭配学习，看看工业级别的代码是怎么写的。">
 <meta name="keywords" content="stl,内存管理,迭代器,C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="『STL源码剖析』笔记">
 <meta property="og:url" content="http://panqiincs.me/2016/01/27/stl-source-analysis-notes/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="STL概论与版本简介本书的开头，千言万语汇成一句话：STL很牛逼。STL有多种实现，本书剖析的SGI版本可读性很高，也是被GCC使用的版本。 这本书我粗略翻了一遍，个人认为本书的第二章和第三章是精华，也是我读得最仔细的部分。后面章节的内容则是数据结构和算法的具体实现。本书非常适合与讲算法的书搭配学习，看看工业级别的代码是怎么写的。">
+<meta property="og:description" content="STL本书的开头，千言万语汇成一句话：STL很牛逼。STL有多种实现，本书剖析的SGI版本可读性很高，也是被GCC使用的版本。 这本书我粗略翻了一遍，个人认为本书的第二章和第三章是精华，也是我读得最仔细的部分。后面章节的内容则是数据结构和算法的具体实现。本书非常适合与讲算法的书搭配学习，看看工业级别的代码是怎么写的。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-03T08:22:26.701Z">
+<meta property="og:updated_time" content="2019-09-26T03:58:37.016Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="『STL源码剖析』笔记">
-<meta name="twitter:description" content="STL概论与版本简介本书的开头，千言万语汇成一句话：STL很牛逼。STL有多种实现，本书剖析的SGI版本可读性很高，也是被GCC使用的版本。 这本书我粗略翻了一遍，个人认为本书的第二章和第三章是精华，也是我读得最仔细的部分。后面章节的内容则是数据结构和算法的具体实现。本书非常适合与讲算法的书搭配学习，看看工业级别的代码是怎么写的。">
+<meta name="twitter:description" content="STL本书的开头，千言万语汇成一句话：STL很牛逼。STL有多种实现，本书剖析的SGI版本可读性很高，也是被GCC使用的版本。 这本书我粗略翻了一遍，个人认为本书的第二章和第三章是精华，也是我读得最仔细的部分。后面章节的内容则是数据结构和算法的具体实现。本书非常适合与讲算法的书搭配学习，看看工业级别的代码是怎么写的。">
   <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
   <link rel="canonical" href="http://panqiincs.me/2016/01/27/stl-source-analysis-notes/">
 
@@ -328,10 +328,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="STL概论与版本简介"><a href="#STL概论与版本简介" class="headerlink" title="STL概论与版本简介"></a>STL概论与版本简介</h2><p>本书的开头，千言万语汇成一句话：STL很牛逼。STL有多种实现，本书剖析的SGI版本可读性很高，也是被GCC使用的版本。</p>
+        <h2 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h2><p>本书的开头，千言万语汇成一句话：STL很牛逼。STL有多种实现，本书剖析的SGI版本可读性很高，也是被GCC使用的版本。</p>
 <p>这本书我粗略翻了一遍，个人认为本书的第二章和第三章是精华，也是我读得最仔细的部分。后面章节的内容则是数据结构和算法的具体实现。本书非常适合与讲算法的书搭配学习，看看工业级别的代码是怎么写的。</p>
 <a id="more"></a>
-<h2 id="空间配置器allocator"><a href="#空间配置器allocator" class="headerlink" title="空间配置器allocator"></a>空间配置器allocator</h2><p>内存管理是非常重要的工作，C++内存的配置和释放是通过new和delete完成的。new语句包含两阶段操作：（1）调用<code>::operator new</code>配置内存；（2）调用类的构造函数构造对象内容。delete语句也包含两阶段操作：（1）调用类的析构函数将对象析构；（2）调用<code>::operator delete</code>释放内存。</p>
+<h2 id="allocator"><a href="#allocator" class="headerlink" title="allocator"></a>allocator</h2><p>内存管理是非常重要的工作，C++内存的配置和释放是通过new和delete完成的。new语句包含两阶段操作：（1）调用<code>::operator new</code>配置内存；（2）调用类的构造函数构造对象内容。delete语句也包含两阶段操作：（1）调用类的析构函数将对象析构；（2）调用<code>::operator delete</code>释放内存。</p>
 <p>为了精密分工，STL allocator将这两阶段操作区分开。</p>
 <ul>
 <li>内存配置：<code>alloc::allocate()</code></li>
@@ -348,7 +348,7 @@
 <li><code>uninitialized_fill()</code></li>
 <li><code>uninitialized_fill_n()</code></li>
 </ul>
-<h2 id="迭代器iterator"><a href="#迭代器iterator" class="headerlink" title="迭代器iterator"></a>迭代器iterator</h2><p>迭代器设计思维是STL的关键所在。STL的中心思想在于：将数据容器（containers）和算法（algorithms）分开，彼此独立设计，最后再以一帖胶合剂将它们撮合在一起。迭代器就是这帖胶合剂。</p>
+<h2 id="iterator"><a href="#iterator" class="headerlink" title="iterator"></a>iterator</h2><p>迭代器设计思维是STL的关键所在。STL的中心思想在于：将数据容器（containers）和算法（algorithms）分开，彼此独立设计，最后再以一帖胶合剂将它们撮合在一起。迭代器就是这帖胶合剂。</p>
 <p>迭代器的行为类似于指针，指针的各种行为中，最重要的即为内容提领（dereference）和成员访问（member access），迭代器最重要的编程工作就是对<code>operator*</code>和<code>operator-&gt;</code>进行重载。每种STL容器都提供专属迭代器。设计迭代器是容器的责任，只有容器本身才知道该设计出怎样的迭代器来遍历自己，并执行迭代器该有的各种行为（前进、后退、取值、取用成员……）。至于算法，完全可以独立于容器和迭代器之外自行发展，只要设计时以迭代器为对外接口就行。</p>
 <p>迭代器所指对象的型别，成为迭代器的value type。型别的获取是通过C++的模板偏例化（template partial specialization）特性实现的，该方法称之为<strong>traits编程技法</strong>。例如，原生指针<code>int *</code>虽然不是一种class type，但可以通过traits获取其value type，代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">struct</span> <span class="title">iterator_traits</span>&lt;T *&gt; &#123;</span></span><br><span class="line">    <span class="keyword">typedef</span> T value_type;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -943,7 +943,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#STL概论与版本简介"><span class="nav-number">1.</span> <span class="nav-text">STL概论与版本简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空间配置器allocator"><span class="nav-number">2.</span> <span class="nav-text">空间配置器allocator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器iterator"><span class="nav-number">3.</span> <span class="nav-text">迭代器iterator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列式容器"><span class="nav-number">4.</span> <span class="nav-text">序列式容器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vector"><span class="nav-number">4.1.</span> <span class="nav-text">vector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#list"><span class="nav-number">4.2.</span> <span class="nav-text">list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deque"><span class="nav-number">4.3.</span> <span class="nav-text">deque</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关联式容器"><span class="nav-number">5.</span> <span class="nav-text">关联式容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">6.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#仿函数functor"><span class="nav-number">7.</span> <span class="nav-text">仿函数functor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配接器adapter"><span class="nav-number">8.</span> <span class="nav-text">配接器adapter</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#STL"><span class="nav-number">1.</span> <span class="nav-text">STL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#allocator"><span class="nav-number">2.</span> <span class="nav-text">allocator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iterator"><span class="nav-number">3.</span> <span class="nav-text">iterator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列式容器"><span class="nav-number">4.</span> <span class="nav-text">序列式容器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vector"><span class="nav-number">4.1.</span> <span class="nav-text">vector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#list"><span class="nav-number">4.2.</span> <span class="nav-text">list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deque"><span class="nav-number">4.3.</span> <span class="nav-text">deque</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关联式容器"><span class="nav-number">5.</span> <span class="nav-text">关联式容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">6.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#仿函数functor"><span class="nav-number">7.</span> <span class="nav-text">仿函数functor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配接器adapter"><span class="nav-number">8.</span> <span class="nav-text">配接器adapter</span></a></li></ol></div>
             
 
           </div>

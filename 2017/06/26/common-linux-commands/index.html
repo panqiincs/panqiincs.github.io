@@ -57,18 +57,18 @@
   };
 </script>
 
-  <meta name="description" content="基本操作常用的基础命令： 123456789cd -                     # 切换到上一次的工作目录Ctrl-R(keyboard)         # 查找历史命令cp -a /source/. /dest    # 将一个目录下的所有文件拷贝到另一个目录ln -s target soft_link   # 为名为target的文件创建一个软链接，target在前du -sh">
+  <meta name="description" content="基本操作常用的基础命令：">
 <meta name="keywords" content="linux,命令行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="实用Linux命令">
 <meta property="og:url" content="http://panqiincs.me/2017/06/26/common-linux-commands/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="基本操作常用的基础命令： 123456789cd -                     # 切换到上一次的工作目录Ctrl-R(keyboard)         # 查找历史命令cp -a /source/. /dest    # 将一个目录下的所有文件拷贝到另一个目录ln -s target soft_link   # 为名为target的文件创建一个软链接，target在前du -sh">
+<meta property="og:description" content="基本操作常用的基础命令：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-03T08:23:38.753Z">
+<meta property="og:updated_time" content="2019-09-26T04:00:16.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实用Linux命令">
-<meta name="twitter:description" content="基本操作常用的基础命令： 123456789cd -                     # 切换到上一次的工作目录Ctrl-R(keyboard)         # 查找历史命令cp -a /source/. /dest    # 将一个目录下的所有文件拷贝到另一个目录ln -s target soft_link   # 为名为target的文件创建一个软链接，target在前du -sh">
+<meta name="twitter:description" content="基本操作常用的基础命令：">
   <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
   <link rel="canonical" href="http://panqiincs.me/2017/06/26/common-linux-commands/">
 
@@ -329,8 +329,8 @@
 
       
         <h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>常用的基础命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> -                     <span class="comment"># 切换到上一次的工作目录</span></span><br><span class="line">Ctrl-R(keyboard)         <span class="comment"># 查找历史命令</span></span><br><span class="line">cp -a /<span class="built_in">source</span>/. /dest    <span class="comment"># 将一个目录下的所有文件拷贝到另一个目录</span></span><br><span class="line">ln -s target soft_link   <span class="comment"># 为名为target的文件创建一个软链接，target在前</span></span><br><span class="line">du -sh file_path         <span class="comment"># 查看文件夹的大小，不加s选项会列出每个子文件夹大小</span></span><br><span class="line"><span class="comment"># 通过用户名和密码登录远程主机</span></span><br><span class="line">sshpass -p your_password ssh username@hostname</span><br><span class="line"><span class="comment"># 在两个主机之间传输文件</span></span><br><span class="line">scp [options] username1@source_host:dir1/file1 username2@dest_host:dir2/file2</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> -                     <span class="comment"># 切换到上一次的工作目录</span></span><br><span class="line">Ctrl-R(keyboard)         <span class="comment"># 查找历史命令</span></span><br><span class="line">cp -a /<span class="built_in">source</span>/. /dest    <span class="comment"># 将一个目录下的所有文件拷贝到另一个目录</span></span><br><span class="line">ln -s target soft_link   <span class="comment"># 为名为target的文件创建一个软链接，target在前</span></span><br><span class="line">du -sh file_path         <span class="comment"># 查看文件夹的大小，不加s选项会列出每个子文件夹大小</span></span><br><span class="line"><span class="comment"># 通过用户名和密码登录远程主机</span></span><br><span class="line">sshpass -p your_password ssh username@hostname</span><br><span class="line"><span class="comment"># 在两个主机之间传输文件</span></span><br><span class="line">scp [options] username1@source_host:dir1/file1 username2@dest_host:dir2/file2</span><br></pre></td></tr></table></figure>
 <h2 id="软件管理"><a href="#软件管理" class="headerlink" title="软件管理"></a>软件管理</h2><p>和rpm文件有关的：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep kernel | sort                    <span class="comment"># 查看系统安装的所有内核（rpm系）</span></span><br><span class="line">rpm -ivh wps-office-10.1.0.6757-1.x86_64.rpm    <span class="comment"># 安装rpm文件</span></span><br><span class="line">rpm -e wps-office                               <span class="comment"># 卸载通过rpm安装的软件</span></span><br><span class="line">yum remove wps-office                           <span class="comment"># 亦可使用yum命令卸载（rpm系）</span></span><br></pre></td></tr></table></figure>
 <h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><p>查看和管理进程的命令：</p>
