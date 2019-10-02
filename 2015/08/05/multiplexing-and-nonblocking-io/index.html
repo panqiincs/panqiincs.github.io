@@ -58,18 +58,18 @@
   };
 </script>
 
-  <meta name="description" content="问题 I/O多路复用之epoll一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行read或write都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果多路复用不搭配非阻塞I/O，在下面几">
-<meta name="keywords" content="linux,多路复用,epoll,非阻塞I&#x2F;O">
+  <meta name="description" content="问题I/O多路复用之epoll一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行read或write都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果多路复用不搭配非阻塞I/O，在下面几种">
+<meta name="keywords" content="linux,多路复用,非阻塞I&#x2F;O,epoll">
 <meta property="og:type" content="article">
 <meta property="og:title" content="为什么多路复用要搭配非阻塞I&#x2F;O">
 <meta property="og:url" content="http://panqiincs.me/2015/08/05/multiplexing-and-nonblocking-io/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="问题 I/O多路复用之epoll一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行read或write都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果多路复用不搭配非阻塞I/O，在下面几">
+<meta property="og:description" content="问题I/O多路复用之epoll一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行read或write都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果多路复用不搭配非阻塞I/O，在下面几种">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-08-03T08:20:23.919Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="为什么多路复用要搭配非阻塞I&#x2F;O">
-<meta name="twitter:description" content="问题 I/O多路复用之epoll一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行read或write都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果多路复用不搭配非阻塞I/O，在下面几">
+<meta name="twitter:description" content="问题I/O多路复用之epoll一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行read或write都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果多路复用不搭配非阻塞I/O，在下面几种">
   <link rel="canonical" href="http://panqiincs.me/2015/08/05/multiplexing-and-nonblocking-io/">
 
 
@@ -335,23 +335,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="问题">问题</h2>
-<p><a href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I/O多路复用之epoll</a>一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行<code>read</code>或<code>write</code>都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果多路复用不搭配非阻塞I/O，在下面几种情况下会出现问题。</p>
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I/O多路复用之epoll</a>一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行<code>read</code>或<code>write</code>都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果多路复用不搭配非阻塞I/O，在下面几种情况下会出现问题。</p>
 <a id="more"></a>
-<h2 id="边沿触发">边沿触发</h2>
-<p>在<a href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I/O多路复用之epoll</a>一文有描述一种情况：当使用epoll的边沿触发模式时，必须要将描述符设置为非阻塞。</p>
-<h2 id="多进程">多进程</h2>
-<p>当多个进程（或线程）在同一个描述符上执行I/O时，从单个进程的视角看，在收到描述符就绪的通知和接下来的I/O调用之间这段时间内，描述符的就绪状态有可能改变。所以，如果描述符是默认的阻塞方式，I/O操作有可能会阻塞，使得进程不能够监测其它描述符。</p>
-<h2 id="写大量数据">写大量数据</h2>
-<p>即使是边沿触发模式的API如<code>select</code>和<code>poll</code>通知字节流套接字（stream socket）可写，如果在一次<code>write</code>或<code>send</code>调用中写足够多的数据，调用依然有可能阻塞。</p>
-<h2 id="内核bug">内核bug</h2>
-<p>在极少的情况下，边沿触发模式的API如<code>select</code>和<code>poll</code>可能返回错误的就绪状态通知。例如Linux手册关于<code>select</code>的内容中有如下说明：</p>
+<h2 id="边沿触发"><a href="#边沿触发" class="headerlink" title="边沿触发"></a>边沿触发</h2><p>在<a href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I/O多路复用之epoll</a>一文有描述一种情况：当使用epoll的边沿触发模式时，必须要将描述符设置为非阻塞。</p>
+<h2 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h2><p>当多个进程（或线程）在同一个描述符上执行I/O时，从单个进程的视角看，在收到描述符就绪的通知和接下来的I/O调用之间这段时间内，描述符的就绪状态有可能改变。所以，如果描述符是默认的阻塞方式，I/O操作有可能会阻塞，使得进程不能够监测其它描述符。</p>
+<h2 id="写大量数据"><a href="#写大量数据" class="headerlink" title="写大量数据"></a>写大量数据</h2><p>即使是边沿触发模式的API如<code>select</code>和<code>poll</code>通知字节流套接字（stream socket）可写，如果在一次<code>write</code>或<code>send</code>调用中写足够多的数据，调用依然有可能阻塞。</p>
+<h2 id="内核bug"><a href="#内核bug" class="headerlink" title="内核bug"></a>内核bug</h2><p>在极少的情况下，边沿触发模式的API如<code>select</code>和<code>poll</code>可能返回错误的就绪状态通知。例如Linux手册关于<code>select</code>的内容中有如下说明：</p>
 <blockquote>
-<p>Under Linux, select() may report a socket file descriptor as "ready for reading", while nevertheless a subsequent read blocks. This could for example happen when data has arrived but upon examination has wrong checksum and is discarded. There may be other circumstances in which a file descriptor is spuriously reported as ready. Thus it may be safer to use O_NONBLOCK on sockets that should not block.</p>
+<p>Under Linux, select() may report a socket file descriptor as “ready for reading”, while nevertheless a subsequent read blocks. This could for example happen when data has arrived but upon examination has wrong checksum and is discarded. There may be other circumstances in which a file descriptor is spuriously reported as ready. Thus it may be safer to use O_NONBLOCK on sockets that should not block.</p>
 </blockquote>
 <p>正如上面所说的，使用非阻塞I/O，程序会更加健壮。</p>
-<h2 id="参考">参考</h2>
-<ol type="1">
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="https://book.douban.com/subject/4292217/" target="_blank" rel="noopener">The Linux Programming Interface</a></li>
 <li><a href="https://www.zhihu.com/question/37271342" target="_blank" rel="noopener">知乎问题：为什么IO多路复用要搭配非阻塞IO?</a></li>
 <li><a href="http://man7.org/linux/man-pages/man2/select.2.html" target="_blank" rel="noopener">select(2) - Linux manual page</a></li>
@@ -396,14 +390,14 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2017/04/19/write-a-shell-redirect-and-pipeline/" rel="bookmark">Shell实现：重定向和管道</a></div>
+      <div class="popular-posts-title"><a href="/2017/05/23/burn-pi-image-under-linux/" rel="bookmark">Linux下烧写树莓派系统</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2017/05/23/burn-pi-image-under-linux/" rel="bookmark">Linux下烧写树莓派系统</a></div>
+      <div class="popular-posts-title"><a href="/2017/04/19/write-a-shell-redirect-and-pipeline/" rel="bookmark">Shell实现：重定向和管道</a></div>
       
     </li>
   
@@ -438,9 +432,9 @@
             
               <a href="/tags/多路复用/" rel="tag"># 多路复用</a>
             
-              <a href="/tags/epoll/" rel="tag"># epoll</a>
-            
               <a href="/tags/非阻塞I-O/" rel="tag"># 非阻塞I/O</a>
+            
+              <a href="/tags/epoll/" rel="tag"># epoll</a>
             
           </div>
         
@@ -636,6 +630,10 @@
       
         <li class="links-of-blogroll-item">
           <a href="https://geektutu.com/" title="https://geektutu.com/" rel="noopener" target="_blank">极客兔兔</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://www.feidaoshuo.com" title="http://www.feidaoshuo.com" rel="noopener" target="_blank">飞刀说</a>
         </li>
       
     </ul>

@@ -58,18 +58,18 @@
   };
 </script>
 
-  <meta name="description" content="版本要求 最近想尝试一下酷眩的spacemacs配置，但是它在Emacs 24.4或者更高的版本上才能展现所有的特性，而软件仓库中最新的版本为24.3，因此只能从源码编译安装了。 编译安装 首先在官方网站上下载源码，文件名为emacs-VERSION.tar.gz，我下载的VERSION为24.4，解压文件：">
+  <meta name="description" content="版本要求最近想尝试一下酷眩的spacemacs配置，但是它在Emacs 24.4或者更高的版本上才能展现所有的特性，而软件仓库中最新的版本为24.3，因此只能从源码编译安装了。 编译安装首先在官方网站上下载源码，文件名为emacs-VERSION.tar.gz，我下载的VERSION为24.4，解压文件：">
 <meta name="keywords" content="emacs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从源码编译安装Emacs">
 <meta property="og:url" content="http://panqiincs.me/2017/08/12/build-emacs-from-source/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="版本要求 最近想尝试一下酷眩的spacemacs配置，但是它在Emacs 24.4或者更高的版本上才能展现所有的特性，而软件仓库中最新的版本为24.3，因此只能从源码编译安装了。 编译安装 首先在官方网站上下载源码，文件名为emacs-VERSION.tar.gz，我下载的VERSION为24.4，解压文件：">
+<meta property="og:description" content="版本要求最近想尝试一下酷眩的spacemacs配置，但是它在Emacs 24.4或者更高的版本上才能展现所有的特性，而软件仓库中最新的版本为24.3，因此只能从源码编译安装了。 编译安装首先在官方网站上下载源码，文件名为emacs-VERSION.tar.gz，我下载的VERSION为24.4，解压文件：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-06-02T23:05:07.184Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从源码编译安装Emacs">
-<meta name="twitter:description" content="版本要求 最近想尝试一下酷眩的spacemacs配置，但是它在Emacs 24.4或者更高的版本上才能展现所有的特性，而软件仓库中最新的版本为24.3，因此只能从源码编译安装了。 编译安装 首先在官方网站上下载源码，文件名为emacs-VERSION.tar.gz，我下载的VERSION为24.4，解压文件：">
+<meta name="twitter:description" content="版本要求最近想尝试一下酷眩的spacemacs配置，但是它在Emacs 24.4或者更高的版本上才能展现所有的特性，而软件仓库中最新的版本为24.3，因此只能从源码编译安装了。 编译安装首先在官方网站上下载源码，文件名为emacs-VERSION.tar.gz，我下载的VERSION为24.4，解压文件：">
   <link rel="canonical" href="http://panqiincs.me/2017/08/12/build-emacs-from-source/">
 
 
@@ -335,23 +335,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="版本要求">版本要求</h2>
-<p>最近想尝试一下酷眩的<a href="http://spacemacs.org/" target="_blank" rel="noopener">spacemacs</a>配置，但是它在Emacs 24.4或者更高的版本上才能展现所有的特性，而软件仓库中最新的版本为24.3，因此只能从源码编译安装了。</p>
-<h2 id="编译安装">编译安装</h2>
-<p>首先在官方网站上下载源码，文件名为<code>emacs-VERSION.tar.gz</code>，我下载的VERSION为24.4，解压文件：</p>
+        <h2 id="版本要求"><a href="#版本要求" class="headerlink" title="版本要求"></a>版本要求</h2><p>最近想尝试一下酷眩的<a href="http://spacemacs.org/" target="_blank" rel="noopener">spacemacs</a>配置，但是它在Emacs 24.4或者更高的版本上才能展现所有的特性，而软件仓库中最新的版本为24.3，因此只能从源码编译安装了。</p>
+<h2 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h2><p>首先在官方网站上下载源码，文件名为<code>emacs-VERSION.tar.gz</code>，我下载的VERSION为24.4，解压文件：</p>
 <a id="more"></a>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf emacs-VERSION.tar.gz</span><br></pre></td></tr></table></figure>
 <p>然后进入到文件夹中编译、安装：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> emacs-VERSION</span><br><span class="line">./configure             <span class="comment"># 提升缺失一些库时，需要手动安装</span></span><br><span class="line">make</span><br><span class="line">sudo make install       <span class="comment"># 默认安装到/usr/local</span></span><br></pre></td></tr></table></figure>
 <p>此时应该可以通过在命令行中输入emacs来启动软件了。但是对于桌面版的Linux，还需要做如下配置才能够在菜单中搜索到Emacs、显示对应图标、并能通过点击图标启动Emacs。</p>
-<h2 id="额外配置">额外配置</h2>
-<p>安装过程中会将<code>.desktop</code>文件放到<code>/usr/share/applications</code>中，图标（icon）文件放到<code>/usr/share/icon/hicolor</code>中。如果对应路径中找不到文件，需要手动操作一下（我安装时，desktop文件未拷贝到对应路径）：</p>
+<h2 id="额外配置"><a href="#额外配置" class="headerlink" title="额外配置"></a>额外配置</h2><p>安装过程中会将<code>.desktop</code>文件放到<code>/usr/share/applications</code>中，图标（icon）文件放到<code>/usr/share/icon/hicolor</code>中。如果对应路径中找不到文件，需要手动操作一下（我安装时，desktop文件未拷贝到对应路径）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp emacs-VERSION/etc/emacs.desktop /usr/share/applications</span><br></pre></td></tr></table></figure>
 <p>然后更新一下cache：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo gtk-update-icon-cache -t -f --include-image-data /usr/share/icons/hicolor</span><br><span class="line">sudo update-desktop-database</span><br></pre></td></tr></table></figure>
 <p>这时，就可以在Linux桌面系统中通过菜单中的图标启动Emacs了。</p>
-<h2 id="参考">参考</h2>
-<ol type="1">
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="https://www.gnu.org/software/emacs/manual/html_node/efaq/Installing-Emacs.html" target="_blank" rel="noopener">Installing GNU</a></li>
 <li><a href="http://www.linuxfromscratch.org/blfs/view/cvs/postlfs/emacs.html" target="_blank" rel="noopener">Emacs-25.2</a></li>
 <li><a href="https://wiki.archlinux.org/index.php/Desktop_entries" target="_blank" rel="noopener">Desktop entries</a></li>
@@ -602,6 +598,10 @@
       
         <li class="links-of-blogroll-item">
           <a href="https://geektutu.com/" title="https://geektutu.com/" rel="noopener" target="_blank">极客兔兔</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://www.feidaoshuo.com" title="http://www.feidaoshuo.com" rel="noopener" target="_blank">飞刀说</a>
         </li>
       
     </ul>
