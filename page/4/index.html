@@ -4,21 +4,21 @@
 
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="generator" content="Hexo 3.8.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.3.0">
-  <link rel="mask-icon" href="/images/safari-pinned-tab.svg?v=7.3.0" color="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg?v=7.4.1" color="#222">
+  <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
   <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
   <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
 
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
@@ -29,17 +29,18 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '7.3.0',
+    version: '7.4.1',
+    exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    save_scroll: false,
     copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
     lazyload: false,
     pangu: false,
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
@@ -47,13 +48,13 @@
     },
     localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: '',
-    tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
       copy_failure: '复制失败'
-    }
+    },
+    sidebarPadding: 40
   };
 </script>
 
@@ -68,7 +69,6 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="辛未羊的博客">
 <meta name="twitter:description" content="人生如逆旅，我亦是行人">
-  <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
   <link rel="canonical" href="http://panqiincs.me/page/4/">
 
 
@@ -105,7 +105,6 @@
 
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -114,7 +113,7 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
   .use-motion .logo,
   .use-motion .site-title,
@@ -131,15 +130,14 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  <div class="container sidebar-position-left">
+  <div class="container use-motion">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">辛未羊的博客</span>
@@ -149,11 +147,11 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
 
@@ -169,7 +167,7 @@
       
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
       
@@ -180,7 +178,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
       
@@ -191,7 +189,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
 
   </li>
       
@@ -202,7 +200,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
 
   </li>
       
@@ -213,7 +211,7 @@
       
     
 
-    <a href="/series/" rel="section"><i class="menu-item-icon fa fa-fw fa-list"></i> <br>系列</a>
+    <a href="/series/" rel="section"><i class="fa fa-fw fa-list"></i>系列</a>
 
   </li>
       
@@ -224,7 +222,7 @@
       
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
 
   </li>
   </ul>
@@ -234,6 +232,10 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
     <main id="main" class="main">
@@ -241,16 +243,14 @@
         <div class="content-wrap">
             
 
-          <div id="content" class="content page-home">
+          <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div id="posts" class="posts-expand">
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2018/10/16/enslaved-by-phone/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -263,14 +263,11 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2018/10/16/enslaved-by-phone/" class="post-title-link" itemprop="url">不要被手机奴役</a>
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2018/10/16/enslaved-by-phone/" class="post-title-link" itemprop="url">不要被手机奴役</a>
+          
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -286,6 +283,18 @@
               <time title="创建时间：2018-10-16 10:56:22" itemprop="dateCreated datePublished" datetime="2018-10-16T10:56:22+08:00">2018-10-16</time>
             </span>
           
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-06-08 11:27:00" itemprop="dateModified" datetime="2019-06-08T11:27:00+08:00">2019-06-08</time>
+              </span>
+            
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -301,22 +310,20 @@
           
 
           
-            
   
   <span class="post-meta-item">
     
-    <span class="post-meta-item-icon">
-      <i class="fa fa-comment-o"></i>
-    </span>
-    <span class="post-meta-item-text">评论数：</span>
-  
-    <a href="/2018/10/16/enslaved-by-phone/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/10/16/enslaved-by-phone/" itemprop="commentCount"></span>
-    </a>
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/10/16/enslaved-by-phone/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/10/16/enslaved-by-phone/" itemprop="commentCount"></span></a>
   </span>
   
   
-          
 
         </div>
       </header>
@@ -331,7 +338,7 @@
 <p>我也算半个奴隶，有时候，躺在床上刷刷网页，一两个小时就过去了，心里充满了悔恨。长期玩手机对健康很不好，特别伤颈椎和视力，而且手机上大部分信息没啥营养，养成频繁看手机的习惯会影响专注力。为了摆脱手机的奴役，我总结了下面一些原则：</p>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/10/16/enslaved-by-phone/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -345,10 +352,10 @@
     
     
     
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
@@ -356,13 +363,11 @@
   </article>
 
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2018/09/09/wubi-dict-manager/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -375,14 +380,11 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2018/09/09/wubi-dict-manager/" class="post-title-link" itemprop="url">写了个五笔码表管理器</a>
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2018/09/09/wubi-dict-manager/" class="post-title-link" itemprop="url">写了个五笔码表管理器</a>
+          
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -398,6 +400,18 @@
               <time title="创建时间：2018-09-09 22:24:41" itemprop="dateCreated datePublished" datetime="2018-09-09T22:24:41+08:00">2018-09-09</time>
             </span>
           
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-03-31 09:17:10" itemprop="dateModified" datetime="2019-03-31T09:17:10+08:00">2019-03-31</time>
+              </span>
+            
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -413,22 +427,20 @@
           
 
           
-            
   
   <span class="post-meta-item">
     
-    <span class="post-meta-item-icon">
-      <i class="fa fa-comment-o"></i>
-    </span>
-    <span class="post-meta-item-text">评论数：</span>
-  
-    <a href="/2018/09/09/wubi-dict-manager/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/09/09/wubi-dict-manager/" itemprop="commentCount"></span>
-    </a>
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/09/09/wubi-dict-manager/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/09/09/wubi-dict-manager/" itemprop="commentCount"></span></a>
   </span>
   
   
-          
 
         </div>
       </header>
@@ -439,10 +451,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>最近学会了五笔输入法。我学的是新世纪版，因版权原因，网络上的码表资源不多，很多爱好者都自己制作码表，而且很少对外传播。作为程序员，在这方面有得天独厚的优势，于是用C++写了个五笔码表管理工具<a href="https://github.com/panqiincs/RimeWubiDictMngr" target="_blank" rel="noopener">RimeWubiDictMngr</a>。我没有使用C++标准库，而是用的Qt基础库，主要原因是<code>QString</code>对Unicode支持很好，处理汉字很方便。该工具暂时没有界面，只能称作一个功能简单的库，以后有必要再添加界面。</p>
+          <h2 id="缘起">缘起</h2>
+<p>最近学会了五笔输入法。我学的是新世纪版，因版权原因，网络上的码表资源不多，很多爱好者都自己制作码表，而且很少对外传播。作为程序员，在这方面有得天独厚的优势，于是用C++写了个五笔码表管理工具<a href="https://github.com/panqiincs/RimeWubiDictMngr" target="_blank" rel="noopener">RimeWubiDictMngr</a>。我没有使用C++标准库，而是用的Qt基础库，主要原因是<code>QString</code>对Unicode支持很好，处理汉字很方便。该工具暂时没有界面，只能称作一个功能简单的库，以后有必要再添加界面。</p>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/09/09/wubi-dict-manager/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -456,10 +469,10 @@
     
     
     
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
@@ -467,13 +480,11 @@
   </article>
 
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2018/08/28/start-to-use-wubi/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -486,14 +497,11 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2018/08/28/start-to-use-wubi/" class="post-title-link" itemprop="url">学会了五笔输入法</a>
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2018/08/28/start-to-use-wubi/" class="post-title-link" itemprop="url">学会了五笔输入法</a>
+          
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -509,6 +517,18 @@
               <time title="创建时间：2018-08-28 19:42:45" itemprop="dateCreated datePublished" datetime="2018-08-28T19:42:45+08:00">2018-08-28</time>
             </span>
           
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-06-03 22:05:56" itemprop="dateModified" datetime="2019-06-03T22:05:56+08:00">2019-06-03</time>
+              </span>
+            
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -524,22 +544,20 @@
           
 
           
-            
   
   <span class="post-meta-item">
     
-    <span class="post-meta-item-icon">
-      <i class="fa fa-comment-o"></i>
-    </span>
-    <span class="post-meta-item-text">评论数：</span>
-  
-    <a href="/2018/08/28/start-to-use-wubi/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/08/28/start-to-use-wubi/" itemprop="commentCount"></span>
-    </a>
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/08/28/start-to-use-wubi/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/08/28/start-to-use-wubi/" itemprop="commentCount"></span></a>
   </span>
   
   
-          
 
         </div>
       </header>
@@ -553,7 +571,7 @@
           <p>这几天学会了五笔输入法，正在努力适应中。现在的拼音输入法很智能，我用拼音打字已经很快了，仅仅为了提升一丁点速度改用五笔输入法，不值得。现代人用手写字的机会很少，而且输入法大多用拼音，“提笔忘字”的现象非常普遍。五笔是字型输入法，不会有这个问题，这是我切换到五笔的主要原因。使用时还发现，拆字过程能纠正我错误的笔顺，挺好。</p>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/08/28/start-to-use-wubi/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -567,10 +585,10 @@
     
     
     
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
@@ -578,13 +596,11 @@
   </article>
 
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2018/07/31/list-of-computer-books/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -597,14 +613,11 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2018/07/31/list-of-computer-books/" class="post-title-link" itemprop="url">经典计算机书籍列表</a>
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2018/07/31/list-of-computer-books/" class="post-title-link" itemprop="url">经典计算机书籍列表</a>
+          
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -620,6 +633,18 @@
               <time title="创建时间：2018-07-31 08:01:39" itemprop="dateCreated datePublished" datetime="2018-07-31T08:01:39+08:00">2018-07-31</time>
             </span>
           
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-06-29 20:50:49" itemprop="dateModified" datetime="2019-06-29T20:50:49+08:00">2019-06-29</time>
+              </span>
+            
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -635,22 +660,20 @@
           
 
           
-            
   
   <span class="post-meta-item">
     
-    <span class="post-meta-item-icon">
-      <i class="fa fa-comment-o"></i>
-    </span>
-    <span class="post-meta-item-text">评论数：</span>
-  
-    <a href="/2018/07/31/list-of-computer-books/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/07/31/list-of-computer-books/" itemprop="commentCount"></span>
-    </a>
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/07/31/list-of-computer-books/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/07/31/list-of-computer-books/" itemprop="commentCount"></span></a>
   </span>
   
   
-          
 
         </div>
       </header>
@@ -661,10 +684,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="请读经典"><a href="#请读经典" class="headerlink" title="请读经典"></a>请读经典</h2><p>相信每个读过大学的人都被垃圾教材坑害过，有人可能还浑然不知。记得大一学习常微分方程，老师给我们班每个人借了一本国外的原版教材，以供参考。临近期末考试，我才尝试性地翻开那本英文版教材，一开始读就被她深深地吸引，原来我们教材上那些枯燥机械的内容竟然可以演绎得如此轻松有趣，原来英文版的教材能比中文版的还好懂！阅读那本教材，就好像有位知识水平很高的老教授，顺着你的思维和逻辑，娓娓道来，最后一语点破，整个脉络瞬间清晰无比。几年后读到TCPL和CSAPP，也有类似的感受。掩卷长叹，不禁感慨那些被垃圾教材浪费的时光。</p>
+          <h2 id="请读经典">请读经典</h2>
+<p>相信每个读过大学的人都被垃圾教材坑害过，有人可能还浑然不知。记得大一学习常微分方程，老师给我们班每个人借了一本国外的原版教材，以供参考。临近期末考试，我才尝试性地翻开那本英文版教材，一开始读就被她深深地吸引，原来我们教材上那些枯燥机械的内容竟然可以演绎得如此轻松有趣，原来英文版的教材能比中文版的还好懂！阅读那本教材，就好像有位知识水平很高的老教授，顺着你的思维和逻辑，娓娓道来，最后一语点破，整个脉络瞬间清晰无比。几年后读到TCPL和CSAPP，也有类似的感受。掩卷长叹，不禁感慨那些被垃圾教材浪费的时光。</p>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/07/31/list-of-computer-books/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -678,10 +702,10 @@
     
     
     
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
@@ -689,13 +713,11 @@
   </article>
 
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2018/07/22/awesome-online-maps/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -708,14 +730,11 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2018/07/22/awesome-online-maps/" class="post-title-link" itemprop="url">在线地图推荐</a>
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2018/07/22/awesome-online-maps/" class="post-title-link" itemprop="url">在线地图推荐</a>
+          
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -731,6 +750,18 @@
               <time title="创建时间：2018-07-22 20:38:06" itemprop="dateCreated datePublished" datetime="2018-07-22T20:38:06+08:00">2018-07-22</time>
             </span>
           
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-08-26 19:55:31" itemprop="dateModified" datetime="2019-08-26T19:55:31+08:00">2019-08-26</time>
+              </span>
+            
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -746,22 +777,20 @@
           
 
           
-            
   
   <span class="post-meta-item">
     
-    <span class="post-meta-item-icon">
-      <i class="fa fa-comment-o"></i>
-    </span>
-    <span class="post-meta-item-text">评论数：</span>
-  
-    <a href="/2018/07/22/awesome-online-maps/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/07/22/awesome-online-maps/" itemprop="commentCount"></span>
-    </a>
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/07/22/awesome-online-maps/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/07/22/awesome-online-maps/" itemprop="commentCount"></span></a>
   </span>
   
   
-          
 
         </div>
       </header>
@@ -773,10 +802,11 @@
 
       
           <p>我是个地理爱好者，闲来无事时喜欢看各种地图。现在网络上各种类型的地图很多，大名鼎鼎的谷歌地图以及现在常用的导航地图就不介绍了，我主要给大家推荐几个不太知名，但非常有用、有趣的地图。</p>
-<h2 id="Relief-Map"><a href="#Relief-Map" class="headerlink" title="Relief Map"></a>Relief Map</h2><p><a href="https://maps-for-free.com/" target="_blank" rel="noopener">Relief Map</a>是地形图，用不同的颜色来表示不同的海拔高度（或者海洋深度）。从一个地区的地形图能够大致判断其人口承载能力、交通是否便利以及军事上是否安全，深刻地反映了其“天赋”，所以地形图常用于政治、军事和经济的分析当中。我最喜欢的公众号之一——“地球知识局”中的很多地图就取材于此。</p>
+<h2 id="relief-map">Relief Map</h2>
+<p><a href="https://maps-for-free.com/" target="_blank" rel="noopener">Relief Map</a>是地形图，用不同的颜色来表示不同的海拔高度（或者海洋深度）。从一个地区的地形图能够大致判断其人口承载能力、交通是否便利以及军事上是否安全，深刻地反映了其“天赋”，所以地形图常用于政治、军事和经济的分析当中。我最喜欢的公众号之一——“地球知识局”中的很多地图就取材于此。</p>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/07/22/awesome-online-maps/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -790,10 +820,10 @@
     
     
     
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
@@ -801,13 +831,11 @@
   </article>
 
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2018/06/17/change-a-new-distribution/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -820,14 +848,11 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2018/06/17/change-a-new-distribution/" class="post-title-link" itemprop="url">又换了个发行版</a>
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2018/06/17/change-a-new-distribution/" class="post-title-link" itemprop="url">又换了个发行版</a>
+          
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -843,6 +868,18 @@
               <time title="创建时间：2018-06-17 16:37:44" itemprop="dateCreated datePublished" datetime="2018-06-17T16:37:44+08:00">2018-06-17</time>
             </span>
           
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-05-14 18:06:55" itemprop="dateModified" datetime="2019-05-14T18:06:55+08:00">2019-05-14</time>
+              </span>
+            
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -858,22 +895,20 @@
           
 
           
-            
   
   <span class="post-meta-item">
     
-    <span class="post-meta-item-icon">
-      <i class="fa fa-comment-o"></i>
-    </span>
-    <span class="post-meta-item-text">评论数：</span>
-  
-    <a href="/2018/06/17/change-a-new-distribution/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/06/17/change-a-new-distribution/" itemprop="commentCount"></span>
-    </a>
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/06/17/change-a-new-distribution/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/06/17/change-a-new-distribution/" itemprop="commentCount"></span></a>
   </span>
   
   
-          
 
         </div>
       </header>
@@ -888,7 +923,7 @@
 <p>滚动发行版的好处在于，系统可以永远保持最新版。但过于激进的版本策略也带来了稳定性方面的风险，运气不好的话，系统可以直接崩溃的。但我用的这几个月，系统从来没有出现过崩溃问题，比之前用过的Ubuntu 14.04 LTS稳定多了。期间也发现过几个明显的bug，都是无关紧要的小问题，在后面的更新中都解决了。更新太频繁是唯一能想到的缺点，平均每周都有一个系统升级，每次的升级文件至少有好几百兆，升级花费时间较长。</p>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/06/17/change-a-new-distribution/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -902,10 +937,10 @@
     
     
     
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
@@ -913,13 +948,11 @@
   </article>
 
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2018/06/13/dpt-rp1-user-experience/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -932,14 +965,11 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2018/06/13/dpt-rp1-user-experience/" class="post-title-link" itemprop="url">DPT-RP1使用体验</a>
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2018/06/13/dpt-rp1-user-experience/" class="post-title-link" itemprop="url">DPT-RP1使用体验</a>
+          
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -954,6 +984,18 @@
 
               <time title="创建时间：2018-06-13 14:07:14" itemprop="dateCreated datePublished" datetime="2018-06-13T14:07:14+08:00">2018-06-13</time>
             </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-08-26 20:04:33" itemprop="dateModified" datetime="2019-08-26T20:04:33+08:00">2019-08-26</time>
+              </span>
+            
           
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -970,22 +1012,20 @@
           
 
           
-            
   
   <span class="post-meta-item">
     
-    <span class="post-meta-item-icon">
-      <i class="fa fa-comment-o"></i>
-    </span>
-    <span class="post-meta-item-text">评论数：</span>
-  
-    <a href="/2018/06/13/dpt-rp1-user-experience/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/06/13/dpt-rp1-user-experience/" itemprop="commentCount"></span>
-    </a>
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/06/13/dpt-rp1-user-experience/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/06/13/dpt-rp1-user-experience/" itemprop="commentCount"></span></a>
   </span>
   
   
-          
 
         </div>
       </header>
@@ -996,10 +1036,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>我前几年买过一个Kindle电子书阅读器。Kindle是电子墨水屏，阅读效果接近纸质书，能保护视力，而且携带方便，续航能力强。但Kindle屏幕小，阅读文学类书籍还行，对于包含大量公式、图表的专业书就不太适合了。后来，索尼公司推出了一款电子墨水屏阅读器DPT-S1，屏幕大小和A4纸相当，非常适合阅读pdf文档。我对它垂涎已久，无奈那时候还未参加工作，囊中羞涩。2017年4月，它的升级版DPT-RP1问世，比S1更轻薄，更便宜，但依然价格不菲。</p>
+          <h2 id="需求">需求</h2>
+<p>我前几年买过一个Kindle电子书阅读器。Kindle是电子墨水屏，阅读效果接近纸质书，能保护视力，而且携带方便，续航能力强。但Kindle屏幕小，阅读文学类书籍还行，对于包含大量公式、图表的专业书就不太适合了。后来，索尼公司推出了一款电子墨水屏阅读器DPT-S1，屏幕大小和A4纸相当，非常适合阅读pdf文档。我对它垂涎已久，无奈那时候还未参加工作，囊中羞涩。2017年4月，它的升级版DPT-RP1问世，比S1更轻薄，更便宜，但依然价格不菲。</p>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/06/13/dpt-rp1-user-experience/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -1013,10 +1054,10 @@
     
     
     
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
@@ -1024,13 +1065,11 @@
   </article>
 
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2018/05/26/process-pdf-using-imagemagick/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1043,14 +1082,11 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2018/05/26/process-pdf-using-imagemagick/" class="post-title-link" itemprop="url">用ImageMagick处理pdf</a>
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2018/05/26/process-pdf-using-imagemagick/" class="post-title-link" itemprop="url">用ImageMagick处理pdf</a>
+          
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -1065,6 +1101,18 @@
 
               <time title="创建时间：2018-05-26 15:40:35" itemprop="dateCreated datePublished" datetime="2018-05-26T15:40:35+08:00">2018-05-26</time>
             </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-06-03 07:08:04" itemprop="dateModified" datetime="2019-06-03T07:08:04+08:00">2019-06-03</time>
+              </span>
+            
           
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1081,22 +1129,20 @@
           
 
           
-            
   
   <span class="post-meta-item">
     
-    <span class="post-meta-item-icon">
-      <i class="fa fa-comment-o"></i>
-    </span>
-    <span class="post-meta-item-text">评论数：</span>
-  
-    <a href="/2018/05/26/process-pdf-using-imagemagick/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/26/process-pdf-using-imagemagick/" itemprop="commentCount"></span>
-    </a>
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/05/26/process-pdf-using-imagemagick/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/26/process-pdf-using-imagemagick/" itemprop="commentCount"></span></a>
   </span>
   
   
-          
 
         </div>
       </header>
@@ -1107,10 +1153,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="需求和方案"><a href="#需求和方案" class="headerlink" title="需求和方案"></a>需求和方案</h2><p>最近想学习TCP/IP协议，综合考虑，阅读<a href="https://book.douban.com/subject/1741925/" target="_blank" rel="noopener">TCP/IP Illustrated</a>第一版是最好的选择，而且还得是英文版。我有一个电子书阅读器<a href="https://panqiincs.me/2018/06/13/dpt-rp1-user-experience/">DPT-RP1</a>，找个pdf文件就可以开读了。网络上最流行的英文版pdf，排版质量不佳，插图基本看不清，遂放弃。终于找到一个还不错的版本，制作者给实体书的每一页拍照，然后将图片拼成pdf。这个pdf文件在电脑上阅读效果还不错，但图片的阴影在DPT-RP1里显示出来灰扑扑一片，阅读效果不佳。</p>
+          <h2 id="需求和方案">需求和方案</h2>
+<p>最近想学习TCP/IP协议，综合考虑，阅读<a href="https://book.douban.com/subject/1741925/" target="_blank" rel="noopener">TCP/IP Illustrated</a>第一版是最好的选择，而且还得是英文版。我有一个电子书阅读器<a href="https://panqiincs.me/2018/06/13/dpt-rp1-user-experience/">DPT-RP1</a>，找个pdf文件就可以开读了。网络上最流行的英文版pdf，排版质量不佳，插图基本看不清，遂放弃。终于找到一个还不错的版本，制作者给实体书的每一页拍照，然后将图片拼成pdf。这个pdf文件在电脑上阅读效果还不错，但图片的阴影在DPT-RP1里显示出来灰扑扑一片，阅读效果不佳。</p>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/05/26/process-pdf-using-imagemagick/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -1124,10 +1171,10 @@
     
     
     
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
@@ -1135,13 +1182,11 @@
   </article>
 
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2018/02/04/cpp-const-member-functions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1154,14 +1199,11 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2018/02/04/cpp-const-member-functions/" class="post-title-link" itemprop="url">C++的const成员函数</a>
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2018/02/04/cpp-const-member-functions/" class="post-title-link" itemprop="url">C++的const成员函数</a>
+          
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -1177,6 +1219,18 @@
               <time title="创建时间：2018-02-04 12:20:28" itemprop="dateCreated datePublished" datetime="2018-02-04T12:20:28+08:00">2018-02-04</time>
             </span>
           
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-26 12:00:49" itemprop="dateModified" datetime="2019-09-26T12:00:49+08:00">2019-09-26</time>
+              </span>
+            
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -1192,22 +1246,20 @@
           
 
           
-            
   
   <span class="post-meta-item">
     
-    <span class="post-meta-item-icon">
-      <i class="fa fa-comment-o"></i>
-    </span>
-    <span class="post-meta-item-text">评论数：</span>
-  
-    <a href="/2018/02/04/cpp-const-member-functions/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/02/04/cpp-const-member-functions/" itemprop="commentCount"></span>
-    </a>
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/02/04/cpp-const-member-functions/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/02/04/cpp-const-member-functions/" itemprop="commentCount"></span></a>
   </span>
   
   
-          
 
         </div>
       </header>
@@ -1221,7 +1273,7 @@
           <p>在类的成员函数的参数列表后面加上关键字const，表示它是一个const成员函数。考虑下面的类：</p>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/02/04/cpp-const-member-functions/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -1235,10 +1287,10 @@
     
     
     
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
@@ -1246,13 +1298,11 @@
   </article>
 
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2018/01/30/cpp-const-keyword/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1265,14 +1315,11 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2018/01/30/cpp-const-keyword/" class="post-title-link" itemprop="url">C++的const关键字</a>
+        <h1 class="post-title" itemprop="name headline">
             
-          </h1>
-        
+            <a href="/2018/01/30/cpp-const-keyword/" class="post-title-link" itemprop="url">C++的const关键字</a>
+          
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -1288,6 +1335,18 @@
               <time title="创建时间：2018-01-30 10:47:30" itemprop="dateCreated datePublished" datetime="2018-01-30T10:47:30+08:00">2018-01-30</time>
             </span>
           
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-08-03 16:24:05" itemprop="dateModified" datetime="2019-08-03T16:24:05+08:00">2019-08-03</time>
+              </span>
+            
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -1303,22 +1362,20 @@
           
 
           
-            
   
   <span class="post-meta-item">
     
-    <span class="post-meta-item-icon">
-      <i class="fa fa-comment-o"></i>
-    </span>
-    <span class="post-meta-item-text">评论数：</span>
-  
-    <a href="/2018/01/30/cpp-const-keyword/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/01/30/cpp-const-keyword/" itemprop="commentCount"></span>
-    </a>
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/01/30/cpp-const-keyword/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/01/30/cpp-const-keyword/" itemprop="commentCount"></span></a>
   </span>
   
   
-          
 
         </div>
       </header>
@@ -1329,11 +1386,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="const的作用"><a href="#const的作用" class="headerlink" title="const的作用"></a>const的作用</h2><p>C++中的const关键字多才多艺且无处不在，它的语法意义并不高深，用法却变化多端。本文总结了const几乎所有的用法：定义常量、修饰指针和引用、修饰函数的参数和返回值、修饰类成员。</p>
-<h2 id="定义常量"><a href="#定义常量" class="headerlink" title="定义常量"></a>定义常量</h2><p>关键字const对变量的类型加以限定，将变量定义为一个常量，任何对变量赋值的行为在编译阶段即被编译器阻止。因为const对象一旦创建后，其值不能再改变，所以const对象必须被初始化，初始值可以是任意表达式。还可以利用一个对象初始化另一个对象，它们是不是const都无关紧要。</p>
+          <h2 id="const的作用">const的作用</h2>
+<p>C++中的const关键字多才多艺且无处不在，它的语法意义并不高深，用法却变化多端。本文总结了const几乎所有的用法：定义常量、修饰指针和引用、修饰函数的参数和返回值、修饰类成员。</p>
+<h2 id="定义常量">定义常量</h2>
+<p>关键字const对变量的类型加以限定，将变量定义为一个常量，任何对变量赋值的行为在编译阶段即被编译器阻止。因为const对象一旦创建后，其值不能再改变，所以const对象必须被初始化，初始值可以是任意表达式。还可以利用一个对象初始化另一个对象，它们是不是const都无关紧要。</p>
           <!--noindex-->
           
-            <div class="post-button text-center">
+            <div class="post-button">
               <a class="btn" href="/2018/01/30/cpp-const-keyword/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
@@ -1347,10 +1406,10 @@
     
     
     
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
@@ -1358,7 +1417,7 @@
   </article>
 
     
-  </section>
+  </div>
 
   
   <nav class="pagination">
@@ -1372,26 +1431,39 @@
         </div>
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Krist Pan">
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.png"
+      alt="Krist Pan">
   <p class="site-author-name" itemprop="name">Krist Pan</p>
-  <div class="site-description motion-element" itemprop="description">人生如逆旅，我亦是行人</div>
+  <div class="site-description" itemprop="description">人生如逆旅，我亦是行人</div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
@@ -1409,20 +1481,6 @@
             <a href="/categories/">
           
         
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
         <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span>
         </a>
@@ -1436,300 +1494,13 @@
             <a href="/tags/">
           
         
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
         <span class="site-state-item-count">143</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
     
   </nav>
+</div>
   <div class="feed-link motion-element">
     <a href="/atom.xml" rel="alternate">
       <i class="fa fa-rss"></i>RSS
@@ -1772,20 +1543,12 @@
   </div>
 
 
-  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+  <div class="links-of-blogroll motion-element">
     <div class="links-of-blogroll-title">
-      <i class="fa  fa-fw fa-link"></i>
-      友链
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
     </div>
     <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <a href="http://blog.sciencenet.cn/u/qhliu" title="http://blog.sciencenet.cn/u/qhliu" rel="noopener" target="_blank">湖南土著</a>
-        </li>
-      
-        <li class="links-of-blogroll-item">
-          <a href="http://blog.sina.com.cn/u/1307478894" title="http://blog.sina.com.cn/u/1307478894" rel="noopener" target="_blank">农民进城</a>
-        </li>
-      
         <li class="links-of-blogroll-item">
           <a href="https://www.kawabangga.com/" title="https://www.kawabangga.com/" rel="noopener" target="_blank">卡瓦邦噶！</a>
         </li>
@@ -1806,14 +1569,9 @@
           <a href="https://geektutu.com/" title="https://geektutu.com/" rel="noopener" target="_blank">极客兔兔</a>
         </li>
       
-        <li class="links-of-blogroll-item">
-          <a href="http://www.feidaoshuo.com" title="http://www.feidaoshuo.com" rel="noopener" target="_blank">飞刀说</a>
-        </li>
-      
     </ul>
   </div>
 
-        </div>
       </div>
 
     </div>
@@ -1832,11 +1590,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Krist Pan</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1</div>
 
         
+
+
+
+
 
 
 
@@ -1848,51 +1610,19 @@
         
       </div>
     </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-      </div>
-
-    
-
   </div>
 
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-<script src="/js/utils.js?v=7.3.0"></script>
-  <script src="/js/motion.js?v=7.3.0"></script>
-
-
-  <script src="/js/affix.js?v=7.3.0"></script>
-  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
-
-
-<script src="/js/next-boot.js?v=7.3.0"></script>
-
-
-
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
 
 
 
   
-  <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
-  </script>
-
-
-
-
-
-
-
 
 
 
@@ -1944,9 +1674,6 @@
 
   
 
-
-  
-    
 <script>
   function loadCount() {
     var d = document, s = d.createElement('script');

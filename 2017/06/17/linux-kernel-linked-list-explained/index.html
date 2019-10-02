@@ -4,21 +4,21 @@
 
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="generator" content="Hexo 3.8.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.3.0">
-  <link rel="mask-icon" href="/images/safari-pinned-tab.svg?v=7.3.0" color="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg?v=7.4.1" color="#222">
+  <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
   <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
   <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
 
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
@@ -29,17 +29,18 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '7.3.0',
+    version: '7.4.1',
+    exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    save_scroll: false,
     copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
     lazyload: false,
     pangu: false,
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
@@ -47,31 +48,30 @@
     },
     localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: '',
-    tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
       copy_success: '复制成功',
       copy_failure: '复制失败'
-    }
+    },
+    sidebarPadding: 40
   };
 </script>
 
-  <meta name="description" content="介绍Linux链表（linked list）的实现比较特别。通常来说，一个链表结构体会包含需要相互连接的数据，例如下面结构体中的my_item成员：">
+  <meta name="description" content="介绍 Linux链表（linked list）的实现比较特别。通常来说，一个链表结构体会包含需要相互连接的数据，例如下面结构体中的my_item成员：">
 <meta name="keywords" content="双向链表,链表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux内核中的链表">
 <meta property="og:url" content="http://panqiincs.me/2017/06/17/linux-kernel-linked-list-explained/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="介绍Linux链表（linked list）的实现比较特别。通常来说，一个链表结构体会包含需要相互连接的数据，例如下面结构体中的my_item成员：">
+<meta property="og:description" content="介绍 Linux链表（linked list）的实现比较特别。通常来说，一个链表结构体会包含需要相互连接的数据，例如下面结构体中的my_item成员：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/linux_linked_list_head.gif">
 <meta property="og:updated_time" content="2019-09-26T03:59:58.778Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux内核中的链表">
-<meta name="twitter:description" content="介绍Linux链表（linked list）的实现比较特别。通常来说，一个链表结构体会包含需要相互连接的数据，例如下面结构体中的my_item成员：">
+<meta name="twitter:description" content="介绍 Linux链表（linked list）的实现比较特别。通常来说，一个链表结构体会包含需要相互连接的数据，例如下面结构体中的my_item成员：">
 <meta name="twitter:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/linux_linked_list_head.gif">
-  <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
   <link rel="canonical" href="http://panqiincs.me/2017/06/17/linux-kernel-linked-list-explained/">
 
 
@@ -108,7 +108,6 @@
 
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -117,7 +116,7 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
   .use-motion .logo,
   .use-motion .site-title,
@@ -134,15 +133,14 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  <div class="container sidebar-position-left">
+  <div class="container use-motion">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">辛未羊的博客</span>
@@ -152,11 +150,11 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
 
@@ -172,7 +170,7 @@
       
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
       
@@ -183,7 +181,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
       
@@ -194,7 +192,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
 
   </li>
       
@@ -205,7 +203,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
 
   </li>
       
@@ -216,7 +214,7 @@
       
     
 
-    <a href="/series/" rel="section"><i class="menu-item-icon fa fa-fw fa-list"></i> <br>系列</a>
+    <a href="/series/" rel="section"><i class="fa fa-fw fa-list"></i>系列</a>
 
   </li>
       
@@ -227,7 +225,7 @@
       
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
 
   </li>
   </ul>
@@ -237,6 +235,10 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
     <main id="main" class="main">
@@ -244,17 +246,15 @@
         <div class="content-wrap">
             
 
-          <div id="content" class="content page-post-detail">
+          <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
-    
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block">
+  <div class="post-block post">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/06/17/linux-kernel-linked-list-explained/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -267,13 +267,10 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Linux内核中的链表
 
-        
-          <h1 class="post-title" itemprop="name headline">Linux内核中的链表
-
-            
-          </h1>
-        
+          
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -288,6 +285,18 @@
 
               <time title="创建时间：2017-06-17 10:45:20" itemprop="dateCreated datePublished" datetime="2017-06-17T10:45:20+08:00">2017-06-17</time>
             </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-26 11:59:58" itemprop="dateModified" datetime="2019-09-26T11:59:58+08:00">2019-09-26</time>
+              </span>
+            
           
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -304,22 +313,20 @@
           
 
           
-            
   
   <span class="post-meta-item">
     
-    <span class="post-meta-item-icon">
-      <i class="fa fa-comment-o"></i>
-    </span>
-    <span class="post-meta-item-text">评论数：</span>
-  
-    <a href="/2017/06/17/linux-kernel-linked-list-explained/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/17/linux-kernel-linked-list-explained/" itemprop="commentCount"></span>
-    </a>
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2017/06/17/linux-kernel-linked-list-explained/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/17/linux-kernel-linked-list-explained/" itemprop="commentCount"></span></a>
   </span>
   
   
-          
 
         </div>
       </header>
@@ -330,7 +337,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Linux链表（linked list）的实现比较特别。通常来说，一个链表结构体会包含需要相互连接的数据，例如下面结构体中的<code>my_item</code>成员：</p>
+        <h2 id="介绍">介绍</h2>
+<p>Linux链表（linked list）的实现比较特别。通常来说，一个链表结构体会包含需要相互连接的数据，例如下面结构体中的<code>my_item</code>成员：</p>
 <a id="more"></a>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">my_list</span> &#123;</span></span><br><span class="line">    <span class="keyword">void</span> *my_item;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">my_list</span> *<span class="title">next</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">my_list</span> *<span class="title">prev</span>;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Linux内核的实现仅仅定义了一个简单的结构体<code>list_head</code>，它是个双向链表：</p>
@@ -338,15 +346,19 @@
 <p>使用时，直接将它作为结构体的一个成员变量：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">my_cool_list</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> <span class="title">list</span>;</span> <span class="comment">/* kernel's list structure */</span></span><br><span class="line">    <span class="keyword">int</span> my_cool_data;</span><br><span class="line">    <span class="keyword">void</span> *my_cool_void;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>看起来就好像是链表包含在它所连接的数据中！这样做的好处在于，你不用为每一种需要相互连接的数据类型都定义一个结构体，只需要将该数据类型“捆绑”在该链表上即可。</p>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>内核中链表的实现在<code>include/linux/list.h</code>文件中，这里有一个精简的<a href="https://isis.poly.edu/kulesh/stuff/src/klist/list.h" target="_blank" rel="noopener">可用版本</a>。下面有一个使用示例（文件来源：<a href="https://isis.poly.edu/kulesh/stuff/src/klist/test_list.c" target="_blank" rel="noopener">test_list.c</a>）：</p>
+<h2 id="使用方法">使用方法</h2>
+<p>内核中链表的实现在<code>include/linux/list.h</code>文件中，这里有一个精简的<a href="https://isis.poly.edu/kulesh/stuff/src/klist/list.h" target="_blank" rel="noopener">可用版本</a>。下面有一个使用示例（文件来源：<a href="https://isis.poly.edu/kulesh/stuff/src/klist/test_list.c" target="_blank" rel="noopener">test_list.c</a>）：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"list.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">kool_list</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> to;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> <span class="title">list</span>;</span></span><br><span class="line">    <span class="keyword">int</span> from;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">kool_list</span> *<span class="title">tmp</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> *<span class="title">pos</span>, *<span class="title">q</span>;</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> i;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">kool_list</span> <span class="title">mylist</span>;</span></span><br><span class="line">    INIT_LIST_HEAD(&amp;mylist.<span class="built_in">list</span>); <span class="comment">// 初始化list</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 为mylist添加元素</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">5</span>; i != <span class="number">0</span>; --i) &#123;</span><br><span class="line">        <span class="comment">// 动态分配对象，使用用户的输入初始化该对象</span></span><br><span class="line">        tmp = (struct kool_list *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct kool_list));</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"enter to and from: "</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;tmp-&gt;to, &amp;tmp-&gt;from);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将新对象tmp加入到mylist中，也可以使用list_add_tail()添加到末尾</span></span><br><span class="line">        list_add(&amp;(tmp-&gt;<span class="built_in">list</span>), &amp;(mylist.<span class="built_in">list</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// list_for_each()是一个宏，用于循环</span></span><br><span class="line">    <span class="comment">// 参数1：用于循环计数，指向当前对象的list成员</span></span><br><span class="line">    <span class="comment">// 参数2：指向链表的指针</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"traversing the list using list_for_each():\n"</span>);</span><br><span class="line">    list_for_each(pos, &amp;mylist.<span class="built_in">list</span>) &#123;</span><br><span class="line">        <span class="comment">// 如上所述，pos-&gt;next指向下一个对象的list成员而非我们关心的to和from，</span></span><br><span class="line">        <span class="comment">// list_entry通过list变量的地址计算出数据结构kool_list的地址，通过该</span></span><br><span class="line">        <span class="comment">// 地址引用to和from成员变量。该机制本文后面有详述</span></span><br><span class="line">        tmp = list_entry(pos, struct kool_list, <span class="built_in">list</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"to = %d from = %d\n"</span>, tmp-&gt;to, tmp-&gt;from);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 使用list_for_each_entry()更方便</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"traversing the list using list_for_each_entry()\n"</span>);</span><br><span class="line">    list_for_each_entry(tmp, &amp;mylist.<span class="built_in">list</span>, <span class="built_in">list</span>)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"to = %d from = %d\n"</span>, tmp-&gt;to, tmp-&gt;from);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 需要删除或者移动对象时，需要使用更安全的list_for_each_safe()</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"deleting the list using list_for_each_safe(): \n"</span>);</span><br><span class="line">    list_for_each_safe(pos, q, &amp;mylist.<span class="built_in">list</span>) &#123;</span><br><span class="line">        tmp = list_entry(pos, struct kool_list, <span class="built_in">list</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"free item to = %d from = %d\n"</span>, tmp-&gt;to, tmp-&gt;from);</span><br><span class="line">        list_del(pos);</span><br><span class="line">        <span class="built_in">free</span>(tmp);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>将<code>test_list.c</code>和<code>list.h</code>放到同一个目录下，编译运行即可。上面的代码只展示了基本功能，想了解更多的用法请阅读源码。</p>
-<h2 id="实现机制"><a href="#实现机制" class="headerlink" title="实现机制"></a>实现机制</h2><p>该实现的核心在于<code>list_entry</code>这个宏定义：</p>
+<h2 id="实现机制">实现机制</h2>
+<p>该实现的核心在于<code>list_entry</code>这个宏定义：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> list_entry(ptr, type, member) \</span></span><br><span class="line">        ((type *)((<span class="keyword">char</span> *)(ptr)-(<span class="keyword">unsigned</span> <span class="keyword">long</span>)(&amp;((type *)<span class="number">0</span>)-&gt;member)))</span><br></pre></td></tr></table></figure>
 <p>上面示例中的宏调用展开如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((struct kool_list *)((<span class="keyword">char</span> *)(pos) - (<span class="keyword">unsigned</span> <span class="keyword">long</span>)(&amp;((struct kool_list *)<span class="number">0</span>)-&gt;<span class="built_in">list</span>)))</span><br></pre></td></tr></table></figure>
 <p>给出链表结构体<code>struct list_head</code>的地址<code>pos</code>，宏定义<code>list_entry</code>计算出了包含该链表成员的结构体<code>struct kool_list</code>的地址。首先必须得到成员<code>list</code>在结构体中的位置（内存偏移），然后根据该偏移量计算出结构体的地址。</p>
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/linux_linked_list_head.gif" alt="linux_linked_list_head"></p>
+<figure>
+<img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/linux_linked_list_head.gif" alt><figcaption>linux_linked_list_head</figcaption>
+</figure>
 <p>现在的问题是，这个偏移量是如何得到的。假设有一个结构体<code>struct foo_bar</code>，下面的表达式计算成员<code>boo</code>在结构体中的偏移：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">unsigned</span> <span class="keyword">long</span>)(&amp;((struct foo_bar *)<span class="number">0</span>)-&gt;boo)</span><br></pre></td></tr></table></figure>
 <p>将内存地址<code>0</code>转换成我们想要的类型<code>struct foo_bar</code>，然后得到我们感兴趣的成员的地址，也就是该成员在结构体中的偏移量。我们已经知道了这个成员在结构体实例中的绝对地址（即<code>pos</code>），于是可以推算出结构体实例的地址。下面的测试代码（文件来源：<a href="https://isis.poly.edu/kulesh/stuff/src/klist/compute_offset.c" target="_blank" rel="noopener">compute_offset.c</a>）验证了这一点：</p>
@@ -354,22 +366,21 @@
 <p>编译运行得到如下结果：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">address of &amp;tmp is= 0x7ffcf635c9b0</span><br><span class="line"></span><br><span class="line">address of tmp-&gt;foo= 0x7ffcf635c9b0      offset of tmp-&gt;foo= 0</span><br><span class="line">address of tmp-&gt;bar= 0x7ffcf635c9b4      offset of tmp-&gt;bar= 4</span><br><span class="line">address of tmp-&gt;boo= 0x7ffcf635c9b5      offset of tmp-&gt;boo= 5</span><br><span class="line"></span><br><span class="line">computed address of &amp;tmp using:</span><br><span class="line">address and offset of tmp-&gt;foo= 0x7ffcf635c9b0</span><br><span class="line">address and offset of tmp-&gt;bar= 0x7ffcf635c9b0</span><br><span class="line">address and offset of tmp-&gt;boo= 0x7ffcf635c9b0</span><br></pre></td></tr></table></figure>
 <p>从上面的示例代码可以看出，通过每个成员变量都能够计算出结构体变量的地址，因此，链表成员变量可以放在结构体中的任意位置。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>本文整理自：</p>
-<ol>
-<li><a href="https://isis.poly.edu/kulesh/stuff/src/klist/" target="_blank" rel="noopener">Linux Kernel Linked List Explained</a></li>
-<li><a href="http://www.makelinux.net/ldd3/chp-11-sect-5" target="_blank" rel="noopener">Linked Lists</a></li>
-</ol>
+<h2 id="参考">参考</h2>
+<p>本文整理自： 1. <a href="https://isis.poly.edu/kulesh/stuff/src/klist/" target="_blank" rel="noopener">Linux Kernel Linked List Explained</a> 2. <a href="http://www.makelinux.net/ldd3/chp-11-sect-5" target="_blank" rel="noopener">Linked Lists</a></p>
 
     </div>
+
+    
+    
+    
       
 
-
-    
-    
-    
-      <div>
+        
+      
         
 
+<div>
 <ul class="post-copyright">
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Krist Pan</li>
@@ -380,36 +391,47 @@
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
 </ul>
+</div>
 
-      </div>
+      
 
-    <footer class="post-footer">
+      <footer class="post-footer">
           
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/双向链表/" rel="tag"># 双向链表</a>
+            
+              <a href="/tags/链表/" rel="tag"># 链表</a>
+            
+          </div>
         
-        <div class="post-tags">
-            <a href="/tags/双向链表/" rel="tag"># 双向链表</a>
-          
-            <a href="/tags/链表/" rel="tag"># 链表</a>
-          
-        </div>
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-              <a href="/2017/05/23/burn-pi-image-under-linux/" rel="next" title="Linux下烧写树莓派系统">
-                <i class="fa fa-chevron-left"></i> Linux下烧写树莓派系统
-              </a>
-            
-          </div>
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-              <a href="/2017/06/26/common-linux-commands/" rel="prev" title="实用Linux命令">
-                实用Linux命令 <i class="fa fa-chevron-right"></i>
-              </a>
-            
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2017/05/23/burn-pi-image-under-linux/" rel="next" title="Linux下烧写树莓派系统">
+                  <i class="fa fa-chevron-left"></i> Linux下烧写树莓派系统
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2017/06/26/common-linux-commands/" rel="prev" title="实用Linux命令">
+                  实用Linux命令 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
           </div>
-        </div>
-    </footer>
+        
+      </footer>
+    
   </div>
   
   
@@ -431,39 +453,49 @@
   
   
 
-
         </div>
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
+        
+        
+        
+        
       
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Krist Pan">
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法"><span class="nav-number">2.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现机制"><span class="nav-number">3.</span> <span class="nav-text">实现机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.png"
+      alt="Krist Pan">
   <p class="site-author-name" itemprop="name">Krist Pan</p>
-  <div class="site-description motion-element" itemprop="description">人生如逆旅，我亦是行人</div>
+  <div class="site-description" itemprop="description">人生如逆旅，我亦是行人</div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
@@ -481,20 +513,6 @@
             <a href="/categories/">
           
         
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
         <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span>
         </a>
@@ -508,300 +526,13 @@
             <a href="/tags/">
           
         
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
         <span class="site-state-item-count">143</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
     
   </nav>
+</div>
   <div class="feed-link motion-element">
     <a href="/atom.xml" rel="alternate">
       <i class="fa fa-rss"></i>RSS
@@ -844,20 +575,12 @@
   </div>
 
 
-  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+  <div class="links-of-blogroll motion-element">
     <div class="links-of-blogroll-title">
-      <i class="fa  fa-fw fa-link"></i>
-      友链
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
     </div>
     <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <a href="http://blog.sciencenet.cn/u/qhliu" title="http://blog.sciencenet.cn/u/qhliu" rel="noopener" target="_blank">湖南土著</a>
-        </li>
-      
-        <li class="links-of-blogroll-item">
-          <a href="http://blog.sina.com.cn/u/1307478894" title="http://blog.sina.com.cn/u/1307478894" rel="noopener" target="_blank">农民进城</a>
-        </li>
-      
         <li class="links-of-blogroll-item">
           <a href="https://www.kawabangga.com/" title="https://www.kawabangga.com/" rel="noopener" target="_blank">卡瓦邦噶！</a>
         </li>
@@ -878,32 +601,10 @@
           <a href="https://geektutu.com/" title="https://geektutu.com/" rel="noopener" target="_blank">极客兔兔</a>
         </li>
       
-        <li class="links-of-blogroll-item">
-          <a href="http://www.feidaoshuo.com" title="http://www.feidaoshuo.com" rel="noopener" target="_blank">飞刀说</a>
-        </li>
-      
     </ul>
   </div>
 
-        </div>
       </div>
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法"><span class="nav-number">2.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现机制"><span class="nav-number">3.</span> <span class="nav-text">实现机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
 
     </div>
   </aside>
@@ -921,11 +622,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Krist Pan</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1</div>
 
         
+
+
+
+
 
 
 
@@ -937,51 +642,19 @@
         
       </div>
     </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-      </div>
-
-    
-
   </div>
 
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-<script src="/js/utils.js?v=7.3.0"></script>
-  <script src="/js/motion.js?v=7.3.0"></script>
-
-
-  <script src="/js/affix.js?v=7.3.0"></script>
-  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
-
-
-<script src="/js/next-boot.js?v=7.3.0"></script>
-
-
-
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
 
 
 
   
-  <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
-  </script>
-
-
-
-
-
-
-
 
 
 
@@ -1011,13 +684,6 @@
 
   
 
-
-  
-  <script src="/js/scrollspy.js?v=7.3.0"></script>
-<script src="/js/post-details.js?v=7.3.0"></script>
-
-
-    
 <script>
   function loadCount() {
     var d = document, s = d.createElement('script');
@@ -1029,7 +695,7 @@
   window.addEventListener('load', loadCount, false);
 </script>
 <script>
-  var disqus_config = function() {
+  function disqus_config() {
     this.page.url = "http://panqiincs.me/2017/06/17/linux-kernel-linked-list-explained/";
     this.page.identifier = "2017/06/17/linux-kernel-linked-list-explained/";
     this.page.title = 'Linux内核中的链表';};
