@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="辛未羊的博客">
 <meta property="og:description" content="正弦量 常见的周期信号有正弦波、方波和三角波，其中正弦波的地位最为重要，原因如下：  正弦波是最常见的周期信号 正弦波是唯一一种经过线性电路（只由电阻、电容和电感等线性元件组成）而不发生畸变的信号，输入是正弦波，那么输出也是正弦波 根据傅里叶级数，所有满足狄利克雷条件的周期信号都可以表示为一系列正弦波的叠加。线性系统满足齐次性和可加性，可以先把各个正弦波分量的响应求出来，叠加起来即为总的响应">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-04T13:45:57.879Z">
+<meta property="og:updated_time" content="2019-10-04T13:52:22.032Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="相量法的原理">
 <meta name="twitter:description" content="正弦量 常见的周期信号有正弦波、方波和三角波，其中正弦波的地位最为重要，原因如下：  正弦波是最常见的周期信号 正弦波是唯一一种经过线性电路（只由电阻、电容和电感等线性元件组成）而不发生畸变的信号，输入是正弦波，那么输出也是正弦波 根据傅里叶级数，所有满足狄利克雷条件的周期信号都可以表示为一系列正弦波的叠加。线性系统满足齐次性和可加性，可以先把各个正弦波分量的响应求出来，叠加起来即为总的响应">
@@ -281,7 +281,7 @@
                 
               
 
-              <time title="创建时间：2019-10-04 19:32:17 / 修改时间：21:45:57" itemprop="dateCreated datePublished" datetime="2019-10-04T19:32:17+08:00">2019-10-04</time>
+              <time title="创建时间：2019-10-04 19:32:17 / 修改时间：21:52:22" itemprop="dateCreated datePublished" datetime="2019-10-04T19:32:17+08:00">2019-10-04</time>
             </span>
           
             
@@ -345,17 +345,19 @@ S = A \sin(\omega t + \theta_1) + B \sin(\omega t + \theta_2)
 \]</span></p>
 <p>那么</p>
 <p><span class="math display">\[
+\begin{split}
 S &amp; = A (\sin \omega t \cos \theta_1 + \cos \omega t \sin \theta_1) + B (\sin \omega t \cos \theta_2 + \cos \omega t \sin \theta_2) \\
-  &amp; = (A \cos \theta_1 + B \cos \theta_2) \sin \omega t + (A \sin \theta_1 + B \sin \theta_2) \cos \omega t \\
+  &amp; = (A \cos \theta_1 + B \cos \theta_2) \sin \omega t + (A \sin \theta_1 + B \sin \theta_2) \cos \omega t
+\end{split}
 \]</span></p>
 <p>令<span class="math inline">\(M = (A \cos \theta_1 + B \cos \theta_2)\)</span>，<span class="math inline">\(N = (A \sin \theta_1 + B \sin \theta_2)\)</span>，则</p>
 <p><span class="math display">\[
-\begin{align*}
+\begin{split}
 S &amp; = M \sin \omega t + N \cos \omega t \\
   &amp; = \sqrt{M^2+N^2} \left( \frac{M}{\sqrt{M^2+N^2}} \sin \omega t + \frac{N}{\sqrt{M^2+N^2}} \cos \omega t \right) \\
   &amp; = \sqrt{M^2+N^2} (\sin \omega t \cos \phi + \cos \omega t \sin \phi) \\
-  &amp; = \sqrt{M^2+N^2} \sin (\omega t + \phi) \\
-\end{align*}
+  &amp; = \sqrt{M^2+N^2} \sin (\omega t + \phi)
+\end{split}
 \]</span></p>
 <p>其中<span class="math inline">\(\phi = \arctan \frac{N}{M}\)</span>。整个过程非常复杂，所以引入相量（phasor）以简化正弦量的计算。</p>
 <h2 id="复数">复数</h2>
@@ -374,18 +376,18 @@ A e^{\omega t + \theta_1} = A \cos (\omega t + \theta_1) + i A \sin(\omega t + \
 \]</span></p>
 <p>正弦量正好是向量的虚部，即</p>
 <p><span class="math display">\[
-A \sin(\omega t + \theta_1) = \Im \left\{ A e^{\omega t + \theta_1} \right\}
+A \sin(\omega t + \theta_1) = \Im (A e^{\omega t + \theta_1})
 \]</span></p>
 <p>根据复数的运算法则</p>
 <p><span class="math display">\[
-\Im \\{ u + w \\} = \Im \\{ u \\} + \Im \\{ w \\}
+\Im(u + w) = \Im (u) + \Im (w)
 \]</span></p>
 <p>那么</p>
 <p><span class="math display">\[
-\begin{align*}
-\Im \left\{ A e^{\omega t + \theta_1} + B e^{\omega t + \theta_2} \right\} &amp; = \Im \left\{  A e^{\omega t + \theta_1} \right\} + \Im \left\{  B e^{\omega t + \theta_2} \right\} \\
-                                                                           &amp; = A \sin(\omega t + \theta_1) + B \sin(\omega t + \theta_2)
-\end{align*}
+\begin{split}
+\Im (A e^{\omega t + \theta_1} + B e^{\omega t + \theta_2}) &amp; = \Im (A e^{\omega t + \theta_1}) + \Im (B e^{\omega t + \theta_2}) \\
+                                                            &amp; = A \sin(\omega t + \theta_1) + B \sin(\omega t + \theta_2)
+\end{split}
 \]</span></p>
 <p>也就是，两个正弦量的和可以转化成两个复数的和，计算出两个复数的和，它的虚部，也就是它对应的正弦量即为我们要求解的两个正弦量的和。假设</p>
 <p><span class="math display">\[
