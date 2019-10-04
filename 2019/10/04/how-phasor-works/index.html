@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="辛未羊的博客">
 <meta property="og:description" content="正弦量 常见的周期信号有正弦波、方波和三角波，其中正弦波的地位最为重要，原因如下：  正弦波是最常见的周期信号 正弦波是唯一一种经过线性电路（只由电阻、电容和电感等线性元件组成）而不发生畸变的信号，输入是正弦波，那么输出也是正弦波 根据傅里叶级数，所有满足狄利克雷条件的周期信号都可以表示为一系列正弦波的叠加。线性系统满足齐次性和可加性，可以先把各个正弦波分量的响应求出来，叠加起来即为总的响应">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-04T13:52:22.032Z">
+<meta property="og:updated_time" content="2019-10-04T14:06:27.014Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="相量法的原理">
 <meta name="twitter:description" content="正弦量 常见的周期信号有正弦波、方波和三角波，其中正弦波的地位最为重要，原因如下：  正弦波是最常见的周期信号 正弦波是唯一一种经过线性电路（只由电阻、电容和电感等线性元件组成）而不发生畸变的信号，输入是正弦波，那么输出也是正弦波 根据傅里叶级数，所有满足狄利克雷条件的周期信号都可以表示为一系列正弦波的叠加。线性系统满足齐次性和可加性，可以先把各个正弦波分量的响应求出来，叠加起来即为总的响应">
@@ -281,7 +281,7 @@
                 
               
 
-              <time title="创建时间：2019-10-04 19:32:17 / 修改时间：21:52:22" itemprop="dateCreated datePublished" datetime="2019-10-04T19:32:17+08:00">2019-10-04</time>
+              <time title="创建时间：2019-10-04 19:32:17 / 修改时间：22:06:27" itemprop="dateCreated datePublished" datetime="2019-10-04T19:32:17+08:00">2019-10-04</time>
             </span>
           
             
@@ -343,7 +343,7 @@ S = A \sin(\omega t + \theta_1) + B \sin(\omega t + \theta_2)
 <p><span class="math display">\[
 \sin (\alpha + \beta) = \sin \alpha \cos \beta + \cos \alpha \sin \beta
 \]</span></p>
-<p>那么</p>
+<p>于是有</p>
 <p><span class="math display">\[
 \begin{split}
 S &amp; = A (\sin \omega t \cos \theta_1 + \cos \omega t \sin \theta_1) + B (\sin \omega t \cos \theta_2 + \cos \omega t \sin \theta_2) \\
@@ -366,39 +366,39 @@ S &amp; = M \sin \omega t + N \cos \omega t \\
 <li>复数的算术运算法则</li>
 <li>复数<span class="math inline">\(z=a+bi\)</span>对应复平面上的坐标<span class="math inline">\((a,b)\)</span></li>
 <li>复数还能用原点指向点<span class="math inline">\((a, b)\)</span>的向量来表示，向量的长度<span class="math inline">\(|z|=\sqrt{a^2+b^2}\)</span>称为复数的模，幅角<span class="math inline">\(\theta = \arctan b/a\)</span></li>
-<li>利用欧拉公式，还得到了复数的指数表达式<span class="math inline">\(|z|e^{i\theta}\)</span></li>
+<li>根据欧拉公式，可得到复数的指数表达式<span class="math inline">\(|z|e^{i\theta}\)</span></li>
 </ul>
 <p>很容易理解，当计算加减法时，用复数的算术形式<span class="math inline">\(z=a+bi\)</span>更方便；当计算乘除法时，用复数的指数形式<span class="math inline">\(|z|e^{i\theta}\)</span>更方便。</p>
 <h2 id="相量">相量</h2>
-<p>对正弦量<span class="math inline">\(A \sin(\omega t + \theta_1)\)</span>，作一个对应的<span class="math inline">\(A e^{\omega t + \theta_1}\)</span>，它是一个复数的指数形式。根据欧拉公式：</p>
+<p>在工程计算中一般用<span class="math inline">\(j\)</span>来替代上面的<span class="math inline">\(i\)</span>符号。对正弦量<span class="math inline">\(A \sin(\omega t + \theta_1)\)</span>，作一个对应的<span class="math inline">\(A e^{j(\omega t + \theta_1)}\)</span>，它是某个复数的指数形式。根据欧拉公式：</p>
 <p><span class="math display">\[
-A e^{\omega t + \theta_1} = A \cos (\omega t + \theta_1) + i A \sin(\omega t + \theta_1)
+A e^{j(\omega t + \theta_1)} = A \cos (\omega t + \theta_1) + j A \sin(\omega t + \theta_1)
 \]</span></p>
 <p>正弦量正好是向量的虚部，即</p>
 <p><span class="math display">\[
-A \sin(\omega t + \theta_1) = \Im (A e^{\omega t + \theta_1})
+A \sin(\omega t + \theta_1) = \Im (A e^{j(\omega t + \theta_1)})
 \]</span></p>
 <p>根据复数的运算法则</p>
 <p><span class="math display">\[
 \Im(u + w) = \Im (u) + \Im (w)
 \]</span></p>
-<p>那么</p>
+<p>于是有</p>
 <p><span class="math display">\[
 \begin{split}
-\Im (A e^{\omega t + \theta_1} + B e^{\omega t + \theta_2}) &amp; = \Im (A e^{\omega t + \theta_1}) + \Im (B e^{\omega t + \theta_2}) \\
+\Im (A e^{j(\omega t + \theta_1)} + B e^{j(\omega t + \theta_2)}) &amp; = \Im (A e^{j(\omega t + \theta_1)}) + \Im (B e^{j(\omega t + \theta_2)}) \\
                                                             &amp; = A \sin(\omega t + \theta_1) + B \sin(\omega t + \theta_2)
 \end{split}
 \]</span></p>
-<p>也就是，两个正弦量的和可以转化成两个复数的和，计算出两个复数的和，它的虚部，也就是它对应的正弦量即为我们要求解的两个正弦量的和。假设</p>
+<p>也就是说，两个正弦量的和可以转化成两个复数的和，计算出两个复数的和，和的虚部，也就是复数对应的正弦量即为我们要求解的两个正弦量的和。假设</p>
 <p><span class="math display">\[
-A e^{\omega t + \theta_1} + B e^{\omega t + \theta_2} = C e^{\omega t + \theta_3}
+A e^{j(\omega t + \theta_1)} + B e^{j(\omega t + \theta_2)} = C e^{j(\omega t + \theta_3)}
 \]</span></p>
 <p>那么两个正弦信号的和</p>
 <p><span class="math display">\[
 A \sin(\omega t + \theta_1) + B \sin(\omega t + \theta_2) = C \sin(\omega t + \theta_3)
 \]</span></p>
-<p>而两个复数的和非常好计算：先将复数从指数形式转化为代数形式，求和就非常简单，最后再将求和的结果从代数形式转化为指数形式，得到对应的正弦量，即为要求解的两个正弦量的和。</p>
-<p>从上面可以看出，两个正弦量的频率必须相同才能使用相量法计算。所以省略<span class="math inline">\(A e^{\omega t + \theta}\)</span>中的<span class="math inline">\(\omega t\)</span>，写为<span class="math inline">\(A e^{\theta}\)</span>，或者记为<span class="math inline">\(A \angle \theta\)</span>，这就是我们通常用来表示相量的符号。</p>
+<p>复数的和非常好计算：先将复数从指数形式转化为代数形式，求和就非常简单，再将求和的结果从代数形式转化为指数形式，得到对应的正弦量，即为要求解的两个正弦量的和。</p>
+<p>从上面可以看出，两个正弦量的频率必须相同才能使用相量法计算。所以省略<span class="math inline">\(A e^{j(\omega t + \theta)}\)</span>中的<span class="math inline">\(j \omega t\)</span>，写为<span class="math inline">\(A e^{j \theta}\)</span>，或者记为<span class="math inline">\(A \angle \theta\)</span>，这就是我们通常用来表示相量的符号。</p>
 
     </div>
 
