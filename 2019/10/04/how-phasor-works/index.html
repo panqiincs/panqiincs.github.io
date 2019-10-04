@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg?v=7.4.1" color="#222">
+  <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="正弦量常见的周期信号有正弦波、方波和三角波，其中正弦波的地位最为重要，原因如下：  正弦波是最常见的周期信号 正弦波是唯一一种经过线性电路（只由电阻、电容和电感等线性元件组成）而不发生畸变的信号，输入是正弦波，那么输出也是正弦波 根据傅里叶级数，所有满足狄利克雷条件的周期信号都可以表示为一系列正弦波的叠加。线性系统满足齐次性和可加性，可以先把各个正弦波分量的响应求出来，叠加起来即为总的响应">
+<meta name="keywords" content="相量,正弦量,复数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="相量法的原理">
+<meta property="og:url" content="http://panqiincs.me/2019/10/04/how-phasor-works/index.html">
+<meta property="og:site_name" content="辛未羊的博客">
+<meta property="og:description" content="正弦量常见的周期信号有正弦波、方波和三角波，其中正弦波的地位最为重要，原因如下：  正弦波是最常见的周期信号 正弦波是唯一一种经过线性电路（只由电阻、电容和电感等线性元件组成）而不发生畸变的信号，输入是正弦波，那么输出也是正弦波 根据傅里叶级数，所有满足狄利克雷条件的周期信号都可以表示为一系列正弦波的叠加。线性系统满足齐次性和可加性，可以先把各个正弦波分量的响应求出来，叠加起来即为总的响应">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-04T13:37:57.416Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="相量法的原理">
+<meta name="twitter:description" content="正弦量常见的周期信号有正弦波、方波和三角波，其中正弦波的地位最为重要，原因如下：  正弦波是最常见的周期信号 正弦波是唯一一种经过线性电路（只由电阻、电容和电感等线性元件组成）而不发生畸变的信号，输入是正弦波，那么输出也是正弦波 根据傅里叶级数，所有满足狄利克雷条件的周期信号都可以表示为一系列正弦波的叠加。线性系统满足齐次性和可加性，可以先把各个正弦波分量的响应求出来，叠加起来即为总的响应">
+  <link rel="canonical" href="http://panqiincs.me/2019/10/04/how-phasor-works/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>相量法的原理 | 辛未羊的博客</title>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-39536948-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">辛未羊的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-series">
+      
+    
+
+    <a href="/series/" rel="section"><i class="fa fa-fw fa-list"></i>系列</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2019/10/04/how-phasor-works/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Krist Pan">
+      <meta itemprop="description" content="人生如逆旅，我亦是行人">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">相量法的原理
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-04 19:32:17 / 修改时间：21:37:57" itemprop="dateCreated datePublished" datetime="2019-10-04T19:32:17+08:00">2019-10-04</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/电子工程/" itemprop="url" rel="index"><span itemprop="name">电子工程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2019/10/04/how-phasor-works/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/04/how-phasor-works/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="正弦量"><a href="#正弦量" class="headerlink" title="正弦量"></a>正弦量</h2><p>常见的周期信号有正弦波、方波和三角波，其中正弦波的地位最为重要，原因如下：</p>
+<ul>
+<li>正弦波是最常见的周期信号</li>
+<li>正弦波是唯一一种经过线性电路（只由电阻、电容和电感等线性元件组成）而不发生畸变的信号，输入是正弦波，那么输出也是正弦波</li>
+<li>根据傅里叶级数，所有满足狄利克雷条件的周期信号都可以表示为一系列正弦波的叠加。线性系统满足齐次性和可加性，可以先把各个正弦波分量的响应求出来，叠加起来即为总的响应</li>
+</ul>
+<a id="more"></a>
+<p>我们经常需要求解两个同频率正弦量的代数和，例如求解下面两个正弦量的和：</p>
+<p>$$<br>S = A \sin(\omega t + \theta_1) + B \sin(\omega t + \theta_2)<br>$$</p>
+<p>计算过程中要用到下面的三角函数公式：</p>
+<p>$$<br>\sin (\alpha + \beta) = \sin \alpha \cos \beta + \cos \alpha \sin \beta<br>$$</p>
+<p>那么</p>
+<p>$$<br>\begin{align<em>}<br>S &amp; = A (\sin \omega t \cos \theta_1 + \cos \omega t \sin \theta_1) + B (\sin \omega t \cos \theta_2 + \cos \omega t \sin \theta_2) \<br>  &amp; = (A \cos \theta_1 + B \cos \theta_2) \sin \omega t + (A \sin \theta_1 + B \sin \theta_2) \cos \omega t \<br>\end{align</em>}<br>$$</p>
+<p>令$M = (A \cos \theta_1 + B \cos \theta_2)$，$N = (A \sin \theta_1 + B \sin \theta_2)$，则</p>
+<p>$$<br>\begin{align<em>}<br>S &amp; = M \sin \omega t + N \cos \omega t \<br>  &amp; = \sqrt{M^2+N^2} \left( \frac{M}{\sqrt{M^2+N^2}} \sin \omega t + \frac{N}{\sqrt{M^2+N^2}} \cos \omega t \right) \<br>  &amp; = \sqrt{M^2+N^2} (\sin \omega t \cos \phi + \cos \omega t \sin \phi) \<br>  &amp; = \sqrt{M^2+N^2} \sin (\omega t + \phi) \<br>\end{align</em>}<br>$$</p>
+<p>其中$\phi = \arctan \frac{N}{M}$。整个过程非常复杂，所以引入相量（phasor）以简化正弦量的计算。</p>
+<h2 id="复数"><a href="#复数" class="headerlink" title="复数"></a>复数</h2><p>要理解相量，需要有复数的基础知识。本文的读者至少应该知道：</p>
+<ul>
+<li>复数的算术运算法则</li>
+<li>复数$z=a+bi$对应复平面上的坐标$(a,b)$</li>
+<li>复数还能用原点指向点$(a, b)$的向量来表示，向量的长度$|z|=\sqrt{a^2+b^2}$称为复数的模，幅角$\theta = \arctan b/a$</li>
+<li>利用欧拉公式，还得到了复数的指数表达式$|z|e^{i\theta}$</li>
+</ul>
+<p>很容易理解，当计算加减法时，用复数的算术形式$z=a+bi$更方便；当计算乘除法时，用复数的指数形式$|z|e^{i\theta}$更方便。</p>
+<h2 id="相量"><a href="#相量" class="headerlink" title="相量"></a>相量</h2><p>对正弦量$A \sin(\omega t + \theta_1)$，作一个对应的$A e^{\omega t + \theta_1}$，它是一个复数的指数形式。根据欧拉公式：</p>
+<p>$$<br>A e^{\omega t + \theta_1} = A \cos (\omega t + \theta_1) + i A \sin(\omega t + \theta_1)<br>$$</p>
+<p>正弦量正好是向量的虚部，即</p>
+<p>$$<br>A \sin(\omega t + \theta_1) = \Im \left{ A e^{\omega t + \theta_1} \right}<br>$$</p>
+<p>根据复数的运算法则</p>
+<p>$$<br>\Im \left{ u + w \right} = \Im \left{ u \right} + \Im \left{ w \right}<br>$$</p>
+<p>那么</p>
+<p>$$<br>\begin{align<em>}<br>\Im \left{ A e^{\omega t + \theta_1} + B e^{\omega t + \theta_2} \right} &amp; = \Im \left{  A e^{\omega t + \theta_1} \right} + \Im \left{  B e^{\omega t + \theta_2} \right} \<br>                                                                           &amp; = A \sin(\omega t + \theta_1) + B \sin(\omega t + \theta_2)<br>\end{align</em>}<br>$$</p>
+<p>也就是，两个正弦量的和可以转化成两个复数的和，计算出两个复数的和，它的虚部，也就是它对应的正弦量即为我们要求解的两个正弦量的和。假设</p>
+<p>$$<br>A e^{\omega t + \theta_1} + B e^{\omega t + \theta_2} = C e^{\omega t + \theta_3}<br>$$</p>
+<p>那么两个正弦信号的和</p>
+<p>$$<br>A \sin(\omega t + \theta_1) + B \sin(\omega t + \theta_2) = C \sin(\omega t + \theta_3)<br>$$</p>
+<p>而两个复数的和非常好计算：先将复数从指数形式转化为代数形式，求和就非常简单，最后再将求和的结果从代数形式转化为指数形式，得到对应的正弦量，即为要求解的两个正弦量的和。</p>
+<p>从上面可以看出，两个正弦量的频率必须相同才能使用相量法计算。所以省略$A e^{\omega t + \theta}$中的$\omega t$，写为$A e^{\theta}$，或者记为$A \angle \theta$，这就是我们通常用来表示相量的符号。</p>
+
+    </div>
+
+    
+    
+    
+      
+
+        
+      
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Krist Pan</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://panqiincs.me/2019/10/04/how-phasor-works/" title="相量法的原理">http://panqiincs.me/2019/10/04/how-phasor-works/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+</div>
+
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/相量/" rel="tag"># 相量</a>
+            
+              <a href="/tags/正弦量/" rel="tag"># 正弦量</a>
+            
+              <a href="/tags/复数/" rel="tag"># 复数</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/09/25/mcu-gpio-settings/" rel="next" title="单片机的GPIO配置">
+                  <i class="fa fa-chevron-left"></i> 单片机的GPIO配置
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#正弦量"><span class="nav-number">1.</span> <span class="nav-text">正弦量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复数"><span class="nav-number">2.</span> <span class="nav-text">复数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相量"><span class="nav-number">3.</span> <span class="nav-text">相量</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.png"
+      alt="Krist Pan">
+  <p class="site-author-name" itemprop="name">Krist Pan</p>
+  <div class="site-description" itemprop="description">人生如逆旅，我亦是行人</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">146</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/panqiincs" title="GitHub &rarr; https://github.com/panqiincs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail &rarr; mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/3850393415" title="Weibo &rarr; https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.kawabangga.com/" title="https://www.kawabangga.com/" rel="noopener" target="_blank">卡瓦邦噶！</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://tumutanzi.com/" title="https://tumutanzi.com/" rel="noopener" target="_blank">土木坛子</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://yuzhouwan.com/" title="https://yuzhouwan.com/" rel="noopener" target="_blank">宇宙湾</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://www.boatsky.com/" title="https://www.boatsky.com/" rel="noopener" target="_blank">太空船</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://geektutu.com/" title="https://geektutu.com/" rel="noopener" target="_blank">极客兔兔</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://www.feidaoshuo.com" title="http://www.feidaoshuo.com" rel="noopener" target="_blank">飞刀说</a>
+        </li>
+      
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2013 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Krist Pan</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://panqiincs.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function disqus_config() {
+    this.page.url = "http://panqiincs.me/2019/10/04/how-phasor-works/";
+    this.page.identifier = "2019/10/04/how-phasor-works/";
+    this.page.title = '相量法的原理';};
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://panqiincs.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    window.addEventListener('load', loadComments, false);
+  
+</script>
+
+</body>
+</html>
