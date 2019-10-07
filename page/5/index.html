@@ -334,10 +334,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="const的作用">const的作用</h2>
-<p>C++中的const关键字多才多艺且无处不在，它的语法意义并不高深，用法却变化多端。本文总结了const几乎所有的用法：定义常量、修饰指针和引用、修饰函数的参数和返回值、修饰类成员。</p>
-<h2 id="定义常量">定义常量</h2>
-<p>关键字const对变量的类型加以限定，将变量定义为一个常量，任何对变量赋值的行为在编译阶段即被编译器阻止。因为const对象一旦创建后，其值不能再改变，所以const对象必须被初始化，初始值可以是任意表达式。还可以利用一个对象初始化另一个对象，它们是不是const都无关紧要。</p>
+          <h2 id="const的作用"><a href="#const的作用" class="headerlink" title="const的作用"></a>const的作用</h2><p>C++中的const关键字多才多艺且无处不在，它的语法意义并不高深，用法却变化多端。本文总结了const几乎所有的用法：定义常量、修饰指针和引用、修饰函数的参数和返回值、修饰类成员。</p>
+<h2 id="定义常量"><a href="#定义常量" class="headerlink" title="定义常量"></a>定义常量</h2><p>关键字const对变量的类型加以限定，将变量定义为一个常量，任何对变量赋值的行为在编译阶段即被编译器阻止。因为const对象一旦创建后，其值不能再改变，所以const对象必须被初始化，初始值可以是任意表达式。还可以利用一个对象初始化另一个对象，它们是不是const都无关紧要。</p>
           <!--noindex-->
           
             <div class="post-button">
@@ -569,11 +567,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="安装建议">安装建议</h2>
-<p>系统语言建议选择英文。在命令行下切换中文目录不方便，遇到各种问题，将英文的提示信息作为关键字在Google中搜索，基本上都可以找到解决方案。作为开发人员，请习惯英文。</p>
-<h2 id="配置修改">配置修改</h2>
-<h3 id="更改软件源">更改软件源</h3>
-<p>修改软件源以获取更快的下载速度，国内建议使用USTC源。以42.3为例，在终端下的配置方法如下：</p>
+          <h2 id="安装建议"><a href="#安装建议" class="headerlink" title="安装建议"></a>安装建议</h2><p>系统语言建议选择英文。在命令行下切换中文目录不方便，遇到各种问题，将英文的提示信息作为关键字在Google中搜索，基本上都可以找到解决方案。作为开发人员，请习惯英文。</p>
+<h2 id="配置修改"><a href="#配置修改" class="headerlink" title="配置修改"></a>配置修改</h2><h3 id="更改软件源"><a href="#更改软件源" class="headerlink" title="更改软件源"></a>更改软件源</h3><p>修改软件源以获取更快的下载速度，国内建议使用USTC源。以42.3为例，在终端下的配置方法如下：</p>
           <!--noindex-->
           
             <div class="post-button">
@@ -689,8 +684,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="整体方案">整体方案</h2>
-<p>我有一个用于提高上网体验的VPS，配置还不错，仅仅跑一个小服务太浪费了。买了域名之后，便想把博客也托管到VPS上，和Github互为备份，其中一个出问题了，修改一下域名解析即可。</p>
+          <h2 id="整体方案"><a href="#整体方案" class="headerlink" title="整体方案"></a>整体方案</h2><p>我有一个用于提高上网体验的VPS，配置还不错，仅仅跑一个小服务太浪费了。买了域名之后，便想把博客也托管到VPS上，和Github互为备份，其中一个出问题了，修改一下域名解析即可。</p>
 <p>整体方案如下：在本地机器上生成博客静态文件，利用git的<code>post-receive</code>钩子自动部署文件到VPS的指定目录中。VPS使用nginx作为HTTP服务器，为访客提供服务。本文默认本地机器上已经完成了Hexo博客环境的搭建（能够生成博客文件，并部署到Github上），VPS上已安装git和nginx。</p>
           <!--noindex-->
           
@@ -807,10 +801,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="工具">工具</h2>
-<p>这是我实现的第一个爬虫，抓取<a href="http://www.lifeofpix.com" target="_blank" rel="noopener">lifeofpix</a>网站上下载量超过500的图片。它的功能非常简单，代码量也很小，展示了网络爬虫的基本原理和流程。我使用的Python版本是3.4.6，HTTP处理使用<code>requests</code>库，数据提取使用<code>BeautifulSoup</code>库。</p>
-<h2 id="准备工作">准备工作</h2>
-<p>爬虫要伪装成浏览器，指定User-Agent：</p>
+          <h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>这是我实现的第一个爬虫，抓取<a href="http://www.lifeofpix.com" target="_blank" rel="noopener">lifeofpix</a>网站上下载量超过500的图片。它的功能非常简单，代码量也很小，展示了网络爬虫的基本原理和流程。我使用的Python版本是3.4.6，HTTP处理使用<code>requests</code>库，数据提取使用<code>BeautifulSoup</code>库。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>爬虫要伪装成浏览器，指定User-Agent：</p>
           <!--noindex-->
           
             <div class="post-button">
@@ -926,10 +918,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="版本要求">版本要求</h2>
-<p>最近想尝试一下酷眩的<a href="http://spacemacs.org/" target="_blank" rel="noopener">spacemacs</a>配置，但是它在Emacs 24.4或者更高的版本上才能展现所有的特性，而软件仓库中最新的版本为24.3，因此只能从源码编译安装了。</p>
-<h2 id="编译安装">编译安装</h2>
-<p>首先在官方网站上下载源码，文件名为<code>emacs-VERSION.tar.gz</code>，我下载的VERSION为24.4，解压文件：</p>
+          <h2 id="版本要求"><a href="#版本要求" class="headerlink" title="版本要求"></a>版本要求</h2><p>最近想尝试一下酷眩的<a href="http://spacemacs.org/" target="_blank" rel="noopener">spacemacs</a>配置，但是它在Emacs 24.4或者更高的版本上才能展现所有的特性，而软件仓库中最新的版本为24.3，因此只能从源码编译安装了。</p>
+<h2 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h2><p>首先在官方网站上下载源码，文件名为<code>emacs-VERSION.tar.gz</code>，我下载的VERSION为24.4，解压文件：</p>
           <!--noindex-->
           
             <div class="post-button">
@@ -1045,8 +1035,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="以前的做法">以前的做法</h2>
-<p>我的博客使用Hexo框架，主题使用<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">Next</a>，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的<code>themes</code>目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新<strong>手动合入</strong>到博客源码中。</p>
+          <h2 id="以前的做法"><a href="#以前的做法" class="headerlink" title="以前的做法"></a>以前的做法</h2><p>我的博客使用Hexo框架，主题使用<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">Next</a>，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的<code>themes</code>目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新<strong>手动合入</strong>到博客源码中。</p>
           <!--noindex-->
           
             <div class="post-button">
@@ -1162,8 +1151,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="引言">引言</h2>
-<p>DS-5，也称ARM DS-5，ARM Development Studio 5等，是ARM架构处理器常用的开发平台，包括编辑器、编译器、调试器等一全套开发工具。</p>
+          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>DS-5，也称ARM DS-5，ARM Development Studio 5等，是ARM架构处理器常用的开发平台，包括编辑器、编译器、调试器等一全套开发工具。</p>
 <p>对嵌入式开发来说，硬件资源是非常宝贵的，当工程中包含大量的未调用函数时，会浪费有限的存储资源。手动统计和删除未调用函数很不方便，有的平台代码可能以后会用到，删除也不合适。</p>
           <!--noindex-->
           
@@ -1280,8 +1268,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="基本操作">基本操作</h2>
-<p>常用的基础命令：</p>
+          <h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>常用的基础命令：</p>
           <!--noindex-->
           
             <div class="post-button">
@@ -1397,8 +1384,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="介绍">介绍</h2>
-<p>Linux链表（linked list）的实现比较特别。通常来说，一个链表结构体会包含需要相互连接的数据，例如下面结构体中的<code>my_item</code>成员：</p>
+          <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Linux链表（linked list）的实现比较特别。通常来说，一个链表结构体会包含需要相互连接的数据，例如下面结构体中的<code>my_item</code>成员：</p>
           <!--noindex-->
           
             <div class="post-button">
