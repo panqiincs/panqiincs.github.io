@@ -59,7 +59,7 @@
 </script>
 
   <meta name="description" content="在类的成员函数的参数列表后面加上关键字const，表示它是一个const成员函数。考虑下面的类：">
-<meta name="keywords" content="C++,this指针,const">
+<meta name="keywords" content="C++,const,this指针">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++的const成员函数">
 <meta property="og:url" content="http://panqiincs.me/2018/02/04/cpp-const-member-functions/index.html">
@@ -344,7 +344,7 @@
 <p>调用成员函数实际上是在替某个对象调用它。成员函数通过一个名为<strong>this指针</strong>的额外隐式参数来访问调用它的那个对象。<code>value()</code>是普通的成员函数，<code>int Foo::value()</code>的实际形式是<code>int Foo::value(Foo *const this)</code>，即，this本身是一个常量（注意，不是指向常量的指针）。在调用成员函数时，编译器将调用过程<code>f.value()</code>重写为<code>int Foo::value(&amp;f)</code>。</p>
 <p>当调用常量对象<code>cf</code>的成员函数时，用<code>cf</code>对象的地址初始化this指针。根据初始化规则，只有指向常量的指针才能够存放常量对象的地址。正是这个原因，在常量对象上调用非常量成员函数是非法的。因此，我们应该把this声明成<code>const Foo *const</code>，毕竟<code>value()</code>的函数体内不会改变this所指的对象。C++的做法是将const关键字放在成员函数的参数列表之后，也就得到了const成员函数<code>cvalue()</code>。</p>
 <p>综上所述，我们可以得到const成员函数的特点：</p>
-<ol>
+<ol type="1">
 <li>使得接口容易理解，提醒调用者，该const成员函数无法修改类对象的内容</li>
 <li>使得操作“常量对象”成为可能，因为常量对象只能调用const成员函数</li>
 </ol>
@@ -415,9 +415,9 @@
             
               <a href="/tags/C/" rel="tag"># C++</a>
             
-              <a href="/tags/this指针/" rel="tag"># this指针</a>
-            
               <a href="/tags/const/" rel="tag"># const</a>
+            
+              <a href="/tags/this指针/" rel="tag"># this指针</a>
             
           </div>
         

@@ -58,18 +58,18 @@
   };
 </script>
 
-  <meta name="description" content="hokuyoaist通过阅读Hokuyo数据手册中关于通信协议的内容就可以自己写程序来获取数据了。如果不想麻烦，可以使用别人写好的库——hokuyoaist，它支持多个型号，亲测在UTM-30LX型号的激光雷达上可用。 在Github上下载它的源代码并编译：">
+  <meta name="description" content="hokuyoaist 通过阅读Hokuyo数据手册中关于通信协议的内容就可以自己写程序来获取数据了。如果不想麻烦，可以使用别人写好的库——hokuyoaist，它支持多个型号，亲测在UTM-30LX型号的激光雷达上可用。 在Github上下载它的源代码并编译：">
 <meta name="keywords" content="hokuyo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="采集Hokuyo激光雷达数据">
 <meta property="og:url" content="http://panqiincs.me/2015/12/05/get-hokuyo-laser-scanner-data/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="hokuyoaist通过阅读Hokuyo数据手册中关于通信协议的内容就可以自己写程序来获取数据了。如果不想麻烦，可以使用别人写好的库——hokuyoaist，它支持多个型号，亲测在UTM-30LX型号的激光雷达上可用。 在Github上下载它的源代码并编译：">
+<meta property="og:description" content="hokuyoaist 通过阅读Hokuyo数据手册中关于通信协议的内容就可以自己写程序来获取数据了。如果不想麻烦，可以使用别人写好的库——hokuyoaist，它支持多个型号，亲测在UTM-30LX型号的激光雷达上可用。 在Github上下载它的源代码并编译：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-09-26T03:57:58.963Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="采集Hokuyo激光雷达数据">
-<meta name="twitter:description" content="hokuyoaist通过阅读Hokuyo数据手册中关于通信协议的内容就可以自己写程序来获取数据了。如果不想麻烦，可以使用别人写好的库——hokuyoaist，它支持多个型号，亲测在UTM-30LX型号的激光雷达上可用。 在Github上下载它的源代码并编译：">
+<meta name="twitter:description" content="hokuyoaist 通过阅读Hokuyo数据手册中关于通信协议的内容就可以自己写程序来获取数据了。如果不想麻烦，可以使用别人写好的库——hokuyoaist，它支持多个型号，亲测在UTM-30LX型号的激光雷达上可用。 在Github上下载它的源代码并编译：">
   <link rel="canonical" href="http://panqiincs.me/2015/12/05/get-hokuyo-laser-scanner-data/">
 
 
@@ -335,7 +335,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="hokuyoaist"><a href="#hokuyoaist" class="headerlink" title="hokuyoaist"></a>hokuyoaist</h2><p>通过阅读Hokuyo数据手册中关于通信协议的内容就可以自己写程序来获取数据了。如果不想麻烦，可以使用别人写好的库——<a href="http://gbiggs.github.io/hokuyoaist/" target="_blank" rel="noopener">hokuyoaist</a>，它支持多个型号，亲测在UTM-30LX型号的激光雷达上可用。</p>
+        <h2 id="hokuyoaist">hokuyoaist</h2>
+<p>通过阅读Hokuyo数据手册中关于通信协议的内容就可以自己写程序来获取数据了。如果不想麻烦，可以使用别人写好的库——<a href="http://gbiggs.github.io/hokuyoaist/" target="_blank" rel="noopener">hokuyoaist</a>，它支持多个型号，亲测在UTM-30LX型号的激光雷达上可用。</p>
 <p>在<a href="https://github.com/gbiggs/hokuyoaist" target="_blank" rel="noopener">Github</a>上下载它的源代码并编译：</p>
 <a id="more"></a>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/gbiggs/hokuyoaist.git</span><br><span class="line"><span class="built_in">cd</span> hokuyaoaist</span><br><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
@@ -345,7 +346,8 @@
 <p>再次重复<code>hokuyoaist</code>的编译步骤，又看到了新的错误，提示一个名为<code>sphinx_doc</code>的target编译不过，这个是生成文档的语句，无关紧要，可以在<code>hokuyoaist</code>的<code>CMakeList.txt</code>中将相关的行注释掉，打开<code>hokuyoaist</code>根目录下的 <code>CMakeLists.txt</code>文件，注释如下三行：</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(BUILD_DOCUMENTATION)</span><br><span class="line">    <span class="keyword">add_subdirectory</span>(doc)</span><br><span class="line"><span class="keyword">endif</span>(BUILD_DOCUMENTATION)</span><br></pre></td></tr></table></figure>
 <p>这样就能编译成功了。</p>
-<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><p><code>hokuyoaist</code>的<code>example</code>目录下有采集一次数据的示例程序，编译后，<code>build</code>文件夹下会生成一个名为<code>hokuyoaist_example</code>的可执行文件。</p>
+<h2 id="测试结果">测试结果</h2>
+<p><code>hokuyoaist</code>的<code>example</code>目录下有采集一次数据的示例程序，编译后，<code>build</code>文件夹下会生成一个名为<code>hokuyoaist_example</code>的可执行文件。</p>
 <p>激光雷达连接到计算机之后，会出现一个名为<code>/dev/ttyACM0</code>的设备文件，修改该文件的权限：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod a+rw /dev/ttyACM0</span><br></pre></td></tr></table></figure>
 <p>运行<code>hokuyoaist_example</code>，参数都是默认值：</p>
