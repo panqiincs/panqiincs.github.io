@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/2019/08/29/learn-electronic-engineering/</loc>
+    
+    <lastmod>2019-10-08T06:50:18.529Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2019/10/04/how-phasor-works/</loc>
     
     <lastmod>2019-10-07T07:27:50.059Z</lastmod>
@@ -75,13 +82,6 @@
     <loc>http://panqiincs.me/2015/11/19/raspberry-pi-hardware-pwm-module/</loc>
     
     <lastmod>2019-09-26T03:57:51.181Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/08/29/learn-electronic-engineering/</loc>
-    
-    <lastmod>2019-09-25T15:32:59.709Z</lastmod>
     
   </url>
   
