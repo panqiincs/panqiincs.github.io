@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="辛未羊的博客">
 <meta property="og:description" content="2014年我开始参与实验室的一个自然科学基金项目，从而接触了机器人操作系统（Robot Operating System, ROS），这真是个好东西，但在国内好像不是很普及。我很有可能是我们学校第一个使用ROS的人，还给院里做相关方向的同学做了简单的介绍。我的硕士毕业论文和机器人路径规划算法有关，用的软件平台就是ROS，为我的算法验证提供了极大的方便。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-08T12:16:28.816Z">
+<meta property="og:updated_time" content="2019-10-09T00:07:00.204Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器人操作系统ROS">
 <meta name="twitter:description" content="2014年我开始参与实验室的一个自然科学基金项目，从而接触了机器人操作系统（Robot Operating System, ROS），这真是个好东西，但在国内好像不是很普及。我很有可能是我们学校第一个使用ROS的人，还给院里做相关方向的同学做了简单的介绍。我的硕士毕业论文和机器人路径规划算法有关，用的软件平台就是ROS，为我的算法验证提供了极大的方便。">
@@ -284,18 +284,6 @@
               <time title="创建时间：2016-04-21 11:34:47" itemprop="dateCreated datePublished" datetime="2016-04-21T11:34:47+08:00">2016-04-21</time>
             </span>
           
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-06-08 20:16:28" itemprop="dateModified" datetime="2019-06-08T20:16:28+08:00">2019-06-08</time>
-              </span>
-            
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -337,8 +325,7 @@
       
         <p>2014年我开始参与实验室的一个自然科学基金项目，从而接触了机器人操作系统（Robot Operating System, ROS），这真是个好东西，但在国内好像不是很普及。我很有可能是我们学校第一个使用ROS的人，还给院里做相关方向的同学做了简单的介绍。我的硕士毕业论文和机器人路径规划算法有关，用的软件平台就是ROS，为我的算法验证提供了极大的方便。</p>
 <a id="more"></a>
-<p>准确来讲，ROS是一个标准化的机器人软件框架，提供类似于操作系统的功能，比如硬件抽象、底层设备控制、进程间通信等。ROS将传感器、控制器、运动状态、规划目标、执行机构以及其他设备全部抽象成节点（Nodes），各个节点通过ROS的通信机制联系在一起，包括同步的通信方式——服务（Services），异步的通信方式——话题（Topics）。ROS是一个分布式架构，节点可以被独立地设计，在运行时松散地耦合。ROS的最主要目的是实现代码复用。我在做算法验证时，硬件驱动、基础算法都有现成的，我只是将全局路径规划器替换成我自己的算法，还能在图形化的调试界面上看到效果。</p>
-<p>总体来说，ROS有如下的优点：</p>
+<p>准确来讲，ROS是一个标准化的机器人软件框架，是运行在操作系统上的一个库（library），提供类似于操作系统的功能，由此而得名。ROS的最主要目的是实现代码复用。我在做算法验证时，硬件驱动、基础算法都有现成的，我只是将全局路径规划器替换成我自己的算法，还能在图形化的调试界面上看到效果。总体来说，ROS有如下的优点：</p>
 <ol type="1">
 <li>有现成的硬件抽象和进程间通信机制，能将主要的精力放在算法实现上</li>
 <li>硬件驱动、基础算法资源丰富，节省大量时间</li>

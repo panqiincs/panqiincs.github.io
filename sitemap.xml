@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/2016/04/21/about-ros/</loc>
+    
+    <lastmod>2019-10-09T00:07:00.204Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2019/08/29/learn-electronic-engineering/</loc>
     
     <lastmod>2019-10-08T06:50:18.529Z</lastmod>
@@ -439,13 +446,6 @@
     <loc>http://panqiincs.me/2015/03/31/leetcode-training/</loc>
     
     <lastmod>2019-06-25T09:17:18.468Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2016/04/21/about-ros/</loc>
-    
-    <lastmod>2019-06-08T12:16:28.816Z</lastmod>
     
   </url>
   
