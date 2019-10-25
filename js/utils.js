@@ -1,13 +1,5 @@
 /* global NexT, CONFIG */
 
-HTMLElement.prototype.outerHeight = function(flag) {
-  var height = this.offsetHeight;
-  if (!flag) return height;
-  var style = window.getComputedStyle(this);
-  height += parseInt(style.marginTop, 10) + parseInt(style.marginBottom, 10);
-  return height;
-};
-
 HTMLElement.prototype.wrap = function(wrapper) {
   this.parentNode.insertBefore(wrapper, this);
   this.parentNode.removeChild(this);
@@ -67,7 +59,7 @@ NexT.utils = {
    * One-click copy code support.
    */
   registerCopyCode: function() {
-    document.querySelectorAll('figure.highlight').forEach(e => {
+    document.querySelectorAll('figure.highlight').forEach(element => {
       const initButton = button => {
         if (CONFIG.copycode.style === 'mac') {
           button.innerHTML = '<i class="fa fa-clipboard"></i>';
@@ -77,13 +69,13 @@ NexT.utils = {
       };
       const box = document.createElement('div');
       box.classList.add('highlight-wrap');
-      e.wrap(box);
-      e.parentNode.insertAdjacentHTML('beforeend', '<div class="copy-btn"></div>');
-      var button = e.parentNode.querySelector('.copy-btn');
+      element.wrap(box);
+      element.parentNode.insertAdjacentHTML('beforeend', '<div class="copy-btn"></div>');
+      var button = element.parentNode.querySelector('.copy-btn');
       button.addEventListener('click', event => {
         var target = event.currentTarget;
-        var code = [...target.parentNode.querySelectorAll('.code .line')].map(element => {
-          return element.innerText;
+        var code = [...target.parentNode.querySelectorAll('.code .line')].map(line => {
+          return line.innerText;
         }).join('\n');
         var ta = document.createElement('textarea');
         var yPosition = window.scrollY;
@@ -120,28 +112,28 @@ NexT.utils = {
   },
 
   wrapTableWithBox: function() {
-    document.querySelectorAll('table').forEach(table => {
+    document.querySelectorAll('table').forEach(element => {
       const box = document.createElement('div');
       box.className = 'table-container';
-      table.wrap(box);
+      element.wrap(box);
     });
   },
 
   registerVideoIframe: function() {
     document.querySelectorAll('iframe').forEach(element => {
-      const SUPPORTED_PLAYERS = [
+      const supported = [
         'www.youtube.com',
         'player.vimeo.com',
         'player.youku.com',
         'player.bilibili.com',
         'www.tudou.com'
-      ];
-      const pattern = new RegExp(SUPPORTED_PLAYERS.join('|'));
-      if (!element.parentNode.matches('.video-container') && element.src.search(pattern) > 0) {
+      ].some(host => element.src.includes(host));
+      if (supported && !element.parentNode.matches('.video-container')) {
         const box = document.createElement('div');
         box.className = 'video-container';
         element.wrap(box);
-        let width = Number(element.width); let height = Number(element.height);
+        let width = Number(element.width);
+        let height = Number(element.height);
         if (width && height) {
           element.parentNode.style.paddingTop = (height / width * 100) + '%';
         }
@@ -164,7 +156,7 @@ NexT.utils = {
         scrollPercent = Math.min(scrollPercentRounded, 100) + '%';
       }
       if (backToTop) {
-        window.scrollY > THRESHOLD ? backToTop.classList.add('back-to-top-on') : backToTop.classList.remove('back-to-top-on');
+        backToTop.classList.toggle('back-to-top-on', window.scrollY > THRESHOLD);
         backToTop.querySelector('span').innerText = scrollPercent;
       }
       if (readingProgressBar) {
@@ -187,20 +179,20 @@ NexT.utils = {
    */
   registerTabsTag: function() {
     // Binding `nav-tabs` & `tab-content` by real time permalink changing.
-    document.querySelectorAll('.tabs ul.nav-tabs .tab').forEach(tab => {
-      tab.addEventListener('click', event => {
+    document.querySelectorAll('.tabs ul.nav-tabs .tab').forEach(element => {
+      element.addEventListener('click', event => {
         event.preventDefault();
         var target = event.currentTarget;
         // Prevent selected tab to select again.
         if (!target.classList.contains('active')) {
           // Add & Remove active class on `nav-tabs` & `tab-content`.
-          [...target.parentNode.children].forEach(item => {
-            item.classList.remove('active');
+          [...target.parentNode.children].forEach(element => {
+            element.classList.remove('active');
           });
           target.classList.add('active');
           var tActive = document.getElementById(target.querySelector('a').getAttribute('href').replace('#', ''));
-          [...tActive.parentNode.children].forEach(item => {
-            item.classList.remove('active');
+          [...tActive.parentNode.children].forEach(element => {
+            element.classList.remove('active');
           });
           tActive.classList.add('active');
           // Trigger event
@@ -216,8 +208,8 @@ NexT.utils = {
 
   registerCanIUseTag: function() {
     // Get responsive height passed from iframe.
-    window.addEventListener('message', e => {
-      var data = e.data;
+    window.addEventListener('message', event => {
+      var data = event.data;
       if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
         var featureID = data.split(':')[1];
         var height = data.split(':')[2];
@@ -232,11 +224,7 @@ NexT.utils = {
       if (!target) return;
       var isSamePath = target.pathname === location.pathname || target.pathname === location.pathname.replace('index.html', '');
       var isSubPath = target.pathname !== CONFIG.root && location.pathname.indexOf(target.pathname) === 0;
-      if (target.hostname === location.hostname && (isSamePath || isSubPath)) {
-        element.classList.add('menu-item-active');
-      } else {
-        element.classList.remove('menu-item-active');
-      }
+      element.classList.toggle('menu-item-active', target.hostname === location.hostname && (isSamePath || isSubPath));
     });
   },
 
@@ -288,7 +276,7 @@ NexT.utils = {
         index = sections.indexOf(entry.target);
         return index === 0 ? 0 : index - 1;
       }
-      for (;index < entries.length; index++) {
+      for (; index < entries.length; index++) {
         if (entries[index].boundingClientRect.top <= 0) {
           entry = entries[index];
         } else {
@@ -313,7 +301,9 @@ NexT.utils = {
         rootMargin: marginTop + 'px 0px -100% 0px',
         threshold : 0
       });
-      sections.forEach(item => intersectionObserver.observe(item));
+      sections.forEach(element => {
+        element && intersectionObserver.observe(element);
+      });
     }
     createIntersectionObserver(document.documentElement.scrollHeight);
   },
@@ -359,7 +349,7 @@ NexT.utils = {
    */
   initSidebarDimension: function() {
     var sidebarNav = document.querySelector('.sidebar-nav');
-    var sidebarNavHeight = sidebarNav.style.display !== 'none' ? sidebarNav.outerHeight(true) : 0;
+    var sidebarNavHeight = sidebarNav.style.display !== 'none' ? sidebarNav.offsetHeight : 0;
     var sidebarOffset = CONFIG.sidebar.offset || 12;
     var sidebarb2tHeight = CONFIG.back2top.enable && CONFIG.back2top.sidebar ? document.querySelector('.back-to-top').offsetHeight : 0;
     var sidebarSchemePadding = CONFIG.sidebarPadding + sidebarNavHeight + sidebarb2tHeight;
