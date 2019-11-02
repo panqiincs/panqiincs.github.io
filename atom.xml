@@ -429,9 +429,9 @@
       <category term="程序设计" scheme="http://panqiincs.me/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
     
-      <category term="python" scheme="http://panqiincs.me/tags/python/"/>
-    
       <category term="nginx" scheme="http://panqiincs.me/tags/nginx/"/>
+    
+      <category term="python" scheme="http://panqiincs.me/tags/python/"/>
     
       <category term="日志分析" scheme="http://panqiincs.me/tags/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/"/>
     
@@ -465,9 +465,9 @@
       <category term="胡言乱语" scheme="http://panqiincs.me/categories/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/"/>
     
     
-      <category term="理工科" scheme="http://panqiincs.me/tags/%E7%90%86%E5%B7%A5%E7%A7%91/"/>
-    
       <category term="英语" scheme="http://panqiincs.me/tags/%E8%8B%B1%E8%AF%AD/"/>
+    
+      <category term="理工科" scheme="http://panqiincs.me/tags/%E7%90%86%E5%B7%A5%E7%A7%91/"/>
     
       <category term="汉语" scheme="http://panqiincs.me/tags/%E6%B1%89%E8%AF%AD/"/>
     
@@ -494,9 +494,9 @@
     
       <category term="计划" scheme="http://panqiincs.me/tags/%E8%AE%A1%E5%88%92/"/>
     
-      <category term="英语" scheme="http://panqiincs.me/tags/%E8%8B%B1%E8%AF%AD/"/>
-    
       <category term="词汇量" scheme="http://panqiincs.me/tags/%E8%AF%8D%E6%B1%87%E9%87%8F/"/>
+    
+      <category term="英语" scheme="http://panqiincs.me/tags/%E8%8B%B1%E8%AF%AD/"/>
     
   </entry>
   
