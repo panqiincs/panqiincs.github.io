@@ -9,6 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
   <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
   <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
 
@@ -23,7 +24,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '7.4.2',
+    version: '7.5.0',
     exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
     copycode: {"enable":false,"show_result":false,"style":null},
@@ -53,7 +54,7 @@
 </script>
 
   <meta name="description" content="简介 I/O多路复用（I/O multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I/O操作。能够进行I/O操作，具体来说就是，在描述符上执行I/O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。 在Linux系统中，多路复用由select，poll和epoll三个函数支持。它们的作用相同，特别地，poll和epo">
-<meta name="keywords" content="linux,多路复用,非阻塞I&#x2F;O,epoll">
+<meta name="keywords" content="linux,多路复用,epoll,非阻塞I&#x2F;O">
 <meta property="og:type" content="article">
 <meta property="og:title" content="I&#x2F;O多路复用之epoll">
 <meta property="og:url" content="http://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/index.html">
@@ -91,8 +92,6 @@
         gtag('config', 'UA-39536948-1');
       }
     </script>
-
-
 
 
 
@@ -339,10 +338,10 @@
       <div class="popular-posts-title"><a href="/2017/02/26/write-a-shell-basic-functionality/" rel="bookmark">Shell实现：基本功能</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/2017/05/23/burn-pi-image-under-linux/" rel="bookmark">Linux下烧写树莓派系统</a></div>
+      <div class="popular-posts-title"><a href="/2017/04/19/write-a-shell-redirect-and-pipeline/" rel="bookmark">Shell实现：重定向和管道</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/2017/04/19/write-a-shell-redirect-and-pipeline/" rel="bookmark">Shell实现：重定向和管道</a></div>
+      <div class="popular-posts-title"><a href="/2017/05/23/burn-pi-image-under-linux/" rel="bookmark">Linux下烧写树莓派系统</a></div>
     </li>
   </ul>
 
@@ -368,8 +367,8 @@
           <div class="post-tags">
               <a href="/tags/linux/" rel="tag"># linux</a>
               <a href="/tags/多路复用/" rel="tag"># 多路复用</a>
-              <a href="/tags/非阻塞I-O/" rel="tag"># 非阻塞I/O</a>
               <a href="/tags/epoll/" rel="tag"># epoll</a>
+              <a href="/tags/非阻塞I-O/" rel="tag"># 非阻塞I/O</a>
           </div>
 
         
@@ -466,6 +465,11 @@
       </div>
   </nav>
 </div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
         <a href="https://github.com/panqiincs" title="GitHub &rarr; https://github.com/panqiincs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
@@ -532,7 +536,7 @@
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.2
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
   </div>
 
         
@@ -579,10 +583,6 @@
 
 
 
-
-
-
-  
 
   
 

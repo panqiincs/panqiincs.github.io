@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/2019/03/07/clrs-getting-started/</loc>
+    
+    <lastmod>2019-11-02T07:34:49.315Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2016/04/21/about-ros/</loc>
     
     <lastmod>2019-10-09T00:07:00.204Z</lastmod>
@@ -271,13 +278,6 @@
     <loc>http://panqiincs.me/2019/03/10/clrs-growth-of-functions/</loc>
     
     <lastmod>2019-08-03T08:24:45.256Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/03/07/clrs-getting-started/</loc>
-    
-    <lastmod>2019-08-03T08:24:39.736Z</lastmod>
     
   </url>
   
