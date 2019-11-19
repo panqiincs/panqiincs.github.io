@@ -54,7 +54,7 @@
 </script>
 
   <meta name="description" content="整体方案 我有一个用于提高上网体验的VPS，配置还不错，仅仅跑一个小服务太浪费了。买了域名之后，便想把博客也托管到VPS上，和Github互为备份，其中一个出问题了，修改一下域名解析即可。 整体方案如下：在本地机器上生成博客静态文件，利用git的post-receive钩子自动部署文件到VPS的指定目录中。VPS使用nginx作为HTTP服务器，为访客提供服务。本文默认本地机器上已经完成了Hexo">
-<meta name="keywords" content="git,hexo,nginx,ssh,vps">
+<meta name="keywords" content="hexo,git,nginx,ssh,vps">
 <meta property="og:type" content="article">
 <meta property="og:title" content="将Hexo博客托管到VPS">
 <meta property="og:url" content="http://panqiincs.me/2017/09/01/host-hexo-blog-at-vps/index.html">
@@ -359,8 +359,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/git/" rel="tag"># git</a>
               <a href="/tags/hexo/" rel="tag"># hexo</a>
+              <a href="/tags/git/" rel="tag"># git</a>
               <a href="/tags/nginx/" rel="tag"># nginx</a>
               <a href="/tags/ssh/" rel="tag"># ssh</a>
               <a href="/tags/vps/" rel="tag"># vps</a>
