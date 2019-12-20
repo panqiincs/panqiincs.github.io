@@ -53,18 +53,18 @@
   };
 </script>
 
-  <meta name="description" content="需求 上一篇文章提到，在Emacs中可以预览Markdown文本得到的网页，但前提是，你的系统中要有将Markdown文本转化为HTML文本的Markdown命令。如果没有任何配置，直接使用预览的快捷键，Emacs将提示/bin/bash: markdown: command not found。我找到了两种办法来解决这个问题： markdown_py Python有将Markdown转化为HTM">
+  <meta name="description" content="需求上一篇文章提到，在Emacs中可以预览Markdown文本得到的网页，但前提是，你的系统中要有将Markdown文本转化为HTML文本的Markdown命令。如果没有任何配置，直接使用预览的快捷键，Emacs将提示/bin/bash: markdown: command not found。我找到了两种办法来解决这个问题： markdown_pyPython有将Markdown转化为HTML的">
 <meta name="keywords" content="emacs,markdown">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在Emacs中预览Markdown">
 <meta property="og:url" content="http://panqiincs.me/2015/07/31/preview-markdown-with-emacs/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="需求 上一篇文章提到，在Emacs中可以预览Markdown文本得到的网页，但前提是，你的系统中要有将Markdown文本转化为HTML文本的Markdown命令。如果没有任何配置，直接使用预览的快捷键，Emacs将提示/bin/bash: markdown: command not found。我找到了两种办法来解决这个问题： markdown_py Python有将Markdown转化为HTM">
+<meta property="og:description" content="需求上一篇文章提到，在Emacs中可以预览Markdown文本得到的网页，但前提是，你的系统中要有将Markdown文本转化为HTML文本的Markdown命令。如果没有任何配置，直接使用预览的快捷键，Emacs将提示/bin/bash: markdown: command not found。我找到了两种办法来解决这个问题： markdown_pyPython有将Markdown转化为HTML的">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-03-23T07:41:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Emacs中预览Markdown">
-<meta name="twitter:description" content="需求 上一篇文章提到，在Emacs中可以预览Markdown文本得到的网页，但前提是，你的系统中要有将Markdown文本转化为HTML文本的Markdown命令。如果没有任何配置，直接使用预览的快捷键，Emacs将提示/bin/bash: markdown: command not found。我找到了两种办法来解决这个问题： markdown_py Python有将Markdown转化为HTM">
+<meta name="twitter:description" content="需求上一篇文章提到，在Emacs中可以预览Markdown文本得到的网页，但前提是，你的系统中要有将Markdown文本转化为HTML文本的Markdown命令。如果没有任何配置，直接使用预览的快捷键，Emacs将提示/bin/bash: markdown: command not found。我找到了两种办法来解决这个问题： markdown_pyPython有将Markdown转化为HTML的">
 
 <link rel="canonical" href="http://panqiincs.me/2015/07/31/preview-markdown-with-emacs/">
 
@@ -278,10 +278,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="需求">需求</h2>
-<p><a href="https://panqiincs.me/2015/06/15/edit-markdown-with-emacs/">上一篇文章</a>提到，在Emacs中可以预览Markdown文本得到的网页，但前提是，你的系统中要有将Markdown文本转化为HTML文本的Markdown命令。如果没有任何配置，直接使用预览的快捷键，Emacs将提示<code>/bin/bash: markdown: command not found</code>。我找到了两种办法来解决这个问题：</p>
-<h2 id="markdown_py">markdown_py</h2>
-<p>Python有将Markdown转化为HTML的命令，只不过它的名字不叫Markdown。我通过如下的命令找到了它：</p>
+        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p><a href="https://panqiincs.me/2015/06/15/edit-markdown-with-emacs/">上一篇文章</a>提到，在Emacs中可以预览Markdown文本得到的网页，但前提是，你的系统中要有将Markdown文本转化为HTML文本的Markdown命令。如果没有任何配置，直接使用预览的快捷键，Emacs将提示<code>/bin/bash: markdown: command not found</code>。我找到了两种办法来解决这个问题：</p>
+<h2 id="markdown-py"><a href="#markdown-py" class="headerlink" title="markdown_py"></a>markdown_py</h2><p>Python有将Markdown转化为HTML的命令，只不过它的名字不叫Markdown。我通过如下的命令找到了它：</p>
 <a id="more"></a>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ su -c <span class="string">'updatedb'</span></span><br><span class="line">Password:</span><br><span class="line">$ locate markdown | grep bin</span><br><span class="line">/usr/bin/markdown_py</span><br><span class="line">/usr/bin/markdown_py-2.7</span><br></pre></td></tr></table></figure>
 <p>找一个Markdown文本，尝试一下markdown_py命令的效果：</p>
@@ -293,8 +291,7 @@
 <p>大功告成，敲下<code>C-c C-c p</code>看看效果，网页是乱码的。如果Markdown的内容是中文，那么转换出来的HTML在浏览器中打开就无法自动识别编码。这个时候，我们可以借助Markdown对HTML标记的支持，在Markdown文件开头中加入编码信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sed -i <span class="string">'1i\&lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;'</span> *.markdown</span><br></pre></td></tr></table></figure>
 <p>我最开始使用的就是这个方法，虽然奏效了，但是在每个Markdown文本中都要加上这行代码，真是大煞风景！有没有更优雅的解决办法呢？于是，我找到了另外一个软件pandoc。</p>
-<h2 id="pandoc">pandoc</h2>
-<p>pandoc支持多种输出格式，我们现在只关注HTML格式。pandoc将Markdown转化为HTML并将结果定向到标准输出：</p>
+<h2 id="pandoc"><a href="#pandoc" class="headerlink" title="pandoc"></a>pandoc</h2><p>pandoc支持多种输出格式，我们现在只关注HTML格式。pandoc将Markdown转化为HTML并将结果定向到标准输出：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pandoc -f markdown -t html filename.markdown</span><br></pre></td></tr></table></figure>
 <p>为了防止中文乱码，要加上一个<code>--ascii</code>选项。pandoc还支持语法高亮和<a href="http://yanping.me/cn/blog/2012/03/10/octopress-with-latex/" target="_blank" rel="noopener">LaTeX 数学公式</a>。Octopress默认使用pygments支持语法高亮的，因此加上<code>--highlight-stype pygments</code> 选项。加上<code>--mathjax</code>选项以支持LaTeX数学公式。得到的最终形式是：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pandoc -f markdown -t html -s --mathjax --highlight-style pygments filename.markdown</span><br></pre></td></tr></table></figure>
@@ -305,11 +302,10 @@
 <p>现在，执行<code>markdown filename.markdown</code>语句的效果与执行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pandoc -f markdown -t html -s --mathjax --highlight-style pygments filename.markdown</span><br></pre></td></tr></table></figure>
 <p>的效果是一样的。也就是说，我们的目的达到了。现在试一试预览效果，perfect！</p>
-<h2 id="参考">参考</h2>
-<ol type="1">
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="http://www.ituring.com.cn/article/10044" target="_blank" rel="noopener">如何在Linux下使用Markdown进行文档工作</a></li>
 <li><a href="http://higrid.net/c-art-pandoc.htm" target="_blank" rel="noopener">使用Pandoc转换markdown等文本文档</a></li>
-<li><a href="http://blog.sina.com.cn/s/blog_61f013b80101eo21.html" target="_blank" rel="noopener">Emacs配置Pandoc和Markdown</a> 注：本文中提到在Emacs的Option中配置Markdown Command在我的机器上行不通</li>
+<li><a href="http://blog.sina.com.cn/s/blog_61f013b80101eo21.html" target="_blank" rel="noopener">Emacs配置Pandoc和Markdown</a><br>注：本文中提到在Emacs的Option中配置Markdown Command在我的机器上行不通</li>
 </ol>
 
     </div>
@@ -412,7 +408,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#需求"><span class="nav-number">1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#markdown_py"><span class="nav-number">2.</span> <span class="nav-text">markdown_py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pandoc"><span class="nav-number">3.</span> <span class="nav-text">pandoc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#需求"><span class="nav-number">1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#markdown-py"><span class="nav-number">2.</span> <span class="nav-text">markdown_py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pandoc"><span class="nav-number">3.</span> <span class="nav-text">pandoc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

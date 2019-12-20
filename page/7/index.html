@@ -376,10 +376,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="使用qt">使用Qt</h2>
-<p>Qt是一个跨平台的C++应用程序开发框架，广泛用于开发界面程序。Qt不仅仅是个强大的界面库，它的基础库同样强大，很多库用起来比STL还方便，所以我经常用Qt编写控制台（console）程序。本文介绍如何用Qt进行常用的文本操作，代码简单实用，无需太多的解释。</p>
-<h2 id="从文件逐行读取">从文件逐行读取</h2>
-<p>例如，数据保存在文本文件中，每行一个数字：</p>
+          <h2 id="使用Qt"><a href="#使用Qt" class="headerlink" title="使用Qt"></a>使用Qt</h2><p>Qt是一个跨平台的C++应用程序开发框架，广泛用于开发界面程序。Qt不仅仅是个强大的界面库，它的基础库同样强大，很多库用起来比STL还方便，所以我经常用Qt编写控制台（console）程序。本文介绍如何用Qt进行常用的文本操作，代码简单实用，无需太多的解释。</p>
+<h2 id="从文件逐行读取"><a href="#从文件逐行读取" class="headerlink" title="从文件逐行读取"></a>从文件逐行读取</h2><p>例如，数据保存在文本文件中，每行一个数字：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/05/01/qt-text-processing/#more" rel="contents">
@@ -767,8 +765,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="需求">需求</h2>
-<p>在<a href="https://panqiincs.me/2016/02/18/process-picamera-video-on-pc/">上一篇文章</a>中，我介绍了将树莓派打造成一个rtsp视频流服务器的方法，这样就可以在远程看到树莓派摄像头的实时图像。使用网络上现成的程序固然方便，但丧失了可控性。比如，如果想在远程PC上得到每一帧图像的时间戳，上一篇文章中的方法就无能为力了。本文介绍如何一帧帧读取picamera的图像，压缩后通过网络发送出去的方法。</p>
+          <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>在<a href="https://panqiincs.me/2016/02/18/process-picamera-video-on-pc/">上一篇文章</a>中，我介绍了将树莓派打造成一个rtsp视频流服务器的方法，这样就可以在远程看到树莓派摄像头的实时图像。使用网络上现成的程序固然方便，但丧失了可控性。比如，如果想在远程PC上得到每一帧图像的时间戳，上一篇文章中的方法就无能为力了。本文介绍如何一帧帧读取picamera的图像，压缩后通过网络发送出去的方法。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/03/03/picamera-video-transmission/#more" rel="contents">
@@ -865,10 +862,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="需求">需求</h2>
-<p>我想实现用树莓派摄像头picamera采集数据，发送到远程主机上显示或进行其他处理。<a href="https://picamera.readthedocs.org/en/release-1.10/recipes1.html#recording-to-a-network-stream" target="_blank" rel="noopener">picamera示例程序</a>中已经有相应的实现。由于项目需要，远程PC端要使用OpenCV库处理图像，我尝试在树莓派上使用picamera库都没有得到满意的效果。</p>
-<h2 id="服务器">服务器</h2>
-<p>终于找到了一个用C++写的<a href="https://en.wikipedia.org/wiki/Real_Time_Streaming_Protocol" target="_blank" rel="noopener">rtsp</a>服务器程序——<a href="https://github.com/mpromonet/h264_v4l2_rtspserver" target="_blank" rel="noopener">h264_v4l2_rtspserver</a>。首先运行如下命令：</p>
+          <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>我想实现用树莓派摄像头picamera采集数据，发送到远程主机上显示或进行其他处理。<a href="https://picamera.readthedocs.org/en/release-1.10/recipes1.html#recording-to-a-network-stream" target="_blank" rel="noopener">picamera示例程序</a>中已经有相应的实现。由于项目需要，远程PC端要使用OpenCV库处理图像，我尝试在树莓派上使用picamera库都没有得到满意的效果。</p>
+<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p>终于找到了一个用C++写的<a href="https://en.wikipedia.org/wiki/Real_Time_Streaming_Protocol" target="_blank" rel="noopener">rtsp</a>服务器程序——<a href="https://github.com/mpromonet/h264_v4l2_rtspserver" target="_blank" rel="noopener">h264_v4l2_rtspserver</a>。首先运行如下命令：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/02/18/process-picamera-video-on-pc/#more" rel="contents">
@@ -965,8 +960,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="stl">STL</h2>
-<p>本书的开头，千言万语汇成一句话：STL很牛逼。STL有多种实现，本书剖析的SGI版本可读性很高，也是被GCC使用的版本。</p>
+          <h2 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h2><p>本书的开头，千言万语汇成一句话：STL很牛逼。STL有多种实现，本书剖析的SGI版本可读性很高，也是被GCC使用的版本。</p>
 <p>这本书我粗略翻了一遍，个人认为本书的第二章和第三章是精华，也是我读得最仔细的部分。后面章节的内容则是数据结构和算法的具体实现。本书非常适合与讲算法的书搭配学习，看看工业级别的代码是怎么写的。</p>
           <!--noindex-->
             <div class="post-button">
@@ -1064,8 +1058,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="hokuyoaist">hokuyoaist</h2>
-<p>通过阅读Hokuyo数据手册中关于通信协议的内容就可以自己写程序来获取数据了。如果不想麻烦，可以使用别人写好的库——<a href="http://gbiggs.github.io/hokuyoaist/" target="_blank" rel="noopener">hokuyoaist</a>，它支持多个型号，亲测在UTM-30LX型号的激光雷达上可用。</p>
+          <h2 id="hokuyoaist"><a href="#hokuyoaist" class="headerlink" title="hokuyoaist"></a>hokuyoaist</h2><p>通过阅读Hokuyo数据手册中关于通信协议的内容就可以自己写程序来获取数据了。如果不想麻烦，可以使用别人写好的库——<a href="http://gbiggs.github.io/hokuyoaist/" target="_blank" rel="noopener">hokuyoaist</a>，它支持多个型号，亲测在UTM-30LX型号的激光雷达上可用。</p>
 <p>在<a href="https://github.com/gbiggs/hokuyoaist" target="_blank" rel="noopener">Github</a>上下载它的源代码并编译：</p>
           <!--noindex-->
             <div class="post-button">
@@ -1163,8 +1156,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="硬件pwm">硬件PWM</h2>
-<p>本文针对的是Raspberry Pi 2 Model B硬件。从理论上讲，对于任意GPIO口，可以通过设定延时来输出PWM信号，这被称作<strong>软件PWM</strong>。由于Linux不是实时操作系统，对于一些要求<strong>硬实时</strong>的应用，例如通过PWM信号控制舵机，最好使用<strong>硬件PWM</strong>。</p>
+          <h2 id="硬件PWM"><a href="#硬件PWM" class="headerlink" title="硬件PWM"></a>硬件PWM</h2><p>本文针对的是Raspberry Pi 2 Model B硬件。从理论上讲，对于任意GPIO口，可以通过设定延时来输出PWM信号，这被称作<strong>软件PWM</strong>。由于Linux不是实时操作系统，对于一些要求<strong>硬实时</strong>的应用，例如通过PWM信号控制舵机，最好使用<strong>硬件PWM</strong>。</p>
 <p>树莓派的BCM2386芯片有两个PWM通道——PWM0和PWM1。PWM0可以设置在GPIO12和GPIO18上，PWM1可以设置在GPIO13上。本文使用<a href="http://abyz.co.uk/rpi/pigpio/" target="_blank" rel="noopener">pigpio</a>库来实现<strong>GPIO12</strong>输出PWM信号。</p>
           <!--noindex-->
             <div class="post-button">

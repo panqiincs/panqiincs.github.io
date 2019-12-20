@@ -53,19 +53,19 @@
   };
 </script>
 
-  <meta name="description" content="安装 Emacs默认并没有Markdown模式。网络的智慧是无穷的，果然，我找到了Emacs Markdown Mode。接下来便是本文的主题，我只是一个蹩脚的翻译。将markdown-mode.el放到Emacs的load-path中，并在.emacs配置文件中添加如下内容，以支持后缀名为.markdown和.md的文件:">
+  <meta name="description" content="安装Emacs默认并没有Markdown模式。网络的智慧是无穷的，果然，我找到了Emacs Markdown Mode。接下来便是本文的主题，我只是一个蹩脚的翻译。将markdown-mode.el放到Emacs的load-path中，并在.emacs配置文件中添加如下内容，以支持后缀名为.markdown和.md的文件:">
 <meta name="keywords" content="emacs,markdown">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用Emacs编辑Markdown">
 <meta property="og:url" content="http://panqiincs.me/2015/06/15/edit-markdown-with-emacs/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="安装 Emacs默认并没有Markdown模式。网络的智慧是无穷的，果然，我找到了Emacs Markdown Mode。接下来便是本文的主题，我只是一个蹩脚的翻译。将markdown-mode.el放到Emacs的load-path中，并在.emacs配置文件中添加如下内容，以支持后缀名为.markdown和.md的文件:">
+<meta property="og:description" content="安装Emacs默认并没有Markdown模式。网络的智慧是无穷的，果然，我找到了Emacs Markdown Mode。接下来便是本文的主题，我只是一个蹩脚的翻译。将markdown-mode.el放到Emacs的load-path中，并在.emacs配置文件中添加如下内容，以支持后缀名为.markdown和.md的文件:">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/markdown_edit.png">
 <meta property="og:updated_time" content="2019-11-19T00:28:21.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用Emacs编辑Markdown">
-<meta name="twitter:description" content="安装 Emacs默认并没有Markdown模式。网络的智慧是无穷的，果然，我找到了Emacs Markdown Mode。接下来便是本文的主题，我只是一个蹩脚的翻译。将markdown-mode.el放到Emacs的load-path中，并在.emacs配置文件中添加如下内容，以支持后缀名为.markdown和.md的文件:">
+<meta name="twitter:description" content="安装Emacs默认并没有Markdown模式。网络的智慧是无穷的，果然，我找到了Emacs Markdown Mode。接下来便是本文的主题，我只是一个蹩脚的翻译。将markdown-mode.el放到Emacs的load-path中，并在.emacs配置文件中添加如下内容，以支持后缀名为.markdown和.md的文件:">
 <meta name="twitter:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/markdown_edit.png">
 
 <link rel="canonical" href="http://panqiincs.me/2015/06/15/edit-markdown-with-emacs/">
@@ -280,44 +280,34 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="安装">安装</h2>
-<p>Emacs默认并没有Markdown模式。网络的智慧是无穷的，果然，我找到了<a href="http://jblevins.org/projects/markdown-mode/" target="_blank" rel="noopener">Emacs Markdown Mode</a>。接下来便是本文的主题，我只是一个蹩脚的翻译。将<a href="http://jblevins.org/git/markdown-mode.git/plain/markdown-mode.el" target="_blank" rel="noopener">markdown-mode.el</a>放到Emacs的<code>load-path</code>中，并在<code>.emacs</code>配置文件中添加如下内容，以支持后缀名为<code>.markdown</code>和<code>.md</code>的文件:</p>
+        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>Emacs默认并没有Markdown模式。网络的智慧是无穷的，果然，我找到了<a href="http://jblevins.org/projects/markdown-mode/" target="_blank" rel="noopener">Emacs Markdown Mode</a>。接下来便是本文的主题，我只是一个蹩脚的翻译。将<a href="http://jblevins.org/git/markdown-mode.git/plain/markdown-mode.el" target="_blank" rel="noopener">markdown-mode.el</a>放到Emacs的<code>load-path</code>中，并在<code>.emacs</code>配置文件中添加如下内容，以支持后缀名为<code>.markdown</code>和<code>.md</code>的文件:</p>
 <a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(autoload &apos;markdown-mode &quot;markdown-mode&quot;</span><br><span class="line">    &quot;Major mode for editing Markdown files&quot; t)</span><br><span class="line">(add-to-list &apos;auto-mode-alist &apos;(&quot;\\.markdown\\&apos;&quot;. markdown-mode))</span><br><span class="line">(add-to-list &apos;auto-mode-alist &apos;(&quot;\\.md\\&apos;&quot;. markdown-mode))</span><br></pre></td></tr></table></figure>
 <p>至此，大功告成，效果如下：</p>
-<figure>
-<img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/markdown_edit.png" alt><figcaption>编辑markdown</figcaption>
-</figure>
-<h2 id="使用">使用</h2>
-<p>现在用Emacs写博文真是一种享受。会Emacs的人会发现，下面提到的快捷键大多和Emacs的基础快捷键相关，我只列出常用的：</p>
-<h3 id="在emacs中预览效果">在Emacs中预览效果</h3>
-<p>使用该功能的前提是系统中有将Markdown文本转化为HTML的<strong>Markdown命令</strong>。配置方法请看<a href="https://panqiincs.me/2015/07/31/preview-markdown-with-emacs/">这里</a>。命令如下：</p>
-<ol type="1">
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/markdown_edit.png" alt="编辑markdown"></p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>现在用Emacs写博文真是一种享受。会Emacs的人会发现，下面提到的快捷键大多和Emacs的基础快捷键相关，我只列出常用的：</p>
+<h3 id="在Emacs中预览效果"><a href="#在Emacs中预览效果" class="headerlink" title="在Emacs中预览效果"></a>在Emacs中预览效果</h3><p>使用该功能的前提是系统中有将Markdown文本转化为HTML的<strong>Markdown命令</strong>。配置方法请看<a href="https://panqiincs.me/2015/07/31/preview-markdown-with-emacs/">这里</a>。命令如下：</p>
+<ol>
 <li><code>C-c C-c m</code> 转化为HTML，在另一个buffer中预览HTML文件，个人觉得没太大意义</li>
 <li><code>C-c C-c p</code> 转化为HTML，在浏览器中预览</li>
 <li><code>C-c C-c e</code> 转化为HTML，保存为文件</li>
 <li><code>C-c C-c v</code> 转化为HTML，保存为文件，并在浏览器中预览</li>
 </ol>
-<h3 id="插入超链接">插入超链接</h3>
-<p>插入超链接的命令是<strong>C-c C-a</strong>。<code>C-c C-a l</code>插入<code>[]()</code>形式的链接，<code>C-c C-a L</code>插入<code>[LinkText][Label]</code>形式的链接。在这种形式下，如果光标附近有文字或是<code>Active Region</code>，会自动被选择当作<code>LinkText</code>。后一种形式会提示你在<code>Minibuffer</code>中输入<code>LinkText</code>、<code>LinkLabel</code>和可选的<code>LinkTitle</code>。</p>
-<h3 id="插入图片">插入图片</h3>
-<p>插入图片用命令<code>C-c C-i i</code>和<code>C-c C-i I</code>，两者的区别和超链接的类似。</p>
-<h3 id="插入样式">插入样式</h3>
-<p>插入样式的命令是<strong>C-a C-s</strong>：</p>
-<ol type="1">
+<h3 id="插入超链接"><a href="#插入超链接" class="headerlink" title="插入超链接"></a>插入超链接</h3><p>插入超链接的命令是<strong>C-c C-a</strong>。<code>C-c C-a l</code>插入<code>[]()</code>形式的链接，<code>C-c C-a L</code>插入<code>[LinkText][Label]</code>形式的链接。在这种形式下，如果光标附近有文字或是<code>Active Region</code>，会自动被选择当作<code>LinkText</code>。后一种形式会提示你在<code>Minibuffer</code>中输入<code>LinkText</code>、<code>LinkLabel</code>和可选的<code>LinkTitle</code>。</p>
+<h3 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h3><p>插入图片用命令<code>C-c C-i i</code>和<code>C-c C-i I</code>，两者的区别和超链接的类似。</p>
+<h3 id="插入样式"><a href="#插入样式" class="headerlink" title="插入样式"></a>插入样式</h3><p>插入样式的命令是<strong>C-a C-s</strong>：</p>
+<ol>
 <li><code>C-c C-s e</code> <em>插入斜体字</em>（e表示emphasis）</li>
 <li><code>C-c C-s s</code> <strong>插入粗体字</strong>（s表示strong）</li>
 <li><code>C-c C-s c</code> 插入代码框</li>
 </ol>
-<h3 id="插入标题">插入标题</h3>
-<p>插入标题的命令是：<strong>C-c C-t</strong></p>
-<ol type="1">
+<h3 id="插入标题"><a href="#插入标题" class="headerlink" title="插入标题"></a>插入标题</h3><p>插入标题的命令是：<strong>C-c C-t</strong></p>
+<ol>
 <li>我最常用的<code>C-c C-t n</code>，数字n的范围从1到6，表示各级标题。比如<code>C-c C-t 3</code>得到<code>### Heading ###</code></li>
 <li><code>C-c C-t h</code>根据前面的标题自动选择标题级别。<code>C-c C-t H</code>类似，区别在于它得到的是带下划线的标题</li>
 </ol>
-<h3 id="快捷键">快捷键</h3>
-<p>其它一些快捷键：</p>
-<ol type="1">
+<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p>其它一些快捷键：</p>
+<ol>
 <li><code>C-c -</code> 插入水平线</li>
 <li><code>C-c C-o</code> 如果该点是一个链接(hyperlink)，就会在浏览器中打开它的URL，如果该点是<strong>维基百科</strong>链接(wikilink)，就会在另一个buffer中打开</li>
 <li><code>C-c C-j</code> 如果该点所在的位置是一个hyperlink，按下此快捷键就会在<code>Link Text</code>和<code>Link URL</code>之间跳转。同样也适用于脚注(footnote)等其它类似目标</li>
@@ -427,7 +417,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在emacs中预览效果"><span class="nav-number">2.1.</span> <span class="nav-text">在Emacs中预览效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入超链接"><span class="nav-number">2.2.</span> <span class="nav-text">插入超链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入图片"><span class="nav-number">2.3.</span> <span class="nav-text">插入图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入样式"><span class="nav-number">2.4.</span> <span class="nav-text">插入样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入标题"><span class="nav-number">2.5.</span> <span class="nav-text">插入标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快捷键"><span class="nav-number">2.6.</span> <span class="nav-text">快捷键</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在Emacs中预览效果"><span class="nav-number">2.1.</span> <span class="nav-text">在Emacs中预览效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入超链接"><span class="nav-number">2.2.</span> <span class="nav-text">插入超链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入图片"><span class="nav-number">2.3.</span> <span class="nav-text">插入图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入样式"><span class="nav-number">2.4.</span> <span class="nav-text">插入样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入标题"><span class="nav-number">2.5.</span> <span class="nav-text">插入标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快捷键"><span class="nav-number">2.6.</span> <span class="nav-text">快捷键</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

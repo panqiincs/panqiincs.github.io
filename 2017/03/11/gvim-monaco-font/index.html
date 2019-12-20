@@ -53,20 +53,20 @@
   };
 </script>
 
-  <meta name="description" content="效果 Mac系统下的Monaco字体非常适合编程。GVim（Ubuntu系统）使用Monaco字体的效果如下：">
+  <meta name="description" content="效果Mac系统下的Monaco字体非常适合编程。GVim（Ubuntu系统）使用Monaco字体的效果如下：">
 <meta name="keywords" content="vim,字体">
 <meta property="og:type" content="article">
 <meta property="og:title" content="配置GVim使用Monaco字体">
 <meta property="og:url" content="http://panqiincs.me/2017/03/11/gvim-monaco-font/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="效果 Mac系统下的Monaco字体非常适合编程。GVim（Ubuntu系统）使用Monaco字体的效果如下：">
+<meta property="og:description" content="效果Mac系统下的Monaco字体非常适合编程。GVim（Ubuntu系统）使用Monaco字体的效果如下：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/gvim_font_monaco.png">
 <meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/gvim_font_select.png">
 <meta property="og:updated_time" content="2019-11-19T00:33:00.057Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="配置GVim使用Monaco字体">
-<meta name="twitter:description" content="效果 Mac系统下的Monaco字体非常适合编程。GVim（Ubuntu系统）使用Monaco字体的效果如下：">
+<meta name="twitter:description" content="效果Mac系统下的Monaco字体非常适合编程。GVim（Ubuntu系统）使用Monaco字体的效果如下：">
 <meta name="twitter:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/gvim_font_monaco.png">
 
 <link rel="canonical" href="http://panqiincs.me/2017/03/11/gvim-monaco-font/">
@@ -281,24 +281,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="效果">效果</h2>
-<p>Mac系统下的Monaco字体非常适合编程。GVim（Ubuntu系统）使用Monaco字体的效果如下：</p>
+        <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>Mac系统下的Monaco字体非常适合编程。GVim（Ubuntu系统）使用Monaco字体的效果如下：</p>
 <a id="more"></a>
-<figure>
-<img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/gvim_font_monaco.png" alt><figcaption>字体显示效果</figcaption>
-</figure>
-<h2 id="安装字体">安装字体</h2>
-<p>首先在<a href="https://github.com/cstrap/monaco-font" target="_blank" rel="noopener">Github</a>上下载Monaco字体。解压后有三个安装脚本，分别对应不同的系统：<code>install-font-centos.sh</code>，<code>install-font-centos.sh</code>，<code>install-font-centos.sh</code>，运行相应的脚本即可完成字体的安装。</p>
-<h2 id="配置字体">配置字体</h2>
-<p>Vim下配置字体需要设置<code>guifont</code>变量的值。在Vim的命令模式下输入<code>:set guifont=*</code>后回车，弹出如下的对话框：</p>
-<figure>
-<img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/gvim_font_select.png" alt><figcaption>字体选择对话框</figcaption>
-</figure>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/gvim_font_monaco.png" alt="字体显示效果"></p>
+<h2 id="安装字体"><a href="#安装字体" class="headerlink" title="安装字体"></a>安装字体</h2><p>首先在<a href="https://github.com/cstrap/monaco-font" target="_blank" rel="noopener">Github</a>上下载Monaco字体。解压后有三个安装脚本，分别对应不同的系统：<code>install-font-centos.sh</code>，<code>install-font-centos.sh</code>，<code>install-font-centos.sh</code>，运行相应的脚本即可完成字体的安装。</p>
+<h2 id="配置字体"><a href="#配置字体" class="headerlink" title="配置字体"></a>配置字体</h2><p>Vim下配置字体需要设置<code>guifont</code>变量的值。在Vim的命令模式下输入<code>:set guifont=*</code>后回车，弹出如下的对话框：</p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/gvim_font_select.png" alt="字体选择对话框"></p>
 <p>选择Monaco字体即可。然后输入<code>:set guifont?</code>后回车，GVim会返回<code>guifont=Manoca 11</code>，因此，配置语句如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> has(<span class="string">"gui_running"</span>)</span><br><span class="line">    <span class="built_in">set</span> guifont=Monaco\ 11</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
 <p>注意空格之前要加上一个转义字符<code>\</code>。将上面的配置语句加到<code>.vimrc</code>文件中即可看到效果。</p>
-<h2 id="参考">参考</h2>
-<ol type="1">
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="https://askubuntu.com/questions/333409/how-to-install-the-monaco-font" target="_blank" rel="noopener">Ask Ubuntu</a></li>
 <li><a href="https://stackoverflow.com/questions/16882696/settings-default-font-in-gvim" target="_blank" rel="noopener">Stack Overflow</a></li>
 </ol>
