@@ -53,18 +53,18 @@
   };
 </script>
 
-  <meta name="description" content="以前的做法我的博客使用Hexo框架，主题使用Next，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的themes目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新手动合入到博客源码中。">
+  <meta name="description" content="以前的做法 我的博客使用Hexo框架，主题使用Next，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的themes目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新手动合入到博客源码中。">
 <meta name="keywords" content="git,hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo博客源码管理">
 <meta property="og:url" content="http://panqiincs.me/2017/08/06/hexo-blog-code-management/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="以前的做法我的博客使用Hexo框架，主题使用Next，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的themes目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新手动合入到博客源码中。">
+<meta property="og:description" content="以前的做法 我的博客使用Hexo框架，主题使用Next，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的themes目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新手动合入到博客源码中。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-06-02T23:04:40.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo博客源码管理">
-<meta name="twitter:description" content="以前的做法我的博客使用Hexo框架，主题使用Next，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的themes目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新手动合入到博客源码中。">
+<meta name="twitter:description" content="以前的做法 我的博客使用Hexo框架，主题使用Next，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的themes目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新手动合入到博客源码中。">
 
 <link rel="canonical" href="http://panqiincs.me/2017/08/06/hexo-blog-code-management/">
 
@@ -278,23 +278,31 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="以前的做法"><a href="#以前的做法" class="headerlink" title="以前的做法"></a>以前的做法</h2><p>我的博客使用Hexo框架，主题使用<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">Next</a>，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的<code>themes</code>目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新<strong>手动合入</strong>到博客源码中。</p>
+        <h2 id="以前的做法">以前的做法</h2>
+<p>我的博客使用Hexo框架，主题使用<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">Next</a>，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的<code>themes</code>目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新<strong>手动合入</strong>到博客源码中。</p>
 <a id="more"></a>
-<h2 id="使用Git子模块"><a href="#使用Git子模块" class="headerlink" title="使用Git子模块"></a>使用Git子模块</h2><h3 id="添加子模块"><a href="#添加子模块" class="headerlink" title="添加子模块"></a>添加子模块</h3><p>男人要对自己好一点！如果想让生活更加美好，必须要将博客源码和主题源码分开管理。由于主题要根据自己的需求适配，因此要有自己的repo。在Github上将该项目fork，于是我有了一个同名的新仓库。</p>
+<h2 id="使用git子模块">使用Git子模块</h2>
+<h3 id="添加子模块">添加子模块</h3>
+<p>男人要对自己好一点！如果想让生活更加美好，必须要将博客源码和主题源码分开管理。由于主题要根据自己的需求适配，因此要有自己的repo。在Github上将该项目fork，于是我有了一个同名的新仓库。</p>
 <p>在网上了解到，一个项目要使用另外一个项目，两者又要单独管理，可以使用submodule或者subtree功能。我觉得subtree操作太复杂了，最终选择了submodule方式。将主题项目作为一个子模块添加到博客项目中，操作如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> hexo_blog/</span><br><span class="line">git submodule add git@github.com:panqiincs/hexo-theme-next.git themes/next/</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'add theme next as a submodule'</span></span><br></pre></td></tr></table></figure>
 <p>对上述操作不清楚的请参考<a href="https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97" target="_blank" rel="noopener">Progit</a>的说明。</p>
-<h3 id="添加上游远程仓库"><a href="#添加上游远程仓库" class="headerlink" title="添加上游远程仓库"></a>添加上游远程仓库</h3><p>主题源码的管理原则是既要保持自己的变更，又要延续上游的变更。因此要将官方的远程仓库添加进来，命名为upstream：</p>
+<h3 id="添加上游远程仓库">添加上游远程仓库</h3>
+<p>主题源码的管理原则是既要保持自己的变更，又要延续上游的变更。因此要将官方的远程仓库添加进来，命名为upstream：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/next/</span><br><span class="line">git remote add upsteam https://github.com/theme-next/hexo-theme-next</span><br></pre></td></tr></table></figure>
 <p>查看当前的远程仓库：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin  git@github.com:panqiincs/hexo-theme-next.git (fetch)</span><br><span class="line">origin  git@github.com:panqiincs/hexo-theme-next.git (push)</span><br><span class="line">upstream        https://github.com/theme-next/hexo-theme-next.git (fetch)</span><br><span class="line">upstream        https://github.com/theme-next/hexo-theme-next.git (push)</span><br></pre></td></tr></table></figure>
-<h2 id="日常操作"><a href="#日常操作" class="headerlink" title="日常操作"></a>日常操作</h2><h3 id="提交自己的修改"><a href="#提交自己的修改" class="headerlink" title="提交自己的修改"></a>提交自己的修改</h3><p>根据自己的需求，可以对主题文件进行修改，和普通操作无异：</p>
+<h2 id="日常操作">日常操作</h2>
+<h3 id="提交自己的修改">提交自己的修改</h3>
+<p>根据自己的需求，可以对主题文件进行修改，和普通操作无异：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim some_files</span><br><span class="line">git add modified_files</span><br><span class="line">git commit -m <span class="string">'some comments'</span></span><br></pre></td></tr></table></figure>
-<h3 id="合入上游的更新"><a href="#合入上游的更新" class="headerlink" title="合入上游的更新"></a>合入上游的更新</h3><p>如果发现远程仓库有更新，首先拉取下来，然后选择是否合入到自己的分支：</p>
+<h3 id="合入上游的更新">合入上游的更新</h3>
+<p>如果发现远程仓库有更新，首先拉取下来，然后选择是否合入到自己的分支：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git fetch upstream</span><br><span class="line"><span class="comment"># 合入到主分支</span></span><br><span class="line">git checkout master</span><br><span class="line">git merge upstream/master</span><br><span class="line"></span><br><span class="line">vim conflict_files                   <span class="comment"># 手动解决合并冲突</span></span><br><span class="line">git add .                            <span class="comment"># 解决冲突完毕</span></span><br><span class="line">git commit <span class="string">'merge upstream updates'</span></span><br></pre></td></tr></table></figure>
 <p>将新的commits推送到远程origin分支：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-<h3 id="提交子模块的更新"><a href="#提交子模块的更新" class="headerlink" title="提交子模块的更新"></a>提交子模块的更新</h3><p>回到博客源码目录，发现有更改未暂存：</p>
+<h3 id="提交子模块的更新">提交子模块的更新</h3>
+<p>回到博客源码目录，发现有更改未暂存：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> hexo_blog/</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is up-to-date with <span class="string">'origin/master'</span>.</span><br><span class="line">Changes not staged <span class="keyword">for</span> commit:</span><br><span class="line">  (use <span class="string">"git add &lt;file&gt;..."</span> to update what will be committed)</span><br><span class="line">  (use <span class="string">"git checkout -- &lt;file&gt;..."</span> to discard changes <span class="keyword">in</span> working directory)</span><br><span class="line"></span><br><span class="line">        modified:   themes/next (new commits)</span><br></pre></td></tr></table></figure>
 <p>提交子模块的更新：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'update theme next'</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
@@ -397,7 +405,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#以前的做法"><span class="nav-number">1.</span> <span class="nav-text">以前的做法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Git子模块"><span class="nav-number">2.</span> <span class="nav-text">使用Git子模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加子模块"><span class="nav-number">2.1.</span> <span class="nav-text">添加子模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加上游远程仓库"><span class="nav-number">2.2.</span> <span class="nav-text">添加上游远程仓库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日常操作"><span class="nav-number">3.</span> <span class="nav-text">日常操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#提交自己的修改"><span class="nav-number">3.1.</span> <span class="nav-text">提交自己的修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合入上游的更新"><span class="nav-number">3.2.</span> <span class="nav-text">合入上游的更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交子模块的更新"><span class="nav-number">3.3.</span> <span class="nav-text">提交子模块的更新</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#以前的做法"><span class="nav-number">1.</span> <span class="nav-text">以前的做法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用git子模块"><span class="nav-number">2.</span> <span class="nav-text">使用Git子模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加子模块"><span class="nav-number">2.1.</span> <span class="nav-text">添加子模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加上游远程仓库"><span class="nav-number">2.2.</span> <span class="nav-text">添加上游远程仓库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日常操作"><span class="nav-number">3.</span> <span class="nav-text">日常操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#提交自己的修改"><span class="nav-number">3.1.</span> <span class="nav-text">提交自己的修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合入上游的更新"><span class="nav-number">3.2.</span> <span class="nav-text">合入上游的更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交子模块的更新"><span class="nav-number">3.3.</span> <span class="nav-text">提交子模块的更新</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -413,7 +421,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-count">86</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -426,7 +434,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">143</span>
+        <span class="site-state-item-count">144</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -493,7 +501,7 @@
 <div class="copyright">
   
   &copy; 2013 – 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

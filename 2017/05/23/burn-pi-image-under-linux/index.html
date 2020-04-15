@@ -53,18 +53,18 @@
   };
 </script>
 
-  <meta name="description" content="需求在Windows系统下可以用Win32diskimager软件将镜像文件写入SD卡，但是如果SD卡中已经有了一个系统，Windows就无法识别其中的ext4分区，再次写入比较麻烦。在Linux下，这个就不是问题了。 识别设备号首先识别SD卡的设备号。拔出SD卡，运行df -h命令显示已经挂载的设备，插入SD卡，再运行一次df -h，比较两次结果的差异，便得到SD卡的设备号，例如/dev/mmc">
+  <meta name="description" content="需求 在Windows系统下可以用Win32diskimager软件将镜像文件写入SD卡，但是如果SD卡中已经有了一个系统，Windows就无法识别其中的ext4分区，再次写入比较麻烦。在Linux下，这个就不是问题了。 识别设备号 首先识别SD卡的设备号。拔出SD卡，运行df -h命令显示已经挂载的设备，插入SD卡，再运行一次df -h，比较两次结果的差异，便得到SD卡的设备号，例如/dev/m">
 <meta name="keywords" content="linux,树莓派">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux下烧写树莓派系统">
 <meta property="og:url" content="http://panqiincs.me/2017/05/23/burn-pi-image-under-linux/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="需求在Windows系统下可以用Win32diskimager软件将镜像文件写入SD卡，但是如果SD卡中已经有了一个系统，Windows就无法识别其中的ext4分区，再次写入比较麻烦。在Linux下，这个就不是问题了。 识别设备号首先识别SD卡的设备号。拔出SD卡，运行df -h命令显示已经挂载的设备，插入SD卡，再运行一次df -h，比较两次结果的差异，便得到SD卡的设备号，例如/dev/mmc">
+<meta property="og:description" content="需求 在Windows系统下可以用Win32diskimager软件将镜像文件写入SD卡，但是如果SD卡中已经有了一个系统，Windows就无法识别其中的ext4分区，再次写入比较麻烦。在Linux下，这个就不是问题了。 识别设备号 首先识别SD卡的设备号。拔出SD卡，运行df -h命令显示已经挂载的设备，插入SD卡，再运行一次df -h，比较两次结果的差异，便得到SD卡的设备号，例如/dev/m">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-03-08T08:04:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux下烧写树莓派系统">
-<meta name="twitter:description" content="需求在Windows系统下可以用Win32diskimager软件将镜像文件写入SD卡，但是如果SD卡中已经有了一个系统，Windows就无法识别其中的ext4分区，再次写入比较麻烦。在Linux下，这个就不是问题了。 识别设备号首先识别SD卡的设备号。拔出SD卡，运行df -h命令显示已经挂载的设备，插入SD卡，再运行一次df -h，比较两次结果的差异，便得到SD卡的设备号，例如/dev/mmc">
+<meta name="twitter:description" content="需求 在Windows系统下可以用Win32diskimager软件将镜像文件写入SD卡，但是如果SD卡中已经有了一个系统，Windows就无法识别其中的ext4分区，再次写入比较麻烦。在Linux下，这个就不是问题了。 识别设备号 首先识别SD卡的设备号。拔出SD卡，运行df -h命令显示已经挂载的设备，插入SD卡，再运行一次df -h，比较两次结果的差异，便得到SD卡的设备号，例如/dev/m">
 
 <link rel="canonical" href="http://panqiincs.me/2017/05/23/burn-pi-image-under-linux/">
 
@@ -278,14 +278,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>在Windows系统下可以用Win32diskimager软件将镜像文件写入SD卡，但是如果SD卡中已经有了一个系统，Windows就无法识别其中的ext4分区，再次写入比较麻烦。在Linux下，这个就不是问题了。</p>
-<h2 id="识别设备号"><a href="#识别设备号" class="headerlink" title="识别设备号"></a>识别设备号</h2><p>首先识别SD卡的设备号。拔出SD卡，运行<code>df -h</code>命令显示已经挂载的设备，插入SD卡，再运行一次<code>df -h</code>，比较两次结果的差异，便得到SD卡的设备号，例如<code>/dev/mmcblk0</code>、<code>/dev/sdd</code>。如果之前有烧写过系统，可以看到诸如<code>/dev/mmcblk0p0</code>和<code>/dev/mmcblk0p1</code>的内容。</p>
+        <h2 id="需求">需求</h2>
+<p>在Windows系统下可以用Win32diskimager软件将镜像文件写入SD卡，但是如果SD卡中已经有了一个系统，Windows就无法识别其中的ext4分区，再次写入比较麻烦。在Linux下，这个就不是问题了。</p>
+<h2 id="识别设备号">识别设备号</h2>
+<p>首先识别SD卡的设备号。拔出SD卡，运行<code>df -h</code>命令显示已经挂载的设备，插入SD卡，再运行一次<code>df -h</code>，比较两次结果的差异，便得到SD卡的设备号，例如<code>/dev/mmcblk0</code>、<code>/dev/sdd</code>。如果之前有烧写过系统，可以看到诸如<code>/dev/mmcblk0p0</code>和<code>/dev/mmcblk0p1</code>的内容。</p>
 <a id="more"></a>
-<h2 id="写入镜像文件"><a href="#写入镜像文件" class="headerlink" title="写入镜像文件"></a>写入镜像文件</h2><p>运行<code>umount /dev/mmcblk0</code>卸载该设备，否则之后的写入操作无法进行。解压镜像包，得到后缀名为<code>.img</code>的文件，比如：<code>2015-02-16-raspbian-wheezy.img</code>，然后使用<code>dd</code>命令将镜像写入SD卡中：</p>
+<h2 id="写入镜像文件">写入镜像文件</h2>
+<p>运行<code>umount /dev/mmcblk0</code>卸载该设备，否则之后的写入操作无法进行。解压镜像包，得到后缀名为<code>.img</code>的文件，比如：<code>2015-02-16-raspbian-wheezy.img</code>，然后使用<code>dd</code>命令将镜像写入SD卡中：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd bs=4M <span class="keyword">if</span>=2015-02-16-raspbian-wheezy.img of=/dev/mmcblk0</span><br></pre></td></tr></table></figure>
 <p>需要注意输出<code>of=</code>不要填<code>mmcblk0p1</code>之类的内容。</p>
-<h2 id="查看实时进度"><a href="#查看实时进度" class="headerlink" title="查看实时进度"></a>查看实时进度</h2><p>写入需要一段较长的时间，可以运行<code>pkill -USR1 -n -x dd</code>来查看实时的进度。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<h2 id="查看实时进度">查看实时进度</h2>
+<p>写入需要一段较长的时间，可以运行<code>pkill -USR1 -n -x dd</code>来查看实时的进度。</p>
+<h2 id="参考">参考</h2>
+<ol type="1">
 <li><a href="https://www.raspberrypi.org/documentation/installation/installing-images/linux.md" target="_blank" rel="noopener">Installing operating system images on Linux</a></li>
 </ol>
 
@@ -301,10 +306,10 @@
       <div class="popular-posts-title"><a href="/2015/06/11/iterative-and-concurrent-server/" rel="bookmark">迭代和并发服务器</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/2015/08/05/multiplexing-and-nonblocking-io/" rel="bookmark">为什么多路复用要搭配非阻塞I/O</a></div>
+      <div class="popular-posts-title"><a href="/2015/08/01/io-multiplexing-with-epoll/" rel="bookmark">I/O多路复用之epoll</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/2015/08/01/io-multiplexing-with-epoll/" rel="bookmark">I/O多路复用之epoll</a></div>
+      <div class="popular-posts-title"><a href="/2015/08/05/multiplexing-and-nonblocking-io/" rel="bookmark">为什么多路复用要搭配非阻塞I/O</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/2016/08/28/install-tl-wn823n-wlan-driver/" rel="bookmark">Linux下安装TL-WN823N无线网卡驱动</a></div>
@@ -417,7 +422,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-count">86</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -430,7 +435,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">143</span>
+        <span class="site-state-item-count">144</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -497,7 +502,7 @@
 <div class="copyright">
   
   &copy; 2013 – 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

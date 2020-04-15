@@ -208,6 +208,107 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2016/06/29/cpp-access-control/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Krist Pan">
+      <meta itemprop="description" content="人生如逆旅，我亦是行人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/06/29/cpp-access-control/" class="post-title-link" itemprop="url">C++的访问控制</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-06-29 13:09:05" itemprop="dateCreated datePublished" datetime="2016-06-29T13:09:05+08:00">2016-06-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-08-03 16:22:55" itemprop="dateModified" datetime="2019-08-03T16:22:55+08:00">2019-08-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序设计/" itemprop="url" rel="index">
+                    <span itemprop="name">程序设计</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2016/06/29/cpp-access-control/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/29/cpp-access-control/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="访问说明符">访问说明符</h2>
+<p>封装是面向对象编程的基本思想之一，它实现了类的接口和实现的分离。封装能阻止用户直接访问类的内部实现，但可以通过类提供的接口使用类的功能。C++语言使用访问说明符（access specifier）来加强类的封装性。</p>
+<h2 id="成员的访问说明符">成员的访问说明符</h2>
+<h3 id="public和private">public和private</h3>
+<p>定义在public说明符之后的成员在整个程序内可被访问，public成员定义类的接口。定义在private说明符之后的成员可以被类的成员函数访问，但是不能被使用该类的代码访问，private成员封装了类的实现细节。下面的代码：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2016/06/29/cpp-access-control/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2016/06/20/driving-license/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -376,8 +477,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="使用Qt"><a href="#使用Qt" class="headerlink" title="使用Qt"></a>使用Qt</h2><p>Qt是一个跨平台的C++应用程序开发框架，广泛用于开发界面程序。Qt不仅仅是个强大的界面库，它的基础库同样强大，很多库用起来比STL还方便，所以我经常用Qt编写控制台（console）程序。本文介绍如何用Qt进行常用的文本操作，代码简单实用，无需太多的解释。</p>
-<h2 id="从文件逐行读取"><a href="#从文件逐行读取" class="headerlink" title="从文件逐行读取"></a>从文件逐行读取</h2><p>例如，数据保存在文本文件中，每行一个数字：</p>
+          <h2 id="使用qt">使用Qt</h2>
+<p>Qt是一个跨平台的C++应用程序开发框架，广泛用于开发界面程序。Qt不仅仅是个强大的界面库，它的基础库同样强大，很多库用起来比STL还方便，所以我经常用Qt编写控制台（console）程序。本文介绍如何用Qt进行常用的文本操作，代码简单实用，无需太多的解释。</p>
+<h2 id="从文件逐行读取">从文件逐行读取</h2>
+<p>例如，数据保存在文本文件中，每行一个数字：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/05/01/qt-text-processing/#more" rel="contents">
@@ -765,7 +868,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>在<a href="https://panqiincs.me/2016/02/18/process-picamera-video-on-pc/">上一篇文章</a>中，我介绍了将树莓派打造成一个rtsp视频流服务器的方法，这样就可以在远程看到树莓派摄像头的实时图像。使用网络上现成的程序固然方便，但丧失了可控性。比如，如果想在远程PC上得到每一帧图像的时间戳，上一篇文章中的方法就无能为力了。本文介绍如何一帧帧读取picamera的图像，压缩后通过网络发送出去的方法。</p>
+          <h2 id="需求">需求</h2>
+<p>在<a href="https://panqiincs.me/2016/02/18/process-picamera-video-on-pc/">上一篇文章</a>中，我介绍了将树莓派打造成一个rtsp视频流服务器的方法，这样就可以在远程看到树莓派摄像头的实时图像。使用网络上现成的程序固然方便，但丧失了可控性。比如，如果想在远程PC上得到每一帧图像的时间戳，上一篇文章中的方法就无能为力了。本文介绍如何一帧帧读取picamera的图像，压缩后通过网络发送出去的方法。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/03/03/picamera-video-transmission/#more" rel="contents">
@@ -862,8 +966,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>我想实现用树莓派摄像头picamera采集数据，发送到远程主机上显示或进行其他处理。<a href="https://picamera.readthedocs.org/en/release-1.10/recipes1.html#recording-to-a-network-stream" target="_blank" rel="noopener">picamera示例程序</a>中已经有相应的实现。由于项目需要，远程PC端要使用OpenCV库处理图像，我尝试在树莓派上使用picamera库都没有得到满意的效果。</p>
-<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p>终于找到了一个用C++写的<a href="https://en.wikipedia.org/wiki/Real_Time_Streaming_Protocol" target="_blank" rel="noopener">rtsp</a>服务器程序——<a href="https://github.com/mpromonet/h264_v4l2_rtspserver" target="_blank" rel="noopener">h264_v4l2_rtspserver</a>。首先运行如下命令：</p>
+          <h2 id="需求">需求</h2>
+<p>我想实现用树莓派摄像头picamera采集数据，发送到远程主机上显示或进行其他处理。<a href="https://picamera.readthedocs.org/en/release-1.10/recipes1.html#recording-to-a-network-stream" target="_blank" rel="noopener">picamera示例程序</a>中已经有相应的实现。由于项目需要，远程PC端要使用OpenCV库处理图像，我尝试在树莓派上使用picamera库都没有得到满意的效果。</p>
+<h2 id="服务器">服务器</h2>
+<p>终于找到了一个用C++写的<a href="https://en.wikipedia.org/wiki/Real_Time_Streaming_Protocol" target="_blank" rel="noopener">rtsp</a>服务器程序——<a href="https://github.com/mpromonet/h264_v4l2_rtspserver" target="_blank" rel="noopener">h264_v4l2_rtspserver</a>。首先运行如下命令：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/02/18/process-picamera-video-on-pc/#more" rel="contents">
@@ -960,7 +1066,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h2><p>本书的开头，千言万语汇成一句话：STL很牛逼。STL有多种实现，本书剖析的SGI版本可读性很高，也是被GCC使用的版本。</p>
+          <h2 id="stl">STL</h2>
+<p>本书的开头，千言万语汇成一句话：STL很牛逼。STL有多种实现，本书剖析的SGI版本可读性很高，也是被GCC使用的版本。</p>
 <p>这本书我粗略翻了一遍，个人认为本书的第二章和第三章是精华，也是我读得最仔细的部分。后面章节的内容则是数据结构和算法的具体实现。本书非常适合与讲算法的书搭配学习，看看工业级别的代码是怎么写的。</p>
           <!--noindex-->
             <div class="post-button">
@@ -1058,109 +1165,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="hokuyoaist"><a href="#hokuyoaist" class="headerlink" title="hokuyoaist"></a>hokuyoaist</h2><p>通过阅读Hokuyo数据手册中关于通信协议的内容就可以自己写程序来获取数据了。如果不想麻烦，可以使用别人写好的库——<a href="http://gbiggs.github.io/hokuyoaist/" target="_blank" rel="noopener">hokuyoaist</a>，它支持多个型号，亲测在UTM-30LX型号的激光雷达上可用。</p>
+          <h2 id="hokuyoaist">hokuyoaist</h2>
+<p>通过阅读Hokuyo数据手册中关于通信协议的内容就可以自己写程序来获取数据了。如果不想麻烦，可以使用别人写好的库——<a href="http://gbiggs.github.io/hokuyoaist/" target="_blank" rel="noopener">hokuyoaist</a>，它支持多个型号，亲测在UTM-30LX型号的激光雷达上可用。</p>
 <p>在<a href="https://github.com/gbiggs/hokuyoaist" target="_blank" rel="noopener">Github</a>上下载它的源代码并编译：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/12/05/get-hokuyo-laser-scanner-data/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2015/11/19/raspberry-pi-hardware-pwm-module/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Krist Pan">
-      <meta itemprop="description" content="人生如逆旅，我亦是行人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="辛未羊的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2015/11/19/raspberry-pi-hardware-pwm-module/" class="post-title-link" itemprop="url">树莓派的硬件PWM模块</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2015-11-19 12:13:21" itemprop="dateCreated datePublished" datetime="2015-11-19T12:13:21+08:00">2015-11-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-26 11:57:51" itemprop="dateModified" datetime="2019-09-26T11:57:51+08:00">2019-09-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序设计/" itemprop="url" rel="index">
-                    <span itemprop="name">程序设计</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2015/11/19/raspberry-pi-hardware-pwm-module/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/19/raspberry-pi-hardware-pwm-module/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="硬件PWM"><a href="#硬件PWM" class="headerlink" title="硬件PWM"></a>硬件PWM</h2><p>本文针对的是Raspberry Pi 2 Model B硬件。从理论上讲，对于任意GPIO口，可以通过设定延时来输出PWM信号，这被称作<strong>软件PWM</strong>。由于Linux不是实时操作系统，对于一些要求<strong>硬实时</strong>的应用，例如通过PWM信号控制舵机，最好使用<strong>硬件PWM</strong>。</p>
-<p>树莓派的BCM2386芯片有两个PWM通道——PWM0和PWM1。PWM0可以设置在GPIO12和GPIO18上，PWM1可以设置在GPIO13上。本文使用<a href="http://abyz.co.uk/rpi/pigpio/" target="_blank" rel="noopener">pigpio</a>库来实现<strong>GPIO12</strong>输出PWM信号。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2015/11/19/raspberry-pi-hardware-pwm-module/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1230,7 +1240,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-count">86</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1243,7 +1253,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">143</span>
+        <span class="site-state-item-count">144</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1310,7 +1320,7 @@
 <div class="copyright">
   
   &copy; 2013 – 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

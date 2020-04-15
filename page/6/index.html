@@ -208,6 +208,105 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Krist Pan">
+      <meta itemprop="description" content="人生如逆旅，我亦是行人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/04/19/write-a-shell-redirect-and-pipeline/" class="post-title-link" itemprop="url">Shell实现：重定向和管道</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-04-19 21:13:18" itemprop="dateCreated datePublished" datetime="2017-04-19T21:13:18+08:00">2017-04-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-08-26 19:51:32" itemprop="dateModified" datetime="2019-08-26T19:51:32+08:00">2019-08-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序设计/" itemprop="url" rel="index">
+                    <span itemprop="name">程序设计</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2017/04/19/write-a-shell-redirect-and-pipeline/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/19/write-a-shell-redirect-and-pipeline/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="介绍">介绍</h2>
+<p><a href="https://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/">Shell实现：基本功能</a>一文介绍了如何实现shell的基本功能，本文介绍如何实现I/O重定向和管道。</p>
+<p>I/O重定向使得程序可以自由地指定数据的流向，不一定从键盘读取数据或输出结果到屏幕上；管道使得一条命令的输出可以作为另一条命令的输入，多条命令可以配合完成一项任务。例如下面的命令：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/04/19/write-a-shell-redirect-and-pipeline/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/03/11/gvim-monaco-font/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -278,7 +377,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>Mac系统下的Monaco字体非常适合编程。GVim（Ubuntu系统）使用Monaco字体的效果如下：</p>
+          <h2 id="效果">效果</h2>
+<p>Mac系统下的Monaco字体非常适合编程。GVim（Ubuntu系统）使用Monaco字体的效果如下：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/03/11/gvim-monaco-font/#more" rel="contents">
@@ -375,7 +475,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="Shell的功能"><a href="#Shell的功能" class="headerlink" title="Shell的功能"></a>Shell的功能</h2><p>Shell是管理进程和运行程序的程序。所有常用的shell都有三个主要功能：</p>
+          <h2 id="shell的功能">Shell的功能</h2>
+<p>Shell是管理进程和运行程序的程序。所有常用的shell都有三个主要功能：</p>
 <ul>
 <li>运行程序：grep, date, ls等都是一些普通的程序，shell将它们载入内存并运行它们</li>
 <li>管理输入和输出：使用&lt;，&gt;和 | 符号可以将输入、输出重定向。这样就可以告诉shell将进程的输入和输出连接到一个文件或是其他的进程</li>
@@ -479,7 +580,8 @@
 
       
           <p>2016年是转折的一年。毕业是个分水岭，我终于走出学校，迈入职场。因此，2016主要分为两个阶段。</p>
-<h2 id="学校"><a href="#学校" class="headerlink" title="学校"></a>学校</h2><p>在学校最后的半年，主要忙项目和论文。</p>
+<h2 id="学校">学校</h2>
+<p>在学校最后的半年，主要忙项目和论文。</p>
 <p>年初继续跟着博士师兄在外面跑项目。我负责用树莓派采集各种传感器数据，并发送到上层。到了3月份，整个系统终于通了，采集数据的效果还不错，项目完成了阶段性的目标。因为项目需要，读了经典的《Unix网络编程》，也用到了APUE中的知识，虽然只涉及到了一些皮毛，但能够学以致用，感觉很好。如果我早一年参与这个项目，找工作是不是有更多的选择呢！</p>
           <!--noindex-->
             <div class="post-button">
@@ -578,8 +680,10 @@
 
       
           <p>本文译自：<a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n2027.html" target="_blank" rel="noopener">A Brief Introduction to Rvalue Reference</a>，有少量修改。</p>
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>本文简要介绍了C++的新特性——右值引用（rvalue reference），更多细节请参考<a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n2027.html#Wrap_Up" target="_blank" rel="noopener">这里</a>。</p>
-<h2 id="右值引用"><a href="#右值引用" class="headerlink" title="右值引用"></a>右值引用</h2><p>右值引用是一种复合类型，和传统的C++引用类似。为了更好地区分它们，我们将传统的引用称之为左值引用。引用一词同时包括左值引用和右值引用。</p>
+<h2 id="介绍">介绍</h2>
+<p>本文简要介绍了C++的新特性——右值引用（rvalue reference），更多细节请参考<a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n2027.html#Wrap_Up" target="_blank" rel="noopener">这里</a>。</p>
+<h2 id="右值引用">右值引用</h2>
+<p>右值引用是一种复合类型，和传统的C++引用类似。为了更好地区分它们，我们将传统的引用称之为左值引用。引用一词同时包括左值引用和右值引用。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/11/20/cpp-rvalue-reference-intro/#more" rel="contents">
@@ -1092,104 +1196,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2016/06/29/cpp-access-control/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Krist Pan">
-      <meta itemprop="description" content="人生如逆旅，我亦是行人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="辛未羊的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/06/29/cpp-access-control/" class="post-title-link" itemprop="url">C++的访问控制</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-06-29 13:09:05" itemprop="dateCreated datePublished" datetime="2016-06-29T13:09:05+08:00">2016-06-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-03 16:22:55" itemprop="dateModified" datetime="2019-08-03T16:22:55+08:00">2019-08-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序设计/" itemprop="url" rel="index">
-                    <span itemprop="name">程序设计</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2016/06/29/cpp-access-control/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/29/cpp-access-control/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="访问说明符"><a href="#访问说明符" class="headerlink" title="访问说明符"></a>访问说明符</h2><p>封装是面向对象编程的基本思想之一，它实现了类的接口和实现的分离。封装能阻止用户直接访问类的内部实现，但可以通过类提供的接口使用类的功能。C++语言使用访问说明符（access specifier）来加强类的封装性。</p>
-<h2 id="成员的访问说明符"><a href="#成员的访问说明符" class="headerlink" title="成员的访问说明符"></a>成员的访问说明符</h2><h3 id="public和private"><a href="#public和private" class="headerlink" title="public和private"></a>public和private</h3><p>定义在public说明符之后的成员在整个程序内可被访问，public成员定义类的接口。定义在private说明符之后的成员可以被类的成员函数访问，但是不能被使用该类的代码访问，private成员封装了类的实现细节。下面的代码：</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2016/06/29/cpp-access-control/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1240,7 +1246,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-count">86</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1253,7 +1259,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">143</span>
+        <span class="site-state-item-count">144</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1320,7 +1326,7 @@
 <div class="copyright">
   
   &copy; 2013 – 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
