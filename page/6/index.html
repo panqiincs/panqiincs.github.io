@@ -9,49 +9,18 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
-  <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
   <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
   <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.5.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    },
-    sidebarPadding: 40
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"panqiincs.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="人生如逆旅，我亦是行人">
 <meta name="keywords" content="Linux 算法导论 电子工程">
@@ -72,10 +41,9 @@
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
-    isPage: false,
-    isArchive: false
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -83,8 +51,7 @@
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
     <script>
-      var host = window.location.hostname;
-      if (host !== "localhost" || !true) {
+      if (CONFIG.hostname === location.hostname) {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -128,17 +95,6 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">辛未羊的博客</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-  </div>
-
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
@@ -146,45 +102,63 @@
       <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">辛未羊的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
 
+
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-series">
 
-    <a href="/series/" rel="section"><i class="fa fa-fw fa-list"></i>系列</a>
+    <a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
   </ul>
-
 </nav>
+
+
+
+
 </div>
     </header>
 
@@ -200,14 +174,12 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content index posts-expand">
             
-
-  <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -220,15 +192,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2017/04/19/write-a-shell-redirect-and-pipeline/" class="post-title-link" itemprop="url">Shell实现：重定向和管道</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -236,20 +208,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-08-26 19:51:32" itemprop="dateModified" datetime="2019-08-26T19:51:32+08:00">2019-08-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序设计/" itemprop="url" rel="index">
-                    <span itemprop="name">程序设计</span>
-                  </a>
+                  <a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
                 </span>
             </span>
 
@@ -258,11 +228,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2017/04/19/write-a-shell-redirect-and-pipeline/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2017/04/19/write-a-shell-redirect-and-pipeline/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/19/write-a-shell-redirect-and-pipeline/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -278,7 +248,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><a href="https://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/">Shell实现：基本功能</a>一文介绍了如何实现shell的基本功能，本文介绍如何实现I/O重定向和管道。</p>
+          <h2 id="介绍">介绍</h2>
+<p><a href="https://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/">Shell实现：基本功能</a>一文介绍了如何实现shell的基本功能，本文介绍如何实现I/O重定向和管道。</p>
 <p>I/O重定向使得程序可以自由地指定数据的流向，不一定从键盘读取数据或输出结果到屏幕上；管道使得一条命令的输出可以作为另一条命令的输入，多条命令可以配合完成一项任务。例如下面的命令：</p>
           <!--noindex-->
             <div class="post-button">
@@ -302,10 +273,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/03/11/gvim-monaco-font/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -318,15 +289,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2017/03/11/gvim-monaco-font/" class="post-title-link" itemprop="url">配置GVim使用Monaco字体</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -334,20 +305,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-11-19 08:33:00" itemprop="dateModified" datetime="2019-11-19T08:33:00+08:00">2019-11-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具使用/" itemprop="url" rel="index">
-                    <span itemprop="name">工具使用</span>
-                  </a>
+                  <a href="/categories/工具使用/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
                 </span>
             </span>
 
@@ -356,11 +325,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2017/03/11/gvim-monaco-font/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2017/03/11/gvim-monaco-font/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/11/gvim-monaco-font/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -376,7 +345,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>Mac系统下的Monaco字体非常适合编程。GVim（Ubuntu系统）使用Monaco字体的效果如下：</p>
+          <h2 id="效果">效果</h2>
+<p>Mac系统下的Monaco字体非常适合编程。GVim（Ubuntu系统）使用Monaco字体的效果如下：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/03/11/gvim-monaco-font/#more" rel="contents">
@@ -399,10 +369,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -415,15 +385,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2017/02/26/write-a-shell-basic-functionality/" class="post-title-link" itemprop="url">Shell实现：基本功能</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -431,20 +401,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-08-18 10:52:46" itemprop="dateModified" datetime="2019-08-18T10:52:46+08:00">2019-08-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序设计/" itemprop="url" rel="index">
-                    <span itemprop="name">程序设计</span>
-                  </a>
+                  <a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
                 </span>
             </span>
 
@@ -453,11 +421,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2017/02/26/write-a-shell-basic-functionality/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2017/02/26/write-a-shell-basic-functionality/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/26/write-a-shell-basic-functionality/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -473,7 +441,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="Shell的功能"><a href="#Shell的功能" class="headerlink" title="Shell的功能"></a>Shell的功能</h2><p>Shell是管理进程和运行程序的程序。所有常用的shell都有三个主要功能：</p>
+          <h2 id="shell的功能">Shell的功能</h2>
+<p>Shell是管理进程和运行程序的程序。所有常用的shell都有三个主要功能：</p>
 <ul>
 <li>运行程序：grep, date, ls等都是一些普通的程序，shell将它们载入内存并运行它们</li>
 <li>管理输入和输出：使用&lt;，&gt;和 | 符号可以将输入、输出重定向。这样就可以告诉shell将进程的输入和输出连接到一个文件或是其他的进程</li>
@@ -502,10 +471,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/01/07/year-end-summary-of-2016/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -518,15 +487,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2017/01/07/year-end-summary-of-2016/" class="post-title-link" itemprop="url">2016年终总结</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -534,20 +503,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-06-25 19:09:08" itemprop="dateModified" datetime="2019-06-25T19:09:08+08:00">2019-06-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活记录/" itemprop="url" rel="index">
-                    <span itemprop="name">生活记录</span>
-                  </a>
+                  <a href="/categories/生活记录/" itemprop="url" rel="index"><span itemprop="name">生活记录</span></a>
                 </span>
             </span>
 
@@ -556,11 +523,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2017/01/07/year-end-summary-of-2016/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2017/01/07/year-end-summary-of-2016/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/07/year-end-summary-of-2016/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -577,7 +544,8 @@
 
       
           <p>2016年是转折的一年。毕业是个分水岭，我终于走出学校，迈入职场。因此，2016主要分为两个阶段。</p>
-<h2 id="学校"><a href="#学校" class="headerlink" title="学校"></a>学校</h2><p>在学校最后的半年，主要忙项目和论文。</p>
+<h2 id="学校">学校</h2>
+<p>在学校最后的半年，主要忙项目和论文。</p>
 <p>年初继续跟着博士师兄在外面跑项目。我负责用树莓派采集各种传感器数据，并发送到上层。到了3月份，整个系统终于通了，采集数据的效果还不错，项目完成了阶段性的目标。因为项目需要，读了经典的《Unix网络编程》，也用到了APUE中的知识，虽然只涉及到了一些皮毛，但能够学以致用，感觉很好。如果我早一年参与这个项目，找工作是不是有更多的选择呢！</p>
           <!--noindex-->
             <div class="post-button">
@@ -601,10 +569,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2016/11/20/cpp-rvalue-reference-intro/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -617,15 +585,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2016/11/20/cpp-rvalue-reference-intro/" class="post-title-link" itemprop="url">C++右值引用简介</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -633,20 +601,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-08-03 16:23:05" itemprop="dateModified" datetime="2019-08-03T16:23:05+08:00">2019-08-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序设计/" itemprop="url" rel="index">
-                    <span itemprop="name">程序设计</span>
-                  </a>
+                  <a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
                 </span>
             </span>
 
@@ -655,11 +621,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2016/11/20/cpp-rvalue-reference-intro/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2016/11/20/cpp-rvalue-reference-intro/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/11/20/cpp-rvalue-reference-intro/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -676,8 +642,10 @@
 
       
           <p>本文译自：<a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n2027.html" target="_blank" rel="noopener">A Brief Introduction to Rvalue Reference</a>，有少量修改。</p>
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>本文简要介绍了C++的新特性——右值引用（rvalue reference），更多细节请参考<a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n2027.html#Wrap_Up" target="_blank" rel="noopener">这里</a>。</p>
-<h2 id="右值引用"><a href="#右值引用" class="headerlink" title="右值引用"></a>右值引用</h2><p>右值引用是一种复合类型，和传统的C++引用类似。为了更好地区分它们，我们将传统的引用称之为左值引用。引用一词同时包括左值引用和右值引用。</p>
+<h2 id="介绍">介绍</h2>
+<p>本文简要介绍了C++的新特性——右值引用（rvalue reference），更多细节请参考<a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n2027.html#Wrap_Up" target="_blank" rel="noopener">这里</a>。</p>
+<h2 id="右值引用">右值引用</h2>
+<p>右值引用是一种复合类型，和传统的C++引用类似。为了更好地区分它们，我们将传统的引用称之为左值引用。引用一词同时包括左值引用和右值引用。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/11/20/cpp-rvalue-reference-intro/#more" rel="contents">
@@ -700,10 +668,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2016/10/23/an-application-of-bayes-theorem/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -716,15 +684,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2016/10/23/an-application-of-bayes-theorem/" class="post-title-link" itemprop="url">贝叶斯定理的有趣应用</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -732,20 +700,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-08-18 10:51:48" itemprop="dateModified" datetime="2019-08-18T10:51:48+08:00">2019-08-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/胡言乱语/" itemprop="url" rel="index">
-                    <span itemprop="name">胡言乱语</span>
-                  </a>
+                  <a href="/categories/胡言乱语/" itemprop="url" rel="index"><span itemprop="name">胡言乱语</span></a>
                 </span>
             </span>
 
@@ -754,11 +720,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2016/10/23/an-application-of-bayes-theorem/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2016/10/23/an-application-of-bayes-theorem/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/10/23/an-application-of-bayes-theorem/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -797,10 +763,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2016/09/17/a-new-start-for-life-and-blog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -813,15 +779,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2016/09/17/a-new-start-for-life-and-blog/" class="post-title-link" itemprop="url">新生活，新博客</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -829,20 +795,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-05-30 23:52:34" itemprop="dateModified" datetime="2019-05-30T23:52:34+08:00">2019-05-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网站维护/" itemprop="url" rel="index">
-                    <span itemprop="name">网站维护</span>
-                  </a>
+                  <a href="/categories/网站维护/" itemprop="url" rel="index"><span itemprop="name">网站维护</span></a>
                 </span>
             </span>
 
@@ -851,11 +815,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2016/09/17/a-new-start-for-life-and-blog/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2016/09/17/a-new-start-for-life-and-blog/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/17/a-new-start-for-life-and-blog/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -895,10 +859,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2016/08/28/install-tl-wn823n-wlan-driver/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -911,15 +875,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2016/08/28/install-tl-wn823n-wlan-driver/" class="post-title-link" itemprop="url">Linux下安装TL-WN823N无线网卡驱动</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -927,20 +891,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-06-05 08:14:09" itemprop="dateModified" datetime="2019-06-05T08:14:09+08:00">2019-06-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具使用/" itemprop="url" rel="index">
-                    <span itemprop="name">工具使用</span>
-                  </a>
+                  <a href="/categories/工具使用/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
                 </span>
             </span>
 
@@ -949,11 +911,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2016/08/28/install-tl-wn823n-wlan-driver/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2016/08/28/install-tl-wn823n-wlan-driver/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/28/install-tl-wn823n-wlan-driver/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -994,10 +956,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2016/08/04/the-first-working-day/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1010,15 +972,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2016/08/04/the-first-working-day/" class="post-title-link" itemprop="url">第一个工作日</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -1026,20 +988,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-09-26 11:59:16" itemprop="dateModified" datetime="2019-09-26T11:59:16+08:00">2019-09-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活记录/" itemprop="url" rel="index">
-                    <span itemprop="name">生活记录</span>
-                  </a>
+                  <a href="/categories/生活记录/" itemprop="url" rel="index"><span itemprop="name">生活记录</span></a>
                 </span>
             </span>
 
@@ -1048,11 +1008,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2016/08/04/the-first-working-day/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2016/08/04/the-first-working-day/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/04/the-first-working-day/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -1092,10 +1052,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2016/07/06/hello-shenzhen/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1108,15 +1068,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2016/07/06/hello-shenzhen/" class="post-title-link" itemprop="url">你好，深圳</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -1124,20 +1084,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-11-19 08:32:23" itemprop="dateModified" datetime="2019-11-19T08:32:23+08:00">2019-11-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活记录/" itemprop="url" rel="index">
-                    <span itemprop="name">生活记录</span>
-                  </a>
+                  <a href="/categories/生活记录/" itemprop="url" rel="index"><span itemprop="name">生活记录</span></a>
                 </span>
             </span>
 
@@ -1146,11 +1104,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2016/07/06/hello-shenzhen/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2016/07/06/hello-shenzhen/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/06/hello-shenzhen/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -1190,7 +1148,6 @@
   
   
 
-  </div>
 
   
   <nav class="pagination">
@@ -1201,6 +1158,28 @@
 
           </div>
           
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
@@ -1230,8 +1209,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <img class="site-author-image" itemprop="image" alt="Krist Pan"
-    src="/images/avatar.png">
+    <img class="site-author-image" itemprop="image" alt="Krist Pan"
+      src="/images/avatar.png">
   <p class="site-author-name" itemprop="name">Krist Pan</p>
   <div class="site-description" itemprop="description">人生如逆旅，我亦是行人</div>
 </div>
@@ -1240,45 +1219,39 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">86</span>
+          <span class="site-state-item-count">87</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-count">145</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="feed-link motion-element">
-    <a href="/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/panqiincs" title="GitHub &rarr; https://github.com/panqiincs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/panqiincs" title="GitHub → https://github.com/panqiincs" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:panqihg@hotmail.com" title="E-Mail &rarr; mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://weibo.com/3850393415" title="Weibo &rarr; https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+        <a href="https://weibo.com/3850393415" title="Weibo → https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
       </span>
   </div>
 
 
   <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title">
-      <i class="fa fa-fw fa-link"></i>
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
@@ -1317,19 +1290,18 @@
       <div class="footer-inner">
         
 
+        
+
 <div class="copyright">
   
   &copy; 2013 – 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Krist Pan</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
@@ -1341,11 +1313,6 @@
 
 
 
-
-
-
-
-        
       </div>
     </footer>
   </div>
@@ -1376,55 +1343,59 @@
 
 
 
-
   
 
   
       
-<script type="text/x-mathjax-config">
 
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
 <script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
 </script>
 
     

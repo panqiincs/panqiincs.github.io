@@ -9,49 +9,18 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
-  <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
   <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
   <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.5.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    },
-    sidebarPadding: 40
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"panqiincs.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="人生如逆旅，我亦是行人">
 <meta name="keywords" content="Linux 算法导论 电子工程">
@@ -72,10 +41,9 @@
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
-    isPage: false,
-    isArchive: false
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -83,8 +51,7 @@
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
     <script>
-      var host = window.location.hostname;
-      if (host !== "localhost" || !true) {
+      if (CONFIG.hostname === location.hostname) {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -128,17 +95,6 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">辛未羊的博客</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-  </div>
-
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
@@ -146,45 +102,63 @@
       <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">辛未羊的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
 
+
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-series">
 
-    <a href="/series/" rel="section"><i class="fa fa-fw fa-list"></i>系列</a>
+    <a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
   </ul>
-
 </nav>
+
+
+
+
 </div>
     </header>
 
@@ -200,14 +174,12 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content index posts-expand">
             
-
-  <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2019/04/11/clrs-heapsort/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -220,15 +192,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2019/04/11/clrs-heapsort/" class="post-title-link" itemprop="url">『算法导论』第 6 章：堆排序</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -236,20 +208,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-08-03 16:25:21" itemprop="dateModified" datetime="2019-08-03T16:25:21+08:00">2019-08-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序设计/" itemprop="url" rel="index">
-                    <span itemprop="name">程序设计</span>
-                  </a>
+                  <a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
                 </span>
             </span>
 
@@ -258,11 +228,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2019/04/11/clrs-heapsort/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2019/04/11/clrs-heapsort/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/11/clrs-heapsort/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -278,7 +248,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>本章介绍<strong>堆排序</strong>（heapsort）算法。</p>
+          <h2 id="主要内容">主要内容</h2>
+<p>本章介绍<strong>堆排序</strong>（heapsort）算法。</p>
 <p>堆排序算法的复杂度和归并排序相同，但是仅需要常数个额外的元素空间存储临时数据。堆（heap）不仅仅用在堆排序中，还可以构造一种有效的优先队列（priority queue）。</p>
           <!--noindex-->
             <div class="post-button">
@@ -302,10 +273,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2019/04/10/clrs-probability/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -318,15 +289,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2019/04/10/clrs-probability/" class="post-title-link" itemprop="url">『算法导论』第 5 章：概率分析与随机算法</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -334,20 +305,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-08-18 10:51:57" itemprop="dateModified" datetime="2019-08-18T10:51:57+08:00">2019-08-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序设计/" itemprop="url" rel="index">
-                    <span itemprop="name">程序设计</span>
-                  </a>
+                  <a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
                 </span>
             </span>
 
@@ -356,11 +325,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2019/04/10/clrs-probability/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2019/04/10/clrs-probability/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/10/clrs-probability/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -376,7 +345,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>由于概率算法在实际中用得不多，我先战略性地快速过完本章。</p>
+          <h2 id="主要内容">主要内容</h2>
+<p>由于概率算法在实际中用得不多，我先战略性地快速过完本章。</p>
 <p>分析一个随机算法的运行时间时，输入值由随机数生成器产生，运行时间称为期望运行时间。指示器随机变量为概率和期望之间的转换提供了一个便利的方法，用于很多随机算法的分析中。</p>
           <!--noindex-->
             <div class="post-button">
@@ -400,10 +370,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2019/03/19/huangzhou-in-change/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -416,15 +386,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2019/03/19/huangzhou-in-change/" class="post-title-link" itemprop="url">从卫星地图看黄州城的变迁</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -432,20 +402,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-11-19 08:39:27" itemprop="dateModified" datetime="2019-11-19T08:39:27+08:00">2019-11-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/胡言乱语/" itemprop="url" rel="index">
-                    <span itemprop="name">胡言乱语</span>
-                  </a>
+                  <a href="/categories/胡言乱语/" itemprop="url" rel="index"><span itemprop="name">胡言乱语</span></a>
                 </span>
             </span>
 
@@ -454,11 +422,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2019/03/19/huangzhou-in-change/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2019/03/19/huangzhou-in-change/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/19/huangzhou-in-change/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -474,8 +442,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>在知乎上看到一篇文章：<a href="https://zhuanlan.zhihu.com/p/30953275" target="_blank" rel="noopener">如何下载50年前中国各地的高清卫星照片</a>，网友们纷纷撰写了各地50年前卫星照片的解读文章。我也下载到了我的家乡——<strong>湖北黄冈</strong>在1970年的卫星地图，并做简要的解读。</p>
-<h2 id="市区变迁"><a href="#市区变迁" class="headerlink" title="市区变迁"></a>市区变迁</h2><p>黄州是黄冈市唯一的市辖区，也是市政府所在地。明代以后，蕲州（今蕲春县）划归黄州府管理，形成与当今黄冈市类似的行政格局，基本沿袭至今。因此，明清以来，黄州一直是鄂东黄冈地区的政治经济文化中心。本文介绍的就是黄州区的卫星地图。</p>
+          <h2 id="缘起">缘起</h2>
+<p>在知乎上看到一篇文章：<a href="https://zhuanlan.zhihu.com/p/30953275" target="_blank" rel="noopener">如何下载50年前中国各地的高清卫星照片</a>，网友们纷纷撰写了各地50年前卫星照片的解读文章。我也下载到了我的家乡——<strong>湖北黄冈</strong>在1970年的卫星地图，并做简要的解读。</p>
+<h2 id="市区变迁">市区变迁</h2>
+<p>黄州是黄冈市唯一的市辖区，也是市政府所在地。明代以后，蕲州（今蕲春县）划归黄州府管理，形成与当今黄冈市类似的行政格局，基本沿袭至今。因此，明清以来，黄州一直是鄂东黄冈地区的政治经济文化中心。本文介绍的就是黄州区的卫星地图。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/03/19/huangzhou-in-change/#more" rel="contents">
@@ -498,10 +468,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2019/03/14/clrs-divide-and-conquer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -514,15 +484,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2019/03/14/clrs-divide-and-conquer/" class="post-title-link" itemprop="url">『算法导论』第 4 章：分治策略</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -530,20 +500,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-08-03 16:24:52" itemprop="dateModified" datetime="2019-08-03T16:24:52+08:00">2019-08-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序设计/" itemprop="url" rel="index">
-                    <span itemprop="name">程序设计</span>
-                  </a>
+                  <a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
                 </span>
             </span>
 
@@ -552,11 +520,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2019/03/14/clrs-divide-and-conquer/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2019/03/14/clrs-divide-and-conquer/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/14/clrs-divide-and-conquer/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -572,8 +540,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>本章介绍的第一个算法求解<strong>最大子序列和</strong>问题，第二个算法求解<strong>矩阵乘法</strong>问题。递归式与分治法紧密相关，本章介绍三种方法求解递归式：代入法、递归树法和主方法。</p>
-<h3 id="最大子序列和问题"><a href="#最大子序列和问题" class="headerlink" title="最大子序列和问题"></a>最大子序列和问题</h3><p>买股票问题可以转化为最大子序列和问题。只有当序列中包含负数，最大子序列和问题才有意义。</p>
+          <h2 id="主要内容">主要内容</h2>
+<p>本章介绍的第一个算法求解<strong>最大子序列和</strong>问题，第二个算法求解<strong>矩阵乘法</strong>问题。递归式与分治法紧密相关，本章介绍三种方法求解递归式：代入法、递归树法和主方法。</p>
+<h3 id="最大子序列和问题">最大子序列和问题</h3>
+<p>买股票问题可以转化为最大子序列和问题。只有当序列中包含负数，最大子序列和问题才有意义。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/03/14/clrs-divide-and-conquer/#more" rel="contents">
@@ -596,10 +566,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2019/03/10/clrs-growth-of-functions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -612,15 +582,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2019/03/10/clrs-growth-of-functions/" class="post-title-link" itemprop="url">『算法导论』第 3 章：函数的增长</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -628,20 +598,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-08-03 16:24:45" itemprop="dateModified" datetime="2019-08-03T16:24:45+08:00">2019-08-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序设计/" itemprop="url" rel="index">
-                    <span itemprop="name">程序设计</span>
-                  </a>
+                  <a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
                 </span>
             </span>
 
@@ -650,11 +618,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2019/03/10/clrs-growth-of-functions/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2019/03/10/clrs-growth-of-functions/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/10/clrs-growth-of-functions/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -670,8 +638,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>本章讲解如何简化算法的<strong>渐近分析</strong>，介绍了几类渐近记号。最后简单介绍了常用函数的性质。本章的内容在这里描述得非常简略，但为了保持整个系列的完整性，还是贴出来了。</p>
-<h3 id="渐近记号"><a href="#渐近记号" class="headerlink" title="渐近记号"></a>渐近记号</h3><p>本章介绍了如下渐近记号，它们的严格定义分别如下：</p>
+          <h2 id="主要内容">主要内容</h2>
+<p>本章讲解如何简化算法的<strong>渐近分析</strong>，介绍了几类渐近记号。最后简单介绍了常用函数的性质。本章的内容在这里描述得非常简略，但为了保持整个系列的完整性，还是贴出来了。</p>
+<h3 id="渐近记号">渐近记号</h3>
+<p>本章介绍了如下渐近记号，它们的严格定义分别如下：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/03/10/clrs-growth-of-functions/#more" rel="contents">
@@ -694,10 +664,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2019/03/07/clrs-getting-started/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -710,15 +680,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2019/03/07/clrs-getting-started/" class="post-title-link" itemprop="url">『算法导论』第 2 章：算法基础</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -726,20 +696,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-11-02 15:34:49" itemprop="dateModified" datetime="2019-11-02T15:34:49+08:00">2019-11-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序设计/" itemprop="url" rel="index">
-                    <span itemprop="name">程序设计</span>
-                  </a>
+                  <a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
                 </span>
             </span>
 
@@ -748,11 +716,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2019/03/07/clrs-getting-started/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2019/03/07/clrs-getting-started/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/07/clrs-getting-started/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -768,8 +736,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>本章介绍了一个贯穿全书的算法设计与分析的框架。正文中介绍了插入排序和归并排序两种排序算法，以它们为例，介绍了用<strong>循环不变式</strong>证明算法正确性的方法和<strong>分治法</strong>的思想。还介绍了如何分析算法的运行时间。</p>
-<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>本书介绍的第一个算法是<strong>插入排序</strong>算法。插入排序的工作机理和很多人打牌时，整理手中牌时的做法差不多。它的基本思想是，通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。根据伪代码，给出如下的C语言实现：</p>
+          <h2 id="主要内容">主要内容</h2>
+<p>本章介绍了一个贯穿全书的算法设计与分析的框架。正文中介绍了插入排序和归并排序两种排序算法，以它们为例，介绍了用<strong>循环不变式</strong>证明算法正确性的方法和<strong>分治法</strong>的思想。还介绍了如何分析算法的运行时间。</p>
+<h3 id="插入排序">插入排序</h3>
+<p>本书介绍的第一个算法是<strong>插入排序</strong>算法。插入排序的工作机理和很多人打牌时，整理手中牌时的做法差不多。它的基本思想是，通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。根据伪代码，给出如下的C语言实现：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/03/07/clrs-getting-started/#more" rel="contents">
@@ -792,10 +762,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2019/03/06/clrs-role-of-algorithms/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -808,15 +778,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2019/03/06/clrs-role-of-algorithms/" class="post-title-link" itemprop="url">『算法导论』第 1 章：算法在计算中的作用</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -824,20 +794,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-08-03 16:24:34" itemprop="dateModified" datetime="2019-08-03T16:24:34+08:00">2019-08-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序设计/" itemprop="url" rel="index">
-                    <span itemprop="name">程序设计</span>
-                  </a>
+                  <a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
                 </span>
             </span>
 
@@ -846,11 +814,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2019/03/06/clrs-role-of-algorithms/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2019/03/06/clrs-role-of-algorithms/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/06/clrs-role-of-algorithms/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -866,7 +834,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>本章介绍了算法的定义、作用和重要性。</p>
+          <h2 id="主要内容">主要内容</h2>
+<p>本章介绍了算法的定义、作用和重要性。</p>
 <p>简单地说，算法（algorithm）是定义良好的计算过程。算法是一系列的计算步骤，用来将输入数据转换成输出结果。算法能够解决各种类型的问题，应用面很广。计算机的计算资源和存储资源是有限的，时间和空间上有效的算法能够有效地利用这些有限的资源。解决同一问题的不同算法，效率常常相差很大，这种效率上差距的影响往往比硬件和软件的差距还要大。拥有扎实的算法知识和技术基础对程序员来说非常重要。</p>
           <!--noindex-->
             <div class="post-button">
@@ -890,10 +859,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2019/03/01/clrs-learning-plan/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -906,15 +875,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2019/03/01/clrs-learning-plan/" class="post-title-link" itemprop="url">『算法导论』学习计划</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -922,20 +891,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-06-03 22:26:47" itemprop="dateModified" datetime="2019-06-03T22:26:47+08:00">2019-06-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/胡言乱语/" itemprop="url" rel="index">
-                    <span itemprop="name">胡言乱语</span>
-                  </a>
+                  <a href="/categories/胡言乱语/" itemprop="url" rel="index"><span itemprop="name">胡言乱语</span></a>
                 </span>
             </span>
 
@@ -944,11 +911,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2019/03/01/clrs-learning-plan/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2019/03/01/clrs-learning-plan/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/01/clrs-learning-plan/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -992,10 +959,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2018/12/31/how-to-setup-opengrok/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1008,15 +975,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2018/12/31/how-to-setup-opengrok/" class="post-title-link" itemprop="url">OpenGrok安装和配置</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -1024,20 +991,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-06-03 07:08:41" itemprop="dateModified" datetime="2019-06-03T07:08:41+08:00">2019-06-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具使用/" itemprop="url" rel="index">
-                    <span itemprop="name">工具使用</span>
-                  </a>
+                  <a href="/categories/工具使用/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
                 </span>
             </span>
 
@@ -1046,11 +1011,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2018/12/31/how-to-setup-opengrok/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2018/12/31/how-to-setup-opengrok/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/31/how-to-setup-opengrok/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -1090,10 +1055,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2018/12/27/say-goodbye-to-iphone/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1106,15 +1071,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2018/12/27/say-goodbye-to-iphone/" class="post-title-link" itemprop="url">告别iPhone</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -1122,20 +1087,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-06-03 22:25:39" itemprop="dateModified" datetime="2019-06-03T22:25:39+08:00">2019-06-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活记录/" itemprop="url" rel="index">
-                    <span itemprop="name">生活记录</span>
-                  </a>
+                  <a href="/categories/生活记录/" itemprop="url" rel="index"><span itemprop="name">生活记录</span></a>
                 </span>
             </span>
 
@@ -1144,11 +1107,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2018/12/27/say-goodbye-to-iphone/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2018/12/27/say-goodbye-to-iphone/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/27/say-goodbye-to-iphone/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -1188,7 +1151,6 @@
   
   
 
-  </div>
 
   
   <nav class="pagination">
@@ -1199,6 +1161,28 @@
 
           </div>
           
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
@@ -1228,8 +1212,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <img class="site-author-image" itemprop="image" alt="Krist Pan"
-    src="/images/avatar.png">
+    <img class="site-author-image" itemprop="image" alt="Krist Pan"
+      src="/images/avatar.png">
   <p class="site-author-name" itemprop="name">Krist Pan</p>
   <div class="site-description" itemprop="description">人生如逆旅，我亦是行人</div>
 </div>
@@ -1238,45 +1222,39 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">86</span>
+          <span class="site-state-item-count">87</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-count">145</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="feed-link motion-element">
-    <a href="/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/panqiincs" title="GitHub &rarr; https://github.com/panqiincs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/panqiincs" title="GitHub → https://github.com/panqiincs" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:panqihg@hotmail.com" title="E-Mail &rarr; mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://weibo.com/3850393415" title="Weibo &rarr; https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+        <a href="https://weibo.com/3850393415" title="Weibo → https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
       </span>
   </div>
 
 
   <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title">
-      <i class="fa fa-fw fa-link"></i>
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
@@ -1315,19 +1293,18 @@
       <div class="footer-inner">
         
 
+        
+
 <div class="copyright">
   
   &copy; 2013 – 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Krist Pan</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
@@ -1339,11 +1316,6 @@
 
 
 
-
-
-
-
-        
       </div>
     </footer>
   </div>
@@ -1374,55 +1346,59 @@
 
 
 
-
   
 
   
       
-<script type="text/x-mathjax-config">
 
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
 <script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
 </script>
 
     

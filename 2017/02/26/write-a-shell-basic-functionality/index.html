@@ -9,62 +9,31 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
-  <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
   <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
   <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.5.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    },
-    sidebarPadding: 40
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"panqiincs.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-  <meta name="description" content="Shell的功能Shell是管理进程和运行程序的程序。所有常用的shell都有三个主要功能：  运行程序：grep, date, ls等都是一些普通的程序，shell将它们载入内存并运行它们 管理输入和输出：使用&amp;lt;，&amp;gt;和 | 符号可以将输入、输出重定向。这样就可以告诉shell将进程的输入和输出连接到一个文件或是其他的进程 可编程：shell同时也是带有变量和流程控制的编程语言  本文">
+  <meta name="description" content="Shell的功能 Shell是管理进程和运行程序的程序。所有常用的shell都有三个主要功能：  运行程序：grep, date, ls等都是一些普通的程序，shell将它们载入内存并运行它们 管理输入和输出：使用&amp;lt;，&amp;gt;和 | 符号可以将输入、输出重定向。这样就可以告诉shell将进程的输入和输出连接到一个文件或是其他的进程 可编程：shell同时也是带有变量和流程控制的编程语言  本">
 <meta name="keywords" content="进程,linux,shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shell实现：基本功能">
 <meta property="og:url" content="http://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="Shell的功能Shell是管理进程和运行程序的程序。所有常用的shell都有三个主要功能：  运行程序：grep, date, ls等都是一些普通的程序，shell将它们载入内存并运行它们 管理输入和输出：使用&amp;lt;，&amp;gt;和 | 符号可以将输入、输出重定向。这样就可以告诉shell将进程的输入和输出连接到一个文件或是其他的进程 可编程：shell同时也是带有变量和流程控制的编程语言  本文">
+<meta property="og:description" content="Shell的功能 Shell是管理进程和运行程序的程序。所有常用的shell都有三个主要功能：  运行程序：grep, date, ls等都是一些普通的程序，shell将它们载入内存并运行它们 管理输入和输出：使用&amp;lt;，&amp;gt;和 | 符号可以将输入、输出重定向。这样就可以告诉shell将进程的输入和输出连接到一个文件或是其他的进程 可编程：shell同时也是带有变量和流程控制的编程语言  本">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-08-18T02:52:46.094Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shell实现：基本功能">
-<meta name="twitter:description" content="Shell的功能Shell是管理进程和运行程序的程序。所有常用的shell都有三个主要功能：  运行程序：grep, date, ls等都是一些普通的程序，shell将它们载入内存并运行它们 管理输入和输出：使用&amp;lt;，&amp;gt;和 | 符号可以将输入、输出重定向。这样就可以告诉shell将进程的输入和输出连接到一个文件或是其他的进程 可编程：shell同时也是带有变量和流程控制的编程语言  本文">
+<meta name="twitter:description" content="Shell的功能 Shell是管理进程和运行程序的程序。所有常用的shell都有三个主要功能：  运行程序：grep, date, ls等都是一些普通的程序，shell将它们载入内存并运行它们 管理输入和输出：使用&amp;lt;，&amp;gt;和 | 符号可以将输入、输出重定向。这样就可以告诉shell将进程的输入和输出连接到一个文件或是其他的进程 可编程：shell同时也是带有变量和流程控制的编程语言  本">
 
 <link rel="canonical" href="http://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/">
 
@@ -73,10 +42,9 @@
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -84,8 +52,7 @@
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
     <script>
-      var host = window.location.hostname;
-      if (host !== "localhost" || !true) {
+      if (CONFIG.hostname === location.hostname) {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -129,17 +96,6 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">辛未羊的博客</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-  </div>
-
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
@@ -147,45 +103,63 @@
       <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">辛未羊的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
 
+
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-series">
 
-    <a href="/series/" rel="section"><i class="fa fa-fw fa-list"></i>系列</a>
+    <a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
   </ul>
-
 </nav>
+
+
+
+
 </div>
     </header>
 
@@ -201,14 +175,13 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content post posts-expand">
             
 
-  <div class="posts-expand">
-      
+    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -228,7 +201,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -236,20 +209,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-08-18 10:52:46" itemprop="dateModified" datetime="2019-08-18T10:52:46+08:00">2019-08-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序设计/" itemprop="url" rel="index">
-                    <span itemprop="name">程序设计</span>
-                  </a>
+                  <a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
                 </span>
             </span>
 
@@ -258,11 +229,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2017/02/26/write-a-shell-basic-functionality/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2017/02/26/write-a-shell-basic-functionality/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/26/write-a-shell-basic-functionality/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -278,7 +249,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Shell的功能"><a href="#Shell的功能" class="headerlink" title="Shell的功能"></a>Shell的功能</h2><p>Shell是管理进程和运行程序的程序。所有常用的shell都有三个主要功能：</p>
+        <h2 id="shell的功能">Shell的功能</h2>
+<p>Shell是管理进程和运行程序的程序。所有常用的shell都有三个主要功能：</p>
 <ul>
 <li>运行程序：grep, date, ls等都是一些普通的程序，shell将它们载入内存并运行它们</li>
 <li>管理输入和输出：使用&lt;，&gt;和 | 符号可以将输入、输出重定向。这样就可以告诉shell将进程的输入和输出连接到一个文件或是其他的进程</li>
@@ -286,27 +258,35 @@
 </ul>
 <p>本文将介绍如何编写包含最基本功能，即能运行和终止程序的shell。</p>
 <a id="more"></a>
-<h2 id="Shell的主流程"><a href="#Shell的主流程" class="headerlink" title="Shell的主流程"></a>Shell的主流程</h2><p>Shell打印提示符、输入命令、运行命令，如此反复。因此，主流程由下面的循环组成：</p>
+<h2 id="shell的主流程">Shell的主流程</h2>
+<p>Shell打印提示符、输入命令、运行命令，如此反复。因此，主流程由下面的循环组成：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (;;) &#123;</span><br><span class="line">    print_prompt(prompt_str);</span><br><span class="line">    handle_input(arg_buf, arg_list);</span><br><span class="line">    run_cmd(arg_list);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="打印提示符"><a href="#打印提示符" class="headerlink" title="打印提示符"></a>打印提示符</h2><p>下面是一个提示符的示例：</p>
+<h2 id="打印提示符">打印提示符</h2>
+<p>下面是一个提示符的示例：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[psh]krist@linux-szhw:/home/krist/Workspace$</span><br></pre></td></tr></table></figure>
 <p>加上前缀<code>[psh]</code>以和系统自带的shell区别开来。后面依次是用户名（用<code>getlogin_r</code>函数获取）、主机名（用<code>gethostname</code>函数获取）、当前目录（用<code>getcwd</code>函数获取）和命令提示符。如果当前登录的用户是root，命令提示符为<code>#</code>，普通用户则打印美元符号<code>$</code>，因此需要用<code>geteuid</code>函数获取当前的Effective User ID。</p>
-<h2 id="处理用户输入"><a href="#处理用户输入" class="headerlink" title="处理用户输入"></a>处理用户输入</h2><p>一般需要限制用户单次输入的最多字符数<code>MAX_ARG_LEN</code>以及参数的最大个数<code>MAX_ARG_NUM</code>。用户输入命令，按下回车键即表示当前的命令输入完毕。用<code>getline</code>函数读取一行用户输入，然后将一整条命令拆分。例如命令<code>ls -al /home</code>拆分之后变成<code>ls</code>，<code>-al</code>和<code>/home</code>三个字符串，第一个字符串是命令的名称，后面依次是命令参数。拆分字符使用<code>strsep</code>函数，分割符（delimeter）为空格（Space）。下面是拆分过程的代码：</p>
+<h2 id="处理用户输入">处理用户输入</h2>
+<p>一般需要限制用户单次输入的最多字符数<code>MAX_ARG_LEN</code>以及参数的最大个数<code>MAX_ARG_NUM</code>。用户输入命令，按下回车键即表示当前的命令输入完毕。用<code>getline</code>函数读取一行用户输入，然后将一整条命令拆分。例如命令<code>ls -al /home</code>拆分之后变成<code>ls</code>，<code>-al</code>和<code>/home</code>三个字符串，第一个字符串是命令的名称，后面依次是命令参数。拆分字符使用<code>strsep</code>函数，分割符（delimeter）为空格（Space）。下面是拆分过程的代码：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">stringp = input_buf;</span><br><span class="line">arg_num = <span class="number">0</span>;       <span class="comment">// number of arguments</span></span><br><span class="line"><span class="keyword">while</span> (((token = strsep(&amp;stringp, <span class="string">" "</span>)) != <span class="literal">NULL</span>)</span><br><span class="line">        &amp;&amp; (arg_num &lt; MAX_ARG_NUM)) </span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Token is terminated by overwriting the delimiter with a null </span></span><br><span class="line">    <span class="comment">// byte('\0'), so continuous space will result in a token with </span></span><br><span class="line">    <span class="comment">// only a null byte, skip it.</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strcmp</span>(token, <span class="string">""</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">        arg_vec[arg_num] = token;</span><br><span class="line">        arg_num++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line">arg_vec[arg_num] = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
 <p>其中<code>input_buf</code>是一个字符数组，存放用户输入的单条命令字符串，<code>arg_vec</code>是字符串数组，存放拆分后的多个字符串。</p>
-<h2 id="运行命令"><a href="#运行命令" class="headerlink" title="运行命令"></a>运行命令</h2><h3 id="fork和exec"><a href="#fork和exec" class="headerlink" title="fork和exec"></a>fork和exec</h3><p>想必大家都熟悉shell运行命令的流程：用户输入一条命令后，父进程会fork一个子进程，在子进程中使用exec函数运行用户输入的命令，父进程等待子进程退出后，等待用户输入下一条命令，如此反复。代码如下：</p>
+<h2 id="运行命令">运行命令</h2>
+<h3 id="fork和exec">fork和exec</h3>
+<p>想必大家都熟悉shell运行命令的流程：用户输入一条命令后，父进程会fork一个子进程，在子进程中使用exec函数运行用户输入的命令，父进程等待子进程退出后，等待用户输入下一条命令，如此反复。代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exec_cmd</span><span class="params">(<span class="keyword">char</span> **arg_vec)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>   status;</span><br><span class="line">    <span class="keyword">pid_t</span> pid;</span><br><span class="line"></span><br><span class="line">    pid = fork();</span><br><span class="line">    <span class="keyword">if</span> (pid == <span class="number">-1</span>) &#123;</span><br><span class="line">        perror(<span class="string">"fork"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123; <span class="comment">// child process, run the command</span></span><br><span class="line">        <span class="comment">// execvp() returns only if an error occurs</span></span><br><span class="line">        execvp(arg_vec[<span class="number">0</span>], arg_vec);</span><br><span class="line">        perror(<span class="string">"execvp"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;               <span class="comment">// parent process, wait for children to exit</span></span><br><span class="line">        <span class="keyword">while</span> (wait(&amp;status) != pid)</span><br><span class="line">            ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>exec函数毫无疑问选择最方便的<code>execvp</code>，主进程使用<code>wait</code>函数等待子进程退出。</p>
-<h3 id="内建命令"><a href="#内建命令" class="headerlink" title="内建命令"></a>内建命令</h3><p>这个时候一个可以跑的shell就完成了。但是却无法运行<code>cd</code>命令，提示错误如下：</p>
+<h3 id="内建命令">内建命令</h3>
+<p>这个时候一个可以跑的shell就完成了。但是却无法运行<code>cd</code>命令，提示错误如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">execvp: No such file or directory</span><br></pre></td></tr></table></figure>
 <p>运行<code>whereis cd</code>命令，并没有显示可执行文件的路径。原来<code>cd</code>命令是内建命令（build in command），需要在shell中自己实现，而且它的执行不需要建立子进程，需要额外判断和处理。</p>
 <p>我写了一个函数判断是否是内建命令，如果不是内建命令则返回-1，否则按照内建命令的方式运行。目前只实现了<code>cd</code>和<code>exit</code>两个内建命令。代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">builtin_cmd</span><span class="params">(<span class="keyword">char</span> **arg_vec)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strcmp</span>(arg_vec[<span class="number">0</span>], <span class="string">"cd"</span>) == <span class="number">0</span>) &#123; <span class="comment">// cd</span></span><br><span class="line">        <span class="keyword">if</span> ((arg_vec[<span class="number">1</span>] != <span class="literal">NULL</span>) &amp;&amp; (arg_vec[<span class="number">2</span>] == <span class="literal">NULL</span>)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (chdir(arg_vec[<span class="number">1</span>]) == <span class="number">-1</span>) &#123;</span><br><span class="line">                perror(<span class="string">"cd"</span>); </span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Usage: cd [directory]\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">strcmp</span>(arg_vec[<span class="number">0</span>], <span class="string">"exit"</span>) == <span class="number">0</span>) &#123; <span class="comment">// exit</span></span><br><span class="line">        <span class="built_in">exit</span>(EXIT_SUCCESS); </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>此时，shell主循环中的<code>run_cmd</code>函数演变为：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">run_cmd</span><span class="params">(<span class="keyword">char</span> **arg_vec)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (arg_vec[<span class="number">0</span>] == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (builtin_cmd(arg_vec) == <span class="number">-1</span>) &#123; <span class="comment">// run build-in commands</span></span><br><span class="line">        exec_cmd(arg_vec); <span class="comment">// run normal commands</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="处理信号"><a href="#处理信号" class="headerlink" title="处理信号"></a>处理信号</h2><p>我们期望shell能够处理信号。在shell的命令行中敲命令运行程序，在程序还在运行时按下<code>Ctrl-C</code>或<code>Ctrl-\</code>键（分别产生<code>SIGINT</code>和<code>SIGQUIT</code>信号），运行的程序会退出，即中断运行子进程；在shell的命令行中不运行命令，直接按下这两个键组合，不能退出shell程序，即父进程不会中断运行，退出shell程序只能通过<code>Ctrl-D</code>按键。实现上述功能需要在父进程中忽略信号<code>SIGINT</code>和<code>SIGQUIT</code>，但是在子进程中恢复对信号<code>SIGINT</code>和<code>SIGQUIT</code>的默认操作。代码很简单，在这里不列出。</p>
+<h2 id="处理信号">处理信号</h2>
+<p>我们期望shell能够处理信号。在shell的命令行中敲命令运行程序，在程序还在运行时按下<code>Ctrl-C</code>或<code>Ctrl-\</code>键（分别产生<code>SIGINT</code>和<code>SIGQUIT</code>信号），运行的程序会退出，即中断运行子进程；在shell的命令行中不运行命令，直接按下这两个键组合，不能退出shell程序，即父进程不会中断运行，退出shell程序只能通过<code>Ctrl-D</code>按键。实现上述功能需要在父进程中忽略信号<code>SIGINT</code>和<code>SIGQUIT</code>，但是在子进程中恢复对信号<code>SIGINT</code>和<code>SIGQUIT</code>的默认操作。代码很简单，在这里不列出。</p>
 <p>这样，一个具备基本功能的shell就完成了，完整的代码请参考<a href="https://gist.github.com/panqiincs/55c7681a115a6fe7caa2bd743029cb1f" target="_blank" rel="noopener">这里</a>。请继续看下一篇：<a href="https://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/">Shell实现：重定向和管道</a>。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<h2 id="参考">参考</h2>
+<ol type="1">
 <li><a href="https://book.douban.com/subject/4292217/" target="_blank" rel="noopener">The Linux Programming Interface</a></li>
 <li><a href="https://book.douban.com/subject/1219329/" target="_blank" rel="noopener">Unix/Linux编程实践教程</a></li>
 </ol>
@@ -351,7 +331,7 @@
     <a href="http://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/" title="Shell实现：基本功能">http://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
@@ -366,21 +346,18 @@
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-                <a href="/2017/01/07/year-end-summary-of-2016/" rel="next" title="2016年终总结">
-                  <i class="fa fa-chevron-left"></i> 2016年终总结
-                </a>
-            </div>
 
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-                <a href="/2017/03/11/gvim-monaco-font/" rel="prev" title="配置GVim使用Monaco字体">
-                  配置GVim使用Monaco字体 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/01/07/year-end-summary-of-2016/" rel="prev" title="2016年终总结">
+      <i class="fa fa-chevron-left"></i> 2016年终总结
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/03/11/gvim-monaco-font/" rel="next" title="配置GVim使用Monaco字体">
+      配置GVim使用Monaco字体 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
     
   </article>
@@ -388,18 +365,39 @@
   
   
 
-  </div>
 
 
           </div>
           
     
-  <div class="comments" id="comments">
+  <div class="comments">
     <div id="disqus_thread">
       <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
     </div>
   </div>
   
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
@@ -424,14 +422,14 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell的功能"><span class="nav-number">1.</span> <span class="nav-text">Shell的功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell的主流程"><span class="nav-number">2.</span> <span class="nav-text">Shell的主流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打印提示符"><span class="nav-number">3.</span> <span class="nav-text">打印提示符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理用户输入"><span class="nav-number">4.</span> <span class="nav-text">处理用户输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行命令"><span class="nav-number">5.</span> <span class="nav-text">运行命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fork和exec"><span class="nav-number">5.1.</span> <span class="nav-text">fork和exec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内建命令"><span class="nav-number">5.2.</span> <span class="nav-text">内建命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理信号"><span class="nav-number">6.</span> <span class="nav-text">处理信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#shell的功能"><span class="nav-number">1.</span> <span class="nav-text">Shell的功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell的主流程"><span class="nav-number">2.</span> <span class="nav-text">Shell的主流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打印提示符"><span class="nav-number">3.</span> <span class="nav-text">打印提示符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理用户输入"><span class="nav-number">4.</span> <span class="nav-text">处理用户输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行命令"><span class="nav-number">5.</span> <span class="nav-text">运行命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fork和exec"><span class="nav-number">5.1.</span> <span class="nav-text">fork和exec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内建命令"><span class="nav-number">5.2.</span> <span class="nav-text">内建命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理信号"><span class="nav-number">6.</span> <span class="nav-text">处理信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <img class="site-author-image" itemprop="image" alt="Krist Pan"
-    src="/images/avatar.png">
+    <img class="site-author-image" itemprop="image" alt="Krist Pan"
+      src="/images/avatar.png">
   <p class="site-author-name" itemprop="name">Krist Pan</p>
   <div class="site-description" itemprop="description">人生如逆旅，我亦是行人</div>
 </div>
@@ -440,45 +438,39 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">86</span>
+          <span class="site-state-item-count">87</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-count">145</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="feed-link motion-element">
-    <a href="/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/panqiincs" title="GitHub &rarr; https://github.com/panqiincs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/panqiincs" title="GitHub → https://github.com/panqiincs" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:panqihg@hotmail.com" title="E-Mail &rarr; mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://weibo.com/3850393415" title="Weibo &rarr; https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+        <a href="https://weibo.com/3850393415" title="Weibo → https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
       </span>
   </div>
 
 
   <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title">
-      <i class="fa fa-fw fa-link"></i>
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
@@ -517,19 +509,18 @@
       <div class="footer-inner">
         
 
+        
+
 <div class="copyright">
   
   &copy; 2013 – 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Krist Pan</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
@@ -541,11 +532,6 @@
 
 
 
-
-
-
-
-        
       </div>
     </footer>
   </div>
@@ -561,7 +547,6 @@
 
 
   
-
 
 
 
@@ -594,16 +579,16 @@
   window.addEventListener('load', loadCount, false);
 </script>
 <script>
-  function loadComments() {
+  var disqus_config = function() {
+    this.page.url = "http://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/";
+    this.page.identifier = "2017/02/26/write-a-shell-basic-functionality/";
+    this.page.title = "Shell实现：基本功能";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
       DISQUS.reset({
         reload: true,
-        config: {page: {
-            url: "http://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/",
-            identifier: "2017/02/26/write-a-shell-basic-functionality/",
-            title: "Shell实现：基本功能"
-          }
-        }
+        config: disqus_config
       });
     } else {
       var d = document, s = d.createElement('script');
@@ -611,8 +596,7 @@
       s.setAttribute('data-timestamp', '' + +new Date());
       (d.head || d.body).appendChild(s);
     }
-  }
-    window.addEventListener('load', loadComments, false);
+  });
 </script>
 
 </body>

@@ -9,49 +9,18 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
-  <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
   <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
   <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.5.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    },
-    sidebarPadding: 40
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"panqiincs.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="人生如逆旅，我亦是行人">
 <meta name="keywords" content="Linux 算法导论 电子工程">
@@ -72,10 +41,9 @@
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
-    isPage: false,
-    isArchive: false
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -83,8 +51,7 @@
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
     <script>
-      var host = window.location.hostname;
-      if (host !== "localhost" || !true) {
+      if (CONFIG.hostname === location.hostname) {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -128,17 +95,6 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">辛未羊的博客</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-  </div>
-
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
@@ -146,45 +102,63 @@
       <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">辛未羊的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
 
+
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-series">
 
-    <a href="/series/" rel="section"><i class="fa fa-fw fa-list"></i>系列</a>
+    <a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
   </ul>
-
 </nav>
+
+
+
+
 </div>
     </header>
 
@@ -200,14 +174,12 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content index posts-expand">
             
-
-  <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/11/02/fall-in-love-with-tea/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -220,15 +192,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2017/11/02/fall-in-love-with-tea/" class="post-title-link" itemprop="url">喜欢上了喝茶</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -236,20 +208,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-05-30 23:58:08" itemprop="dateModified" datetime="2019-05-30T23:58:08+08:00">2019-05-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活记录/" itemprop="url" rel="index">
-                    <span itemprop="name">生活记录</span>
-                  </a>
+                  <a href="/categories/生活记录/" itemprop="url" rel="index"><span itemprop="name">生活记录</span></a>
                 </span>
             </span>
 
@@ -258,11 +228,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2017/11/02/fall-in-love-with-tea/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2017/11/02/fall-in-love-with-tea/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/11/02/fall-in-love-with-tea/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -301,10 +271,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/09/10/after-installing-opensuse-leap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -317,15 +287,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2017/09/10/after-installing-opensuse-leap/" class="post-title-link" itemprop="url">安装OpenSUSE Leap之后</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -333,20 +303,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-06-03 07:07:30" itemprop="dateModified" datetime="2019-06-03T07:07:30+08:00">2019-06-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具使用/" itemprop="url" rel="index">
-                    <span itemprop="name">工具使用</span>
-                  </a>
+                  <a href="/categories/工具使用/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
                 </span>
             </span>
 
@@ -355,11 +323,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2017/09/10/after-installing-opensuse-leap/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2017/09/10/after-installing-opensuse-leap/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/09/10/after-installing-opensuse-leap/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -375,8 +343,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="安装建议"><a href="#安装建议" class="headerlink" title="安装建议"></a>安装建议</h2><p>系统语言建议选择英文。在命令行下切换中文目录不方便，遇到各种问题，将英文的提示信息作为关键字在Google中搜索，基本上都可以找到解决方案。作为开发人员，请习惯英文。</p>
-<h2 id="配置修改"><a href="#配置修改" class="headerlink" title="配置修改"></a>配置修改</h2><h3 id="更改软件源"><a href="#更改软件源" class="headerlink" title="更改软件源"></a>更改软件源</h3><p>修改软件源以获取更快的下载速度，国内建议使用USTC源。以42.3为例，在终端下的配置方法如下：</p>
+          <h2 id="安装建议">安装建议</h2>
+<p>系统语言建议选择英文。在命令行下切换中文目录不方便，遇到各种问题，将英文的提示信息作为关键字在Google中搜索，基本上都可以找到解决方案。作为开发人员，请习惯英文。</p>
+<h2 id="配置修改">配置修改</h2>
+<h3 id="更改软件源">更改软件源</h3>
+<p>修改软件源以获取更快的下载速度，国内建议使用USTC源。以42.3为例，在终端下的配置方法如下：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/09/10/after-installing-opensuse-leap/#more" rel="contents">
@@ -399,10 +370,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/09/01/host-hexo-blog-at-vps/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -415,15 +386,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2017/09/01/host-hexo-blog-at-vps/" class="post-title-link" itemprop="url">将Hexo博客托管到VPS</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -431,20 +402,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-06-03 07:06:03" itemprop="dateModified" datetime="2019-06-03T07:06:03+08:00">2019-06-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网站维护/" itemprop="url" rel="index">
-                    <span itemprop="name">网站维护</span>
-                  </a>
+                  <a href="/categories/网站维护/" itemprop="url" rel="index"><span itemprop="name">网站维护</span></a>
                 </span>
             </span>
 
@@ -453,11 +422,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2017/09/01/host-hexo-blog-at-vps/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2017/09/01/host-hexo-blog-at-vps/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/09/01/host-hexo-blog-at-vps/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -473,7 +442,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="整体方案"><a href="#整体方案" class="headerlink" title="整体方案"></a>整体方案</h2><p>我有一个用于提高上网体验的VPS，配置还不错，仅仅跑一个小服务太浪费了。买了域名之后，便想把博客也托管到VPS上，和Github互为备份，其中一个出问题了，修改一下域名解析即可。</p>
+          <h2 id="整体方案">整体方案</h2>
+<p>我有一个用于提高上网体验的VPS，配置还不错，仅仅跑一个小服务太浪费了。买了域名之后，便想把博客也托管到VPS上，和Github互为备份，其中一个出问题了，修改一下域名解析即可。</p>
 <p>整体方案如下：在本地机器上生成博客静态文件，利用git的<code>post-receive</code>钩子自动部署文件到VPS的指定目录中。VPS使用nginx作为HTTP服务器，为访客提供服务。本文默认本地机器上已经完成了Hexo博客环境的搭建（能够生成博客文件，并部署到Github上），VPS上已安装git和nginx。</p>
           <!--noindex-->
             <div class="post-button">
@@ -497,10 +467,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/08/13/python-crawler-lifeofpix/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -513,15 +483,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2017/08/13/python-crawler-lifeofpix/" class="post-title-link" itemprop="url">Python爬虫：下载lifeofpix图片</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -529,20 +499,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-08-03 16:23:52" itemprop="dateModified" datetime="2019-08-03T16:23:52+08:00">2019-08-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序设计/" itemprop="url" rel="index">
-                    <span itemprop="name">程序设计</span>
-                  </a>
+                  <a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
                 </span>
             </span>
 
@@ -551,11 +519,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2017/08/13/python-crawler-lifeofpix/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2017/08/13/python-crawler-lifeofpix/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/08/13/python-crawler-lifeofpix/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -571,8 +539,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>这是我实现的第一个爬虫，抓取<a href="http://www.lifeofpix.com" target="_blank" rel="noopener">lifeofpix</a>网站上下载量超过500的图片。它的功能非常简单，代码量也很小，展示了网络爬虫的基本原理和流程。我使用的Python版本是3.4.6，HTTP处理使用<code>requests</code>库，数据提取使用<code>BeautifulSoup</code>库。</p>
-<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>爬虫要伪装成浏览器，指定User-Agent：</p>
+          <h2 id="工具">工具</h2>
+<p>这是我实现的第一个爬虫，抓取<a href="http://www.lifeofpix.com" target="_blank" rel="noopener">lifeofpix</a>网站上下载量超过500的图片。它的功能非常简单，代码量也很小，展示了网络爬虫的基本原理和流程。我使用的Python版本是3.4.6，HTTP处理使用<code>requests</code>库，数据提取使用<code>BeautifulSoup</code>库。</p>
+<h2 id="准备工作">准备工作</h2>
+<p>爬虫要伪装成浏览器，指定User-Agent：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/08/13/python-crawler-lifeofpix/#more" rel="contents">
@@ -595,10 +565,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/08/12/build-emacs-from-source/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -611,15 +581,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2017/08/12/build-emacs-from-source/" class="post-title-link" itemprop="url">从源码编译安装Emacs</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -627,20 +597,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-06-03 07:05:07" itemprop="dateModified" datetime="2019-06-03T07:05:07+08:00">2019-06-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具使用/" itemprop="url" rel="index">
-                    <span itemprop="name">工具使用</span>
-                  </a>
+                  <a href="/categories/工具使用/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
                 </span>
             </span>
 
@@ -649,11 +617,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2017/08/12/build-emacs-from-source/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2017/08/12/build-emacs-from-source/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/08/12/build-emacs-from-source/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -669,8 +637,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="版本要求"><a href="#版本要求" class="headerlink" title="版本要求"></a>版本要求</h2><p>最近想尝试一下酷眩的<a href="http://spacemacs.org/" target="_blank" rel="noopener">spacemacs</a>配置，但是它在Emacs 24.4或者更高的版本上才能展现所有的特性，而软件仓库中最新的版本为24.3，因此只能从源码编译安装了。</p>
-<h2 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h2><p>首先在官方网站上下载源码，文件名为<code>emacs-VERSION.tar.gz</code>，我下载的VERSION为24.4，解压文件：</p>
+          <h2 id="版本要求">版本要求</h2>
+<p>最近想尝试一下酷眩的<a href="http://spacemacs.org/" target="_blank" rel="noopener">spacemacs</a>配置，但是它在Emacs 24.4或者更高的版本上才能展现所有的特性，而软件仓库中最新的版本为24.3，因此只能从源码编译安装了。</p>
+<h2 id="编译安装">编译安装</h2>
+<p>首先在官方网站上下载源码，文件名为<code>emacs-VERSION.tar.gz</code>，我下载的VERSION为24.4，解压文件：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/08/12/build-emacs-from-source/#more" rel="contents">
@@ -693,10 +663,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/08/06/hexo-blog-code-management/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -709,15 +679,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2017/08/06/hexo-blog-code-management/" class="post-title-link" itemprop="url">Hexo博客源码管理</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -725,20 +695,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-06-03 07:04:40" itemprop="dateModified" datetime="2019-06-03T07:04:40+08:00">2019-06-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网站维护/" itemprop="url" rel="index">
-                    <span itemprop="name">网站维护</span>
-                  </a>
+                  <a href="/categories/网站维护/" itemprop="url" rel="index"><span itemprop="name">网站维护</span></a>
                 </span>
             </span>
 
@@ -747,11 +715,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2017/08/06/hexo-blog-code-management/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2017/08/06/hexo-blog-code-management/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/08/06/hexo-blog-code-management/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -767,7 +735,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="以前的做法"><a href="#以前的做法" class="headerlink" title="以前的做法"></a>以前的做法</h2><p>我的博客使用Hexo框架，主题使用<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">Next</a>，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的<code>themes</code>目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新<strong>手动合入</strong>到博客源码中。</p>
+          <h2 id="以前的做法">以前的做法</h2>
+<p>我的博客使用Hexo框架，主题使用<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">Next</a>，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的<code>themes</code>目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新<strong>手动合入</strong>到博客源码中。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/08/06/hexo-blog-code-management/#more" rel="contents">
@@ -790,10 +759,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/07/03/eliminate-unused-functions-in-ds5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -806,15 +775,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2017/07/03/eliminate-unused-functions-in-ds5/" class="post-title-link" itemprop="url">DS5编译器优化未使用的函数</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -822,20 +791,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-03-08 16:00:55" itemprop="dateModified" datetime="2019-03-08T16:00:55+08:00">2019-03-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具使用/" itemprop="url" rel="index">
-                    <span itemprop="name">工具使用</span>
-                  </a>
+                  <a href="/categories/工具使用/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
                 </span>
             </span>
 
@@ -844,11 +811,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2017/07/03/eliminate-unused-functions-in-ds5/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2017/07/03/eliminate-unused-functions-in-ds5/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/03/eliminate-unused-functions-in-ds5/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -864,7 +831,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>DS-5，也称ARM DS-5，ARM Development Studio 5等，是ARM架构处理器常用的开发平台，包括编辑器、编译器、调试器等一全套开发工具。</p>
+          <h2 id="引言">引言</h2>
+<p>DS-5，也称ARM DS-5，ARM Development Studio 5等，是ARM架构处理器常用的开发平台，包括编辑器、编译器、调试器等一全套开发工具。</p>
 <p>对嵌入式开发来说，硬件资源是非常宝贵的，当工程中包含大量的未调用函数时，会浪费有限的存储资源。手动统计和删除未调用函数很不方便，有的平台代码可能以后会用到，删除也不合适。</p>
           <!--noindex-->
             <div class="post-button">
@@ -888,10 +856,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/06/26/common-linux-commands/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -904,15 +872,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2017/06/26/common-linux-commands/" class="post-title-link" itemprop="url">实用Linux命令</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -920,20 +888,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-09-26 12:00:16" itemprop="dateModified" datetime="2019-09-26T12:00:16+08:00">2019-09-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具使用/" itemprop="url" rel="index">
-                    <span itemprop="name">工具使用</span>
-                  </a>
+                  <a href="/categories/工具使用/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
                 </span>
             </span>
 
@@ -942,11 +908,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2017/06/26/common-linux-commands/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2017/06/26/common-linux-commands/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/26/common-linux-commands/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -962,7 +928,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>常用的基础命令：</p>
+          <h2 id="基本操作">基本操作</h2>
+<p>常用的基础命令：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/06/26/common-linux-commands/#more" rel="contents">
@@ -985,10 +952,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/06/17/linux-kernel-linked-list-explained/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1001,15 +968,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2017/06/17/linux-kernel-linked-list-explained/" class="post-title-link" itemprop="url">Linux内核中的链表</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -1017,20 +984,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-11-19 08:34:06" itemprop="dateModified" datetime="2019-11-19T08:34:06+08:00">2019-11-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序设计/" itemprop="url" rel="index">
-                    <span itemprop="name">程序设计</span>
-                  </a>
+                  <a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
                 </span>
             </span>
 
@@ -1039,11 +1004,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2017/06/17/linux-kernel-linked-list-explained/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2017/06/17/linux-kernel-linked-list-explained/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/17/linux-kernel-linked-list-explained/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -1059,7 +1024,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Linux链表（linked list）的实现比较特别。通常来说，一个链表结构体会包含需要相互连接的数据，例如下面结构体中的<code>my_item</code>成员：</p>
+          <h2 id="介绍">介绍</h2>
+<p>Linux链表（linked list）的实现比较特别。通常来说，一个链表结构体会包含需要相互连接的数据，例如下面结构体中的<code>my_item</code>成员：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/06/17/linux-kernel-linked-list-explained/#more" rel="contents">
@@ -1082,10 +1048,10 @@
   
   
 
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/05/23/burn-pi-image-under-linux/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1098,15 +1064,15 @@
       <meta itemprop="name" content="辛未羊的博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2017/05/23/burn-pi-image-under-linux/" class="post-title-link" itemprop="url">Linux下烧写树莓派系统</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -1114,20 +1080,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-03-08 16:04:48" itemprop="dateModified" datetime="2019-03-08T16:04:48+08:00">2019-03-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具使用/" itemprop="url" rel="index">
-                    <span itemprop="name">工具使用</span>
-                  </a>
+                  <a href="/categories/工具使用/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
                 </span>
             </span>
 
@@ -1136,11 +1100,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2017/05/23/burn-pi-image-under-linux/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2017/05/23/burn-pi-image-under-linux/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/23/burn-pi-image-under-linux/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -1156,8 +1120,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>在Windows系统下可以用Win32diskimager软件将镜像文件写入SD卡，但是如果SD卡中已经有了一个系统，Windows就无法识别其中的ext4分区，再次写入比较麻烦。在Linux下，这个就不是问题了。</p>
-<h2 id="识别设备号"><a href="#识别设备号" class="headerlink" title="识别设备号"></a>识别设备号</h2><p>首先识别SD卡的设备号。拔出SD卡，运行<code>df -h</code>命令显示已经挂载的设备，插入SD卡，再运行一次<code>df -h</code>，比较两次结果的差异，便得到SD卡的设备号，例如<code>/dev/mmcblk0</code>、<code>/dev/sdd</code>。如果之前有烧写过系统，可以看到诸如<code>/dev/mmcblk0p0</code>和<code>/dev/mmcblk0p1</code>的内容。</p>
+          <h2 id="需求">需求</h2>
+<p>在Windows系统下可以用Win32diskimager软件将镜像文件写入SD卡，但是如果SD卡中已经有了一个系统，Windows就无法识别其中的ext4分区，再次写入比较麻烦。在Linux下，这个就不是问题了。</p>
+<h2 id="识别设备号">识别设备号</h2>
+<p>首先识别SD卡的设备号。拔出SD卡，运行<code>df -h</code>命令显示已经挂载的设备，插入SD卡，再运行一次<code>df -h</code>，比较两次结果的差异，便得到SD卡的设备号，例如<code>/dev/mmcblk0</code>、<code>/dev/sdd</code>。如果之前有烧写过系统，可以看到诸如<code>/dev/mmcblk0p0</code>和<code>/dev/mmcblk0p1</code>的内容。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/05/23/burn-pi-image-under-linux/#more" rel="contents">
@@ -1180,7 +1146,6 @@
   
   
 
-  </div>
 
   
   <nav class="pagination">
@@ -1191,6 +1156,28 @@
 
           </div>
           
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
@@ -1220,8 +1207,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <img class="site-author-image" itemprop="image" alt="Krist Pan"
-    src="/images/avatar.png">
+    <img class="site-author-image" itemprop="image" alt="Krist Pan"
+      src="/images/avatar.png">
   <p class="site-author-name" itemprop="name">Krist Pan</p>
   <div class="site-description" itemprop="description">人生如逆旅，我亦是行人</div>
 </div>
@@ -1230,45 +1217,39 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">86</span>
+          <span class="site-state-item-count">87</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-count">145</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="feed-link motion-element">
-    <a href="/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/panqiincs" title="GitHub &rarr; https://github.com/panqiincs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/panqiincs" title="GitHub → https://github.com/panqiincs" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:panqihg@hotmail.com" title="E-Mail &rarr; mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://weibo.com/3850393415" title="Weibo &rarr; https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+        <a href="https://weibo.com/3850393415" title="Weibo → https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
       </span>
   </div>
 
 
   <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title">
-      <i class="fa fa-fw fa-link"></i>
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
@@ -1307,19 +1288,18 @@
       <div class="footer-inner">
         
 
+        
+
 <div class="copyright">
   
   &copy; 2013 – 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Krist Pan</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
@@ -1331,11 +1311,6 @@
 
 
 
-
-
-
-
-        
       </div>
     </footer>
   </div>
@@ -1351,7 +1326,6 @@
 
 
   
-
 
 
 

@@ -9,62 +9,31 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
-  <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
   <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
   <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.5.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    },
-    sidebarPadding: 40
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"panqiincs.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-  <meta name="description" content="以前的做法我的博客使用Hexo框架，主题使用Next，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的themes目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新手动合入到博客源码中。">
+  <meta name="description" content="以前的做法 我的博客使用Hexo框架，主题使用Next，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的themes目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新手动合入到博客源码中。">
 <meta name="keywords" content="git,hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo博客源码管理">
 <meta property="og:url" content="http://panqiincs.me/2017/08/06/hexo-blog-code-management/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="以前的做法我的博客使用Hexo框架，主题使用Next，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的themes目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新手动合入到博客源码中。">
+<meta property="og:description" content="以前的做法 我的博客使用Hexo框架，主题使用Next，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的themes目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新手动合入到博客源码中。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-06-02T23:04:40.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo博客源码管理">
-<meta name="twitter:description" content="以前的做法我的博客使用Hexo框架，主题使用Next，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的themes目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新手动合入到博客源码中。">
+<meta name="twitter:description" content="以前的做法 我的博客使用Hexo框架，主题使用Next，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的themes目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新手动合入到博客源码中。">
 
 <link rel="canonical" href="http://panqiincs.me/2017/08/06/hexo-blog-code-management/">
 
@@ -73,10 +42,9 @@
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -84,8 +52,7 @@
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
     <script>
-      var host = window.location.hostname;
-      if (host !== "localhost" || !true) {
+      if (CONFIG.hostname === location.hostname) {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -129,17 +96,6 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">辛未羊的博客</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-  </div>
-
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
@@ -147,45 +103,63 @@
       <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">辛未羊的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
 
+
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-series">
 
-    <a href="/series/" rel="section"><i class="fa fa-fw fa-list"></i>系列</a>
+    <a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
   </ul>
-
 </nav>
+
+
+
+
 </div>
     </header>
 
@@ -201,14 +175,13 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content post posts-expand">
             
 
-  <div class="posts-expand">
-      
+    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/08/06/hexo-blog-code-management/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -228,7 +201,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -236,20 +209,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-06-03 07:04:40" itemprop="dateModified" datetime="2019-06-03T07:04:40+08:00">2019-06-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网站维护/" itemprop="url" rel="index">
-                    <span itemprop="name">网站维护</span>
-                  </a>
+                  <a href="/categories/网站维护/" itemprop="url" rel="index"><span itemprop="name">网站维护</span></a>
                 </span>
             </span>
 
@@ -258,11 +229,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2017/08/06/hexo-blog-code-management/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2017/08/06/hexo-blog-code-management/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/08/06/hexo-blog-code-management/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -278,23 +249,31 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="以前的做法"><a href="#以前的做法" class="headerlink" title="以前的做法"></a>以前的做法</h2><p>我的博客使用Hexo框架，主题使用<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">Next</a>，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的<code>themes</code>目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新<strong>手动合入</strong>到博客源码中。</p>
+        <h2 id="以前的做法">以前的做法</h2>
+<p>我的博客使用Hexo框架，主题使用<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">Next</a>，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的<code>themes</code>目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新<strong>手动合入</strong>到博客源码中。</p>
 <a id="more"></a>
-<h2 id="使用Git子模块"><a href="#使用Git子模块" class="headerlink" title="使用Git子模块"></a>使用Git子模块</h2><h3 id="添加子模块"><a href="#添加子模块" class="headerlink" title="添加子模块"></a>添加子模块</h3><p>男人要对自己好一点！如果想让生活更加美好，必须要将博客源码和主题源码分开管理。由于主题要根据自己的需求适配，因此要有自己的repo。在Github上将该项目fork，于是我有了一个同名的新仓库。</p>
+<h2 id="使用git子模块">使用Git子模块</h2>
+<h3 id="添加子模块">添加子模块</h3>
+<p>男人要对自己好一点！如果想让生活更加美好，必须要将博客源码和主题源码分开管理。由于主题要根据自己的需求适配，因此要有自己的repo。在Github上将该项目fork，于是我有了一个同名的新仓库。</p>
 <p>在网上了解到，一个项目要使用另外一个项目，两者又要单独管理，可以使用submodule或者subtree功能。我觉得subtree操作太复杂了，最终选择了submodule方式。将主题项目作为一个子模块添加到博客项目中，操作如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> hexo_blog/</span><br><span class="line">git submodule add git@github.com:panqiincs/hexo-theme-next.git themes/next/</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'add theme next as a submodule'</span></span><br></pre></td></tr></table></figure>
 <p>对上述操作不清楚的请参考<a href="https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97" target="_blank" rel="noopener">Progit</a>的说明。</p>
-<h3 id="添加上游远程仓库"><a href="#添加上游远程仓库" class="headerlink" title="添加上游远程仓库"></a>添加上游远程仓库</h3><p>主题源码的管理原则是既要保持自己的变更，又要延续上游的变更。因此要将官方的远程仓库添加进来，命名为upstream：</p>
+<h3 id="添加上游远程仓库">添加上游远程仓库</h3>
+<p>主题源码的管理原则是既要保持自己的变更，又要延续上游的变更。因此要将官方的远程仓库添加进来，命名为upstream：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/next/</span><br><span class="line">git remote add upsteam https://github.com/theme-next/hexo-theme-next</span><br></pre></td></tr></table></figure>
 <p>查看当前的远程仓库：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin  git@github.com:panqiincs/hexo-theme-next.git (fetch)</span><br><span class="line">origin  git@github.com:panqiincs/hexo-theme-next.git (push)</span><br><span class="line">upstream        https://github.com/theme-next/hexo-theme-next.git (fetch)</span><br><span class="line">upstream        https://github.com/theme-next/hexo-theme-next.git (push)</span><br></pre></td></tr></table></figure>
-<h2 id="日常操作"><a href="#日常操作" class="headerlink" title="日常操作"></a>日常操作</h2><h3 id="提交自己的修改"><a href="#提交自己的修改" class="headerlink" title="提交自己的修改"></a>提交自己的修改</h3><p>根据自己的需求，可以对主题文件进行修改，和普通操作无异：</p>
+<h2 id="日常操作">日常操作</h2>
+<h3 id="提交自己的修改">提交自己的修改</h3>
+<p>根据自己的需求，可以对主题文件进行修改，和普通操作无异：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim some_files</span><br><span class="line">git add modified_files</span><br><span class="line">git commit -m <span class="string">'some comments'</span></span><br></pre></td></tr></table></figure>
-<h3 id="合入上游的更新"><a href="#合入上游的更新" class="headerlink" title="合入上游的更新"></a>合入上游的更新</h3><p>如果发现远程仓库有更新，首先拉取下来，然后选择是否合入到自己的分支：</p>
+<h3 id="合入上游的更新">合入上游的更新</h3>
+<p>如果发现远程仓库有更新，首先拉取下来，然后选择是否合入到自己的分支：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git fetch upstream</span><br><span class="line"><span class="comment"># 合入到主分支</span></span><br><span class="line">git checkout master</span><br><span class="line">git merge upstream/master</span><br><span class="line"></span><br><span class="line">vim conflict_files                   <span class="comment"># 手动解决合并冲突</span></span><br><span class="line">git add .                            <span class="comment"># 解决冲突完毕</span></span><br><span class="line">git commit <span class="string">'merge upstream updates'</span></span><br></pre></td></tr></table></figure>
 <p>将新的commits推送到远程origin分支：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-<h3 id="提交子模块的更新"><a href="#提交子模块的更新" class="headerlink" title="提交子模块的更新"></a>提交子模块的更新</h3><p>回到博客源码目录，发现有更改未暂存：</p>
+<h3 id="提交子模块的更新">提交子模块的更新</h3>
+<p>回到博客源码目录，发现有更改未暂存：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> hexo_blog/</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is up-to-date with <span class="string">'origin/master'</span>.</span><br><span class="line">Changes not staged <span class="keyword">for</span> commit:</span><br><span class="line">  (use <span class="string">"git add &lt;file&gt;..."</span> to update what will be committed)</span><br><span class="line">  (use <span class="string">"git checkout -- &lt;file&gt;..."</span> to discard changes <span class="keyword">in</span> working directory)</span><br><span class="line"></span><br><span class="line">        modified:   themes/next (new commits)</span><br></pre></td></tr></table></figure>
 <p>提交子模块的更新：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'update theme next'</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
@@ -325,7 +304,7 @@
     <a href="http://panqiincs.me/2017/08/06/hexo-blog-code-management/" title="Hexo博客源码管理">http://panqiincs.me/2017/08/06/hexo-blog-code-management/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
@@ -339,21 +318,18 @@
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-                <a href="/2017/07/03/eliminate-unused-functions-in-ds5/" rel="next" title="DS5编译器优化未使用的函数">
-                  <i class="fa fa-chevron-left"></i> DS5编译器优化未使用的函数
-                </a>
-            </div>
 
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-                <a href="/2017/08/12/build-emacs-from-source/" rel="prev" title="从源码编译安装Emacs">
-                  从源码编译安装Emacs <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/07/03/eliminate-unused-functions-in-ds5/" rel="prev" title="DS5编译器优化未使用的函数">
+      <i class="fa fa-chevron-left"></i> DS5编译器优化未使用的函数
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/08/12/build-emacs-from-source/" rel="next" title="从源码编译安装Emacs">
+      从源码编译安装Emacs <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
     
   </article>
@@ -361,18 +337,39 @@
   
   
 
-  </div>
 
 
           </div>
           
     
-  <div class="comments" id="comments">
+  <div class="comments">
     <div id="disqus_thread">
       <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
     </div>
   </div>
   
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
@@ -397,14 +394,14 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#以前的做法"><span class="nav-number">1.</span> <span class="nav-text">以前的做法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Git子模块"><span class="nav-number">2.</span> <span class="nav-text">使用Git子模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加子模块"><span class="nav-number">2.1.</span> <span class="nav-text">添加子模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加上游远程仓库"><span class="nav-number">2.2.</span> <span class="nav-text">添加上游远程仓库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日常操作"><span class="nav-number">3.</span> <span class="nav-text">日常操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#提交自己的修改"><span class="nav-number">3.1.</span> <span class="nav-text">提交自己的修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合入上游的更新"><span class="nav-number">3.2.</span> <span class="nav-text">合入上游的更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交子模块的更新"><span class="nav-number">3.3.</span> <span class="nav-text">提交子模块的更新</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#以前的做法"><span class="nav-number">1.</span> <span class="nav-text">以前的做法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用git子模块"><span class="nav-number">2.</span> <span class="nav-text">使用Git子模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加子模块"><span class="nav-number">2.1.</span> <span class="nav-text">添加子模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加上游远程仓库"><span class="nav-number">2.2.</span> <span class="nav-text">添加上游远程仓库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日常操作"><span class="nav-number">3.</span> <span class="nav-text">日常操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#提交自己的修改"><span class="nav-number">3.1.</span> <span class="nav-text">提交自己的修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合入上游的更新"><span class="nav-number">3.2.</span> <span class="nav-text">合入上游的更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交子模块的更新"><span class="nav-number">3.3.</span> <span class="nav-text">提交子模块的更新</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <img class="site-author-image" itemprop="image" alt="Krist Pan"
-    src="/images/avatar.png">
+    <img class="site-author-image" itemprop="image" alt="Krist Pan"
+      src="/images/avatar.png">
   <p class="site-author-name" itemprop="name">Krist Pan</p>
   <div class="site-description" itemprop="description">人生如逆旅，我亦是行人</div>
 </div>
@@ -413,45 +410,39 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">86</span>
+          <span class="site-state-item-count">87</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-count">145</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="feed-link motion-element">
-    <a href="/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/panqiincs" title="GitHub &rarr; https://github.com/panqiincs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/panqiincs" title="GitHub → https://github.com/panqiincs" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:panqihg@hotmail.com" title="E-Mail &rarr; mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://weibo.com/3850393415" title="Weibo &rarr; https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+        <a href="https://weibo.com/3850393415" title="Weibo → https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
       </span>
   </div>
 
 
   <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title">
-      <i class="fa fa-fw fa-link"></i>
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
@@ -490,19 +481,18 @@
       <div class="footer-inner">
         
 
+        
+
 <div class="copyright">
   
   &copy; 2013 – 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Krist Pan</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
@@ -514,11 +504,6 @@
 
 
 
-
-
-
-
-        
       </div>
     </footer>
   </div>
@@ -534,7 +519,6 @@
 
 
   
-
 
 
 
@@ -567,16 +551,16 @@
   window.addEventListener('load', loadCount, false);
 </script>
 <script>
-  function loadComments() {
+  var disqus_config = function() {
+    this.page.url = "http://panqiincs.me/2017/08/06/hexo-blog-code-management/";
+    this.page.identifier = "2017/08/06/hexo-blog-code-management/";
+    this.page.title = "Hexo博客源码管理";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
       DISQUS.reset({
         reload: true,
-        config: {page: {
-            url: "http://panqiincs.me/2017/08/06/hexo-blog-code-management/",
-            identifier: "2017/08/06/hexo-blog-code-management/",
-            title: "Hexo博客源码管理"
-          }
-        }
+        config: disqus_config
       });
     } else {
       var d = document, s = d.createElement('script');
@@ -584,8 +568,7 @@
       s.setAttribute('data-timestamp', '' + +new Date());
       (d.head || d.body).appendChild(s);
     }
-  }
-    window.addEventListener('load', loadComments, false);
+  });
 </script>
 
 </body>

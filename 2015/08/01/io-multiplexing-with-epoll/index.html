@@ -9,62 +9,31 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
-  <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
   <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
   <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.5.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    },
-    sidebarPadding: 40
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"panqiincs.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-  <meta name="description" content="简介I/O多路复用（I/O multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I/O操作。能够进行I/O操作，具体来说就是，在描述符上执行I/O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。 在Linux系统中，多路复用由select，poll和epoll三个函数支持。它们的作用相同，特别地，poll和epol">
+  <meta name="description" content="简介 I/O多路复用（I/O multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I/O操作。能够进行I/O操作，具体来说就是，在描述符上执行I/O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。 在Linux系统中，多路复用由select，poll和epoll三个函数支持。它们的作用相同，特别地，poll和epo">
 <meta name="keywords" content="linux,多路复用,epoll,非阻塞I&#x2F;O">
 <meta property="og:type" content="article">
 <meta property="og:title" content="I&#x2F;O多路复用之epoll">
 <meta property="og:url" content="http://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="简介I/O多路复用（I/O multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I/O操作。能够进行I/O操作，具体来说就是，在描述符上执行I/O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。 在Linux系统中，多路复用由select，poll和epoll三个函数支持。它们的作用相同，特别地，poll和epol">
+<meta property="og:description" content="简介 I/O多路复用（I/O multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I/O操作。能够进行I/O操作，具体来说就是，在描述符上执行I/O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。 在Linux系统中，多路复用由select，poll和epoll三个函数支持。它们的作用相同，特别地，poll和epo">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-08-03T08:20:10.140Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="I&#x2F;O多路复用之epoll">
-<meta name="twitter:description" content="简介I/O多路复用（I/O multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I/O操作。能够进行I/O操作，具体来说就是，在描述符上执行I/O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。 在Linux系统中，多路复用由select，poll和epoll三个函数支持。它们的作用相同，特别地，poll和epol">
+<meta name="twitter:description" content="简介 I/O多路复用（I/O multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I/O操作。能够进行I/O操作，具体来说就是，在描述符上执行I/O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。 在Linux系统中，多路复用由select，poll和epoll三个函数支持。它们的作用相同，特别地，poll和epo">
 
 <link rel="canonical" href="http://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">
 
@@ -73,10 +42,9 @@
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -84,8 +52,7 @@
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
     <script>
-      var host = window.location.hostname;
-      if (host !== "localhost" || !true) {
+      if (CONFIG.hostname === location.hostname) {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -129,17 +96,6 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">辛未羊的博客</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-  </div>
-
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
@@ -147,45 +103,63 @@
       <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">辛未羊的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
 
+
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-series">
 
-    <a href="/series/" rel="section"><i class="fa fa-fw fa-list"></i>系列</a>
+    <a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
   </ul>
-
 </nav>
+
+
+
+
 </div>
     </header>
 
@@ -201,14 +175,13 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content post posts-expand">
             
 
-  <div class="posts-expand">
-      
+    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -228,7 +201,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -236,20 +209,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-08-03 16:20:10" itemprop="dateModified" datetime="2019-08-03T16:20:10+08:00">2019-08-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序设计/" itemprop="url" rel="index">
-                    <span itemprop="name">程序设计</span>
-                  </a>
+                  <a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
                 </span>
             </span>
 
@@ -258,11 +229,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2015/08/01/io-multiplexing-with-epoll/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2015/08/01/io-multiplexing-with-epoll/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/08/01/io-multiplexing-with-epoll/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -278,37 +249,41 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>I/O多路复用（I/O multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I/O操作。能够进行I/O操作，具体来说就是，在描述符上执行I/O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。</p>
+        <h2 id="简介">简介</h2>
+<p>I/O多路复用（I/O multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I/O操作。能够进行I/O操作，具体来说就是，在描述符上执行I/O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。</p>
 <p>在Linux系统中，多路复用由<code>select</code>，<code>poll</code>和<code>epoll</code>三个函数支持。它们的作用相同，特别地，<code>poll</code>和<code>epoll</code>的接口非常相似。在处理大量描述符时，<code>epoll</code>的性能优于另外两个函数。<code>epoll</code>同时支持水平触发（level-triggered）和边沿触发（edge-triggered）模式，而<code>select</code>和<code>poll</code>只支持水平触发模式。本文结合一个回射服务器程序来介绍<code>epoll</code>的基本用法。</p>
 <a id="more"></a>
-<h2 id="触发模式"><a href="#触发模式" class="headerlink" title="触发模式"></a>触发模式</h2><p>水平触发和边沿触发模式的区别如下：</p>
+<h2 id="触发模式">触发模式</h2>
+<p>水平触发和边沿触发模式的区别如下：</p>
 <ul>
 <li>水平触发：如果对文件描述符执行I/O操作不会阻塞，则该文件描述符状态为就绪，内核会通知进程</li>
 <li>边沿触发：当文件描述符上有新的I/O事件到来时，内核才会通知进程</li>
 </ul>
 <p>如果使用水平触发模式，当内核通知文件描述符可读写时，接下来可以继续去检测它的状态，看它是否依然可读或可写。所以在收到通知后，没必要一次执行尽可能多的读写操作。</p>
 <p>如果使用边沿触发模式，I/O事件发生时才会有通知，只有另一个I/O事件到来时才会收到新的通知。由于我们不知道到底能读写多少数据，所以在收到通知后应尽可能地读写数据，以免错失读写的机会。如果使用循环从文件描述符读写数据，且文件描述符是阻塞的，那么没有数据可读写时，进程会阻塞在读写函数那里。所以边沿触发模式一般和非阻塞I/O搭配使用，程序会一直执行I/O操作，直到系统调用（如<code>read</code>和<code>write</code>）返回错误，错误类型为<code>EAGAIN</code>或<code>EWOULDBLOCK</code>。关于这点，详情请看下面代码中的<code>do_echo</code>函数。</p>
-<h2 id="echo服务器"><a href="#echo服务器" class="headerlink" title="echo服务器"></a>echo服务器</h2><p>我们通过一个回射服务器程序来展示<code>epoll</code>的标准用法。先简要介绍<code>epoll</code>的接口。主要由三个函数组成：</p>
+<h2 id="echo服务器">echo服务器</h2>
+<p>我们通过一个回射服务器程序来展示<code>epoll</code>的标准用法。先简要介绍<code>epoll</code>的接口。主要由三个函数组成：</p>
 <ul>
 <li><code>epoll_create</code>创建新的<code>epoll</code>实例，一般使用最新的<code>epoll_create1</code>调用</li>
 <li><code>epoll_ctl</code>管理感兴趣的文件描述符和相应事件</li>
 <li><code>epoll_wait</code>返回就绪的文件描述符，然后对它们进行I/O操作</li>
 </ul>
 <p>程序的主要流程如下：</p>
-<ol>
+<ol type="1">
 <li>创建一个监听套接字<code>lfd</code>，调用<code>set_nonblocking</code>函数将其设置为非阻塞</li>
 <li>调用<code>epoll_create1</code>函数创建一个<code>epoll</code>实例，对应的文件描述符为<code>epfd</code></li>
 <li>将监听套接字<code>lfd</code>加入到<code>epfd</code>的事件列表<code>event</code>中，监听的事件为<code>EPOLLIN</code></li>
 <li>进入死循环，<code>epoll_wait</code>函数一直阻塞，直到有事件发生。事件信息保存在<code>evlist</code>中</li>
-<li>检查文件描述符及其事件：<ul>
+<li>检查文件描述符及其事件：
+<ul>
 <li>如果是发生在监听套接字<code>lfd</code>上的事件，则收到了一个客户请求，将返回的连接套接字<code>cfd</code>设置为边沿触发（EPOLLET）模式，加入到事件列表<code>event</code>中</li>
 <li>如果是连接套接字<code>cfd</code>上发生的事件，对<code>EPOLLIN</code>事件，调用<code>do_echo</code>函数执行回射操作；对<code>EPOLLERR</code>或<code>EPOLLHUP</code>事件，则关闭描述符</li>
-</ul>
-</li>
+</ul></li>
 </ol>
 <p>全部代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;errno.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/epoll.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;arpa/inet.h&gt; </span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PORT_NUM   40713</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_EVENTS 1024</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">error</span><span class="params">(<span class="keyword">char</span> *msg)</span> </span>&#123;</span><br><span class="line">    perror(msg);</span><br><span class="line">    <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">set_nonblocking</span><span class="params">(<span class="keyword">int</span> fd)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> flags;</span><br><span class="line">    <span class="keyword">if</span> ((flags = fcntl(fd, F_GETFL, <span class="literal">NULL</span>)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        error(<span class="string">"ERROR fcntl F_GETFL"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (fcntl(fd, F_SETFL, flags | O_NONBLOCK) == <span class="number">-1</span>) &#123;</span><br><span class="line">        error(<span class="string">"ERROR fcntl F_SETFL"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">do_echo</span><span class="params">(<span class="keyword">int</span> fd)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> c, buf[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        <span class="keyword">int</span> n = read(fd, &amp;c, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span> (n &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (errno == EAGAIN) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            error(<span class="string">"ERROR read from client"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        buf[cnt++] = c;</span><br><span class="line">        <span class="keyword">if</span> (c == <span class="string">'\n'</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (write(fd, buf, cnt) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                error(<span class="string">"ERROR write to client"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            cnt = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> lfd;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">server_addr</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">client_addr</span>;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> epfd;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">epoll_event</span> <span class="title">event</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">epoll_event</span> *<span class="title">evlist</span>;</span></span><br><span class="line"></span><br><span class="line">    server_addr.sin_family = AF_INET;</span><br><span class="line">    server_addr.sin_addr.s_addr = htonl(INADDR_ANY);</span><br><span class="line">    server_addr.sin_port = htons(PORT_NUM);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ((lfd = socket(AF_INET, SOCK_STREAM, <span class="number">0</span>)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        error(<span class="string">"ERROR socket"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    set_nonblocking(lfd);</span><br><span class="line">    <span class="keyword">if</span> (bind(lfd, (struct sockaddr *)&amp;server_addr, <span class="keyword">sizeof</span>(server_addr)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        error(<span class="string">"ERROR bind"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (listen(lfd, <span class="number">16</span>) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        error(<span class="string">"ERROR listen"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    epfd = epoll_create1(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span> (epfd &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        perror(<span class="string">"ERROR epoll_create1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    event.events = EPOLLIN;</span><br><span class="line">    event.data.fd = lfd;</span><br><span class="line">    <span class="keyword">if</span> (epoll_ctl(epfd, EPOLL_CTL_ADD, lfd, &amp;event) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        error(<span class="string">"ERROR epoll_ctl"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    evlist = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct epoll_event)*MAX_EVENTS);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        <span class="keyword">int</span> cfd;</span><br><span class="line">        <span class="keyword">socklen_t</span> len = <span class="keyword">sizeof</span>(client_addr);</span><br><span class="line">        <span class="keyword">int</span> ready = epoll_wait(epfd, evlist, MAX_EVENTS, <span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">if</span> (ready == <span class="number">-1</span>) &#123;</span><br><span class="line">            error(<span class="string">"ERROR epoll_wait"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ready; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (evlist[i].data.fd == lfd) &#123;</span><br><span class="line">                cfd = accept(lfd, (struct sockaddr *)&amp;client_addr, &amp;len);</span><br><span class="line">                <span class="keyword">if</span> (cfd &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                    perror(<span class="string">"ERROR accept"</span>);</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                set_nonblocking(cfd);</span><br><span class="line">                event.events = EPOLLIN | EPOLLET | EPOLLRDHUP;</span><br><span class="line">                event.data.fd = cfd;</span><br><span class="line">                epoll_ctl(epfd, EPOLL_CTL_ADD, cfd, &amp;event);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (evlist[i].events &amp; EPOLLIN) &#123;</span><br><span class="line">                cfd = evlist[i].data.fd;</span><br><span class="line">                do_echo(cfd);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (evlist[i].events &amp; (EPOLLHUP | EPOLLERR)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (close(evlist[i].data.fd) == <span class="number">-1</span>) &#123;</span><br><span class="line">                    error(<span class="string">"ERROR close"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    close(lfd);</span><br><span class="line">    <span class="built_in">exit</span>(EXIT_SUCCESS);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<h2 id="参考">参考</h2>
+<ol type="1">
 <li><a href="https://book.douban.com/subject/4292217/" target="_blank" rel="noopener">The Linux Programming Interface</a></li>
 <li><a href="http://man7.org/linux/man-pages/man7/epoll.7.html" target="_blank" rel="noopener">epoll(7) - Linux manual page</a></li>
 </ol>
@@ -353,7 +328,7 @@
     <a href="http://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/" title="I/O多路复用之epoll">http://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
@@ -369,21 +344,18 @@
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-                <a href="/2015/07/31/preview-markdown-with-emacs/" rel="next" title="在Emacs中预览Markdown">
-                  <i class="fa fa-chevron-left"></i> 在Emacs中预览Markdown
-                </a>
-            </div>
 
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-                <a href="/2015/08/05/multiplexing-and-nonblocking-io/" rel="prev" title="为什么多路复用要搭配非阻塞I/O">
-                  为什么多路复用要搭配非阻塞I/O <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2015/07/31/preview-markdown-with-emacs/" rel="prev" title="在Emacs中预览Markdown">
+      <i class="fa fa-chevron-left"></i> 在Emacs中预览Markdown
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2015/08/05/multiplexing-and-nonblocking-io/" rel="next" title="为什么多路复用要搭配非阻塞I/O">
+      为什么多路复用要搭配非阻塞I/O <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
     
   </article>
@@ -391,18 +363,39 @@
   
   
 
-  </div>
 
 
           </div>
           
     
-  <div class="comments" id="comments">
+  <div class="comments">
     <div id="disqus_thread">
       <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
     </div>
   </div>
   
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
@@ -433,8 +426,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <img class="site-author-image" itemprop="image" alt="Krist Pan"
-    src="/images/avatar.png">
+    <img class="site-author-image" itemprop="image" alt="Krist Pan"
+      src="/images/avatar.png">
   <p class="site-author-name" itemprop="name">Krist Pan</p>
   <div class="site-description" itemprop="description">人生如逆旅，我亦是行人</div>
 </div>
@@ -443,45 +436,39 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">86</span>
+          <span class="site-state-item-count">87</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-count">145</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="feed-link motion-element">
-    <a href="/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/panqiincs" title="GitHub &rarr; https://github.com/panqiincs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/panqiincs" title="GitHub → https://github.com/panqiincs" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:panqihg@hotmail.com" title="E-Mail &rarr; mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://weibo.com/3850393415" title="Weibo &rarr; https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+        <a href="https://weibo.com/3850393415" title="Weibo → https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
       </span>
   </div>
 
 
   <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title">
-      <i class="fa fa-fw fa-link"></i>
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
@@ -520,19 +507,18 @@
       <div class="footer-inner">
         
 
+        
+
 <div class="copyright">
   
   &copy; 2013 – 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Krist Pan</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
@@ -544,11 +530,6 @@
 
 
 
-
-
-
-
-        
       </div>
     </footer>
   </div>
@@ -564,7 +545,6 @@
 
 
   
-
 
 
 
@@ -597,16 +577,16 @@
   window.addEventListener('load', loadCount, false);
 </script>
 <script>
-  function loadComments() {
+  var disqus_config = function() {
+    this.page.url = "http://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/";
+    this.page.identifier = "2015/08/01/io-multiplexing-with-epoll/";
+    this.page.title = "I/O多路复用之epoll";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
       DISQUS.reset({
         reload: true,
-        config: {page: {
-            url: "http://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/",
-            identifier: "2015/08/01/io-multiplexing-with-epoll/",
-            title: "I/O多路复用之epoll"
-          }
-        }
+        config: disqus_config
       });
     } else {
       var d = document, s = d.createElement('script');
@@ -614,8 +594,7 @@
       s.setAttribute('data-timestamp', '' + +new Date());
       (d.head || d.body).appendChild(s);
     }
-  }
-    window.addEventListener('load', loadComments, false);
+  });
 </script>
 
 </body>

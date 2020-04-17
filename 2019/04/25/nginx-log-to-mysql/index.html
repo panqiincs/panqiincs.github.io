@@ -9,62 +9,31 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
-  <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
   <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
   <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.5.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    },
-    sidebarPadding: 40
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"panqiincs.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-  <meta name="description" content="需求我的网站托管在VPS上，使用Nginx提供服务。Nginx的日志内容大多数是搜索引擎爬虫和DNS服务器的记录，真实用户（用浏览器访问的）的记录只占一小部分。我想把真实用户的访问记录提取出来，毕竟这份数据对网站来说还是非常重要的。有了这份数据，我能够获得比Google Analytics更详细的统计信息。为了便于管理和检索，不能像以前那样用文本保存了，必须要把它存放在数据库中。 本文介绍如何用P">
+  <meta name="description" content="需求 我的网站托管在VPS上，使用Nginx提供服务。Nginx的日志内容大多数是搜索引擎爬虫和DNS服务器的记录，真实用户（用浏览器访问的）的记录只占一小部分。我想把真实用户的访问记录提取出来，毕竟这份数据对网站来说还是非常重要的。有了这份数据，我能够获得比Google Analytics更详细的统计信息。为了便于管理和检索，不能像以前那样用文本保存了，必须要把它存放在数据库中。 本文介绍如何用">
 <meta name="keywords" content="python,nginx,日志分析,mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分析Nginx日志并存入MySQL">
 <meta property="og:url" content="http://panqiincs.me/2019/04/25/nginx-log-to-mysql/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="需求我的网站托管在VPS上，使用Nginx提供服务。Nginx的日志内容大多数是搜索引擎爬虫和DNS服务器的记录，真实用户（用浏览器访问的）的记录只占一小部分。我想把真实用户的访问记录提取出来，毕竟这份数据对网站来说还是非常重要的。有了这份数据，我能够获得比Google Analytics更详细的统计信息。为了便于管理和检索，不能像以前那样用文本保存了，必须要把它存放在数据库中。 本文介绍如何用P">
+<meta property="og:description" content="需求 我的网站托管在VPS上，使用Nginx提供服务。Nginx的日志内容大多数是搜索引擎爬虫和DNS服务器的记录，真实用户（用浏览器访问的）的记录只占一小部分。我想把真实用户的访问记录提取出来，毕竟这份数据对网站来说还是非常重要的。有了这份数据，我能够获得比Google Analytics更详细的统计信息。为了便于管理和检索，不能像以前那样用文本保存了，必须要把它存放在数据库中。 本文介绍如何用">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-08-03T08:25:32.862Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分析Nginx日志并存入MySQL">
-<meta name="twitter:description" content="需求我的网站托管在VPS上，使用Nginx提供服务。Nginx的日志内容大多数是搜索引擎爬虫和DNS服务器的记录，真实用户（用浏览器访问的）的记录只占一小部分。我想把真实用户的访问记录提取出来，毕竟这份数据对网站来说还是非常重要的。有了这份数据，我能够获得比Google Analytics更详细的统计信息。为了便于管理和检索，不能像以前那样用文本保存了，必须要把它存放在数据库中。 本文介绍如何用P">
+<meta name="twitter:description" content="需求 我的网站托管在VPS上，使用Nginx提供服务。Nginx的日志内容大多数是搜索引擎爬虫和DNS服务器的记录，真实用户（用浏览器访问的）的记录只占一小部分。我想把真实用户的访问记录提取出来，毕竟这份数据对网站来说还是非常重要的。有了这份数据，我能够获得比Google Analytics更详细的统计信息。为了便于管理和检索，不能像以前那样用文本保存了，必须要把它存放在数据库中。 本文介绍如何用">
 
 <link rel="canonical" href="http://panqiincs.me/2019/04/25/nginx-log-to-mysql/">
 
@@ -73,10 +42,9 @@
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -84,8 +52,7 @@
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
     <script>
-      var host = window.location.hostname;
-      if (host !== "localhost" || !true) {
+      if (CONFIG.hostname === location.hostname) {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -129,17 +96,6 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">辛未羊的博客</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-  </div>
-
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
@@ -147,45 +103,63 @@
       <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">辛未羊的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
 
+
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-series">
 
-    <a href="/series/" rel="section"><i class="fa fa-fw fa-list"></i>系列</a>
+    <a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
   </ul>
-
 </nav>
+
+
+
+
 </div>
     </header>
 
@@ -201,14 +175,13 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content post posts-expand">
             
 
-  <div class="posts-expand">
-      
+    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2019/04/25/nginx-log-to-mysql/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -228,7 +201,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -236,20 +209,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-08-03 16:25:32" itemprop="dateModified" datetime="2019-08-03T16:25:32+08:00">2019-08-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序设计/" itemprop="url" rel="index">
-                    <span itemprop="name">程序设计</span>
-                  </a>
+                  <a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
                 </span>
             </span>
 
@@ -258,11 +229,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2019/04/25/nginx-log-to-mysql/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2019/04/25/nginx-log-to-mysql/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/25/nginx-log-to-mysql/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -278,10 +249,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>我的网站托管在VPS上，使用Nginx提供服务。Nginx的日志内容大多数是搜索引擎爬虫和DNS服务器的记录，真实用户（用浏览器访问的）的记录只占一小部分。我想把真实用户的访问记录提取出来，毕竟这份数据对网站来说还是非常重要的。有了这份数据，我能够获得比Google Analytics更详细的统计信息。为了便于管理和检索，不能像以前那样用文本保存了，必须要把它存放在数据库中。</p>
+        <h2 id="需求">需求</h2>
+<p>我的网站托管在VPS上，使用Nginx提供服务。Nginx的日志内容大多数是搜索引擎爬虫和DNS服务器的记录，真实用户（用浏览器访问的）的记录只占一小部分。我想把真实用户的访问记录提取出来，毕竟这份数据对网站来说还是非常重要的。有了这份数据，我能够获得比Google Analytics更详细的统计信息。为了便于管理和检索，不能像以前那样用文本保存了，必须要把它存放在数据库中。</p>
 <p>本文介绍如何用Python分析Nginx日志，提取感兴趣的信息，然后存入到MySQL数据库中。</p>
 <a id="more"></a>
-<h2 id="日志过滤"><a href="#日志过滤" class="headerlink" title="日志过滤"></a>日志过滤</h2><h3 id="日志格式"><a href="#日志格式" class="headerlink" title="日志格式"></a>日志格式</h3><p>Nginx的日志默认存放在<code>/var/log/nginx</code>目录下，<code>access.log</code>文件是当天的访问记录。Nginx每天定时将<code>access.log</code>压缩，文件名加上日期信息，这便是目录下<code>.gz</code>后缀的文件，然后<code>access.log</code>文件的内容归零，重新记录。为了防止日志占用太多空间，会定期清理旧的日志文件，在我的服务器上，只保存最近十天的日志。</p>
+<h2 id="日志过滤">日志过滤</h2>
+<h3 id="日志格式">日志格式</h3>
+<p>Nginx的日志默认存放在<code>/var/log/nginx</code>目录下，<code>access.log</code>文件是当天的访问记录。Nginx每天定时将<code>access.log</code>压缩，文件名加上日期信息，这便是目录下<code>.gz</code>后缀的文件，然后<code>access.log</code>文件的内容归零，重新记录。为了防止日志占用太多空间，会定期清理旧的日志文件，在我的服务器上，只保存最近十天的日志。</p>
 <p>日志的每一行为一个访问记录，遵从特定的格式，默认的格式配置如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">                  &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</span><br><span class="line">                  &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;</span><br></pre></td></tr></table></figure>
 <p>下面是一个访问记录示例（为保护用户隐私，已修改IP），请把各字段对号入座：</p>
@@ -295,8 +269,9 @@
 <li><code>http_user_agent</code>：简称UA，包含用户信息</li>
 </ul>
 <p>我用Python语言进行文本处理，从一行访问记录中提取出上述感兴趣的信息。接下来是重要的信息过滤。</p>
-<h3 id="内容过滤"><a href="#内容过滤" class="headerlink" title="内容过滤"></a>内容过滤</h3><p>我们要过滤出真实用户的有效访问，有如下几个特征：</p>
-<ol>
+<h3 id="内容过滤">内容过滤</h3>
+<p>我们要过滤出真实用户的有效访问，有如下几个特征：</p>
+<ol type="1">
 <li>HTTP状态码为<code>200</code>，判断status字段即可</li>
 <li>HTTP方法为<code>GET</code>，从request字段中提取HTTP方法即可</li>
 <li>User-Agent表明为浏览器访问</li>
@@ -308,14 +283,16 @@
 <p>通过上面UserAgent和IP过滤的方法，几乎能排除全部的爬虫访问，但也有漏网之鱼。我在日志中发现，偶尔有来自同一网段的多个IP的访问，而且都请求了JavaScript文件。在<a href="https://ipip.net" target="_blank" rel="noopener">ipip.net</a>上查询它们的地理位置，发现一般都是国内的机房。要排除这种类型的用户，要用更高级的方法。考虑到它们伪装得这么辛苦，就暂时先放它们一马，这点误差可以容忍，毕竟连Google Analytics都经常识别不出爬虫。</p>
 <p>一般来讲，还要排除特定IP的访问，比如自己的IP，方法和User-Agent的类似，就不多说了。</p>
 <p>我将这部分代码命名为<code>filter.py</code>，输入为Nginx的日志，输出打印格式化的访问记录。完整代码在<a href="https://gist.github.com/panqiincs/267735899e05138459a96daeeb319066" target="_blank" rel="noopener">这里</a>，这部分代码的实现需根据自己的情况进行适配。</p>
-<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p>数据库软件我选择最常用的MySQL。首先用如下的SQL语句在数据库中创建如下的数据表（Table）：</p>
+<h2 id="数据库">数据库</h2>
+<p>数据库软件我选择最常用的MySQL。首先用如下的SQL语句在数据库中创建如下的数据表（Table）：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> website;</span><br><span class="line"></span><br><span class="line"><span class="keyword">USE</span> website;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> <span class="built_in">record</span> (</span><br><span class="line">    <span class="keyword">count</span> <span class="built_in">INT</span>(<span class="number">32</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> PRIMARY <span class="keyword">KEY</span> AUTO_INCREMENT,</span><br><span class="line">    addr <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    <span class="built_in">time</span> DATETIME(<span class="number">0</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    page <span class="built_in">VARCHAR</span>(<span class="number">128</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <p>插入记录的SQL语句如下：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="built_in">record</span> (addr, <span class="built_in">time</span>, page) </span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">'1.2.3.4'</span>, <span class="keyword">NOW</span>(), <span class="string">'/about/'</span>),</span><br><span class="line">       (<span class="string">'5.6.7.8'</span>, <span class="keyword">NOW</span>(), <span class="string">'/series/'</span>);</span><br></pre></td></tr></table></figure>
 <p>现在要用Python操作数据库，我用的是MySQLdb模块。由于Nginx的时间格式和MySQL的默认格式不一样，要做一个格式转换。这一过程的代码文件命名为<code>mysql.py</code>，将<code>filter.py</code>的输出作为输入，将数据插入到数据库中。代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> MySQLdb</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">time_format</span><span class="params">(t)</span>:</span></span><br><span class="line">    dt = datetime.datetime.strptime(t, <span class="string">'%d/%b/%Y:%H:%M:%S'</span>)</span><br><span class="line">    <span class="keyword">return</span> str(dt)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insert_record</span><span class="params">(db, cursor, addr, time, page)</span>:</span></span><br><span class="line">    sql = <span class="string">"INSERT INTO record (addr, time, page) \</span></span><br><span class="line"><span class="string">           VALUES ('%s', '%s', '%s')"</span> % (addr, time, page)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        cursor.execute(sql)</span><br><span class="line">        db.commit()</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        db.rollback()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">()</span>:</span></span><br><span class="line">    db = MySQLdb.connect(<span class="string">'localhost'</span>, <span class="string">'username'</span>, <span class="string">'password'</span>, <span class="string">'dbname'</span>, charset = <span class="string">'utf8'</span>)</span><br><span class="line">    cursor = db.cursor()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> len(sys.argv) != <span class="number">2</span>:</span><br><span class="line">        print(<span class="string">"Usage: ./mysql.py record.log"</span>)</span><br><span class="line">        sys.exit()</span><br><span class="line">    fin = open(sys.argv[<span class="number">1</span>], <span class="string">'r'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        line = fin.readline()</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> line:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        splits = line.split()</span><br><span class="line">        addr = splits[<span class="number">0</span>]</span><br><span class="line">        time = time_format(splits[<span class="number">1</span>])</span><br><span class="line">        page = splits[<span class="number">2</span>]</span><br><span class="line">        insert_record(db, cursor, addr, time, page)</span><br><span class="line"></span><br><span class="line">    db.close();</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    run()</span><br></pre></td></tr></table></figure>
-<h2 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h2><p>最好要让整个过程自动化，步骤依次为：</p>
-<ol>
+<h2 id="定时任务">定时任务</h2>
+<p>最好要让整个过程自动化，步骤依次为：</p>
+<ol type="1">
 <li>Nginx每天特定时刻将<code>access.log</code>打包为<code>.gz</code>文件，文件名中包含当天的日期，以今天为例，20190425</li>
 <li>将压缩日志从Nginx的目录拷贝到当前目录，例如文件名为<code>access.log-20190425.gz</code></li>
 <li>解压文件，得到<code>access.log-20190425</code></li>
@@ -330,7 +307,8 @@
 <p>这样，网站每天的访问记录就会自动添加到MySQL数据库中了。我用下面的SQL语句查询了一下昨天的访问记录：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> addr, <span class="built_in">time</span>, page <span class="keyword">FROM</span> <span class="built_in">record</span></span><br><span class="line"><span class="keyword">WHERE</span> <span class="built_in">time</span> <span class="keyword">BETWEEN</span></span><br><span class="line"><span class="keyword">STR_TO_DATE</span>(<span class="string">'2019-04-24 00:00:00'</span>, <span class="string">'%Y-%m-%d %H:%i:%s'</span>) <span class="keyword">AND</span></span><br><span class="line"><span class="keyword">STR_TO_DATE</span>(<span class="string">'2019-04-24 23:59:59'</span>, <span class="string">'%Y-%m-%d %H:%i:%s'</span>);</span><br></pre></td></tr></table></figure>
 <p>页面访问量和Google Analytics的统计相差不大。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>其实本文就是用简单的技术实现了自己的需求。数据库是非常重要的技术，而且实践性强，以前在工作中没机会接触，自己又找不到合适的数据库练手。从今天起，我的网站访问记录不仅会自动保存下来，还给我提供了一份非常不错的数据用来练手，这应该是最大的收获吧。</p>
+<h2 id="总结">总结</h2>
+<p>其实本文就是用简单的技术实现了自己的需求。数据库是非常重要的技术，而且实践性强，以前在工作中没机会接触，自己又找不到合适的数据库练手。从今天起，我的网站访问记录不仅会自动保存下来，还给我提供了一份非常不错的数据用来练手，这应该是最大的收获吧。</p>
 
     </div>
 
@@ -360,7 +338,7 @@
     <a href="http://panqiincs.me/2019/04/25/nginx-log-to-mysql/" title="分析Nginx日志并存入MySQL">http://panqiincs.me/2019/04/25/nginx-log-to-mysql/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
@@ -376,21 +354,18 @@
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-                <a href="/2019/04/16/is-teaching-in-english-good/" rel="next" title="全英文教学值得提倡吗">
-                  <i class="fa fa-chevron-left"></i> 全英文教学值得提倡吗
-                </a>
-            </div>
 
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-                <a href="/2019/05/04/renovate-my-computer/" rel="prev" title="台式机翻新记">
-                  台式机翻新记 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/16/is-teaching-in-english-good/" rel="prev" title="全英文教学值得提倡吗">
+      <i class="fa fa-chevron-left"></i> 全英文教学值得提倡吗
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/05/04/renovate-my-computer/" rel="next" title="台式机翻新记">
+      台式机翻新记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
     
   </article>
@@ -398,18 +373,39 @@
   
   
 
-  </div>
 
 
           </div>
           
     
-  <div class="comments" id="comments">
+  <div class="comments">
     <div id="disqus_thread">
       <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
     </div>
   </div>
   
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
@@ -440,8 +436,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <img class="site-author-image" itemprop="image" alt="Krist Pan"
-    src="/images/avatar.png">
+    <img class="site-author-image" itemprop="image" alt="Krist Pan"
+      src="/images/avatar.png">
   <p class="site-author-name" itemprop="name">Krist Pan</p>
   <div class="site-description" itemprop="description">人生如逆旅，我亦是行人</div>
 </div>
@@ -450,45 +446,39 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">86</span>
+          <span class="site-state-item-count">87</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-count">145</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="feed-link motion-element">
-    <a href="/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/panqiincs" title="GitHub &rarr; https://github.com/panqiincs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/panqiincs" title="GitHub → https://github.com/panqiincs" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:panqihg@hotmail.com" title="E-Mail &rarr; mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://weibo.com/3850393415" title="Weibo &rarr; https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+        <a href="https://weibo.com/3850393415" title="Weibo → https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
       </span>
   </div>
 
 
   <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title">
-      <i class="fa fa-fw fa-link"></i>
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
@@ -527,19 +517,18 @@
       <div class="footer-inner">
         
 
+        
+
 <div class="copyright">
   
   &copy; 2013 – 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Krist Pan</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
@@ -551,11 +540,6 @@
 
 
 
-
-
-
-
-        
       </div>
     </footer>
   </div>
@@ -571,7 +555,6 @@
 
 
   
-
 
 
 
@@ -604,16 +587,16 @@
   window.addEventListener('load', loadCount, false);
 </script>
 <script>
-  function loadComments() {
+  var disqus_config = function() {
+    this.page.url = "http://panqiincs.me/2019/04/25/nginx-log-to-mysql/";
+    this.page.identifier = "2019/04/25/nginx-log-to-mysql/";
+    this.page.title = "分析Nginx日志并存入MySQL";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
       DISQUS.reset({
         reload: true,
-        config: {page: {
-            url: "http://panqiincs.me/2019/04/25/nginx-log-to-mysql/",
-            identifier: "2019/04/25/nginx-log-to-mysql/",
-            title: "分析Nginx日志并存入MySQL"
-          }
-        }
+        config: disqus_config
       });
     } else {
       var d = document, s = d.createElement('script');
@@ -621,8 +604,7 @@
       s.setAttribute('data-timestamp', '' + +new Date());
       (d.head || d.body).appendChild(s);
     }
-  }
-    window.addEventListener('load', loadComments, false);
+  });
 </script>
 
 </body>

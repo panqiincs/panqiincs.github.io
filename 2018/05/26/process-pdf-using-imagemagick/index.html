@@ -9,62 +9,31 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
-  <link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
   <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
   <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '7.5.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    },
-    sidebarPadding: 40
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"panqiincs.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-  <meta name="description" content="需求和方案最近想学习TCP/IP协议，综合考虑，阅读TCP/IP Illustrated第一版是最好的选择，而且还得是英文版。我有一个电子书阅读器DPT-RP1，找个pdf文件就可以开读了。网络上最流行的英文版pdf，排版质量不佳，插图基本看不清，遂放弃。终于找到一个还不错的版本，制作者给实体书的每一页拍照，然后将图片拼成pdf。这个pdf文件在电脑上阅读效果还不错，但图片的阴影在DPT-RP1里">
+  <meta name="description" content="需求和方案 最近想学习TCP/IP协议，综合考虑，阅读TCP/IP Illustrated第一版是最好的选择，而且还得是英文版。我有一个电子书阅读器DPT-RP1，找个pdf文件就可以开读了。网络上最流行的英文版pdf，排版质量不佳，插图基本看不清，遂放弃。终于找到一个还不错的版本，制作者给实体书的每一页拍照，然后将图片拼成pdf。这个pdf文件在电脑上阅读效果还不错，但图片的阴影在DPT-RP1">
 <meta name="keywords" content="imagemagick,pdf,图像二值化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用ImageMagick处理pdf">
 <meta property="og:url" content="http://panqiincs.me/2018/05/26/process-pdf-using-imagemagick/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="需求和方案最近想学习TCP/IP协议，综合考虑，阅读TCP/IP Illustrated第一版是最好的选择，而且还得是英文版。我有一个电子书阅读器DPT-RP1，找个pdf文件就可以开读了。网络上最流行的英文版pdf，排版质量不佳，插图基本看不清，遂放弃。终于找到一个还不错的版本，制作者给实体书的每一页拍照，然后将图片拼成pdf。这个pdf文件在电脑上阅读效果还不错，但图片的阴影在DPT-RP1里">
+<meta property="og:description" content="需求和方案 最近想学习TCP/IP协议，综合考虑，阅读TCP/IP Illustrated第一版是最好的选择，而且还得是英文版。我有一个电子书阅读器DPT-RP1，找个pdf文件就可以开读了。网络上最流行的英文版pdf，排版质量不佳，插图基本看不清，遂放弃。终于找到一个还不错的版本，制作者给实体书的每一页拍照，然后将图片拼成pdf。这个pdf文件在电脑上阅读效果还不错，但图片的阴影在DPT-RP1">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-06-02T23:08:04.670Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用ImageMagick处理pdf">
-<meta name="twitter:description" content="需求和方案最近想学习TCP/IP协议，综合考虑，阅读TCP/IP Illustrated第一版是最好的选择，而且还得是英文版。我有一个电子书阅读器DPT-RP1，找个pdf文件就可以开读了。网络上最流行的英文版pdf，排版质量不佳，插图基本看不清，遂放弃。终于找到一个还不错的版本，制作者给实体书的每一页拍照，然后将图片拼成pdf。这个pdf文件在电脑上阅读效果还不错，但图片的阴影在DPT-RP1里">
+<meta name="twitter:description" content="需求和方案 最近想学习TCP/IP协议，综合考虑，阅读TCP/IP Illustrated第一版是最好的选择，而且还得是英文版。我有一个电子书阅读器DPT-RP1，找个pdf文件就可以开读了。网络上最流行的英文版pdf，排版质量不佳，插图基本看不清，遂放弃。终于找到一个还不错的版本，制作者给实体书的每一页拍照，然后将图片拼成pdf。这个pdf文件在电脑上阅读效果还不错，但图片的阴影在DPT-RP1">
 
 <link rel="canonical" href="http://panqiincs.me/2018/05/26/process-pdf-using-imagemagick/">
 
@@ -73,10 +42,9 @@
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -84,8 +52,7 @@
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
     <script>
-      var host = window.location.hostname;
-      if (host !== "localhost" || !true) {
+      if (CONFIG.hostname === location.hostname) {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -129,17 +96,6 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">辛未羊的博客</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-  </div>
-
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
@@ -147,45 +103,63 @@
       <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">辛未羊的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
 
+
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-series">
 
-    <a href="/series/" rel="section"><i class="fa fa-fw fa-list"></i>系列</a>
+    <a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
   </ul>
-
 </nav>
+
+
+
+
 </div>
     </header>
 
@@ -201,14 +175,13 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content post posts-expand">
             
 
-  <div class="posts-expand">
-      
+    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2018/05/26/process-pdf-using-imagemagick/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -228,7 +201,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
 
@@ -236,20 +209,18 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-06-03 07:08:04" itemprop="dateModified" datetime="2019-06-03T07:08:04+08:00">2019-06-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具使用/" itemprop="url" rel="index">
-                    <span itemprop="name">工具使用</span>
-                  </a>
+                  <a href="/categories/工具使用/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
                 </span>
             </span>
 
@@ -258,11 +229,11 @@
   <span class="post-meta-item">
     
       <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
+        <i class="far fa-comment"></i>
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2018/05/26/process-pdf-using-imagemagick/#comments" itemprop="discussionUrl">
+    <a title="disqus" href="/2018/05/26/process-pdf-using-imagemagick/#disqus_thread" itemprop="discussionUrl">
       <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/26/process-pdf-using-imagemagick/" itemprop="commentCount"></span>
     </a>
   </span>
@@ -278,25 +249,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="需求和方案"><a href="#需求和方案" class="headerlink" title="需求和方案"></a>需求和方案</h2><p>最近想学习TCP/IP协议，综合考虑，阅读<a href="https://book.douban.com/subject/1741925/" target="_blank" rel="noopener">TCP/IP Illustrated</a>第一版是最好的选择，而且还得是英文版。我有一个电子书阅读器<a href="https://panqiincs.me/2018/06/13/dpt-rp1-user-experience/">DPT-RP1</a>，找个pdf文件就可以开读了。网络上最流行的英文版pdf，排版质量不佳，插图基本看不清，遂放弃。终于找到一个还不错的版本，制作者给实体书的每一页拍照，然后将图片拼成pdf。这个pdf文件在电脑上阅读效果还不错，但图片的阴影在DPT-RP1里显示出来灰扑扑一片，阅读效果不佳。</p>
+        <h2 id="需求和方案">需求和方案</h2>
+<p>最近想学习TCP/IP协议，综合考虑，阅读<a href="https://book.douban.com/subject/1741925/" target="_blank" rel="noopener">TCP/IP Illustrated</a>第一版是最好的选择，而且还得是英文版。我有一个电子书阅读器<a href="https://panqiincs.me/2018/06/13/dpt-rp1-user-experience/">DPT-RP1</a>，找个pdf文件就可以开读了。网络上最流行的英文版pdf，排版质量不佳，插图基本看不清，遂放弃。终于找到一个还不错的版本，制作者给实体书的每一页拍照，然后将图片拼成pdf。这个pdf文件在电脑上阅读效果还不错，但图片的阴影在DPT-RP1里显示出来灰扑扑一片，阅读效果不佳。</p>
 <a id="more"></a>
 <p>于是我考虑把pdf里的每一张图片二值化，只有黑白两种颜色，放到阅读器里，效果应该会不错。我相信，Adobe Acrobat DC或者Photoshop之类的软件一定能够很方便快捷地完成这个任务，但我买不起这些商业软件，安装破解版也很耗费时间和精力。于是搜索了一下免费的解决方案，果然，神通广大的ImageMagick就能完成这项任务，在Linux下就可以搞定。ImageMagick在Linux下的调用命令是<code>convert</code>。</p>
-<h2 id="拆分pdf文件"><a href="#拆分pdf文件" class="headerlink" title="拆分pdf文件"></a>拆分pdf文件</h2><p>首先将pdf文件拆成一张张图片：</p>
+<h2 id="拆分pdf文件">拆分pdf文件</h2>
+<p>首先将pdf文件拆成一张张图片：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">convert -density 300 tcpip.pdf %04d.jpg</span><br></pre></td></tr></table></figure>
 <p>其中<code>-density</code>指定PPI值，该值越大，图片越清晰，得到的文件尺寸以及处理时间也会增加。<code>%04d.jpg</code>表示生成的图片文件名用四位数字编号，例如，第123张图片的文件名为<code>0123.jpg</code>。</p>
 <p>我的机器配置不高，Intel Core i5-4430四核处理器，8G内存。拆分文件相当消耗资源，拆分608页的pdf文件，用完了全部物理内存，耗时大约50分钟。</p>
-<h2 id="二值化图片"><a href="#二值化图片" class="headerlink" title="二值化图片"></a>二值化图片</h2><p>拆分得到的是彩色图片，要选取一个阈值，将图片二值化，最后得到只有黑白两色的灰度图片。二值化单张图片的命令如下：</p>
+<h2 id="二值化图片">二值化图片</h2>
+<p>拆分得到的是彩色图片，要选取一个阈值，将图片二值化，最后得到只有黑白两色的灰度图片。二值化单张图片的命令如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">convert 0020.jpg -threshold 55% 0020.png</span><br></pre></td></tr></table></figure>
 <p>经过尝试，阈值选择在140（255*55%）附近时，分割效果较好。灰度值大于该阈值的像素全部变为255（白色），灰度值低于该阈值的像素全部变为0（黑色）。</p>
 <p>将目录下所有jpg格式的图片二值化，转换后的图片是png格式，文件名后缀由<code>.jpg</code>变为<code>.png</code>，采用下面的脚本实现：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">find ./images -name *.jpg | <span class="keyword">while</span> <span class="built_in">read</span> fname</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    convert <span class="variable">$fname</span> -threshold 55% <span class="variable">$&#123;fname%.jpg&#125;</span>.png</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
 <p>该项操作耗时不长，在我的机器上，处理608张图片仅花了几分钟。</p>
-<h2 id="拼接成pdf文件"><a href="#拼接成pdf文件" class="headerlink" title="拼接成pdf文件"></a>拼接成pdf文件</h2><p>最后将png格式的黑白图片拼接成pdf文件，一般的拼接命令如下：</p>
+<h2 id="拼接成pdf文件">拼接成pdf文件</h2>
+<p>最后将png格式的黑白图片拼接成pdf文件，一般的拼接命令如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">convert image1.png image2.png image3.png output.pdf</span><br></pre></td></tr></table></figure>
 <p>但图片数量较多，为了确保按照文件名的排列顺序拼接，使用如下命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls *.png | sort -n | tr <span class="string">'\n'</span> <span class="string">' '</span> | sed <span class="string">'s/$/\ TCP-IP_Illustrated.pdf/'</span> | xargs convert</span><br></pre></td></tr></table></figure>
 <p>该项操作耗时约30分钟。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最后得到的文件类似于高质量的扫描版pdf，阅读效果非常完美，应该是全网最佳版本了。从查找解决方案到制作完成，几乎花费了我整个下午的时间，看来还是商业软件来得方便快捷啊！</p>
+<h2 id="总结">总结</h2>
+<p>最后得到的文件类似于高质量的扫描版pdf，阅读效果非常完美，应该是全网最佳版本了。从查找解决方案到制作完成，几乎花费了我整个下午的时间，看来还是商业软件来得方便快捷啊！</p>
 
     </div>
 
@@ -317,7 +293,7 @@
     <a href="http://panqiincs.me/2018/05/26/process-pdf-using-imagemagick/" title="用ImageMagick处理pdf">http://panqiincs.me/2018/05/26/process-pdf-using-imagemagick/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
@@ -332,21 +308,18 @@
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-                <a href="/2018/02/04/cpp-const-member-functions/" rel="next" title="C++的const成员函数">
-                  <i class="fa fa-chevron-left"></i> C++的const成员函数
-                </a>
-            </div>
 
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-                <a href="/2018/06/13/dpt-rp1-user-experience/" rel="prev" title="DPT-RP1使用体验">
-                  DPT-RP1使用体验 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/02/04/cpp-const-member-functions/" rel="prev" title="C++的const成员函数">
+      <i class="fa fa-chevron-left"></i> C++的const成员函数
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/06/13/dpt-rp1-user-experience/" rel="next" title="DPT-RP1使用体验">
+      DPT-RP1使用体验 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
     
   </article>
@@ -354,18 +327,39 @@
   
   
 
-  </div>
 
 
           </div>
           
     
-  <div class="comments" id="comments">
+  <div class="comments">
     <div id="disqus_thread">
       <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
     </div>
   </div>
   
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
 
         </div>
           
@@ -396,8 +390,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <img class="site-author-image" itemprop="image" alt="Krist Pan"
-    src="/images/avatar.png">
+    <img class="site-author-image" itemprop="image" alt="Krist Pan"
+      src="/images/avatar.png">
   <p class="site-author-name" itemprop="name">Krist Pan</p>
   <div class="site-description" itemprop="description">人生如逆旅，我亦是行人</div>
 </div>
@@ -406,45 +400,39 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">86</span>
+          <span class="site-state-item-count">87</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">144</span>
+        <span class="site-state-item-count">145</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="feed-link motion-element">
-    <a href="/atom.xml" rel="alternate">
-      <i class="fa fa-rss"></i>RSS
-    </a>
-  </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/panqiincs" title="GitHub &rarr; https://github.com/panqiincs" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/panqiincs" title="GitHub → https://github.com/panqiincs" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:panqihg@hotmail.com" title="E-Mail &rarr; mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://weibo.com/3850393415" title="Weibo &rarr; https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+        <a href="https://weibo.com/3850393415" title="Weibo → https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
       </span>
   </div>
 
 
   <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title">
-      <i class="fa fa-fw fa-link"></i>
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
@@ -483,19 +471,18 @@
       <div class="footer-inner">
         
 
+        
+
 <div class="copyright">
   
   &copy; 2013 – 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Krist Pan</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
@@ -507,11 +494,6 @@
 
 
 
-
-
-
-
-        
       </div>
     </footer>
   </div>
@@ -527,7 +509,6 @@
 
 
   
-
 
 
 
@@ -560,16 +541,16 @@
   window.addEventListener('load', loadCount, false);
 </script>
 <script>
-  function loadComments() {
+  var disqus_config = function() {
+    this.page.url = "http://panqiincs.me/2018/05/26/process-pdf-using-imagemagick/";
+    this.page.identifier = "2018/05/26/process-pdf-using-imagemagick/";
+    this.page.title = "用ImageMagick处理pdf";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
       DISQUS.reset({
         reload: true,
-        config: {page: {
-            url: "http://panqiincs.me/2018/05/26/process-pdf-using-imagemagick/",
-            identifier: "2018/05/26/process-pdf-using-imagemagick/",
-            title: "用ImageMagick处理pdf"
-          }
-        }
+        config: disqus_config
       });
     } else {
       var d = document, s = d.createElement('script');
@@ -577,8 +558,7 @@
       s.setAttribute('data-timestamp', '' + +new Date());
       (d.head || d.body).appendChild(s);
     }
-  }
-    window.addEventListener('load', loadComments, false);
+  });
 </script>
 
 </body>
