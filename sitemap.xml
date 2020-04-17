@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/series/index.html</loc>
+    
+    <lastmod>2020-04-17T11:37:08.409Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2020/04/15/memorable-months/</loc>
     
     <lastmod>2020-04-17T11:34:25.732Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://panqiincs.me/2014/06/01/cpp-explicit-conversion/</loc>
     
     <lastmod>2020-04-17T11:33:12.103Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/series/index.html</loc>
-    
-    <lastmod>2020-04-17T10:51:14.252Z</lastmod>
     
   </url>
   
