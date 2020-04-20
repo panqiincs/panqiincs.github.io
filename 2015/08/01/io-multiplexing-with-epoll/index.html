@@ -23,7 +23,7 @@
   </script>
 
   <meta name="description" content="简介 I/O多路复用（I/O multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I/O操作。能够进行I/O操作，具体来说就是，在描述符上执行I/O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。 在Linux系统中，多路复用由select，poll和epoll三个函数支持。它们的作用相同，特别地，poll和epo">
-<meta name="keywords" content="linux,多路复用,epoll,非阻塞I&#x2F;O">
+<meta name="keywords" content="多路复用,epoll,非阻塞I&#x2F;O,linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="I&#x2F;O多路复用之epoll">
 <meta property="og:url" content="http://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/index.html">
@@ -300,19 +300,19 @@
       <div class="popular-posts-title"><a href="/2015/08/05/multiplexing-and-nonblocking-io/" rel="bookmark">为什么多路复用要搭配非阻塞I/O</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/2015/06/11/iterative-and-concurrent-server/" rel="bookmark">迭代和并发服务器</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/2016/08/28/install-tl-wn823n-wlan-driver/" rel="bookmark">Linux下安装TL-WN823N无线网卡驱动</a></div>
+      <div class="popular-posts-title"><a href="/2017/04/19/write-a-shell-redirect-and-pipeline/" rel="bookmark">Shell实现：重定向和管道</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/2017/02/26/write-a-shell-basic-functionality/" rel="bookmark">Shell实现：基本功能</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/2017/04/19/write-a-shell-redirect-and-pipeline/" rel="bookmark">Shell实现：重定向和管道</a></div>
+      <div class="popular-posts-title"><a href="/2017/06/26/common-linux-commands/" rel="bookmark">实用Linux命令</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/2017/05/23/burn-pi-image-under-linux/" rel="bookmark">Linux下烧写树莓派系统</a></div>
+      <div class="popular-posts-title"><a href="/2017/09/10/after-installing-opensuse-leap/" rel="bookmark">安装OpenSUSE Leap之后</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2018/06/17/change-a-new-distribution/" rel="bookmark">又换了个发行版</a></div>
     </li>
   </ul>
 
@@ -336,10 +336,10 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/linux/" rel="tag"># linux</a>
               <a href="/tags/多路复用/" rel="tag"># 多路复用</a>
               <a href="/tags/epoll/" rel="tag"># epoll</a>
               <a href="/tags/非阻塞I-O/" rel="tag"># 非阻塞I/O</a>
+              <a href="/tags/linux/" rel="tag"># linux</a>
           </div>
 
         
@@ -348,8 +348,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2015/07/31/preview-markdown-with-emacs/" rel="prev" title="在Emacs中预览Markdown">
-      <i class="fa fa-chevron-left"></i> 在Emacs中预览Markdown
+    <a href="/2015/04/06/integer-arithmetic/" rel="prev" title="整数的运算">
+      <i class="fa fa-chevron-left"></i> 整数的运算
     </a></div>
       <div class="post-nav-item">
     <a href="/2015/08/05/multiplexing-and-nonblocking-io/" rel="next" title="为什么多路复用要搭配非阻塞I/O">
@@ -436,20 +436,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">147</span>
+        <span class="site-state-item-count">120</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

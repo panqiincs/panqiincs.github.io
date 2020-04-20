@@ -2,30 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://panqiincs.me/2016/06/29/cpp-access-control/</loc>
+    <loc>http://panqiincs.me/series/index.html</loc>
     
-    <lastmod>2020-04-18T04:56:06.594Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2016/11/20/cpp-rvalue-reference-intro/</loc>
-    
-    <lastmod>2020-04-18T04:55:50.244Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2018/01/30/cpp-const-keyword/</loc>
-    
-    <lastmod>2020-04-18T04:55:35.034Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2018/02/04/cpp-const-member-functions/</loc>
-    
-    <lastmod>2020-04-18T04:55:20.674Z</lastmod>
+    <lastmod>2020-04-20T05:48:47.324Z</lastmod>
     
   </url>
   
@@ -33,34 +12,6 @@
     <loc>http://panqiincs.me/2019/11/15/clrs-elementary/</loc>
     
     <lastmod>2020-04-18T04:48:42.632Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/series/index.html</loc>
-    
-    <lastmod>2020-04-18T03:38:54.149Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2016/01/27/stl-source-analysis-notes/</loc>
-    
-    <lastmod>2020-04-18T01:40:43.578Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2014/06/01/cpp-explicit-conversion/</loc>
-    
-    <lastmod>2020-04-18T01:40:32.058Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2014/05/21/cpp-explicit-keyword/</loc>
-    
-    <lastmod>2020-04-18T01:40:25.978Z</lastmod>
     
   </url>
   
@@ -128,30 +79,9 @@
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2017/03/11/gvim-monaco-font/</loc>
-    
-    <lastmod>2019-11-19T00:33:00.057Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://panqiincs.me/2016/07/06/hello-shenzhen/</loc>
     
     <lastmod>2019-11-19T00:32:23.934Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2015/08/10/tcp-connection-management/</loc>
-    
-    <lastmod>2019-11-19T00:29:10.029Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2015/06/15/edit-markdown-with-emacs/</loc>
-    
-    <lastmod>2019-11-19T00:28:21.559Z</lastmod>
     
   </url>
   
@@ -201,13 +131,6 @@
     <loc>http://panqiincs.me/2016/08/04/the-first-working-day/</loc>
     
     <lastmod>2019-09-26T03:59:16.605Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2015/12/05/get-hokuyo-laser-scanner-data/</loc>
-    
-    <lastmod>2019-09-26T03:57:58.963Z</lastmod>
     
   </url>
   
@@ -359,27 +282,6 @@
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2016/03/03/picamera-video-transmission/</loc>
-    
-    <lastmod>2019-08-03T08:22:37.941Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2016/02/18/process-picamera-video-on-pc/</loc>
-    
-    <lastmod>2019-08-03T08:22:31.394Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2015/10/30/socket-address-structures/</loc>
-    
-    <lastmod>2019-08-03T08:20:42.882Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://panqiincs.me/2015/08/05/multiplexing-and-nonblocking-io/</loc>
     
     <lastmod>2019-08-03T08:20:23.919Z</lastmod>
@@ -390,20 +292,6 @@
     <loc>http://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/</loc>
     
     <lastmod>2019-08-03T08:20:10.140Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2015/06/11/iterative-and-concurrent-server/</loc>
-    
-    <lastmod>2019-08-03T08:20:02.733Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2015/05/19/little-and-big-endian/</loc>
-    
-    <lastmod>2019-08-03T08:19:49.447Z</lastmod>
     
   </url>
   
@@ -485,13 +373,6 @@
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2016/08/28/install-tl-wn823n-wlan-driver/</loc>
-    
-    <lastmod>2019-06-05T00:14:09.959Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://panqiincs.me/2016/03/27/love-yuelu-mountain/</loc>
     
     <lastmod>2019-06-04T13:54:25.233Z</lastmod>
@@ -527,13 +408,6 @@
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2018/12/31/how-to-setup-opengrok/</loc>
-    
-    <lastmod>2019-06-02T23:08:41.596Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://panqiincs.me/2018/05/26/process-pdf-using-imagemagick/</loc>
     
     <lastmod>2019-06-02T23:08:04.670Z</lastmod>
@@ -551,13 +425,6 @@
     <loc>http://panqiincs.me/2017/09/01/host-hexo-blog-at-vps/</loc>
     
     <lastmod>2019-06-02T23:06:03.576Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2017/08/12/build-emacs-from-source/</loc>
-    
-    <lastmod>2019-06-02T23:05:07.184Z</lastmod>
     
   </url>
   
@@ -614,20 +481,6 @@
     <loc>http://panqiincs.me/2018/09/09/wubi-dict-manager/</loc>
     
     <lastmod>2019-03-31T01:17:10.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2015/07/31/preview-markdown-with-emacs/</loc>
-    
-    <lastmod>2019-03-23T07:41:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2017/05/23/burn-pi-image-under-linux/</loc>
-    
-    <lastmod>2019-03-08T08:04:48.000Z</lastmod>
     
   </url>
   
