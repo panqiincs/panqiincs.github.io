@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/about/index.html</loc>
+    
+    <lastmod>2020-04-28T01:42:35.215Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2015/04/06/integer-arithmetic/</loc>
     
     <lastmod>2020-04-28T01:05:12.154Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://panqiincs.me/2020/04/15/memorable-months/</loc>
     
     <lastmod>2020-04-25T10:58:00.195Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/about/index.html</loc>
-    
-    <lastmod>2020-04-20T05:51:46.852Z</lastmod>
     
   </url>
   
