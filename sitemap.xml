@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/2019/06/05/after-installing-manjaro/</loc>
+    
+    <lastmod>2020-05-07T09:15:08.251Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2019/08/29/learn-electronic-engineering/</loc>
     
     <lastmod>2020-05-05T09:23:04.749Z</lastmod>
@@ -152,13 +159,6 @@
     <loc>http://panqiincs.me/2015/11/19/raspberry-pi-hardware-pwm-module/</loc>
     
     <lastmod>2019-09-26T03:57:51.181Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/06/05/after-installing-manjaro/</loc>
-    
-    <lastmod>2019-08-26T13:12:46.677Z</lastmod>
     
   </url>
   
