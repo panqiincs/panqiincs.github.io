@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -23,17 +23,20 @@
   </script>
 
   <meta name="description" content="位模式 不同类型的数据，比如数字、文本、图片、视频等都以二进制形式（即一连串的1和0）存储在计算机中，我们称之为位模式。将位模式以不同的解析方式还原出来时，用户便看到了不同类型的数据。例如位模式01000001既可以表示数字65，也可以表示字符A。 下面的show_bytes函数用来打印数据的位模式，打印结果以十六进制形式给出：">
-<meta name="keywords" content="整数编码,二进制,补码,类型转换">
 <meta property="og:type" content="article">
 <meta property="og:title" content="整数的表示">
 <meta property="og:url" content="http://panqiincs.me/2015/03/21/integer-representations/index.html">
 <meta property="og:site_name" content="辛未羊的博客">
 <meta property="og:description" content="位模式 不同类型的数据，比如数字、文本、图片、视频等都以二进制形式（即一连串的1和0）存储在计算机中，我们称之为位模式。将位模式以不同的解析方式还原出来时，用户便看到了不同类型的数据。例如位模式01000001既可以表示数字65，也可以表示字符A。 下面的show_bytes函数用来打印数据的位模式，打印结果以十六进制形式给出：">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-28T01:05:01.264Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2015-03-21T13:36:11.000Z">
+<meta property="article:modified_time" content="2020-04-28T01:05:01.264Z">
+<meta property="article:author" content="Krist Pan">
+<meta property="article:tag" content="整数编码">
+<meta property="article:tag" content="二进制">
+<meta property="article:tag" content="补码">
+<meta property="article:tag" content="类型转换">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="整数的表示">
-<meta name="twitter:description" content="位模式 不同类型的数据，比如数字、文本、图片、视频等都以二进制形式（即一连串的1和0）存储在计算机中，我们称之为位模式。将位模式以不同的解析方式还原出来时，用户便看到了不同类型的数据。例如位模式01000001既可以表示数字65，也可以表示字符A。 下面的show_bytes函数用来打印数据的位模式，打印结果以十六进制形式给出：">
 
 <link rel="canonical" href="http://panqiincs.me/2015/03/21/integer-representations/">
 
@@ -88,6 +91,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -220,7 +224,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序设计/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
                 </span>
             </span>
 
@@ -271,9 +275,9 @@ B2T_w(\vec{x}) \doteq -x_{w-1} 2^{w-1} + \sum_{i=1}^{w-2} x_i2^i
 <h2 id="整数类型转换">整数类型转换</h2>
 <h3 id="符号数和无符号数之间的转换">符号数和无符号数之间的转换</h3>
 <p>在C语言中，不同数据类型之间可以转换。例如，强制类型转换运算<code>(unsigned)x</code>将<code>x</code>转化成一个无符号类型。下面的C代码打印两个变量的数值以及它们的位模式：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">short</span> <span class="keyword">int</span> v = <span class="number">-12345</span>;</span><br><span class="line">usigned <span class="keyword">short</span> uv = (<span class="keyword">unsigned</span> <span class="keyword">short</span>) v;</span><br><span class="line"><span class="comment">/* 打印数值和位模式 */</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"v = %d:"</span>);</span><br><span class="line">show_bytes((byte_pointer)&amp;v, <span class="keyword">sizeof</span>(v));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"uv = %u:"</span>);</span><br><span class="line">show_bytes((byte_pointer)&amp;uv, <span class="keyword">sizeof</span>(uv));</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">short <span class="keyword">int</span> v = <span class="number">-12345</span>;</span><br><span class="line">usigned short uv = (<span class="keyword">unsigned</span> short) v;</span><br><span class="line"><span class="comment">/* 打印数值和位模式 */</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"v = %d:"</span>);</span><br><span class="line">show_bytes((byte_pointer)&amp;v, <span class="keyword">sizeof</span>(v));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"uv = %u:"</span>);</span><br><span class="line">show_bytes((byte_pointer)&amp;uv, <span class="keyword">sizeof</span>(uv));</span><br></pre></td></tr></table></figure>
 <p>编译运行之后得到如下结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">v = -12345: c7 cf</span><br><span class="line">uv = 53191: c7 cf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">v &#x3D; -12345: c7 cf</span><br><span class="line">uv &#x3D; 53191: c7 cf</span><br></pre></td></tr></table></figure>
 <p>即转换前后的<strong>位模式没有改变</strong>，解析方式的不同造成了不同的结果。类似地，<code>0xff</code>用无符号编码表示正数<code>255</code>，用补码编码表示负数<code>-1</code>。依照转换前后位模式不变的原则，可以得到从有符号数到无符号数的转换函数<span class="math inline">\(T2U_w\)</span>（Two's Complement to Unsigned）：</p>
 <p><span class="math display">\[
 T2U_w(x) = B2U_w(T2B_w(x)) = x_{w-1} 2^w + x
@@ -286,7 +290,7 @@ U2T_w(u) = B2T_w(U2B_w(u)) = -u_{w-1} 2^w + u
 <p>另外，执行运算时，如果一个是有符号数而另一个是无符号数，那么C语言会隐式地<strong>将有符号参数强制类型转换为无符号数</strong>。例如，考虑比较式<code>-1 &lt; 0U</code> ，因为第二个运算是为无符号的，第一个运算数会被隐式地转换成无符号数，<code>-1</code>变成了一个很大的正数，表达式等价于<code>4294967295U &lt; 0U</code>，得到了和预想中不一样的结果，这一点尤其要注意。</p>
 <h3 id="扩展位模式">扩展位模式</h3>
 <p>一种常见的运算是在不同字长的整数之间转换，同时保持数值不变。将一个无符号数转换成一个更大的数据类型，执行<strong>零扩展</strong>（zero extension），即在开头添加<code>0</code>。将一个补码数字转换为一个更大的数据类型执行<strong>符号扩展</strong>（sign extension），即在开头添加符号位，如果是负数，则添加1，如果是正数，则添加0。如果转换中不仅有字长的扩展还有符号的改变，则转换的原则如下：<strong>首先改变大小，然后完成符号转换</strong>。例如下面的C代码：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">short</span> sx = <span class="number">-12345</span>;</span><br><span class="line"><span class="keyword">unsigned</span> uy = sx;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"uy = %u:\t"</span>, uy);</span><br><span class="line">show_bytes((byte_pointer)&amp;uy, <span class="keyword">sizeof</span>(<span class="keyword">unsigned</span>));</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">short sx = <span class="number">-12345</span>;</span><br><span class="line"><span class="keyword">unsigned</span> uy = sx;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"uy = %u:\t"</span>, uy);</span><br><span class="line">show_bytes((byte_pointer)&amp;uy, <span class="keyword">sizeof</span>(<span class="keyword">unsigned</span>));</span><br></pre></td></tr></table></figure>
 <p>可以得到输出<code>uy = 4294954951: ff ff cf c7</code>，即<code>(unsigned)sx</code>等价于<code>(unsigned)(int)sx</code>。</p>
 <h3 id="截断数字">截断数字</h3>
 <p>有些情况要从长字节转换到短字节，例如从<code>int</code>到<code>char</code>，这种情况称作截断。将一个<span class="math inline">\(w\)</span>位的数字<span class="math inline">\(\vec{x} = [x_{w-1}, x_{w-2}, ... , x_0]\)</span>转换成一个<span class="math inline">\(k\)</span>位的数字，把前<span class="math inline">\(w-k\)</span>位舍弃即可，得到新的位模式<span class="math inline">\(\vec{x} = [x_ｋ, x_{k-1}, ... , x_0]\)</span>。还是依照位模式不变的原则，根据前面的公式可以计算得到截断后得到的数值。</p>
@@ -328,10 +332,10 @@ U2T_w(u) = B2T_w(U2B_w(u)) = -u_{w-1} 2^w + u
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/整数编码/" rel="tag"># 整数编码</a>
-              <a href="/tags/二进制/" rel="tag"># 二进制</a>
-              <a href="/tags/补码/" rel="tag"># 补码</a>
-              <a href="/tags/类型转换/" rel="tag"># 类型转换</a>
+              <a href="/tags/%E6%95%B4%E6%95%B0%E7%BC%96%E7%A0%81/" rel="tag"># 整数编码</a>
+              <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/" rel="tag"># 二进制</a>
+              <a href="/tags/%E8%A1%A5%E7%A0%81/" rel="tag"># 补码</a>
+              <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag"># 类型转换</a>
           </div>
 
         
@@ -448,13 +452,13 @@ U2T_w(u) = B2T_w(U2B_w(u)) = -u_{w-1} 2^w + u
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/panqiincs" title="GitHub → https://github.com/panqiincs" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/panqiincs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;panqiincs" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
         <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://weibo.com/3850393415" title="Weibo → https://weibo.com/3850393415" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+        <a href="https://weibo.com/3850393415" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;3850393415" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
       </span>
   </div>
 
@@ -465,22 +469,22 @@ U2T_w(u) = B2T_w(U2B_w(u)) = -u_{w-1} 2^w + u
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="https://www.kawabangga.com/" title="https://www.kawabangga.com/" rel="noopener" target="_blank">卡瓦邦噶！</a>
+          <a href="https://www.kawabangga.com/" title="https:&#x2F;&#x2F;www.kawabangga.com&#x2F;" rel="noopener" target="_blank">卡瓦邦噶！</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://www.boatsky.com/" title="https://www.boatsky.com/" rel="noopener" target="_blank">太空船</a>
+          <a href="https://www.boatsky.com/" title="https:&#x2F;&#x2F;www.boatsky.com&#x2F;" rel="noopener" target="_blank">太空船</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://geektutu.com/" title="https://geektutu.com/" rel="noopener" target="_blank">极客兔兔</a>
+          <a href="https://geektutu.com/" title="https:&#x2F;&#x2F;geektutu.com&#x2F;" rel="noopener" target="_blank">极客兔兔</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://yuzhouwan.com/" title="https://yuzhouwan.com/" rel="noopener" target="_blank">宇宙湾</a>
+          <a href="https://yuzhouwan.com/" title="https:&#x2F;&#x2F;yuzhouwan.com&#x2F;" rel="noopener" target="_blank">宇宙湾</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="http://www.feidaoshuo.com" title="http://www.feidaoshuo.com" rel="noopener" target="_blank">飞刀说</a>
+          <a href="http://www.feidaoshuo.com/" title="http:&#x2F;&#x2F;www.feidaoshuo.com" rel="noopener" target="_blank">飞刀说</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://tumutanzi.com/" title="https://tumutanzi.com/" rel="noopener" target="_blank">土木坛子</a>
+          <a href="https://tumutanzi.com/" title="https:&#x2F;&#x2F;tumutanzi.com&#x2F;" rel="noopener" target="_blank">土木坛子</a>
         </li>
     </ul>
   </div>
@@ -510,7 +514,7 @@ U2T_w(u) = B2T_w(U2B_w(u)) = -u_{w-1} 2^w + u
   </span>
   <span class="author" itemprop="copyrightHolder">Krist Pan</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
@@ -530,9 +534,17 @@ U2T_w(u) = B2T_w(U2B_w(u)) = -u_{w-1} 2^w + u
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
