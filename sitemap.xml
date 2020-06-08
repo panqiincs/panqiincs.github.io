@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/2019/08/29/learn-electronic-engineering/</loc>
+    
+    <lastmod>2020-06-08T10:21:06.872Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2014/08/07/automation-specialty-skills/</loc>
+    
+    <lastmod>2020-06-08T10:19:24.853Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2013/03/22/start-blogging/</loc>
+    
+    <lastmod>2020-06-08T10:17:52.554Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2019/03/01/clrs-learning-plan/</loc>
     
-    <lastmod>2020-05-15T05:43:57.533Z</lastmod>
+    <lastmod>2020-05-15T06:42:23.125Z</lastmod>
     
   </url>
   
@@ -19,13 +40,6 @@
     <loc>http://panqiincs.me/2019/06/05/after-installing-manjaro/</loc>
     
     <lastmod>2020-05-07T09:25:02.502Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/08/29/learn-electronic-engineering/</loc>
-    
-    <lastmod>2020-05-05T09:23:04.749Z</lastmod>
     
   </url>
   
@@ -173,13 +187,6 @@
     <loc>http://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/</loc>
     
     <lastmod>2019-08-26T11:51:32.176Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2014/08/07/automation-specialty-skills/</loc>
-    
-    <lastmod>2019-08-26T11:46:28.935Z</lastmod>
     
   </url>
   
@@ -460,13 +467,6 @@
     <loc>http://panqiincs.me/2018/06/17/change-a-new-distribution/</loc>
     
     <lastmod>2019-05-14T10:06:55.408Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2013/03/22/start-blogging/</loc>
-    
-    <lastmod>2019-05-09T16:19:16.225Z</lastmod>
     
   </url>
   
