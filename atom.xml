@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://panqiincs.me/"/>
-  <updated>2020-07-03T04:21:10.164Z</updated>
+  <updated>2020-07-10T13:48:42.695Z</updated>
   <id>http://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>树莓派与STM32之间的SPI通信</title>
+    <link href="http://panqiincs.me/2020/07/10/rpi-stm32-spi-communication/"/>
+    <id>http://panqiincs.me/2020/07/10/rpi-stm32-spi-communication/</id>
+    <published>2020-07-10T13:05:11.000Z</published>
+    <updated>2020-07-10T13:48:42.695Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="树莓派的spi">树莓派的SPI</h2><p>树莓派的<a href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/spi/README.md" target="_blank" rel="noopener">官方文档</a>详细介绍了SPI模块的基本特性，主要是下面几个方面：</p><a id="more"></a><ol type="1"><li>硬件引脚分配</li><li>在树莓派的Linux系统中，SPI硬件抽象成<code>/dev/spidev0.0</code>文件</li><li>树莓派的SPI只支持主模式（Master Mode）</li><li>配置参数：除了通信速率、CPOL、CPHA这三个参数外，其他的参数一般都不会去修改</li><li>提供了一段回环测试程序，可用于检测SPI模块是否正常工作</li></ol><p>接下来的问题是，我们如何通过SPI接受和发送数据。看到<code>/dev/spidev0.0</code>文件，熟悉Linux系统编程的人马上会想起通用I/O模型中的几个函数。的确，可以在该文件上执行<code>open()</code>和<code>close()</code>操作，就跟操作普通文件一样。同样地，<code>read()</code>和<code>write()</code>函数可以读写数据，但只能进行基本的<strong>半双工</strong>数据传输，片选信号在操作之间会失效（片选信号默认低电平有效，高电平失效）。使用<code>ioctl()</code>函数的<code>SPI_IOC_MESSAGE(N)</code>请求可实现<strong>全双工</strong>数据传输，而且整个过程中片选信号不会失效。</p><p>Linux内核代码提供了比较好的示例程序，是<code>/tools/spi/</code>目录下的<a href="https://github.com/raspberrypi/linux/blob/rpi-4.19.y/tools/spi/spidev_test.c" target="_blank" rel="noopener">spidev_test.c</a>文件。这段代码实现了一个命令行工具，既可以直接使用，也可以借鉴它的代码实现自己的功能。将代码编译后生成的可执行文件命名为spidev_test，下面的命令使用默认的参数配置将一个文件的内容通过SPI发送了出去，并把从SPI接收的数据保存到另一个文件中：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./spidev_test -D /dev/spidev0.0 -i send.txt -o receive.txt -v</span><br></pre></td></tr></table></figure><p>如果要修改通信速率、CPOL和CPHA这三个参数，分别通过<code>-s</code>、<code>-O</code>和<code>-H</code>选项实现，上面的<code>-v</code>选项是为了打印出发送和接受的内容。正如上面提到的，这段代码就是使用<code>ioctl()</code>函数实现<strong>全双工</strong>数据传输，详情可以阅读源文件中的<code>transfer</code>函数。</p><h2 id="stm32端的代码">STM32端的代码</h2><p>首先将树莓派和STM32对应的SPI引脚连接好。为了验证树莓派和STM32之间的SPI通信是正确的，我将实现如下功能：</p><ol type="1"><li>树莓派发送一个32字节大小的文件给STM32，STM32收完之后用串口发送出去，可以在PC端的串口助手上看到数据</li><li>STM32同时给树莓派发送数据，树莓派上可通过<code>-v</code>参数可以看到STM32发送过来的数据</li></ol><p>STM32的SPI要配置成全双工、从模式（Slave Mode），CPHA和CPOL参数都为0。我使用固件库开发，部分代码如下：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主模式，双线全双工通信，软件控制片选信号</span></span><br><span class="line">SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;</span><br><span class="line">SPI_InitStructure.SPI_Mode = SPI_Mode_Master;</span><br><span class="line">SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;</span><br><span class="line">SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;    <span class="comment">// CPOL = 0</span></span><br><span class="line">SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;  <span class="comment">// CPHA = 0</span></span><br><span class="line">SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 省略GPIO配置、其他初始化和NVIC配置代码</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 使能TXE和RXNE中断</span></span><br><span class="line">SPI_I2S_ITConfig(SPI_MASTER, SPI_I2S_IT_TXE, ENABLE);</span><br><span class="line">SPI_I2S_ITConfig(SPI_MASTER, SPI_I2S_IT_RXNE, ENABLE);</span><br></pre></td></tr></table></figure><p>STM32接受和发送数据都在中断中进行。发送缓冲区为空时会触发TXE中断，这时没有可发的数据，调用SendData函数发送数据；接受缓冲区不为空时说明有新的数据到了，此时会触发RXNE中断，调用ReceiveData函数读出数据。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TX_SIZE 32</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RX_SIZE 32</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 发给树莓派的数据</span></span><br><span class="line"><span class="keyword">uint8_t</span> spi_tx[TX_SIZE] = &#123;<span class="number">0x01</span>, <span class="number">0x02</span>, <span class="number">0x03</span>, <span class="number">0x04</span>, <span class="number">0x05</span>, <span class="number">0x06</span>,</span><br><span class="line">                           <span class="number">0x07</span>, <span class="number">0x08</span>, <span class="number">0x09</span>, <span class="number">0x0A</span>, <span class="number">0x0B</span>, <span class="number">0x0C</span>,</span><br><span class="line">                           <span class="number">0x0D</span>, <span class="number">0x0E</span>, <span class="number">0x0F</span>, <span class="number">0x10</span>, <span class="number">0x11</span>, <span class="number">0x12</span>,</span><br><span class="line">                           <span class="number">0x13</span>, <span class="number">0x14</span>, <span class="number">0x15</span>, <span class="number">0x16</span>, <span class="number">0x17</span>, <span class="number">0x18</span>,</span><br><span class="line">                           <span class="number">0x19</span>, <span class="number">0x1A</span>, <span class="number">0x1B</span>, <span class="number">0x1C</span>, <span class="number">0x1D</span>, <span class="number">0x1E</span>,</span><br><span class="line">                           <span class="number">0x1F</span>, <span class="number">0x20</span>&#125;;</span><br><span class="line"><span class="keyword">uint32_t</span> tx_idx = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">uint8_t</span> spi_rx[RX_SIZE];</span><br><span class="line"><span class="keyword">uint32_t</span> rx_idx = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SPI1_IRQHandler</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">if</span> (SPI_I2S_GetITStatus(SPI1, SPI_I2S_IT_TXE) != RESET)</span><br><span class="line">    &#123;</span><br><span class="line">        SPI_I2S_SendData(SPI1, spi_tx[tx_idx++]);</span><br><span class="line">        <span class="comment">// 发送32个数据后禁止TXE中断</span></span><br><span class="line">        <span class="keyword">if</span> (tx_idx == TX_SIZE)</span><br><span class="line">        &#123;</span><br><span class="line">            SPI_I2S_ITConfig(SPI1, SPI_I2S_IT_TXE, DISABLE);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 从SPI读取数据</span></span><br><span class="line">    <span class="keyword">if</span> (SPI_I2S_GetITStatus(SPI1, SPI_I2S_IT_RXNE) != RESET)</span><br><span class="line">    &#123;</span><br><span class="line">        spi_rx[rx_idx++] = SPI_I2S_ReceiveData(SPI1);</span><br><span class="line">        <span class="comment">// 收完32个字节后将收到的内容通过串口发送出去</span></span><br><span class="line">        <span class="keyword">if</span> (rx_idx == RX_SIZE)</span><br><span class="line">        &#123;</span><br><span class="line">            LED0(OFF);</span><br><span class="line">            LED1(ON);</span><br><span class="line">            <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; RX_SIZE; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                USART_SendData(USART1, (<span class="keyword">uint16_t</span>)spi_rx[i]);</span><br><span class="line">                <span class="keyword">while</span> (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>将STM32串口线连接到PC上，打开串口助手并打开对应的COM口，然后在树莓派端运行命令向STM32发送文件的内容。如果串口助手中接受到的数据和文件内容完全符合，而且树莓派上显示的也是STM32发送的内容，就证明双向的通信均是正确的。</p><h2 id="参考链接">参考链接</h2><ol type="1"><li><a href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/spi/README.md" target="_blank" rel="noopener">SPI - Raspberry Pi Documentation</a></li><li><a href="https://raspberrypi.stackexchange.com/questions/36169/can-raspberry-pi-function-as-spi-slave" target="_blank" rel="noopener">Can Raspberry PI function as SPI slave?</a></li><li><a href="https://www.kernel.org/doc/Documentation/spi/spidev" target="_blank" rel="noopener">spidev - kernel.org</a></li><li><a href="https://github.com/zafersn/SPLibrary-STM32F103-SPI-FULLDUBLEX-MASTER-SLAVE_COMMUNICATION" target="_blank" rel="noopener">SPLibrary-STM32F103-SPI-FULLDUBLEX-MASTER-SLAVE_COMMUNICATION</a></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;树莓派的spi&quot;&gt;树莓派的SPI&lt;/h2&gt;
+&lt;p&gt;树莓派的&lt;a href=&quot;https://www.raspberrypi.org/documentation/hardware/raspberrypi/spi/README.md&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官方文档&lt;/a&gt;详细介绍了SPI模块的基本特性，主要是下面几个方面：&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="工具使用" scheme="http://panqiincs.me/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="树莓派" scheme="http://panqiincs.me/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+      <category term="stm32" scheme="http://panqiincs.me/tags/stm32/"/>
+    
+      <category term="spi" scheme="http://panqiincs.me/tags/spi/"/>
+    
+  </entry>
   
   <entry>
     <title>谈谈『Smith的电子学』</title>
@@ -525,33 +553,6 @@
       <category term="排序算法" scheme="http://panqiincs.me/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
     
       <category term="快速排序" scheme="http://panqiincs.me/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>台式机翻新记</title>
-    <link href="http://panqiincs.me/2019/05/04/renovate-my-computer/"/>
-    <id>http://panqiincs.me/2019/05/04/renovate-my-computer/</id>
-    <published>2019-05-04T07:25:12.000Z</published>
-    <updated>2019-07-20T14:41:27.511Z</updated>
-    
-    <content type="html"><![CDATA[<p>我的台式机是2014年配的，是我这几年唯一的电脑，五年以来为我立下了汗马功劳。2016年毕业后，我把它快递到深圳，结果机箱外壳在运输途中损坏。用胶布把破损处粘起来，几年下来，使用基本正常。今年本来打算配一台新机器，但把它闲置又觉得可惜，于是决定翻新一下。翻新主要是两件事，换新机箱以及把机械硬盘换成固态硬盘。</p><a id="more"></a><p>我换了一个体积更小、重量更轻的机箱，安装非常顺利，还顺便把灰尘清理干净了。去年以来，固态硬盘价格一路下跌，所以我买得起500GB容量的盘，无需采用SSD+HDD的方案。之前用的是OpenSUSE的滚动发行版Tumbleweed，装在机械硬盘上，开机要花几分钟。趁着这次重装系统，尝试了排名第一的Manjaro发行版。换成固态硬盘后，开机启动只需要10多秒，下载安装软件飞快，文件都是秒开，有效地弥补了CPU性能的不足，真香！OpenSUSE系统还完整保留在机械硬盘上，可以在BIOS中选择启动机械硬盘中的系统。等迁移工作全部完成，就把机械硬盘格式化，当做备份盘使用。和之前一样，我选的KDE桌面环境，所以新系统用起来很习惯。目前来看，Manjaro最大的优点是软件齐全，WPS Office和搜狗拼音等软件都能直接从软件仓库中安装，真是方便，怪不得大家都推荐它。</p><p>好家伙，这台机子估计还能再战五年！</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;我的台式机是2014年配的，是我这几年唯一的电脑，五年以来为我立下了汗马功劳。2016年毕业后，我把它快递到深圳，结果机箱外壳在运输途中损坏。用胶布把破损处粘起来，几年下来，使用基本正常。今年本来打算配一台新机器，但把它闲置又觉得可惜，于是决定翻新一下。翻新主要是两件事，换新机箱以及把机械硬盘换成固态硬盘。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="生活记录" scheme="http://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
-    
-    
-      <category term="固态硬盘" scheme="http://panqiincs.me/tags/%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98/"/>
-    
-      <category term="manjaro" scheme="http://panqiincs.me/tags/manjaro/"/>
-    
-      <category term="电脑" scheme="http://panqiincs.me/tags/%E7%94%B5%E8%84%91/"/>
     
   </entry>
   

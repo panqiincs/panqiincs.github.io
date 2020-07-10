@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/2020/07/10/rpi-stm32-spi-communication/</loc>
+    
+    <lastmod>2020-07-10T13:48:42.695Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2019/08/29/learn-electronic-engineering/</loc>
     
     <lastmod>2020-07-03T04:23:05.563Z</lastmod>
