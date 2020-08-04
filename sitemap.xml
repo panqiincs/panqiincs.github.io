@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/about/index.html</loc>
+    
+    <lastmod>2020-08-04T13:38:07.897Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2013/03/22/start-blogging/</loc>
     
     <lastmod>2020-08-04T13:33:29.960Z</lastmod>
@@ -124,13 +131,6 @@
     <loc>http://panqiincs.me/2019/09/25/mcu-gpio-settings/</loc>
     
     <lastmod>2020-05-05T09:22:49.699Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/about/index.html</loc>
-    
-    <lastmod>2020-04-28T01:42:35.215Z</lastmod>
     
   </url>
   
