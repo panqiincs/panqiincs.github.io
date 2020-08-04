@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"panqiincs.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="以前的做法 我的博客使用Hexo框架，主题使用Next，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的themes目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新手动合入到博客源码中。">
+  <meta name="description" content="以前的做法 我的网站使用Hexo框架，主题使用Next，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在网站源码的themes目录下，作为网站源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新手动合入到网站源码中。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo博客源码管理">
+<meta property="og:title" content="Hexo网站源码管理">
 <meta property="og:url" content="http://panqiincs.me/2017/08/06/hexo-blog-code-management/index.html">
-<meta property="og:site_name" content="辛未羊的博客">
-<meta property="og:description" content="以前的做法 我的博客使用Hexo框架，主题使用Next，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的themes目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新手动合入到博客源码中。">
+<meta property="og:site_name" content="辛未羊的网络日志">
+<meta property="og:description" content="以前的做法 我的网站使用Hexo框架，主题使用Next，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在网站源码的themes目录下，作为网站源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新手动合入到网站源码中。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-08-06T03:02:08.000Z">
-<meta property="article:modified_time" content="2019-06-02T23:04:40.177Z">
+<meta property="article:modified_time" content="2020-08-04T13:19:10.390Z">
 <meta property="article:author" content="Krist Pan">
 <meta property="article:tag" content="git">
 <meta property="article:tag" content="hexo">
@@ -49,7 +49,7 @@
   };
 </script>
 
-  <title>Hexo博客源码管理 | 辛未羊的博客</title>
+  <title>Hexo网站源码管理 | 辛未羊的网络日志</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
     <script>
@@ -89,7 +89,7 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="辛未羊的博客" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="辛未羊的网络日志" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -110,7 +110,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">辛未羊的博客</h1>
+      <h1 class="site-title">辛未羊的网络日志</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -193,11 +193,11 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="辛未羊的博客">
+      <meta itemprop="name" content="辛未羊的网络日志">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hexo博客源码管理
+          Hexo网站源码管理
         </h1>
 
         <div class="post-meta">
@@ -214,7 +214,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-06-03 07:04:40" itemprop="dateModified" datetime="2019-06-03T07:04:40+08:00">2019-06-03</time>
+                <time title="修改时间：2020-08-04 21:19:10" itemprop="dateModified" datetime="2020-08-04T21:19:10+08:00">2020-08-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -252,12 +252,12 @@
 
       
         <h2 id="以前的做法">以前的做法</h2>
-<p>我的博客使用Hexo框架，主题使用<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">Next</a>，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在博客源码的<code>themes</code>目录下，作为博客源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新<strong>手动合入</strong>到博客源码中。</p>
+<p>我的网站使用Hexo框架，主题使用<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">Next</a>，该项目托管在Github上，时常有更新。最开始的源码管理策略是这样的：下载主题源码放在网站源码的<code>themes</code>目录下，作为网站源码的一部分，统一做版本管理。这样会导致一个问题，主题源码的更新合入不方便。因此，每隔几个月我会将主题的更新<strong>手动合入</strong>到网站源码中。</p>
 <a id="more"></a>
 <h2 id="使用git子模块">使用Git子模块</h2>
 <h3 id="添加子模块">添加子模块</h3>
-<p>男人要对自己好一点！如果想让生活更加美好，必须要将博客源码和主题源码分开管理。由于主题要根据自己的需求适配，因此要有自己的repo。在Github上将该项目fork，于是我有了一个同名的新仓库。</p>
-<p>在网上了解到，一个项目要使用另外一个项目，两者又要单独管理，可以使用submodule或者subtree功能。我觉得subtree操作太复杂了，最终选择了submodule方式。将主题项目作为一个子模块添加到博客项目中，操作如下：</p>
+<p>男人要对自己好一点！如果想让生活更加美好，必须要将网站源码和主题源码分开管理。由于主题要根据自己的需求适配，因此要有自己的repo。在Github上将该项目fork，于是我有了一个同名的新仓库。</p>
+<p>在网上了解到，一个项目要使用另外一个项目，两者又要单独管理，可以使用submodule或者subtree功能。我觉得subtree操作太复杂了，最终选择了submodule方式。将主题项目作为网站项目的子模块，操作如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> hexo_blog/</span><br><span class="line">git submodule add git@github.com:panqiincs/hexo-theme-next.git themes/next/</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'add theme next as a submodule'</span></span><br></pre></td></tr></table></figure>
 <p>对上述操作不清楚的请参考<a href="https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97" target="_blank" rel="noopener">Progit</a>的说明。</p>
 <h3 id="添加上游远程仓库">添加上游远程仓库</h3>
@@ -275,11 +275,11 @@
 <p>将新的commits推送到远程origin分支：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
 <h3 id="提交子模块的更新">提交子模块的更新</h3>
-<p>回到博客源码目录，发现有更改未暂存：</p>
+<p>回到网站源码目录，发现有更改未暂存：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> hexo_blog/</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is up-to-date with <span class="string">'origin/master'</span>.</span><br><span class="line">Changes not staged <span class="keyword">for</span> commit:</span><br><span class="line">  (use <span class="string">"git add &lt;file&gt;..."</span> to update what will be committed)</span><br><span class="line">  (use <span class="string">"git checkout -- &lt;file&gt;..."</span> to discard changes <span class="keyword">in</span> working directory)</span><br><span class="line"></span><br><span class="line">        modified:   themes/next (new commits)</span><br></pre></td></tr></table></figure>
 <p>提交子模块的更新：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'update theme next'</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-<p>在Github上查看博客源码仓库，可以看到<code>themes/next</code>目录后有个<code>@xxxxxx</code>，指向子模块的一个提交，点击可以跳转到<code>panqiincs/hexo-theme-next</code>仓库。</p>
+<p>在Github上查看网站源码仓库，可以看到<code>themes/next</code>目录后有个<code>@xxxxxx</code>，指向子模块的一个提交，点击可以跳转到<code>panqiincs/hexo-theme-next</code>仓库。</p>
 
     </div>
 
@@ -290,7 +290,7 @@
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/2017/09/01/host-hexo-blog-at-vps/" rel="bookmark">将Hexo博客托管到VPS</a></div>
+      <div class="popular-posts-title"><a href="/2017/09/01/host-hexo-blog-at-vps/" rel="bookmark">将Hexo网站托管到VPS</a></div>
     </li>
   </ul>
 
@@ -303,7 +303,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://panqiincs.me/2017/08/06/hexo-blog-code-management/" title="Hexo博客源码管理">http://panqiincs.me/2017/08/06/hexo-blog-code-management/</a>
+    <a href="http://panqiincs.me/2017/08/06/hexo-blog-code-management/" title="Hexo网站源码管理">http://panqiincs.me/2017/08/06/hexo-blog-code-management/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -425,7 +425,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">126</span>
+        <span class="site-state-item-count">125</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -564,7 +564,7 @@
   var disqus_config = function() {
     this.page.url = "http://panqiincs.me/2017/08/06/hexo-blog-code-management/";
     this.page.identifier = "2017/08/06/hexo-blog-code-management/";
-    this.page.title = "Hexo博客源码管理";
+    this.page.title = "Hexo网站源码管理";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
