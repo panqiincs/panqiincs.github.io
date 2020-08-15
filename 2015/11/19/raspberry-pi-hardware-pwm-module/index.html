@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"panqiincs.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="硬件PWM本文针对的是Raspberry Pi 2 Model B硬件。从理论上讲，对于任意GPIO口，可以通过设定延时来输出PWM信号，这被称作软件PWM。由于Linux不是实时操作系统，对于一些要求硬实时的应用，例如通过PWM信号控制舵机，最好使用硬件PWM。 树莓派的BCM2386芯片有两个PWM通道——PWM0和PWM1。PWM0可以设置在GPIO12和GPIO18上，PWM1可以设置在G">
+  <meta name="description" content="硬件PWM 本文针对的是Raspberry Pi 2 Model B硬件。从理论上讲，对于任意GPIO口，可以通过设定延时来输出PWM信号，这被称作软件PWM。由于Linux不是实时操作系统，对于一些要求硬实时的应用，例如通过PWM信号控制舵机，最好使用硬件PWM。 树莓派的BCM2386芯片有两个PWM通道——PWM0和PWM1。PWM0可以设置在GPIO12和GPIO18上，PWM1可以设置在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树莓派的硬件PWM模块">
 <meta property="og:url" content="http://panqiincs.me/2015/11/19/raspberry-pi-hardware-pwm-module/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="硬件PWM本文针对的是Raspberry Pi 2 Model B硬件。从理论上讲，对于任意GPIO口，可以通过设定延时来输出PWM信号，这被称作软件PWM。由于Linux不是实时操作系统，对于一些要求硬实时的应用，例如通过PWM信号控制舵机，最好使用硬件PWM。 树莓派的BCM2386芯片有两个PWM通道——PWM0和PWM1。PWM0可以设置在GPIO12和GPIO18上，PWM1可以设置在G">
+<meta property="og:description" content="硬件PWM 本文针对的是Raspberry Pi 2 Model B硬件。从理论上讲，对于任意GPIO口，可以通过设定延时来输出PWM信号，这被称作软件PWM。由于Linux不是实时操作系统，对于一些要求硬实时的应用，例如通过PWM信号控制舵机，最好使用硬件PWM。 树莓派的BCM2386芯片有两个PWM通道——PWM0和PWM1。PWM0可以设置在GPIO12和GPIO18上，PWM1可以设置在">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2015-11-19T04:13:21.000Z">
 <meta property="article:modified_time" content="2019-09-26T03:57:51.181Z">
@@ -252,27 +252,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="硬件PWM"><a href="#硬件PWM" class="headerlink" title="硬件PWM"></a>硬件PWM</h2><p>本文针对的是Raspberry Pi 2 Model B硬件。从理论上讲，对于任意GPIO口，可以通过设定延时来输出PWM信号，这被称作<strong>软件PWM</strong>。由于Linux不是实时操作系统，对于一些要求<strong>硬实时</strong>的应用，例如通过PWM信号控制舵机，最好使用<strong>硬件PWM</strong>。</p>
+        <h2 id="硬件pwm">硬件PWM</h2>
+<p>本文针对的是Raspberry Pi 2 Model B硬件。从理论上讲，对于任意GPIO口，可以通过设定延时来输出PWM信号，这被称作<strong>软件PWM</strong>。由于Linux不是实时操作系统，对于一些要求<strong>硬实时</strong>的应用，例如通过PWM信号控制舵机，最好使用<strong>硬件PWM</strong>。</p>
 <p>树莓派的BCM2386芯片有两个PWM通道——PWM0和PWM1。PWM0可以设置在GPIO12和GPIO18上，PWM1可以设置在GPIO13上。本文使用<a href="http://abyz.co.uk/rpi/pigpio/" target="_blank" rel="noopener">pigpio</a>库来实现<strong>GPIO12</strong>输出PWM信号。</p>
 <a id="more"></a>
-
-<h2 id="pigpio"><a href="#pigpio" class="headerlink" title="pigpio"></a>pigpio</h2><p>首先<a href="http://abyz.co.uk/rpi/pigpio/download.html" target="_blank" rel="noopener">下载并安装pigpio库</a>。安装成功后，输入命令<code>sudo pigpiod</code>运行<code>pigpio</code>守护进程，python接口通过和pigpio守护进程通信来控制GPIO口。函数<code>set_PWM_dutycycle</code>， <code>set_PWM_frequency</code>，<code>set_PWM_range</code>分别控制PWM的<strong>占空比</strong>、<strong>频率</strong>和<strong>控制精度</strong>。</p>
+<h2 id="pigpio">pigpio</h2>
+<p>首先<a href="http://abyz.co.uk/rpi/pigpio/download.html" target="_blank" rel="noopener">下载并安装pigpio库</a>。安装成功后，输入命令<code>sudo pigpiod</code>运行<code>pigpio</code>守护进程，python接口通过和pigpio守护进程通信来控制GPIO口。函数<code>set_PWM_dutycycle</code>， <code>set_PWM_frequency</code>，<code>set_PWM_range</code>分别控制PWM的<strong>占空比</strong>、<strong>频率</strong>和<strong>控制精度</strong>。</p>
 <p><code>set_PWM_dutycycle(user_gpio, dutycycle)</code>函数控制PWM的占空比，<code>user_gpio</code>指定GPIO口，<code>dutycycle</code>的范围是<code>0--range</code>，<code>range</code>默认为255，可以通过<code>set_PWM_range</code>函数来更改<code>range</code>的值，下面是一段示例代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pigpio</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">pi = pigpio.pi()               <span class="comment"># pi accesses the local Pi's gpios</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># gpio 12 outputs pwm </span></span><br><span class="line">pi.set_PWM_dutycycle(<span class="number">12</span>,   <span class="number">0</span>)  <span class="comment"># PWM off</span></span><br><span class="line">pi.set_PWM_dutycycle(<span class="number">12</span>,  <span class="number">64</span>)  <span class="comment"># PWM 1/4 on</span></span><br><span class="line">pi.set_PWM_dutycycle(<span class="number">12</span>, <span class="number">128</span>)  <span class="comment"># PWM 1/2 on</span></span><br><span class="line">pi.set_PWM_dutycycle(<span class="number">12</span>, <span class="number">192</span>)  <span class="comment"># PWM 3/4 on</span></span><br><span class="line">pi.set_PWM_dutycycle(<span class="number">12</span>, <span class="number">255</span>)  <span class="comment"># PWM full on</span></span><br></pre></td></tr></table></figure>
-
 <p><code>set_PWM_frequency(user_gpio, frequency)</code>控制PWM信号的频率，示例代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>pi.set_PWM_frequency(<span class="number">4</span>, <span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(pi.get_PWM_frequency(<span class="number">4</span>))</span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pi.set_PWM_frequency(<span class="number">4</span>, <span class="number">100000</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(pi.get_PWM_frequency(<span class="number">4</span>))</span><br><span class="line"><span class="number">8000</span></span><br></pre></td></tr></table></figure>
-
 <p><code>set_PWM_range(user_gpio, range_)</code>通过设定<code>range_</code>值来控制PWM信号的精度。<code>range_</code>值越大，控制精度越高，<code>range_</code>值的范围是<code>25--40000</code>，示例代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pi.set_PWM_range(<span class="number">12</span>, <span class="number">100</span>)   <span class="comment"># now  25 1/4,   50 1/2,   75 3/4 on</span></span><br><span class="line">pi.set_PWM_range(<span class="number">12</span>, <span class="number">500</span>)   <span class="comment"># now 125 1/4,  250 1/2,  375 3/4 on</span></span><br><span class="line">pi.set_PWM_range(<span class="number">12</span>, <span class="number">3000</span>)  <span class="comment"># now 750 1/4, 1500 1/2, 2250 3/4 on</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="应用实例"><a href="#应用实例" class="headerlink" title="应用实例"></a>应用实例</h2><p>这里是控制一个舵机来回转动的代码：</p>
+<h2 id="应用实例">应用实例</h2>
+<p>这里是控制一个舵机来回转动的代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pigpio</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">pi = pigpio.pi()</span><br><span class="line">pi.set_PWM_frequency(<span class="number">12</span>, <span class="number">50</span>)  <span class="comment"># frequency 50Hz</span></span><br><span class="line">pi.set_PWM_range(<span class="number">12</span>, <span class="number">1000</span>)    <span class="comment"># set range 1000</span></span><br><span class="line">pi.set_PWM_dutycycle(<span class="number">12</span>, <span class="number">75</span>)  <span class="comment"># set an initial position</span></span><br><span class="line">time.sleep(<span class="number">2</span>)                 <span class="comment"># wait for 2 seconds</span></span><br><span class="line"></span><br><span class="line">delay = <span class="number">0.5</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    pi.set_PWM_dutycycle(<span class="number">12</span>, <span class="number">25</span>)  <span class="comment"># 2.5%</span></span><br><span class="line">    time.sleep(delay)</span><br><span class="line">    pi.set_PWM_dutycycle(<span class="number">12</span>, <span class="number">125</span>) <span class="comment"># 12.5%</span></span><br><span class="line">    time.sleep(delay)</span><br></pre></td></tr></table></figure>
-
 <p>while循环中的延时是为了使舵机有充足时间转动到对应的角度。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<h2 id="参考">参考</h2>
+<ol type="1">
 <li><a href="http://raspberrypi.stackexchange.com/questions/298/can-i-use-the-gpio-for-pulse-width-modulation-pwm" target="_blank" rel="noopener">Can I use the GPIO for pulse width modulation (PWM)?</a></li>
-<li><a href="https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=105044" target="_blank" rel="noopener">Raspberry Pi 2 Hardware PWM</a></li>
+<li><a href="https://www.raspberrypi.org/forums/viewtopic.php?f=91&amp;t=105044" target="_blank" rel="noopener">Raspberry Pi 2 Hardware PWM</a></li>
 <li><a href="http://abyz.co.uk/rpi/pigpio/index.html" target="_blank" rel="noopener">pigpio library</a></li>
 </ol>
 
@@ -284,6 +283,9 @@
       
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/08/15/rpi-network-via-serial/" rel="bookmark">树莓派通过串口接入网络</a></div>
+    </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/2020/07/10/rpi-stm32-spi-communication/" rel="bookmark">树莓派与STM32之间的SPI通信</a></div>
     </li>
@@ -392,7 +394,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#硬件PWM"><span class="nav-number">1.</span> <span class="nav-text">硬件PWM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pigpio"><span class="nav-number">2.</span> <span class="nav-text">pigpio</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用实例"><span class="nav-number">3.</span> <span class="nav-text">应用实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#硬件pwm"><span class="nav-number">1.</span> <span class="nav-text">硬件PWM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pigpio"><span class="nav-number">2.</span> <span class="nav-text">pigpio</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用实例"><span class="nav-number">3.</span> <span class="nav-text">应用实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -408,7 +410,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -421,7 +423,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">127</span>
+        <span class="site-state-item-count">130</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
