@@ -440,8 +440,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="使用Qt"><a href="#使用Qt" class="headerlink" title="使用Qt"></a>使用Qt</h2><p>Qt是一个跨平台的C++应用程序开发框架，广泛用于开发界面程序。Qt不仅仅是个强大的界面库，它的基础库同样强大，很多库用起来比STL还方便，所以我经常用Qt编写控制台（console）程序。本文介绍如何用Qt进行常用的文本操作，代码简单实用，无需太多的解释。</p>
-<h2 id="从文件逐行读取"><a href="#从文件逐行读取" class="headerlink" title="从文件逐行读取"></a>从文件逐行读取</h2><p>例如，数据保存在文本文件中，每行一个数字：</p>
+          <h2 id="使用qt">使用Qt</h2>
+<p>Qt是一个跨平台的C++应用程序开发框架，广泛用于开发界面程序。Qt不仅仅是个强大的界面库，它的基础库同样强大，很多库用起来比STL还方便，所以我经常用Qt编写控制台（console）程序。本文介绍如何用Qt进行常用的文本操作，代码简单实用，无需太多的解释。</p>
+<h2 id="从文件逐行读取">从文件逐行读取</h2>
+<p>例如，数据保存在文本文件中，每行一个数字：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/05/01/qt-text-processing/#more" rel="contents">
@@ -821,7 +823,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="硬件PWM"><a href="#硬件PWM" class="headerlink" title="硬件PWM"></a>硬件PWM</h2><p>本文针对的是Raspberry Pi 2 Model B硬件。从理论上讲，对于任意GPIO口，可以通过设定延时来输出PWM信号，这被称作<strong>软件PWM</strong>。由于Linux不是实时操作系统，对于一些要求<strong>硬实时</strong>的应用，例如通过PWM信号控制舵机，最好使用<strong>硬件PWM</strong>。</p>
+          <h2 id="硬件pwm">硬件PWM</h2>
+<p>本文针对的是Raspberry Pi 2 Model B硬件。从理论上讲，对于任意GPIO口，可以通过设定延时来输出PWM信号，这被称作<strong>软件PWM</strong>。由于Linux不是实时操作系统，对于一些要求<strong>硬实时</strong>的应用，例如通过PWM信号控制舵机，最好使用<strong>硬件PWM</strong>。</p>
 <p>树莓派的BCM2386芯片有两个PWM通道——PWM0和PWM1。PWM0可以设置在GPIO12和GPIO18上，PWM1可以设置在GPIO13上。本文使用<a href="http://abyz.co.uk/rpi/pigpio/" target="_blank" rel="noopener">pigpio</a>库来实现<strong>GPIO12</strong>输出PWM信号。</p>
           <!--noindex-->
             <div class="post-button">
@@ -917,7 +920,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I/O多路复用之epoll</a>一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行<code>read</code>或<code>write</code>都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果多路复用不搭配非阻塞I/O，在下面几种情况下会出现问题。</p>
+          <h2 id="问题">问题</h2>
+<p><a href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I/O多路复用之epoll</a>一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行<code>read</code>或<code>write</code>都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果多路复用不搭配非阻塞I/O，在下面几种情况下会出现问题。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/08/05/multiplexing-and-nonblocking-io/#more" rel="contents">
@@ -1012,7 +1016,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>I/O多路复用（I/O multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I/O操作。能够进行I/O操作，具体来说就是，在描述符上执行I/O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。</p>
+          <h2 id="简介">简介</h2>
+<p>I/O多路复用（I/O multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I/O操作。能够进行I/O操作，具体来说就是，在描述符上执行I/O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。</p>
 <p>在Linux系统中，多路复用由<code>select</code>，<code>poll</code>和<code>epoll</code>三个函数支持。它们的作用相同，特别地，<code>poll</code>和<code>epoll</code>的接口非常相似。在处理大量描述符时，<code>epoll</code>的性能优于另外两个函数。<code>epoll</code>同时支持水平触发（level-triggered）和边沿触发（edge-triggered）模式，而<code>select</code>和<code>poll</code>只支持水平触发模式。本文结合一个回射服务器程序来介绍<code>epoll</code>的基本用法。</p>
           <!--noindex-->
             <div class="post-button">
@@ -1108,8 +1113,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="错误的产生"><a href="#错误的产生" class="headerlink" title="错误的产生"></a>错误的产生</h2><p>在C语言中，将两个正数相加可能会得到一个负数，<code>x &lt; y</code>和<code>x - y &lt; 0</code>两个语句得到的结果有可能不一样。这些“莫名其妙”的现象经常会导致bug，编程老手不经意也会犯下错误。了解整数运算的原理有助于写出更可靠的程序。</p>
-<h2 id="无符号加法运算"><a href="#无符号加法运算" class="headerlink" title="无符号加法运算"></a>无符号加法运算</h2>
+          <h2 id="错误的产生">错误的产生</h2>
+<p>在C语言中，将两个正数相加可能会得到一个负数，<code>x &lt; y</code>和<code>x - y &lt; 0</code>两个语句得到的结果有可能不一样。这些“莫名其妙”的现象经常会导致bug，编程老手不经意也会犯下错误。了解整数运算的原理有助于写出更可靠的程序。</p>
+<h2 id="无符号加法运算">无符号加法运算</h2>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/04/06/integer-arithmetic/#more" rel="contents">
