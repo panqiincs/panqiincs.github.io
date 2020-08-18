@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/series/index.html</loc>
+    
+    <lastmod>2020-08-18T01:13:25.500Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2020/08/10/bad-translations/</loc>
     
     <lastmod>2020-08-16T09:53:57.625Z</lastmod>
@@ -173,13 +180,6 @@
     <loc>http://panqiincs.me/2015/03/21/integer-representations/</loc>
     
     <lastmod>2020-04-28T01:05:01.264Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/series/index.html</loc>
-    
-    <lastmod>2020-04-20T05:48:47.324Z</lastmod>
     
   </url>
   
