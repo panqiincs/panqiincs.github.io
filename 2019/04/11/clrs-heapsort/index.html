@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"panqiincs.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="主要内容 本章介绍堆排序（heapsort）算法。 堆排序算法的复杂度和归并排序相同，但是仅需要常数个额外的元素空间存储临时数据。堆（heap）不仅仅用在堆排序中，还可以构造一种有效的优先队列（priority queue）。">
+  <meta name="description" content="主要内容 本章介绍堆排序（heapsort）算法。堆排序算法的复杂度和归并排序相同，但是仅需要常数个额外的元素空间存储临时数据。堆（heap）不仅仅用在堆排序中，还可以构造一种有效的优先队列（priority queue）。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="『算法导论』第 6 章：堆排序">
 <meta property="og:url" content="http://panqiincs.me/2019/04/11/clrs-heapsort/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="主要内容 本章介绍堆排序（heapsort）算法。 堆排序算法的复杂度和归并排序相同，但是仅需要常数个额外的元素空间存储临时数据。堆（heap）不仅仅用在堆排序中，还可以构造一种有效的优先队列（priority queue）。">
+<meta property="og:description" content="主要内容 本章介绍堆排序（heapsort）算法。堆排序算法的复杂度和归并排序相同，但是仅需要常数个额外的元素空间存储临时数据。堆（heap）不仅仅用在堆排序中，还可以构造一种有效的优先队列（priority queue）。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-04-11T02:29:43.000Z">
-<meta property="article:modified_time" content="2019-08-03T08:25:21.472Z">
+<meta property="article:modified_time" content="2020-08-20T14:08:49.429Z">
 <meta property="article:author" content="Krist Pan">
 <meta property="article:tag" content="排序算法">
 <meta property="article:tag" content="堆排序">
@@ -215,7 +215,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-03 16:25:21" itemprop="dateModified" datetime="2019-08-03T16:25:21+08:00">2019-08-03</time>
+                <time title="修改时间：2020-08-20 22:08:49" itemprop="dateModified" datetime="2020-08-20T22:08:49+08:00">2020-08-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,8 +253,7 @@
 
       
         <h2 id="主要内容">主要内容</h2>
-<p>本章介绍<strong>堆排序</strong>（heapsort）算法。</p>
-<p>堆排序算法的复杂度和归并排序相同，但是仅需要常数个额外的元素空间存储临时数据。堆（heap）不仅仅用在堆排序中，还可以构造一种有效的优先队列（priority queue）。</p>
+<p>本章介绍<strong>堆排序</strong>（heapsort）算法。堆排序算法的复杂度和归并排序相同，但是仅需要常数个额外的元素空间存储临时数据。堆（heap）不仅仅用在堆排序中，还可以构造一种有效的优先队列（priority queue）。</p>
 <a id="more"></a>
 <h3 id="堆">堆</h3>
 <p>二叉堆一般用数组实现，可以看成是一个近似的完全二叉树，树的每个节点对应数组中的一个元素。根节点为<span class="math inline">\(A[1]\)</span>，给定一个下标<span class="math inline">\(i\)</span>，很容易计算它的父节点、左孩子和右孩子的下标分别为<span class="math inline">\(\lfloor i/2 \rfloor\)</span>，<span class="math inline">\(2i\)</span>，<span class="math inline">\(2i+1\)</span>。需注意，用C语言实现时，数组要多分配一个元素的空间。</p>
