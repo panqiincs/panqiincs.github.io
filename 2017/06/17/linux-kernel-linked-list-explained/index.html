@@ -273,7 +273,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((struct kool_list *)((<span class="keyword">char</span> *)(pos) - (<span class="keyword">unsigned</span> <span class="keyword">long</span>)(&amp;((struct kool_list *)<span class="number">0</span>)-&gt;<span class="built_in">list</span>)))</span><br></pre></td></tr></table></figure>
 <p>给出链表结构体<code>struct list_head</code>的地址<code>pos</code>，宏定义<code>list_entry</code>计算出了包含该链表成员的结构体<code>struct kool_list</code>的地址。首先必须得到成员<code>list</code>在结构体中的位置（内存偏移），然后根据该偏移量计算出结构体的地址。</p>
 <figure>
-<img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/linux_linked_list_head.gif" alt="" /><figcaption>Linux链表结构</figcaption>
+<img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/linux_linked_list_head.gif" alt="Linux链表结构" /><figcaption aria-hidden="true">Linux链表结构</figcaption>
 </figure>
 <p>现在的问题是，这个偏移量是如何得到的。假设有一个结构体<code>struct foo_bar</code>，下面的表达式计算成员<code>boo</code>在结构体中的偏移：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">unsigned</span> <span class="keyword">long</span>)(&amp;((struct foo_bar *)<span class="number">0</span>)-&gt;boo)</span><br></pre></td></tr></table></figure>

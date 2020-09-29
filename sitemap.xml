@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/2017/06/26/common-linux-commands/</loc>
+    
+    <lastmod>2020-09-29T13:46:10.159Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/08/29/learn-electronic-engineering/</loc>
+    
+    <lastmod>2020-08-25T04:39:41.001Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2016/09/17/a-new-start-for-life-and-blog/</loc>
+    
+    <lastmod>2020-08-21T06:03:18.655Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2016/10/23/an-application-of-bayes-theorem/</loc>
+    
+    <lastmod>2020-08-21T06:03:18.655Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2016/06/20/driving-license/</loc>
     
     <lastmod>2020-08-20T14:47:16.604Z</lastmod>
@@ -33,13 +61,6 @@
     <loc>http://panqiincs.me/2017/01/07/year-end-summary-of-2016/</loc>
     
     <lastmod>2020-08-20T14:35:29.715Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2016/09/17/a-new-start-for-life-and-blog/</loc>
-    
-    <lastmod>2020-08-20T14:29:17.984Z</lastmod>
     
   </url>
   
@@ -338,13 +359,6 @@
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2019/08/29/learn-electronic-engineering/</loc>
-    
-    <lastmod>2020-08-10T07:18:01.251Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://panqiincs.me/2020/06/28/sedra-smith-electronics/</loc>
     
     <lastmod>2020-08-10T07:14:11.341Z</lastmod>
@@ -383,13 +397,6 @@
     <loc>http://panqiincs.me/2020/07/10/rpi-stm32-spi-communication/</loc>
     
     <lastmod>2020-07-28T05:00:47.751Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2017/06/26/common-linux-commands/</loc>
-    
-    <lastmod>2020-07-28T04:56:20.386Z</lastmod>
     
   </url>
   
@@ -446,13 +453,6 @@
     <loc>http://panqiincs.me/2016/04/21/about-ros/</loc>
     
     <lastmod>2019-10-09T00:07:00.204Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2016/10/23/an-application-of-bayes-theorem/</loc>
-    
-    <lastmod>2019-08-18T02:51:48.915Z</lastmod>
     
   </url>
   

@@ -280,15 +280,15 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./SetupSTM32CubeMX-5.3.0.linux</span><br></pre></td></tr></table></figure>
 <p>会跳出一个图形化安装界面，不停地点下一步就行。安装完成后，启动软件，点击File - New Project新建一个工程。此时会看到选择芯片型号的界面，可以通过勾选筛选条件过滤出目标芯片，我的芯片型号是STM32F103RCT6，ARM Cortex-M3架构。芯片型号选择好之后，点击Start Project，会有配置引脚的界面。在我的开发板上，PA8和PD2两个GPIO口驱动两个LED灯，点击对应的引脚，将它们配置为<code>GPIO_Output</code>。</p>
 <figure>
-<img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/stm32de1.png" alt="" /><figcaption>GPIO配置</figcaption>
+<img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/stm32de1.png" alt="GPIO配置" /><figcaption aria-hidden="true">GPIO配置</figcaption>
 </figure>
 <p>接下来是时钟配置，暂时先保持默认的配置吧。</p>
 <figure>
-<img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/stm32de2.png" alt="" /><figcaption>时钟配置</figcaption>
+<img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/stm32de2.png" alt="时钟配置" /><figcaption aria-hidden="true">时钟配置</figcaption>
 </figure>
 <p>再接下来是项目配置，比较重要是的Toolchain/IDE那一项的选择。我选择的是Makefile，使用make来管理项目。点击右上方的GENERATE CODE按钮生成项目的代码。Windows用户还可以选择MDK-ARM，最后会生成代码以及MDK的项目文件，可以用MDK打开、编辑和构建工程。</p>
 <figure>
-<img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/stm32de3.png" alt="" /><figcaption>项目配置</figcaption>
+<img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/stm32de3.png" alt="项目配置" /><figcaption aria-hidden="true">项目配置</figcaption>
 </figure>
 <p>这里再插一句，上图最下方可以看到有个Firmware目录的设置，默认配置在用户的home目录下。如果嫌碍眼，可以打开Help - Updater Settings，修改成其它的目录。</p>
 <p>工程的目录下生成了如下文件：</p>
@@ -297,7 +297,7 @@
 <h2 id="vscode">VSCode</h2>
 <p>如果用VSCode做C/C++开发，推荐安装C/C++ Intelligence这个插件。用VSCode打开项目文件夹和<code>Src/</code>目录下的<code>main.c</code>文件，并在main函数的while循环中加入控制流水灯的代码：</p>
 <figure>
-<img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/stm32de4.png" alt="" /><figcaption>VSCode</figcaption>
+<img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/stm32de4.png" alt="VSCode" /><figcaption aria-hidden="true">VSCode</figcaption>
 </figure>
 <p>生成的代码都以<code>HAL</code>开头，函数名和固件库中的也很类似。可以看到，STM32CubeMX在<code>main</code>函数中自动添加了初始化的代码。打开<code>MX_GPIO_Init</code>函数还能看到将PA8和PD2两个GPIO口设置为输出的配置代码。</p>
 <p>上图中有些宏定义下方有波浪线，将鼠标移动到附近还会提示“标识符未定义”。这时候按F1键，搜索Edit Configuration，打开json配置文件，添加一些信息帮助插件做代码检查和自动补全的工作。将Makefile中<code>C_INCLUDES</code>和<code>C_DEFS</code>的内容添加到<code>includePath</code>和<code>defines</code>中。编译器的头文件目录也要添加到<code>includePath</code>中。修改后的配置文件如下：</p>
@@ -337,10 +337,10 @@
       <div class="popular-posts-title"><a href="/2015/08/05/multiplexing-and-nonblocking-io/" rel="bookmark">为什么多路复用要搭配非阻塞I/O</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/2017/02/26/write-a-shell-basic-functionality/" rel="bookmark">Shell实现：基本功能</a></div>
+      <div class="popular-posts-title"><a href="/2017/06/26/common-linux-commands/" rel="bookmark">实用Linux命令</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/2017/04/19/write-a-shell-redirect-and-pipeline/" rel="bookmark">Shell实现：重定向和管道</a></div>
+      <div class="popular-posts-title"><a href="/2017/02/26/write-a-shell-basic-functionality/" rel="bookmark">Shell实现：基本功能</a></div>
     </li>
   </ul>
 
