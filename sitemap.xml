@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/2020/08/10/bad-translations/</loc>
+    
+    <lastmod>2020-10-04T14:21:08.840Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2017/06/26/common-linux-commands/</loc>
     
     <lastmod>2020-09-29T13:58:16.854Z</lastmod>
@@ -16,14 +23,14 @@
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2016/09/17/a-new-start-for-life-and-blog/</loc>
+    <loc>http://panqiincs.me/2016/10/23/an-application-of-bayes-theorem/</loc>
     
     <lastmod>2020-08-21T06:03:18.655Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2016/10/23/an-application-of-bayes-theorem/</loc>
+    <loc>http://panqiincs.me/2016/09/17/a-new-start-for-life-and-blog/</loc>
     
     <lastmod>2020-08-21T06:03:18.655Z</lastmod>
     
@@ -334,13 +341,6 @@
     <loc>http://panqiincs.me/series/index.html</loc>
     
     <lastmod>2020-08-18T01:13:25.500Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2020/08/10/bad-translations/</loc>
-    
-    <lastmod>2020-08-16T09:53:57.625Z</lastmod>
     
   </url>
   
