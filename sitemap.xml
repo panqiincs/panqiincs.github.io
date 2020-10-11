@@ -2,359 +2,541 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://panqiincs.me/series/index.html</loc>
+    <loc>http://panqiincs.me/2017/09/10/after-installing-opensuse-leap/</loc>
     
-    <lastmod>2020-10-11T12:07:10.338Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/06/04/clrs-order-statistics/</loc>
-    
-    <lastmod>2020-10-11T12:06:32.678Z</lastmod>
+    <lastmod>2020-10-11T12:22:19.617Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2019/06/03/clrs-linear-time-sort/</loc>
+    <loc>http://panqiincs.me/2019/07/29/domain-name-two-years/</loc>
     
-    <lastmod>2020-10-11T12:06:32.651Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/05/08/clrs-quicksort/</loc>
-    
-    <lastmod>2020-10-11T12:06:32.628Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/04/11/clrs-heapsort/</loc>
-    
-    <lastmod>2020-10-11T12:06:32.601Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/04/10/clrs-probability/</loc>
-    
-    <lastmod>2020-10-11T12:06:32.578Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/03/14/clrs-divide-and-conquer/</loc>
-    
-    <lastmod>2020-10-11T12:06:32.558Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/03/10/clrs-growth-of-functions/</loc>
-    
-    <lastmod>2020-10-11T12:06:32.531Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/03/07/clrs-getting-started/</loc>
-    
-    <lastmod>2020-10-11T12:06:32.505Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/03/06/clrs-role-of-algorithms/</loc>
-    
-    <lastmod>2020-10-11T12:06:29.908Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/03/01/clrs-learning-plan/</loc>
-    
-    <lastmod>2020-10-11T12:04:34.278Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2020/06/28/sedra-smith-electronics/</loc>
-    
-    <lastmod>2020-10-11T12:03:03.985Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2020/08/08/birthday-today/</loc>
-    
-    <lastmod>2020-10-11T03:18:38.103Z</lastmod>
+    <lastmod>2020-10-11T12:19:06.910Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://panqiincs.me/2019/08/29/learn-electronic-engineering/</loc>
     
-    <lastmod>2020-10-09T14:38:53.290Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2020/08/10/bad-translations/</loc>
-    
-    <lastmod>2020-10-04T14:21:08.840Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2017/06/26/common-linux-commands/</loc>
-    
-    <lastmod>2020-09-29T13:58:16.854Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2016/09/17/a-new-start-for-life-and-blog/</loc>
-    
-    <lastmod>2020-08-21T06:03:18.655Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2016/10/23/an-application-of-bayes-theorem/</loc>
-    
-    <lastmod>2020-08-21T06:03:18.655Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2016/06/20/driving-license/</loc>
-    
-    <lastmod>2020-08-20T14:47:16.604Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2016/07/06/hello-shenzhen/</loc>
-    
-    <lastmod>2020-08-20T14:38:16.763Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2016/08/04/the-first-working-day/</loc>
-    
-    <lastmod>2020-08-20T14:37:40.047Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/</loc>
-    
-    <lastmod>2020-08-20T14:36:47.994Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2017/01/07/year-end-summary-of-2016/</loc>
-    
-    <lastmod>2020-08-20T14:35:29.715Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/</loc>
-    
-    <lastmod>2020-08-20T14:28:16.549Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/04/16/is-teaching-in-english-good/</loc>
-    
-    <lastmod>2020-08-20T14:26:47.400Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2020/04/15/memorable-months/</loc>
-    
-    <lastmod>2020-08-20T14:24:23.078Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/11/15/clrs-elementary/</loc>
-    
-    <lastmod>2020-08-20T14:11:23.296Z</lastmod>
+    <lastmod>2020-10-11T12:19:06.910Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://panqiincs.me/2019/09/25/mcu-gpio-settings/</loc>
     
-    <lastmod>2020-08-20T14:11:07.737Z</lastmod>
+    <lastmod>2020-10-11T12:19:06.910Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2019/06/30/summer-swimming/</loc>
+    <loc>http://panqiincs.me/2019/11/15/clrs-elementary/</loc>
     
-    <lastmod>2020-08-20T14:10:48.730Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/05/31/childhood-crayfish/</loc>
-    
-    <lastmod>2020-08-20T14:10:18.557Z</lastmod>
+    <lastmod>2020-10-11T12:19:06.910Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2019/05/30/childhood-raspberries/</loc>
+    <loc>http://panqiincs.me/2020/04/15/memorable-months/</loc>
     
-    <lastmod>2020-08-20T14:10:11.098Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/05/17/dpt-rp1-toc/</loc>
-    
-    <lastmod>2020-08-20T14:09:59.675Z</lastmod>
+    <lastmod>2020-10-11T12:19:06.910Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2019/05/13/english-is-important/</loc>
+    <loc>http://panqiincs.me/2020/06/19/realsense-depth-image/</loc>
     
-    <lastmod>2020-08-20T14:09:49.795Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/04/25/nginx-log-to-mysql/</loc>
-    
-    <lastmod>2020-08-20T14:09:30.345Z</lastmod>
+    <lastmod>2020-10-11T12:19:06.910Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2019/04/14/restart-vocabulary-project/</loc>
+    <loc>http://panqiincs.me/2020/06/24/sunset-on-li-river/</loc>
     
-    <lastmod>2020-08-20T14:09:15.825Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/04/12/a-beamer-template/</loc>
-    
-    <lastmod>2020-08-20T14:09:04.472Z</lastmod>
+    <lastmod>2020-10-11T12:19:06.910Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2019/03/19/huangzhou-in-change/</loc>
+    <loc>http://panqiincs.me/2020/06/28/sedra-smith-electronics/</loc>
     
-    <lastmod>2020-08-20T14:08:29.343Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2018/12/27/say-goodbye-to-iphone/</loc>
-    
-    <lastmod>2020-08-20T14:07:38.991Z</lastmod>
+    <lastmod>2020-10-11T12:19:06.910Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2018/10/16/enslaved-by-phone/</loc>
+    <loc>http://panqiincs.me/2020/07/10/rpi-stm32-spi-communication/</loc>
     
-    <lastmod>2020-08-20T14:07:09.361Z</lastmod>
+    <lastmod>2020-10-11T12:19:06.910Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2020/07/28/countryside-nearby/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.910Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2020/08/08/birthday-today/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.910Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2020/08/10/bad-translations/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.910Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2020/08/15/rpi-network-via-serial/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.910Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://panqiincs.me/2018/07/22/awesome-online-maps/</loc>
     
-    <lastmod>2020-08-20T14:06:53.165Z</lastmod>
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2018/06/17/change-a-new-distribution/</loc>
+    <loc>http://panqiincs.me/2018/07/31/list-of-computer-books/</loc>
     
-    <lastmod>2020-08-20T14:05:46.433Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2017/09/10/after-installing-opensuse-leap/</loc>
-    
-    <lastmod>2020-08-20T14:04:54.811Z</lastmod>
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2017/09/01/host-hexo-blog-at-vps/</loc>
+    <loc>http://panqiincs.me/2018/08/28/start-to-use-wubi/</loc>
     
-    <lastmod>2020-08-20T14:04:39.471Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2017/08/13/python-crawler-lifeofpix/</loc>
-    
-    <lastmod>2020-08-20T14:04:26.818Z</lastmod>
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2017/07/03/eliminate-unused-functions-in-ds5/</loc>
+    <loc>http://panqiincs.me/2018/09/09/wubi-dict-manager/</loc>
     
-    <lastmod>2020-08-20T14:03:52.349Z</lastmod>
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2018/10/16/enslaved-by-phone/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2018/12/27/say-goodbye-to-iphone/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/03/01/clrs-learning-plan/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/03/06/clrs-role-of-algorithms/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/03/07/clrs-getting-started/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/03/10/clrs-growth-of-functions/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/03/14/clrs-divide-and-conquer/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/03/19/huangzhou-in-change/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/04/10/clrs-probability/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/04/11/clrs-heapsort/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/04/12/a-beamer-template/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/04/14/restart-vocabulary-project/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/04/16/is-teaching-in-english-good/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/04/25/nginx-log-to-mysql/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/05/04/renovate-my-computer/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/05/08/clrs-quicksort/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/05/13/english-is-important/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/05/17/dpt-rp1-toc/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/05/30/childhood-raspberries/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/05/31/childhood-crayfish/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/06/03/clrs-linear-time-sort/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/06/04/clrs-order-statistics/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/06/05/after-installing-manjaro/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/06/30/summer-swimming/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/07/19/bought-a-laptop/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/07/26/develop-stm32-on-linux/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2013/06/05/finish-thesis-defense/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2013/06/22/graduated-from-hnu/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2014/08/07/automation-specialty-skills/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://panqiincs.me/2015/03/21/integer-representations/</loc>
     
-    <lastmod>2020-08-20T13:57:41.488Z</lastmod>
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2015/03/31/leetcode-training/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://panqiincs.me/2015/04/06/integer-arithmetic/</loc>
     
-    <lastmod>2020-08-20T13:55:59.401Z</lastmod>
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/</loc>
     
-    <lastmod>2020-08-20T13:55:48.011Z</lastmod>
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2015/08/05/multiplexing-and-nonblocking-io/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://panqiincs.me/2015/11/19/raspberry-pi-hardware-pwm-module/</loc>
     
-    <lastmod>2020-08-20T13:55:30.472Z</lastmod>
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2016/03/17/about-alphago/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2016/03/27/love-yuelu-mountain/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2016/04/21/about-ros/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://panqiincs.me/2016/05/01/qt-text-processing/</loc>
     
-    <lastmod>2020-08-20T13:54:53.070Z</lastmod>
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2016/06/20/driving-license/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2016/07/06/hello-shenzhen/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2016/08/04/the-first-working-day/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2016/09/17/a-new-start-for-life-and-blog/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2016/10/23/an-application-of-bayes-theorem/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2017/01/07/year-end-summary-of-2016/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2017/06/17/linux-kernel-linked-list-explained/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2017/06/26/common-linux-commands/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2017/07/03/eliminate-unused-functions-in-ds5/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2017/08/06/hexo-blog-code-management/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2017/08/13/python-crawler-lifeofpix/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2017/09/01/host-hexo-blog-at-vps/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2017/11/02/fall-in-love-with-tea/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2018/05/26/process-pdf-using-imagemagick/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2018/06/13/dpt-rp1-user-experience/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2018/06/17/change-a-new-distribution/</loc>
+    
+    <lastmod>2020-10-11T12:19:06.903Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://panqiincs.me/2013/03/22/start-blogging/</loc>
     
-    <lastmod>2020-08-20T13:54:12.844Z</lastmod>
+    <lastmod>2020-10-11T12:19:06.900Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/series/index.html</loc>
+    
+    <lastmod>2020-10-11T12:09:38.958Z</lastmod>
     
   </url>
   
@@ -362,188 +544,6 @@
     <loc>http://panqiincs.me/about/index.html</loc>
     
     <lastmod>2020-08-18T02:13:22.001Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2015/03/31/leetcode-training/</loc>
-    
-    <lastmod>2020-08-18T02:06:03.941Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2020/08/15/rpi-network-via-serial/</loc>
-    
-    <lastmod>2020-08-16T07:18:36.657Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2020/07/28/countryside-nearby/</loc>
-    
-    <lastmod>2020-08-11T01:48:42.782Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/07/29/domain-name-two-years/</loc>
-    
-    <lastmod>2020-08-09T04:43:31.432Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2017/08/06/hexo-blog-code-management/</loc>
-    
-    <lastmod>2020-08-04T13:19:10.390Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2020/07/10/rpi-stm32-spi-communication/</loc>
-    
-    <lastmod>2020-07-28T05:00:47.751Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2020/06/24/sunset-on-li-river/</loc>
-    
-    <lastmod>2020-07-01T10:36:26.434Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2020/06/19/realsense-depth-image/</loc>
-    
-    <lastmod>2020-06-22T14:00:08.126Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2014/08/07/automation-specialty-skills/</loc>
-    
-    <lastmod>2020-06-08T10:19:24.853Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/06/05/after-installing-manjaro/</loc>
-    
-    <lastmod>2020-05-07T09:25:02.502Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2018/06/13/dpt-rp1-user-experience/</loc>
-    
-    <lastmod>2019-11-19T00:45:42.737Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/07/26/develop-stm32-on-linux/</loc>
-    
-    <lastmod>2019-11-19T00:41:58.773Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2017/06/17/linux-kernel-linked-list-explained/</loc>
-    
-    <lastmod>2019-11-19T00:34:06.679Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2016/04/21/about-ros/</loc>
-    
-    <lastmod>2019-10-09T00:07:00.204Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2013/06/22/graduated-from-hnu/</loc>
-    
-    <lastmod>2019-08-18T02:46:37.132Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2013/06/05/finish-thesis-defense/</loc>
-    
-    <lastmod>2019-08-18T02:46:32.235Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2015/08/05/multiplexing-and-nonblocking-io/</loc>
-    
-    <lastmod>2019-08-03T08:20:23.919Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/07/19/bought-a-laptop/</loc>
-    
-    <lastmod>2019-07-20T15:10:57.940Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/05/04/renovate-my-computer/</loc>
-    
-    <lastmod>2019-07-20T14:41:27.511Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2018/07/31/list-of-computer-books/</loc>
-    
-    <lastmod>2019-06-29T12:50:49.428Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2016/03/17/about-alphago/</loc>
-    
-    <lastmod>2019-06-08T04:18:55.917Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2016/03/27/love-yuelu-mountain/</loc>
-    
-    <lastmod>2019-06-04T13:54:25.233Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2018/08/28/start-to-use-wubi/</loc>
-    
-    <lastmod>2019-06-03T14:05:56.892Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2018/05/26/process-pdf-using-imagemagick/</loc>
-    
-    <lastmod>2019-06-02T23:08:04.670Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2017/11/02/fall-in-love-with-tea/</loc>
-    
-    <lastmod>2019-05-30T15:58:08.512Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2018/09/09/wubi-dict-manager/</loc>
-    
-    <lastmod>2019-03-31T01:17:10.000Z</lastmod>
     
   </url>
   
