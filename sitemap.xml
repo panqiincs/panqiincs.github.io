@@ -2,16 +2,93 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://panqiincs.me/2020/08/08/birthday-today/</loc>
+    <loc>http://panqiincs.me/series/index.html</loc>
     
-    <lastmod>2020-10-11T03:18:38.103Z</lastmod>
+    <lastmod>2020-10-11T12:07:10.338Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/06/04/clrs-order-statistics/</loc>
+    
+    <lastmod>2020-10-11T12:06:32.678Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/06/03/clrs-linear-time-sort/</loc>
+    
+    <lastmod>2020-10-11T12:06:32.651Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/05/08/clrs-quicksort/</loc>
+    
+    <lastmod>2020-10-11T12:06:32.628Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/04/11/clrs-heapsort/</loc>
+    
+    <lastmod>2020-10-11T12:06:32.601Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/04/10/clrs-probability/</loc>
+    
+    <lastmod>2020-10-11T12:06:32.578Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/03/14/clrs-divide-and-conquer/</loc>
+    
+    <lastmod>2020-10-11T12:06:32.558Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/03/10/clrs-growth-of-functions/</loc>
+    
+    <lastmod>2020-10-11T12:06:32.531Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/03/07/clrs-getting-started/</loc>
+    
+    <lastmod>2020-10-11T12:06:32.505Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/03/06/clrs-role-of-algorithms/</loc>
+    
+    <lastmod>2020-10-11T12:06:29.908Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2019/03/01/clrs-learning-plan/</loc>
+    
+    <lastmod>2020-10-11T12:04:34.278Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://panqiincs.me/2020/06/28/sedra-smith-electronics/</loc>
     
-    <lastmod>2020-10-09T14:39:05.410Z</lastmod>
+    <lastmod>2020-10-11T12:03:03.985Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2020/08/08/birthday-today/</loc>
+    
+    <lastmod>2020-10-11T03:18:38.103Z</lastmod>
     
   </url>
   
@@ -37,14 +114,14 @@
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2016/10/23/an-application-of-bayes-theorem/</loc>
+    <loc>http://panqiincs.me/2016/09/17/a-new-start-for-life-and-blog/</loc>
     
     <lastmod>2020-08-21T06:03:18.655Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2016/09/17/a-new-start-for-life-and-blog/</loc>
+    <loc>http://panqiincs.me/2016/10/23/an-application-of-bayes-theorem/</loc>
     
     <lastmod>2020-08-21T06:03:18.655Z</lastmod>
     
@@ -128,13 +205,6 @@
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2019/06/03/clrs-linear-time-sort/</loc>
-    
-    <lastmod>2020-08-20T14:10:32.724Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://panqiincs.me/2019/05/31/childhood-crayfish/</loc>
     
     <lastmod>2020-08-20T14:10:18.557Z</lastmod>
@@ -163,13 +233,6 @@
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2019/05/08/clrs-quicksort/</loc>
-    
-    <lastmod>2020-08-20T14:09:41.132Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://panqiincs.me/2019/04/25/nginx-log-to-mysql/</loc>
     
     <lastmod>2020-08-20T14:09:30.345Z</lastmod>
@@ -191,51 +254,9 @@
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2019/04/11/clrs-heapsort/</loc>
-    
-    <lastmod>2020-08-20T14:08:49.429Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/04/10/clrs-probability/</loc>
-    
-    <lastmod>2020-08-20T14:08:37.610Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://panqiincs.me/2019/03/19/huangzhou-in-change/</loc>
     
     <lastmod>2020-08-20T14:08:29.343Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/03/14/clrs-divide-and-conquer/</loc>
-    
-    <lastmod>2020-08-20T14:08:18.487Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/03/10/clrs-growth-of-functions/</loc>
-    
-    <lastmod>2020-08-20T14:08:09.890Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/03/07/clrs-getting-started/</loc>
-    
-    <lastmod>2020-08-20T14:08:01.357Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/03/06/clrs-role-of-algorithms/</loc>
-    
-    <lastmod>2020-08-20T14:07:52.560Z</lastmod>
     
   </url>
   
@@ -352,13 +373,6 @@
   </url>
   
   <url>
-    <loc>http://panqiincs.me/series/index.html</loc>
-    
-    <lastmod>2020-08-18T01:13:25.500Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://panqiincs.me/2020/08/15/rpi-network-via-serial/</loc>
     
     <lastmod>2020-08-16T07:18:36.657Z</lastmod>
@@ -383,13 +397,6 @@
     <loc>http://panqiincs.me/2017/08/06/hexo-blog-code-management/</loc>
     
     <lastmod>2020-08-04T13:19:10.390Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/03/01/clrs-learning-plan/</loc>
-    
-    <lastmod>2020-08-04T13:17:21.604Z</lastmod>
     
   </url>
   
@@ -467,13 +474,6 @@
     <loc>http://panqiincs.me/2013/06/05/finish-thesis-defense/</loc>
     
     <lastmod>2019-08-18T02:46:32.235Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2019/06/04/clrs-order-statistics/</loc>
-    
-    <lastmod>2019-08-03T08:25:54.351Z</lastmod>
     
   </url>
   
