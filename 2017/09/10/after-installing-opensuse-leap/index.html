@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -261,7 +261,7 @@
 <p>OpenSUSE Leap 42.3系统中默认单击鼠标左键即打开文件或目录，将其改为双击。在Mouse Control配置中，选择「双击打开文件和目录」，点击Apply生效。</p>
 <h3 id="中文环境配置">中文环境配置</h3>
 <p>虽然系统语言设置为英文，但也需要显示和输入中文。首先需要在Yast的Language配置中将简体中文（Simplified Chinese）选择为第二语言（Secondary Language），确认之后，系统会自动下载语言相关的组件和字体，注销之后生效。</p>
-<p>然后配置输入法，在Input Method配置中选择中文输入法的Pinyin，此输入法体验较差。推荐使用大名鼎鼎的<a href="http://rime.im/" target="_blank" rel="noopener">RIME中州韵输入法</a>。在KDE桌面环境中，默认使用fcitx输入法框架，使用如下的命令安装Rime：</p>
+<p>然后配置输入法，在Input Method配置中选择中文输入法的Pinyin，此输入法体验较差。推荐使用大名鼎鼎的<a target="_blank" rel="noopener" href="http://rime.im/">RIME中州韵输入法</a>。在KDE桌面环境中，默认使用fcitx输入法框架，使用如下的命令安装Rime：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper install fcitx-rime</span><br></pre></td></tr></table></figure>
 <p>安装完成后注销，再次登入系统会发现Rime已经在输入法候选中了，按Ctrl+Space即可切换输入法。</p>
 <p>你有可能会发现，在网页以及输入法中，有的中文字符相貌奇特（比如「门」、「画」等汉字），这是字体问题。据我尝试，安装文泉驿微米黑字体后即可显示正常：</p>
@@ -271,7 +271,7 @@
 <p>添加软件源后安装：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper addrepo -f https://download.nvidia.com/opensuse/leap/42.3 nvidia</span><br><span class="line">sudo zypper install-new-recommends</span><br></pre></td></tr></table></figure>
 <h3 id="无线网卡驱动">无线网卡驱动</h3>
-<p>Linux内核默认支持大多数主流的无线网卡。如果你的无线网卡无法使用，需要手动安装无线网卡驱动。一般的流程都是先确定网卡型号，然后在网上寻找驱动，有的网卡有现成的安装包，也有需要自己下载源码，编译安装的。可以参考<a href="http://opensuse-guide.org/wlan.php" target="_blank" rel="noopener">这里</a>，以及我的<a href="http://panqiincs.me/2016/08/28/install-tl-wn823n-wlan-driver/">这篇文章</a>（文中介绍的方法对Linux 4.4内核已经失效，请直接参考Github主页上的方法-_-#）。</p>
+<p>Linux内核默认支持大多数主流的无线网卡。如果你的无线网卡无法使用，需要手动安装无线网卡驱动。一般的流程都是先确定网卡型号，然后在网上寻找驱动，有的网卡有现成的安装包，也有需要自己下载源码，编译安装的。可以参考<a target="_blank" rel="noopener" href="http://opensuse-guide.org/wlan.php">这里</a>，以及我的<a href="http://panqiincs.me/2016/08/28/install-tl-wn823n-wlan-driver/">这篇文章</a>（文中介绍的方法对Linux 4.4内核已经失效，请直接参考Github主页上的方法-_-#）。</p>
 <h2 id="日常软件">日常软件</h2>
 <h3 id="google浏览器">Google浏览器</h3>
 <p>OpenSUSE Leap 42.3默认安装了Firefox，但我更喜欢用Google Chrome浏览器。首先添加相应的软件源：</p>
@@ -281,7 +281,7 @@
 <p>最后安装浏览器：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper install google-chrome-stable</span><br></pre></td></tr></table></figure>
 <p>在KDE桌面环境中打开新安装的Chrome会出现一个KDE Wallet提示窗口，要求输入密码。要去掉这个提示窗口，需要在<code>/usr/bin/google-chrome-stable</code>文件底部相应的语句末尾添加<code>"--password-store=basic"</code>选项，修改后如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exec</span> -a <span class="string">"<span class="variable">$0</span>"</span> <span class="string">"<span class="variable">$HERE</span>/chrome"</span>  <span class="string">"<span class="variable">$@</span>"</span> <span class="string">"--password-store=basic"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exec</span> -a <span class="string">&quot;<span class="variable">$0</span>&quot;</span> <span class="string">&quot;<span class="variable">$HERE</span>/chrome&quot;</span>  <span class="string">&quot;<span class="variable">$@</span>&quot;</span> <span class="string">&quot;--password-store=basic&quot;</span></span><br></pre></td></tr></table></figure>
 <p>修改完成后，打开浏览器就不会出现弹出窗口了。需要注意的是，每次升级Chrome后，提示窗口会再次出现，要重新设置一次。</p>
 <h3 id="浏览器插件">浏览器插件</h3>
 <p>许多网站需要安装浏览器插件，以支持在线视频音频和游戏。在命令行中安装如下插件：</p>
@@ -327,9 +327,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper install youtube-dl stellarium</span><br></pre></td></tr></table></figure>
 <h2 id="参考">参考</h2>
 <ol type="1">
-<li><a href="https://lug.ustc.edu.cn/wiki/mirrors/help/opensuse" target="_blank" rel="noopener">openSUSE 镜像使用帮助</a></li>
-<li><a href="http://opensuse-guide.org/index.php" target="_blank" rel="noopener">Unofficial Guide to openSUSE Leap 42.3</a></li>
-<li><a href="http://seisman.info/linux-environment-for-seismology-research.html" target="_blank" rel="noopener">用 CentOS 7 打造合适的科研环境</a></li>
+<li><a target="_blank" rel="noopener" href="https://lug.ustc.edu.cn/wiki/mirrors/help/opensuse">openSUSE 镜像使用帮助</a></li>
+<li><a target="_blank" rel="noopener" href="http://opensuse-guide.org/index.php">Unofficial Guide to openSUSE Leap 42.3</a></li>
+<li><a target="_blank" rel="noopener" href="http://seisman.info/linux-environment-for-seismology-research.html">用 CentOS 7 打造合适的科研环境</a></li>
 </ol>
 
     </div>
@@ -353,10 +353,10 @@
       <div class="popular-posts-title"><a href="/2015/08/05/multiplexing-and-nonblocking-io/" rel="bookmark">为什么多路复用要搭配非阻塞I/O</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/2017/04/19/write-a-shell-redirect-and-pipeline/" rel="bookmark">Shell实现：重定向和管道</a></div>
+      <div class="popular-posts-title"><a href="/2017/02/26/write-a-shell-basic-functionality/" rel="bookmark">Shell实现：基本功能</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/2017/02/26/write-a-shell-basic-functionality/" rel="bookmark">Shell实现：基本功能</a></div>
+      <div class="popular-posts-title"><a href="/2017/04/19/write-a-shell-redirect-and-pipeline/" rel="bookmark">Shell实现：重定向和管道</a></div>
     </li>
   </ul>
 
@@ -465,7 +465,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装建议"><span class="nav-number">1.</span> <span class="nav-text">安装建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置修改"><span class="nav-number">2.</span> <span class="nav-text">配置修改</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#更改软件源"><span class="nav-number">2.1.</span> <span class="nav-text">更改软件源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#鼠标操作修改"><span class="nav-number">2.2.</span> <span class="nav-text">鼠标操作修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中文环境配置"><span class="nav-number">2.3.</span> <span class="nav-text">中文环境配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#驱动安装"><span class="nav-number">3.</span> <span class="nav-text">驱动安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nvidia显卡驱动"><span class="nav-number">3.1.</span> <span class="nav-text">NVIDIA显卡驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无线网卡驱动"><span class="nav-number">3.2.</span> <span class="nav-text">无线网卡驱动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日常软件"><span class="nav-number">4.</span> <span class="nav-text">日常软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#google浏览器"><span class="nav-number">4.1.</span> <span class="nav-text">Google浏览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器插件"><span class="nav-number">4.2.</span> <span class="nav-text">浏览器插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片处理工具"><span class="nav-number">4.3.</span> <span class="nav-text">图片处理工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#办公软件"><span class="nav-number">4.4.</span> <span class="nav-text">办公软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多媒体播放"><span class="nav-number">4.5.</span> <span class="nav-text">多媒体播放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多媒体codecs"><span class="nav-number">4.6.</span> <span class="nav-text">多媒体Codecs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发环境"><span class="nav-number">5.</span> <span class="nav-text">开发环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#版本管理"><span class="nav-number">5.1.</span> <span class="nav-text">版本管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cc"><span class="nav-number">5.2.</span> <span class="nav-text">C&#x2F;C++</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python"><span class="nav-number">5.3.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑器"><span class="nav-number">5.4.</span> <span class="nav-text">编辑器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他工具"><span class="nav-number">6.</span> <span class="nav-text">其他工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%BB%BA%E8%AE%AE"><span class="nav-number">1.</span> <span class="nav-text">安装建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%BF%AE%E6%94%B9"><span class="nav-number">2.</span> <span class="nav-text">配置修改</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E8%BD%AF%E4%BB%B6%E6%BA%90"><span class="nav-number">2.1.</span> <span class="nav-text">更改软件源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BC%A0%E6%A0%87%E6%93%8D%E4%BD%9C%E4%BF%AE%E6%94%B9"><span class="nav-number">2.2.</span> <span class="nav-text">鼠标操作修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%87%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">中文环境配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">驱动安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nvidia%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8"><span class="nav-number">3.1.</span> <span class="nav-text">NVIDIA显卡驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E7%BA%BF%E7%BD%91%E5%8D%A1%E9%A9%B1%E5%8A%A8"><span class="nav-number">3.2.</span> <span class="nav-text">无线网卡驱动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A5%E5%B8%B8%E8%BD%AF%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">日常软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#google%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-number">4.1.</span> <span class="nav-text">Google浏览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6"><span class="nav-number">4.2.</span> <span class="nav-text">浏览器插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7"><span class="nav-number">4.3.</span> <span class="nav-text">图片处理工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%9E%E5%85%AC%E8%BD%AF%E4%BB%B6"><span class="nav-number">4.4.</span> <span class="nav-text">办公软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%AA%92%E4%BD%93%E6%92%AD%E6%94%BE"><span class="nav-number">4.5.</span> <span class="nav-text">多媒体播放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%AA%92%E4%BD%93codecs"><span class="nav-number">4.6.</span> <span class="nav-text">多媒体Codecs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-number">5.</span> <span class="nav-text">开发环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86"><span class="nav-number">5.1.</span> <span class="nav-text">版本管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cc"><span class="nav-number">5.2.</span> <span class="nav-text">C&#x2F;C++</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python"><span class="nav-number">5.3.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-number">5.4.</span> <span class="nav-text">编辑器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B7%A5%E5%85%B7"><span class="nav-number">6.</span> <span class="nav-text">其他工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

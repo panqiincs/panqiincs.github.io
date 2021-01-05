@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -245,7 +245,7 @@
 
       
         <h2 id="引言">引言</h2>
-<p>我在学习STM32芯片的GPIO模块时，对一些细节感到困惑，<a href="https://embeddedartistry.com/blog/2018/6/4/demystifying-microcontroller-gpio-settings" target="_blank" rel="noopener">Demystifying Microcontroller GPIO Settings</a>这篇文章几乎解答了我所有的疑问。因此将它翻译出来，希望对大家有帮助。</p>
+<p>我在学习STM32芯片的GPIO模块时，对一些细节感到困惑，<a target="_blank" rel="noopener" href="https://embeddedartistry.com/blog/2018/6/4/demystifying-microcontroller-gpio-settings">Demystifying Microcontroller GPIO Settings</a>这篇文章几乎解答了我所有的疑问。因此将它翻译出来，希望对大家有帮助。</p>
 <a id="more"></a>
 <p>写单片机软件的人都会配置和管理GPIO引脚。表面上看，GPIO配置非常简单：引脚是输入或输出，是高电平或低电平。但是，你不可避免地会碰到配置选项很多的芯片，或者电子工程师会问一些你不懂的引脚配置（比如将某条线设置成高阻态）。本文会帮助你理解现代单片机上不同的引脚配置。</p>
 <h2 id="背景知识">背景知识</h2>
@@ -402,7 +402,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#背景知识"><span class="nav-number">2.</span> <span class="nav-text">背景知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入输出模式"><span class="nav-number">3.</span> <span class="nav-text">输入输出模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入模式"><span class="nav-number">3.1.</span> <span class="nav-text">输入模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出模式"><span class="nav-number">3.2.</span> <span class="nav-text">输出模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#推拉输出"><span class="nav-number">3.2.1.</span> <span class="nav-text">推拉输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开漏输出"><span class="nav-number">3.2.2.</span> <span class="nav-text">开漏输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集电极开路"><span class="nav-number">3.2.3.</span> <span class="nav-text">集电极开路</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gpio速度"><span class="nav-number">4.</span> <span class="nav-text">GPIO速度</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86"><span class="nav-number">2.</span> <span class="nav-text">背景知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">输入输出模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.1.</span> <span class="nav-text">输入模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.2.</span> <span class="nav-text">输出模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A8%E6%8B%89%E8%BE%93%E5%87%BA"><span class="nav-number">3.2.1.</span> <span class="nav-text">推拉输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E6%BC%8F%E8%BE%93%E5%87%BA"><span class="nav-number">3.2.2.</span> <span class="nav-text">开漏输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%86%E7%94%B5%E6%9E%81%E5%BC%80%E8%B7%AF"><span class="nav-number">3.2.3.</span> <span class="nav-text">集电极开路</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gpio%E9%80%9F%E5%BA%A6"><span class="nav-number">4.</span> <span class="nav-text">GPIO速度</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

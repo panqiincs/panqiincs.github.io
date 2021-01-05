@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -285,11 +285,11 @@
 <p>VPS部署和nginx配置完成后，需要修改DNS配置，即可将域名绑定到VPS的IP上。删除原来的域名解析配置，分别新添加一个<code>www</code>和<code>@</code>记录，记录值均为VPS的IP地址。等待一段时间，域名解析成功，即可用域名访问托管在VPS上的网站。</p>
 <h2 id="参考">参考</h2>
 <ol type="1">
-<li><a href="https://blog.viosey.com/2016/10/05/Install-hexo-vps-git/index.html" target="_blank" rel="noopener">在VPS上搭建Hexo博客，使用Git部署</a></li>
-<li><a href="http://sobaigu.com/Hexo-git-to-vps.html" target="_blank" rel="noopener">开始新的折腾，Hexo博客Git-VPS部署完整记录</a></li>
-<li><a href="https://eliyar.biz/how_to_build_hexo_blog/" target="_blank" rel="noopener">从0开始搭建hexo博客</a></li>
-<li><a href="https://git-scm.com/docs/git-shell" target="_blank" rel="noopener">git-shell</a></li>
-<li><a href="https://nginx.org/en/docs/beginners_guide.html" target="_blank" rel="noopener">Beginner's Guide</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.viosey.com/2016/10/05/Install-hexo-vps-git/index.html">在VPS上搭建Hexo博客，使用Git部署</a></li>
+<li><a target="_blank" rel="noopener" href="http://sobaigu.com/Hexo-git-to-vps.html">开始新的折腾，Hexo博客Git-VPS部署完整记录</a></li>
+<li><a target="_blank" rel="noopener" href="https://eliyar.biz/how_to_build_hexo_blog/">从0开始搭建hexo博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://git-scm.com/docs/git-shell">git-shell</a></li>
+<li><a target="_blank" rel="noopener" href="https://nginx.org/en/docs/beginners_guide.html">Beginner's Guide</a></li>
 </ol>
 
     </div>
@@ -413,7 +413,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#整体方案"><span class="nav-number">1.</span> <span class="nav-text">整体方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署过程"><span class="nav-number">2.</span> <span class="nav-text">部署过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh登录配置"><span class="nav-number">2.1.</span> <span class="nav-text">SSH登录配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git仓库配置"><span class="nav-number">2.2.</span> <span class="nav-text">Git仓库配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地配置"><span class="nav-number">2.3.</span> <span class="nav-text">本地配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx配置"><span class="nav-number">3.</span> <span class="nav-text">Nginx配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#域名解析"><span class="nav-number">4.</span> <span class="nav-text">域名解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E6%96%B9%E6%A1%88"><span class="nav-number">1.</span> <span class="nav-text">整体方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">部署过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">SSH登录配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git%E4%BB%93%E5%BA%93%E9%85%8D%E7%BD%AE"><span class="nav-number">2.2.</span> <span class="nav-text">Git仓库配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">本地配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">Nginx配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="nav-number">4.</span> <span class="nav-text">域名解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
