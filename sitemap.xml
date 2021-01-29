@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/2021/01/29/open-loop-tf/</loc>
+    
+    <lastmod>2021-01-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/2020/12/26/pendulum-a-good-example/</loc>
+    
+    <lastmod>2021-01-29</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2021/01/28/huanggang-county/</loc>
     
     <lastmod>2021-01-29</lastmod>
@@ -26,13 +40,6 @@
     <loc>http://panqiincs.me/2018/07/22/awesome-online-maps/</loc>
     
     <lastmod>2020-12-28</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2020/12/26/pendulum-a-good-example/</loc>
-    
-    <lastmod>2020-12-27</lastmod>
     
   </url>
   
@@ -1615,6 +1622,20 @@
   
   <url>
     <loc>http://panqiincs.me/tags/%E6%96%B0%E6%B4%B2/</loc>
+    <lastmod>2021-01-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/tags/%E5%BC%80%E7%8E%AF%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0/</loc>
+    <lastmod>2021-01-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://panqiincs.me/tags/%E9%97%AD%E7%8E%AF%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0/</loc>
     <lastmod>2021-01-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
