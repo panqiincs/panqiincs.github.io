@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"panqiincs.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="在类的成员函数的参数列表后面加上关键字const，表示它是一个const成员函数。考虑下面的类：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++的const成员函数">
+<meta property="og:url" content="http://panqiincs.me/2018/02/04/cpp-const-member-functions/index.html">
+<meta property="og:site_name" content="辛未羊的网络日志">
+<meta property="og:description" content="在类的成员函数的参数列表后面加上关键字const，表示它是一个const成员函数。考虑下面的类：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-02-04T04:20:28.000Z">
+<meta property="article:modified_time" content="2021-02-01T17:27:10.991Z">
+<meta property="article:author" content="Krist Pan">
+<meta property="article:tag" content="cpp">
+<meta property="article:tag" content="const">
+<meta property="article:tag" content="this指针">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://panqiincs.me/2018/02/04/cpp-const-member-functions/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C++的const成员函数 | 辛未羊的网络日志</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-39536948-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="辛未羊的网络日志" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">辛未羊的网络日志</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-series">
+
+    <a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2018/02/04/cpp-const-member-functions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Krist Pan">
+      <meta itemprop="description" content="人生如逆旅，我亦是行人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的网络日志">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++的const成员函数
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-02-04 12:20:28" itemprop="dateCreated datePublished" datetime="2018-02-04T12:20:28+08:00">2018-02-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/02/04/cpp-const-member-functions/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/02/04/cpp-const-member-functions/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在类的成员函数的参数列表后面加上关键字const，表示它是一个const成员函数。考虑下面的类：</p>
+<a id="more"></a>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Foo(): value_(<span class="number">0</span>) &#123;&#125;</span><br><span class="line">    Foo(<span class="keyword">int</span> val): value_(val) &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// const成员函数</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">cvalue</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> value_; &#125;</span><br><span class="line">    <span class="comment">// 非const成员函数</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">value</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> value_; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setValue</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123; value_ = a; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> value_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>其中，<code>value()</code>和<code>cvalue()</code>功能相同，但<code>cvalue()</code>是const成员函数，<code>setValue()</code>修改了类的成员变量。我们分别创建类的普通对象<code>f</code>和常量对象<code>cf</code>，并调用成员函数：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Foo f;</span><br><span class="line"><span class="keyword">const</span> Foo cf;</span><br><span class="line">    </span><br><span class="line">f.value();         <span class="comment">// OK</span></span><br><span class="line">f.cvalue();        <span class="comment">// OK</span></span><br><span class="line">f.setValue(<span class="number">1</span>);     <span class="comment">// OK</span></span><br><span class="line">cf.value();        <span class="comment">// 编译Error</span></span><br><span class="line">cf.cvalue();       <span class="comment">// OK</span></span><br><span class="line">cf.setValue(<span class="number">1</span>);    <span class="comment">// 编译Error</span></span><br></pre></td></tr></table></figure>
+<p><code>cf</code>是常量对象，无法调用修改对象内容的<code>setValue()</code>，可以理解，但<code>cf</code>也无法调用<code>value()</code>，只能调用const成员函数<code>cvalue()</code>！要解释这个问题，首先介绍一下this指针。</p>
+<p>调用成员函数实际上是在替某个对象调用它。成员函数通过一个名为<strong>this指针</strong>的额外隐式参数来访问调用它的那个对象。<code>value()</code>是普通的成员函数，<code>int Foo::value()</code>的实际形式是<code>int Foo::value(Foo *const this)</code>，即，this本身是一个常量（注意，不是指向常量的指针）。在调用成员函数时，编译器将调用过程<code>f.value()</code>重写为<code>int Foo::value(&amp;f)</code>。</p>
+<p>当调用常量对象<code>cf</code>的成员函数时，用<code>cf</code>对象的地址初始化this指针。根据初始化规则，只有指向常量的指针才能够存放常量对象的地址。正是这个原因，在常量对象上调用非常量成员函数是非法的。因此，我们应该把this声明成<code>const Foo *const</code>，毕竟<code>value()</code>的函数体内不会改变this所指的对象。C++的做法是将const关键字放在成员函数的参数列表之后，也就得到了const成员函数<code>cvalue()</code>。</p>
+<p>综上所述，我们可以得到const成员函数的特点：</p>
+<ol type="1">
+<li>使得接口容易理解，提醒调用者，该const成员函数无法修改类对象的内容</li>
+<li>使得操作“常量对象”成为可能，因为常量对象只能调用const成员函数</li>
+</ol>
+<p>所以，对于那些不修改对象内容的成员函数，应尽可能地定义成const，不仅能给接口的调用者传递信息，还能够扩大使用范围。</p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2018/01/30/cpp-const-keyword/" rel="bookmark">C++的const关键字</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2014/05/21/cpp-explicit-keyword/" rel="bookmark">C++的explicit关键字</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2014/06/01/cpp-explicit-conversion/" rel="bookmark">C++的显式类型转换</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2016/01/27/stl-source-analysis-notes/" rel="bookmark">「STL源码剖析」笔记</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2016/06/29/cpp-access-control/" rel="bookmark">C++的访问控制</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2016/11/20/cpp-rvalue-reference-intro/" rel="bookmark">C++右值引用简介</a></div>
+    </li>
+  </ul>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Krist Pan
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://panqiincs.me/2018/02/04/cpp-const-member-functions/" title="C++的const成员函数">http://panqiincs.me/2018/02/04/cpp-const-member-functions/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本网站所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/cpp/" rel="tag"># cpp</a>
+              <a href="/tags/const/" rel="tag"># const</a>
+              <a href="/tags/this%E6%8C%87%E9%92%88/" rel="tag"># this指针</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/01/30/cpp-const-keyword/" rel="prev" title="C++的const关键字">
+      <i class="fa fa-chevron-left"></i> C++的const关键字
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/05/26/process-pdf-using-imagemagick/" rel="next" title="用ImageMagick处理pdf">
+      用ImageMagick处理pdf <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Krist Pan"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Krist Pan</p>
+  <div class="site-description" itemprop="description">人生如逆旅，我亦是行人</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">165</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/panqiincs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;panqiincs" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.kawabangga.com/" title="https:&#x2F;&#x2F;www.kawabangga.com&#x2F;" rel="noopener" target="_blank">卡瓦邦噶！</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.boatsky.com/" title="https:&#x2F;&#x2F;www.boatsky.com&#x2F;" rel="noopener" target="_blank">太空船</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://geektutu.com/" title="https:&#x2F;&#x2F;geektutu.com&#x2F;" rel="noopener" target="_blank">极客兔兔</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://yuzhouwan.com/" title="https:&#x2F;&#x2F;yuzhouwan.com&#x2F;" rel="noopener" target="_blank">宇宙湾</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.feidaoboke.com/" title="https:&#x2F;&#x2F;www.feidaoboke.com" rel="noopener" target="_blank">飞刀博客</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://tumutanzi.com/" title="https:&#x2F;&#x2F;tumutanzi.com&#x2F;" rel="noopener" target="_blank">土木坛子</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2013 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Krist Pan</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://panqiincs.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://panqiincs.me/2018/02/04/cpp-const-member-functions/";
+    this.page.identifier = "2018/02/04/cpp-const-member-functions/";
+    this.page.title = "C++的const成员函数";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://panqiincs.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

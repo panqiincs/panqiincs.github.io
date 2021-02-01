@@ -180,6 +180,184 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/06/17/linux-kernel-linked-list-explained/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Krist Pan">
+      <meta itemprop="description" content="人生如逆旅，我亦是行人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的网络日志">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/06/17/linux-kernel-linked-list-explained/" class="post-title-link" itemprop="url">Linux内核中的链表</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-06-17 10:45:20" itemprop="dateCreated datePublished" datetime="2017-06-17T10:45:20+08:00">2017-06-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2017/06/17/linux-kernel-linked-list-explained/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/17/linux-kernel-linked-list-explained/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="介绍">介绍</h2>
+<p>Linux链表（linked list）的实现比较特别。通常来说，一个链表结构体会包含需要相互连接的数据，例如下面结构体中的<code>my_item</code>成员：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/06/17/linux-kernel-linked-list-explained/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Krist Pan">
+      <meta itemprop="description" content="人生如逆旅，我亦是行人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的网络日志">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/04/19/write-a-shell-redirect-and-pipeline/" class="post-title-link" itemprop="url">Shell实现：重定向和管道</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-04-19 21:13:18" itemprop="dateCreated datePublished" datetime="2017-04-19T21:13:18+08:00">2017-04-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2017/04/19/write-a-shell-redirect-and-pipeline/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/19/write-a-shell-redirect-and-pipeline/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="介绍">介绍</h2>
+<p><a href="https://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/">Shell实现：基本功能</a>一文介绍了如何实现shell的基本功能，本文介绍如何实现I/O重定向和管道。I/O重定向使得程序可以自由地指定数据的流向，不一定从键盘读取数据或输出结果到屏幕上；管道使得一条命令的输出可以作为另一条命令的输入，多条命令可以配合完成一项任务。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/04/19/write-a-shell-redirect-and-pipeline/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -334,6 +512,98 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/01/07/bingshen-year-summary/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2016/11/20/cpp-rvalue-reference-intro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Krist Pan">
+      <meta itemprop="description" content="人生如逆旅，我亦是行人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的网络日志">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2016/11/20/cpp-rvalue-reference-intro/" class="post-title-link" itemprop="url">C++右值引用简介</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-11-20 19:02:32" itemprop="dateCreated datePublished" datetime="2016-11-20T19:02:32+08:00">2016-11-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2016/11/20/cpp-rvalue-reference-intro/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/11/20/cpp-rvalue-reference-intro/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文译自：<a target="_blank" rel="noopener" href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n2027.html">A Brief Introduction to Rvalue Reference</a>，有少量修改。</p>
+<h2 id="介绍">介绍</h2>
+<p>本文简要介绍了C++的新特性——右值引用（rvalue reference），更多细节请参考<a target="_blank" rel="noopener" href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n2027.html#Wrap_Up">这里</a>。</p>
+<h2 id="右值引用">右值引用</h2>
+<p>右值引用是一种复合类型，和传统的C++引用类似。为了更好地区分它们，我们将传统的引用称之为左值引用。引用一词同时包括左值引用和右值引用。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2016/11/20/cpp-rvalue-reference-intro/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -709,7 +979,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2016/06/20/driving-license/">
+    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2016/06/29/cpp-access-control/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -723,7 +993,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2016/06/20/driving-license/" class="post-title-link" itemprop="url">终于拿到驾照</a>
+            <a href="/2016/06/29/cpp-access-control/" class="post-title-link" itemprop="url">C++的访问控制</a>
         </h2>
 
         <div class="post-meta">
@@ -733,7 +1003,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2016-06-20 20:06:34" itemprop="dateCreated datePublished" datetime="2016-06-20T20:06:34+08:00">2016-06-20</time>
+              <time title="创建时间：2016-06-29 13:09:05" itemprop="dateCreated datePublished" datetime="2016-06-29T13:09:05+08:00">2016-06-29</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -741,7 +1011,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">生活记录</span></a>
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
                 </span>
             </span>
 
@@ -754,8 +1024,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2016/06/20/driving-license/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/20/driving-license/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2016/06/29/cpp-access-control/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/29/cpp-access-control/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -770,275 +1040,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>今天上午在长沙青竹湖考场顺利通过科目三和科目四，终于拿到了驾照！</p>
+          <h2 id="访问说明符">访问说明符</h2>
+<p>封装是面向对象编程的基本思想之一，它实现了类的接口和实现的分离。封装能阻止用户直接访问类的内部实现，但可以通过类提供的接口使用类的功能。C++语言使用访问说明符（access specifier）来加强类的封装性。</p>
+<h2 id="成员的访问说明符">成员的访问说明符</h2>
+<h3 id="public和private">public和private</h3>
+<p>定义在public说明符之后的成员在整个程序内可被访问，public成员定义类的接口。定义在private说明符之后的成员可以被类的成员函数访问，但是不能被使用该类的代码访问，private成员封装了类的实现细节。下面的代码：</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2016/06/20/driving-license/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2016/05/01/qt-text-processing/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Krist Pan">
-      <meta itemprop="description" content="人生如逆旅，我亦是行人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="辛未羊的网络日志">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/05/01/qt-text-processing/" class="post-title-link" itemprop="url">用Qt基础库处理文本</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-05-01 21:33:13" itemprop="dateCreated datePublished" datetime="2016-05-01T21:33:13+08:00">2016-05-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2016/05/01/qt-text-processing/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/05/01/qt-text-processing/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="使用qt">使用Qt</h2>
-<p>Qt是一个跨平台的C++应用程序开发框架，广泛用于开发界面程序。Qt不仅仅是个强大的界面库，它的基础库同样强大，很多库用起来比STL还方便，所以我经常用Qt编写控制台（console）程序。本文介绍如何用Qt进行常用的文本操作，代码简单实用，无需太多的解释。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2016/05/01/qt-text-processing/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2016/04/21/about-ros/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Krist Pan">
-      <meta itemprop="description" content="人生如逆旅，我亦是行人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="辛未羊的网络日志">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/04/21/about-ros/" class="post-title-link" itemprop="url">机器人操作系统ROS</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-04-21 11:34:47" itemprop="dateCreated datePublished" datetime="2016-04-21T11:34:47+08:00">2016-04-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具使用</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2016/04/21/about-ros/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/04/21/about-ros/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>2014年我开始参与实验室的一个自然科学基金项目，从而接触了机器人操作系统（Robot Operating System, ROS），这真是个好东西，但在国内好像不是很普及。我很有可能是我们学校第一个使用ROS的人，还给院里做相关方向的同学做了简单的介绍。我的硕士毕业论文和机器人路径规划算法有关，用的软件平台就是ROS，为我的算法验证提供了极大的方便。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2016/04/21/about-ros/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2016/03/27/love-yuelu-mountain/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Krist Pan">
-      <meta itemprop="description" content="人生如逆旅，我亦是行人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="辛未羊的网络日志">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/03/27/love-yuelu-mountain/" class="post-title-link" itemprop="url">喜欢岳麓山</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-03-27 11:08:51" itemprop="dateCreated datePublished" datetime="2016-03-27T11:08:51+08:00">2016-03-27</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">生活记录</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2016/03/27/love-yuelu-mountain/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/03/27/love-yuelu-mountain/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>岳麓山是块风水宝地，湖南省最好的三所大学坐落在山脚下。山从北到南绵亘几公里，走向略有弯曲，就好像面对湘江张开了双臂。而湖南大学就夹在这山水之间，安然地躺在岳麓山温暖的怀抱里，占据了最精华的一块土地。从2009年读大学到现在，我在岳麓山脚下生活了近七年，深深地爱上了这片土地。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2016/03/27/love-yuelu-mountain/#more" rel="contents">
+              <a class="btn" href="/2016/06/29/cpp-access-control/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1129,20 +1138,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-count">88</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">150</span>
+        <span class="site-state-item-count">165</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
