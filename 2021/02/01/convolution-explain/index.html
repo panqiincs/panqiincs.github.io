@@ -30,7 +30,7 @@
 <meta property="og:description" content="卷积是「信号与系统」课程中非常重要的内容，学习和理解起来比较困难。如果仔细阅读了奥本海姆那本经典教材，相信应该能够搞清楚这个概念。本文会将教材中的公式推导和形象的例子结合起来，希望能够把卷积讲清楚。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-01T12:21:58.000Z">
-<meta property="article:modified_time" content="2021-02-02T00:36:48.012Z">
+<meta property="article:modified_time" content="2021-02-02T11:21:35.006Z">
 <meta property="article:author" content="Krist Pan">
 <meta property="article:tag" content="卷积">
 <meta property="article:tag" content="信号与系统">
@@ -273,8 +273,12 @@ x(t) = \int_{-\infty}^{+\infty} x(\tau) \delta(t-\tau) d \tau
 <p><span class="math display">\[
 y(t) = \int_{-\infty}^{+\infty} x(\tau) h(t-\tau) d \tau
 \]</span></p>
-<p>这样，我们就得到了著名的卷积公式。它的基本思想是，将输入信号转化成发生在不同时刻的冲激信号的叠加，已知系统对单位冲激信号的响应，将每一时刻的响应叠加起来就得到了总的响应。因为系统是线性时不变的，所以才会得到如此漂亮简洁的公式。</p>
-<p>那么，已知系统的单位冲激响应<span class="math inline">\(h(t)\)</span>，想计算任意输入信号<span class="math inline">\(x(t)\)</span>作用下系统的输出<span class="math inline">\(y(t)\)</span>，只要将<span class="math inline">\(x(t)\)</span>和<span class="math inline">\(h(t)\)</span>做卷积就可以了，所以单位冲激响应能完全描述这个系统的特性。这就是为什么卷积在时域分析中如此重要的原因。</p>
+<p>这样，我们就得到了著名的卷积公式，还可以使用如下的记号表示两个信号的卷积</p>
+<p><span class="math display">\[
+x(t) * h(t) = \int_{-\infty}^{+\infty} x(\tau) h(t-\tau) d \tau
+\]</span></p>
+<p>卷积的基本思想是，将输入信号转化成发生在不同时刻的冲激信号的叠加，已知系统对单位冲激信号的响应，将每一时刻的响应叠加起来就得到了总的响应。从上面的推导过程可以看出，正因为系统的线性和时不变性质，才得到了非常简洁漂亮的表达式。</p>
+<p>那么，已知系统的单位冲激响应<span class="math inline">\(h(t)\)</span>，想计算任意输入信号<span class="math inline">\(x(t)\)</span>作用下系统的输出<span class="math inline">\(y(t)\)</span>，只要将<span class="math inline">\(x(t)\)</span>和<span class="math inline">\(h(t)\)</span>做卷积就可以了，所以单位冲激响应能完全描述这个系统的特性。所以，卷积在时域分析中非常重要。</p>
 
     </div>
 
