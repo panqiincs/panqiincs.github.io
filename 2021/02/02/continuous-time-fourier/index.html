@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"panqiincs.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="基础知识 连续信号，或称连续时间信号（continuous-time signal），其自变量是连续可变的，信号在自变量的连续值上都有定义。例如，作为时间的函数的语音信号就是连续信号。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="连续信号的傅里叶分析">
+<meta property="og:url" content="http://panqiincs.me/2021/02/02/continuous-time-fourier/index.html">
+<meta property="og:site_name" content="辛未羊的网络日志">
+<meta property="og:description" content="基础知识 连续信号，或称连续时间信号（continuous-time signal），其自变量是连续可变的，信号在自变量的连续值上都有定义。例如，作为时间的函数的语音信号就是连续信号。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-02T02:30:14.000Z">
+<meta property="article:modified_time" content="2021-02-02T04:29:32.568Z">
+<meta property="article:author" content="Krist Pan">
+<meta property="article:tag" content="信号与系统">
+<meta property="article:tag" content="傅里叶级数">
+<meta property="article:tag" content="傅里叶变换">
+<meta property="article:tag" content="fourier">
+<meta property="article:tag" content="连续信号">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://panqiincs.me/2021/02/02/continuous-time-fourier/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>连续信号的傅里叶分析 | 辛未羊的网络日志</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-39536948-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="辛未羊的网络日志" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">辛未羊的网络日志</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-series">
+
+    <a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2021/02/02/continuous-time-fourier/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Krist Pan">
+      <meta itemprop="description" content="人生如逆旅，我亦是行人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的网络日志">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          连续信号的傅里叶分析
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-02 10:30:14" itemprop="dateCreated datePublished" datetime="2021-02-02T10:30:14+08:00">2021-02-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">大学课程</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2021/02/02/continuous-time-fourier/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/02/02/continuous-time-fourier/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="基础知识">基础知识</h2>
+<p>连续信号，或称连续时间信号（continuous-time signal），其自变量是连续可变的，信号在自变量的连续值上都有定义。例如，作为时间的函数的语音信号就是连续信号。</p>
+<a id="more"></a>
+<p>周期信号是幅值随着时间重复变化的信号，一个周期连续时间信号具有这样的性质，即存在一个正值的<span class="math inline">\(T\)</span>，对所有的<span class="math inline">\(t\)</span>来说，有<span class="math inline">\(x(t) = x(t+T)\)</span>，那么<span class="math inline">\(T\)</span>就是信号的周期。正弦函数<span class="math inline">\(x(t) = \sin \omega t\)</span>就是一种周期函数，周期<span class="math inline">\(T = 2 \pi / \omega\)</span>，<span class="math inline">\(\omega\)</span>称为角频率。</p>
+<p>由于正弦函数的计算不方便，因此引入周期复指数信号<span class="math inline">\(x(t) = e^{j \omega t}\)</span>，由周期信号的定义式</p>
+<p><span class="math display">\[
+e^{j \omega (t + T)} = e^{j \omega t} \cdot e^{j \omega T} = e^{j \omega t}
+\]</span></p>
+<p>那么<span class="math inline">\(e^{j \omega T} = 1\)</span>，于是得到负指数信号的周期</p>
+<p><span class="math display">\[
+T = \frac{2 \pi}{\left| \omega \right|}
+\]</span></p>
+<p>加绝对值是因为角频率<span class="math inline">\(\omega\)</span>可能为负数。由欧拉公式</p>
+<p><span class="math display">\[
+e^{j \omega t} = \cos \omega t + j \sin \omega t
+\]</span></p>
+<p>所以，<span class="math inline">\(\cos \omega t\)</span>是周期复指数信号的实部，<span class="math inline">\(\sin \omega t\)</span>是周期复指数信号的虚部。将<span class="math inline">\(\omega\)</span>替换成<span class="math inline">\(-\omega\)</span>得</p>
+<p><span class="math display">\[
+e^{-j \omega t} = \cos \omega t - j \sin \omega t
+\]</span></p>
+<p>联立上述两个方程便得到正弦信号和周期复指数信号的等式关系</p>
+<p><span class="math display">\[
+\cos \omega t = \frac{1}{2}(e^{j \omega t} + e^{-j \omega t})
+\]</span></p>
+<p><span class="math display">\[
+\sin \omega t = \frac{1}{2j}(e^{j \omega t} - e^{-j \omega t})
+\]</span></p>
+<p>需要注意一点，<span class="math inline">\(\cos \omega t\)</span>也是正弦信号，它和<span class="math inline">\(\sin \omega t\)</span>只有相位上的差别。</p>
+<h2 id="傅里叶级数">傅里叶级数</h2>
+<p>任何满足Dirichlet条件的周期函数<span class="math inline">\(x(t)\)</span>都可以表示成一组成谐波关系的复指数信号的线性组合</p>
+<p><span class="math display">\[
+x(t) = \sum_{k=-\infty}^{+\infty} a_k e^{j k \omega_0 t} = \sum_{k=-\infty}^{+\infty} a_k e^{j k (2 \pi / T) t}
+\]</span></p>
+<p>其中<span class="math inline">\(a_k\)</span>系数是每个谐波成分所占的比重，它的求解公式如下</p>
+<p><span class="math display">\[
+a_k = \frac{1}{T}\int_{T} x(t) e^{-j k \omega_0 t} dt = \frac{1}{T}\int_{T} x(t) e^{-j k (2 \pi / T) t} dt
+\]</span></p>
+<p>以正弦波<span class="math inline">\(x(t) = \sin \omega t\)</span>为例，因为</p>
+<p><span class="math display">\[
+\sin \omega t = \frac{1}{2j}(e^{j \omega t} - e^{-j \omega t}) = \frac{j}{2} e^{j \omega t} - \frac{j}{2} e^{-j \omega t}
+\]</span></p>
+<p>所以<span class="math inline">\(a_{1}=-j/2\)</span>，<span class="math inline">\(a_{-1}=j/2\)</span>，<span class="math inline">\(k\)</span>为其他值时，<span class="math inline">\(a_k = 0\)</span>。</p>
+<p>当<span class="math inline">\(x(t)\)</span>为一半时间为<span class="math inline">\(0\)</span>、一半时间为<span class="math inline">\(1\)</span>，且关于纵轴对称的方波信号时，可计算得到</p>
+<p><span class="math display">\[
+a_0 = \frac{1}{2}
+\]</span></p>
+<p><span class="math display">\[
+a_k = \frac{\sin (\pi k/2)}{k \pi}, k \ne 0
+\]</span></p>
+<p>于是可以得到复指数形式的傅里叶级数</p>
+<p><span class="math display">\[
+x(t) = \frac{1}{2} + \frac{1}{\pi}(e^{j \omega t} - e^{-j \omega t}) - \frac{1}{3 \pi} (e^{j 3\omega t} - e^{-j 3\omega t}) + \frac{1}{5 \pi} (e^{j 5\omega t} - e^{-j 5\omega t}) - \cdots
+\]</span></p>
+<p>将它转换成正弦信号形式，得</p>
+<p><span class="math display">\[
+x(t) = \frac{1}{2} + \frac{2}{\pi} \cos \omega t - \frac{2}{3 \pi} \cos 3\omega t + \frac{2}{5 \pi} \cos 5\omega t - \cdots
+\]</span></p>
+<p>后面的项数越多，对方波的逼近程度越高，下面的MATLAB程序可以演示这一过程</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">T1 = <span class="number">1</span>;</span><br><span class="line">T = <span class="number">4</span> * T1;   <span class="comment">% 基波周期</span></span><br><span class="line">w0 = <span class="number">2</span>*<span class="built_in">pi</span>/T;  <span class="comment">% 基波频率</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 创建方波信号</span></span><br><span class="line">t = <span class="number">-3</span>/<span class="number">2</span>*T:<span class="number">0.01</span>:<span class="number">3</span>/<span class="number">2</span>*T;</span><br><span class="line">x = <span class="built_in">zeros</span>(<span class="built_in">size</span>(t));</span><br><span class="line"><span class="keyword">for</span> k = <span class="number">1</span>:<span class="built_in">length</span>(t)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">abs</span>(t(k)) &lt; T1 || <span class="built_in">abs</span>(t(k)-T) &lt; T1 || <span class="built_in">abs</span>(t(k)+T) &lt; T1</span><br><span class="line">        x(k) = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="built_in">plot</span>(t, x)</span><br><span class="line">axis([<span class="number">-3</span>/<span class="number">2</span>*T, <span class="number">3</span>/<span class="number">2</span>*T, <span class="number">-0.5</span>, <span class="number">1.5</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">% 用傅里叶级数逼近方波信号</span></span><br><span class="line">x_hat = <span class="number">1</span>/<span class="number">2</span>;</span><br><span class="line">wait_time = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">for</span> n = <span class="number">1</span>:<span class="number">70</span></span><br><span class="line">    x_hat = x_hat + (<span class="number">-1</span>)^(n+<span class="number">1</span>)*<span class="number">2</span>/<span class="built_in">pi</span>/(<span class="number">2</span>*n<span class="number">-1</span>)*<span class="built_in">cos</span>((<span class="number">2</span>*n<span class="number">-1</span>)*w0*t);</span><br><span class="line">    <span class="built_in">plot</span>(t, x_hat);</span><br><span class="line">    <span class="built_in">hold</span> on; <span class="built_in">plot</span>(t, x, <span class="string">&#x27;LineWidth&#x27;</span>, <span class="number">1</span>); <span class="built_in">hold</span> off;</span><br><span class="line">    pause(wait_time)</span><br><span class="line">    wait_time = wait_time / <span class="number">1.1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>所以，连续时间信号的频率分布可以用傅里叶级数来描述。根据傅里叶级数的系数可以画出该周期信号的频谱，连续周期信号的频谱只在离散的频率点处有值，这些频率点是等距离的，频率值都是基波频率<span class="math inline">\(\omega_0\)</span>的倍数。</p>
+<h2 id="傅里叶变换">傅里叶变换</h2>
+<p>未完成。</p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2021/02/01/convolution-explain/" rel="bookmark">卷积的数学推导和形象解释</a></div>
+    </li>
+  </ul>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Krist Pan
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://panqiincs.me/2021/02/02/continuous-time-fourier/" title="连续信号的傅里叶分析">http://panqiincs.me/2021/02/02/continuous-time-fourier/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本网站所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/" rel="tag"># 信号与系统</a>
+              <a href="/tags/%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0/" rel="tag"># 傅里叶级数</a>
+              <a href="/tags/%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" rel="tag"># 傅里叶变换</a>
+              <a href="/tags/fourier/" rel="tag"># fourier</a>
+              <a href="/tags/%E8%BF%9E%E7%BB%AD%E4%BF%A1%E5%8F%B7/" rel="tag"># 连续信号</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/01/convolution-explain/" rel="prev" title="卷积的数学推导和形象解释">
+      <i class="fa fa-chevron-left"></i> 卷积的数学推导和形象解释
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">傅里叶级数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2"><span class="nav-number">3.</span> <span class="nav-text">傅里叶变换</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Krist Pan"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Krist Pan</p>
+  <div class="site-description" itemprop="description">人生如逆旅，我亦是行人</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">169</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/panqiincs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;panqiincs" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.kawabangga.com/" title="https:&#x2F;&#x2F;www.kawabangga.com&#x2F;" rel="noopener" target="_blank">卡瓦邦噶！</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.boatsky.com/" title="https:&#x2F;&#x2F;www.boatsky.com&#x2F;" rel="noopener" target="_blank">太空船</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://geektutu.com/" title="https:&#x2F;&#x2F;geektutu.com&#x2F;" rel="noopener" target="_blank">极客兔兔</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://yuzhouwan.com/" title="https:&#x2F;&#x2F;yuzhouwan.com&#x2F;" rel="noopener" target="_blank">宇宙湾</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.feidaoboke.com/" title="https:&#x2F;&#x2F;www.feidaoboke.com" rel="noopener" target="_blank">飞刀博客</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://tumutanzi.com/" title="https:&#x2F;&#x2F;tumutanzi.com&#x2F;" rel="noopener" target="_blank">土木坛子</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2013 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Krist Pan</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://panqiincs.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://panqiincs.me/2021/02/02/continuous-time-fourier/";
+    this.page.identifier = "2021/02/02/continuous-time-fourier/";
+    this.page.title = "连续信号的傅里叶分析";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://panqiincs.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
