@@ -30,7 +30,7 @@
 <meta property="og:description" content="基础知识 定义 本文讨论的离散信号指的是离散时间信号（discrete-time signal），信号只定义在离散的时刻点上，也就是自变量（时间）仅取在一组离散值上。例如，股票市场的指数就是离散时间信号。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-05T02:18:28.000Z">
-<meta property="article:modified_time" content="2021-02-05T04:17:27.216Z">
+<meta property="article:modified_time" content="2021-02-05T05:06:43.056Z">
 <meta property="article:author" content="Krist Pan">
 <meta property="article:tag" content="信号与系统">
 <meta property="article:tag" content="傅里叶级数">
@@ -252,19 +252,19 @@
 <h3 id="定义">定义</h3>
 <p>本文讨论的离散信号指的是离散时间信号（discrete-time signal），信号只定义在离散的时刻点上，也就是自变量（时间）仅取在一组离散值上。例如，股票市场的指数就是离散时间信号。</p>
 <a id="more"></a>
-<p>在这里还需要把几个容易混淆的概念澄清一下。如果信号的自变量和函数值都取连续值，称信号为<strong>模拟信号</strong>或连续时间信号；如果自变量取离散值，而函数值取连续值，则称信号为离散时间信号，这种信号通常来源于对模拟信号的采样；如果信号的自变量和函数值均取离散值，则称为<strong>数字信号</strong>，数字信号其实就是量化后的离散时间信号。</p>
-<p>离散信号的表示和连续信号类似，只不过把时间变量<span class="math inline">\(t\)</span>改成了<span class="math inline">\(n\)</span>。同样的，我们基于周期复指数信号讨论正弦信号的特性，它的表达式为</p>
+<p>在这里需要注意几个容易混淆的概念。如果信号的自变量和函数值都取连续值，称信号为<strong>模拟信号</strong>或连续时间信号；如果自变量取离散值，而函数值取连续值，则称信号为离散时间信号，这种信号通常来源于对模拟信号的采样；如果信号的自变量和函数值均取离散值，则称为<strong>数字信号</strong>，数字信号其实就是量化后的离散时间信号，是计算机中的表示形式。</p>
+<p>离散信号的表示和连续信号类似，只不过把时间变量<span class="math inline">\(t\)</span>改成了<span class="math inline">\(n\)</span>。同样地，我们基于周期复指数信号讨论正弦信号的特性，它的表达式为</p>
 <p><span class="math display">\[
 x[n] = e^{j \omega_0 n}
 \]</span></p>
-<p>它可以看成是连续信号在整数点上的取值，和连续情况类似，但又有区别。</p>
+<p>它可以看成是连续信号在整数点上的取值，和连续信号类似，但又有区别。</p>
 <h3 id="振荡速率">振荡速率</h3>
 <p>由于</p>
 <p><span class="math display">\[
 e^{j (\omega_0+2\pi) n} = e^{j \omega_0 n} \cdot e^{j 2\pi n} = e^{j \omega_0 n}
 \]</span></p>
 <p>所以，离散周期复指数信号在频率<span class="math inline">\(\omega_0+2\pi\)</span>与频率<span class="math inline">\(\omega_0\)</span>时是完全一样的。考虑这种离散时间周期复指数信号时，仅仅需要在某个<span class="math inline">\(2\pi\)</span>间隔内选择<span class="math inline">\(\omega_0\)</span>即可，一般取<span class="math inline">\(0 \le \omega_0 &lt; 2\pi\)</span>或<span class="math inline">\(-\pi \le \omega_0 &lt; \pi\)</span>。由上面的讨论可知，<span class="math inline">\(\omega_0\)</span>数值增加时，<span class="math inline">\(e^{j \omega_0 n}\)</span>的振荡速率并不会不断增加。<span class="math inline">\(\omega_0\)</span>从<span class="math inline">\(0\)</span>增加到<span class="math inline">\(\pi\)</span>时，振荡速率越来越快，从<span class="math inline">\(\pi\)</span>变化到<span class="math inline">\(2\pi\)</span>时，振荡速率会下降。所以，离散复指数信号的低频部分位于<span class="math inline">\(\omega_0\)</span>在<span class="math inline">\(\pi\)</span>的偶数倍值附近，高频部分则位于<span class="math inline">\(\omega_0\)</span>在<span class="math inline">\(\pi\)</span>的奇数倍值附近。</p>
-<h3 id="周期计算">周期计算</h3>
+<h3 id="周期公式">周期公式</h3>
 <p>现在讨论它的周期<span class="math inline">\(N\)</span>。根据周期信号的定义有</p>
 <p><span class="math display">\[
 e^{j \omega_0 (n + N)} = e^{j \omega_0 N} \cdot e^{j \omega_0 n} = e^{j \omega_0 n}
@@ -280,22 +280,23 @@ e^{j \omega_0 (n + N)} = e^{j \omega_0 N} \cdot e^{j \omega_0 n} = e^{j \omega_0
 <p>所以，只有<span class="math inline">\(\omega_0 / 2 \pi\)</span>为有理数时，<span class="math inline">\(e^{j \omega_0 n}\)</span>才是周期信号，否则就不是周期的。这是由于离散时间信号仅能在自变量的整数值上有定义造成的。</p>
 <p>基波频率</p>
 <p><span class="math display">\[
-\frac{2 \pi}{N} = \frac{\omega_0}{m}
+\frac{2\pi}{N} = \frac{\omega_0}{m}
 \]</span></p>
 <p>那么基波周期<span class="math inline">\(N\)</span>也可以写成</p>
 <p><span class="math display">\[
 N = m \left( \frac{2 \pi}{\omega_0} \right)
 \]</span></p>
+<p>基于上面的原因，通常给定周期复指数信号的基波周期<span class="math inline">\(N\)</span>，然后求得频率<span class="math inline">\(\omega_0=2\pi/N\)</span>（此时<span class="math inline">\(m=1\)</span>），得到它的表达式<span class="math inline">\(e^{j \omega_0 n}\)</span>。</p>
 <h3 id="谐波信号">谐波信号</h3>
-<p>再讨论成谐波关系的周期离散时间复指数信号。下面的信号具有公共周期<span class="math inline">\(N\)</span>，频率都是基波周期<span class="math inline">\(2 \pi / N\)</span>的整数倍，即</p>
+<p>再讨论成谐波关系的周期离散时间复指数信号。下面的信号具有公共周期<span class="math inline">\(N\)</span>，频率都是基波周期<span class="math inline">\(2\pi/N\)</span>的整数倍：</p>
 <p><span class="math display">\[
-\phi_k[n] = e^{j k (2 \pi / N) n}, \, k = 0, \pm 1, \cdots
+\phi_k[n] = e^{j k (2\pi/N) n}, \, k = 0, \pm 1, \cdots
 \]</span></p>
-<p>在连续情况下，成谐波关系的信号都是不相同的。但是离散时间情况下则不一样，因为</p>
+<p>在连续情况下，成谐波关系的信号都是不相同的。但是离散情况下则不一样，因为</p>
 <p><span class="math display">\[
-\phi_{k+N}[n] = e^{j (k+N) (2 \pi / N) n} = e^{j k (2 \pi / N) n} \cdot e^{j 2 \pi n} = \phi_k[n]
+\phi_{k+N}[n] = e^{j (k+N) (2\pi/N) n} = e^{j k (2\pi/N) n} \cdot e^{j 2\pi n} = \phi_k[n]
 \]</span></p>
-<p>所以，上述成谐波关系的信号中，仅有<span class="math inline">\(N\)</span>个互不相同的周期复指数信号，因为</p>
+<p>所以，上述成谐波关系的信号中，仅有<span class="math inline">\(N\)</span>个互不相同的周期复指数信号，而且</p>
 <p><span class="math display">\[
 \phi_k[n] = \phi_{k+rN}[n]
 \]</span></p>
@@ -308,10 +309,10 @@ x[n] = \sum_{k=\left \langle N \right \rangle} a_k e^{j k \omega_0 n} = \sum_{k=
 <p><span class="math display">\[
 a_k = \frac{1}{N} \sum_{k=\left \langle N \right \rangle} x[n] e^{-j k \omega_0 n} = \frac{1}{N} \sum_{k=\left \langle N \right \rangle} x[n] e^{-j k (2\pi/N) n}
 \]</span></p>
-<p>由于成谐波关系的信号中仅有<span class="math inline">\(N\)</span>个互不相同的周期复指数信号，所以，离散时间周期信号的傅里叶级数<span class="math inline">\(\left\{ a_k \right\}\)</span>一定以<span class="math inline">\(N\)</span>为周期往复变化的。</p>
+<p>由于成谐波关系的信号中仅有<span class="math inline">\(N\)</span>个互不相同的周期复指数信号，所以，离散时间周期信号的傅里叶级数<span class="math inline">\(\left\{ a_k \right\}\)</span>一定以<span class="math inline">\(N\)</span>为周期往复变化的，也就是说，频谱是离散的、周期的。</p>
 <p>和连续时间信号傅里叶级数不同的是，级数的项数是有限的，不存在收敛问题，而且能够完全精确地逼近。</p>
 <h2 id="傅里叶变换">傅里叶变换</h2>
-<p>离散时间非周期信号可以表示为不同频率的指数信号的加权和，它们的频谱是连续的，用傅里叶变换描述。和连续信号的分析方法类似，将周期信号的周期<span class="math inline">\(T\)</span>趋于无穷大，频谱由离散变为连续，周期信号变为非周期信号，傅里叶级数转化为傅里叶变换。得到了如下的傅里叶变换公式对</p>
+<p>离散时间非周期信号可以表示为不同频率的指数信号的加权和，它的频谱是连续的，用傅里叶变换描述。和连续信号的分析方法类似，将周期信号的周期<span class="math inline">\(T\)</span>趋于无穷大，频谱由离散变为连续，周期信号变为非周期信号，傅里叶级数转化为傅里叶变换。得到了如下的傅里叶变换公式对</p>
 <p><span class="math display">\[
 x[n] = \frac{1}{2\pi} \int_{2\pi} X(e^{j\omega})  e^{j \omega n} d\omega
 \]</span></p>
@@ -439,7 +440,7 @@ X(e^{j\omega}) = \sum_{n=-\infty}^{+\infty} x[n] e^{-j \omega n}
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%AF%E8%8D%A1%E9%80%9F%E7%8E%87"><span class="nav-number">1.2.</span> <span class="nav-text">振荡速率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%A8%E6%9C%9F%E8%AE%A1%E7%AE%97"><span class="nav-number">1.3.</span> <span class="nav-text">周期计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%90%E6%B3%A2%E4%BF%A1%E5%8F%B7"><span class="nav-number">1.4.</span> <span class="nav-text">谐波信号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">傅里叶级数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2"><span class="nav-number">3.</span> <span class="nav-text">傅里叶变换</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%AF%E8%8D%A1%E9%80%9F%E7%8E%87"><span class="nav-number">1.2.</span> <span class="nav-text">振荡速率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%A8%E6%9C%9F%E5%85%AC%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">周期公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%90%E6%B3%A2%E4%BF%A1%E5%8F%B7"><span class="nav-number">1.4.</span> <span class="nav-text">谐波信号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">傅里叶级数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2"><span class="nav-number">3.</span> <span class="nav-text">傅里叶变换</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
