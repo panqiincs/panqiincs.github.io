@@ -30,7 +30,7 @@
 <meta property="og:description" content="基础知识 定义 本文讨论的离散信号指的是离散时间信号（discrete-time signal），信号只定义在离散的时刻点上，也就是自变量（时间）仅取在一组离散值上。例如，股票市场的指数就是离散时间信号。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-05T02:18:28.000Z">
-<meta property="article:modified_time" content="2021-02-05T05:06:43.056Z">
+<meta property="article:modified_time" content="2021-02-05T05:19:15.751Z">
 <meta property="article:author" content="Krist Pan">
 <meta property="article:tag" content="信号与系统">
 <meta property="article:tag" content="傅里叶级数">
@@ -309,7 +309,7 @@ x[n] = \sum_{k=\left \langle N \right \rangle} a_k e^{j k \omega_0 n} = \sum_{k=
 <p><span class="math display">\[
 a_k = \frac{1}{N} \sum_{k=\left \langle N \right \rangle} x[n] e^{-j k \omega_0 n} = \frac{1}{N} \sum_{k=\left \langle N \right \rangle} x[n] e^{-j k (2\pi/N) n}
 \]</span></p>
-<p>由于成谐波关系的信号中仅有<span class="math inline">\(N\)</span>个互不相同的周期复指数信号，所以，离散时间周期信号的傅里叶级数<span class="math inline">\(\left\{ a_k \right\}\)</span>一定以<span class="math inline">\(N\)</span>为周期往复变化的，也就是说，频谱是离散的、周期的。</p>
+<p>由于成谐波关系的信号中仅有<span class="math inline">\(N\)</span>个互不相同的周期复指数信号，所以，离散时间周期信号的傅里叶级数<span class="math inline">\(\left\{ a_k \right\}\)</span>一定以<span class="math inline">\(N\)</span>为周期往复变化的，也就是说，离散时间周期信号的频谱是离散的、周期的。</p>
 <p>和连续时间信号傅里叶级数不同的是，级数的项数是有限的，不存在收敛问题，而且能够完全精确地逼近。</p>
 <h2 id="傅里叶变换">傅里叶变换</h2>
 <p>离散时间非周期信号可以表示为不同频率的指数信号的加权和，它的频谱是连续的，用傅里叶变换描述。和连续信号的分析方法类似，将周期信号的周期<span class="math inline">\(T\)</span>趋于无穷大，频谱由离散变为连续，周期信号变为非周期信号，傅里叶级数转化为傅里叶变换。得到了如下的傅里叶变换公式对</p>
@@ -319,7 +319,7 @@ x[n] = \frac{1}{2\pi} \int_{2\pi} X(e^{j\omega})  e^{j \omega n} d\omega
 <p><span class="math display">\[
 X(e^{j\omega}) = \sum_{n=-\infty}^{+\infty} x[n] e^{-j \omega n}
 \]</span></p>
-<p>从离散时间傅里叶变换得到的<span class="math inline">\(x[n]\)</span>的频谱<span class="math inline">\(X(e^{j\omega})\)</span>是连续函数，由于<span class="math inline">\(\omega_0\)</span>相差<span class="math inline">\(2\pi\)</span>的两个复指数信号是一样的，所以<span class="math inline">\(X(e^{j\omega})\)</span>是周期函数，周期为<span class="math inline">\(2\pi\)</span>。靠近偶数倍<span class="math inline">\(\pi\)</span>的<span class="math inline">\(\omega\)</span>，对应的是低频率的信号；而靠近奇数倍<span class="math inline">\(\pi\)</span>的<span class="math inline">\(\omega\)</span>，对应的则是高频率的信号。</p>
+<p>从离散时间傅里叶变换得到的<span class="math inline">\(x[n]\)</span>的频谱<span class="math inline">\(X(e^{j\omega})\)</span>是连续函数，由于<span class="math inline">\(\omega_0\)</span>相差<span class="math inline">\(2\pi\)</span>的两个复指数信号是一样的，所以<span class="math inline">\(X(e^{j\omega})\)</span>是周期函数，周期为<span class="math inline">\(2\pi\)</span>。靠近偶数倍<span class="math inline">\(\pi\)</span>的<span class="math inline">\(\omega\)</span>，对应的是低频率的信号；而靠近奇数倍<span class="math inline">\(\pi\)</span>的<span class="math inline">\(\omega\)</span>，对应的则是高频率的信号。也就是说，离散时间非周期信号的频谱是连续的、周期的。</p>
 
     </div>
 
