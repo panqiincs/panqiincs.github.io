@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/2021/01/28/huanggang-county/</loc>
+    
+    <lastmod>2021-02-05</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2021/02/05/discrete-time-fourier/</loc>
     
     <lastmod>2021-02-05</lastmod>
@@ -101,13 +108,6 @@
   
   <url>
     <loc>http://panqiincs.me/about/index.html</loc>
-    
-    <lastmod>2021-02-01</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/2021/01/28/huanggang-county/</loc>
     
     <lastmod>2021-02-01</lastmod>
     
