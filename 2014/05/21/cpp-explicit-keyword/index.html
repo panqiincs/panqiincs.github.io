@@ -248,6 +248,7 @@
         <p>C++的explicit关键字修饰构造函数（或类型转换函数，C++11），表明该构造函数是explicit的，不能用作隐式的类型转换和拷贝初始化。</p>
 <p>下面的代码中，类的构造函数没有explicit关键字修饰：</p>
 <a id="more"></a>
+
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    A(<span class="built_in">string</span> s) : name_(s) &#123; &#125;</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">getName</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> name_; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">string</span> name_;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 参数类型为A</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">useA</span><span class="params">(A a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.getName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>所以，隐式的类型转换和拷贝初始化是合法的：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> name = <span class="string">&quot;Lucy&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; useA(name) &lt;&lt; <span class="built_in">endl</span>;  <span class="comment">// 正确：形参name执行了从string到A的隐式转换</span></span><br><span class="line"></span><br><span class="line"><span class="function">A <span class="title">a1</span><span class="params">(name)</span></span>;                  <span class="comment">// 正确：直接初始化</span></span><br><span class="line">A a2 = name;                 <span class="comment">// 正确：拷贝初始化，包含隐式转换</span></span><br></pre></td></tr></table></figure>
@@ -405,7 +406,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-count">91</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -418,7 +419,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">172</span>
+        <span class="site-state-item-count">174</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

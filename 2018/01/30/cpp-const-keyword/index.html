@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"panqiincs.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="const的作用 C++中的const关键字多才多艺且无处不在，它的语法意义并不高深，用法却变化多端。本文总结了const几乎所有的用法：定义常量、修饰指针和引用、修饰函数的参数和返回值、修饰类成员。 定义常量 关键字const对变量的类型加以限定，将变量定义为一个常量，任何对变量赋值的行为在编译阶段即被编译器阻止。因为const对象一旦创建后，其值不能再改变，所以const对象必须被初始化，初始">
+  <meta name="description" content="const的作用C++中的const关键字多才多艺且无处不在，它的语法意义并不高深，用法却变化多端。本文总结了const几乎所有的用法：定义常量、修饰指针和引用、修饰函数的参数和返回值、修饰类成员。 定义常量关键字const对变量的类型加以限定，将变量定义为一个常量，任何对变量赋值的行为在编译阶段即被编译器阻止。因为const对象一旦创建后，其值不能再改变，所以const对象必须被初始化，初始值可">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++的const关键字">
 <meta property="og:url" content="http://panqiincs.me/2018/01/30/cpp-const-keyword/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="const的作用 C++中的const关键字多才多艺且无处不在，它的语法意义并不高深，用法却变化多端。本文总结了const几乎所有的用法：定义常量、修饰指针和引用、修饰函数的参数和返回值、修饰类成员。 定义常量 关键字const对变量的类型加以限定，将变量定义为一个常量，任何对变量赋值的行为在编译阶段即被编译器阻止。因为const对象一旦创建后，其值不能再改变，所以const对象必须被初始化，初始">
+<meta property="og:description" content="const的作用C++中的const关键字多才多艺且无处不在，它的语法意义并不高深，用法却变化多端。本文总结了const几乎所有的用法：定义常量、修饰指针和引用、修饰函数的参数和返回值、修饰类成员。 定义常量关键字const对变量的类型加以限定，将变量定义为一个常量，任何对变量赋值的行为在编译阶段即被编译器阻止。因为const对象一旦创建后，其值不能再改变，所以const对象必须被初始化，初始值可">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-01-30T02:47:30.000Z">
 <meta property="article:modified_time" content="2021-02-01T17:52:21.750Z">
@@ -246,70 +246,54 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="const的作用">const的作用</h2>
-<p>C++中的const关键字多才多艺且无处不在，它的语法意义并不高深，用法却变化多端。本文总结了const几乎所有的用法：定义常量、修饰指针和引用、修饰函数的参数和返回值、修饰类成员。</p>
-<h2 id="定义常量">定义常量</h2>
-<p>关键字const对变量的类型加以限定，将变量定义为一个常量，任何对变量赋值的行为在编译阶段即被编译器阻止。因为const对象一旦创建后，其值不能再改变，所以const对象必须被初始化，初始值可以是任意表达式。还可以利用一个对象初始化另一个对象，它们是不是const都无关紧要。</p>
+        <h2 id="const的作用"><a href="#const的作用" class="headerlink" title="const的作用"></a>const的作用</h2><p>C++中的const关键字多才多艺且无处不在，它的语法意义并不高深，用法却变化多端。本文总结了const几乎所有的用法：定义常量、修饰指针和引用、修饰函数的参数和返回值、修饰类成员。</p>
+<h2 id="定义常量"><a href="#定义常量" class="headerlink" title="定义常量"></a>定义常量</h2><p>关键字const对变量的类型加以限定，将变量定义为一个常量，任何对变量赋值的行为在编译阶段即被编译器阻止。因为const对象一旦创建后，其值不能再改变，所以const对象必须被初始化，初始值可以是任意表达式。还可以利用一个对象初始化另一个对象，它们是不是const都无关紧要。</p>
 <a id="more"></a>
+
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> bufsize = <span class="number">512</span>;     <span class="comment">// 编译时初始化 </span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> i = get_size();    <span class="comment">// 运行时初始化</span></span><br><span class="line"><span class="keyword">int</span> j = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> ci = j;            <span class="comment">// 用非const对象初始化const对象</span></span><br><span class="line"><span class="keyword">int</span> k = ci;                  <span class="comment">// 用const对象初始非cosnt对象</span></span><br></pre></td></tr></table></figure>
 <p>默认状态下，const对象仅在文件内有效，当多个文件中出现类同名的const变量时，等同于在不同文件中分别定义了独立的变量。如果想在文件间共享const变量，需要在一个文件中定义const，而在其他多个文件中声明并使用它，而且，不论是声明还是定义，都添加extern关键字。</p>
-<h2 id="const和宏">const和宏</h2>
-<p>所以，const具有和宏相同的功能：</p>
+<h2 id="const和宏"><a href="#const和宏" class="headerlink" title="const和宏"></a>const和宏</h2><p>所以，const具有和宏相同的功能：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_SIZE 1000</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxSize = <span class="number">1000</span>;</span><br></pre></td></tr></table></figure>
 <p>使用宏定义，记号<code>MAX_SIZE</code>在编译的预处理阶段就被替换成数字，不会进入到符号表（symbol table）中，所以编译时的错误信息也不会指示到<code>MAX_SIZE</code>。使用const变量，<code>MaxSize</code>和普通变量无异，可以对它进行取址、转换等操作，编译器会对它做类型检查，调试器也能跟踪到<code>MaxSize</code>。所以，应尽量用const变量替换#define宏。</p>
-<h2 id="引用与const">引用与const</h2>
-<p>把引用绑定到const对象上，称之为对常量的引用（reference to const），简称为“常量引用”。对const的引用不能用于修改它所绑定的对象：</p>
+<h2 id="引用与const"><a href="#引用与const" class="headerlink" title="引用与const"></a>引用与const</h2><p>把引用绑定到const对象上，称之为对常量的引用（reference to const），简称为“常量引用”。对const的引用不能用于修改它所绑定的对象：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> ci = <span class="number">1024</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;r1 = ci;     <span class="comment">// 正确：引用及其对应的对象都是常量</span></span><br><span class="line">r1 = <span class="number">42</span>;                <span class="comment">// 错误：r1是对常量的引用</span></span><br><span class="line"><span class="keyword">int</span> &amp;r2 = ci;           <span class="comment">// 错误：试图让一个非常量引用指向一个常量对象</span></span><br></pre></td></tr></table></figure>
 <p>必须注意，对const的引用仅仅限制不可以通过该引用改变对象的值，引用的对象本身是否是常量并无限制。对象有可能是一个非常量，允许通过其他途径改变它的值：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;r1 = i;          <span class="comment">// 引用ri绑定对象i</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;r2 = i;    <span class="comment">// r2也绑定对象i，但是不允许通过r2修改i的值</span></span><br><span class="line">r1 = <span class="number">0</span>;               <span class="comment">// r1并非常量，i的值修改为0</span></span><br><span class="line">r2 = <span class="number">0</span>;               <span class="comment">// 错误：r2是一个常量引用</span></span><br></pre></td></tr></table></figure>
 <p>常量引用可以绑定一个非常量对象，但非常量引用不能绑定到一个常量对象上。</p>
-<h2 id="指针与const">指针与const</h2>
-<h3 id="指针常量">指针常量</h3>
-<p>和引用类似，指向常量的指针（pointer to const）不能用于改变其所指对象的值。要想存放常量对象的地址，只能使用指向常量的指针：</p>
+<h2 id="指针与const"><a href="#指针与const" class="headerlink" title="指针与const"></a>指针与const</h2><h3 id="指针常量"><a href="#指针常量" class="headerlink" title="指针常量"></a>指针常量</h3><p>和引用类似，指向常量的指针（pointer to const）不能用于改变其所指对象的值。要想存放常量对象的地址，只能使用指向常量的指针：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> pi = <span class="number">3.14</span>       <span class="comment">// pi是个常量，它的值不能改变</span></span><br><span class="line"><span class="keyword">double</span> *ptr = &amp;pi;           <span class="comment">// 错误：ptr是一个普通指针</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> *cptr = &amp;pi;    <span class="comment">// 正确：cptr可以指向一个常量</span></span><br><span class="line">*cptr = <span class="number">42</span>;                  <span class="comment">// 错误：不可以给*cptr赋值</span></span><br></pre></td></tr></table></figure>
 <p>和引用类似，指向常量的指针也没有规定其所指对象必须是一个常量。可以这么想：指向常量的指针或引用，不过是指针或引用“自以为是”罢了，它们觉得自己指向了常量，所以自觉地不去改变所指对象的值。</p>
-<h3 id="常量指针">常量指针</h3>
-<p>和引用不同的是，指针本身也是对象，允许把指针本身定义为常量。把*放在const关键字之前用以说明指针是一个常量，即，不变的是指针本身（地址值），而非它指向的那个值：</p>
+<h3 id="常量指针"><a href="#常量指针" class="headerlink" title="常量指针"></a>常量指针</h3><p>和引用不同的是，指针本身也是对象，允许把指针本身定义为常量。把*放在const关键字之前用以说明指针是一个常量，即，不变的是指针本身（地址值），而非它指向的那个值：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> errNumb = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> *<span class="keyword">const</span> curErr = &amp;errNumb;     <span class="comment">// curErr将一直指向errNumb</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> pi = <span class="number">3.14</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> *<span class="keyword">const</span> pip = &amp;pi;    <span class="comment">// pip是一个指向常量对象的常量指针</span></span><br></pre></td></tr></table></figure>
 <p><code>pip</code>是一个指向常量的常量指针，则不论是<code>pip</code>所指的对象值还是<code>pip</code>自己存储的那个地址都不能改变。相反地，<code>curErr</code>指向的是非常量整数，可以通过<code>curErr</code>修改<code>errNumb</code>的值：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*pip = <span class="number">3.1416</span>                     <span class="comment">// 错误：pip指向常量</span></span><br><span class="line">*curErr = <span class="number">1</span>;                      <span class="comment">// 正确：可以通过curErr改变errNumb的值</span></span><br><span class="line">curErr = <span class="literal">nullptr</span>;                 <span class="comment">// 错误：curErr本身的值不能改变</span></span><br></pre></td></tr></table></figure>
-<h3 id="顶层const">顶层const</h3>
-<p>名词<strong>顶层const</strong>表示指针本身是个常量，而名词<strong>底层const</strong>表示指针所指的对象是一个常量。</p>
-<h2 id="函数与const">函数与const</h2>
-<h3 id="修饰形参">修饰形参</h3>
-<p>首先介绍参数传递的机制。每次调用函数时，会用传入的实参对形参进行初始化，形参初始化的机理和变量初始化一样。</p>
-<h4 id="形参为顶层const">形参为顶层const</h4>
-<p>形参为顶层const主要是以下两种形式：</p>
+<h3 id="顶层const"><a href="#顶层const" class="headerlink" title="顶层const"></a>顶层const</h3><p>名词<strong>顶层const</strong>表示指针本身是个常量，而名词<strong>底层const</strong>表示指针所指的对象是一个常量。</p>
+<h2 id="函数与const"><a href="#函数与const" class="headerlink" title="函数与const"></a>函数与const</h2><h3 id="修饰形参"><a href="#修饰形参" class="headerlink" title="修饰形参"></a>修饰形参</h3><p>首先介绍参数传递的机制。每次调用函数时，会用传入的实参对形参进行初始化，形参初始化的机理和变量初始化一样。</p>
+<h4 id="形参为顶层const"><a href="#形参为顶层const" class="headerlink" title="形参为顶层const"></a>形参为顶层const</h4><p>形参为顶层const主要是以下两种形式：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">const</span> type var)</span></span>;     <span class="comment">// 形参本身不能修改</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(type *<span class="keyword">const</span> var)</span></span>;    <span class="comment">// 形参是一个常量指针，指针本身的值不能修改</span></span><br></pre></td></tr></table></figure>
 <p>此时，const关键字表示形参本身是常量，不能修改形参的值。需要特别注意的是，和其它初始化过程一样，用实参初始化形参时会忽略掉顶层const。换句话说，形参的顶层const被忽略了。当形参有顶层const时，传给它常量对象或非常量对象都可以，因此下面两个函数声明，尽管形式上有差异，但其实完全一样：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fcn</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> i)</span></span>;    <span class="comment">// fcn能读取i，但不能向i写值</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fcn</span><span class="params">(<span class="keyword">int</span> i)</span></span>;          <span class="comment">// 错误：重复定义类fcn(int)</span></span><br></pre></td></tr></table></figure>
 <p>如果这两种形式的函数同时存在，编译器会报错，提示重复定义。</p>
-<h4 id="形参为底层const">形参为底层const</h4>
-<p>当形参为底层const时，函数原型如下：</p>
+<h4 id="形参为底层const"><a href="#形参为底层const" class="headerlink" title="形参为底层const"></a>形参为底层const</h4><p>当形参为底层const时，函数原型如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">const</span> type *var)</span></span>;    <span class="comment">// 不能通过指针修改它指向的对象</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">const</span> type &amp;var)</span></span>;    <span class="comment">// 不能通过引用修改它绑定的对象</span></span><br></pre></td></tr></table></figure>
 <p>此时，const关键字表示不能通过形参修改它所引用的对象。将形参声明为常量指针或引用非常普遍，因为既保证了不修改所指对象，也避免了对象的拷贝。初始化过程不能忽略形参的底层const，因此，下面两个函数声明是不一样的：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fcn</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;ref)</span></span>;    <span class="comment">// 常量版的函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fcn</span><span class="params">(<span class="keyword">int</span> &amp;ref)</span></span>;          <span class="comment">// 非常量版的函数</span></span><br></pre></td></tr></table></figure>
 <p>常量版的函数能够接受一个非常量的实参，反之则不行。所以，当确认不会改变实参时，<strong>尽量使用常量引用</strong>作为函数的形参，这不仅能提醒调用者，不能通过形参修改它所引用的对象，还能使函数能够操作一个常量对象。</p>
-<h3 id="修饰返回值">修饰返回值</h3>
-<p>首先介绍值是如何被返回的。返回值的方式和初始化变量或形参的方式完全一样：返回的值用于初始化调用点的一个临时量，该临时量就是函数调用的结果。</p>
+<h3 id="修饰返回值"><a href="#修饰返回值" class="headerlink" title="修饰返回值"></a>修饰返回值</h3><p>首先介绍值是如何被返回的。返回值的方式和初始化变量或形参的方式完全一样：返回的值用于初始化调用点的一个临时量，该临时量就是函数调用的结果。</p>
 <p>类似的，有如下几种用法：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">const</span> type <span class="title">func</span><span class="params">()</span></span>;     <span class="comment">// 返回值本身不能修改</span></span><br><span class="line"><span class="function">type *<span class="keyword">const</span> <span class="title">func</span><span class="params">()</span></span>;    <span class="comment">// 返回值是一个常量指针，指针本身的值不能修改</span></span><br><span class="line"><span class="function"><span class="keyword">const</span> type *<span class="title">func</span><span class="params">()</span></span>;    <span class="comment">// 不能通过返回的指针修改它指向的对象</span></span><br><span class="line"><span class="function"><span class="keyword">const</span> type &amp;<span class="title">func</span><span class="params">()</span></span>;    <span class="comment">// 不能通过返回的引用修改它绑定的对象</span></span><br></pre></td></tr></table></figure>
 <p>前两种用法中，函数返回值本身是常量，不能被修改。</p>
 <p>后面两种用法，分别返回对象的const指针和const引用，表示不能通过它们修改对象。返回对象的引用常常用于运算符重载，如若返回const引用，则运算后的对象不能再修改。</p>
-<h2 id="类和const">类和const</h2>
-<h3 id="修饰类的成员变量">修饰类的成员变量</h3>
-<p>用const修饰类的成员函数，表示成员变量是常量，不能被修改，只能在初始化列表中赋值。</p>
-<h3 id="修饰类的成员函数">修饰类的成员函数</h3>
-<p>将const关键字放在成员函数的参数列表之后，表示成员函数是<strong>常量成员函数</strong>：</p>
+<h2 id="类和const"><a href="#类和const" class="headerlink" title="类和const"></a>类和const</h2><h3 id="修饰类的成员变量"><a href="#修饰类的成员变量" class="headerlink" title="修饰类的成员变量"></a>修饰类的成员变量</h3><p>用const修饰类的成员函数，表示成员变量是常量，不能被修改，只能在初始化列表中赋值。</p>
+<h3 id="修饰类的成员函数"><a href="#修饰类的成员函数" class="headerlink" title="修饰类的成员函数"></a>修饰类的成员函数</h3><p>将const关键字放在成员函数的参数列表之后，表示成员函数是<strong>常量成员函数</strong>：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassType</span> &#123;</span></span><br><span class="line">    <span class="comment">/* ... */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>const成员函数有如下两个作用：</p>
-<ol type="1">
+<ol>
 <li>使得接口容易理解，提醒调用者，该const成员函数无法修改类对象的内容</li>
 <li>使得操作“常量对象”成为可能，因为常量对象只能调用const成员函数</li>
 </ol>
 <p>本网站的<a href="https://panqiincs.me/2018/02/04/cpp-const-member-functions/">另一篇文章</a>详细解释了const成员函数。</p>
-<h2 id="参考">参考</h2>
-<ol type="1">
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/25708312/">C++ Primer</a></li>
 <li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/1842426/">Effecitve C++</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Eric_Jo/article/details/4138548">关于C++ const 的全面总结</a></li>
@@ -463,7 +447,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-count">91</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -476,7 +460,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">172</span>
+        <span class="site-state-item-count">174</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

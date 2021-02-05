@@ -180,6 +180,94 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2015/06/11/iterative-and-concurrent-server/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Krist Pan">
+      <meta itemprop="description" content="人生如逆旅，我亦是行人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的网络日志">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2015/06/11/iterative-and-concurrent-server/" class="post-title-link" itemprop="url">迭代和并发服务器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-06-11 15:57:40" itemprop="dateCreated datePublished" datetime="2015-06-11T15:57:40+08:00">2015-06-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2015/06/11/iterative-and-concurrent-server/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/06/11/iterative-and-concurrent-server/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>本文介绍Linux服务端开发中常用的迭代（iterative）模型和并发（concurrent）模型，通过简单的回射服务器程序来说明。在这两种模型下，套接字均使用默认的阻塞（blocking）方式，如果I/O操作不能立即完成，用于读写的系统调用会阻塞。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2015/06/11/iterative-and-concurrent-server/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2015/05/19/little-and-big-endian/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -330,8 +418,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="错误的产生">错误的产生</h2>
-<p>在C语言中，将两个正数相加可能会得到一个负数，<code>x &lt; y</code>和<code>x - y &lt; 0</code>两个语句得到的结果有可能不一样。这些「莫名其妙」的现象经常会导致bug，编程老手不经意也会犯下错误。了解整数运算的原理有助于写出更可靠的程序。</p>
+          <h2 id="错误的产生"><a href="#错误的产生" class="headerlink" title="错误的产生"></a>错误的产生</h2><p>在C语言中，将两个正数相加可能会得到一个负数，<code>x &lt; y</code>和<code>x - y &lt; 0</code>两个语句得到的结果有可能不一样。这些「莫名其妙」的现象经常会导致bug，编程老手不经意也会犯下错误。了解整数运算的原理有助于写出更可靠的程序。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/04/06/integer-arithmetic/#more" rel="contents">
@@ -507,8 +594,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="位模式">位模式</h2>
-<p>不同类型的数据，比如数字、文本、图片、视频等都以二进制形式（即一连串的1和0）存储在计算机中，我们称之为<strong>位模式</strong>。将位模式以不同的解析方式还原出来时，用户便看到了不同类型的数据。例如位模式<code>01000001</code>既可以表示数字<code>65</code>，也可以表示字符<code>A</code>。</p>
+          <h2 id="位模式"><a href="#位模式" class="headerlink" title="位模式"></a>位模式</h2><p>不同类型的数据，比如数字、文本、图片、视频等都以二进制形式（即一连串的1和0）存储在计算机中，我们称之为<strong>位模式</strong>。将位模式以不同的解析方式还原出来时，用户便看到了不同类型的数据。例如位模式<code>01000001</code>既可以表示数字<code>65</code>，也可以表示字符<code>A</code>。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/03/21/integer-representations/#more" rel="contents">
@@ -596,8 +682,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="简介">简介</h2>
-<p>链表（linked list）是一种常见的基础数据结构，它是一种线性表，但是并不会按线性的顺序存储数据，而是在每一个节点里存放到其它节点的指针。<strong>单向链表</strong>的每个节点只有一个连接，指向下一个节点。和双向链表相比，单向链表的指针只能单向移动，功能自然也就受到了许多限制。不过单向链表耗用空间小，某些操作更快。</p>
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>链表（linked list）是一种常见的基础数据结构，它是一种线性表，但是并不会按线性的顺序存储数据，而是在每一个节点里存放到其它节点的指针。<strong>单向链表</strong>的每个节点只有一个连接，指向下一个节点。和双向链表相比，单向链表的指针只能单向移动，功能自然也就受到了许多限制。不过单向链表耗用空间小，某些操作更快。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2014/06/26/singly-linked-list-operations/#more" rel="contents">
@@ -685,8 +770,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="旧式的类型转换">旧式的类型转换</h2>
-<p>在变量或表达式前加上类型转换符强制进行显式的类型转换，例如：</p>
+          <h2 id="旧式的类型转换"><a href="#旧式的类型转换" class="headerlink" title="旧式的类型转换"></a>旧式的类型转换</h2><p>在变量或表达式前加上类型转换符强制进行显式的类型转换，例如：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2014/06/01/cpp-explicit-conversion/#more" rel="contents">
@@ -968,98 +1052,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2013/03/22/start-blogging/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Krist Pan">
-      <meta itemprop="description" content="人生如逆旅，我亦是行人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="辛未羊的网络日志">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2013/03/22/start-blogging/" class="post-title-link" itemprop="url">我的第一篇文章</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2013-03-22 11:19:12" itemprop="dateCreated datePublished" datetime="2013-03-22T11:19:12+08:00">2013-03-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BD%91%E7%AB%99%E7%BB%B4%E6%8A%A4/" itemprop="url" rel="index"><span itemprop="name">网站维护</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2013/03/22/start-blogging/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/03/22/start-blogging/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>据说每一个用Octopress写网络日志（后来从Octopress迁移到Hexo，详情参考about页面中的建站日志）的人，第一篇文章必然是关于Octopress的，我应该延续这个传统。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2013/03/22/start-blogging/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1127,7 +1123,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-count">91</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1140,7 +1136,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">172</span>
+        <span class="site-state-item-count">174</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
