@@ -22,23 +22,18 @@
     var CONFIG = {"hostname":"panqiincs.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="最近稍微闲了点，继续学习模拟电路。我读的是一本国外教材，Microelectronic Circuits第7版的中文版，快读完一半了。书是从台湾买的，花了我好几百大洋。大陆其实有原书第5版的译本，名为《微电子电路》，据说翻译质量很好，可惜已经绝版。这本书在台湾的地位很高，是很多高校的专业课本，他们称作「Smith的電子學」，各个版本都有译本。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="谈谈「Smith的电子学」">
-<meta property="og:url" content="http://panqiincs.me/2020/06/28/sedra-smith-electronics/index.html">
+  <meta name="description" content="人生如逆旅，我亦是行人">
+<meta property="og:type" content="website">
+<meta property="og:title" content="辛未羊的网络日志">
+<meta property="og:url" content="http://panqiincs.me/tags/dtft/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="最近稍微闲了点，继续学习模拟电路。我读的是一本国外教材，Microelectronic Circuits第7版的中文版，快读完一半了。书是从台湾买的，花了我好几百大洋。大陆其实有原书第5版的译本，名为《微电子电路》，据说翻译质量很好，可惜已经绝版。这本书在台湾的地位很高，是很多高校的专业课本，他们称作「Smith的電子學」，各个版本都有译本。">
+<meta property="og:description" content="人生如逆旅，我亦是行人">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/smith_electronics.jpg">
-<meta property="article:published_time" content="2020-06-28T05:46:01.000Z">
-<meta property="article:modified_time" content="2020-10-11T12:19:06.910Z">
 <meta property="article:author" content="Krist Pan">
-<meta property="article:tag" content="教材">
-<meta property="article:tag" content="模拟电路">
+<meta property="article:tag" content="辛未羊 linux 算法导论 manjaro">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/smith_electronics.jpg">
 
-<link rel="canonical" href="http://panqiincs.me/2020/06/28/sedra-smith-electronics/">
+<link rel="canonical" href="http://panqiincs.me/tags/dtft/">
 
 
 <script id="page-configurations">
@@ -46,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>谈谈「Smith的电子学」 | 辛未羊的网络日志</title>
+  <title>标签: dtft | 辛未羊的网络日志</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
     <script>
@@ -179,154 +174,57 @@
         <div class="content-wrap">
           
 
-          <div class="content post posts-expand">
+          <div class="content tag">
             
 
-    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2020/06/28/sedra-smith-electronics/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Krist Pan">
-      <meta itemprop="description" content="人生如逆旅，我亦是行人">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="辛未羊的网络日志">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          谈谈「Smith的电子学」
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-28 13:46:01" itemprop="dateCreated datePublished" datetime="2020-06-28T13:46:01+08:00">2020-06-28</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">大学课程</span></a>
-                </span>
-            </span>
-
-          
   
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2020/06/28/sedra-smith-electronics/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/06/28/sedra-smith-electronics/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        <h2 class="collection-header">dtft
+          <small>标签</small>
+        </h2>
+      </div>
 
       
-        <p>最近稍微闲了点，继续学习模拟电路。我读的是一本国外教材，<a target="_blank" rel="noopener" href="https://www.pdf-archive.com/2017/01/10/circuits-book/circuits-book.pdf">Microelectronic Circuits</a>第7版的中文版，快读完一半了。书是从台湾买的，花了我好几百大洋。大陆其实有原书第5版的译本，名为<a target="_blank" rel="noopener" href="https://book.douban.com/subject/1844679/">《微电子电路》</a>，据说翻译质量很好，可惜已经绝版。这本书在台湾的地位很高，是很多高校的专业课本，他们称作「Smith的電子學」，各个版本都有译本。</p>
-<a id="more"></a>
-<figure>
-<img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/smith_electronics.jpg" alt="《微电子学》上下册" /><figcaption aria-hidden="true">《微电子学》上下册</figcaption>
-</figure>
-<p>这本书是典型的美国式教材，讲解很细致，所以非常厚，英文版有1800多页，中文版分为上下两册。这本书是面向微电子专业的，有大量半导体物理的公式推导，这些推导对我来说不是重点，所以复杂的公式推导我基本跳过，只记住重要的结论。比如MOSFET在三极管区的特性，我只记住DS间的电流和GS间的电压是二次方的关系。书中的配图非常精美，例题的电路图上还有数字标号，表明解题的步骤，对理解非常有帮助。书中还穿插了一些半导体行业的发展历史，附录中还有制程工艺等很有价值的知识，是非常好的补充材料。</p>
-<p>还有一点很重要，台湾交通大学的电子学公开课用的就是这套教材，主讲老师是陈振芳，使用的是传统的板书授课方式，老师功力深厚，这是我看过的最好的模拟电路视频。第一节课就让我很惊艳，通过推导二端口网络的h参数模型引出放大器的模型，很妙；MOSFET的结构和原理那段讲得太精彩了，看完后我很快就掌握了MOSFET三个区域的特性，而且不容易遗忘。从公开课视频可看出，他们非常重视这门课，单是MOSFET就讲了十几次课，上完整个课程应该要花三个学期。这很值得我们的大学借鉴，开课数量不要太多，最核心的课一定要掌握好。</p>
-<p>这套书的翻译也挺不错，因为几位译者都是专业人员，不会出现知识上的错误。台湾的名词翻译和大陆有差异，需要适应一下。这本书的英文版已经出到第8版，衷心希望大陆能出这本经典教材最新版的译本，我就不用花这么多钱买中文版了。</p>
-
+    <div class="collection-year">
+      <span class="collection-header">2021</span>
     </div>
 
-    
-    
-    
-      
-  <div class="popular-posts-header">相关文章</div>
-  <ul class="popular-posts">
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/2018/07/31/list-of-computer-books/" rel="bookmark">经典计算机书籍列表</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/2019/08/29/learn-electronic-engineering/" rel="bookmark">十年后重学核心课程</a></div>
-    </li>
-  </ul>
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-        
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2021-02-05T10:18:28+08:00"
+              content="2021-02-05">
+          02-05
+        </time>
+      </div>
 
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>Krist Pan
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="http://panqiincs.me/2020/06/28/sedra-smith-electronics/" title="谈谈「Smith的电子学」">http://panqiincs.me/2020/06/28/sedra-smith-electronics/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本网站所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
+      <div class="post-title">
+          <a class="post-title-link" href="/2021/02/05/discrete-time-fourier/" itemprop="url">
+            <span itemprop="name">离散信号的傅里叶分析</span>
+          </a>
+      </div>
 
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E6%95%99%E6%9D%90/" rel="tag"># 教材</a>
-              <a href="/tags/%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF/" rel="tag"># 模拟电路</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2020/06/24/sunset-on-li-river/" rel="prev" title="漓江上的晚霞">
-      <i class="fa fa-chevron-left"></i> 漓江上的晚霞
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/07/10/rpi-stm32-spi-communication/" rel="next" title="树莓派与STM32之间的SPI通信">
-      树莓派与STM32之间的SPI通信 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
+    </header>
   </article>
-  
-  
-  
 
-
-
-          </div>
-          
-    
-  <div class="comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
     </div>
   </div>
   
+  
+  
+
+  
+
+
+
+          </div>
+          
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -532,26 +430,6 @@
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
-</script>
-<script>
-  var disqus_config = function() {
-    this.page.url = "http://panqiincs.me/2020/06/28/sedra-smith-electronics/";
-    this.page.identifier = "2020/06/28/sedra-smith-electronics/";
-    this.page.title = "谈谈「Smith的电子学」";
-    };
-  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
-    if (window.DISQUS) {
-      DISQUS.reset({
-        reload: true,
-        config: disqus_config
-      });
-    } else {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://panqiincs.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', '' + +new Date());
-      (d.head || d.body).appendChild(s);
-    }
-  });
 </script>
 
 </body>
