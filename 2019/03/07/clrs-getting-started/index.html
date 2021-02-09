@@ -667,7 +667,7 @@ P(x) = \sum_{k=0}^n a_k x^k = a_0 + x(a_1 + x(a_2 + ... + x(a_{n-1} + x a_n)...)
 
 <script>
 NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
     var GUEST = ['nick', 'mail', 'link'];
     var guest = 'nick,mail,link';
     guest = guest.split(',').filter(item => {
