@@ -30,7 +30,7 @@
 <meta property="og:description" content="关于我 1991年（论干支为辛未年，属羊）生，土生土长的湖北黄冈人。2009~2016年求学于岳麓山，获工学学士和工学硕士学位。毕业后曾在深圳工作过，现在南方某小城市当大学教师。 热爱足球，支持国足、武汉卓尔和阿森纳；游泳参与者，蛙泳熟练，正在学习自由泳；喜欢围棋，K级水平，下棋少，看棋多；新茶客，偏爱绿茶和乌龙茶；好读书，这是我的豆瓣读书主页。 你可以通过下面的方式联系我：  邮件：panqih">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-06-25T04:42:07.000Z">
-<meta property="article:modified_time" content="2021-02-01T17:31:51.198Z">
+<meta property="article:modified_time" content="2021-02-09T06:25:36.535Z">
 <meta property="article:author" content="Krist Pan">
 <meta property="article:tag" content="辛未羊 linux 算法导论 manjaro">
 <meta name="twitter:card" content="summary">
@@ -208,7 +208,7 @@
 <p>你可以通过下面的方式联系我：</p>
 <ol type="1">
 <li>邮件：panqihg(at)hotmail.com</li>
-<li>留言：评论系统需科学使用</li>
+<li>在评论中留言</li>
 </ol>
 <h2 id="版权与协议">版权与协议</h2>
 <p>如无特殊说明，本站文章均为原创。请尊重原创内容，杜绝抄袭，为净化中文社区的风气出一份力。请遵守本站文章的版权与协议，您可以自由地：</p>
@@ -228,6 +228,7 @@
 <p>长期不更新或者劣化的站点会移除，无通知，请见谅。</p>
 <h2 id="建站日志">建站日志</h2>
 <ul>
+<li>2021-02-09：将评论系统从Disqus切换到Valine</li>
 <li>2020-04-20：删除了多篇旧文章</li>
 <li>2019-06-10：域名解析到Github，使用Cloudflare免费CDN加速</li>
 <li>2019-04-09：在文章末尾添加相关文章推荐</li>
@@ -254,13 +255,7 @@
 
           </div>
           
-    
-  <div class="comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-    </div>
-  </div>
-  
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -458,35 +453,33 @@
 
   
 
+
 <script>
-  function loadCount() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://panqiincs.disqus.com/count.js';
-    s.id = 'dsq-count-scr';
-    (d.head || d.body).appendChild(s);
-  }
-  // defer loading until the whole page loading is completed
-  window.addEventListener('load', loadCount, false);
-</script>
-<script>
-  var disqus_config = function() {
-    this.page.url = "http://panqiincs.me/about/index.html";
-    this.page.identifier = "about/index.html";
-    this.page.title = "关于";
-    };
-  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
-    if (window.DISQUS) {
-      DISQUS.reset({
-        reload: true,
-        config: disqus_config
-      });
-    } else {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://panqiincs.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', '' + +new Date());
-      (d.head || d.body).appendChild(s);
-    }
-  });
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'FMPJjD06NaOlJxK0wFBtarAl-9Nh9j0Va',
+      appKey     : 'U2z5bDC9TnlHnsixM3DsGQIP',
+      placeholder: "既然来了，就说点什么吧～",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
 </script>
 
 </body>
