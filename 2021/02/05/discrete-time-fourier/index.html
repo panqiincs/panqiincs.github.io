@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/discrete_fourier_dtfs.svg">
 <meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/discrete_fourier_xejw.svg">
 <meta property="article:published_time" content="2021-02-05T02:18:28.000Z">
-<meta property="article:modified_time" content="2021-02-20T08:56:27.498Z">
+<meta property="article:modified_time" content="2021-02-20T09:25:54.584Z">
 <meta property="article:author" content="Krist Pan">
 <meta property="article:tag" content="信号与系统">
 <meta property="article:tag" content="傅里叶级数">
@@ -322,7 +322,7 @@ N = m \left( \frac{2 \pi}{\omega_0} \right)
 <p><span class="math display">\[
 \tilde{X}(k) = \sum_{k=\left \langle N \right \rangle} \tilde{x}(n) e^{-j k \omega_0 n} = \sum_{k=\left \langle N \right \rangle} \tilde{x}(n) e^{-j k (2\pi/N) n}
 \]</span></p>
-<p>由于成谐波关系的信号中仅有<span class="math inline">\(N\)</span>个互不相同的周期复指数信号，所以，离散时间周期信号的傅里叶级数$(k) <span class="math inline">\(一定以\)</span>N$为周期往复变化的，也就是说，离散时间周期信号的频谱是离散的、周期的。和连续时间信号傅里叶级数不同的是，级数的项数是有限的，不存在收敛问题，而且能够完全精确地逼近。</p>
+<p>由于成谐波关系的信号中仅有<span class="math inline">\(N\)</span>个互不相同的周期复指数信号，所以，离散时间周期信号的傅里叶级数<span class="math inline">\(\tilde{X}(k)\)</span>一定以<span class="math inline">\(N\)</span>为周期往复变化的，也就是说，离散时间周期信号的频谱是离散的、周期的。和连续时间信号傅里叶级数不同的是，级数的项数是有限的，不存在收敛问题，而且能够完全精确地逼近。</p>
 <p>如果令<span class="math inline">\(W_N=e^{-j\frac{2\pi}{N}}\)</span>，则上面的DFS公式对还可以写成</p>
 <p><span class="math display">\[
 \tilde{X}(k) = \sum_{k=\left \langle N \right \rangle} \tilde{x}(n) W_N^{nk}

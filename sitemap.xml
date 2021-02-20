@@ -296,14 +296,14 @@
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2019/03/14/clrs-divide-and-conquer/</loc>
+    <loc>http://panqiincs.me/2019/03/10/clrs-growth-of-functions/</loc>
     
     <lastmod>2020-10-11</lastmod>
     
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2019/03/10/clrs-growth-of-functions/</loc>
+    <loc>http://panqiincs.me/2019/03/14/clrs-divide-and-conquer/</loc>
     
     <lastmod>2020-10-11</lastmod>
     
@@ -1313,6 +1313,13 @@
   </url>
   
   <url>
+    <loc>http://panqiincs.me/tags/%E6%B8%90%E8%BF%91%E8%AE%B0%E5%8F%B7/</loc>
+    <lastmod>2021-02-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/tags/%E9%80%92%E5%BD%92%E5%BC%8F/</loc>
     <lastmod>2021-02-20</lastmod>
     <changefreq>daily</changefreq>
@@ -1328,13 +1335,6 @@
   
   <url>
     <loc>http://panqiincs.me/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/</loc>
-    <lastmod>2021-02-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://panqiincs.me/tags/%E6%B8%90%E8%BF%91%E8%AE%B0%E5%8F%B7/</loc>
     <lastmod>2021-02-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
