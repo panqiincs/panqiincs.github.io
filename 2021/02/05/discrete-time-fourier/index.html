@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/discrete_fourier_dtfs.svg">
 <meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/discrete_fourier_xejw.svg">
 <meta property="article:published_time" content="2021-02-05T02:18:28.000Z">
-<meta property="article:modified_time" content="2021-03-06T04:30:26.599Z">
+<meta property="article:modified_time" content="2021-03-06T06:25:21.964Z">
 <meta property="article:author" content="Krist Pan">
 <meta property="article:tag" content="信号与系统">
 <meta property="article:tag" content="傅里叶级数">
@@ -41,6 +41,7 @@
 <meta property="article:tag" content="fourier">
 <meta property="article:tag" content="频谱">
 <meta property="article:tag" content="dtft">
+<meta property="article:tag" content="dft">
 <meta property="article:tag" content="dfs">
 <meta property="article:tag" content="离散信号">
 <meta property="article:tag" content="数字信号处理">
@@ -403,7 +404,7 @@ X(e^{j\omega}) = e^{j 2\omega} + e^{-j 2\omega} + e^{j \omega} + e^{-j \omega} +
 <img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/discrete_fourier_xejw.svg" alt="图3 DTFT是周期连续函数" /><figcaption aria-hidden="true">图3 DTFT是周期连续函数</figcaption>
 </figure>
 <h2 id="dtfs与dfs的关系">DTFS与DFS的关系</h2>
-<p>与图2的频谱图作对比可发现，频谱图的包络线就是本例中的周期连续函数<span class="math inline">\(X(e^{j\omega})\)</span>。实际上，可以证明，将任意非周期函数<span class="math inline">\(x(n)\)</span>的离散时间傅里叶变换<span class="math inline">\(X(e^{j\omega})\)</span>作等间隔采样，可得到<span class="math inline">\(x(n)\)</span>的周期延拓<span class="math inline">\(\tilde{x}(n)\)</span>的傅里叶级数系数<span class="math inline">\(\tilde{X}(k)\)</span>，采样间隔为<span class="math inline">\(2\pi/N\)</span>，即</p>
+<p>与图2的频谱图作对比可发现，频谱图的<strong>包络线</strong>就是本例中的周期连续函数<span class="math inline">\(X(e^{j\omega})\)</span>。实际上，可以证明，将任意非周期函数<span class="math inline">\(x(n)\)</span>的离散时间傅里叶变换<span class="math inline">\(X(e^{j\omega})\)</span>作<strong>等间隔采样</strong>，可得到<span class="math inline">\(x(n)\)</span>的周期延拓<span class="math inline">\(\tilde{x}(n)\)</span>的傅里叶级数系数<span class="math inline">\(\tilde{X}(k)\)</span>，采样间隔为<span class="math inline">\(2\pi/N\)</span>，即</p>
 <p><span class="math display">\[
 \begin{equation}
 \tilde{X}(k) = X(e^{j\omega}) \mid_{\omega = \frac{2\pi}{N} k}
@@ -416,6 +417,26 @@ X(e^{j\omega}) = e^{j 2\omega} + e^{-j 2\omega} + e^{j \omega} + e^{-j \omega} +
 \end{equation}
 \]</span></p>
 <p>DTFS与DFS的这种关系是后续引入离散傅里叶变换（discrete Fourier transform, DFT）的关键。</p>
+<h2 id="离散傅里叶变换dft">离散傅里叶变换（DFT）</h2>
+<p>从上面的讨论我们知道，非周期离散信号<span class="math inline">\(x(n)\)</span>的频谱<span class="math inline">\(X(e^{j\omega})\)</span>是连续函数，也就是说频域是连续的，因此不便于计算机处理。如果在<span class="math inline">\(X(e^{j\omega})\)</span>的<span class="math inline">\(2\pi\)</span>周期内进行等间隔采样，采样点的个数和<span class="math inline">\(x(n)\)</span>的长度相同，将得到的频域离散序列反变换到时域中（IDFS），便得到一个周期信号<span class="math inline">\(\tilde{x}(n)\)</span>，它在一个周期内的值正好和<span class="math inline">\(x(n)\)</span>相同，或者说<span class="math inline">\(\tilde{x}(n)\)</span>是它的周期延拓。</p>
+<p>由此定义离散傅里叶变换（discrete Fourier transform, DFT），它是DFS的一个主周期成分。DFT是可以在计算机中实现的傅里叶变换，可用于分析任意有限长序列的频谱。DFT的定义式如下，求和范围从<span class="math inline">\(0\)</span>到<span class="math inline">\(N-1\)</span>：</p>
+<p><span class="math display">\[
+\begin{equation}
+X(k) = \sum_{n=0}^{N-1} x(n) e^{-j k \omega_0 n} = \sum_{n=0}^{N-1} x(n) e^{-j k (2\pi/N) n}
+\end{equation}
+\]</span></p>
+<p>可以发现，<span class="math inline">\((22)\)</span>和DFS的计算公式<span class="math inline">\((14)\)</span>是相同的。反变换IDFT的定义式为</p>
+<p><span class="math display">\[
+\begin{equation}
+x(n) = \frac{1}{N} \sum_{k=0}^{N-1} X(k) e^{j k \omega_0 n} = \frac{1}{N} \sum_{k=0}^{N-1} X(k) e^{j k (2\pi/N) n}
+\end{equation}
+\]</span></p>
+<p>DFT的物理意义不明显：长度为<span class="math inline">\(N\)</span>的非周期离散信号<span class="math inline">\(x(n)\)</span>的DFT得到的序列<span class="math inline">\(X(k)\)</span>的长度也为<span class="math inline">\(N\)</span>，是<span class="math inline">\(x(n)\)</span>的周期延拓的DFS在一个主周期内的值。那么我们为什么要使用它呢？原因如下：</p>
+<ol type="1">
+<li><span class="math inline">\(x(n)\)</span>的真实频谱是通过DTFT得到的<span class="math inline">\(X(e^{j\omega})\)</span>，它是连续的，无法在计算机上实现，而DFT得到的<span class="math inline">\(X(k)\)</span>是离散的，能够在计算机上实现</li>
+<li>可以证明，通过DFT得到的<span class="math inline">\(X(k)\)</span>序列可以完全复原<span class="math inline">\(X(e^{j\omega})\)</span></li>
+<li><span class="math inline">\(X(k)\)</span>的包络线就是<span class="math inline">\(X(e^{j\omega})\)</span>在一个周期内的图像，如果<span class="math inline">\(X(k)\)</span>的点足够多，包络线非常光滑，可以看成是<span class="math inline">\(X(e^{j\omega})\)</span>的图像</li>
+</ol>
 <h2 id="参考资料">参考资料</h2>
 <ol type="1">
 <li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/21359219/">信号与系统(奥本海姆)</a></li>
@@ -464,6 +485,7 @@ X(e^{j\omega}) = e^{j 2\omega} + e^{-j 2\omega} + e^{j \omega} + e^{-j \omega} +
               <a href="/tags/fourier/" rel="tag"># fourier</a>
               <a href="/tags/%E9%A2%91%E8%B0%B1/" rel="tag"># 频谱</a>
               <a href="/tags/dtft/" rel="tag"># dtft</a>
+              <a href="/tags/dft/" rel="tag"># dft</a>
               <a href="/tags/dfs/" rel="tag"># dfs</a>
               <a href="/tags/%E7%A6%BB%E6%95%A3%E4%BF%A1%E5%8F%B7/" rel="tag"># 离散信号</a>
               <a href="/tags/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" rel="tag"># 数字信号处理</a>
@@ -538,7 +560,7 @@ X(e^{j\omega}) = e^{j 2\omega} + e^{-j 2\omega} + e^{j \omega} + e^{-j \omega} +
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%AF%E8%8D%A1%E9%80%9F%E7%8E%87"><span class="nav-number">1.2.</span> <span class="nav-text">振荡速率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%A8%E6%9C%9F%E5%85%AC%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">周期公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%90%E6%B3%A2%E4%BF%A1%E5%8F%B7"><span class="nav-number">1.4.</span> <span class="nav-text">谐波信号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0dfs"><span class="nav-number">2.</span> <span class="nav-text">离散傅里叶级数（DFS）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E6%97%B6%E9%97%B4%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2dtfs"><span class="nav-number">3.</span> <span class="nav-text">离散时间傅里叶变换（DTFS）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dtfs%E4%B8%8Edfs%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">4.</span> <span class="nav-text">DTFS与DFS的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%AF%E8%8D%A1%E9%80%9F%E7%8E%87"><span class="nav-number">1.2.</span> <span class="nav-text">振荡速率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%A8%E6%9C%9F%E5%85%AC%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">周期公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%90%E6%B3%A2%E4%BF%A1%E5%8F%B7"><span class="nav-number">1.4.</span> <span class="nav-text">谐波信号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0dfs"><span class="nav-number">2.</span> <span class="nav-text">离散傅里叶级数（DFS）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E6%97%B6%E9%97%B4%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2dtfs"><span class="nav-number">3.</span> <span class="nav-text">离散时间傅里叶变换（DTFS）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dtfs%E4%B8%8Edfs%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">4.</span> <span class="nav-text">DTFS与DFS的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2dft"><span class="nav-number">5.</span> <span class="nav-text">离散傅里叶变换（DFT）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -567,7 +589,7 @@ X(e^{j\omega}) = e^{j 2\omega} + e^{-j 2\omega} + e^{j \omega} + e^{-j \omega} +
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">176</span>
+        <span class="site-state-item-count">177</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
