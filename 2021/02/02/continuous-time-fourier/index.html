@@ -30,7 +30,7 @@
 <meta property="og:description" content="基础知识 本文讨论的连续信号指的是连续时间信号（continuous-time signal），以时间为自变量，以信号的幅度为函数值。连续信号在自变量的连续取值上都有定义，例如，作为时间的函数的语音信号就是连续信号。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-02T02:30:14.000Z">
-<meta property="article:modified_time" content="2021-02-05T09:26:16.955Z">
+<meta property="article:modified_time" content="2021-03-06T04:34:05.274Z">
 <meta property="article:author" content="Krist Pan">
 <meta property="article:tag" content="信号与系统">
 <meta property="article:tag" content="傅里叶级数">
@@ -254,37 +254,53 @@
 <p>周期信号是幅值随着时间重复变化的信号，一个周期连续时间信号具有这样的性质，即存在一个正值的<span class="math inline">\(T\)</span>，对所有的<span class="math inline">\(t\)</span>来说，有<span class="math inline">\(x(t) = x(t+T)\)</span>，那么<span class="math inline">\(T\)</span>就是该信号的周期。<span class="math inline">\(T\)</span>的整数倍也是周期，所以周期有无数个，将满足条件的最小的周期<span class="math inline">\(T\)</span>称为<strong>基波周期</strong>。正弦函数<span class="math inline">\(x(t) = \sin \omega t\)</span>就是周期函数，基波周期<span class="math inline">\(T = 2 \pi / \left| \omega \right|\)</span>，<span class="math inline">\(\omega\)</span>称为角频率，加绝对值符号是因为<span class="math inline">\(\omega\)</span>可能为负数。</p>
 <p>由于正弦函数计算不方便，因此引入周期复指数信号<span class="math inline">\(x(t) = e^{j \omega t}\)</span>，由周期信号的定义式</p>
 <p><span class="math display">\[
+\begin{equation}
 e^{j \omega (t + T)} = e^{j \omega t} \cdot e^{j \omega T} = e^{j \omega t}
+\end{equation}
 \]</span></p>
 <p>所以<span class="math inline">\(e^{j \omega T} = 1\)</span>，于是得到复指数信号的基波周期</p>
 <p><span class="math display">\[
+\begin{equation}
 T = \frac{2\pi}{\left| \omega \right|}
+\end{equation}
 \]</span></p>
 <p>由欧拉公式</p>
 <p><span class="math display">\[
+\begin{equation}
 e^{j \omega t} = \cos \omega t + j \sin \omega t
+\end{equation}
 \]</span></p>
 <p>所以，<span class="math inline">\(\cos \omega t\)</span>是周期复指数信号的实部，<span class="math inline">\(\sin \omega t\)</span>是周期复指数信号的虚部。将<span class="math inline">\(\omega\)</span>替换成<span class="math inline">\(-\omega\)</span>得</p>
 <p><span class="math display">\[
+\begin{equation}
 e^{-j \omega t} = \cos \omega t - j \sin \omega t
+\end{equation}
 \]</span></p>
 <p>联立上述两个方程便得到正弦信号和周期复指数信号的等式关系</p>
 <p><span class="math display">\[
+\begin{equation}
 \cos \omega t = \frac{1}{2}(e^{j \omega t} + e^{-j \omega t})
+\end{equation}
 \]</span></p>
 <p><span class="math display">\[
+\begin{equation}
 \sin \omega t = \frac{1}{2j}(e^{j \omega t} - e^{-j \omega t})
+\end{equation}
 \]</span></p>
 <p>需要注意，<span class="math inline">\(\cos \omega t\)</span>也是正弦信号，它和<span class="math inline">\(\sin \omega t\)</span>只有相位上的差别。</p>
 <h2 id="傅里叶级数">傅里叶级数</h2>
 <h3 id="推导">推导</h3>
 <p>从数学上可以证明，任何满足Dirichlet条件的周期函数<span class="math inline">\(x(t)\)</span>都可以表示成一组成谐波关系的复指数信号的线性组合</p>
 <p><span class="math display">\[
+\begin{equation}
 x(t) = \sum_{k=-\infty}^{+\infty} a_k e^{j k \omega_0 t} = \sum_{k=-\infty}^{+\infty} a_k e^{j k (2\pi / T) t}
+\end{equation}
 \]</span></p>
 <p>该式称为<strong>傅里叶级数</strong>。<span class="math inline">\(T\)</span>是<span class="math inline">\(x(t)\)</span>的基波周期，<span class="math inline">\(\omega_0=2\pi/T\)</span>为<strong>基波频率</strong>，系数<span class="math inline">\(a_k\)</span>的计算公式如下</p>
 <p><span class="math display">\[
+\begin{equation}
 a_k = \frac{1}{T}\int_{T} x(t) e^{-j k \omega_0 t} dt = \frac{1}{T}\int_{T} x(t) e^{-j k (2\pi / T) t} dt
+\end{equation}
 \]</span></p>
 <p>系数<span class="math inline">\(\left\{ a_k \right\}\)</span>称为<span class="math inline">\(x(t)\)</span>的<strong>频谱系数</strong>。这些复数系数是对信号<span class="math inline">\(x(t)\)</span>中的每一个谐波分量大小的度量。</p>
 <h3 id="示例">示例</h3>
@@ -315,11 +331,15 @@ x(t) = \frac{1}{2} + \frac{2}{\pi} \cos \omega t - \frac{2}{3\pi} \cos 3\omega t
 <h3 id="推导-1">推导</h3>
 <p>当周期信号<span class="math inline">\(x(t)\)</span>的基波周期<span class="math inline">\(T\)</span>越来越大时，相邻频率点之间的间隔<span class="math inline">\(\omega_0=2\pi/T\)</span>越来越小，频谱越来越密集。可以想象，当<span class="math inline">\(T\)</span>趋向无穷大时，间隔会趋近于<span class="math inline">\(0\)</span>，频谱就由离散变成连续，此时周期信号就变成了非周期信号，求和形式的傅里叶级数表达式就变成了积分形式</p>
 <p><span class="math display">\[
+\begin{equation}
 x(t) = \frac{1}{2\pi} \int_{-\infty}^{+\infty} X(j \omega)e^{j \omega t} d \omega
+\end{equation}
 \]</span></p>
 <p>其中，<span class="math inline">\(X(j \omega)\)</span>称为连续非周期信号<span class="math inline">\(x(t)\)</span>的<strong>傅里叶变换</strong>，是个复函数，计算式为</p>
 <p><span class="math display">\[
+\begin{equation}
 X(j \omega) = \int_{-\infty}^{+\infty} x(t) e^{-j \omega t} d t
+\end{equation}
 \]</span></p>
 <p><span class="math inline">\(X(jw)\)</span>又称为<span class="math inline">\(x(t)\)</span>的<strong>频谱</strong>，它提供将<span class="math inline">\(x(t)\)</span>表示为不同频率正弦信号的线性组合（就是积分）所需要的信息。</p>
 <h3 id="示例-1">示例</h3>
