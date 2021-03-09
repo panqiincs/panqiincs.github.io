@@ -246,20 +246,21 @@
       
         <p>在Quora上，有人问了这么一个问题：<a target="_blank" rel="noopener" href="https://www.quora.com/What-does-it-mean-when-a-girl-smiles-at-you-every-time-she-sees-you">What does it mean when a girl smiles at you every time she sees you?</a> 有个学物理的回答者机智地搬出了贝叶斯公式分析了一番，还挺有趣的。下面是我的翻译：</p>
 <a id="more"></a>
+
 <p>这很简单，用贝叶斯定理分析一下就行了。她喜欢你的概率是：</p>
-<p><span class="math display">\[P(like|smile) = \frac{P(smile|like)P(like)}{P(smile)}\]</span></p>
+<p>$$P(like|smile) = \frac{P(smile|like)P(like)}{P(smile)}$$</p>
 <p>式中各项的意义如下：</p>
 <ul>
-<li><span class="math inline">\(P(like|smile)\)</span>是你想知道的：在她总对你笑的前提下，她喜欢你的可能性</li>
-<li><span class="math inline">\(P(smile|like)\)</span>是她对喜欢的人笑的概率</li>
-<li><span class="math inline">\(P(like)\)</span>是她喜欢一个随机的人的概率</li>
-<li><span class="math inline">\(P(smile)\)</span>是她对一个随机的人笑的概率</li>
+<li>$P(like|smile)$是你想知道的：在她总对你笑的前提下，她喜欢你的可能性</li>
+<li>$P(smile|like)$是她对喜欢的人笑的概率</li>
+<li>$P(like)$是她喜欢一个随机的人的概率</li>
+<li>$P(smile)$是她对一个随机的人笑的概率</li>
 </ul>
-<p>举个例子，假设这位姑娘对每个人都笑，根据人生的经验，她对你笑说明不了任何问题。实际上，在这个假设前提下，上述公式中<span class="math inline">\(P(smile|like)\)</span>和<span class="math inline">\(P(smile)\)</span>两项的值均为1，此时有：</p>
-<p><span class="math display">\[P(like|smile)=P(like)\]</span></p>
+<p>举个例子，假设这位姑娘对每个人都笑，根据人生的经验，她对你笑说明不了任何问题。实际上，在这个假设前提下，上述公式中$P(smile|like)$和$P(smile)$两项的值均为1，此时有：</p>
+<p>$$P(like|smile)=P(like)$$</p>
 <p>即，她对你笑并没有改变任何事情。</p>
-<p>再举另外一个极端的例子，这位姑娘只对她喜欢的人笑，这包含了两个假设，用公式描述就是<span class="math inline">\(P(smile) = P(like)\)</span>，并且<span class="math inline">\(P(smile|like)=1\)</span>，此时有：</p>
-<p><span class="math display">\[P(like|smile) = 1\]</span></p>
+<p>再举另外一个极端的例子，这位姑娘只对她喜欢的人笑，这包含了两个假设，用公式描述就是$P(smile) = P(like)$，并且$P(smile|like)=1$，此时有：</p>
+<p>$$P(like|smile) = 1$$</p>
 <p>那么，她肯定是喜欢你的。</p>
 <p>你应该做的是，找到她对喜欢的人笑的几率和平时她笑的几率的比值，乘以她喜欢一个随机的人的几率，就得到了你想要的答案。一般来说，她笑得越多，她喜欢你的几率更低。她对她喜欢的人笑得越多，她喜欢你的可能性就更大。并且，她喜欢的人越多，你的机会也更大。当然，怎么去具体得到这些值的大小，是我解决不了的迷题:)</p>
 <p>哈哈，了解姑娘的心思可比数学难多了！也不知道提问的人看到这样「胡闹」的答案是什么样的心情。生活中这些显而易见的道理还可以用神秘的数学语言来描述，真是一件非常有意思的事情。</p>
@@ -388,7 +389,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">91</span>
+          <span class="site-state-item-count">92</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -401,7 +402,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">179</span>
+        <span class="site-state-item-count">178</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
