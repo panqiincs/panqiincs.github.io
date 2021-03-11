@@ -241,8 +241,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="问题">问题</h2>
-<p><a href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I/O多路复用之epoll</a>一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行<code>read</code>或<code>write</code>都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果多路复用不搭配非阻塞I/O，在下面几种情况下会出现问题。</p>
+          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I/O多路复用之epoll</a>一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行<code>read</code>或<code>write</code>都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。但实际情况是，I/O多路复用一般和非阻塞I/O配合使用，比如libevent网络库所采用的Reactor模式。实际上，如果多路复用不搭配非阻塞I/O，在下面几种情况下会出现问题。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/08/05/multiplexing-and-nonblocking-io/#more" rel="contents">
@@ -330,8 +329,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="简介">简介</h2>
-<p>I/O多路复用（I/O multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I/O操作。能够进行I/O操作，具体来说就是，在描述符上执行I/O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。</p>
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>I/O多路复用（I/O multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I/O操作。能够进行I/O操作，具体来说就是，在描述符上执行I/O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/08/01/io-multiplexing-with-epoll/#more" rel="contents">
@@ -419,8 +417,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="介绍">介绍</h2>
-<p>本文介绍Linux服务端开发中常用的迭代（iterative）模型和并发（concurrent）模型，通过简单的回射服务器程序来说明。在这两种模型下，套接字均使用默认的阻塞（blocking）方式，如果I/O操作不能立即完成，用于读写的系统调用会阻塞。</p>
+          <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>本文介绍Linux服务端开发中常用的迭代（iterative）模型和并发（concurrent）模型，通过简单的回射服务器程序来说明。在这两种模型下，套接字均使用默认的阻塞（blocking）方式，如果I/O操作不能立即完成，用于读写的系统调用会阻塞。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/06/11/iterative-and-concurrent-server/#more" rel="contents">
@@ -597,8 +594,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="错误的产生">错误的产生</h2>
-<p>在C语言中，将两个正数相加可能会得到一个负数，<code>x &lt; y</code>和<code>x - y &lt; 0</code>两个语句得到的结果有可能不一样。这些「莫名其妙」的现象经常会导致bug，编程老手不经意也会犯下错误。了解整数运算的原理有助于写出更可靠的程序。</p>
+          <h2 id="错误的产生"><a href="#错误的产生" class="headerlink" title="错误的产生"></a>错误的产生</h2><p>在C语言中，将两个正数相加可能会得到一个负数，<code>x &lt; y</code>和<code>x - y &lt; 0</code>两个语句得到的结果有可能不一样。这些「莫名其妙」的现象经常会导致bug，编程老手不经意也会犯下错误。了解整数运算的原理有助于写出更可靠的程序。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/04/06/integer-arithmetic/#more" rel="contents">
@@ -774,8 +770,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="位模式">位模式</h2>
-<p>不同类型的数据，比如数字、文本、图片、视频等都以二进制形式（即一连串的1和0）存储在计算机中，我们称之为<strong>位模式</strong>。将位模式以不同的解析方式还原出来时，用户便看到了不同类型的数据。例如位模式<code>01000001</code>既可以表示数字<code>65</code>，也可以表示字符<code>A</code>。</p>
+          <h2 id="位模式"><a href="#位模式" class="headerlink" title="位模式"></a>位模式</h2><p>不同类型的数据，比如数字、文本、图片、视频等都以二进制形式（即一连串的1和0）存储在计算机中，我们称之为<strong>位模式</strong>。将位模式以不同的解析方式还原出来时，用户便看到了不同类型的数据。例如位模式<code>01000001</code>既可以表示数字<code>65</code>，也可以表示字符<code>A</code>。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/03/21/integer-representations/#more" rel="contents">
@@ -863,8 +858,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="简介">简介</h2>
-<p>链表（linked list）是一种常见的基础数据结构，它是一种线性表，但是并不会按线性的顺序存储数据，而是在每一个节点里存放到其它节点的指针。<strong>单向链表</strong>的每个节点只有一个连接，指向下一个节点。和双向链表相比，单向链表的指针只能单向移动，功能自然也就受到了许多限制。不过单向链表耗用空间小，某些操作更快。</p>
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>链表（linked list）是一种常见的基础数据结构，它是一种线性表，但是并不会按线性的顺序存储数据，而是在每一个节点里存放到其它节点的指针。<strong>单向链表</strong>的每个节点只有一个连接，指向下一个节点。和双向链表相比，单向链表的指针只能单向移动，功能自然也就受到了许多限制。不过单向链表耗用空间小，某些操作更快。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2014/06/26/singly-linked-list-operations/#more" rel="contents">
@@ -952,8 +946,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="旧式的类型转换">旧式的类型转换</h2>
-<p>在变量或表达式前加上类型转换符强制进行显式的类型转换，例如：</p>
+          <h2 id="旧式的类型转换"><a href="#旧式的类型转换" class="headerlink" title="旧式的类型转换"></a>旧式的类型转换</h2><p>在变量或表达式前加上类型转换符强制进行显式的类型转换，例如：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2014/06/01/cpp-explicit-conversion/#more" rel="contents">
