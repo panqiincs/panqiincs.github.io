@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"panqiincs.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="位模式不同类型的数据，比如数字、文本、图片、视频等都以二进制形式（即一连串的1和0）存储在计算机中，我们称之为位模式。将位模式以不同的解析方式还原出来时，用户便看到了不同类型的数据。例如位模式01000001既可以表示数字65，也可以表示字符A。">
+  <meta name="description" content="位模式 不同类型的数据，比如数字、文本、图片、视频等都以二进制形式（即一连串的1和0）存储在计算机中，我们称之为位模式。将位模式以不同的解析方式还原出来时，用户便看到了不同类型的数据。例如位模式01000001既可以表示数字65，也可以表示字符A。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="整数的表示">
 <meta property="og:url" content="http://panqiincs.me/2015/03/21/integer-representations/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="位模式不同类型的数据，比如数字、文本、图片、视频等都以二进制形式（即一连串的1和0）存储在计算机中，我们称之为位模式。将位模式以不同的解析方式还原出来时，用户便看到了不同类型的数据。例如位模式01000001既可以表示数字65，也可以表示字符A。">
+<meta property="og:description" content="位模式 不同类型的数据，比如数字、文本、图片、视频等都以二进制形式（即一连串的1和0）存储在计算机中，我们称之为位模式。将位模式以不同的解析方式还原出来时，用户便看到了不同类型的数据。例如位模式01000001既可以表示数字65，也可以表示字符A。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2015-03-21T13:36:11.000Z">
 <meta property="article:modified_time" content="2020-10-11T12:19:06.903Z">
@@ -246,34 +246,51 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="位模式"><a href="#位模式" class="headerlink" title="位模式"></a>位模式</h2><p>不同类型的数据，比如数字、文本、图片、视频等都以二进制形式（即一连串的1和0）存储在计算机中，我们称之为<strong>位模式</strong>。将位模式以不同的解析方式还原出来时，用户便看到了不同类型的数据。例如位模式<code>01000001</code>既可以表示数字<code>65</code>，也可以表示字符<code>A</code>。</p>
+        <h2 id="位模式">位模式</h2>
+<p>不同类型的数据，比如数字、文本、图片、视频等都以二进制形式（即一连串的1和0）存储在计算机中，我们称之为<strong>位模式</strong>。将位模式以不同的解析方式还原出来时，用户便看到了不同类型的数据。例如位模式<code>01000001</code>既可以表示数字<code>65</code>，也可以表示字符<code>A</code>。</p>
 <a id="more"></a>
-
 <p>下面的<code>show_bytes</code>函数用来打印数据的位模式，打印结果以十六进制形式给出：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *byte_pointer;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show_bytes</span><span class="params">(byte_pointer start, <span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot; %.2x&quot;</span>, start[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>将数据转换成位模式的过程称为<strong>编码</strong>（encoding），整数的编码方式主要有两种，无符号编码（Unsigned Encoding）和补码编码（Two’s Complement Encoding）。</p>
-<h2 id="编码类型"><a href="#编码类型" class="headerlink" title="编码类型"></a>编码类型</h2><h3 id="无符号编码"><a href="#无符号编码" class="headerlink" title="无符号编码"></a>无符号编码</h3><p>把位模式$\vec{x} = [x_{w-1}, x_{w-2}, … , x_0]$看做一个二进制表示的数，用函数$B2U_w$（Binary to Unsigned）来表示从位模式到无符号编码表示的整数数值的转换关系：</p>
-<p>$$<br>B2U_w(\vec{x}) \doteq \sum_{i=0}^{w-1} x_i 2^i<br>$$</p>
-<p>因此，宽度为$w$的位模式用无符号编码方式表示的无符号整数的范围是$0$到$2^w-1$。C语言中，<code>unsigned</code>类型的数据采用无符号编码。</p>
-<h3 id="补码编码"><a href="#补码编码" class="headerlink" title="补码编码"></a>补码编码</h3><p>表示有符号数一般采用补码编码方式。用函数$B2T_w$（Binary to Two’s Complement）来表示从位模式到补码编码表示的整数数值的转换关系：</p>
-<p>$$<br>B2T_w(\vec{x}) \doteq -x_{w-1} 2^{w-1} + \sum_{i=1}^{w-2} x_i2^i<br>$$</p>
-<p>最高位$x_{w-1}$称为<strong>符号位</strong>，符号位为0时表示为非负数，为1时表示为负数。补码编码方式表示的整数范围是$-2^{w-1}$到$2^{w-1}-1$。</p>
-<h2 id="整数类型转换"><a href="#整数类型转换" class="headerlink" title="整数类型转换"></a>整数类型转换</h2><h3 id="符号数和无符号数之间的转换"><a href="#符号数和无符号数之间的转换" class="headerlink" title="符号数和无符号数之间的转换"></a>符号数和无符号数之间的转换</h3><p>在C语言中，不同数据类型之间可以转换。例如，强制类型转换运算<code>(unsigned)x</code>将<code>x</code>转化成一个无符号类型。下面的C代码打印两个变量的数值以及它们的位模式：</p>
+<p>将数据转换成位模式的过程称为<strong>编码</strong>（encoding），整数的编码方式主要有两种，无符号编码（Unsigned Encoding）和补码编码（Two's Complement Encoding）。</p>
+<h2 id="编码类型">编码类型</h2>
+<h3 id="无符号编码">无符号编码</h3>
+<p>把位模式<span class="math inline">\(\vec{x} = [x_{w-1}, x_{w-2}, ... , x_0]\)</span>看做一个二进制表示的数，用函数<span class="math inline">\(B2U_w\)</span>（Binary to Unsigned）来表示从位模式到无符号编码表示的整数数值的转换关系：</p>
+<p><span class="math display">\[
+B2U_w(\vec{x}) \doteq \sum_{i=0}^{w-1} x_i 2^i
+\]</span></p>
+<p>因此，宽度为<span class="math inline">\(w\)</span>的位模式用无符号编码方式表示的无符号整数的范围是<span class="math inline">\(0\)</span>到<span class="math inline">\(2^w-1\)</span>。C语言中，<code>unsigned</code>类型的数据采用无符号编码。</p>
+<h3 id="补码编码">补码编码</h3>
+<p>表示有符号数一般采用补码编码方式。用函数<span class="math inline">\(B2T_w\)</span>（Binary to Two's Complement）来表示从位模式到补码编码表示的整数数值的转换关系：</p>
+<p><span class="math display">\[
+B2T_w(\vec{x}) \doteq -x_{w-1} 2^{w-1} + \sum_{i=1}^{w-2} x_i2^i
+\]</span></p>
+<p>最高位<span class="math inline">\(x_{w-1}\)</span>称为<strong>符号位</strong>，符号位为0时表示为非负数，为1时表示为负数。补码编码方式表示的整数范围是<span class="math inline">\(-2^{w-1}\)</span>到<span class="math inline">\(2^{w-1}-1\)</span>。</p>
+<h2 id="整数类型转换">整数类型转换</h2>
+<h3 id="符号数和无符号数之间的转换">符号数和无符号数之间的转换</h3>
+<p>在C语言中，不同数据类型之间可以转换。例如，强制类型转换运算<code>(unsigned)x</code>将<code>x</code>转化成一个无符号类型。下面的C代码打印两个变量的数值以及它们的位模式：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">short</span> <span class="keyword">int</span> v = <span class="number">-12345</span>;</span><br><span class="line">usigned <span class="keyword">short</span> uv = (<span class="keyword">unsigned</span> <span class="keyword">short</span>) v;</span><br><span class="line"><span class="comment">/* 打印数值和位模式 */</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;v = %d:&quot;</span>);</span><br><span class="line">show_bytes((byte_pointer)&amp;v, <span class="keyword">sizeof</span>(v));</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;uv = %u:&quot;</span>);</span><br><span class="line">show_bytes((byte_pointer)&amp;uv, <span class="keyword">sizeof</span>(uv));</span><br></pre></td></tr></table></figure>
 <p>编译运行之后得到如下结果：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">v &#x3D; -12345: c7 cf</span><br><span class="line">uv &#x3D; 53191: c7 cf</span><br></pre></td></tr></table></figure>
-<p>即转换前后的<strong>位模式没有改变</strong>，解析方式的不同造成了不同的结果。类似地，<code>0xff</code>用无符号编码表示正数<code>255</code>，用补码编码表示负数<code>-1</code>。依照转换前后位模式不变的原则，可以得到从有符号数到无符号数的转换函数$T2U_w$（Two’s Complement to Unsigned）：</p>
-<p>$$<br>T2U_w(x) = B2U_w(T2B_w(x)) = x_{w-1} 2^w + x<br>$$</p>
-<p>类似地，从无符号数到有符号数的转换函数$U2T_w$（Unsigned to Two’s Complement）为：</p>
-<p>$$<br>U2T_w(u) = B2T_w(U2B_w(u)) = -u_{w-1} 2^w + u<br>$$</p>
-<p>C语言中，大多数常数默认为符号数（signed），在末尾加上<code>U</code>或<code>u</code>即声明该数字为无符号常数。C语言允许无符号数和有符号数之间的转换，转换前后位模式保持不变，结果的差异由解析方式的不同造成。从无符号数转换到有符号数时，使用函数$U2T_w$，从符号数转换为无符号数时，使用函数$T2U_w$。</p>
+<p>即转换前后的<strong>位模式没有改变</strong>，解析方式的不同造成了不同的结果。类似地，<code>0xff</code>用无符号编码表示正数<code>255</code>，用补码编码表示负数<code>-1</code>。依照转换前后位模式不变的原则，可以得到从有符号数到无符号数的转换函数<span class="math inline">\(T2U_w\)</span>（Two's Complement to Unsigned）：</p>
+<p><span class="math display">\[
+T2U_w(x) = B2U_w(T2B_w(x)) = x_{w-1} 2^w + x
+\]</span></p>
+<p>类似地，从无符号数到有符号数的转换函数<span class="math inline">\(U2T_w\)</span>（Unsigned to Two's Complement）为：</p>
+<p><span class="math display">\[
+U2T_w(u) = B2T_w(U2B_w(u)) = -u_{w-1} 2^w + u
+\]</span></p>
+<p>C语言中，大多数常数默认为符号数（signed），在末尾加上<code>U</code>或<code>u</code>即声明该数字为无符号常数。C语言允许无符号数和有符号数之间的转换，转换前后位模式保持不变，结果的差异由解析方式的不同造成。从无符号数转换到有符号数时，使用函数<span class="math inline">\(U2T_w\)</span>，从符号数转换为无符号数时，使用函数<span class="math inline">\(T2U_w\)</span>。</p>
 <p>另外，执行运算时，如果一个是有符号数而另一个是无符号数，那么C语言会隐式地<strong>将有符号参数强制类型转换为无符号数</strong>。例如，考虑比较式<code>-1 &lt; 0U</code> ，因为第二个运算是为无符号的，第一个运算数会被隐式地转换成无符号数，<code>-1</code>变成了一个很大的正数，表达式等价于<code>4294967295U &lt; 0U</code>，得到了和预想中不一样的结果，这一点尤其要注意。</p>
-<h3 id="扩展位模式"><a href="#扩展位模式" class="headerlink" title="扩展位模式"></a>扩展位模式</h3><p>一种常见的运算是在不同字长的整数之间转换，同时保持数值不变。将一个无符号数转换成一个更大的数据类型，执行<strong>零扩展</strong>（zero extension），即在开头添加<code>0</code>。将一个补码数字转换为一个更大的数据类型执行<strong>符号扩展</strong>（sign extension），即在开头添加符号位，如果是负数，则添加1，如果是正数，则添加0。如果转换中不仅有字长的扩展还有符号的改变，则转换的原则如下：<strong>首先改变大小，然后完成符号转换</strong>。例如下面的C代码：</p>
+<h3 id="扩展位模式">扩展位模式</h3>
+<p>一种常见的运算是在不同字长的整数之间转换，同时保持数值不变。将一个无符号数转换成一个更大的数据类型，执行<strong>零扩展</strong>（zero extension），即在开头添加<code>0</code>。将一个补码数字转换为一个更大的数据类型执行<strong>符号扩展</strong>（sign extension），即在开头添加符号位，如果是负数，则添加1，如果是正数，则添加0。如果转换中不仅有字长的扩展还有符号的改变，则转换的原则如下：<strong>首先改变大小，然后完成符号转换</strong>。例如下面的C代码：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">short</span> sx = <span class="number">-12345</span>;</span><br><span class="line"><span class="keyword">unsigned</span> uy = sx;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;uy = %u:\t&quot;</span>, uy);</span><br><span class="line">show_bytes((byte_pointer)&amp;uy, <span class="keyword">sizeof</span>(<span class="keyword">unsigned</span>)); </span><br></pre></td></tr></table></figure>
 <p>可以得到输出<code>uy = 4294954951: ff ff cf c7</code>，即<code>(unsigned)sx</code>等价于<code>(unsigned)(int)sx</code>。</p>
-<h3 id="截断数字"><a href="#截断数字" class="headerlink" title="截断数字"></a>截断数字</h3><p>有些情况要从长字节转换到短字节，例如从<code>int</code>到<code>char</code>，这种情况称作截断。将一个$w$位的数字$\vec{x} = [x_{w-1}, x_{w-2}, … , x_0]$转换成一个$k$位的数字，把前$w-k$位舍弃即可，得到新的位模式$\vec{x} = [x_ｋ, x_{k-1}, … , x_0]$。还是依照位模式不变的原则，根据前面的公式可以计算得到截断后得到的数值。</p>
-<h3 id="类型转换总结"><a href="#类型转换总结" class="headerlink" title="类型转换总结"></a>类型转换总结</h3><p>凡是涉及到不同整数类型的转换，都要把握一个原则：以位模式为中心。具有相同字节长度的类型之间的转换，位模式不变，字节长度不同的类型之间的转换，对位模式进行扩展或截断操作。最后采用新的解析方式解析位模式便得到类型转换之后的值。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://book.douban.com/subject/5407246/">CS:APP</a></p>
+<h3 id="截断数字">截断数字</h3>
+<p>有些情况要从长字节转换到短字节，例如从<code>int</code>到<code>char</code>，这种情况称作截断。将一个<span class="math inline">\(w\)</span>位的数字<span class="math inline">\(\vec{x} = [x_{w-1}, x_{w-2}, ... , x_0]\)</span>转换成一个<span class="math inline">\(k\)</span>位的数字，把前<span class="math inline">\(w-k\)</span>位舍弃即可，得到新的位模式<span class="math inline">\(\vec{x} = [x_ｋ, x_{k-1}, ... , x_0]\)</span>。还是依照位模式不变的原则，根据前面的公式可以计算得到截断后得到的数值。</p>
+<h3 id="类型转换总结">类型转换总结</h3>
+<p>凡是涉及到不同整数类型的转换，都要把握一个原则：以位模式为中心。具有相同字节长度的类型之间的转换，位模式不变，字节长度不同的类型之间的转换，对位模式进行扩展或截断操作。最后采用新的解析方式解析位模式便得到类型转换之后的值。</p>
+<h2 id="参考">参考</h2>
+<p><a target="_blank" rel="noopener" href="https://book.douban.com/subject/5407246/">CS:APP</a></p>
 
     </div>
 
