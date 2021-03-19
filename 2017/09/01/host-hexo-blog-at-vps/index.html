@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -249,7 +249,7 @@
       
         <h2 id="整体方案">整体方案</h2>
 <p>我有一个用于提高上网体验的VPS，配置还不错，仅仅跑一个小服务太浪费了。买了域名之后，便想把网站也托管到VPS上，和Github互为备份，其中一个出问题了，修改一下域名解析即可。</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>整体方案如下：在本地机器上生成网站静态文件，利用git的<code>post-receive</code>钩子自动部署文件到VPS的指定目录中。VPS使用nginx作为HTTP服务器，为访客提供服务。本文默认本地机器上已经完成了Hexo环境的搭建（能够生成网站文件，并部署到Github上），VPS上已安装git和nginx。</p>
 <h2 id="部署过程">部署过程</h2>
 <h3 id="ssh登录配置">SSH登录配置</h3>

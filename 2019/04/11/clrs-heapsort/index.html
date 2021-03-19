@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -247,7 +247,7 @@
       
         <h2 id="主要内容">主要内容</h2>
 <p>本章介绍<strong>堆排序</strong>（heapsort）算法。堆排序算法的复杂度和归并排序相同，但是仅需要常数个额外的元素空间存储临时数据。堆（heap）不仅仅用在堆排序中，还可以构造一种有效的优先队列（priority queue）。</p>
-<a id="more"></a>
+<span id="more"></span>
 <h3 id="堆">堆</h3>
 <p>二叉堆一般用数组实现，可以看成是一个近似的完全二叉树，树的每个节点对应数组中的一个元素。根节点为<span class="math inline">\(A[1]\)</span>，给定一个下标<span class="math inline">\(i\)</span>，很容易计算它的父节点、左孩子和右孩子的下标分别为<span class="math inline">\(\lfloor i/2 \rfloor\)</span>，<span class="math inline">\(2i\)</span>，<span class="math inline">\(2i+1\)</span>。需注意，用C语言实现时，数组要多分配一个元素的空间。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> __<span class="title">heap</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span>  length;     <span class="comment">// 容纳元素个数的上限</span></span><br><span class="line">    <span class="keyword">int</span>  heap_size;  <span class="comment">// 当前元素个数</span></span><br><span class="line">    <span class="keyword">int</span> *data;       <span class="comment">// 存放元素的内存</span></span><br><span class="line">&#125; Heap;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>  PARENT(i)  (i/2)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>  LEFT(i)    (2*i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>  RIGHT(i)   (2*i+1)</span></span><br></pre></td></tr></table></figure>

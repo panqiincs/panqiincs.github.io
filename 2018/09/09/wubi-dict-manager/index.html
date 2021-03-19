@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -246,7 +246,7 @@
       
         <h2 id="缘起">缘起</h2>
 <p>最近学会了五笔输入法。我学的是新世纪版，因版权原因，网络上的码表资源不多，很多爱好者都自己制作码表，而且很少对外传播。作为程序员，在这方面有得天独厚的优势，于是用C++写了个五笔码表管理工具<a target="_blank" rel="noopener" href="https://github.com/panqiincs/RimeWubiDictMngr">RimeWubiDictMngr</a>。我没有使用C++标准库，而是用的Qt基础库，主要原因是<code>QString</code>对Unicode支持很好，处理汉字很方便。该工具暂时没有界面，只能称作一个功能简单的库，以后有必要再添加界面。</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="码表格式">码表格式</h2>
 <p>我用的是Rime输入法，它的优点在于，码表包含权重（weight）信息，码表文件<code>wubinc.dict.yaml</code>的部分条目如下：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">剖</span>	<span class="string">ukj</span>	<span class="number">113738</span></span><br><span class="line"><span class="string">问题</span>	<span class="string">ukjg</span>	<span class="number">20455144</span></span><br><span class="line"><span class="string">总是</span>	<span class="string">ukjg</span>	<span class="number">2866329</span></span><br><span class="line"><span class="string">总量</span>	<span class="string">ukjg</span>	<span class="number">751184</span></span><br><span class="line"><span class="string">剖</span>	<span class="string">ukjh</span>	<span class="number">90990</span></span><br></pre></td></tr></table></figure>

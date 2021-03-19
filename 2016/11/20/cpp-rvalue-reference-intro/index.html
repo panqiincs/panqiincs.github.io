@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -252,7 +252,7 @@
 <p>本文简要介绍了C++的新特性——右值引用（rvalue reference），更多细节请参考<a target="_blank" rel="noopener" href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n2027.html#Wrap_Up">这里</a>。</p>
 <h2 id="右值引用">右值引用</h2>
 <p>右值引用是一种复合类型，和传统的C++引用类似。为了更好地区分它们，我们将传统的引用称之为左值引用。引用一词同时包括左值引用和右值引用。</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>在类型名前加上<code>&amp;</code>符号表示左值引用：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A a;</span><br><span class="line">A &amp;ref1 = a;   <span class="comment">// ref1是左值引用</span></span><br></pre></td></tr></table></figure>
 <p>在类型前加上<code>&amp;&amp;</code>符号表示右值引用：</p>

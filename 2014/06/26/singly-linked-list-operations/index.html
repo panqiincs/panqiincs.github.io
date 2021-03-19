@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -247,7 +247,7 @@
       
         <h2 id="简介">简介</h2>
 <p>链表（linked list）是一种常见的基础数据结构，它是一种线性表，但是并不会按线性的顺序存储数据，而是在每一个节点里存放到其它节点的指针。<strong>单向链表</strong>的每个节点只有一个连接，指向下一个节点。和双向链表相比，单向链表的指针只能单向移动，功能自然也就受到了许多限制。不过单向链表耗用空间小，某些操作更快。</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>下面是节点数据结构的定义：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode *next;</span><br><span class="line">    ListNode(<span class="keyword">int</span> x) : val(x), next(<span class="literal">NULL</span>) &#123;&#125;  <span class="comment">// 构造函数</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h2 id="基本操作">基本操作</h2>

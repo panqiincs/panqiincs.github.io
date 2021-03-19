@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -248,7 +248,7 @@
       
         <h2 id="主要内容">主要内容</h2>
 <p>本章介绍几种线性时间复杂度的排序算法。我们前面介绍的排序算法都是通过比较元素大小来确定排序顺序的，本章介绍的算法通过运算来确定排序顺序。</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="排序算法的下界">排序算法的下界</h2>
 <p>比较排序可以抽象成一颗决策树。<strong>决策树</strong>是一颗完全二叉树，它可以表示在给定输入规模情况下，某一特定算法对所有元素的比较操作。</p>
 <p>通过决策树模型我们可以证明，在最坏情况下，任何比较排序算法都要做<span class="math inline">\(\Omega(n \lg n)\)</span>次比较。也就是说，归并排序和堆排序都是渐进最优的，而且，任何已知的比较排序算法最多就是在常数因子上优于它们。</p>

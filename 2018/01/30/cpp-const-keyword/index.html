@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -250,7 +250,7 @@
 <p>C++中的const关键字多才多艺且无处不在，它的语法意义并不高深，用法却变化多端。本文总结了const几乎所有的用法：定义常量、修饰指针和引用、修饰函数的参数和返回值、修饰类成员。</p>
 <h2 id="定义常量">定义常量</h2>
 <p>关键字const对变量的类型加以限定，将变量定义为一个常量，任何对变量赋值的行为在编译阶段即被编译器阻止。因为const对象一旦创建后，其值不能再改变，所以const对象必须被初始化，初始值可以是任意表达式。还可以利用一个对象初始化另一个对象，它们是不是const都无关紧要。</p>
-<a id="more"></a>
+<span id="more"></span>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> bufsize = <span class="number">512</span>;     <span class="comment">// 编译时初始化 </span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> i = get_size();    <span class="comment">// 运行时初始化</span></span><br><span class="line"><span class="keyword">int</span> j = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> ci = j;            <span class="comment">// 用非const对象初始化const对象</span></span><br><span class="line"><span class="keyword">int</span> k = ci;                  <span class="comment">// 用const对象初始非cosnt对象</span></span><br></pre></td></tr></table></figure>
 <p>默认状态下，const对象仅在文件内有效，当多个文件中出现类同名的const变量时，等同于在不同文件中分别定义了独立的变量。如果想在文件间共享const变量，需要在一个文件中定义const，而在其他多个文件中声明并使用它，而且，不论是声明还是定义，都添加extern关键字。</p>
 <h2 id="const和宏">const和宏</h2>

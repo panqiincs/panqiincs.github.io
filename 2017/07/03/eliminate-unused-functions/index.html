@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -244,7 +244,7 @@
 
       
         <p>对嵌入式开发来说，硬件资源是非常宝贵的，当工程中包含大量的未调用函数时，会浪费有限的存储资源。手动统计和删除未调用函数很不方便，有的平台代码可能以后会用到，删除也不合适。本文介绍DS5编译器的一个功能，可以不删除代码就能节省存储空间。</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>DS-5，也称ARM DS-5，ARM Development Studio 5等，是ARM架构处理器常用的开发平台，包括编辑器、编译器、调试器等一全套开发工具。</p>
 <p>DS-5编译器提供相关的选项可以自动统计未调用的函数，并且能够在不删除代码的情况下，自动忽略对应的代码段，不链接到最终的目标文件中，缩小二进制文件的体积。过程如下：</p>
 <ol type="1">

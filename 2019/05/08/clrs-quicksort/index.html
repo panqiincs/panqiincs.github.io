@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -246,7 +246,7 @@
       
         <h2 id="主要内容">主要内容</h2>
 <p><strong>快速排序</strong>通常是实际排序应用中最好的选择。它在最坏情况下的时间复杂度很差，但是平均性能非常好。另外，它能够进行原址排序。</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="快速排序的描述">快速排序的描述</h2>
 <p>与归并排序一样，快速排序也用到了分治思想。其主过程的代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p &lt; r) &#123;</span><br><span class="line">        <span class="keyword">int</span> q = partition(A, p, r);</span><br><span class="line">        quicksort(A, p, q<span class="number">-1</span>);</span><br><span class="line">        quicksort(A, q+<span class="number">1</span>, r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

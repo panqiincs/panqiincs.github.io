@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -246,7 +246,7 @@
       
         <h2 id="主要内容">主要内容</h2>
 <p>本章讨论<strong>顺序统计量</strong>，即某个集合中大小排名第几的元素。比如最小值是第一个顺序统计量，最大值是最后一个顺序统计量，<strong>中位数</strong>是集合的中点元素。如果元素有奇数个，有唯一的中位数；如果元素有偶数个，有两个中位数，一般选取较小的那个。将问题一般化，则是从含有互异元素的集合中找到特定大小排名的元素。</p>
-<a id="more"></a>
+<span id="more"></span>
 <h2 id="最小值和最大值">最小值和最大值</h2>
 <p>在一个含有<span class="math inline">\(n\)</span>个元素的集合中，最多需要<span class="math inline">\(n-1\)</span>次比较就能确定最小元素。下面是代码实现：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mininum</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> min = A[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (min &gt; A[i]) &#123;</span><br><span class="line">            min = A[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

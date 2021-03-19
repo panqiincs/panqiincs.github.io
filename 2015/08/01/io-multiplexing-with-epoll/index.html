@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -32,10 +32,10 @@
 <meta property="article:published_time" content="2015-08-01T12:21:49.000Z">
 <meta property="article:modified_time" content="2020-10-11T12:19:06.903Z">
 <meta property="article:author" content="Krist Pan">
+<meta property="article:tag" content="linux">
 <meta property="article:tag" content="多路复用">
 <meta property="article:tag" content="epoll">
 <meta property="article:tag" content="非阻塞I&#x2F;O">
-<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">
@@ -248,7 +248,7 @@
       
         <h2 id="简介">简介</h2>
 <p>I/O多路复用（I/O multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I/O操作。能够进行I/O操作，具体来说就是，在描述符上执行I/O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>在Linux系统中，多路复用由<code>select</code>，<code>poll</code>和<code>epoll</code>三个函数支持。它们的作用相同，特别地，<code>poll</code>和<code>epoll</code>的接口非常相似。在处理大量描述符时，<code>epoll</code>的性能优于另外两个函数。<code>epoll</code>同时支持水平触发（level-triggered）和边沿触发（edge-triggered）模式，而<code>select</code>和<code>poll</code>只支持水平触发模式。本文结合一个回射服务器程序来介绍<code>epoll</code>的基本用法。</p>
 <h2 id="触发模式">触发模式</h2>
 <p>水平触发和边沿触发模式的区别如下：</p>
@@ -333,10 +333,10 @@
 
       <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
               <a href="/tags/%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" rel="tag"># 多路复用</a>
               <a href="/tags/epoll/" rel="tag"># epoll</a>
               <a href="/tags/%E9%9D%9E%E9%98%BB%E5%A1%9EI-O/" rel="tag"># 非阻塞I/O</a>
-              <a href="/tags/linux/" rel="tag"># linux</a>
           </div>
 
         

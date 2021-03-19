@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -248,7 +248,7 @@
 
       
         <p>如果树莓派无法使用以太网或者WiFi，该如何接入到TCP/IP网络呢？这个需求看似奇怪，还真给我遇到了。其实树莓派可以通过串口线和其他设备实现网络通信。</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>以使用WiFi接入到网络为例，WiFi定义了OSI模型中的物理层和数据链路层，在WiFi之上承载了网络层的IP协议，再往上就是传输层，传输层最重要的协议是TCP。树莓派的UART串口不适合直接传输TCP/IP数据，需要用PPP协议（<strong>P</strong>oint-to-<strong>P</strong>oint <strong>P</strong>rotocol，点对点协议）封装串口数据，那么数据链路层使用的是PPP协议，然后再在PPP协议上承载IP协议，就有了网络接口。另一个可用在串口线上的数据链路层协议是SLIP（Serial Line IP），在互联网发展早期很流行，现在已经被PPP协议取代了。</p>
 <p>我们就使用上面提到的思路。先做如下准备：</p>
 <ol type="1">

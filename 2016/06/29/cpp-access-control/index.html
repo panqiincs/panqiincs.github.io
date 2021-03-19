@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -251,7 +251,7 @@
 <h2 id="成员的访问说明符">成员的访问说明符</h2>
 <h3 id="public和private">public和private</h3>
 <p>定义在public说明符之后的成员在整个程序内可被访问，public成员定义类的接口。定义在private说明符之后的成员可以被类的成员函数访问，但是不能被使用该类的代码访问，private成员封装了类的实现细节。下面的代码：</p>
-<a id="more"></a>
+<span id="more"></span>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getX</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> x; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setX</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123; x = n; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Foo f;</span><br><span class="line">f.x = <span class="number">3</span>;           <span class="comment">// 错误：用户不能访问类的private成员</span></span><br><span class="line">f.setX(<span class="number">3</span>);         <span class="comment">// 正确：用户只能访问public成员</span></span><br><span class="line"><span class="keyword">int</span> m = f.x;       <span class="comment">// 错误：用户不能访问类的private成员</span></span><br><span class="line"><span class="keyword">int</span> n = f.getX();  <span class="comment">// 正确：用户只能访问public成员</span></span><br></pre></td></tr></table></figure>
 <p>用户只能通过public接口来使用类的功能，private成员被隐藏起来，只在类内部可见。不过类可以允许其他类或其他函数访问其非public成员，方法是令其他类或函数成为它的友元（friend）。</p>
 <h3 id="protected">protected</h3>

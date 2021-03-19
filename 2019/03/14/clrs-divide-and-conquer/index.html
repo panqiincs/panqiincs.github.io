@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -248,7 +248,7 @@
       
         <h2 id="主要内容">主要内容</h2>
 <p>本章介绍的第一个算法求解<strong>最大子序列和</strong>问题，第二个算法求解<strong>矩阵乘法</strong>问题。递归式与分治法紧密相关，本章介绍三种方法求解递归式：代入法、递归树法和主方法。</p>
-<a id="more"></a>
+<span id="more"></span>
 <h3 id="最大子序列和问题">最大子序列和问题</h3>
 <p>买股票问题可以转化为最大子序列和问题。只有当序列中包含负数，最大子序列和问题才有意义。</p>
 <p>用暴力解法求解该问题，运行时间为<span class="math inline">\(\Theta(n^2)\)</span>。还可以用分治法求解最大子序列和问题。将序列等分为左右两个子序列，任何连续子序列所处的位置必然式如下三种情况之一：完全位于左子序列中、完全位于右子序列中以及跨越了左右序列的中点。那么，算法的工作就是先递归求解两个子序列，然后寻找跨越中点的最大子序列，最后在三种情况中选取和最大者。</p>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -248,7 +248,7 @@
       
         <h2 id="介绍">介绍</h2>
 <p>Linux链表（linked list）的实现比较特别。通常来说，一个链表结构体会包含需要相互连接的数据，例如下面结构体中的<code>my_item</code>成员：</p>
-<a id="more"></a>
+<span id="more"></span>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">my_list</span> &#123;</span></span><br><span class="line">    <span class="keyword">void</span> *my_item;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">my_list</span> *<span class="title">next</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">my_list</span> *<span class="title">prev</span>;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Linux内核的实现仅仅定义了一个简单的结构体<code>list_head</code>，它是个双向链表：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> *<span class="title">next</span>, *<span class="title">prev</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>

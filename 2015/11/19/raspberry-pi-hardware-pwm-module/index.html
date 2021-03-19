@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -247,7 +247,7 @@
       
         <h2 id="硬件pwm">硬件PWM</h2>
 <p>本文针对的是Raspberry Pi 2 Model B硬件。从理论上讲，对于任意GPIO口，可以通过设定延时来输出PWM信号，这被称作<strong>软件PWM</strong>。由于Linux不是实时操作系统，对于一些要求<strong>硬实时</strong>的应用，例如通过PWM信号控制舵机，最好使用<strong>硬件PWM</strong>。</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>树莓派的BCM2386芯片有两个PWM通道——PWM0和PWM1。PWM0可以设置在GPIO12和GPIO18上，PWM1可以设置在GPIO13上。本文使用<a target="_blank" rel="noopener" href="http://abyz.co.uk/rpi/pigpio/">pigpio</a>库来实现<strong>GPIO12</strong>输出PWM信号。</p>
 <h2 id="pigpio">pigpio</h2>
 <p>首先<a target="_blank" rel="noopener" href="http://abyz.co.uk/rpi/pigpio/download.html">下载并安装pigpio库</a>。安装成功后，输入命令<code>sudo pigpiod</code>运行<code>pigpio</code>守护进程，python接口通过和pigpio守护进程通信来控制GPIO口。函数<code>set_PWM_dutycycle</code>， <code>set_PWM_frequency</code>，<code>set_PWM_range</code>分别控制PWM的<strong>占空比</strong>、<strong>频率</strong>和<strong>控制精度</strong>。</p>

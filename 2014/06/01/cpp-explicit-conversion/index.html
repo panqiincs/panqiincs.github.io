@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
@@ -246,7 +246,7 @@
       
         <h2 id="旧式的类型转换">旧式的类型转换</h2>
 <p>在变量或表达式前加上类型转换符强制进行显式的类型转换，例如：</p>
-<a id="more"></a>
+<span id="more"></span>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n = <span class="number">61</span>;</span><br><span class="line"><span class="keyword">char</span> c = (<span class="keyword">char</span>)n;     <span class="comment">// int强制转换为char，有精度损失</span></span><br><span class="line"><span class="keyword">char</span> *pc = &amp;c;</span><br><span class="line"><span class="keyword">int</span> *pi = (<span class="keyword">int</span> *)pc;  <span class="comment">// char *强制转换为int *</span></span><br></pre></td></tr></table></figure>
 <p>一般来说，将较大的算术类型赋值给较小的类型时，有潜在的精度损失，编译器一般会给出警告信息。强制类型转换明确地告诉代码的读者和编译器，代码的作者知道并且不在乎精度损失，编译器的警告信息也会关闭。</p>
 <p>C++也提供了四种命名的强制类型转换符，分别是static_cast，const_cast，reinterpret_cast和dynamic_cast。</p>
