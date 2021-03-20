@@ -22,26 +22,22 @@
     var CONFIG = {"hostname":"panqiincs.me","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="当老师一年有余，深刻体会到上好课有多么不容易。自己学和教别人完全是两码事，把别人讲懂，理解的层次肯定不一样，所以课下要花很长时间准备。课件制作、课堂演示、微课制作都是教学的重要组成部分，工欲善其事必先利其器，下面推荐一些我用起来非常顺手的软件。">
+  <meta name="description" content="需求和方案 最近想学习TCP&#x2F;IP协议，综合考虑，阅读TCP&#x2F;IP Illustrated第一版是最好的选择，而且还得是英文版。我有一个电子书阅读器DPT-RP1，找个pdf文件就可以开读了。网络上最流行的英文版pdf，排版质量不佳，插图基本看不清，遂放弃。终于找到一个还不错的版本，制作者给实体书的每一页拍照，然后将图片拼成pdf。这个pdf文件在电脑上阅读效果还不错，但图片的阴影在DPT-RP1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我在教学中用到的软件">
-<meta property="og:url" content="http://panqiincs.me/2020/10/31/software-used-in-teaching/index.html">
+<meta property="og:title" content="用ImageMagick处理pdf">
+<meta property="og:url" content="http://panqiincs.me/2018/05/26/imagemagick-for-pdf/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="当老师一年有余，深刻体会到上好课有多么不容易。自己学和教别人完全是两码事，把别人讲懂，理解的层次肯定不一样，所以课下要花很长时间准备。课件制作、课堂演示、微课制作都是教学的重要组成部分，工欲善其事必先利其器，下面推荐一些我用起来非常顺手的软件。">
+<meta property="og:description" content="需求和方案 最近想学习TCP&#x2F;IP协议，综合考虑，阅读TCP&#x2F;IP Illustrated第一版是最好的选择，而且还得是英文版。我有一个电子书阅读器DPT-RP1，找个pdf文件就可以开读了。网络上最流行的英文版pdf，排版质量不佳，插图基本看不清，遂放弃。终于找到一个还不错的版本，制作者给实体书的每一页拍照，然后将图片拼成pdf。这个pdf文件在电脑上阅读效果还不错，但图片的阴影在DPT-RP1">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-10-31T13:40:44.000Z">
-<meta property="article:modified_time" content="2021-01-02T14:16:29.907Z">
+<meta property="article:published_time" content="2018-05-26T07:40:35.000Z">
+<meta property="article:modified_time" content="2020-10-11T12:19:06.903Z">
 <meta property="article:author" content="Krist Pan">
-<meta property="article:tag" content="课件">
-<meta property="article:tag" content="ppt">
-<meta property="article:tag" content="axglyph">
-<meta property="article:tag" content="axmath">
-<meta property="article:tag" content="矢量图">
-<meta property="article:tag" content="matlab">
-<meta property="article:tag" content="octave">
+<meta property="article:tag" content="imagemagick">
+<meta property="article:tag" content="pdf">
+<meta property="article:tag" content="图像二值化">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://panqiincs.me/2020/10/31/software-used-in-teaching/">
+<link rel="canonical" href="http://panqiincs.me/2018/05/26/imagemagick-for-pdf/">
 
 
 <script id="page-configurations">
@@ -54,7 +50,7 @@
   };
 </script>
 
-  <title>我在教学中用到的软件 | 辛未羊的网络日志</title>
+  <title>用ImageMagick处理pdf | 辛未羊的网络日志</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
     <script>
@@ -189,7 +185,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2020/10/31/software-used-in-teaching/">
+    <link itemprop="mainEntityOfPage" href="http://panqiincs.me/2018/05/26/imagemagick-for-pdf/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -202,7 +198,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          我在教学中用到的软件
+          用ImageMagick处理pdf
         </h1>
 
         <div class="post-meta">
@@ -212,7 +208,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-10-31 21:40:44" itemprop="dateCreated datePublished" datetime="2020-10-31T21:40:44+08:00">2020-10-31</time>
+              <time title="创建时间：2018-05-26 15:40:35" itemprop="dateCreated datePublished" datetime="2018-05-26T15:40:35+08:00">2018-05-26</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -233,8 +229,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/10/31/software-used-in-teaching/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/10/31/software-used-in-teaching/" itemprop="commentCount"></span>
+    <a title="valine" href="/2018/05/26/imagemagick-for-pdf/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/05/26/imagemagick-for-pdf/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -249,26 +245,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>当老师一年有余，深刻体会到上好课有多么不容易。自己学和教别人完全是两码事，把别人讲懂，理解的层次肯定不一样，所以课下要花很长时间准备。课件制作、课堂演示、微课制作都是教学的重要组成部分，工欲善其事必先利其器，下面推荐一些我用起来非常顺手的软件。</p>
+        <h2 id="需求和方案">需求和方案</h2>
+<p>最近想学习TCP/IP协议，综合考虑，阅读<a target="_blank" rel="noopener" href="https://book.douban.com/subject/1741925/">TCP/IP Illustrated</a>第一版是最好的选择，而且还得是英文版。我有一个电子书阅读器<a href="https://panqiincs.me/2018/06/13/dpt-rp1-user-experience/">DPT-RP1</a>，找个pdf文件就可以开读了。网络上最流行的英文版pdf，排版质量不佳，插图基本看不清，遂放弃。终于找到一个还不错的版本，制作者给实体书的每一页拍照，然后将图片拼成pdf。这个pdf文件在电脑上阅读效果还不错，但图片的阴影在DPT-RP1里显示出来灰扑扑一片，阅读效果不佳。</p>
 <span id="more"></span>
-<h2 id="课件制作">课件制作</h2>
-<h3 id="公式">公式</h3>
-<p>新版的Word自带的公式编辑器就挺好用的，但是有个致命的缺陷，无法将字体修改为最常用的Times New Roman。我推荐大家使用AxMath编辑公式，和MathType相比，AxMath界面更美观，选项更加丰富，可以自动添加编号，还支持LaTeX语法编辑公式，用起来非常方便。安装好AxMath后，Word和PowerPoint的标签页中会有一个AxMath的按钮，点击即可立刻添加公式。AxMath可以免费使用，有些功能只开放给付费用户，价格不贵，只要几十块钱。</p>
-<h3 id="图形">图形</h3>
-<p>画图我推荐AxGlyph，各种常见的图都能画，甚至连困扰我很久的控制系统框图都有很好的解决方案。大家应该知道点阵图和矢量图的差异，点阵图在放大很多倍后一般会比较模糊，而矢量图依然很清晰。AxGlyph可输出多种矢量图格式，LaTeX对eps和pdf格式的矢量图支持较好，而Word和PowerPoint只支持svg和emf格式。和AxMath一样，AxGlyph也可以免费使用，想使用全部功能需要注册，也只要几十块钱。</p>
-<p>如果想把MATLAB绘制的图形插入到Word或PPT中，最好的办法当然是直接保存为矢量图格式，然后再插入。如果想用点阵图形，可以先将MATLAB图形保存为pdf格式，放大页面后再截图，这样得到的点阵图像清晰度就有保障了。</p>
-<h3 id="表格">表格</h3>
-<p>个人觉得PPT自带的表格编辑功能很不好用，复杂点的表格（例如带有公式的三线表）推荐先用Word编辑，然后将Word表格移植到PPT中。方法如下：</p>
-<ol type="1">
-<li>首先在Word中编辑好表格，点击表格右下角的方框，选中整个表格，右键复制</li>
-<li>新建一个空白Word文档，在左上方粘贴按钮的下拉选项里选择「选择性粘贴」，在对话框中选择「图片（增强型图元文件）」，这样表格就以图片的形式粘贴到新建的Word文档中了</li>
-<li>选中图片，右键，选择另存为图片，保存类型选择png格式，然后再将png格式的图片插入到PPT，png的图是透明的，非常适合有背景色的PPT</li>
-</ol>
-<h2 id="课堂演示">课堂演示</h2>
-<p>除了课件以外，还有上课演示的需求。我这学期上的「自动控制原理」一般使用MATLAB做算法仿真，MATLAB价格贵、安装文件大、安装过程麻烦，所以我在课堂上用开源免费的替代品Octave来演示，安装文件才300M左右，安装快速简单，而且语法和MATLAB基本兼容。</p>
-<p>运行C语言的IDE我推荐Dev-C++和CodeBlocks，最大的优点在于不用建立工程即可编译源文件。我强烈鄙视2020年还在用VC++ 6.0给学生上课的老师，至于新版的Visual Studio，太大了，仅仅编译运行个C语言，大材小用，完全没有必要。</p>
-<h2 id="微课制作">微课制作</h2>
-<p>网络课程现在非常普及，各大高校以及中小学都在大力推广网络课程，因此部分老师有制作微课的需求。我曾经参加过一个培训，国内某知名的微课制作专家建议，软件要选择容易学、操作傻瓜化的，他推荐录屏软件使用「EV录屏」，视频音频剪辑软件使用「快剪辑」，这两个软件都是免费的，操作确实比较简单，功能对大部分来说够用了。</p>
+<p>于是我考虑把pdf里的每一张图片二值化，只有黑白两种颜色，放到阅读器里，效果应该会不错。我相信，Adobe Acrobat DC或者Photoshop之类的软件一定能够很方便快捷地完成这个任务，但我买不起这些商业软件，安装破解版也很耗费时间和精力。于是搜索了一下免费的解决方案，果然，神通广大的ImageMagick就能完成这项任务，在Linux下就可以搞定。ImageMagick在Linux下的调用命令是<code>convert</code>。</p>
+<h2 id="拆分pdf文件">拆分pdf文件</h2>
+<p>首先将pdf文件拆成一张张图片：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">convert -density 300 tcpip.pdf %04d.jpg</span><br></pre></td></tr></table></figure>
+<p>其中<code>-density</code>指定PPI值，该值越大，图片越清晰，得到的文件尺寸以及处理时间也会增加。<code>%04d.jpg</code>表示生成的图片文件名用四位数字编号，例如，第123张图片的文件名为<code>0123.jpg</code>。</p>
+<p>我的机器配置不高，Intel Core i5-4430四核处理器，8G内存。拆分文件相当消耗资源，拆分608页的pdf文件，用完了全部物理内存，耗时大约50分钟。</p>
+<h2 id="二值化图片">二值化图片</h2>
+<p>拆分得到的是彩色图片，要选取一个阈值，将图片二值化，最后得到只有黑白两色的灰度图片。二值化单张图片的命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">convert 0020.jpg -threshold 55% 0020.png</span><br></pre></td></tr></table></figure>
+<p>经过尝试，阈值选择在140（255*55%）附近时，分割效果较好。灰度值大于该阈值的像素全部变为255（白色），灰度值低于该阈值的像素全部变为0（黑色）。</p>
+<p>将目录下所有jpg格式的图片二值化，转换后的图片是png格式，文件名后缀由<code>.jpg</code>变为<code>.png</code>，采用下面的脚本实现：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">find ./images -name *.jpg | <span class="keyword">while</span> <span class="built_in">read</span> fname</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    convert <span class="variable">$fname</span> -threshold 55% <span class="variable">$&#123;fname%.jpg&#125;</span>.png</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>该项操作耗时不长，在我的机器上，处理608张图片仅花了几分钟。</p>
+<h2 id="拼接成pdf文件">拼接成pdf文件</h2>
+<p>最后将png格式的黑白图片拼接成pdf文件，一般的拼接命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">convert image1.png image2.png image3.png output.pdf</span><br></pre></td></tr></table></figure>
+<p>但图片数量较多，为了确保按照文件名的排列顺序拼接，使用如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls *.png | sort -n | tr <span class="string">&#x27;\n&#x27;</span> <span class="string">&#x27; &#x27;</span> | sed <span class="string">&#x27;s/$/\ TCP-IP_Illustrated.pdf/&#x27;</span> | xargs convert</span><br></pre></td></tr></table></figure>
+<p>该项操作耗时约30分钟。</p>
+<h2 id="总结">总结</h2>
+<p>最后得到的文件类似于高质量的扫描版pdf，阅读效果非常完美，应该是全网最佳版本了。从查找解决方案到制作完成，几乎花费了我整个下午的时间，看来还是商业软件来得方便快捷啊！</p>
 
     </div>
 
@@ -276,12 +276,6 @@
     
     
       
-  <div class="popular-posts-header">相关文章</div>
-  <ul class="popular-posts">
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/2021/03/10/matlab-spectrum-analysis/" rel="bookmark">用MATLAB做频谱分析</a></div>
-    </li>
-  </ul>
 
         
 
@@ -292,7 +286,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://panqiincs.me/2020/10/31/software-used-in-teaching/" title="我在教学中用到的软件">http://panqiincs.me/2020/10/31/software-used-in-teaching/</a>
+    <a href="http://panqiincs.me/2018/05/26/imagemagick-for-pdf/" title="用ImageMagick处理pdf">http://panqiincs.me/2018/05/26/imagemagick-for-pdf/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本网站所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -303,13 +297,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E8%AF%BE%E4%BB%B6/" rel="tag"># 课件</a>
-              <a href="/tags/ppt/" rel="tag"># ppt</a>
-              <a href="/tags/axglyph/" rel="tag"># axglyph</a>
-              <a href="/tags/axmath/" rel="tag"># axmath</a>
-              <a href="/tags/%E7%9F%A2%E9%87%8F%E5%9B%BE/" rel="tag"># 矢量图</a>
-              <a href="/tags/matlab/" rel="tag"># matlab</a>
-              <a href="/tags/octave/" rel="tag"># octave</a>
+              <a href="/tags/imagemagick/" rel="tag"># imagemagick</a>
+              <a href="/tags/pdf/" rel="tag"># pdf</a>
+              <a href="/tags/%E5%9B%BE%E5%83%8F%E4%BA%8C%E5%80%BC%E5%8C%96/" rel="tag"># 图像二值化</a>
           </div>
 
         
@@ -318,12 +308,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/08/15/rpi-network-via-serial/" rel="prev" title="树莓派通过串口接入网络">
-      <i class="fa fa-chevron-left"></i> 树莓派通过串口接入网络
+    <a href="/2018/02/04/cpp-const-member-functions/" rel="prev" title="C++的const成员函数">
+      <i class="fa fa-chevron-left"></i> C++的const成员函数
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/12/26/pendulum-a-good-example/" rel="next" title="「自动控制原理」的好实例：单摆系统">
-      「自动控制原理」的好实例：单摆系统 <i class="fa fa-chevron-right"></i>
+    <a href="/2018/06/13/dpt-rp1-user-experience/" rel="next" title="DPT-RP1使用体验">
+      DPT-RP1使用体验 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -384,7 +374,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E4%BB%B6%E5%88%B6%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">课件制作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AC%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E5%BD%A2"><span class="nav-number">1.2.</span> <span class="nav-text">图形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC"><span class="nav-number">1.3.</span> <span class="nav-text">表格</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E5%A0%82%E6%BC%94%E7%A4%BA"><span class="nav-number">2.</span> <span class="nav-text">课堂演示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E8%AF%BE%E5%88%B6%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">微课制作</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E5%92%8C%E6%96%B9%E6%A1%88"><span class="nav-number">1.</span> <span class="nav-text">需求和方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%86%E5%88%86pdf%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">拆分pdf文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%80%BC%E5%8C%96%E5%9B%BE%E7%89%87"><span class="nav-number">3.</span> <span class="nav-text">二值化图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%BC%E6%8E%A5%E6%88%90pdf%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">拼接成pdf文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
