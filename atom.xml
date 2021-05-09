@@ -237,9 +237,9 @@
     <category term="大学课程" scheme="http://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
     
     
-    <category term="卷积" scheme="http://panqiincs.me/tags/%E5%8D%B7%E7%A7%AF/"/>
-    
     <category term="线性时不变系统" scheme="http://panqiincs.me/tags/%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/"/>
+    
+    <category term="卷积" scheme="http://panqiincs.me/tags/%E5%8D%B7%E7%A7%AF/"/>
     
   </entry>
   
@@ -299,36 +299,6 @@
     <category term="团风" scheme="http://panqiincs.me/tags/%E5%9B%A2%E9%A3%8E/"/>
     
     <category term="新洲" scheme="http://panqiincs.me/tags/%E6%96%B0%E6%B4%B2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>「自动控制原理」的好实例：单摆系统</title>
-    <link href="http://panqiincs.me/2020/12/26/pendulum-a-good-example/"/>
-    <id>http://panqiincs.me/2020/12/26/pendulum-a-good-example/</id>
-    <published>2020-12-26T12:20:49.000Z</published>
-    <updated>2021-03-09T02:17:28.629Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="单摆系统">单摆系统</h2><p>2020年秋学期我承担三个班级的「自动控制原理」课程。在讲解该课程中「控制系统的数学模型」这部分内容时，我使用了一个非常好的实例，在课堂上取得了不错的效果，这个实例就是经典的单摆系统。</p><span id="more"></span><p>「控制系统的数学模型」这一章首先介绍了如何建立控制系统的微分方程模型，这是对系统进行控制和分析的基础和前提；其次，它介绍了线性定常系统，这是该课程中最主要研究的一类系统；最后，它介绍了如何利用拉氏变换法求解微分方程的过程，经典控制理论最重要的概念「传递函数」就是在微分方程求解过程中引入的。该部分内容涉及到较多的理论推导，学生很容易产生畏惧心理，从而影响学习效果。因此，在教学设计中应精心挑选优秀的实例进行讲解。我认为，优秀的实例应该具备如下几个特征：</p><ol type="1"><li>能充分支持知识点的讲解；</li><li>难度不大，学生容易掌握；</li><li>学生感兴趣；</li><li>一个实例可用于多个知识点的讲解。</li></ol><p>而单摆系统这个实例满足上述所有的特征。下面简单说一下我的教学过程。</p><h2 id="模型的建立">模型的建立</h2><p>首先是控制系统微分方程的建立。将单摆的摆线拉开一个小的初始角度<span class="math inline">\(\theta_0\)</span>后松开，需计算摆线角度<span class="math inline">\(\theta\)</span>随时间变化的规律。通过简单的力学分析，可得到系统的微分方程</p><p><span class="math display">\[\frac{d^2 \theta}{dt^2} + \frac{g}{l} \sin \theta = 0\]</span></p><p>该系统的输出是摆线的角度<span class="math inline">\(\theta\)</span>，无输入信号，初始状态为<span class="math inline">\(\theta(0)=\theta_0\)</span>，<span class="math inline">\(\theta^{&#39;}(0)=0\)</span>，这就是单摆系统的数学模型。</p><h2 id="线性定常系统">线性定常系统</h2><p>然后是线性定常系统的概念。得到了各类系统的微分方程后，可以根据方程的形式对系统进行分类，如线性系统和非线性系统，时变系统和时不变系统。线性定常微分方程所描述的线性定常系统也称为线性时不变系统，在课程中占据重要的地位。线性定常微分方程不仅具有线性和时不变这两个很好的性质，而且方程求解比较简单，有固定的步骤可以遵循。教材上的实例都是线性系统，要向学生介绍非线性系统和时变系统微分方程的形式。因为单摆模型的微分方程中有非线性项，所以单摆系统是典型的非线性系统。</p><h2 id="线性化">线性化</h2><p>接下来是非线性微分方程的线性化。正因为线性定常微分方程具有良好的性质，在条件满足的情况下，可将非线性系统线性化以简化分析过程。教材上给出了线性化的理论推导，但没有介绍实例。单摆系统的线性化则是非常好的实例。根据微积分的基础知识可知，当使用弧度制，<span class="math inline">\(\theta \ll 1\)</span>时，有<span class="math inline">\(\sin \theta \approx \theta\)</span>，正弦函数在原点附近的线性度非常好，在课堂上可通过MATLAB软件画图演示。所以，单摆的非线性微分方程可以线性化为</p><p><span class="math display">\[\frac{d^2 \theta}{dt^2} + \frac{g}{l} \theta = 0\]</span></p><p>这是个二阶线性定常微分方程。</p><h2 id="微分方程求解">微分方程求解</h2><p>最后是使用Laplace变换法求解线性定常微分方程。对方程两边进行拉氏变换，考虑初始条件，得</p><p><span class="math display">\[s^2 \Theta(s) - s \theta(0) - \theta^{&#39;}(0) + \frac{g}{l} \Theta(s) = 0\]</span></p><p>将初始条件代入，整理得到输出的拉氏变换表达式</p><p><span class="math display">\[\Theta(s) = \frac{\theta_0 s}{s^2 + g/l}\]</span></p><p>通过查表法即可得到的拉氏反变换，也就是时域中的解析解</p><p><span class="math display">\[\theta(t) = \theta_0 \cos (\sqrt{\frac{g}{l}t})\]</span></p><p>即摆角的变化遵循简谐运动的规律。根据正弦函数的周期计算公式，很容易得到单摆的摆动周期为</p><p><span class="math display">\[T = 2 \pi \sqrt{\frac{l}{g}}\]</span></p><h2 id="总结">总结</h2><p>可以发现，单摆系统这个实例满足了前面提到的优秀实例应该满足的条件：</p><ol type="1"><li>一个实例充分支撑了多个内容的讲解；</li><li>模型虽是非线性的，但可以通过简单的数学知识将其线性化；</li><li>得到输出的拉氏变换表达式后，无需进行部分分式展开，通过查表法即得到时域中的解析表达式，微分方程求解过程足够简单；</li><li>学生在中学阶段就学过单摆的周期表达式，但不知道如何得来，对它比较感兴趣。</li></ol><p>所以，单摆系统是非常优秀的实例。从课堂效果来看，学生对单摆的模型推导、非线性方程的线性化以及微分方程的求解过程展现了强烈的兴趣，推导出熟悉的单摆周期公式后，学生们意犹未尽，课堂参与度比较高，气氛比较活跃，取得了良好的教学效果。</p>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;单摆系统&quot;&gt;单摆系统&lt;/h2&gt;
-&lt;p&gt;2020年秋学期我承担三个班级的「自动控制原理」课程。在讲解该课程中「控制系统的数学模型」这部分内容时，我使用了一个非常好的实例，在课堂上取得了不错的效果，这个实例就是经典的单摆系统。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="大学课程" scheme="http://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
-    
-    
-    <category term="控制理论" scheme="http://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/"/>
-    
-    <category term="单摆" scheme="http://panqiincs.me/tags/%E5%8D%95%E6%91%86/"/>
-    
-    <category term="laplace" scheme="http://panqiincs.me/tags/laplace/"/>
-    
-    <category term="微分方程" scheme="http://panqiincs.me/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/"/>
-    
-    <category term="线性时不变系统" scheme="http://panqiincs.me/tags/%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
@@ -526,6 +496,27 @@
     
     
     <category term="桂林" scheme="http://panqiincs.me/tags/%E6%A1%82%E6%9E%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>彩色显示RealSense的深度图像</title>
+    <link href="http://panqiincs.me/2020/06/19/realsense-depth-image/"/>
+    <id>http://panqiincs.me/2020/06/19/realsense-depth-image/</id>
+    <published>2020-06-19T05:24:02.000Z</published>
+    <updated>2020-10-11T12:19:06.910Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用Realsense相机需要安装librealsense库。一般只用这个库采集图像，然后转换成熟悉的OpenCV格式，用OpenCV的库函数处理。Realsense的深度图像直接显示会很暗，不是用冷暖色调体现距离的效果，既不直观，也不美观。所以需要将原始数据处理一下后再显示。</p><span id="more"></span><p>StackOverflow上有用直方图均衡算法处理，详情参考这篇文档：<a href="https://stackoverflow.com/questions/42356562/realsense-opencv-depth-image-too-dark">RealSense OpenCV Depth Image Too Dark</a>。其实没必要这么麻烦，librealsense库中就提供了更简单的解决方案，我是在Github的<a href="https://github.com/IntelRealSense/librealsense/issues/4289">issue页面</a>发现的。很奇怪，其他地方都没有用这个很方便的方法。简单来说，将深度数据用<code>rs2::colorizer</code>处理一下，然后再在OpenCV中显示出来。示例代码如下：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;librealsense2/rs.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/opencv.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    rs2::pipeline pipe;</span><br><span class="line">    rs2::config cfg;</span><br><span class="line">    cfg.enable_stream(RS2_STREAM_DEPTH, <span class="number">640</span>, <span class="number">480</span>, RS2_FORMAT_Z16, <span class="number">30</span>);</span><br><span class="line">    pipe.start(cfg);</span><br><span class="line"></span><br><span class="line">    rs2::colorizer color_map;</span><br><span class="line"></span><br><span class="line">    rs2::frameset frames;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">30</span>; i++) &#123;</span><br><span class="line">        frames = pipe.wait_for_frames();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    rs2::frame depth_frame = frames.get_depth_frame().apply_filter(color_map);</span><br><span class="line">    <span class="function">cv::Mat <span class="title">depth</span><span class="params">(cv::Size(<span class="number">640</span>, <span class="number">480</span>), CV_8UC3, (<span class="keyword">void</span> *)depth_frame.get_data(), cv::Mat::AUTO_STEP)</span></span>;</span><br><span class="line"></span><br><span class="line">    cv::namedWindow(<span class="string">&quot;Depth Image&quot;</span>, cv::WINDOW_AUTOSIZE);</span><br><span class="line">    cv::imshow(<span class="string">&quot;Depth Image&quot;</span>, depth);</span><br><span class="line">    cv::waitKey(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>最后显示的深度图像是彩色的，和Intel RealSense Viewer工具中的效果一样。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;使用Realsense相机需要安装librealsense库。一般只用这个库采集图像，然后转换成熟悉的OpenCV格式，用OpenCV的库函数处理。Realsense的深度图像直接显示会很暗，不是用冷暖色调体现距离的效果，既不直观，也不美观。所以需要将原始数据处理一下后再显示。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工具使用" scheme="http://panqiincs.me/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    
+    
+    <category term="realsense" scheme="http://panqiincs.me/tags/realsense/"/>
     
   </entry>
   
