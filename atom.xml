@@ -6,7 +6,7 @@
   <link href="http://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="http://panqiincs.me/"/>
-  <updated>2021-04-21T04:44:16.323Z</updated>
+  <updated>2021-06-07T13:33:22.264Z</updated>
   <id>http://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>黄冈城区语音的变迁</title>
+    <link href="http://panqiincs.me/2021/06/07/dialect-changes/"/>
+    <id>http://panqiincs.me/2021/06/07/dialect-changes/</id>
+    <published>2021-06-07T12:25:53.000Z</published>
+    <updated>2021-06-07T13:33:22.264Z</updated>
+    
+    <content type="html"><![CDATA[<p>我手头有本1990年出版的「黄冈县志」，那时的黄冈县的辖区包含今黄州区和团风县。结合这本县志和我自身掌握的信息，我发现三十年前黄冈老城区的口音竟然不分平翘。</p><span id="more"></span><p>这是我从县志中摘录出的语音区划图：</p><figure><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/huanggang_dialect.jpg" alt="1990年黄冈县语音分布" /><figcaption aria-hidden="true">1990年黄冈县语音分布</figcaption></figure><p>从图中可以看出，三十年前沿江一带的口音没有翘舌声母（zh，ch，sh）。我认识70年代出生于鄂黄长江大桥附近的人，他确实不区分平翘，该区划图还是相当可靠的。我在「典型区」中出生长大，在我的印象中，至少在2000年左右黄冈市区已经能区分平翘，现在不分平翘的只剩下团风县城及附近区域。所以可以推断，三十年前黄冈老城区（今胜利街一带）的口音和今天团风县城的口音是差不多的。</p><p>我曾经读过一位50年代出生、在黄冈老城区长大的前辈写的帖子，里面有关于城区口音变化的描述，说是由于城外人口的大量涌入，老城区的几万人反而成了少数，于是口音发生了很大的变化。也就是说，「典型区」将「无翘舌声母区」同化了。由此可见，由于人口流动等原因，方言的变迁是非常普遍的。</p><p>我还发现很多同龄人的黄冈话不那么地道了，主要是受普通话的影响。一些特有的方言词汇换成了普通话词汇，比如「睏醒」变成「睡觉」、「窦里」变成「里面」、「刺人」变成「恶心」、「晏昼」变成「上午」、「细黑」变成「小黑」。有些字也变成了普通话的发音，如上街（gai）、确（qio）定、出去（qi）。唯一变化不大的恐怕只有那六个声调了。我认为方言语音的变化是无法避免的，变化也分好和坏。比如从不分平翘到区分平翘，我觉得就是一种进步。一些特有的词汇和音节的消失，我觉得就是退步。</p><p>最让人担忧的是，连黄冈这种外来人口不多的城市，00后特别是10后基本都不说方言了。再过几代人，中国很多地方的方言真的就要失传了。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;我手头有本1990年出版的「黄冈县志」，那时的黄冈县的辖区包含今黄州区和团风县。结合这本县志和我自身掌握的信息，我发现三十年前黄冈老城区的口音竟然不分平翘。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="胡言乱语" scheme="http://panqiincs.me/categories/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/"/>
+    
+    
+    <category term="黄冈" scheme="http://panqiincs.me/tags/%E9%BB%84%E5%86%88/"/>
+    
+    <category term="方言" scheme="http://panqiincs.me/tags/%E6%96%B9%E8%A8%80/"/>
+    
+    <category term="黄冈话" scheme="http://panqiincs.me/tags/%E9%BB%84%E5%86%88%E8%AF%9D/"/>
+    
+  </entry>
   
   <entry>
     <title>2021年春南京之行</title>
@@ -496,27 +521,6 @@
     
     
     <category term="桂林" scheme="http://panqiincs.me/tags/%E6%A1%82%E6%9E%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>彩色显示RealSense的深度图像</title>
-    <link href="http://panqiincs.me/2020/06/19/realsense-depth-image/"/>
-    <id>http://panqiincs.me/2020/06/19/realsense-depth-image/</id>
-    <published>2020-06-19T05:24:02.000Z</published>
-    <updated>2020-10-11T12:19:06.910Z</updated>
-    
-    <content type="html"><![CDATA[<p>使用Realsense相机需要安装librealsense库。一般只用这个库采集图像，然后转换成熟悉的OpenCV格式，用OpenCV的库函数处理。Realsense的深度图像直接显示会很暗，不是用冷暖色调体现距离的效果，既不直观，也不美观。所以需要将原始数据处理一下后再显示。</p><span id="more"></span><p>StackOverflow上有用直方图均衡算法处理，详情参考这篇文档：<a href="https://stackoverflow.com/questions/42356562/realsense-opencv-depth-image-too-dark">RealSense OpenCV Depth Image Too Dark</a>。其实没必要这么麻烦，librealsense库中就提供了更简单的解决方案，我是在Github的<a href="https://github.com/IntelRealSense/librealsense/issues/4289">issue页面</a>发现的。很奇怪，其他地方都没有用这个很方便的方法。简单来说，将深度数据用<code>rs2::colorizer</code>处理一下，然后再在OpenCV中显示出来。示例代码如下：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;librealsense2/rs.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/opencv.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    rs2::pipeline pipe;</span><br><span class="line">    rs2::config cfg;</span><br><span class="line">    cfg.enable_stream(RS2_STREAM_DEPTH, <span class="number">640</span>, <span class="number">480</span>, RS2_FORMAT_Z16, <span class="number">30</span>);</span><br><span class="line">    pipe.start(cfg);</span><br><span class="line"></span><br><span class="line">    rs2::colorizer color_map;</span><br><span class="line"></span><br><span class="line">    rs2::frameset frames;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">30</span>; i++) &#123;</span><br><span class="line">        frames = pipe.wait_for_frames();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    rs2::frame depth_frame = frames.get_depth_frame().apply_filter(color_map);</span><br><span class="line">    <span class="function">cv::Mat <span class="title">depth</span><span class="params">(cv::Size(<span class="number">640</span>, <span class="number">480</span>), CV_8UC3, (<span class="keyword">void</span> *)depth_frame.get_data(), cv::Mat::AUTO_STEP)</span></span>;</span><br><span class="line"></span><br><span class="line">    cv::namedWindow(<span class="string">&quot;Depth Image&quot;</span>, cv::WINDOW_AUTOSIZE);</span><br><span class="line">    cv::imshow(<span class="string">&quot;Depth Image&quot;</span>, depth);</span><br><span class="line">    cv::waitKey(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>最后显示的深度图像是彩色的，和Intel RealSense Viewer工具中的效果一样。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;使用Realsense相机需要安装librealsense库。一般只用这个库采集图像，然后转换成熟悉的OpenCV格式，用OpenCV的库函数处理。Realsense的深度图像直接显示会很暗，不是用冷暖色调体现距离的效果，既不直观，也不美观。所以需要将原始数据处理一下后再显示。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="工具使用" scheme="http://panqiincs.me/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
-    
-    
-    <category term="realsense" scheme="http://panqiincs.me/tags/realsense/"/>
     
   </entry>
   
