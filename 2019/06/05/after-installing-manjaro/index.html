@@ -254,7 +254,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syy</span><br><span class="line">sudo pacman-mirrors -i -c China -m rank</span><br><span class="line">sudo pacman -Syyu</span><br></pre></td></tr></table></figure>
 <h3 id="添加arch源">添加arch源</h3>
 <p>编辑<code>/etc/pacman.conf</code>文件，加入下面的内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">SigLevel &#x3D; Optional TrustedOnly</span><br><span class="line">Server &#x3D; https:&#x2F;&#x2F;mirrors.sjtug.sjtu.edu.cn&#x2F;archlinux-cn&#x2F;$arch</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxcn]</span><br><span class="line">SigLevel = Optional TrustedOnly</span><br><span class="line">Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux-cn/$arch</span><br></pre></td></tr></table></figure>
 <p>然后</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring</span><br></pre></td></tr></table></figure>
 <p>现在可以全面升级系统：</p>
@@ -498,6 +498,9 @@
         </li>
         <li class="links-of-blogroll-item">
           <a href="https://ryan4yin.space/" title="https:&#x2F;&#x2F;ryan4yin.space&#x2F;" rel="noopener" target="_blank">Ryan4Yin</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://oyohyee.com/" title="https:&#x2F;&#x2F;oyohyee.com" rel="noopener" target="_blank">OhYee</a>
         </li>
     </ul>
   </div>
