@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://panqiincs.me/2021/06/20/control-system-design/</loc>
+    
+    <lastmod>2021-06-20T09:30:33.223Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://panqiincs.me/2021/06/18/ser-learning-plan/</loc>
     
     <lastmod>2021-06-18T23:59:05.965Z</lastmod>
@@ -394,14 +401,14 @@
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2019/05/04/renovate-my-computer/</loc>
+    <loc>http://panqiincs.me/2019/04/25/nginx-log-to-mysql/</loc>
     
     <lastmod>2020-10-11T12:19:06.906Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://panqiincs.me/2019/04/25/nginx-log-to-mysql/</loc>
+    <loc>http://panqiincs.me/2019/05/04/renovate-my-computer/</loc>
     
     <lastmod>2020-10-11T12:19:06.906Z</lastmod>
     
