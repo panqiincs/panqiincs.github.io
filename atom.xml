@@ -38,29 +38,6 @@
   </entry>
   
   <entry>
-    <title>机器人学中的状态估计学习计划</title>
-    <link href="http://panqiincs.me/2021/06/18/ser-learning-plan/"/>
-    <id>http://panqiincs.me/2021/06/18/ser-learning-plan/</id>
-    <published>2021-06-18T14:56:12.000Z</published>
-    <updated>2021-06-18T23:59:05.965Z</updated>
-    
-    <content type="html"><![CDATA[<p>昨天把课上完了，其他几件重要的工作也接近尾声。忙碌了一学期，终于可以喘口气，着手做点自己一直想做的事情。我计划学习一本非常有挑战性的书：<a href="https://book.douban.com/subject/30383554/">机器人学中的状态估计</a>。</p><span id="more"></span><p>学这本书主要有两个原因：</p><ol type="1"><li>我以后肯定往机器人学这个大方向发展，具体的小方向还没确定。这本书主要讲状态估计和三维空间运动，是无人驾驶、SLAM等领域的必读书目。即使不做这些方向，只要是做机器人，多少要用到这本书中的知识。而且，「状态估计」的理论非常深刻，公式推导繁杂，认真读完就再也不怕论文里的理论推导了。所以，学这本书总不至于浪费时间。</li><li>我一直想把「数学分析」这门课程再认真学一遍，准备用卓里奇或Amann的书。但这个课程难度大，非常耗时间，而且对现在的我来说是「无用之用」，我一直在犹豫。「状态估计」的难度和纯粹的数学书还是没法比，如果我连「状态估计」都啃不下去，就彻底死心，不要再动学「数学分析」的心思，好好珍惜时间，把精力用在最需要的地方。</li></ol><p>这本书没有必要一口气读完，初步的计划是在2021年读完状态估计这部分，也就是2到5章，我会把每一章的内容总结和习题解答放到这个网站。之所以写这篇文章是为了督促自己的学习，上次学算法导论也是这样干的（见<a href="https://panqiincs.me/2019/03/01/clrs-learning-plan/">算法导论学习计划</a>），的确达到了不错的效果。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;昨天把课上完了，其他几件重要的工作也接近尾声。忙碌了一学期，终于可以喘口气，着手做点自己一直想做的事情。我计划学习一本非常有挑战性的书：&lt;a href=&quot;https://book.douban.com/subject/30383554/&quot;&gt;机器人学中的状态估计&lt;/a&gt;。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="胡言乱语" scheme="http://panqiincs.me/categories/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/"/>
-    
-    
-    <category term="计划" scheme="http://panqiincs.me/tags/%E8%AE%A1%E5%88%92/"/>
-    
-    <category term="机器人学中的状态估计" scheme="http://panqiincs.me/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E4%B8%AD%E7%9A%84%E7%8A%B6%E6%80%81%E4%BC%B0%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
     <title>黄冈城区语音的变迁</title>
     <link href="http://panqiincs.me/2021/06/07/dialect-changes/"/>
     <id>http://panqiincs.me/2021/06/07/dialect-changes/</id>
@@ -521,6 +498,29 @@
     <category term="stm32" scheme="http://panqiincs.me/tags/stm32/"/>
     
     <category term="spi" scheme="http://panqiincs.me/tags/spi/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>谈谈「Smith的电子学」</title>
+    <link href="http://panqiincs.me/2020/06/28/sedra-smith-electronics/"/>
+    <id>http://panqiincs.me/2020/06/28/sedra-smith-electronics/</id>
+    <published>2020-06-28T05:46:01.000Z</published>
+    <updated>2020-10-11T12:19:06.910Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近稍微闲了点，继续学习模拟电路。我读的是一本国外教材，<a href="https://www.pdf-archive.com/2017/01/10/circuits-book/circuits-book.pdf">Microelectronic Circuits</a>第7版的中文版，快读完一半了。书是从台湾买的，花了我好几百大洋。大陆其实有原书第5版的译本，名为<a href="https://book.douban.com/subject/1844679/">《微电子电路》</a>，据说翻译质量很好，可惜已经绝版。这本书在台湾的地位很高，是很多高校的专业课本，他们称作「Smith的電子學」，各个版本都有译本。</p><span id="more"></span><figure><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/smith_electronics.jpg" alt="《微电子学》上下册" /><figcaption aria-hidden="true">《微电子学》上下册</figcaption></figure><p>这本书是典型的美国式教材，讲解很细致，所以非常厚，英文版有1800多页，中文版分为上下两册。这本书是面向微电子专业的，有大量半导体物理的公式推导，这些推导对我来说不是重点，所以复杂的公式推导我基本跳过，只记住重要的结论。比如MOSFET在三极管区的特性，我只记住DS间的电流和GS间的电压是二次方的关系。书中的配图非常精美，例题的电路图上还有数字标号，表明解题的步骤，对理解非常有帮助。书中还穿插了一些半导体行业的发展历史，附录中还有制程工艺等很有价值的知识，是非常好的补充材料。</p><p>还有一点很重要，台湾交通大学的电子学公开课用的就是这套教材，主讲老师是陈振芳，使用的是传统的板书授课方式，老师功力深厚，这是我看过的最好的模拟电路视频。第一节课就让我很惊艳，通过推导二端口网络的h参数模型引出放大器的模型，很妙；MOSFET的结构和原理那段讲得太精彩了，看完后我很快就掌握了MOSFET三个区域的特性，而且不容易遗忘。从公开课视频可看出，他们非常重视这门课，单是MOSFET就讲了十几次课，上完整个课程应该要花三个学期。这很值得我们的大学借鉴，开课数量不要太多，最核心的课一定要掌握好。</p><p>这套书的翻译也挺不错，因为几位译者都是专业人员，不会出现知识上的错误。台湾的名词翻译和大陆有差异，需要适应一下。这本书的英文版已经出到第8版，衷心希望大陆能出这本经典教材最新版的译本，我就不用花这么多钱买中文版了。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;最近稍微闲了点，继续学习模拟电路。我读的是一本国外教材，&lt;a href=&quot;https://www.pdf-archive.com/2017/01/10/circuits-book/circuits-book.pdf&quot;&gt;Microelectronic Circuits&lt;/a&gt;第7版的中文版，快读完一半了。书是从台湾买的，花了我好几百大洋。大陆其实有原书第5版的译本，名为&lt;a href=&quot;https://book.douban.com/subject/1844679/&quot;&gt;《微电子电路》&lt;/a&gt;，据说翻译质量很好，可惜已经绝版。这本书在台湾的地位很高，是很多高校的专业课本，他们称作「Smith的電子學」，各个版本都有译本。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="大学课程" scheme="http://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
+    
+    
+    <category term="教材" scheme="http://panqiincs.me/tags/%E6%95%99%E6%9D%90/"/>
+    
+    <category term="模拟电路" scheme="http://panqiincs.me/tags/%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF/"/>
     
   </entry>
   
