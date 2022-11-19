@@ -151,11 +151,11 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
   </entry>
   
   <entry>
-    <title>天城文文字基础知识</title>
-    <link href="https://panqiincs.me/2022/07/14/devanagari-basics/"/>
-    <id>https://panqiincs.me/2022/07/14/devanagari-basics/</id>
+    <title>天城文基础及计算机处理方法</title>
+    <link href="https://panqiincs.me/2022/07/14/python-devanagari/"/>
+    <id>https://panqiincs.me/2022/07/14/python-devanagari/</id>
     <published>2022-07-14T01:41:52.000Z</published>
-    <updated>2022-11-19T02:37:03.345Z</updated>
+    <updated>2022-11-19T16:39:03.053Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;文字特性&quot;&gt;文字特性&lt;/h2&gt;
@@ -187,6 +187,8 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="glyph" scheme="https://panqiincs.me/tags/glyph/"/>
     
     <category term="字形" scheme="https://panqiincs.me/tags/%E5%AD%97%E5%BD%A2/"/>
+    
+    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
     
   </entry>
   
