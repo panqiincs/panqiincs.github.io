@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+  <meta name="baidu-site-verification" content="code-J9YbvwThrX">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="2021年春学期我只有一门课，叫做「控制系统设计」，使用的教材和课程同名，著者是哈工大的王广雄、何朕。这本书的内容非常丰富，难度不小，所以这学期我的备课压力相当大，同时收获也很多。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读「控制系统设计」">
+<meta property="og:url" content="https://panqiincs.me/2021/06/20/control-system-design/index.html">
+<meta property="og:site_name" content="辛未羊的网络日志">
+<meta property="og:description" content="2021年春学期我只有一门课，叫做「控制系统设计」，使用的教材和课程同名，著者是哈工大的王广雄、何朕。这本书的内容非常丰富，难度不小，所以这学期我的备课压力相当大，同时收获也很多。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-20T07:04:54.000Z">
+<meta property="article:modified_time" content="2021-11-25T15:05:49.254Z">
+<meta property="article:author" content="Krist Pan">
+<meta property="article:tag" content="教材">
+<meta property="article:tag" content="控制理论">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://panqiincs.me/2021/06/20/control-system-design/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://panqiincs.me/2021/06/20/control-system-design/","path":"2021/06/20/control-system-design/","title":"读「控制系统设计」"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>读「控制系统设计」 | 辛未羊的网络日志</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-39536948-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "blyiajm41p");
+</script>
+
+<link rel="dns-prefetch" href="https://vercel.panqiincs.me">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="辛未羊的网络日志" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">辛未羊的网络日志</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-series"><a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Krist Pan"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Krist Pan</p>
+  <div class="site-description" itemprop="description">记录生活和学习的清静之地</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">215</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/panqiincs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;panqiincs" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.kawabangga.com/" title="https:&#x2F;&#x2F;www.kawabangga.com&#x2F;" rel="noopener" target="_blank">卡瓦邦噶</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.boatsky.com/" title="https:&#x2F;&#x2F;www.boatsky.com&#x2F;" rel="noopener" target="_blank">太空船</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.feidaoboke.com/" title="https:&#x2F;&#x2F;www.feidaoboke.com" rel="noopener" target="_blank">飞刀博客</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.ohyee.cc/" title="https:&#x2F;&#x2F;www.ohyee.cc&#x2F;" rel="noopener" target="_blank">OhYee</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://dusays.com/" title="https:&#x2F;&#x2F;dusays.com&#x2F;" rel="noopener" target="_blank">杜老师说</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://h4ck.org.cn/" title="https:&#x2F;&#x2F;h4ck.org.cn&#x2F;" rel="noopener" target="_blank">obaby</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://thiscute.world/" title="https:&#x2F;&#x2F;thiscute.world&#x2F;" rel="noopener" target="_blank">ryan4yin</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://geektutu.com/" title="https:&#x2F;&#x2F;geektutu.com&#x2F;" rel="noopener" target="_blank">极客兔兔</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://panqiincs.me/2021/06/20/control-system-design/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Krist Pan">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的网络日志">
+      <meta itemprop="description" content="记录生活和学习的清静之地">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="读「控制系统设计」 | 辛未羊的网络日志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          读「控制系统设计」
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-06-20 15:04:54" itemprop="dateCreated datePublished" datetime="2021-06-20T15:04:54+08:00">2021-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">大学课程</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2021/06/20/control-system-design/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2021/06/20/control-system-design/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>2021年春学期我只有一门课，叫做「控制系统设计」，使用的教材和课程同名，著者是哈工大的王广雄、何朕。这本书的内容非常丰富，难度不小，所以这学期我的备课压力相当大，同时收获也很多。</p>
+<span id="more"></span>
+<p>办公室有个老师毕业于哈工大自动化专业，他给我讲了王广雄老先生的故事。王老爷子是控制领域的老专家，哈工大控制方向的博士论文答辩经常请他做主席。他治学严谨，提问直指要害，经常把学生问得答辩难以继续，下面坐的几个院士就帮学生圆场，场面甚是有趣。长此以往，有的老师就都不愿意请他。如果王老爷子都认可了你，那么你绝对是没问题的。</p>
+<p>回到教材本身，这本书的前几章讲理论基础，后面的章节则基于这几个理论去分析和设计系统。接下来我简要介绍下本书的重要内容。</p>
+<p>第2章讲频谱分析。信号的本质是频谱，系统的本质是频谱特性，从信号分析的角度可将系统看作一个滤波器。本章前面傅里叶分析的内容中规中矩，后面测量对象频谱特性的内容比较新鲜，我以前没见过。输入的测试信号的频谱是已知的，对输出信号采样得到的离散信号做DFT即得到输出信号的频谱，两者相除就得到了系统在离散频率点上的频率特性。输入的测试信号要包含丰富的频谱特性，脉冲信号就是非常好的选择。阶跃信号的频谱虽然也包含所有频段，但是高频衰减太快，输出信号中的高次谐波容易被噪声淹没，所以用它做测试信号只能得到低频模型。</p>
+<p>第3章讲输入信号和跟踪误差。本章主要关注点是系统的性能，即误差。分析输入信号的特征时，需要计算它的一阶导、二阶导以及频谱。输入信号的类型决定系统的型别，跟踪误差的大小决定系统的增益。计算跟踪误差可以用静态误差系数法或动态误差系数法。系统的性能对Bode图低频部分的特性有约束。</p>
+<p>第4章讲噪声和它所引起的误差。干扰和噪声是随机信号，描述随机信号要用到相关函数和谱密度。相关函数<span
+class="math inline">\(R(\tau)\)</span>表示了距离为<span
+class="math inline">\(\tau\)</span>的前后两瞬间的关联程度，大多数随机过程的相关函数会随着<span
+class="math inline">\(\tau\)</span>的增加而减小，说明时间间隔越长，预测精度越低。谱密度表示随机信号在频域上的平均功率密度，从谱密度可以直接看出随机信号的频谱分布特性。谱密度是相关函数的傅里叶变换。均方误差衡量输入噪声作用下系统的性能，另一个衡量指标则是等效噪声带宽。</p>
+<p>第5章讲控制系统的设计约束。本章首先介绍了控制系统的灵敏度（sensitivity），它衡量系统闭环传递函数对参数变化的敏感程度。灵敏度的最大幅值<span
+class="math inline">\(M_S\)</span>是Nyquist曲线与<span
+class="math inline">\(-1+j0\)</span>点的最小距离的倒数，所以<span
+class="math inline">\(M_S\)</span>可以精确衡量系统的相对稳定性。有的系统稳定裕度很大，但是相对稳定性并不好，<span
+class="math inline">\(M_S\)</span>才是真正意义上的稳定裕度。灵敏度低的系统比较容易控制。灵敏度函数受到Bode积分公式的约束，它只与对象本身的特性有关，因此可以利用它预见系统所能做到的最佳性能。本章还介绍了系统的不确定性，给出了闭环传递函数要满足的鲁棒稳定性条件和开环传递函数要满足的设计约束。鲁棒稳定性约束决定了Bode图在高频段的特性。</p>
+<p>后面的章节则是上述理论的应用。比如第6章的带宽设计，从频谱分析可知，带宽越大，系统响应越快，从鲁棒稳定性约束可知，带宽过高时系统的鲁棒稳定性差，所以开环幅频曲线要在合适的频率穿越0dB线，也就是系统的带宽要设计得合适。第11章的不稳定系统的控制，以X-29战机和倒立摆为例，详细讲解了Bode积分约束在系统分析和设计中的应用，很有意思。</p>
+<p>我总结这本教材有如下几个特点：</p>
+<ol type="1">
+<li>主要基于经典控制理论讲解，学习本书前要熟练掌握频率分析方法</li>
+<li>讲了很多国内的本科教材中少有的内容，有很多工程实例</li>
+<li>惜字如金，内容如此丰富却仅有213页，简单一句话要琢磨好久</li>
+</ol>
+<p>所以这门课很难上，学生接受起来也比较困难。这学期能够顺利上完这门课，课堂气氛也维持得不错，已经是相当不易了！</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Krist Pan
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://panqiincs.me/2021/06/20/control-system-design/" title="读「控制系统设计」">https://panqiincs.me/2021/06/20/control-system-design/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%95%99%E6%9D%90/" rel="tag"># 教材</a>
+              <a href="/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/" rel="tag"># 控制理论</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/06/07/dialect-changes/" rel="prev" title="黄冈城区语音的变迁">
+                  <i class="fa fa-chevron-left"></i> 黄冈城区语音的变迁
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/07/19/hometown-and-flood/" rel="next" title="我的家乡与长江水患">
+                  我的家乡与长江水患 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2013 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Krist Pan</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">187k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:50</span>
+  </span>
+</div>
+
+
+  <div>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id: "JjD4gEghP0h7Vn4U",ck: "JjD4gEghP0h7Vn4U"})</script>
+  </div>
+
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"https://vercel.panqiincs.me","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"欢迎留言交流","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/2021/06/20/control-system-design/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>

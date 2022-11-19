@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+  <meta name="baidu-site-verification" content="code-J9YbvwThrX">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="单摆系统 最近几个学期我在上「自动控制原理」课程，在讲解「控制系统的数学模型」这部分内容时，我使用了经典的单摆系统模型作为实例，在课堂上取得了不错的效果。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="控制理论的经典实例：单摆系统">
+<meta property="og:url" content="https://panqiincs.me/2022/05/19/pendulum-as-example/index.html">
+<meta property="og:site_name" content="辛未羊的网络日志">
+<meta property="og:description" content="单摆系统 最近几个学期我在上「自动控制原理」课程，在讲解「控制系统的数学模型」这部分内容时，我使用了经典的单摆系统模型作为实例，在课堂上取得了不错的效果。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-19T01:17:23.000Z">
+<meta property="article:modified_time" content="2022-10-20T16:13:08.286Z">
+<meta property="article:author" content="Krist Pan">
+<meta property="article:tag" content="控制理论">
+<meta property="article:tag" content="微分方程">
+<meta property="article:tag" content="单摆">
+<meta property="article:tag" content="单摆周期公式">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://panqiincs.me/2022/05/19/pendulum-as-example/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://panqiincs.me/2022/05/19/pendulum-as-example/","path":"2022/05/19/pendulum-as-example/","title":"控制理论的经典实例：单摆系统"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>控制理论的经典实例：单摆系统 | 辛未羊的网络日志</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-39536948-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "blyiajm41p");
+</script>
+
+<link rel="dns-prefetch" href="https://vercel.panqiincs.me">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="辛未羊的网络日志" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">辛未羊的网络日志</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-series"><a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E6%91%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">单摆系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%BB%BA%E7%AB%8B"><span class="nav-number">2.</span> <span class="nav-text">模型的建立</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%AE%9A%E5%B8%B8%E7%B3%BB%E7%BB%9F"><span class="nav-number">3.</span> <span class="nav-text">线性定常系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">线性化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%B1%82%E8%A7%A3"><span class="nav-number">5.</span> <span class="nav-text">微分方程求解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Krist Pan"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Krist Pan</p>
+  <div class="site-description" itemprop="description">记录生活和学习的清静之地</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">215</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/panqiincs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;panqiincs" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.kawabangga.com/" title="https:&#x2F;&#x2F;www.kawabangga.com&#x2F;" rel="noopener" target="_blank">卡瓦邦噶</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.boatsky.com/" title="https:&#x2F;&#x2F;www.boatsky.com&#x2F;" rel="noopener" target="_blank">太空船</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.feidaoboke.com/" title="https:&#x2F;&#x2F;www.feidaoboke.com" rel="noopener" target="_blank">飞刀博客</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.ohyee.cc/" title="https:&#x2F;&#x2F;www.ohyee.cc&#x2F;" rel="noopener" target="_blank">OhYee</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://dusays.com/" title="https:&#x2F;&#x2F;dusays.com&#x2F;" rel="noopener" target="_blank">杜老师说</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://h4ck.org.cn/" title="https:&#x2F;&#x2F;h4ck.org.cn&#x2F;" rel="noopener" target="_blank">obaby</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://thiscute.world/" title="https:&#x2F;&#x2F;thiscute.world&#x2F;" rel="noopener" target="_blank">ryan4yin</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://geektutu.com/" title="https:&#x2F;&#x2F;geektutu.com&#x2F;" rel="noopener" target="_blank">极客兔兔</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://panqiincs.me/2022/05/19/pendulum-as-example/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Krist Pan">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的网络日志">
+      <meta itemprop="description" content="记录生活和学习的清静之地">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="控制理论的经典实例：单摆系统 | 辛未羊的网络日志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          控制理论的经典实例：单摆系统
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-19 09:17:23" itemprop="dateCreated datePublished" datetime="2022-05-19T09:17:23+08:00">2022-05-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">大学课程</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2022/05/19/pendulum-as-example/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2022/05/19/pendulum-as-example/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="单摆系统">单摆系统</h2>
+<p>最近几个学期我在上「自动控制原理」课程，在讲解「控制系统的数学模型」这部分内容时，我使用了经典的单摆系统模型作为实例，在课堂上取得了不错的效果。</p>
+<span id="more"></span>
+<p>「控制系统的数学模型」这章首先介绍了如何建立控制系统的微分方程模型，这是对系统进行控制和分析的基础和前提；其次，它介绍了线性定常系统，这是课程中主要研究的一类系统；最后，它介绍了如何利用Laplace变换法求解微分方程，经典控制理论最重要的概念「传递函数」就是在微分方程求解过程中引入的。该部分内容涉及到较多的理论推导，学生很容易产生畏惧心理，从而影响学习效果。因此，应精心挑选优秀的实例进行讲解。我认为，优秀的实例应该具备如下几个特征：</p>
+<ol type="1">
+<li>能充分支持知识点的讲解；</li>
+<li>难度不大，学生容易掌握；</li>
+<li>学生感兴趣；</li>
+<li>一个实例可用于多个知识点的讲解。</li>
+</ol>
+<p>单摆系统这个实例满足上述所有的特征。下面简单介绍我的教学过程。</p>
+<h2 id="模型的建立">模型的建立</h2>
+<p>首先是控制系统微分方程的建立。将单摆的摆线拉开一个小的初始角度<span
+class="math inline">\(\theta_0\)</span>后松开，需计算摆线角度<span
+class="math inline">\(\theta\)</span>随时间变化的规律。通过简单的力学分析，可得到理想条件下系统的微分方程</p>
+<p><span class="math display">\[
+\frac{\mathrm{d}^2 \theta}{\mathrm{d}t^2} + \frac{g}{l} \sin \theta = 0
+\]</span></p>
+<p>该系统的输出是摆线的角度<span
+class="math inline">\(\theta\)</span>，无输入信号，初始状态为<span
+class="math inline">\(\theta(0)=\theta_0\)</span>，<span
+class="math inline">\(\theta^{&#39;}(0)=0\)</span>，这就是单摆系统的数学模型。</p>
+<h2 id="线性定常系统">线性定常系统</h2>
+<p>然后是线性定常系统的概念。得到了各类系统的微分方程后，可以根据方程的形式对系统进行分类，线性定常微分方程所描述的线性定常系统也称为线性时不变系统，在课程中占据重要的地位。因为单摆模型的微分方程中有非线性项<span
+class="math inline">\(\sin\theta\)</span>，所以单摆系统是非线性系统。</p>
+<h2 id="线性化">线性化</h2>
+<p>接下来是非线性微分方程的线性化。正因为线性定常微分方程具有良好的性质，在条件满足的情况下，可将非线性系统线性化以简化分析过程。教材上给出了线性化的理论推导，但没有介绍实例。单摆系统的线性化则是非常好的实例。</p>
+<p>当使用弧度制，<span class="math inline">\(\theta \ll
+1\)</span>时，有<span class="math inline">\(\sin \theta \approx
+\theta\)</span>，正弦函数在原点附近的线性度非常好，这点可在课堂上可通过MATLAB软件画图演示。所以，单摆的非线性微分方程在摆角很小时可线性化为</p>
+<p><span class="math display">\[
+\frac{\mathrm{d}^2 \theta}{\mathrm{d}t^2} + \frac{g}{l} \theta = 0
+\]</span></p>
+<p>这是个二阶线性定常微分方程。</p>
+<h2 id="微分方程求解">微分方程求解</h2>
+<p>最后是使用Laplace变换法求解线性定常微分方程。对方程两边进行Laplace变换，考虑初始条件，得</p>
+<p><span class="math display">\[
+s^2 \Theta(s) - s \theta(0) - \theta^{&#39;}(0) + \frac{g}{l} \Theta(s)
+= 0
+\]</span></p>
+<p>将初始条件代入，整理得到输出的Laplace变换表达式</p>
+<p><span class="math display">\[
+\Theta(s) = \frac{\theta_0 s}{s^2 + g/l}
+\]</span></p>
+<p>通过查表法即可得到Laplace反变换，也就是时域中的解析解</p>
+<p><span class="math display">\[
+\theta(t) = \theta_0 \cos (\sqrt{\frac{g}{l}t})
+\]</span></p>
+<p>即摆角的变化遵循简谐运动的规律。根据正弦函数的周期计算公式，很容易得到单摆的摆动周期为</p>
+<p><span class="math display">\[
+T = 2 \pi \sqrt{\frac{l}{g}}
+\]</span></p>
+<h2 id="总结">总结</h2>
+<p>可以发现，单摆系统这个实例满足了前面提到的优秀实例应该满足的条件：</p>
+<ol type="1">
+<li>一个实例充分支撑了多个内容的讲解；</li>
+<li>模型虽是非线性的，但可以通过简单的数学知识将其线性化；</li>
+<li>得到输出的拉氏变换表达式后，通过查表法即得到时域中的解析表达式，求解过程足够简单；</li>
+<li>学生在中学阶段就学过单摆的周期表达式，但不知道如何得来，对它比较感兴趣。</li>
+</ol>
+<p>所以，单摆系统是非常优秀的实例。从课堂效果来看，学生对单摆的模型推导、非线性方程的线性化以及微分方程的求解过程展现了强烈的兴趣，推导出熟悉的单摆周期公式后，学生觉得很有意思，气氛比较活跃，取得了不错的教学效果。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Krist Pan
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://panqiincs.me/2022/05/19/pendulum-as-example/" title="控制理论的经典实例：单摆系统">https://panqiincs.me/2022/05/19/pendulum-as-example/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/" rel="tag"># 控制理论</a>
+              <a href="/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" rel="tag"># 微分方程</a>
+              <a href="/tags/%E5%8D%95%E6%91%86/" rel="tag"># 单摆</a>
+              <a href="/tags/%E5%8D%95%E6%91%86%E5%91%A8%E6%9C%9F%E5%85%AC%E5%BC%8F/" rel="tag"># 单摆周期公式</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/20/website-great-updates/" rel="prev" title="记一次网站重大升级">
+                  <i class="fa fa-chevron-left"></i> 记一次网站重大升级
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/07/14/devanagari-basics/" rel="next" title="天城文文字基础知识">
+                  天城文文字基础知识 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2013 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Krist Pan</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">187k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:50</span>
+  </span>
+</div>
+
+
+  <div>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id: "JjD4gEghP0h7Vn4U",ck: "JjD4gEghP0h7Vn4U"})</script>
+  </div>
+
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"https://vercel.panqiincs.me","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"欢迎留言交流","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/2022/05/19/pendulum-as-example/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+  <meta name="baidu-site-verification" content="code-J9YbvwThrX">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="工具 这是我实现的第一个爬虫，抓取lifeofpix网站上下载量超过500的图片。它的功能非常简单，代码量也很小，展示了网络爬虫的基本原理和流程。我使用的Python版本是3.4.6，HTTP处理使用requests库，数据提取使用BeautifulSoup库。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python爬虫：下载lifeofpix图片">
+<meta property="og:url" content="https://panqiincs.me/2017/08/13/python-crawler-lifeofpix/index.html">
+<meta property="og:site_name" content="辛未羊的网络日志">
+<meta property="og:description" content="工具 这是我实现的第一个爬虫，抓取lifeofpix网站上下载量超过500的图片。它的功能非常简单，代码量也很小，展示了网络爬虫的基本原理和流程。我使用的Python版本是3.4.6，HTTP处理使用requests库，数据提取使用BeautifulSoup库。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-08-12T23:53:25.000Z">
+<meta property="article:modified_time" content="2020-10-11T12:19:06.903Z">
+<meta property="article:author" content="Krist Pan">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="爬虫">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://panqiincs.me/2017/08/13/python-crawler-lifeofpix/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://panqiincs.me/2017/08/13/python-crawler-lifeofpix/","path":"2017/08/13/python-crawler-lifeofpix/","title":"Python爬虫：下载lifeofpix图片"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Python爬虫：下载lifeofpix图片 | 辛未羊的网络日志</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-39536948-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "blyiajm41p");
+</script>
+
+<link rel="dns-prefetch" href="https://vercel.panqiincs.me">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="辛未羊的网络日志" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">辛未羊的网络日志</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-series"><a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">1.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BF%BB%E9%A1%B5%E5%A4%84%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">翻页处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E9%A1%B5%E5%A4%84%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">单页处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E4%BF%A1%E6%81%AF"><span class="nav-number">5.</span> <span class="nav-text">获取图片信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%9D%E5%AD%98%E5%9B%BE%E7%89%87"><span class="nav-number">6.</span> <span class="nav-text">保存图片</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Krist Pan"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Krist Pan</p>
+  <div class="site-description" itemprop="description">记录生活和学习的清静之地</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">215</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/panqiincs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;panqiincs" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.kawabangga.com/" title="https:&#x2F;&#x2F;www.kawabangga.com&#x2F;" rel="noopener" target="_blank">卡瓦邦噶</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.boatsky.com/" title="https:&#x2F;&#x2F;www.boatsky.com&#x2F;" rel="noopener" target="_blank">太空船</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.feidaoboke.com/" title="https:&#x2F;&#x2F;www.feidaoboke.com" rel="noopener" target="_blank">飞刀博客</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.ohyee.cc/" title="https:&#x2F;&#x2F;www.ohyee.cc&#x2F;" rel="noopener" target="_blank">OhYee</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://dusays.com/" title="https:&#x2F;&#x2F;dusays.com&#x2F;" rel="noopener" target="_blank">杜老师说</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://h4ck.org.cn/" title="https:&#x2F;&#x2F;h4ck.org.cn&#x2F;" rel="noopener" target="_blank">obaby</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://thiscute.world/" title="https:&#x2F;&#x2F;thiscute.world&#x2F;" rel="noopener" target="_blank">ryan4yin</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://geektutu.com/" title="https:&#x2F;&#x2F;geektutu.com&#x2F;" rel="noopener" target="_blank">极客兔兔</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://panqiincs.me/2017/08/13/python-crawler-lifeofpix/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Krist Pan">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的网络日志">
+      <meta itemprop="description" content="记录生活和学习的清静之地">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Python爬虫：下载lifeofpix图片 | 辛未羊的网络日志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python爬虫：下载lifeofpix图片
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-08-13 07:53:25" itemprop="dateCreated datePublished" datetime="2017-08-13T07:53:25+08:00">2017-08-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2017/08/13/python-crawler-lifeofpix/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2017/08/13/python-crawler-lifeofpix/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="工具">工具</h2>
+<p>这是我实现的第一个爬虫，抓取<a
+target="_blank" rel="noopener" href="http://www.lifeofpix.com">lifeofpix</a>网站上下载量超过500的图片。它的功能非常简单，代码量也很小，展示了网络爬虫的基本原理和流程。我使用的Python版本是3.4.6，HTTP处理使用<code>requests</code>库，数据提取使用<code>BeautifulSoup</code>库。</p>
+<span id="more"></span>
+<h2 id="准备工作">准备工作</h2>
+<p>爬虫要伪装成浏览器，指定User-Agent：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">headers = &#123;</span><br><span class="line">           <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (X11; Linux x86_64; rv:52.0) \</span></span><br><span class="line"><span class="string">           Gecko/20100101 Firefox/52.0&#x27;</span></span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
+<p>先创建好保存图片的文件夹，用到了<code>os</code>模块：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">path = os.getcwd()</span><br><span class="line">path = os.path.join(path, <span class="string">&#x27;images&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(path):</span><br><span class="line">    os.mkdir(path)</span><br></pre></td></tr></table></figure>
+<p>页面处理的流程是：首先使用<code>requests</code>模块获取页面的HTML文件，然后根据标签特征提取所需信息，一般使用<code>BeautifulSoup</code>库：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">html = requests.get(url, headers=headers).content</span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line"><span class="comment"># 后续处理...</span></span><br></pre></td></tr></table></figure>
+<h2 id="翻页处理">翻页处理</h2>
+<p>进到首页后发现，首页等价于第1页，底部有显示总的页数，第n页的url为<code>http://www.lifeofpix.com/page/n/</code>。依次处理每一页的函数如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">home_page</span>(<span class="params">url, pages=<span class="number">10</span></span>):</span><br><span class="line">    html = requests.get(url, headers=headers).content</span><br><span class="line">    soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">    <span class="comment"># 获取总的页数</span></span><br><span class="line">    pages_total = <span class="built_in">int</span>(soup.find(<span class="string">&#x27;div&#x27;</span>, attrs=&#123;<span class="string">&#x27;class&#x27;</span>: <span class="string">&#x27;total&#x27;</span>&#125;).getText())</span><br><span class="line">    <span class="keyword">if</span> pages &gt; pages_total:</span><br><span class="line">        pages = pages_total</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, pages_total+<span class="number">1</span>):</span><br><span class="line">        page_url = HOME_URL + <span class="string">&#x27;page/&#x27;</span> + <span class="built_in">str</span>(i) + <span class="string">&#x27;/&#x27;</span>            </span><br><span class="line">        page_n(page_url)</span><br></pre></td></tr></table></figure>
+<h2 id="单页处理">单页处理</h2>
+<p>单个页面上会从上往下排列图片，点击图片进入之后，才能查看图片的详细信息：点赞次数（likes）、下载次数（downloads）、查看次数（views）。检查该页的每一张图片，并将其中下载数超过500的筛选出来并下载：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">page_n</span>(<span class="params">url</span>):</span><br><span class="line">html = requests.get(url, headers=headers).content</span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">image_info_total = soup.find_all(<span class="string">&#x27;a&#x27;</span>, attrs=&#123;<span class="string">&#x27;class&#x27;</span>: <span class="string">&#x27;clickarea overlay&#x27;</span>&#125;)</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> image_info_total:</span><br><span class="line">    image_info_url = item[<span class="string">&#x27;href&#x27;</span>]</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;lifeofpix&#x27;</span> <span class="keyword">in</span> image_info_url:</span><br><span class="line">        <span class="comment"># 获取图片详细信息</span></span><br><span class="line">        url, likes, downloads, views = image_info(image_info_url)</span><br><span class="line">        <span class="comment"># 下载满足条件的图片</span></span><br><span class="line">        <span class="keyword">if</span> downloads &gt; <span class="number">500</span>:                                                 </span><br><span class="line">            filename = get_filename(image_info_url, url)</span><br><span class="line">            download_image(url, filename)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;  &#x27;</span>, filename, <span class="string">&#x27;saved to disk&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="获取图片信息">获取图片信息</h2>
+<p>获取图片的下载链接、点赞次数、下载次数和查看次数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">image_info</span>(<span class="params">url</span>):</span><br><span class="line">    html = requests.get(url, headers=headers).content</span><br><span class="line">    soup = BeautifulSoup(html, <span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">    image_url = soup.find(<span class="string">&#x27;img&#x27;</span>, attrs=&#123;<span class="string">&#x27;id&#x27;</span>: <span class="string">&#x27;pic&#x27;</span>&#125;)[<span class="string">&#x27;src&#x27;</span>]</span><br><span class="line">    image_data = soup.find(<span class="string">&#x27;div&#x27;</span>, attrs=&#123;<span class="string">&#x27;class&#x27;</span>: <span class="string">&#x27;col-md-3 col-md-offset-1 data&#x27;</span>&#125;)</span><br><span class="line">    <span class="keyword">for</span> div <span class="keyword">in</span> image_data.find_all(<span class="string">&#x27;div&#x27;</span>):</span><br><span class="line">        image_detail = div.getText()</span><br><span class="line">        <span class="comment"># 当次数大于1，单词为复数，但也存在单数的可能性</span></span><br><span class="line">        <span class="comment"># 使用正则表达式模块清除like(s), download(s), view(s)，只剩下数字字符，然后转换成int</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;like&#x27;</span> <span class="keyword">in</span> image_detail:</span><br><span class="line">            image_likes = <span class="built_in">int</span>(re.sub(<span class="string">&quot;\D&quot;</span>, <span class="string">&quot;&quot;</span>, image_detail))</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;download&#x27;</span> <span class="keyword">in</span> image_detail:</span><br><span class="line">            image_downloads = <span class="built_in">int</span>(re.sub(<span class="string">&quot;\D&quot;</span>, <span class="string">&quot;&quot;</span>, image_detail))</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;view&#x27;</span> <span class="keyword">in</span> image_detail:</span><br><span class="line">            image_views = <span class="built_in">int</span>(re.sub(<span class="string">&quot;\D&quot;</span>, <span class="string">&quot;&quot;</span>, image_detail))</span><br><span class="line">    <span class="keyword">return</span> image_url, image_likes, image_downloads, image_views</span><br></pre></td></tr></table></figure>
+<h2 id="保存图片">保存图片</h2>
+<p>首先构造文件名：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 图片信息链接 http://www.lifeofpix.com/photo/bouquet/</span></span><br><span class="line"><span class="comment"># 图片下载链接 http://www.lifeofpix.com/wp-content/uploads/2017/04/summer.jpg</span></span><br><span class="line"><span class="comment"># 文件名最终为bouquet.jpg</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_filename</span>(<span class="params">info_url, down_url</span>):</span><br><span class="line">    prefix = info_url.split(<span class="string">&#x27;/&#x27;</span>)[-<span class="number">2</span>]</span><br><span class="line">    suffix = down_url.split(<span class="string">&#x27;.&#x27;</span>)[-<span class="number">1</span>]</span><br><span class="line">    filename = <span class="string">&#x27;images/&#x27;</span> + prefix + suffix</span><br><span class="line">    <span class="comment"># 防止同名文件已存在，末尾加上数字标识</span></span><br><span class="line">    num = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> os.path.exists(filename):</span><br><span class="line">        filename = <span class="string">&#x27;images/&#x27;</span> + prefix + <span class="built_in">str</span>(num) + suffix</span><br><span class="line">        num = num + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> filename</span><br></pre></td></tr></table></figure>
+<p>保存图片文件用到了<code>shutil</code>模块：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">download_image</span>(<span class="params">down_url, filename</span>):</span><br><span class="line">    response = requests.get(down_url, stream=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> out_file:</span><br><span class="line">        shutil.copyfileobj(response.raw, out_file)</span><br><span class="line">    <span class="keyword">del</span> response</span><br></pre></td></tr></table></figure>
+<p>一个简单的爬虫程序就完成了，完整代码请看<a
+target="_blank" rel="noopener" href="https://github.com/panqiincs/web_crawler">这里</a>。需要注意，该爬虫可能因网站改版而失效，根据实际情况修改即可。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Krist Pan
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://panqiincs.me/2017/08/13/python-crawler-lifeofpix/" title="Python爬虫：下载lifeofpix图片">https://panqiincs.me/2017/08/13/python-crawler-lifeofpix/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/%E7%88%AC%E8%99%AB/" rel="tag"># 爬虫</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/08/06/hexo-blog-code-management/" rel="prev" title="Hexo网站源码管理">
+                  <i class="fa fa-chevron-left"></i> Hexo网站源码管理
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/09/01/host-hexo-blog-at-vps/" rel="next" title="将Hexo网站托管到VPS">
+                  将Hexo网站托管到VPS <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2013 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Krist Pan</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">187k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:50</span>
+  </span>
+</div>
+
+
+  <div>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id: "JjD4gEghP0h7Vn4U",ck: "JjD4gEghP0h7Vn4U"})</script>
+  </div>
+
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"https://vercel.panqiincs.me","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"欢迎留言交流","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/2017/08/13/python-crawler-lifeofpix/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>

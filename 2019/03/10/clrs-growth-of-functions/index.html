@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+  <meta name="baidu-site-verification" content="code-J9YbvwThrX">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="主要内容 本章讲解如何简化算法的渐近分析，介绍了几类渐近记号。最后简单介绍了常用函数的性质。本章的内容在这里描述得非常简略，但为了保持整个系列的完整性，还是贴出来了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法导论第 3 章：函数的增长">
+<meta property="og:url" content="https://panqiincs.me/2019/03/10/clrs-growth-of-functions/index.html">
+<meta property="og:site_name" content="辛未羊的网络日志">
+<meta property="og:description" content="主要内容 本章讲解如何简化算法的渐近分析，介绍了几类渐近记号。最后简单介绍了常用函数的性质。本章的内容在这里描述得非常简略，但为了保持整个系列的完整性，还是贴出来了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-10T06:06:12.000Z">
+<meta property="article:modified_time" content="2021-12-14T05:43:33.520Z">
+<meta property="article:author" content="Krist Pan">
+<meta property="article:tag" content="渐近记号">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://panqiincs.me/2019/03/10/clrs-growth-of-functions/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://panqiincs.me/2019/03/10/clrs-growth-of-functions/","path":"2019/03/10/clrs-growth-of-functions/","title":"算法导论第 3 章：函数的增长"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>算法导论第 3 章：函数的增长 | 辛未羊的网络日志</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-39536948-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "blyiajm41p");
+</script>
+
+<link rel="dns-prefetch" href="https://vercel.panqiincs.me">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="辛未羊的网络日志" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">辛未羊的网络日志</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-series"><a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9"><span class="nav-number">1.</span> <span class="nav-text">主要内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%90%E8%BF%91%E8%AE%B0%E5%8F%B7"><span class="nav-number">1.1.</span> <span class="nav-text">渐近记号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E8%AE%B0%E5%8F%B7%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">标准记号与常用函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98%E8%A7%A3%E7%AD%94"><span class="nav-number">2.</span> <span class="nav-text">习题解答</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="nav-number">2.1.</span> <span class="nav-text">练习题</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Krist Pan"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Krist Pan</p>
+  <div class="site-description" itemprop="description">记录生活和学习的清静之地</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">215</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/panqiincs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;panqiincs" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.kawabangga.com/" title="https:&#x2F;&#x2F;www.kawabangga.com&#x2F;" rel="noopener" target="_blank">卡瓦邦噶</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.boatsky.com/" title="https:&#x2F;&#x2F;www.boatsky.com&#x2F;" rel="noopener" target="_blank">太空船</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.feidaoboke.com/" title="https:&#x2F;&#x2F;www.feidaoboke.com" rel="noopener" target="_blank">飞刀博客</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.ohyee.cc/" title="https:&#x2F;&#x2F;www.ohyee.cc&#x2F;" rel="noopener" target="_blank">OhYee</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://dusays.com/" title="https:&#x2F;&#x2F;dusays.com&#x2F;" rel="noopener" target="_blank">杜老师说</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://h4ck.org.cn/" title="https:&#x2F;&#x2F;h4ck.org.cn&#x2F;" rel="noopener" target="_blank">obaby</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://thiscute.world/" title="https:&#x2F;&#x2F;thiscute.world&#x2F;" rel="noopener" target="_blank">ryan4yin</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://geektutu.com/" title="https:&#x2F;&#x2F;geektutu.com&#x2F;" rel="noopener" target="_blank">极客兔兔</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://panqiincs.me/2019/03/10/clrs-growth-of-functions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Krist Pan">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的网络日志">
+      <meta itemprop="description" content="记录生活和学习的清静之地">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="算法导论第 3 章：函数的增长 | 辛未羊的网络日志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          算法导论第 3 章：函数的增长
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-03-10 14:06:12" itemprop="dateCreated datePublished" datetime="2019-03-10T14:06:12+08:00">2019-03-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">程序设计</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2019/03/10/clrs-growth-of-functions/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2019/03/10/clrs-growth-of-functions/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="主要内容">主要内容</h2>
+<p>本章讲解如何简化算法的<strong>渐近分析</strong>，介绍了几类渐近记号。最后简单介绍了常用函数的性质。本章的内容在这里描述得非常简略，但为了保持整个系列的完整性，还是贴出来了。</p>
+<span id="more"></span>
+<h3 id="渐近记号">渐近记号</h3>
+<p>本章介绍了如下渐近记号，它们的严格定义分别如下：</p>
+<ol type="1">
+<li>若<span class="math inline">\(f(n) =
+\Theta(g(n))\)</span>，则存在正常量<span
+class="math inline">\(c_1\)</span>、<span
+class="math inline">\(c_2\)</span>和<span
+class="math inline">\(n_0\)</span>，使得对所有<span
+class="math inline">\(n \ge n_0\)</span>，有<span
+class="math inline">\(0 \le c_1 g(n) \le f(n) \le c_2 g(n)\)</span></li>
+<li>若<span class="math inline">\(f(n) =
+O(g(n))\)</span>，则存在正常量<span
+class="math inline">\(c\)</span>和<span
+class="math inline">\(n_0\)</span>，使得对所有<span
+class="math inline">\(n \ge n_0\)</span>，有<span
+class="math inline">\(0 \le f(n) \le c g(n)\)</span></li>
+<li>若<span class="math inline">\(f(n) =
+\Omega(g(n))\)</span>，则存在正常量<span
+class="math inline">\(c\)</span>和<span
+class="math inline">\(n_0\)</span>，使得对所有<span
+class="math inline">\(n \ge n_0\)</span>，有<span
+class="math inline">\(0 \le c g(n) \le f(n)\)</span></li>
+<li>若<span class="math inline">\(f(n) = o(g(n))\)</span>，则对任意<span
+class="math inline">\(c&gt;0\)</span>，存在常量<span
+class="math inline">\(n_0&gt;0\)</span>，使得对所有<span
+class="math inline">\(n \ge n_0\)</span>，有<span
+class="math inline">\(0 \le f(n) &lt; c g(n)\)</span></li>
+<li>若<span class="math inline">\(f(n) =
+\omega(g(n))\)</span>，则对任意<span
+class="math inline">\(c&gt;0\)</span>，存在常量<span
+class="math inline">\(n_0&gt;0\)</span>，使得对所有<span
+class="math inline">\(n \ge n_0\)</span>，有<span
+class="math inline">\(0 \le c g(n) &lt; f(n)\)</span></li>
+</ol>
+<p>为了更形象地理解本节介绍的几种渐近记号，可以在两个函数的渐近比较和两个实数的比较之间做一种类比：</p>
+<ul>
+<li><span class="math inline">\(f(n) = O(g(n))\)</span>类似于<span
+class="math inline">\(a \le b\)</span></li>
+<li><span class="math inline">\(f(n) = \Omega(g(n))\)</span>类似于<span
+class="math inline">\(a \ge b\)</span></li>
+<li><span class="math inline">\(f(n) = \Theta(g(n))\)</span>类似于<span
+class="math inline">\(a = b\)</span></li>
+<li><span class="math inline">\(f(n) = o(g(n))\)</span>类似于<span
+class="math inline">\(a &lt; b\)</span></li>
+<li><span class="math inline">\(f(n) = \omega(g(n))\)</span>类似于<span
+class="math inline">\(a &gt; b\)</span></li>
+</ul>
+<h3 id="标准记号与常用函数">标准记号与常用函数</h3>
+<p>本节主要讲解了常用的数学函数和记号，涉及到高中数学和基础微积分的知识。</p>
+<h2 id="习题解答">习题解答</h2>
+<h3 id="练习题">练习题</h3>
+<p><strong>3.1-1</strong> 解答：即需证明存在正常数<span
+class="math inline">\(c_1\)</span>，<span
+class="math inline">\(c_2\)</span>和<span
+class="math inline">\(n_0\)</span>，使得当<span class="math inline">\(n
+\ge n_0\)</span>时有：</p>
+<p><span class="math display">\[ c_1(f(n)+g(n)) \le \max(f(n), g(n)) \le
+c_2(f(n)+g(n)) \]</span></p>
+<p>由于<span class="math inline">\(f(n)\)</span>和<span
+class="math inline">\(g(n)\)</span>均是渐近非负函数，所以存在<span
+class="math inline">\(n_0\)</span>，使得当<span class="math inline">\(n
+\ge n_0\)</span>时，有<span class="math inline">\(f(n) \ge
+0\)</span>和<span class="math inline">\(g(n) \ge 0\)</span>。令</p>
+<p><span class="math display">\[ h(x) = \max(f(n), g(n))\]</span></p>
+<p>则</p>
+<p><span class="math display">\[ 0 \le f(n) \le h(n) \\\\
+0 \le g(n) \le h(n) \]</span></p>
+<p>所以有</p>
+<p><span class="math display">\[ 0 \le f(n)+g(n) \le 2h(n) \\\\
+0 \le (f(n)+g(n))/2 \le h(n) \]</span></p>
+<p>又有</p>
+<p><span class="math display">\[ h(n) \le f(n)+g(n) \]</span></p>
+<p>所以存在<span class="math inline">\(c_1 = 1/2\)</span>，<span
+class="math inline">\(c_2 = 1\)</span>和<span class="math inline">\(n_0
+\ge 0\)</span>满足条件，得证。</p>
+<p><strong>3.1-2</strong> 解答：即需证明存在正常数<span
+class="math inline">\(c_1\)</span>，<span
+class="math inline">\(c_2\)</span>和<span
+class="math inline">\(n_0\)</span>，使得当<span class="math inline">\(n
+\ge n_0\)</span>时有：</p>
+<p><span class="math display">\[ c_1 n^b \le (n+a)^b \le c_2 n^b
+\]</span></p>
+<p>即</p>
+<p><span class="math display">\[ c_1 \le (1+a/n)^b \le c_2 \]</span></p>
+<p>当<span class="math inline">\(b &gt; 0\)</span>时，幂函数在<span
+class="math inline">\([0, +\infty)\)</span>上单调递增。下面根据<span
+class="math inline">\(a\)</span>的符号分情况讨论：</p>
+<ol type="1">
+<li>当<span class="math inline">\(a &gt; 0\)</span>时，令<span
+class="math inline">\(n \ge n_0 = a\)</span>，则有<span
+class="math inline">\(1 \le 1+a/n \le 2\)</span>，即<span
+class="math inline">\(c_1 = 1, c_2 =
+2\)</span>，根据幂函数的单调性，上式成立；</li>
+<li>当<span class="math inline">\(a &lt; 0\)</span>时，<span
+class="math inline">\(1+a/n = 1-|a|/n\)</span>，令<span
+class="math inline">\(n \ge n_0 = 2|a|\)</span>，则有<span
+class="math inline">\(1/2 \le (1-|a|/n) \le 1\)</span>，即<span
+class="math inline">\(c_1 = 1/2, c_2 =
+1\)</span>，根据幂函数的单调性，上式成立。</li>
+</ol>
+<p>所以得证。</p>
+<p><strong>3.1-3</strong> 解答：因为<span
+class="math inline">\(O\)</span>符号没有提供一个下界。</p>
+<p><strong>3.1-4</strong> 解答：<span class="math inline">\(2^{n+1} =
+O(2^n)\)</span>成立，<span class="math inline">\(2^{2n} =
+O(2^n)\)</span>不成立。</p>
+<p><strong>3.1-5</strong> 解答：要证明的公式是：</p>
+<p><span class="math display">\[ \lim_{n \to \infty}f(n)/g(n) = 0
+\]</span></p>
+<p>根据数列极限的<span
+class="math inline">\(\epsilon-N\)</span>定义，对任意<span
+class="math inline">\(\epsilon &gt; 0\)</span>，存在自然数<span
+class="math inline">\(N\)</span>使得当<span class="math inline">\(n &gt;
+N\)</span>时，有<span class="math inline">\(|f(n)/g(n)| &lt;
+\epsilon\)</span>。</p>
+<p>根据<span class="math inline">\(f(n) =
+o(g(n))\)</span>的定义，对任意正常量<span class="math inline">\(c &gt;
+0\)</span>，存在<span class="math inline">\(n_0 &gt;
+0\)</span>，使得对所有<span class="math inline">\(n \ge
+n_0\)</span>，有<span class="math inline">\(0 \le f(n) &lt;
+cg(n)\)</span>，即<span class="math inline">\(|f(n)/g(n)| &lt;
+c\)</span>，取<span class="math inline">\(\epsilon = c\)</span>，<span
+class="math inline">\(N = n_0\)</span>，得证。</p>
+<p><strong>3.1-6</strong> 解答：<span
+class="math inline">\(O\)</span>记号提供了一个渐近上界，<span
+class="math inline">\(\Omega\)</span>记号提供了渐近下界，所以为<span
+class="math inline">\(\Theta(g(n))\)</span>。严格证明略。</p>
+<p><strong>3.1-7</strong> 解答：类似于<span class="math inline">\(a &lt;
+b\)</span>和<span class="math inline">\(a &gt;
+b\)</span>不可能同时成立。</p>
+<p><strong>3.1-8</strong> 解答：<span class="math inline">\(f(n, m) =
+\Omega(g(n, m))\)</span>，则存在正常量<span
+class="math inline">\(c\)</span>, <span
+class="math inline">\(n_0\)</span>和<span
+class="math inline">\(m_0\)</span>，使得对所有的<span
+class="math inline">\(n \ge n_0\)</span>或<span class="math inline">\(m
+\ge m_0\)</span>，有</p>
+<p><span class="math display">\[
+0 \le cg(n, m) \le f(n, m)
+\]</span></p>
+<p><span class="math inline">\(f(n, m) = \Theta(g(n,
+m))\)</span>，则存在正常量<span
+class="math inline">\(c_1\)</span>，<span
+class="math inline">\(c_2\)</span>，<span
+class="math inline">\(n_0\)</span>和<span
+class="math inline">\(m_0\)</span>，使得对所有的<span
+class="math inline">\(n \ge n_0\)</span>或<span class="math inline">\(m
+\ge m_0\)</span>，有</p>
+<p><span class="math display">\[
+c_1 g(n, m)  \le f(n, m) \le c_2 g(n, m)
+\]</span></p>
+<p><strong>3.2-1</strong> 解答：按照单调性的定义即可证明，略。</p>
+<p><strong>3.2-2</strong> 解答：由公式<span class="math inline">\(a =
+b^{\log_b a}\)</span>得：</p>
+<p><span class="math display">\[
+a^{\log_b c} = (b^{\log_b a})^{\log_b c} = b^{\log_b a \log_b c}  \\\\
+c^{\log_b a} = (b^{\log_b c})^{\log_b a} = b^{\log_b c \log_b a}
+\]</span></p>
+<p>得证。</p>
+<p><strong>3.2-3</strong> 解答：要证明的(3.19)式为<span
+class="math inline">\(n! = \Theta(n \lg
+n)\)</span>，借助斯特林近似公式，证明如下：</p>
+<p><span class="math display">\[
+\lg(n!) = \lg \sqrt{2 \pi n} + \lg (n/e)^n + \lg (1+\Theta(1/n)) =
+\Theta(\lg n) + \Theta(n \lg n) = \Theta(n \lg n)
+\]</span></p>
+<p>要证明<span class="math inline">\(n! = o(n^n)\)</span>，证明<span
+class="math inline">\(\lim_{n \to \infty}n!/n^n =
+0\)</span>即可，代入斯特林近似公式即得证。</p>
+<p>要证明<span class="math inline">\(n! =
+\omega(2^n)\)</span>，证明<span class="math inline">\(\lim_{n \to
+\infty}n!/2^n = \infty\)</span>即可。令<span class="math inline">\(h(n)
+= n!/2^n\)</span>，则：</p>
+<p><span class="math display">\[h(n) = \frac{n!}{2^n} =
+\frac{(n-1)!}{2^{n-1}} \frac{n}{2} = h(n-1) \frac{n}{2}\]</span></p>
+<p>当<span class="math inline">\(n=4\)</span>时，<span
+class="math inline">\(h(n)&gt;1\)</span>，当<span
+class="math inline">\(n&gt;4\)</span>时，<span class="math inline">\(n/2
+&gt; 2\)</span>，所以<span class="math inline">\(h(n) &gt;
+2^{n-4}\)</span>，所以<span
+class="math inline">\(h(n)\)</span>的极限为<span
+class="math inline">\(\infty\)</span>。</p>
+<p><strong>3.2-6</strong> 解答：根据黄金分割率的定义有：<span
+class="math inline">\(\phi / 1 = \phi / (1 -
+\phi)\)</span>，即满足方程<span class="math inline">\(x^2 = x +
+1\)</span>，得证。</p>
+<p><strong>3.2-7</strong> 解答：归纳法的步骤如下：</p>
+<ol type="1">
+<li>初始情况<span class="math inline">\(i = 0\)</span>时，<span
+class="math inline">\(F_0 = (\phi^0 - \hat{\phi}^0)/\sqrt{5} =
+0\)</span>，<span class="math inline">\(i = 1\)</span>时，<span
+class="math inline">\(F_1 = (\phi - \hat{\phi})/\sqrt{5} =
+1\)</span>，符合</li>
+<li>证明当<span class="math inline">\(n=k-2\)</span>和<span
+class="math inline">\(n=k-1\)</span>成立，<span class="math inline">\(n
+= k\)</span>时也成立，代入公式，符合</li>
+</ol>
+<p>即可得证。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Krist Pan
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://panqiincs.me/2019/03/10/clrs-growth-of-functions/" title="算法导论第 3 章：函数的增长">https://panqiincs.me/2019/03/10/clrs-growth-of-functions/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%B8%90%E8%BF%91%E8%AE%B0%E5%8F%B7/" rel="tag"># 渐近记号</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/03/07/clrs-getting-started/" rel="prev" title="算法导论第 2 章：算法基础">
+                  <i class="fa fa-chevron-left"></i> 算法导论第 2 章：算法基础
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/03/14/clrs-divide-and-conquer/" rel="next" title="算法导论第 4 章：分治策略">
+                  算法导论第 4 章：分治策略 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2013 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Krist Pan</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">187k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:50</span>
+  </span>
+</div>
+
+
+  <div>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id: "JjD4gEghP0h7Vn4U",ck: "JjD4gEghP0h7Vn4U"})</script>
+  </div>
+
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"https://vercel.panqiincs.me","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"欢迎留言交流","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/2019/03/10/clrs-growth-of-functions/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>

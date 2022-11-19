@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Allow: /about/
+Allow: /categories/
+Allow: /series/
+Allow: /tags/
+
+Disallow: /css/
+Disallow: /images/
+Disallow: /js/
+Disallow: /lib/
+
+Sitemap: https://panqiincs.me/sitemap.xml

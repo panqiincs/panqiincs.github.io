@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+  <meta name="baidu-site-verification" content="code-J9YbvwThrX">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="基础知识 定义 本文讨论的离散信号指的是离散时间信号（discrete-time signal），信号只定义在离散的时刻点上，也就是自变量（时间）仅取在一组离散值上。例如，股票市场的指数就是离散时间信号。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="离散信号的傅里叶分析">
+<meta property="og:url" content="https://panqiincs.me/2021/02/05/discrete-time-fourier/index.html">
+<meta property="og:site_name" content="辛未羊的网络日志">
+<meta property="og:description" content="基础知识 定义 本文讨论的离散信号指的是离散时间信号（discrete-time signal），信号只定义在离散的时刻点上，也就是自变量（时间）仅取在一组离散值上。例如，股票市场的指数就是离散时间信号。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-05T02:18:28.000Z">
+<meta property="article:modified_time" content="2022-05-01T10:09:10.908Z">
+<meta property="article:author" content="Krist Pan">
+<meta property="article:tag" content="fourier">
+<meta property="article:tag" content="matlab">
+<meta property="article:tag" content="离散时间傅里叶变换">
+<meta property="article:tag" content="离散傅里叶变换">
+<meta property="article:tag" content="dtft">
+<meta property="article:tag" content="dft">
+<meta property="article:tag" content="离散信号">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://panqiincs.me/2021/02/05/discrete-time-fourier/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://panqiincs.me/2021/02/05/discrete-time-fourier/","path":"2021/02/05/discrete-time-fourier/","title":"离散信号的傅里叶分析"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>离散信号的傅里叶分析 | 辛未羊的网络日志</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-39536948-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "blyiajm41p");
+</script>
+
+<link rel="dns-prefetch" href="https://vercel.panqiincs.me">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="辛未羊的网络日志" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">辛未羊的网络日志</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-series"><a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%AF%E8%8D%A1%E9%80%9F%E7%8E%87"><span class="nav-number">1.2.</span> <span class="nav-text">振荡速率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%A8%E6%9C%9F%E5%85%AC%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">周期公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%90%E6%B3%A2%E4%BF%A1%E5%8F%B7"><span class="nav-number">1.4.</span> <span class="nav-text">谐波信号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0dfs"><span class="nav-number">2.</span> <span class="nav-text">离散傅里叶级数（DFS）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E6%97%B6%E9%97%B4%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2dtfs"><span class="nav-number">3.</span> <span class="nav-text">离散时间傅里叶变换（DTFS）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dtfs%E4%B8%8Edfs%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">4.</span> <span class="nav-text">DTFS与DFS的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2dft"><span class="nav-number">5.</span> <span class="nav-text">离散傅里叶变换（DFT）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%90%86%E8%AE%BA"><span class="nav-number">5.1.</span> <span class="nav-text">理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-number">5.2.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Krist Pan"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Krist Pan</p>
+  <div class="site-description" itemprop="description">记录生活和学习的清静之地</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">215</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/panqiincs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;panqiincs" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.kawabangga.com/" title="https:&#x2F;&#x2F;www.kawabangga.com&#x2F;" rel="noopener" target="_blank">卡瓦邦噶</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.boatsky.com/" title="https:&#x2F;&#x2F;www.boatsky.com&#x2F;" rel="noopener" target="_blank">太空船</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.feidaoboke.com/" title="https:&#x2F;&#x2F;www.feidaoboke.com" rel="noopener" target="_blank">飞刀博客</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.ohyee.cc/" title="https:&#x2F;&#x2F;www.ohyee.cc&#x2F;" rel="noopener" target="_blank">OhYee</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://dusays.com/" title="https:&#x2F;&#x2F;dusays.com&#x2F;" rel="noopener" target="_blank">杜老师说</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://h4ck.org.cn/" title="https:&#x2F;&#x2F;h4ck.org.cn&#x2F;" rel="noopener" target="_blank">obaby</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://thiscute.world/" title="https:&#x2F;&#x2F;thiscute.world&#x2F;" rel="noopener" target="_blank">ryan4yin</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://geektutu.com/" title="https:&#x2F;&#x2F;geektutu.com&#x2F;" rel="noopener" target="_blank">极客兔兔</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://panqiincs.me/2021/02/05/discrete-time-fourier/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Krist Pan">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的网络日志">
+      <meta itemprop="description" content="记录生活和学习的清静之地">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="离散信号的傅里叶分析 | 辛未羊的网络日志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          离散信号的傅里叶分析
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-05 10:18:28" itemprop="dateCreated datePublished" datetime="2021-02-05T10:18:28+08:00">2021-02-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">大学课程</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2021/02/05/discrete-time-fourier/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2021/02/05/discrete-time-fourier/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>9.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="基础知识">基础知识</h2>
+<h3 id="定义">定义</h3>
+<p>本文讨论的离散信号指的是离散时间信号（discrete-time
+signal），信号只定义在离散的时刻点上，也就是自变量（时间）仅取在一组离散值上。例如，股票市场的指数就是离散时间信号。</p>
+<span id="more"></span>
+<p>在这里需要注意几个容易混淆的概念。如果信号的自变量和函数值都取连续值，称信号为<strong>模拟信号</strong>或连续时间信号；如果自变量取离散值，而函数值取连续值，则称信号为离散时间信号，这种信号通常来源于对模拟信号的采样；如果信号的自变量和函数值均取离散值，则称为<strong>数字信号</strong>，数字信号其实就是量化后的离散时间信号，是计算机中的表示形式。</p>
+<p>离散信号的表示和连续信号类似，只不过把时间变量<span
+class="math inline">\(t\)</span>改成了<span
+class="math inline">\(n\)</span>。同样地，我们基于周期复指数信号讨论正弦信号<span
+class="math inline">\(x(n)=\sin \omega_0
+n\)</span>的特性，它的表达式为</p>
+<p><span class="math display">\[
+\begin{equation}
+x(n) = e^{j \omega_0 n}  \tag{1}
+\end{equation}
+\]</span></p>
+<p>它可以看成是连续信号在整数点上的取值，和连续信号类似，但又有区别。可以使用如下的MATLAB代码绘制离散信号的图像：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="number">-5</span>:<span class="number">5</span>;</span><br><span class="line">x = <span class="built_in">sin</span>(<span class="built_in">pi</span>*n/<span class="number">5</span>);</span><br><span class="line">stem(n, x, <span class="string">&#x27;.&#x27;</span>); line([<span class="number">-5</span>, <span class="number">5</span>], [<span class="number">0</span>, <span class="number">0</span>]);</span><br><span class="line">axis([<span class="number">-5</span>, <span class="number">5</span>, <span class="number">-1.2</span>, <span class="number">1.2</span>]); xlabel(<span class="string">&#x27;n&#x27;</span>); ylabel(<span class="string">&#x27;x[n]&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="振荡速率">振荡速率</h3>
+<p>在连续信号情况下，每个<span
+class="math inline">\(\omega_0\)</span>对应的是不同的信号，但是离散情况下就不同了，由于</p>
+<p><span class="math display">\[
+\begin{equation}
+e^{j (\omega_0+2\pi) n} = e^{j \omega_0 n} \cdot e^{j 2\pi n} = e^{j
+\omega_0 n}  \tag{2}
+\end{equation}
+\]</span></p>
+<p>所以，离散周期复指数信号在频率<span
+class="math inline">\(\omega_0+2\pi\)</span>与频率<span
+class="math inline">\(\omega_0\)</span>时是完全一样的。</p>
+<p>所以，考虑这种离散时间周期复指数信号时，仅仅需要在某个<span
+class="math inline">\(2\pi\)</span>间隔内选择<span
+class="math inline">\(\omega_0\)</span>即可，一般取<span
+class="math inline">\(0 \le \omega_0 &lt; 2\pi\)</span>或<span
+class="math inline">\(-\pi \le \omega_0 &lt;
+\pi\)</span>。由上面的讨论可知，<span
+class="math inline">\(\omega_0\)</span>数值增加时，<span
+class="math inline">\(e^{j \omega_0
+n}\)</span>的振荡速率并不会不断增加。<span
+class="math inline">\(\omega_0\)</span>从<span
+class="math inline">\(0\)</span>增加到<span
+class="math inline">\(\pi\)</span>时，振荡速率越来越快，从<span
+class="math inline">\(\pi\)</span>变化到<span
+class="math inline">\(2\pi\)</span>时，振荡速率会下降。下图是<span
+class="math inline">\(\omega_0\)</span>取不同值时对应正弦信号的图像：</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/discrete_fourier_ejwn.svg"
+alt="图1 不同角频率下的图像" />
+<figcaption aria-hidden="true">图1 不同角频率下的图像</figcaption>
+</figure>
+<p>所以，离散复指数信号的低频部分位于<span
+class="math inline">\(\omega_0\)</span>在<span
+class="math inline">\(\pi\)</span>的偶数倍值附近，高频部分则位于<span
+class="math inline">\(\omega_0\)</span>在<span
+class="math inline">\(\pi\)</span>的奇数倍值附近。</p>
+<h3 id="周期公式">周期公式</h3>
+<p>现在讨论它的周期<span
+class="math inline">\(N\)</span>。根据周期信号的定义有</p>
+<p><span class="math display">\[
+\begin{equation}
+e^{j \omega_0 (n + N)} = e^{j \omega_0 N} \cdot e^{j \omega_0 n} = e^{j
+\omega_0 n}  \tag{3}
+\end{equation}
+\]</span></p>
+<p>所以<span class="math inline">\(e^{j \omega_0 N} =
+1\)</span>，必须有个整数<span class="math inline">\(m\)</span>，满足</p>
+<p><span class="math display">\[
+\begin{equation}
+\omega_0 N = 2 \pi m  \tag{4}
+\end{equation}
+\]</span></p>
+<p>或</p>
+<p><span class="math display">\[
+\begin{equation}
+\frac{\omega_0}{2 \pi} = \frac{m}{N}  \tag{5}
+\end{equation}
+\]</span></p>
+<p>所以，只有<span class="math inline">\(\omega_0 / 2
+\pi\)</span>为有理数时，<span class="math inline">\(e^{j \omega_0
+n}\)</span>才是周期信号，否则就不是周期的。这是由于离散时间信号仅能在自变量的整数值上有定义造成的。</p>
+<p>基波频率</p>
+<p><span class="math display">\[
+\begin{equation}
+\frac{2\pi}{N} = \frac{\omega_0}{m}  \tag{6}
+\end{equation}
+\]</span></p>
+<p>那么基波周期<span class="math inline">\(N\)</span>也可以写成</p>
+<p><span class="math display">\[
+\begin{equation}
+N = m \left( \frac{2 \pi}{\omega_0} \right)  \tag{7}
+\end{equation}
+\]</span></p>
+<p>基于上面的原因，通常给定周期复指数信号的基波周期<span
+class="math inline">\(N\)</span>，然后求得频率<span
+class="math inline">\(\omega_0=2\pi/N\)</span>（此时<span
+class="math inline">\(m=1\)</span>），得到它的表达式<span
+class="math inline">\(e^{j \omega_0 n}\)</span>。</p>
+<h3 id="谐波信号">谐波信号</h3>
+<p>再讨论成谐波关系的周期离散时间复指数信号。下面的信号具有公共周期<span
+class="math inline">\(N\)</span>，频率都是基波周期<span
+class="math inline">\(2\pi/N\)</span>的整数倍：</p>
+<p><span class="math display">\[
+\begin{equation}
+\phi_k(n) = e^{j k (2\pi/N) n}, \, k = 0, \pm 1, \cdots  \tag{8}
+\end{equation}
+\]</span></p>
+<p>在连续情况下，成谐波关系的信号都是不相同的。但是离散情况下则不一样，因为</p>
+<p><span class="math display">\[
+\begin{equation}
+\phi_{k+N}(n) = e^{j (k+N) (2\pi/N) n} = e^{j k (2\pi/N) n} \cdot e^{j
+2\pi n} = \phi_k(n)  \tag{9}
+\end{equation}
+\]</span></p>
+<p>所以，上述成谐波关系的信号中，仅有<span
+class="math inline">\(N\)</span>个互不相同的周期复指数信号，而且</p>
+<p><span class="math display">\[
+\begin{equation}
+\phi_k(n) = \phi_{k+rN}(n)  \tag{10}
+\end{equation}
+\]</span></p>
+<h2 id="离散傅里叶级数dfs">离散傅里叶级数（DFS）</h2>
+<p>离散时间周期信号可以表示为成谐波关系的指数信号的加权和，即为离散傅里叶级数（discrete
+Fourier series, DFS）。由于周期为<span
+class="math inline">\(N\)</span>、基波频率<span
+class="math inline">\(\omega_0 =
+2\pi/N\)</span>、成谐波关系的周期复指数信号中只有<span
+class="math inline">\(N\)</span>个是不相同的，所以离散时间傅里叶级数的形式为有限个复指数信号的和</p>
+<p><span class="math display">\[
+\begin{equation}
+\tilde{x}(n) = \frac{1}{N} \sum_{k=\left \langle N \right \rangle}
+\tilde{X}(k) e^{j k \omega_0 n} = \frac{1}{N} \sum_{k=\left \langle N
+\right \rangle} \tilde{X}(k) e^{j k (2\pi/N) n}  \tag{11}
+\end{equation}
+\]</span></p>
+<p>求和限<span class="math inline">\(k=\left \langle N \right
+\rangle\)</span>表示<span class="math inline">\(k\)</span>在<span
+class="math inline">\(N\)</span>个相继整数的区间上变化，下同。系数<span
+class="math inline">\(\tilde{X}(k)\)</span>的计算公式为</p>
+<p><span class="math display">\[
+\begin{equation}
+\tilde{X}(k) = \sum_{n=\left \langle N \right \rangle} \tilde{x}(n)
+e^{-j k \omega_0 n} = \sum_{n=\left \langle N \right \rangle}
+\tilde{x}(n) e^{-j k (2\pi/N) n}  \tag{12}
+\end{equation}
+\]</span></p>
+<p>很多教材求和限取<span class="math inline">\(0\)</span>到<span
+class="math inline">\(N-1\)</span>区间，此时<span
+class="math inline">\((11)\)</span>、<span
+class="math inline">\((12)\)</span>可写成</p>
+<p><span class="math display">\[
+\begin{equation}
+\tilde{x}(n) = \frac{1}{N} \sum_{k=0}^{N-1} \tilde{X}(k) e^{j k \omega_0
+n} = \frac{1}{N} \sum_{k=0}^{N-1} \tilde{X}(k) e^{j k (2\pi/N)
+n}  \tag{13}
+\end{equation}
+\]</span></p>
+<p><span class="math display">\[
+\begin{equation}
+\tilde{X}(k) = \sum_{n=0}^{N-1} \tilde{x}(n) e^{-j k \omega_0 n} =
+\sum_{n=0}^{N-1} \tilde{x}(n) e^{-j k (2\pi/N) n}  \tag{14}
+\end{equation}
+\]</span></p>
+<p>由于成谐波关系的信号中仅有<span
+class="math inline">\(N\)</span>个互不相同的周期复指数信号，所以，离散时间周期信号的傅里叶级数<span
+class="math inline">\(\tilde{X}(k)\)</span>一定以<span
+class="math inline">\(N\)</span>为周期往复变化的，也就是说，离散时间周期信号的频谱是离散的、周期的。和连续时间信号傅里叶级数不同的是，级数的项数是有限的，不存在收敛问题，而且能够完全精确地逼近。</p>
+<p>如果令<span
+class="math inline">\(W_N=e^{-j\frac{2\pi}{N}}\)</span>，则DFS公式对<span
+class="math inline">\((11)\)</span>、<span
+class="math inline">\((12)\)</span>还可以写成如下形式</p>
+<p><span class="math display">\[
+\begin{equation}
+\tilde{X}(k) = \sum_{n=\left \langle N \right \rangle} \tilde{x}(n)
+W_N^{nk}  \tag{15}
+\end{equation}
+\]</span></p>
+<p><span class="math display">\[
+\begin{equation}
+\tilde{x}(n) = \frac{1}{N} \sum_{k=\left \langle N \right \rangle}
+\tilde{X}(k) W_N^{-nk}  \tag{16}
+\end{equation}
+\]</span></p>
+<p>下面的MATLAB代码实现了<code>dfs</code>和<code>idfs</code>函数，用于计算离散傅里叶级数及其逆运算，可以任意指定求和限：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[Xk, k]</span> = <span class="title">dfs</span><span class="params">(xn, n1, n2)</span></span></span><br><span class="line"><span class="comment">% Compute Discrete Fourier Series Coefficients</span></span><br><span class="line"><span class="comment">% Xk = DFS coeff. array over n1 &lt;= k &lt;= n2</span></span><br><span class="line"><span class="comment">% xn = One period of periodic signal over n1 &lt;= n &lt;= n2</span></span><br><span class="line">N = n2 - n1 + <span class="number">1</span>;       <span class="comment">% Fundamental period of xn</span></span><br><span class="line">n = n1:n2;             <span class="comment">% row vector for n</span></span><br><span class="line">k = n1:n2;             <span class="comment">% row vector for k</span></span><br><span class="line">WN = <span class="built_in">exp</span>(<span class="number">-1</span><span class="built_in">j</span>*<span class="number">2</span>*<span class="built_in">pi</span>/N);  <span class="comment">% Wn factor</span></span><br><span class="line">nk = n&#x27; * k;           <span class="comment">% creates a N by N matrix of nk values</span></span><br><span class="line">WNnk = WN .^ nk;       <span class="comment">% DFS matrix</span></span><br><span class="line">Xk = xn * WNnk;        <span class="comment">% row vector for DFS coefficients</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[xn, n]</span> = <span class="title">idfs</span><span class="params">(Xk, k)</span></span></span><br><span class="line"><span class="comment">% Compute Inverse Discrete Fourier Series</span></span><br><span class="line"><span class="comment">% xn = One period of periodic signal over n</span></span><br><span class="line"><span class="comment">% Xk = DFS coeff. array over k</span></span><br><span class="line">n = k;</span><br><span class="line">N = <span class="built_in">length</span>(n);         <span class="comment">% Fundamental period</span></span><br><span class="line">WN = <span class="built_in">exp</span>(<span class="number">-1</span><span class="built_in">j</span>*<span class="number">2</span>*<span class="built_in">pi</span>/N);  <span class="comment">% Wn factor</span></span><br><span class="line">nk = n&#x27; * k;           <span class="comment">% creates a N by N matrix of nk values</span></span><br><span class="line">WNnk = WN .^ (-nk);    <span class="comment">% DFS matrix</span></span><br><span class="line">xn = (Xk * WNnk) / N;  <span class="comment">% row vector for DFS coefficients</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>来看一个例子。现有一个离散周期信号<span
+class="math inline">\(\tilde{x}(n)\)</span>，其周期为<span
+class="math inline">\(N\)</span>，某个周期片段如下：从<span
+class="math inline">\(-N_1\)</span>到<span
+class="math inline">\(N_1\)</span>的值为<span
+class="math inline">\(1\)</span>，其余为<span
+class="math inline">\(0\)</span>，即一个周期<span
+class="math inline">\(N\)</span>内，有<span
+class="math inline">\(2N_1+1\)</span>个时间点的值为<span
+class="math inline">\(1\)</span>。如下的代码取周期信号<span
+class="math inline">\(\tilde{x}(n)\)</span>在一个周期的片段<span
+class="math inline">\(x(n)\)</span>，使用<code>dfs</code>函数计算傅里叶级数系数，本例得到的频谱系数都是实数。最后绘制信号及其频谱，它们都是周期的，在代码中是通过周期延拓得到的。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">N = <span class="number">20</span>;</span><br><span class="line">N1 = <span class="number">2</span>; n1 = -N1; n2 = N - N1 - <span class="number">1</span>; n = n1:n2;</span><br><span class="line"></span><br><span class="line"><span class="comment">% xn为一个周期片段</span></span><br><span class="line">xn = [<span class="built_in">ones</span>(<span class="number">1</span>, <span class="number">2</span>*N1+<span class="number">1</span>), <span class="built_in">zeros</span>(<span class="number">1</span>, N<span class="number">-2</span>*N1<span class="number">-1</span>)];</span><br><span class="line">[Xk, k] = dfs(xn, n1, n2);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 延拓成3个周期</span></span><br><span class="line">xnh = [xn, xn, xn];</span><br><span class="line">nh = [n-<span class="built_in">length</span>(n), n, n+<span class="built_in">length</span>(n)];</span><br><span class="line">Xkh = [Xk, Xk, Xk];</span><br><span class="line">kh = [k-<span class="built_in">length</span>(k), k, k+<span class="built_in">length</span>(k)];</span><br><span class="line"></span><br><span class="line"><span class="comment">% 绘制周期信号的图像</span></span><br><span class="line">subplot(<span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>); stem(nh, xnh, <span class="string">&#x27;.&#x27;</span>); line([<span class="built_in">min</span>(nh), <span class="built_in">max</span>(nh)], [<span class="number">0</span>, <span class="number">0</span>]);</span><br><span class="line">axis([<span class="built_in">min</span>(nh), <span class="built_in">max</span>(nh), <span class="built_in">min</span>(xnh)<span class="number">-1</span>, <span class="built_in">max</span>(xn)+<span class="number">1</span>]);</span><br><span class="line"><span class="comment">% 绘制周期信号的频谱图</span></span><br><span class="line">subplot(<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>); stem(kh, <span class="built_in">real</span>(Xkh), <span class="string">&#x27;.&#x27;</span>); line([<span class="built_in">min</span>(kh), <span class="built_in">max</span>(kh)], [<span class="number">0</span>, <span class="number">0</span>]);</span><br><span class="line">axis([<span class="built_in">min</span>(<span class="built_in">real</span>(kh)), <span class="built_in">max</span>(kh), <span class="built_in">min</span>(<span class="built_in">real</span>(Xkh))<span class="number">-1</span>, <span class="built_in">max</span>(<span class="built_in">real</span>(Xkh))+<span class="number">1</span>]);</span><br></pre></td></tr></table></figure>
+<p>信号及其频谱如下图所示</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/discrete_fourier_dtfs.svg"
+alt="图2 周期离散信号及其频谱" />
+<figcaption aria-hidden="true">图2 周期离散信号及其频谱</figcaption>
+</figure>
+<p>读者可以尝试增大<span
+class="math inline">\(N\)</span>的值，看频谱图如何变化。</p>
+<h2 id="离散时间傅里叶变换dtfs">离散时间傅里叶变换（DTFS）</h2>
+<p>离散时间非周期信号可以表示为不同频率的指数信号的加权和，它的频谱是连续的，用离散时间傅里叶变换（discrete-time
+Fourier transform,
+DTFT）描述，后面简称DTFT。和连续信号的分析方法类似，不断增大周期信号的周期<span
+class="math inline">\(N\)</span>，频谱会越来越密集，这一点可以使用上面的代码验证。当<span
+class="math inline">\(N \to
+\infty\)</span>时，频谱由离散变为连续，周期信号变为非周期信号，傅里叶级数转化为傅里叶变换。得到了如下的傅里叶变换公式对</p>
+<p><span class="math display">\[
+\begin{equation}
+x(n) = \frac{1}{2\pi} \int_{2\pi} X(e^{j\omega})  e^{j \omega n}
+\mathrm{d}\omega  \tag{17}
+\end{equation}
+\]</span></p>
+<p><span class="math display">\[
+\begin{equation}
+X(e^{j\omega}) = \sum_{n=-\infty}^{+\infty} x(n) e^{-j \omega
+n}  \tag{18}
+\end{equation}
+\]</span></p>
+<p>从DTFT得到的频谱<span
+class="math inline">\(X(e^{j\omega})\)</span>是连续函数，由于<span
+class="math inline">\(\omega_0\)</span>相差<span
+class="math inline">\(2\pi\)</span>的两个复指数信号是一样的，所以<span
+class="math inline">\(X(e^{j\omega})\)</span>是周期函数，周期为<span
+class="math inline">\(2\pi\)</span>。也就是说，离散时间非周期信号的频谱是连续的、周期的。频谱中靠近偶数倍<span
+class="math inline">\(\pi\)</span>的<span
+class="math inline">\(\omega\)</span>，对应的是低频率的信号；而靠近奇数倍<span
+class="math inline">\(\pi\)</span>的<span
+class="math inline">\(\omega\)</span>，对应的则是高频率的信号。</p>
+<p>举个例子，取上图中周期信号的一个片段：<span
+class="math inline">\(n\)</span>从<span
+class="math inline">\(-2\)</span>取到<span
+class="math inline">\(17\)</span>，一共取<span
+class="math inline">\(N=20\)</span>个点。那么该信号的DTFT计算如下：</p>
+<p><span class="math display">\[
+X(e^{j\omega}) = e^{j 2\omega} + e^{-j 2\omega} + e^{j \omega} + e^{-j
+\omega} + 1
+= 2 \cos 2\omega + 2 \cos \omega + 1
+\]</span></p>
+<p>一般来说<span
+class="math inline">\(X(e^{j\omega})\)</span>是复函数，但此例中得到的是实函数，可直接画出它的图像，注意横轴标度是以<span
+class="math inline">\(\pi\)</span>为单位。</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/discrete_fourier_xejw.svg"
+alt="图3 DTFT是周期连续函数" />
+<figcaption aria-hidden="true">图3 DTFT是周期连续函数</figcaption>
+</figure>
+<h2 id="dtfs与dfs的关系">DTFS与DFS的关系</h2>
+<p>与图2的频谱图作对比可发现，频谱图的<strong>包络线</strong>就是本例中的周期连续函数<span
+class="math inline">\(X(e^{j\omega})\)</span>。实际上，可以证明，将任意非周期函数<span
+class="math inline">\(x(n)\)</span>的离散时间傅里叶变换<span
+class="math inline">\(X(e^{j\omega})\)</span>作<strong>等间隔采样</strong>，可得到<span
+class="math inline">\(x(n)\)</span>的周期延拓<span
+class="math inline">\(\tilde{x}(n)\)</span>的傅里叶级数系数<span
+class="math inline">\(\tilde{X}(k)\)</span>，采样间隔为<span
+class="math inline">\(2\pi/N\)</span>，即</p>
+<p><span class="math display">\[
+\begin{equation}
+\tilde{X}(k) = X(e^{j\omega}) \mid_{\omega = \frac{2\pi}{N} k}  \tag{19}
+\end{equation}
+\]</span></p>
+<p>令<span class="math inline">\(\omega_1=2\pi / N\)</span>，<span
+class="math inline">\(\omega_k = k
+\omega_1\)</span>，上述关系还可以记为</p>
+<p><span class="math display">\[
+\begin{equation}
+\tilde{X}(k) = X(e^{j \omega_k}) = X(e^{j k \omega_1})  \tag{20}
+\end{equation}
+\]</span></p>
+<p>DTFS与DFS的这种关系是后续引入离散傅里叶变换（discrete Fourier
+transform, DFT）的关键。</p>
+<h2 id="离散傅里叶变换dft">离散傅里叶变换（DFT）</h2>
+<h3 id="理论">理论</h3>
+<p>从上面的讨论我们知道，非周期离散信号<span
+class="math inline">\(x(n)\)</span>的频谱<span
+class="math inline">\(X(e^{j\omega})\)</span>是连续函数，也就是说频域是连续的，因此不便于计算机处理。如果在<span
+class="math inline">\(X(e^{j\omega})\)</span>的<span
+class="math inline">\(2\pi\)</span>周期内进行等间隔采样，采样点的个数和<span
+class="math inline">\(x(n)\)</span>的长度相同，将得到的频域离散序列反变换到时域中（IDFS），便得到一个周期信号<span
+class="math inline">\(\tilde{x}(n)\)</span>，它在一个周期内的值正好和<span
+class="math inline">\(x(n)\)</span>相同，或者说<span
+class="math inline">\(\tilde{x}(n)\)</span>是它的周期延拓。</p>
+<p>由此定义离散傅里叶变换（discrete Fourier transform,
+DFT），它是DFS的一个主周期成分。DFT是可以在计算机中实现的傅里叶变换，可用于分析任意有限长序列的频谱。DFT的定义式如下，求和范围从<span
+class="math inline">\(0\)</span>到<span
+class="math inline">\(N-1\)</span>：</p>
+<p><span class="math display">\[
+\begin{equation}
+X(k) = \sum_{n=0}^{N-1} x(n) e^{-j k \omega_0 n} = \sum_{n=0}^{N-1} x(n)
+e^{-j k (2\pi/N) n}  \tag{21}
+\end{equation}
+\]</span></p>
+<p>可以发现，<span
+class="math inline">\((21)\)</span>和DFS的计算公式<span
+class="math inline">\((14)\)</span>是相同的。反变换IDFT的定义式为</p>
+<p><span class="math display">\[
+\begin{equation}
+x(n) = \frac{1}{N} \sum_{k=0}^{N-1} X(k) e^{j k \omega_0 n} =
+\frac{1}{N} \sum_{k=0}^{N-1} X(k) e^{j k (2\pi/N) n}  \tag{22}
+\end{equation}
+\]</span></p>
+<p>同样地，使用简化记号，令<span
+class="math inline">\(W_N=e^{-j\frac{2\pi}{N}}\)</span>，DFT公式对<span
+class="math inline">\((21)\)</span>、<span
+class="math inline">\((22)\)</span>还可以写成</p>
+<p><span class="math display">\[
+\begin{equation}
+X(k) = \sum_{n=0}^{N-1} x(n) W_N^{nk}  \tag{23}
+\end{equation}
+\]</span></p>
+<p><span class="math display">\[
+\begin{equation}
+x(n) = \frac{1}{N} \sum_{k=0}^{N-1} X(k) W_N^{-nk}  \tag{24}
+\end{equation}
+\]</span></p>
+<p>DFT的物理意义不明显，它实际上是信号的周期延拓的DFS序列，那我们为什么要使用它呢？原因如下：</p>
+<ol type="1">
+<li><span
+class="math inline">\(x(n)\)</span>的真实频谱是通过DTFT得到的<span
+class="math inline">\(X(e^{j\omega})\)</span>，它是连续的，计算机不方便处理，而DFT得到的<span
+class="math inline">\(X(k)\)</span>是离散的，能够在计算机上实现</li>
+<li>可以证明，通过DFT得到的<span
+class="math inline">\(X(k)\)</span>序列可以完全复原<span
+class="math inline">\(X(e^{j\omega})\)</span></li>
+<li><span class="math inline">\(X(k)\)</span>的包络线就是<span
+class="math inline">\(X(e^{j\omega})\)</span>在一个<span
+class="math inline">\(2\pi\)</span>周期内的图像，如果<span
+class="math inline">\(X(k)\)</span>的点足够多，包络线非常光滑，可以看成是<span
+class="math inline">\(X(e^{j\omega})\)</span>的图像</li>
+</ol>
+<p>第3点可以通过如下代码验证：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 信号的长度为N，开始L个值是1，其余为0</span></span><br><span class="line">L = <span class="number">4</span>; N = <span class="number">8</span>;</span><br><span class="line">x = <span class="built_in">zeros</span>(<span class="number">1</span>, N); x(<span class="number">1</span>:L) = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">% 信号的DTFT表达式，L不变时表达式保持不变</span></span><br><span class="line">w = <span class="number">0</span>:<span class="number">0.01</span>:<span class="number">2</span>*<span class="built_in">pi</span>;</span><br><span class="line">xejw = <span class="number">1</span> + <span class="built_in">exp</span>(<span class="number">-1</span><span class="built_in">j</span>*w) + <span class="built_in">exp</span>(<span class="number">-1</span><span class="built_in">j</span>*<span class="number">2</span>*w) + <span class="built_in">exp</span>(<span class="number">-1</span><span class="built_in">j</span>*<span class="number">3</span>*w);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 信号的DFT，magX为幅值，phaX为相角</span></span><br><span class="line">X = fft(x, N);</span><br><span class="line">magX = <span class="built_in">abs</span>(X); phaX = rad2deg(<span class="built_in">angle</span>(X));</span><br><span class="line">n = <span class="number">0</span>:<span class="number">2</span>/N:<span class="number">2</span><span class="number">-2</span>/N;</span><br><span class="line"></span><br><span class="line"><span class="comment">% 实线为DTFT的幅值，圆圈为DFT的幅值</span></span><br><span class="line">subplot(<span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>); <span class="built_in">plot</span>(w/<span class="built_in">pi</span>, <span class="built_in">abs</span>(xejw)); grid;</span><br><span class="line"><span class="built_in">hold</span> on; <span class="built_in">plot</span>(n, magX, <span class="string">&#x27;ro&#x27;</span>);</span><br><span class="line">xlabel(<span class="string">&#x27;Frequency in \pi units&#x27;</span>); ylabel(<span class="string">&#x27;Magnitude&#x27;</span>);</span><br><span class="line"><span class="comment">% 实线为DTFT的相角，圆圈为DFT的相角</span></span><br><span class="line">subplot(<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>); <span class="built_in">plot</span>(w/<span class="built_in">pi</span>, rad2deg(<span class="built_in">angle</span>(xejw))); grid;</span><br><span class="line"><span class="built_in">hold</span> on; <span class="built_in">plot</span>(n, phaX, <span class="string">&#x27;ro&#x27;</span>);</span><br><span class="line">xlabel(<span class="string">&#x27;Frequency in \pi units&#x27;</span>); ylabel(<span class="string">&#x27;Phase&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>图4是N取8时代码的运行结果，可以看到，将DTFT在<span
+class="math inline">\(0\)</span>到<span
+class="math inline">\(2\pi\)</span>区间等间隔取<span
+class="math inline">\(N\)</span>个点即可得到DFT。</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/discrete_fourier_envelope8.svg"
+alt="图4 N=8的DFT图像" />
+<figcaption aria-hidden="true">图4 N=8的DFT图像</figcaption>
+</figure>
+<p>如果L是定值，那么DTFT的表达式保持不变。N取得比较大时（即在后面补零），DFT的点数更多，包络线会更加接近DTFT的图像，图5是N取64时的结果。</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/discrete_fourier_envelope64.svg"
+alt="图5 N=64的DFT图像" />
+<figcaption aria-hidden="true">图5 N=64的DFT图像</figcaption>
+</figure>
+<p>DFT算法的时间复杂度为<span
+class="math inline">\(O(N^2)\)</span>，难以用于大规模数据的计算。后来出现了优化算法，即快速傅里叶变换（fast
+Fourier transform, FFT），它的时间复杂度为<span
+class="math inline">\(O(N \log N)\)</span>，使得DFT成了实用的算法。</p>
+<h3 id="实例">实例</h3>
+<p>某序列<span
+class="math inline">\(x(n)=\{0,1,2,3\}\)</span>，序列长度<span
+class="math inline">\(N=4\)</span>，求和区间从<span
+class="math inline">\(0\)</span>到<span
+class="math inline">\(3\)</span>，<span class="math inline">\(W_4=e^{-j
+\frac{2\pi}{4}} = -j\)</span>，DFT计算如下：</p>
+<p><span class="math display">\[
+X(k)=\sum_{n=0}^{3} x(n)W_4^{nk}, \, k=0,1,2,3
+\]</span></p>
+<p>所以</p>
+<p><span class="math display">\[
+\begin{align*}
+X(0) &amp; = \sum_{n=0}^{3} x(n)W_4^{0 \cdot n} = \sum_{n=0}^{3} x(n) =
+x(0) + x(1) + x(2) + x(3) = 6 \\\\
+X(1) &amp; = \sum_{n=0}^{3} x(n)W_4^{n} = \sum_{n=0}^{3} x(n)(-j)^n =
+-2+2j \\\\
+X(2) &amp; = \sum_{n=0}^{3} x(n)W_4^{2n} = \sum_{n=0}^{3} x(n)(-j)^{2n}
+= -2 \\\\
+X(3) &amp; = \sum_{n=0}^{3} x(n)W_4^{3n} = \sum_{n=0}^{3} x(n)(-j)^{3n}
+= -2-2j \\\\
+\end{align*}
+\]</span></p>
+<p>在MATLAB中，用<code>fft</code>命令计算DFT如下：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; x = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">x =</span><br><span class="line">     <span class="number">0</span>     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span></span><br><span class="line">&gt;&gt; y = fft(x)</span><br><span class="line">y =</span><br><span class="line">   <span class="number">6.0000</span> + <span class="number">0.0000</span><span class="built_in">i</span>  <span class="number">-2.0000</span> + <span class="number">2.0000</span><span class="built_in">i</span>  <span class="number">-2.0000</span> + <span class="number">0.0000</span><span class="built_in">i</span>  <span class="number">-2.0000</span> - <span class="number">2.0000</span><span class="built_in">i</span></span><br></pre></td></tr></table></figure>
+<h2 id="参考资料">参考资料</h2>
+<ol type="1">
+<li><a
+target="_blank" rel="noopener" href="https://book.douban.com/subject/21359219/">信号与系统(奥本海姆)</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://book.douban.com/subject/25054411/">数字信号处理（MATLAB版）</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Krist Pan
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://panqiincs.me/2021/02/05/discrete-time-fourier/" title="离散信号的傅里叶分析">https://panqiincs.me/2021/02/05/discrete-time-fourier/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/fourier/" rel="tag"># fourier</a>
+              <a href="/tags/matlab/" rel="tag"># matlab</a>
+              <a href="/tags/%E7%A6%BB%E6%95%A3%E6%97%B6%E9%97%B4%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" rel="tag"># 离散时间傅里叶变换</a>
+              <a href="/tags/%E7%A6%BB%E6%95%A3%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2/" rel="tag"># 离散傅里叶变换</a>
+              <a href="/tags/dtft/" rel="tag"># dtft</a>
+              <a href="/tags/dft/" rel="tag"># dft</a>
+              <a href="/tags/%E7%A6%BB%E6%95%A3%E4%BF%A1%E5%8F%B7/" rel="tag"># 离散信号</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/03/gengzi-year-summary/" rel="prev" title="2020庚子年总结">
+                  <i class="fa fa-chevron-left"></i> 2020庚子年总结
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/03/09/analog-signal-spectrum/" rel="next" title="如何得到模拟信号的频谱">
+                  如何得到模拟信号的频谱 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2013 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Krist Pan</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">187k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:50</span>
+  </span>
+</div>
+
+
+  <div>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id: "JjD4gEghP0h7Vn4U",ck: "JjD4gEghP0h7Vn4U"})</script>
+  </div>
+
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"https://vercel.panqiincs.me","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"欢迎留言交流","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/2021/02/05/discrete-time-fourier/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>
