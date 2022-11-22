@@ -146,7 +146,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-count">101</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -157,7 +157,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">215</span>
+        <span class="site-state-item-count">218</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -317,107 +317,24 @@
     <div class="post-body" itemprop="articleBody">
         <p>卷积是「信号与系统」课程中非常重要的内容，学习和理解起来比较困难。如果仔细读了奥本海姆那本经典教材，应该可以弄懂这个概念。本文会将教材中的公式推导和形象的例子结合起来，希望能把卷积讲清楚。</p>
 <span id="more"></span>
-<p>廷杖，俗称打板子，是古代很常见的刑罚，我们经常在电视剧里看到知县下令把犯人拖下去打几十大板的情节。现在研究廷杖对人体的伤害，输入信号是臀部受到板子的冲击力随时间变化的函数<span
-class="math inline">\(x(t)\)</span>，输出信号是身体的痛苦程度随时间变化的函数<span
-class="math inline">\(y(t)\)</span>。假设知县对执行廷杖的两人要求非常高，首先，在受刑的整个过程犯人的臀部都能感受到打击，即<span
-class="math inline">\(x(t)\)</span>是连续时间信号，而不是脉冲信号；其次，知县可以安排不同的打法，比如「先轻后重」、「先重后轻」、「轻重交替」、「平均用力」等等，即使给出<span
-class="math inline">\(x(t)\)</span>的函数表达式，两人都能够正确执行。</p>
+
+<p>廷杖，俗称打板子，是古代很常见的刑罚，我们经常在电视剧里看到知县下令把犯人拖下去打几十大板的情节。现在研究廷杖对人体的伤害，输入信号是臀部受到板子的冲击力随时间变化的函数$x(t)$，输出信号是身体的痛苦程度随时间变化的函数$y(t)$。假设知县对执行廷杖的两人要求非常高，首先，在受刑的整个过程犯人的臀部都能感受到打击，即$x(t)$是连续时间信号，而不是脉冲信号；其次，知县可以安排不同的打法，比如「先轻后重」、「先重后轻」、「轻重交替」、「平均用力」等等，即使给出$x(t)$的函数表达式，两人都能够正确执行。</p>
 <p>两人经过多年的磨炼，技术达到了炉火纯青的地步，一左一右配合非常默契。一人的板子离开犯人的臀部，另一人的板子能够立刻衔接上去，让犯人感觉到臀部一直在受力。每次打击在犯人臀部上作用的时间非常短，在整个作用时间内力度是均匀的。为了在数学上描述每次打击，介绍如下的矩形脉冲信号</p>
-<p><span class="math display">\[
-\begin{equation}
-\delta_{\Delta}(t) =
-\begin{cases}
-1/\Delta,  &amp; 0 \le t &lt; \Delta \\
-0, &amp; 其他
-\end{cases}  \tag{1}
-\end{equation}
-\]</span></p>
-<p>这个信号在时间<span class="math inline">\(0 \le t &lt;
-\Delta\)</span>的值为<span
-class="math inline">\(1/\Delta\)</span>，其余时间为<span
-class="math inline">\(0\)</span>，函数图像是宽度为<span
-class="math inline">\(\Delta\)</span>、高度为<span
-class="math inline">\(1/\Delta\)</span>、面积为<span
-class="math inline">\(1\)</span>的矩形。那么<span
-class="math inline">\(\delta_{\Delta}(t) \cdot
-\Delta\)</span>就是宽度为<span
-class="math inline">\(\Delta\)</span>，高度为<span
-class="math inline">\(1\)</span>的信号，我们用这个信号来描述从<span
-class="math inline">\(0\)</span>时刻开始作用、持续时间为<span
-class="math inline">\(\Delta\)</span>、力度为一个单位的一次打击。</p>
-<p>把<span
-class="math inline">\(\delta_{\Delta}(t)\)</span>沿着时间轴平移时间<span
-class="math inline">\(k\Delta\)</span>得到信号<span
-class="math inline">\(\delta_{\Delta}(t-k\Delta)\)</span>，它从<span
-class="math inline">\(k\Delta\)</span>时刻开始作用，持续时间为<span
-class="math inline">\(\Delta\)</span>。那么信号<span
-class="math inline">\(x(k\Delta)\delta_{\Delta}(t-k\Delta)
-\Delta\)</span>表示力度为<span
-class="math inline">\(x(k\Delta)\)</span>、从<span
-class="math inline">\(k\Delta\)</span>时刻开始作用、持续时间为<span
-class="math inline">\(\Delta\)</span>的一次打击。整个廷杖过程可以看成发生在不同时刻的每板打击的叠加，所以输入信号<span
-class="math inline">\(x(t)\)</span>可以用如下的阶梯信号<span
-class="math inline">\(\hat{x}(t)\)</span>来近似</p>
-<p><span class="math display">\[
-\begin{equation}
-\hat{x}(t) = \sum_{k=-\infty}^{+\infty}
-x(k\Delta)\delta_{\Delta}(t-k\Delta) \Delta  \tag{2}
-\end{equation}
-\]</span></p>
-<p><span
-class="math inline">\(\hat{x}(t)\)</span>就是发生在所有不同时刻的矩形脉冲的叠加。随着<span
-class="math inline">\(\Delta\)</span>趋近于<span
-class="math inline">\(0\)</span>，阶梯信号的锯齿越小，<span
-class="math inline">\(\hat{x}(t)\)</span>将越来越趋近<span
-class="math inline">\(x(t)\)</span>，用公式描述就是</p>
-<p><span class="math display">\[
-\begin{equation}
-x(t) = \lim_{\Delta \to 0} \sum_{k=-\infty}^{+\infty}
-x(k\Delta)\delta_{\Delta}(t-k\Delta) \Delta  \tag{3}
-\end{equation}
-\]</span></p>
-<p>当<span class="math inline">\(\Delta \to 0\)</span>时，<span
-class="math inline">\(\delta_{\Delta}(t)\)</span>的极限就是单位脉冲函数<span
-class="math inline">\(\delta(t)\)</span>。将求和符号变成积分符号、<span
-class="math inline">\(k\Delta \to \tau\)</span>、<span
-class="math inline">\(\Delta \to \mathrm{d}\tau\)</span>，得</p>
-<p><span class="math display">\[
-\begin{equation}
-x(t) = \int_{-\infty}^{+\infty} x(\tau) \delta(t-\tau)
-\mathrm{d}\tau  \tag{4}
-\end{equation}
-\]</span></p>
+<p>$$<br>\begin{equation}<br>\delta_{\Delta}(t) &#x3D;<br>\begin{cases}<br>1&#x2F;\Delta,  &amp; 0 \le t &lt; \Delta \<br>0, &amp; 其他<br>\end{cases}  \tag{1}<br>\end{equation}<br>$$</p>
+<p>这个信号在时间$0 \le t &lt; \Delta$的值为$1&#x2F;\Delta$，其余时间为$0$，函数图像是宽度为$\Delta$、高度为$1&#x2F;\Delta$、面积为$1$的矩形。那么$\delta_{\Delta}(t) \cdot \Delta$就是宽度为$\Delta$，高度为$1$的信号，我们用这个信号来描述从$0$时刻开始作用、持续时间为$\Delta$、力度为一个单位的一次打击。</p>
+<p>把$\delta_{\Delta}(t)$沿着时间轴平移时间$k\Delta$得到信号$\delta_{\Delta}(t-k\Delta)$，它从$k\Delta$时刻开始作用，持续时间为$\Delta$。那么信号$x(k\Delta)\delta_{\Delta}(t-k\Delta) \Delta$表示力度为$x(k\Delta)$、从$k\Delta$时刻开始作用、持续时间为$\Delta$的一次打击。整个廷杖过程可以看成发生在不同时刻的每板打击的叠加，所以输入信号$x(t)$可以用如下的阶梯信号$\hat{x}(t)$来近似</p>
+<p>$$<br>\begin{equation}<br>\hat{x}(t) &#x3D; \sum_{k&#x3D;-\infty}^{+\infty} x(k\Delta)\delta_{\Delta}(t-k\Delta) \Delta  \tag{2}<br>\end{equation}<br>$$</p>
+<p>$\hat{x}(t)$就是发生在所有不同时刻的矩形脉冲的叠加。随着$\Delta$趋近于$0$，阶梯信号的锯齿越小，$\hat{x}(t)$将越来越趋近$x(t)$，用公式描述就是</p>
+<p>$$<br>\begin{equation}<br>x(t) &#x3D; \lim_{\Delta \to 0} \sum_{k&#x3D;-\infty}^{+\infty} x(k\Delta)\delta_{\Delta}(t-k\Delta) \Delta  \tag{3}<br>\end{equation}<br>$$</p>
+<p>当$\Delta \to 0$时，$\delta_{\Delta}(t)$的极限就是单位脉冲函数$\delta(t)$。将求和符号变成积分符号、$k\Delta \to \tau$、$\Delta \to \mathrm{d}\tau$，得</p>
+<p>$$<br>\begin{equation}<br>x(t) &#x3D; \int_{-\infty}^{+\infty} x(\tau) \delta(t-\tau) \mathrm{d}\tau  \tag{4}<br>\end{equation}<br>$$</p>
 <p>所以，任意输入信号可看成脉冲信号的移位叠加。</p>
-<p>假设已知单位力度的打击下身体痛苦程度随时间变化的函数，也就是单位脉冲响应<span
-class="math inline">\(h(t)\)</span>，从常理推断，该函数的曲线是先上升后逐渐衰减到<span
-class="math inline">\(0\)</span>。假设人体是个线性时不变系统，根据时不变性质，当输入信号延迟时间<span
-class="math inline">\(\tau\)</span>时，响应也会延迟同样的时间<span
-class="math inline">\(\tau\)</span>，即输入为<span
-class="math inline">\(\delta(t-\tau)\)</span>时，输出变为<span
-class="math inline">\(h(t-\tau)\)</span>。根据线性系统的齐次性，将打击力度放大某个倍数，痛苦程度也会放大相同的倍数，即输入为<span
-class="math inline">\(x(\tau)\delta(t-\tau)\)</span>时，输出变为<span
-class="math inline">\(x(\tau)h(t-\tau)\)</span>。根据线性系统的可加性，多次打击产生的伤害就等于每次打击单独作用的和，积分其实就是求和。综上所叙，连续打击产生的痛苦，即系统的输出</p>
-<p><span class="math display">\[
-\begin{equation}
-y(t) = \int_{-\infty}^{+\infty} x(\tau) h(t-\tau)
-\mathrm{d}\tau  \tag{5}
-\end{equation}
-\]</span></p>
-<p><span
-class="math inline">\((5)\)</span>就是著名的卷积公式。还可以使用如下的记号表示两个信号的卷积</p>
-<p><span class="math display">\[
-\begin{equation}
-x(t) * h(t) = \int_{-\infty}^{+\infty} x(\tau) h(t-\tau)
-\mathrm{d}\tau  \tag{6}
-\end{equation}
-\]</span></p>
+<p>假设已知单位力度的打击下身体痛苦程度随时间变化的函数，也就是单位脉冲响应$h(t)$，从常理推断，该函数的曲线是先上升后逐渐衰减到$0$。假设人体是个线性时不变系统，根据时不变性质，当输入信号延迟时间$\tau$时，响应也会延迟同样的时间$\tau$，即输入为$\delta(t-\tau)$时，输出变为$h(t-\tau)$。根据线性系统的齐次性，将打击力度放大某个倍数，痛苦程度也会放大相同的倍数，即输入为$x(\tau)\delta(t-\tau)$时，输出变为$x(\tau)h(t-\tau)$。根据线性系统的可加性，多次打击产生的伤害就等于每次打击单独作用的和，积分其实就是求和。综上所叙，连续打击产生的痛苦，即系统的输出</p>
+<p>$$<br>\begin{equation}<br>y(t) &#x3D; \int_{-\infty}^{+\infty} x(\tau) h(t-\tau) \mathrm{d}\tau  \tag{5}<br>\end{equation}<br>$$</p>
+<p>$(5)$就是著名的卷积公式。还可以使用如下的记号表示两个信号的卷积</p>
+<p>$$<br>\begin{equation}<br>x(t) * h(t) &#x3D; \int_{-\infty}^{+\infty} x(\tau) h(t-\tau) \mathrm{d}\tau  \tag{6}<br>\end{equation}<br>$$</p>
 <p>卷积的基本思想是，将输入信号转化成发生在不同时刻的脉冲信号的叠加，已知系统对单位脉冲信号的响应，将每个时刻的响应叠加起来就得到了总的响应。从上面的推导过程可以看出，正因为系统的线性和时不变性质，才得到了非常简洁漂亮的表达式。</p>
-<p>那么，已知系统的单位脉冲响应<span
-class="math inline">\(h(t)\)</span>，想计算任意输入信号<span
-class="math inline">\(x(t)\)</span>作用下系统的输出<span
-class="math inline">\(y(t)\)</span>，只要将<span
-class="math inline">\(x(t)\)</span>和<span
-class="math inline">\(h(t)\)</span>做卷积就可以了，所以单位脉冲响应能完全描述这个系统的特性。因此，卷积在时域分析中非常重要。</p>
+<p>那么，已知系统的单位脉冲响应$h(t)$，想计算任意输入信号$x(t)$作用下系统的输出$y(t)$，只要将$x(t)$和$h(t)$做卷积就可以了，所以单位脉冲响应能完全描述这个系统的特性。因此，卷积在时域分析中非常重要。</p>
 
     </div>
 
@@ -494,13 +411,13 @@ class="math inline">\(h(t)\)</span>做卷积就可以了，所以单位脉冲响
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">189k</span>
+    <span title="站点总字数">192k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:52</span>
+    <span title="站点阅读时长">2:54</span>
   </span>
 </div>
 
