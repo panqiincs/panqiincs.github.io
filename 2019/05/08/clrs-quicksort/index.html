@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="主要内容快速排序通常是实际排序应用中最好的选择。它在最坏情况下的时间复杂度很差，但是平均性能非常好。另外，它能够进行原址排序。">
+    <meta name="description" content="主要内容 快速排序通常是实际排序应用中最好的选择。它在最坏情况下的时间复杂度很差，但是平均性能非常好。另外，它能够进行原址排序。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法导论第 7 章：快速排序">
 <meta property="og:url" content="https://panqiincs.me/2019/05/08/clrs-quicksort/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="主要内容快速排序通常是实际排序应用中最好的选择。它在最坏情况下的时间复杂度很差，但是平均性能非常好。另外，它能够进行原址排序。">
+<meta property="og:description" content="主要内容 快速排序通常是实际排序应用中最好的选择。它在最坏情况下的时间复杂度很差，但是平均性能非常好。另外，它能够进行原址排序。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-05-08T03:04:09.000Z">
 <meta property="article:modified_time" content="2021-12-14T05:43:33.520Z">
@@ -314,41 +314,113 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p><strong>快速排序</strong>通常是实际排序应用中最好的选择。它在最坏情况下的时间复杂度很差，但是平均性能非常好。另外，它能够进行原址排序。</p>
+        <h2 id="主要内容">主要内容</h2>
+<p><strong>快速排序</strong>通常是实际排序应用中最好的选择。它在最坏情况下的时间复杂度很差，但是平均性能非常好。另外，它能够进行原址排序。</p>
 <span id="more"></span>
-
-<h2 id="快速排序的描述"><a href="#快速排序的描述" class="headerlink" title="快速排序的描述"></a>快速排序的描述</h2><p>与归并排序一样，快速排序也用到了分治思想。其主过程的代码如下：</p>
+<h2 id="快速排序的描述">快速排序的描述</h2>
+<p>与归并排序一样，快速排序也用到了分治思想。其主过程的代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">quicksort</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> p, <span class="type">int</span> r)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (p &lt; r) &#123;</span><br><span class="line">        <span class="type">int</span> q = partition(A, p, r);</span><br><span class="line">        quicksort(A, p, q<span class="number">-1</span>);</span><br><span class="line">        quicksort(A, q+<span class="number">1</span>, r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>算法的关键是数组划分过程PARTITION，它实现了对子数组$A[p..r]$的原址重排。选择$x&#x3D;A[r]$作为主元，围绕它来划分数组$A[p..r]$。完成划分后，$A[p..q-1]$的每一个元素都小于等于$A[q]$，而$A[q]$也小于等于$A[q+1..r]$中的每个元素。程序最后返回主元的新小标。代码如下：</p>
+<p>算法的关键是数组划分过程PARTITION，它实现了对子数组<span
+class="math inline">\(A[p..r]\)</span>的原址重排。选择<span
+class="math inline">\(x=A[r]\)</span>作为主元，围绕它来划分数组<span
+class="math inline">\(A[p..r]\)</span>。完成划分后，<span
+class="math inline">\(A[p..q-1]\)</span>的每一个元素都小于等于<span
+class="math inline">\(A[q]\)</span>，而<span
+class="math inline">\(A[q]\)</span>也小于等于<span
+class="math inline">\(A[q+1..r]\)</span>中的每个元素。程序最后返回主元的新小标。代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Exch</span><span class="params">(<span class="type">int</span> *arr, <span class="type">int</span> i, <span class="type">int</span> j)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> temp = arr[i];</span><br><span class="line">    arr[i] = arr[j];</span><br><span class="line">    arr[j] = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">partition</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> p, <span class="type">int</span> r)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> x = A[r];</span><br><span class="line">    <span class="type">int</span> i = p - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = p; j &lt; r; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (A[j] &lt;= x) &#123;</span><br><span class="line">            ++i;</span><br><span class="line">            Exch(A, i, j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Exch(A, i+<span class="number">1</span>, r);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> (i + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>PARTITION在子数组$A[p..r]$上的复杂度为$\Theta(n)$，其中$n&#x3D;r-p+1$。</p>
-<h2 id="快速排序的性能"><a href="#快速排序的性能" class="headerlink" title="快速排序的性能"></a>快速排序的性能</h2><p>当划分产生的两个子问题分别包含了$n-1$个元素和$0$个元素时，快速排序的<strong>最坏情况</strong>就发生了。假设算法的每一次递归调用中都出现了这种不平衡划分，可以得到如下的递归式：</p>
-<p>$$<br>T(n) &#x3D; T(n-1) + T(0) + \Theta(n) &#x3D; T(n-1) + \Theta(n)<br>$$</p>
-<p>可以得到时间复杂度为$T(n) &#x3D; \Theta(n^2)$，也就是说，最坏情况下，快速排序的运行时间并不比插入排序好。当输入数组已经完全有序时，快速排序的时间复杂度为$\Theta(n^2)$，而这种情况下插入排序的时间复杂度为$O(n)$。</p>
-<p>在可能的最平衡的划分中，PARTITION得到的两个子问题的规模都不大于$n&#x2F;2$，这便是快速排序的<strong>最好情况</strong>。运行时间的递归式为：</p>
-<p>$$<br>T(n) &#x3D; 2T(n&#x2F;2) + \Theta(n)<br>$$</p>
-<p>上述递归式的解为$T(n) &#x3D; \Theta(n \lg n)$，通过在每一层递归中都平衡划分子数组，我们得到了渐近时间上更快的算法。</p>
-<p>实际上，只要划分是常数比例的，算法的运行时间总是$O(n \lg n)$，即使是$99:1$的划分，其时间复杂度仍然是$O(n \lg n)$。当对一个随机输入的数组进行快速排序时，平均情况下，划分同时混合有「好」和「差」的划分。当好和差的划分交替出现时，快速排序的复杂度和全是好的划分时一样，仍然是$O(n \lg n)$，区别只在于隐含的常数因子要略大一些。</p>
-<h2 id="快速排序的随机化版本"><a href="#快速排序的随机化版本" class="headerlink" title="快速排序的随机化版本"></a>快速排序的随机化版本</h2><p>前面的讨论基于一个前提：输入数据的所有排列都是等概率的。实际工程中并不总是这样的，所以我们可以通过在算法中引入随机性，从而使得算法对于所有的输入都能获得较好的期望性能。</p>
-<p>可以从子数组$A[p..r]$中随机选择一个元素作为主元，这通过将$A[r]$与从$A[p..r]$中随机选出的一个元素交换来实现。由于主元元素是随机选取的，在平均情况下，对数组的划分是比较均衡的。随机化版本的划分函数实现代码如下：</p>
+<p>PARTITION在子数组<span
+class="math inline">\(A[p..r]\)</span>上的复杂度为<span
+class="math inline">\(\Theta(n)\)</span>，其中<span
+class="math inline">\(n=r-p+1\)</span>。</p>
+<h2 id="快速排序的性能">快速排序的性能</h2>
+<p>当划分产生的两个子问题分别包含了<span
+class="math inline">\(n-1\)</span>个元素和<span
+class="math inline">\(0\)</span>个元素时，快速排序的<strong>最坏情况</strong>就发生了。假设算法的每一次递归调用中都出现了这种不平衡划分，可以得到如下的递归式：</p>
+<p><span class="math display">\[
+T(n) = T(n-1) + T(0) + \Theta(n) = T(n-1) + \Theta(n)
+\]</span></p>
+<p>可以得到时间复杂度为<span class="math inline">\(T(n) =
+\Theta(n^2)\)</span>，也就是说，最坏情况下，快速排序的运行时间并不比插入排序好。当输入数组已经完全有序时，快速排序的时间复杂度为<span
+class="math inline">\(\Theta(n^2)\)</span>，而这种情况下插入排序的时间复杂度为<span
+class="math inline">\(O(n)\)</span>。</p>
+<p>在可能的最平衡的划分中，PARTITION得到的两个子问题的规模都不大于<span
+class="math inline">\(n/2\)</span>，这便是快速排序的<strong>最好情况</strong>。运行时间的递归式为：</p>
+<p><span class="math display">\[
+T(n) = 2T(n/2) + \Theta(n)
+\]</span></p>
+<p>上述递归式的解为<span class="math inline">\(T(n) = \Theta(n \lg
+n)\)</span>，通过在每一层递归中都平衡划分子数组，我们得到了渐近时间上更快的算法。</p>
+<p>实际上，只要划分是常数比例的，算法的运行时间总是<span
+class="math inline">\(O(n \lg n)\)</span>，即使是<span
+class="math inline">\(99:1\)</span>的划分，其时间复杂度仍然是<span
+class="math inline">\(O(n \lg
+n)\)</span>。当对一个随机输入的数组进行快速排序时，平均情况下，划分同时混合有「好」和「差」的划分。当好和差的划分交替出现时，快速排序的复杂度和全是好的划分时一样，仍然是<span
+class="math inline">\(O(n \lg
+n)\)</span>，区别只在于隐含的常数因子要略大一些。</p>
+<h2 id="快速排序的随机化版本">快速排序的随机化版本</h2>
+<p>前面的讨论基于一个前提：输入数据的所有排列都是等概率的。实际工程中并不总是这样的，所以我们可以通过在算法中引入随机性，从而使得算法对于所有的输入都能获得较好的期望性能。</p>
+<p>可以从子数组<span
+class="math inline">\(A[p..r]\)</span>中随机选择一个元素作为主元，这通过将<span
+class="math inline">\(A[r]\)</span>与从<span
+class="math inline">\(A[p..r]\)</span>中随机选出的一个元素交换来实现。由于主元元素是随机选取的，在平均情况下，对数组的划分是比较均衡的。随机化版本的划分函数实现代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">randomized_partition</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> p, <span class="type">int</span> r)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i = rand() % (r - p + <span class="number">1</span>) + p;  <span class="comment">// 生成从p到r的随机数</span></span><br><span class="line">    Exch(A, r, i);                     <span class="comment">// 将被选的主元交换到数组末尾</span></span><br><span class="line">    <span class="keyword">return</span> partition(A, p, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="快速排序分析"><a href="#快速排序分析" class="headerlink" title="快速排序分析"></a>快速排序分析</h2><p>本节用严格的数学推导计算了快速排序算法的运行时间。在输入元素互异的情况下，随机化版本的期望运行时间为$O(n \lg n)$。</p>
-<h2 id="习题解答"><a href="#习题解答" class="headerlink" title="习题解答"></a>习题解答</h2><h3 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h3><p><strong>7.1-2</strong> 解答：返回的$q$值等于$r$。可以加一个条件判断，如果$A[\lfloor (p+r)&#x2F;2 \rfloor]$等于$A[r]$，则返回$q &#x3D; \lfloor (p+r)&#x2F;2 \rfloor$。</p>
-<p><strong>7.1-3</strong> 解答：简单的证明就是，该操作只需要遍历一趟子数组。</p>
-<p><strong>7.1-4</strong> 解答：将PARTITION第四行小于等于号改成大于等于号即可。</p>
-<p><strong>7-2-2</strong> 解答：当所有元素都相同时，PARTITION返回值为$r$，会造成不平衡的划分，所以QUICKSORT的时间复杂度为$\Theta(n^2)$。</p>
-<p><strong>7-2-3</strong> 解答：当所有元素不同，而且按照降序排列时，PARTITION会返回$1$，造成不平衡的划分，所以时间复杂度为$\Theta(n^2)$。</p>
-<p><strong>7-2-4</strong> 解答：严格的证明太辛苦了，算了。因为它是几乎有序的输入序列，非递归的插入排序算法的性能会优于递归的快速排序算法。</p>
-<p><strong>7-2-5</strong> 解答：当$0 &lt; \alpha \le 1&#x2F;2$时，$\alpha \ge 1-\alpha$。如果某个分支正好每次都碰到较小的划分，则叶节点的深度最小，根据等式$n \alpha^x &#x3D; 1$求得深度$x &#x3D; \log_{\alpha} 1&#x2F;n &#x3D; - \lg n &#x2F; \lg \alpha$；如果某个分支正好每次都碰到较大的划分，则叶节点的深度最大，类似地有$n (1-\alpha)^x &#x3D; 1$，可以求得此时的深度为$- \lg n &#x2F; \lg (1-\alpha)$。</p>
-<p><strong>7-3-1</strong> 解答：因为有随机性，统计意义上的平均时间才有意义。</p>
-<p><strong>7-3-2</strong> 解答：最坏情况下随机数生成器RANDOM被调用了$\Theta(n)$次；最好情况下随机数生成器RANDOM被调用了$\Theta(\lg n)$次。</p>
-<h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><p><strong>7-1</strong> （Hoare划分的正确性） 根据题干中PARTITION过程的伪代码，我给出如下的代码实现：</p>
+<h2 id="快速排序分析">快速排序分析</h2>
+<p>本节用严格的数学推导计算了快速排序算法的运行时间。在输入元素互异的情况下，随机化版本的期望运行时间为<span
+class="math inline">\(O(n \lg n)\)</span>。</p>
+<h2 id="习题解答">习题解答</h2>
+<h3 id="练习题">练习题</h3>
+<p><strong>7.1-2</strong> 解答：返回的<span
+class="math inline">\(q\)</span>值等于<span
+class="math inline">\(r\)</span>。可以加一个条件判断，如果<span
+class="math inline">\(A[\lfloor (p+r)/2 \rfloor]\)</span>等于<span
+class="math inline">\(A[r]\)</span>，则返回<span class="math inline">\(q
+= \lfloor (p+r)/2 \rfloor\)</span>。</p>
+<p><strong>7.1-3</strong>
+解答：简单的证明就是，该操作只需要遍历一趟子数组。</p>
+<p><strong>7.1-4</strong>
+解答：将PARTITION第四行小于等于号改成大于等于号即可。</p>
+<p><strong>7-2-2</strong>
+解答：当所有元素都相同时，PARTITION返回值为<span
+class="math inline">\(r\)</span>，会造成不平衡的划分，所以QUICKSORT的时间复杂度为<span
+class="math inline">\(\Theta(n^2)\)</span>。</p>
+<p><strong>7-2-3</strong>
+解答：当所有元素不同，而且按照降序排列时，PARTITION会返回<span
+class="math inline">\(1\)</span>，造成不平衡的划分，所以时间复杂度为<span
+class="math inline">\(\Theta(n^2)\)</span>。</p>
+<p><strong>7-2-4</strong>
+解答：严格的证明太辛苦了，算了。因为它是几乎有序的输入序列，非递归的插入排序算法的性能会优于递归的快速排序算法。</p>
+<p><strong>7-2-5</strong> 解答：当<span class="math inline">\(0 &lt;
+\alpha \le 1/2\)</span>时，<span class="math inline">\(\alpha \ge
+1-\alpha\)</span>。如果某个分支正好每次都碰到较小的划分，则叶节点的深度最小，根据等式<span
+class="math inline">\(n \alpha^x = 1\)</span>求得深度<span
+class="math inline">\(x = \log_{\alpha} 1/n = - \lg n / \lg
+\alpha\)</span>；如果某个分支正好每次都碰到较大的划分，则叶节点的深度最大，类似地有<span
+class="math inline">\(n (1-\alpha)^x =
+1\)</span>，可以求得此时的深度为<span class="math inline">\(- \lg n /
+\lg (1-\alpha)\)</span>。</p>
+<p><strong>7-3-1</strong>
+解答：因为有随机性，统计意义上的平均时间才有意义。</p>
+<p><strong>7-3-2</strong>
+解答：最坏情况下随机数生成器RANDOM被调用了<span
+class="math inline">\(\Theta(n)\)</span>次；最好情况下随机数生成器RANDOM被调用了<span
+class="math inline">\(\Theta(\lg n)\)</span>次。</p>
+<h3 id="思考题">思考题</h3>
+<p><strong>7-1</strong> （Hoare划分的正确性）
+根据题干中PARTITION过程的伪代码，我给出如下的代码实现：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">hoare_partition</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> p, <span class="type">int</span> r)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> x = A[p];</span><br><span class="line">    <span class="type">int</span> i = p - <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> j = r + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            --j;</span><br><span class="line">        &#125; <span class="keyword">while</span> (A[j] &gt; x);</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            ++i;</span><br><span class="line">        &#125; <span class="keyword">while</span> (A[i] &lt; x);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; j) &#123;</span><br><span class="line">            Exch(A, i, j);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>习题解答如下：<br>a）略。<br>b）因为两端的下表$i$和$j$分别递增和递减向中间靠拢，而且一旦有$i \ge j$，函数即返回，所以不会访问到数组外的元素。<br>c）因为只有$i \ge j$函数才会返回，所以返回值$j$不可能等于$r$，有可能等于$p$。<br>d）当$A[i]&gt;x$且$A[j]&lt;x$时，会交换两个元素的位置，所以满足题目中的条件。<br>e）要将主程序稍微修改一下：</p>
+<p>习题解答如下： a）略。 b）因为两端的下表<span
+class="math inline">\(i\)</span>和<span
+class="math inline">\(j\)</span>分别递增和递减向中间靠拢，而且一旦有<span
+class="math inline">\(i \ge
+j\)</span>，函数即返回，所以不会访问到数组外的元素。 c）因为只有<span
+class="math inline">\(i \ge j\)</span>函数才会返回，所以返回值<span
+class="math inline">\(j\)</span>不可能等于<span
+class="math inline">\(r\)</span>，有可能等于<span
+class="math inline">\(p\)</span>。 d）当<span
+class="math inline">\(A[i]&gt;x\)</span>且<span
+class="math inline">\(A[j]&lt;x\)</span>时，会交换两个元素的位置，所以满足题目中的条件。
+e）要将主程序稍微修改一下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">quicksort</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> p, <span class="type">int</span> r)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (p &lt; r) &#123;</span><br><span class="line">        <span class="type">int</span> q = hoare_partition(A, p, r);  <span class="comment">// 调用hoare_partition</span></span><br><span class="line">        quicksort(A, p, q);                <span class="comment">// 排序小于主元的部分，此行有修改</span></span><br><span class="line">        quicksort(A, q+<span class="number">1</span>, r);              <span class="comment">// 排序大于等于主元的部分</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
