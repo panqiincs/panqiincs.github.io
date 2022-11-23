@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="介绍 求解微分方程的数值解一般使用MATLAB等数值计算软件，其实C++也可以求解微分方程，要用到odeint库，它是boost库的一部分。官方教程和示例比较晦涩，本文力求用较短的篇幅介绍它的基本用法。">
+    <meta name="description" content="介绍求解微分方程的数值解一般使用MATLAB等数值计算软件，其实C++也可以求解微分方程，要用到odeint库，它是boost库的一部分。官方教程和示例比较晦涩，本文力求用较短的篇幅介绍它的基本用法。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用C++的odeint库求解微分方程">
 <meta property="og:url" content="https://panqiincs.me/2021/09/17/solve-ode-with-odeint/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="介绍 求解微分方程的数值解一般使用MATLAB等数值计算软件，其实C++也可以求解微分方程，要用到odeint库，它是boost库的一部分。官方教程和示例比较晦涩，本文力求用较短的篇幅介绍它的基本用法。">
+<meta property="og:description" content="介绍求解微分方程的数值解一般使用MATLAB等数值计算软件，其实C++也可以求解微分方程，要用到odeint库，它是boost库的一部分。官方教程和示例比较晦涩，本文力求用较短的篇幅介绍它的基本用法。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-17T04:20:53.000Z">
 <meta property="article:modified_time" content="2022-06-04T04:30:16.405Z">
@@ -299,7 +299,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>3.9k</span>
+      <span>4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -317,21 +317,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="介绍">介绍</h2>
-<p>求解微分方程的数值解一般使用MATLAB等数值计算软件，其实C++也可以求解微分方程，要用到odeint库，它是boost库的一部分。官方教程和示例比较晦涩，本文力求用较短的篇幅介绍它的基本用法。</p>
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>求解微分方程的数值解一般使用MATLAB等数值计算软件，其实C++也可以求解微分方程，要用到odeint库，它是boost库的一部分。官方教程和示例比较晦涩，本文力求用较短的篇幅介绍它的基本用法。</p>
 <span id="more"></span>
+
 <p>所求解的微分方程的标准形式为</p>
-<p><span class="math display">\[
-\dot{\mathbf{x}} = \mathbf{f}(\mathbf{x}, t),\, \mathbf{x}(0) =
-\mathbf{x_0}
-\]</span></p>
-<p>这是一阶微分方程组，<span
-class="math inline">\(\mathbf{x}\)</span>和<span
-class="math inline">\(\mathbf{f}(\mathbf{x},
-t)\)</span>均为向量。高阶微分方程要先转换成一阶微分方程组，然后再用odeint求解。</p>
-<h2 id="integrate函数">integrate函数</h2>
-<p>API中最重要的是integrate函数，一共有5种，它们的调用接口很类似。<code>integrate_const</code>的函数调用方式为：</p>
+<p>$$<br>\dot{\mathbf{x}} &#x3D; \mathbf{f}(\mathbf{x}, t),, \mathbf{x}(0) &#x3D; \mathbf{x_0}<br>$$</p>
+<p>这是一阶微分方程组，$\mathbf{x}$和$\mathbf{f}(\mathbf{x}, t)$均为向量。高阶微分方程要先转换成一阶微分方程组，然后再用odeint求解。</p>
+<h2 id="integrate函数"><a href="#integrate函数" class="headerlink" title="integrate函数"></a>integrate函数</h2><p>API中最重要的是integrate函数，一共有5种，它们的调用接口很类似。<code>integrate_const</code>的函数调用方式为：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">integrate_const</span>(stepper, system, x0, t0, t1, dt, observer)</span><br></pre></td></tr></table></figure>
+
 <p>其中：</p>
 <ul>
 <li><code>stepper</code>是求解器，也就是所使用的数值算法（例如Runge-Kutta法、Euler法）</li>
@@ -344,89 +338,50 @@ t)\)</span>均为向量。高阶微分方程要先转换成一阶微分方程组
 <p>给定初始状态<code>x0</code>，integrate函数从初始时间<code>t0</code>到结束时间<code>t1</code>不断地调用给定的<code>stepper</code>，计算微分方程在不同时刻的解，用户还可以提供<code>observer</code>以分析某个时刻的状态值。具体选择哪个integrate函数取决于你想要什么类型的结果，也就是调用<code>observer</code>的频率。</p>
 <p><code>integrate_const</code>每过相等的时间间隔<code>dt</code>会调用一次<code>observer</code>，语法为：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">integrate_const</span>(stepper, system, x0, t0, t1, dt, observer)</span><br></pre></td></tr></table></figure>
+
 <p><code>integrate_n_steps</code>和前面的类似，但它不需要知道结束时间，它只需要知道要计算的步数，语法为：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">integrate_n_steps</span>(stepper, system, x0, t0, dt, n, observer)</span><br></pre></td></tr></table></figure>
+
 <p><code>integrate_times</code>计算用户给定时间点上的值，语法为：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">integrate_times</span>(stepper, system, x0, times_start, times_end, dt, observer)</span><br><span class="line"><span class="built_in">integrate_times</span>(stepper, system, x0, time_range, dt, observer)</span><br></pre></td></tr></table></figure>
+
 <p><code>integrate_adaptive</code>用于需要在每个时间间隔都调用<code>observer</code>的场合，语法为：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">integrate_adaptive</span>(stepper, system, x0, t0, t1, dt, observer)</span><br></pre></td></tr></table></figure>
-<p><code>integrate</code>最方便,
-不需要指定<code>stepper</code>，简单快捷，语法为：</p>
+
+<p><code>integrate</code>最方便, 不需要指定<code>stepper</code>，简单快捷，语法为：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">integrate</span>(system, x0, t0, t1, dt, observer)</span><br></pre></td></tr></table></figure>
-<p>求解器stepper的选择（比如自适应方式会根据误差修改时间间隔）会改变计算的具体实现方式,
-但是observer的调用（也就是输出结果）依然遵循上述规则。</p>
-<h2 id="求解单摆模型">求解单摆模型</h2>
-<h3 id="微分方程标准化">微分方程标准化</h3>
-<p>现在求单摆系统微分方程的解，以得到单摆角度随时间变化的规律。其微分方程</p>
-<p><span class="math display">\[
-\ddot{\theta}(t) = -\mu \dot{\theta}(t) - \frac{g}{L} \sin \theta(t)
-\]</span></p>
-<p><span
-class="math inline">\(\theta(t)\)</span>是摆角随时间变化的规律，<span
-class="math inline">\(\mu\)</span>是空气阻力系数，<span
-class="math inline">\(g\)</span>是重力加速度，<span
-class="math inline">\(L\)</span>是摆球到悬挂点的长度。首先将它转化成一阶微分方程组，新增一个变量角速度<span
-class="math inline">\(\omega(t) = \dot{\theta}(t)\)</span>，方程变为</p>
-<p><span class="math display">\[
-\begin{align*}
-\dot{\theta}(t) &amp; = \omega(t) \\
-\dot{\omega}(t) &amp; = -\mu \omega(t) - g \sin \theta(t) / L
-\end{align*}
-\]</span></p>
+
+<p>求解器stepper的选择（比如自适应方式会根据误差修改时间间隔）会改变计算的具体实现方式, 但是observer的调用（也就是输出结果）依然遵循上述规则。</p>
+<h2 id="求解单摆模型"><a href="#求解单摆模型" class="headerlink" title="求解单摆模型"></a>求解单摆模型</h2><h3 id="微分方程标准化"><a href="#微分方程标准化" class="headerlink" title="微分方程标准化"></a>微分方程标准化</h3><p>现在求单摆系统微分方程的解，以得到单摆角度随时间变化的规律。其微分方程</p>
+<p>$$<br>\ddot{\theta}(t) &#x3D; -\mu \dot{\theta}(t) - \frac{g}{L} \sin \theta(t)<br>$$</p>
+<p>$\theta(t)$是摆角随时间变化的规律，$\mu$是空气阻力系数，$g$是重力加速度，$L$是摆球到悬挂点的长度。首先将它转化成一阶微分方程组，新增一个变量角速度$\omega(t) &#x3D; \dot{\theta}(t)$，方程变为</p>
+<p>$$<br>\begin{align*}<br>\dot{\theta}(t) &amp; &#x3D; \omega(t) \<br>\dot{\omega}(t) &amp; &#x3D; -\mu \omega(t) - g \sin \theta(t) &#x2F; L<br>\end{align*}<br>$$</p>
 <p>令状态变量</p>
-<p><span class="math display">\[
-\mathbf{x} =
-\begin{bmatrix}
-x_1(t)\\
-x_2(t)
-\end{bmatrix}
-=
-\begin{bmatrix}
-\theta(t)\\
-\omega(t)
-\end{bmatrix}
-\]</span></p>
+<p>$$<br>\mathbf{x} &#x3D;<br>\begin{bmatrix}<br>x_1(t)\<br>x_2(t)<br>\end{bmatrix}<br>&#x3D;<br>\begin{bmatrix}<br>\theta(t)\<br>\omega(t)<br>\end{bmatrix}<br>$$</p>
 <p>微分方程组变为</p>
-<p><span class="math display">\[
-\dot{\mathbf{x}}=
-\begin{bmatrix}
-\dot{x}_1(t)\\
-\dot{x}_2(t)
-\end{bmatrix}
-=\mathbf{f}(\mathbf{x}, t)=
-\begin{bmatrix}
-x_2(t)\\
--\mu x_2(t) - g \sin x_1(t) / L
-\end{bmatrix}
-\]</span></p>
-<h3 id="代码实现">代码实现</h3>
-<p>代码中有如下几个关键点：</p>
-<ol type="1">
+<p>$$<br>\dot{\mathbf{x}}&#x3D;<br>\begin{bmatrix}<br>\dot{x}_1(t)\<br>\dot{x}_2(t)<br>\end{bmatrix}<br>&#x3D;\mathbf{f}(\mathbf{x}, t)&#x3D;<br>\begin{bmatrix}<br>x_2(t)\<br>-\mu x_2(t) - g \sin x_1(t) &#x2F; L<br>\end{bmatrix}<br>$$</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>代码中有如下几个关键点：</p>
+<ol>
 <li>要定义状态变量的类型，将<code>state_type</code>简单定义为<code>std::vector&lt;double&gt;</code>即可</li>
 <li>要用方程表示微分方程模型，和MATLAB中模型方程的写法非常类似</li>
 <li>要写一个Observer以打印出计算结果，Observer函数也可以直接将数据写入文件中</li>
-<li>要选择合适的求解器stepper，各种stepper的特点总结可以看<a
-target="_blank" rel="noopener" href="https://www.boost.org/doc/libs/1_66_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/getting_started/overview.html">这里</a></li>
+<li>要选择合适的求解器stepper，各种stepper的特点总结可以看<a target="_blank" rel="noopener" href="https://www.boost.org/doc/libs/1_66_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/getting_started/overview.html">这里</a></li>
 <li>要根据需要选择合适的integrate函数，一般选择<code>integrate_const</code>即可满足要求</li>
 </ol>
 <p>下面的代码可作为标准模板使用：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;boost/numeric/odeint.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> boost::numeric::odeint;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">double</span> g  = <span class="number">9.81</span>; <span class="comment">// 重力加速度</span></span><br><span class="line"><span class="type">const</span> <span class="type">double</span> L  = <span class="number">1.00</span>; <span class="comment">// 摆线长度</span></span><br><span class="line"><span class="type">const</span> <span class="type">double</span> mu = <span class="number">0.80</span>; <span class="comment">// 阻力系数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义状态变量的类型</span></span><br><span class="line"><span class="keyword">typedef</span> std::vector&lt;<span class="type">double</span>&gt; state_type;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 要求解的微分方程</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pendulum</span><span class="params">(<span class="type">const</span> state_type &amp;x, state_type &amp;dxdt, <span class="type">double</span> t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    dxdt[<span class="number">0</span>] = x[<span class="number">1</span>];</span><br><span class="line">    dxdt[<span class="number">1</span>] = -mu*x[<span class="number">1</span>] - g/L*<span class="built_in">sin</span>(x[<span class="number">0</span>]);    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Observer打印状态值</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">write_pendulum</span><span class="params">(<span class="type">const</span> state_type &amp;x, <span class="type">const</span> <span class="type">double</span> t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; t &lt;&lt; <span class="string">&#x27;\t&#x27;</span> &lt;&lt; x[<span class="number">0</span>] &lt;&lt; <span class="string">&#x27;\t&#x27;</span> &lt;&lt; x[<span class="number">1</span>] &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 初始条件，二维向量</span></span><br><span class="line">    state_type x = &#123;<span class="number">0.10</span> , <span class="number">0.00</span>&#125;;</span><br><span class="line">    <span class="comment">// 求解方法为runge_kutta4</span></span><br><span class="line">    <span class="built_in">integrate_const</span>(<span class="built_in">runge_kutta4</span>&lt;state_type&gt;(), pendulum, x , <span class="number">0.0</span> , <span class="number">5.0</span> , <span class="number">0.01</span> , write_pendulum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>编译该程序依赖boost库，要在<code>CMakeLists.txt</code>中添加相应的内容。编译成功后运行，会得到如下的结果：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">0       0.1     0</span><br><span class="line">0.01    0.0999512       -0.009753</span><br><span class="line">0.02    0.0998052       -0.0194188</span><br><span class="line">0.03    0.0995631       -0.0289887</span><br><span class="line">0.04    0.0992258       -0.0384542</span><br><span class="line">0.05    0.0987944       -0.0478069</span><br><span class="line">0.06    0.0982701       -0.0570385</span><br><span class="line">0.07    0.0976541       -0.0661412</span><br><span class="line">0.08    0.0969477       -0.075107</span><br><span class="line">0.09    0.0961524       -0.0839283</span><br><span class="line">0.1     0.0952696       -0.0925977</span><br><span class="line">0.11    0.094301        -0.101108</span><br><span class="line">----    many lines ommitted    ----</span><br></pre></td></tr></table></figure>
+
 <p>可以将输出数据重定向到文本文件<code>data.txt</code>中，然后使用Python等脚本语言提取数据并画图显示。下面是实现该功能的参考代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">lines = <span class="built_in">tuple</span>(<span class="built_in">open</span>(<span class="string">&quot;data.txt&quot;</span>, <span class="string">&#x27;r&#x27;</span>)) <span class="comment"># 读取文件行到tuple中</span></span><br><span class="line"></span><br><span class="line">rows = <span class="built_in">len</span>(lines)</span><br><span class="line">time  = np.zeros(rows)</span><br><span class="line">theta = np.zeros(rows)</span><br><span class="line">omega = np.zeros(rows)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> r <span class="keyword">in</span> <span class="built_in">range</span>(rows):</span><br><span class="line">    [str1, str2, str3] = lines[r].split()</span><br><span class="line">    time[r]  = <span class="built_in">float</span>(str1)</span><br><span class="line">    theta[r] = <span class="built_in">float</span>(str2)</span><br><span class="line">    omega[r] = <span class="built_in">float</span>(str3)</span><br><span class="line"></span><br><span class="line">plt.plot(time, theta, time, omega) <span class="comment"># 角度和角速度变化</span></span><br><span class="line"><span class="comment"># plt.plot(theta, omega) # 相图</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<h2 id="参考">参考</h2>
-<ol type="1">
-<li><a
-target="_blank" rel="noopener" href="https://www.boost.org/doc/libs/1_66_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/getting_started/overview.html">Overview</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://www.boost.org/doc/libs/1_65_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/odeint_in_detail/integrate_functions.html">Integrate
-funcitons</a></li>
-<li><a
-target="_blank" rel="noopener" href="http://boccelliengineering.altervista.org/junk/boost_integration/boost_odeint.html">Numerical
-integration in C++ with Boost odeint</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.scholarpedia.org/article/Odeint_library">Odeint
-library</a></li>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.boost.org/doc/libs/1_66_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/getting_started/overview.html">Overview</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.boost.org/doc/libs/1_65_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/odeint_in_detail/integrate_functions.html">Integrate funcitons</a></li>
+<li><a target="_blank" rel="noopener" href="http://boccelliengineering.altervista.org/junk/boost_integration/boost_odeint.html">Numerical integration in C++ with Boost odeint</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.scholarpedia.org/article/Odeint_library">Odeint library</a></li>
 </ol>
 
     </div>
