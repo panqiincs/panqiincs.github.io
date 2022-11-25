@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2022-11-25T12:51:42.529Z</updated>
+  <updated>2022-11-25T14:31:28.020Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -21,10 +21,10 @@
     <link href="https://panqiincs.me/2022/11/25/crypto-cpa-security/"/>
     <id>https://panqiincs.me/2022/11/25/crypto-cpa-security/</id>
     <published>2022-11-25T00:39:36.000Z</published>
-    <updated>2022-11-25T12:51:42.529Z</updated>
+    <updated>2022-11-25T14:31:28.020Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;cpa安全性定义&quot;&gt;CPA安全性定义&lt;/h2&gt;
+    <summary type="html">&lt;h2 id=&quot;安全性定义&quot;&gt;安全性定义&lt;/h2&gt;
 &lt;p&gt;选择明文攻击（Chosen-Plaintext
 Attack）指的是敌手能够选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。&lt;/p&gt;</summary>
     
