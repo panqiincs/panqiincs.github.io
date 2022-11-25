@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="主要内容本章讲解如何简化算法的渐近分析，介绍了几类渐近记号。最后简单介绍了常用函数的性质。本章的内容在这里描述得非常简略，但为了保持整个系列的完整性，还是贴出来了。">
+    <meta name="description" content="主要内容 本章讲解如何简化算法的渐近分析，介绍了几类渐近记号。最后简单介绍了常用函数的性质。本章的内容在这里描述得非常简略，但为了保持整个系列的完整性，还是贴出来了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法导论第 3 章：函数的增长">
 <meta property="og:url" content="https://panqiincs.me/2019/03/10/clrs-growth-of-functions/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="主要内容本章讲解如何简化算法的渐近分析，介绍了几类渐近记号。最后简单介绍了常用函数的性质。本章的内容在这里描述得非常简略，但为了保持整个系列的完整性，还是贴出来了。">
+<meta property="og:description" content="主要内容 本章讲解如何简化算法的渐近分析，介绍了几类渐近记号。最后简单介绍了常用函数的性质。本章的内容在这里描述得非常简略，但为了保持整个系列的完整性，还是贴出来了。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-03-10T06:06:12.000Z">
 <meta property="article:modified_time" content="2021-12-14T05:43:33.520Z">
@@ -295,7 +295,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>3.3k</span>
+      <span>3.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -313,74 +313,205 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>本章讲解如何简化算法的<strong>渐近分析</strong>，介绍了几类渐近记号。最后简单介绍了常用函数的性质。本章的内容在这里描述得非常简略，但为了保持整个系列的完整性，还是贴出来了。</p>
+        <h2 id="主要内容">主要内容</h2>
+<p>本章讲解如何简化算法的<strong>渐近分析</strong>，介绍了几类渐近记号。最后简单介绍了常用函数的性质。本章的内容在这里描述得非常简略，但为了保持整个系列的完整性，还是贴出来了。</p>
 <span id="more"></span>
-
-<h3 id="渐近记号"><a href="#渐近记号" class="headerlink" title="渐近记号"></a>渐近记号</h3><p>本章介绍了如下渐近记号，它们的严格定义分别如下：</p>
-<ol>
-<li>若$f(n) &#x3D; \Theta(g(n))$，则存在正常量$c_1$、$c_2$和$n_0$，使得对所有$n \ge n_0$，有$0 \le c_1 g(n) \le f(n) \le c_2 g(n)$</li>
-<li>若$f(n) &#x3D; O(g(n))$，则存在正常量$c$和$n_0$，使得对所有$n \ge n_0$，有$0 \le f(n) \le c g(n)$</li>
-<li>若$f(n) &#x3D; \Omega(g(n))$，则存在正常量$c$和$n_0$，使得对所有$n \ge n_0$，有$0 \le c g(n) \le f(n)$</li>
-<li>若$f(n) &#x3D; o(g(n))$，则对任意$c&gt;0$，存在常量$n_0&gt;0$，使得对所有$n \ge n_0$，有$0 \le f(n) &lt; c g(n)$</li>
-<li>若$f(n) &#x3D; \omega(g(n))$，则对任意$c&gt;0$，存在常量$n_0&gt;0$，使得对所有$n \ge n_0$，有$0 \le c g(n) &lt; f(n)$</li>
+<h3 id="渐近记号">渐近记号</h3>
+<p>本章介绍了如下渐近记号，它们的严格定义分别如下：</p>
+<ol type="1">
+<li>若<span class="math inline">\(f(n) =
+\Theta(g(n))\)</span>，则存在正常量<span
+class="math inline">\(c_1\)</span>、<span
+class="math inline">\(c_2\)</span>和<span
+class="math inline">\(n_0\)</span>，使得对所有<span
+class="math inline">\(n \ge n_0\)</span>，有<span
+class="math inline">\(0 \le c_1 g(n) \le f(n) \le c_2 g(n)\)</span></li>
+<li>若<span class="math inline">\(f(n) =
+O(g(n))\)</span>，则存在正常量<span
+class="math inline">\(c\)</span>和<span
+class="math inline">\(n_0\)</span>，使得对所有<span
+class="math inline">\(n \ge n_0\)</span>，有<span
+class="math inline">\(0 \le f(n) \le c g(n)\)</span></li>
+<li>若<span class="math inline">\(f(n) =
+\Omega(g(n))\)</span>，则存在正常量<span
+class="math inline">\(c\)</span>和<span
+class="math inline">\(n_0\)</span>，使得对所有<span
+class="math inline">\(n \ge n_0\)</span>，有<span
+class="math inline">\(0 \le c g(n) \le f(n)\)</span></li>
+<li>若<span class="math inline">\(f(n) = o(g(n))\)</span>，则对任意<span
+class="math inline">\(c&gt;0\)</span>，存在常量<span
+class="math inline">\(n_0&gt;0\)</span>，使得对所有<span
+class="math inline">\(n \ge n_0\)</span>，有<span
+class="math inline">\(0 \le f(n) &lt; c g(n)\)</span></li>
+<li>若<span class="math inline">\(f(n) =
+\omega(g(n))\)</span>，则对任意<span
+class="math inline">\(c&gt;0\)</span>，存在常量<span
+class="math inline">\(n_0&gt;0\)</span>，使得对所有<span
+class="math inline">\(n \ge n_0\)</span>，有<span
+class="math inline">\(0 \le c g(n) &lt; f(n)\)</span></li>
 </ol>
 <p>为了更形象地理解本节介绍的几种渐近记号，可以在两个函数的渐近比较和两个实数的比较之间做一种类比：</p>
 <ul>
-<li>$f(n) &#x3D; O(g(n))$类似于$a \le b$</li>
-<li>$f(n) &#x3D; \Omega(g(n))$类似于$a \ge b$</li>
-<li>$f(n) &#x3D; \Theta(g(n))$类似于$a &#x3D; b$</li>
-<li>$f(n) &#x3D; o(g(n))$类似于$a &lt; b$</li>
-<li>$f(n) &#x3D; \omega(g(n))$类似于$a &gt; b$</li>
+<li><span class="math inline">\(f(n) = O(g(n))\)</span>类似于<span
+class="math inline">\(a \le b\)</span></li>
+<li><span class="math inline">\(f(n) = \Omega(g(n))\)</span>类似于<span
+class="math inline">\(a \ge b\)</span></li>
+<li><span class="math inline">\(f(n) = \Theta(g(n))\)</span>类似于<span
+class="math inline">\(a = b\)</span></li>
+<li><span class="math inline">\(f(n) = o(g(n))\)</span>类似于<span
+class="math inline">\(a &lt; b\)</span></li>
+<li><span class="math inline">\(f(n) = \omega(g(n))\)</span>类似于<span
+class="math inline">\(a &gt; b\)</span></li>
 </ul>
-<h3 id="标准记号与常用函数"><a href="#标准记号与常用函数" class="headerlink" title="标准记号与常用函数"></a>标准记号与常用函数</h3><p>本节主要讲解了常用的数学函数和记号，涉及到高中数学和基础微积分的知识。</p>
-<h2 id="习题解答"><a href="#习题解答" class="headerlink" title="习题解答"></a>习题解答</h2><h3 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h3><p><strong>3.1-1</strong> 解答：即需证明存在正常数$c_1$，$c_2$和$n_0$，使得当$n \ge n_0$时有：</p>
-<p>$$ c_1(f(n)+g(n)) \le \max(f(n), g(n)) \le c_2(f(n)+g(n)) $$</p>
-<p>由于$f(n)$和$g(n)$均是渐近非负函数，所以存在$n_0$，使得当$n \ge n_0$时，有$f(n) \ge 0$和$g(n) \ge 0$。令</p>
-<p>$$ h(x) &#x3D; \max(f(n), g(n))$$</p>
+<h3 id="标准记号与常用函数">标准记号与常用函数</h3>
+<p>本节主要讲解了常用的数学函数和记号，涉及到高中数学和基础微积分的知识。</p>
+<h2 id="习题解答">习题解答</h2>
+<h3 id="练习题">练习题</h3>
+<p><strong>3.1-1</strong> 解答：即需证明存在正常数<span
+class="math inline">\(c_1\)</span>，<span
+class="math inline">\(c_2\)</span>和<span
+class="math inline">\(n_0\)</span>，使得当<span class="math inline">\(n
+\ge n_0\)</span>时有：</p>
+<p><span class="math display">\[ c_1(f(n)+g(n)) \le \max(f(n), g(n)) \le
+c_2(f(n)+g(n)) \]</span></p>
+<p>由于<span class="math inline">\(f(n)\)</span>和<span
+class="math inline">\(g(n)\)</span>均是渐近非负函数，所以存在<span
+class="math inline">\(n_0\)</span>，使得当<span class="math inline">\(n
+\ge n_0\)</span>时，有<span class="math inline">\(f(n) \ge
+0\)</span>和<span class="math inline">\(g(n) \ge 0\)</span>。令</p>
+<p><span class="math display">\[ h(x) = \max(f(n), g(n))\]</span></p>
 <p>则</p>
-<p>$$ 0 \le f(n) \le h(n) \\<br>0 \le g(n) \le h(n) $$</p>
+<p><span class="math display">\[ 0 \le f(n) \le h(n) \\\\
+0 \le g(n) \le h(n) \]</span></p>
 <p>所以有</p>
-<p>$$ 0 \le f(n)+g(n) \le 2h(n) \\<br>0 \le (f(n)+g(n))&#x2F;2 \le h(n) $$</p>
+<p><span class="math display">\[ 0 \le f(n)+g(n) \le 2h(n) \\\\
+0 \le (f(n)+g(n))/2 \le h(n) \]</span></p>
 <p>又有</p>
-<p>$$ h(n) \le f(n)+g(n) $$</p>
-<p>所以存在$c_1 &#x3D; 1&#x2F;2$，$c_2 &#x3D; 1$和$n_0 \ge 0$满足条件，得证。</p>
-<p><strong>3.1-2</strong> 解答：即需证明存在正常数$c_1$，$c_2$和$n_0$，使得当$n \ge n_0$时有：</p>
-<p>$$ c_1 n^b \le (n+a)^b \le c_2 n^b $$</p>
+<p><span class="math display">\[ h(n) \le f(n)+g(n) \]</span></p>
+<p>所以存在<span class="math inline">\(c_1 = 1/2\)</span>，<span
+class="math inline">\(c_2 = 1\)</span>和<span class="math inline">\(n_0
+\ge 0\)</span>满足条件，得证。</p>
+<p><strong>3.1-2</strong> 解答：即需证明存在正常数<span
+class="math inline">\(c_1\)</span>，<span
+class="math inline">\(c_2\)</span>和<span
+class="math inline">\(n_0\)</span>，使得当<span class="math inline">\(n
+\ge n_0\)</span>时有：</p>
+<p><span class="math display">\[ c_1 n^b \le (n+a)^b \le c_2 n^b
+\]</span></p>
 <p>即</p>
-<p>$$ c_1 \le (1+a&#x2F;n)^b \le c_2 $$</p>
-<p>当$b &gt; 0$时，幂函数在$[0, +\infty)$上单调递增。下面根据$a$的符号分情况讨论：</p>
-<ol>
-<li>当$a &gt; 0$时，令$n \ge n_0 &#x3D; a$，则有$1 \le 1+a&#x2F;n \le 2$，即$c_1 &#x3D; 1, c_2 &#x3D; 2$，根据幂函数的单调性，上式成立；</li>
-<li>当$a &lt; 0$时，$1+a&#x2F;n &#x3D; 1-|a|&#x2F;n$，令$n \ge n_0 &#x3D; 2|a|$，则有$1&#x2F;2 \le (1-|a|&#x2F;n) \le 1$，即$c_1 &#x3D; 1&#x2F;2, c_2 &#x3D; 1$，根据幂函数的单调性，上式成立。</li>
+<p><span class="math display">\[ c_1 \le (1+a/n)^b \le c_2 \]</span></p>
+<p>当<span class="math inline">\(b &gt; 0\)</span>时，幂函数在<span
+class="math inline">\([0, +\infty)\)</span>上单调递增。下面根据<span
+class="math inline">\(a\)</span>的符号分情况讨论：</p>
+<ol type="1">
+<li>当<span class="math inline">\(a &gt; 0\)</span>时，令<span
+class="math inline">\(n \ge n_0 = a\)</span>，则有<span
+class="math inline">\(1 \le 1+a/n \le 2\)</span>，即<span
+class="math inline">\(c_1 = 1, c_2 =
+2\)</span>，根据幂函数的单调性，上式成立；</li>
+<li>当<span class="math inline">\(a &lt; 0\)</span>时，<span
+class="math inline">\(1+a/n = 1-|a|/n\)</span>，令<span
+class="math inline">\(n \ge n_0 = 2|a|\)</span>，则有<span
+class="math inline">\(1/2 \le (1-|a|/n) \le 1\)</span>，即<span
+class="math inline">\(c_1 = 1/2, c_2 =
+1\)</span>，根据幂函数的单调性，上式成立。</li>
 </ol>
 <p>所以得证。</p>
-<p><strong>3.1-3</strong> 解答：因为$O$符号没有提供一个下界。</p>
-<p><strong>3.1-4</strong> 解答：$2^{n+1} &#x3D; O(2^n)$成立，$2^{2n} &#x3D; O(2^n)$不成立。</p>
+<p><strong>3.1-3</strong> 解答：因为<span
+class="math inline">\(O\)</span>符号没有提供一个下界。</p>
+<p><strong>3.1-4</strong> 解答：<span class="math inline">\(2^{n+1} =
+O(2^n)\)</span>成立，<span class="math inline">\(2^{2n} =
+O(2^n)\)</span>不成立。</p>
 <p><strong>3.1-5</strong> 解答：要证明的公式是：</p>
-<p>$$ \lim_{n \to \infty}f(n)&#x2F;g(n) &#x3D; 0 $$</p>
-<p>根据数列极限的$\epsilon-N$定义，对任意$\epsilon &gt; 0$，存在自然数$N$使得当$n &gt; N$时，有$|f(n)&#x2F;g(n)| &lt; \epsilon$。</p>
-<p>根据$f(n) &#x3D; o(g(n))$的定义，对任意正常量$c &gt; 0$，存在$n_0 &gt; 0$，使得对所有$n \ge n_0$，有$0 \le f(n) &lt; cg(n)$，即$|f(n)&#x2F;g(n)| &lt; c$，取$\epsilon &#x3D; c$，$N &#x3D; n_0$，得证。</p>
-<p><strong>3.1-6</strong> 解答：$O$记号提供了一个渐近上界，$\Omega$记号提供了渐近下界，所以为$\Theta(g(n))$。严格证明略。</p>
-<p><strong>3.1-7</strong> 解答：类似于$a &lt; b$和$a &gt; b$不可能同时成立。</p>
-<p><strong>3.1-8</strong> 解答：$f(n, m) &#x3D; \Omega(g(n, m))$，则存在正常量$c$, $n_0$和$m_0$，使得对所有的$n \ge n_0$或$m \ge m_0$，有</p>
-<p>$$<br>0 \le cg(n, m) \le f(n, m)<br>$$</p>
-<p>$f(n, m) &#x3D; \Theta(g(n, m))$，则存在正常量$c_1$，$c_2$，$n_0$和$m_0$，使得对所有的$n \ge n_0$或$m \ge m_0$，有</p>
-<p>$$<br>c_1 g(n, m)  \le f(n, m) \le c_2 g(n, m)<br>$$</p>
+<p><span class="math display">\[ \lim_{n \to \infty}f(n)/g(n) = 0
+\]</span></p>
+<p>根据数列极限的<span
+class="math inline">\(\epsilon-N\)</span>定义，对任意<span
+class="math inline">\(\epsilon &gt; 0\)</span>，存在自然数<span
+class="math inline">\(N\)</span>使得当<span class="math inline">\(n &gt;
+N\)</span>时，有<span class="math inline">\(|f(n)/g(n)| &lt;
+\epsilon\)</span>。</p>
+<p>根据<span class="math inline">\(f(n) =
+o(g(n))\)</span>的定义，对任意正常量<span class="math inline">\(c &gt;
+0\)</span>，存在<span class="math inline">\(n_0 &gt;
+0\)</span>，使得对所有<span class="math inline">\(n \ge
+n_0\)</span>，有<span class="math inline">\(0 \le f(n) &lt;
+cg(n)\)</span>，即<span class="math inline">\(|f(n)/g(n)| &lt;
+c\)</span>，取<span class="math inline">\(\epsilon = c\)</span>，<span
+class="math inline">\(N = n_0\)</span>，得证。</p>
+<p><strong>3.1-6</strong> 解答：<span
+class="math inline">\(O\)</span>记号提供了一个渐近上界，<span
+class="math inline">\(\Omega\)</span>记号提供了渐近下界，所以为<span
+class="math inline">\(\Theta(g(n))\)</span>。严格证明略。</p>
+<p><strong>3.1-7</strong> 解答：类似于<span class="math inline">\(a &lt;
+b\)</span>和<span class="math inline">\(a &gt;
+b\)</span>不可能同时成立。</p>
+<p><strong>3.1-8</strong> 解答：<span class="math inline">\(f(n, m) =
+\Omega(g(n, m))\)</span>，则存在正常量<span
+class="math inline">\(c\)</span>, <span
+class="math inline">\(n_0\)</span>和<span
+class="math inline">\(m_0\)</span>，使得对所有的<span
+class="math inline">\(n \ge n_0\)</span>或<span class="math inline">\(m
+\ge m_0\)</span>，有</p>
+<p><span class="math display">\[
+0 \le cg(n, m) \le f(n, m)
+\]</span></p>
+<p><span class="math inline">\(f(n, m) = \Theta(g(n,
+m))\)</span>，则存在正常量<span
+class="math inline">\(c_1\)</span>，<span
+class="math inline">\(c_2\)</span>，<span
+class="math inline">\(n_0\)</span>和<span
+class="math inline">\(m_0\)</span>，使得对所有的<span
+class="math inline">\(n \ge n_0\)</span>或<span class="math inline">\(m
+\ge m_0\)</span>，有</p>
+<p><span class="math display">\[
+c_1 g(n, m)  \le f(n, m) \le c_2 g(n, m)
+\]</span></p>
 <p><strong>3.2-1</strong> 解答：按照单调性的定义即可证明，略。</p>
-<p><strong>3.2-2</strong> 解答：由公式$a &#x3D; b^{\log_b a}$得：</p>
-<p>$$<br>a^{\log_b c} &#x3D; (b^{\log_b a})^{\log_b c} &#x3D; b^{\log_b a \log_b c}  \\<br>c^{\log_b a} &#x3D; (b^{\log_b c})^{\log_b a} &#x3D; b^{\log_b c \log_b a}<br>$$</p>
+<p><strong>3.2-2</strong> 解答：由公式<span class="math inline">\(a =
+b^{\log_b a}\)</span>得：</p>
+<p><span class="math display">\[
+a^{\log_b c} = (b^{\log_b a})^{\log_b c} = b^{\log_b a \log_b c}  \\\\
+c^{\log_b a} = (b^{\log_b c})^{\log_b a} = b^{\log_b c \log_b a}
+\]</span></p>
 <p>得证。</p>
-<p><strong>3.2-3</strong> 解答：要证明的(3.19)式为$n! &#x3D; \Theta(n \lg n)$，借助斯特林近似公式，证明如下：</p>
-<p>$$<br>\lg(n!) &#x3D; \lg \sqrt{2 \pi n} + \lg (n&#x2F;e)^n + \lg (1+\Theta(1&#x2F;n)) &#x3D; \Theta(\lg n) + \Theta(n \lg n) &#x3D; \Theta(n \lg n)<br>$$</p>
-<p>要证明$n! &#x3D; o(n^n)$，证明$\lim_{n \to \infty}n!&#x2F;n^n &#x3D; 0$即可，代入斯特林近似公式即得证。</p>
-<p>要证明$n! &#x3D; \omega(2^n)$，证明$\lim_{n \to \infty}n!&#x2F;2^n &#x3D; \infty$即可。令$h(n) &#x3D; n!&#x2F;2^n$，则：</p>
-<p>$$h(n) &#x3D; \frac{n!}{2^n} &#x3D; \frac{(n-1)!}{2^{n-1}} \frac{n}{2} &#x3D; h(n-1) \frac{n}{2}$$</p>
-<p>当$n&#x3D;4$时，$h(n)&gt;1$，当$n&gt;4$时，$n&#x2F;2 &gt; 2$，所以$h(n) &gt; 2^{n-4}$，所以$h(n)$的极限为$\infty$。</p>
-<p><strong>3.2-6</strong> 解答：根据黄金分割率的定义有：$\phi &#x2F; 1 &#x3D; \phi &#x2F; (1 - \phi)$，即满足方程$x^2 &#x3D; x + 1$，得证。</p>
+<p><strong>3.2-3</strong> 解答：要证明的(3.19)式为<span
+class="math inline">\(n! = \Theta(n \lg
+n)\)</span>，借助斯特林近似公式，证明如下：</p>
+<p><span class="math display">\[
+\lg(n!) = \lg \sqrt{2 \pi n} + \lg (n/e)^n + \lg (1+\Theta(1/n)) =
+\Theta(\lg n) + \Theta(n \lg n) = \Theta(n \lg n)
+\]</span></p>
+<p>要证明<span class="math inline">\(n! = o(n^n)\)</span>，证明<span
+class="math inline">\(\lim_{n \to \infty}n!/n^n =
+0\)</span>即可，代入斯特林近似公式即得证。</p>
+<p>要证明<span class="math inline">\(n! =
+\omega(2^n)\)</span>，证明<span class="math inline">\(\lim_{n \to
+\infty}n!/2^n = \infty\)</span>即可。令<span class="math inline">\(h(n)
+= n!/2^n\)</span>，则：</p>
+<p><span class="math display">\[h(n) = \frac{n!}{2^n} =
+\frac{(n-1)!}{2^{n-1}} \frac{n}{2} = h(n-1) \frac{n}{2}\]</span></p>
+<p>当<span class="math inline">\(n=4\)</span>时，<span
+class="math inline">\(h(n)&gt;1\)</span>，当<span
+class="math inline">\(n&gt;4\)</span>时，<span class="math inline">\(n/2
+&gt; 2\)</span>，所以<span class="math inline">\(h(n) &gt;
+2^{n-4}\)</span>，所以<span
+class="math inline">\(h(n)\)</span>的极限为<span
+class="math inline">\(\infty\)</span>。</p>
+<p><strong>3.2-6</strong> 解答：根据黄金分割率的定义有：<span
+class="math inline">\(\phi / 1 = \phi / (1 -
+\phi)\)</span>，即满足方程<span class="math inline">\(x^2 = x +
+1\)</span>，得证。</p>
 <p><strong>3.2-7</strong> 解答：归纳法的步骤如下：</p>
-<ol>
-<li>初始情况$i &#x3D; 0$时，$F_0 &#x3D; (\phi^0 - \hat{\phi}^0)&#x2F;\sqrt{5} &#x3D; 0$，$i &#x3D; 1$时，$F_1 &#x3D; (\phi - \hat{\phi})&#x2F;\sqrt{5} &#x3D; 1$，符合</li>
-<li>证明当$n&#x3D;k-2$和$n&#x3D;k-1$成立，$n &#x3D; k$时也成立，代入公式，符合</li>
+<ol type="1">
+<li>初始情况<span class="math inline">\(i = 0\)</span>时，<span
+class="math inline">\(F_0 = (\phi^0 - \hat{\phi}^0)/\sqrt{5} =
+0\)</span>，<span class="math inline">\(i = 1\)</span>时，<span
+class="math inline">\(F_1 = (\phi - \hat{\phi})/\sqrt{5} =
+1\)</span>，符合</li>
+<li>证明当<span class="math inline">\(n=k-2\)</span>和<span
+class="math inline">\(n=k-1\)</span>成立，<span class="math inline">\(n
+= k\)</span>时也成立，代入公式，符合</li>
 </ol>
 <p>即可得证。</p>
 

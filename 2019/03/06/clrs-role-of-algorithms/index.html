@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="主要内容本章介绍了算法的定义、作用和重要性。简单地说，算法（algorithm）是定义良好的计算过程。算法是一系列的计算步骤，用来将输入数据转换成输出结果。算法能够解决各种类型的问题，应用面很广。">
+    <meta name="description" content="主要内容 本章介绍了算法的定义、作用和重要性。简单地说，算法（algorithm）是定义良好的计算过程。算法是一系列的计算步骤，用来将输入数据转换成输出结果。算法能够解决各种类型的问题，应用面很广。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法导论第 1 章：算法在计算中的作用">
 <meta property="og:url" content="https://panqiincs.me/2019/03/06/clrs-role-of-algorithms/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="主要内容本章介绍了算法的定义、作用和重要性。简单地说，算法（algorithm）是定义良好的计算过程。算法是一系列的计算步骤，用来将输入数据转换成输出结果。算法能够解决各种类型的问题，应用面很广。">
+<meta property="og:description" content="主要内容 本章介绍了算法的定义、作用和重要性。简单地说，算法（algorithm）是定义良好的计算过程。算法是一系列的计算步骤，用来将输入数据转换成输出结果。算法能够解决各种类型的问题，应用面很广。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-03-06T06:55:58.000Z">
 <meta property="article:modified_time" content="2021-10-23T05:48:13.006Z">
@@ -295,7 +295,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>617</span>
+      <span>622</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -313,19 +313,33 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>本章介绍了算法的定义、作用和重要性。简单地说，算法（algorithm）是定义良好的计算过程。算法是一系列的计算步骤，用来将输入数据转换成输出结果。算法能够解决各种类型的问题，应用面很广。</p>
+        <h2 id="主要内容">主要内容</h2>
+<p>本章介绍了算法的定义、作用和重要性。简单地说，算法（algorithm）是定义良好的计算过程。算法是一系列的计算步骤，用来将输入数据转换成输出结果。算法能够解决各种类型的问题，应用面很广。</p>
 <span id="more"></span>
-
 <p>计算机的计算资源和存储资源是有限的，时间和空间上有效的算法能够有效地利用这些有限的资源。解决同一问题的不同算法，效率常常相差很大，这种效率上差距的影响往往比硬件和软件的差距还要大。拥有扎实的算法知识和技术基础对程序员来说非常重要。</p>
-<h2 id="习题解答"><a href="#习题解答" class="headerlink" title="习题解答"></a>习题解答</h2><h3 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h3><p><strong>1.1-1</strong> 解答：奥运会的奖牌榜根据金银铜牌的个数排序。</p>
-<p><strong>1.1-2</strong> 解答：除了速度之外，耗费存储资源的大小也是效率的量度。</p>
-<p><strong>1.1-3</strong> 解答：链表的优势在于，可以按需分配存储资源，可以在任意位置插入和删除节点；局限在于，每个节点需要额外的空间存储指针变量，无法用下标快速访问节点。</p>
-<p><strong>1.1-4</strong> 解答：相似之处在于，它们都要寻找最短路径；不同之处在于，最短路径问题有最优算法，旅行商问题只有近似算法。</p>
-<p><strong>1.1-5</strong> 解答：导航软件给出的最短路径，只有最佳解才行；排版软件断行算法，近似最佳也可以。</p>
-<p><strong>1.2-1</strong> 解答：比如排版软件，当出现一长串英文单词时，需要算法计算在哪个位置断行最美观。</p>
-<p><strong>1.2-2</strong> 解答：当$n \le 42$时，$8n^2&lt;64n\log_{2}n$成立。</p>
-<p><strong>1.2-3</strong> 解答：当$n \ge 15$时，$100n^2&lt;2^n$成立。</p>
-<h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><p><strong>1.1</strong> 解答：即求取$f(n) &#x3D; t$的解。计算结果略。</p>
+<h2 id="习题解答">习题解答</h2>
+<h3 id="练习题">练习题</h3>
+<p><strong>1.1-1</strong>
+解答：奥运会的奖牌榜根据金银铜牌的个数排序。</p>
+<p><strong>1.1-2</strong>
+解答：除了速度之外，耗费存储资源的大小也是效率的量度。</p>
+<p><strong>1.1-3</strong>
+解答：链表的优势在于，可以按需分配存储资源，可以在任意位置插入和删除节点；局限在于，每个节点需要额外的空间存储指针变量，无法用下标快速访问节点。</p>
+<p><strong>1.1-4</strong>
+解答：相似之处在于，它们都要寻找最短路径；不同之处在于，最短路径问题有最优算法，旅行商问题只有近似算法。</p>
+<p><strong>1.1-5</strong>
+解答：导航软件给出的最短路径，只有最佳解才行；排版软件断行算法，近似最佳也可以。</p>
+<p><strong>1.2-1</strong>
+解答：比如排版软件，当出现一长串英文单词时，需要算法计算在哪个位置断行最美观。</p>
+<p><strong>1.2-2</strong> 解答：当<span class="math inline">\(n \le
+42\)</span>时，<span
+class="math inline">\(8n^2&lt;64n\log_{2}n\)</span>成立。</p>
+<p><strong>1.2-3</strong> 解答：当<span class="math inline">\(n \ge
+15\)</span>时，<span
+class="math inline">\(100n^2&lt;2^n\)</span>成立。</p>
+<h3 id="思考题">思考题</h3>
+<p><strong>1.1</strong> 解答：即求取<span class="math inline">\(f(n) =
+t\)</span>的解。计算结果略。</p>
 
     </div>
 
