@@ -28,6 +28,7 @@
 <meta property="og:site_name" content="辛未羊的网络日志">
 <meta property="og:description" content="时域分析主要基于闭环传递函数，因为它描述输入与输出之间的关系。一阶系统的结构图中包含单位负反馈，我最开始想不明白这点，以为结构图只是从闭环传递函数凑出来的，没有什么物理意义，其实不然。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/rc_diagram.png">
 <meta property="article:published_time" content="2022-03-25T15:27:35.000Z">
 <meta property="article:modified_time" content="2022-04-18T04:29:17.487Z">
 <meta property="article:author" content="Krist Pan">
@@ -35,6 +36,7 @@
 <meta property="article:tag" content="一阶系统">
 <meta property="article:tag" content="负反馈">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/rc_diagram.png">
 
 
 <link rel="canonical" href="https://panqiincs.me/2022/03/25/inertial-system-diagram/">
@@ -296,7 +298,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>577</span>
+      <span>605</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -316,32 +318,16 @@
     <div class="post-body" itemprop="articleBody">
         <p>时域分析主要基于闭环传递函数，因为它描述输入与输出之间的关系。一阶系统的结构图中包含单位负反馈，我最开始想不明白这点，以为结构图只是从闭环传递函数凑出来的，没有什么物理意义，其实不然。</p>
 <span id="more"></span>
+
 <p>以最简单的RC无源网络为例，它是典型的一阶系统，闭环传递函数</p>
-<p><span class="math display">\[
-\Phi(s) = \frac{1}{Ts+1} = \frac{1}{RCs+1}
-\]</span></p>
+<p>$$<br>\Phi(s) &#x3D; \frac{1}{Ts+1} &#x3D; \frac{1}{RCs+1}<br>$$</p>
 <p>开环传递函数</p>
-<p><span class="math display">\[
-G(s) = \frac{1}{Ts} = \frac{1}{RCs}
-\]</span></p>
-<figure>
-<img
-src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/rc_diagram.png"
-alt="RC无源网络及其结构图" />
-<figcaption aria-hidden="true">RC无源网络及其结构图</figcaption>
-</figure>
+<p>$$<br>G(s) &#x3D; \frac{1}{Ts} &#x3D; \frac{1}{RCs}<br>$$</p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/rc_diagram.png" alt="RC无源网络及其结构图"></p>
 <p>上图是RC无源网络的电路图和系统结构图。实际上，结构图可从物理模型推导出来。列写如下电路方程：</p>
-<p><span class="math display">\[
-i(t) = \frac{v_i(t)-v_o(t)}{R}
-\]</span> <span class="math display">\[
-v_o(t) = \frac{1}{C} \int i(t)\, \mathrm{d}x
-\]</span></p>
+<p>$$<br>i(t) &#x3D; \frac{v_i(t)-v_o(t)}{R}<br>$$<br>$$<br>v_o(t) &#x3D; \frac{1}{C} \int i(t), \mathrm{d}x<br>$$</p>
 <p>做拉普拉斯变换，得：</p>
-<p><span class="math display">\[
-I(s) = \frac{1}{R} \left[ V_i(s) - V_o(s) \right]
-\]</span> <span class="math display">\[
-V_o(s) = \frac{1}{Cs} I(s)
-\]</span></p>
+<p>$$<br>I(s) &#x3D; \frac{1}{R} \left[ V_i(s) - V_o(s) \right]<br>$$<br>$$<br>V_o(s) &#x3D; \frac{1}{Cs} I(s)<br>$$</p>
 <p>将上面两个式子和结构图对照着看，第一个式子中的相减对应比较点，前向通道则是比例环节和积分环节串联。整个过程是，输入电压和输出电压做比较，电压差在电阻上产生电流，电流经过电容的积分作用，产生输出电压。所以RC无源网络中蕴含一个不太明显的负反馈，将各环节的方程写出来就能看清楚，所以结构图可以展示内部信号之间的关系。</p>
 
     </div>
@@ -418,13 +404,13 @@ V_o(s) = \frac{1}{Cs} I(s)
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">197k</span>
+    <span title="站点总字数">198k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:59</span>
+    <span title="站点阅读时长">3:01</span>
   </span>
 </div>
 

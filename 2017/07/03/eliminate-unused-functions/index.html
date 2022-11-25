@@ -317,8 +317,9 @@
     <div class="post-body" itemprop="articleBody">
         <p>嵌入式开发中硬件资源非常宝贵，当工程中包含大量的未调用函数时，生成的二进制文件的体积会增大，浪费宝贵的存储资源。手动统计和删除未调用函数很不方便，有的平台代码可能以后会用到，删除也不合适。</p>
 <span id="more"></span>
+
 <p>DS-5是ARM架构处理器常用的开发平台，包括编辑器、编译器、调试器等一全套开发工具。DS-5编译器提供相关的选项可以自动统计未调用的函数，并且能够在不删除代码的情况下，自动忽略对应的代码段，不链接到最终的目标文件中，减小二进制文件的体积。过程如下：</p>
-<ol type="1">
+<ol>
 <li>编译源代码</li>
 <li>使用链接选项<code>--feedback=filename</code>，生成一个反馈文件，记录未使用的函数</li>
 <li>使用编译选项<code>--feedback=filename</code>，将文件反馈给编译器</li>
@@ -326,17 +327,17 @@
 <p>编译器会根据链接器生成的反馈文件来编译源代码，链接器随后会丢弃这些未调用的函数，最终的可执行文件不会包含这些代码。</p>
 <p>下面通过示例来描述这个过程。某个简单的工程包含如下3个文件：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* file main.c */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;util.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">3</span>, b = <span class="number">4</span>;</span><br><span class="line">    <span class="type">int</span> c = sum(a, b);</span><br><span class="line">    <span class="comment">/* inc()没有被调用 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* file util.c */</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;util.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">inc</span><span class="params">(<span class="type">int</span> n)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> n + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* file util.h */</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> __UTIL_H_</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __UTIL_H_</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">inc</span><span class="params">(<span class="type">int</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
 <p>为了实现上述过程，要将编译和链接过程分开写，并且都加上<code>--feedback</code>选项。项目的Makefile如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">main.o: main.c</span><br><span class="line">    armcc -c --feedback=unused.txt main.c -o main.o</span><br><span class="line">util.o: util.c</span><br><span class="line">    armcc -c --feedback=unused.txt util.c -o util.o</span><br><span class="line"><span class="built_in">test</span>: main.o util.o</span><br><span class="line">    armlink --feedback=unused.txt util.o main.o -o test.axf</span><br></pre></td></tr></table></figure>
+
 <p>第一次构建，编译器会有告警，提示<code>unused.txt</code>文件不存在。构建完成后，会生成一个<code>unused.txt</code>文件，文件内容如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">;#&lt;FEEDBACK&gt;# ARM Linker, 5050041: Last Updated: Tue Jul 04 09:06:38 2017</span><br><span class="line">;VERSION 0.2</span><br><span class="line">;FILE main.o</span><br><span class="line">;FILE util.o</span><br><span class="line">inc &lt;= USED 0</span><br></pre></td></tr></table></figure>
+
 <p>文件中记录<code>inc</code>函数使用的次数为0，之后的每一次构建，编译器和链接器都会根据此文件，忽略未调用的函数。如果代码有变更，函数的使用情况有变化，需要将<code>unused.txt</code>删除，重新生成一次。</p>
 <p>对比没有加上<code>--feedback</code>选项的版本生成的二进制文件，文件尺寸会减小。在我工作的项目中，使用该方法将可执行文件体积减小了约10%，优化效果还是相当可观的。</p>
-<h2 id="参考">参考</h2>
-<ol type="1">
-<li><a
-target="_blank" rel="noopener" href="https://developer.arm.com/documentation/dui0205/j/getting-started-with-the-arm-compiler/using-linker-feedback/eliminating-unused-functions">Eliminating
-unused functions</a></li>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://developer.arm.com/documentation/dui0205/j/getting-started-with-the-arm-compiler/using-linker-feedback/eliminating-unused-functions">Eliminating unused functions</a></li>
 </ol>
 
     </div>
@@ -413,13 +414,13 @@ unused functions</a></li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">197k</span>
+    <span title="站点总字数">198k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:59</span>
+    <span title="站点阅读时长">3:01</span>
   </span>
 </div>
 

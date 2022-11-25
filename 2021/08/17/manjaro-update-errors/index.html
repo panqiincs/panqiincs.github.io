@@ -317,35 +317,33 @@
     <div class="post-body" itemprop="articleBody">
         <p>Manjaro是非常优秀的Linux发行版，我用了这么久没过出大问题，更没有碰到过滚动升级发行版偶尔出现的升级后系统倒地不起的情况。但有时候系统升级会出点小问题，下面将我碰到的问题及其解决办法列出来。</p>
 <span id="more"></span>
+
 <p>最常见的升级错误是由软件版本依赖造成的。软件仓库中的版本更新后，问题可能就消失了，不着急的话可以等等。运行<code>pacman -Qtdq</code>命令可得到未被其他软件用到的包，如果是这些包的依赖关系导致升级失败，卸载它们即可解决问题。</p>
 <p>我遇到过<code>wxgtk2</code>导致的升级失败问题，最后一行错误信息如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">removing wxgtk-common breaks dependency &#x27;wxgtk-common&#x27; required by wxgtk2</span><br></pre></td></tr></table></figure>
+
 <p>用如下名称查看<code>wxgtk2</code>是否被其他软件依赖，如果输出为空，就可以放心大胆地卸载它。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Qi wxgtk2 | grep <span class="string">&#x27;Depends On&#x27;</span></span><br></pre></td></tr></table></figure>
+
 <p>类似地，<code>libcanberra</code>造成的版本依赖问题也可以通过卸载来解决，运行如下命令卸载<code>libcanberra</code>后再重新升级系统即可：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -R lib32-libcanberra-pulse lib32-libcanberra-gstreamer libcanberra-pulse libcanberra-gstreamer</span><br></pre></td></tr></table></figure>
+
 <p>我还碰到过PGP key丢失导致升级失败，出错日志如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">downloading required keys...</span><br><span class="line">:: Import PGP key F9F9FA97A403F63E, &quot;lilac (on behalf of edward) &lt;edward@edward-p.xyz&gt;&quot;? [Y/n] </span><br><span class="line">error: key &quot;F9F9FA97A403F63E&quot; could not be looked up remotely</span><br><span class="line">error: required key missing from keyring</span><br><span class="line">error: failed to commit transaction (unexpected error)</span><br><span class="line">Errors occurred, no packages were upgraded.</span><br></pre></td></tr></table></figure>
+
 <p>安装<code>archlinuxcn-keyring</code>即可解决该问题。</p>
 <p>还有个npm无法升级的问题，错误日志如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">error: failed to commit transaction (conflicting files)</span><br><span class="line">npm: /usr/lib/node_modules/npm/lib/utils/read-package-name.js exists in filesystem</span><br><span class="line">......</span><br><span class="line">...... many similar lines are ommitted</span><br><span class="line">......</span><br><span class="line">npm: /usr/lib/node_modules/npm/node_modules/negotiator/package.json exists in filesystem</span><br><span class="line">Errors occurred, no packages were upgraded.</span><br></pre></td></tr></table></figure>
+
 <p>可通过以下命令强行安装：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S npm --overwrite=<span class="string">&#x27;*&#x27;</span></span><br></pre></td></tr></table></figure>
-<h2 id="参考">参考</h2>
-<ol type="1">
-<li><a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/565949/">arch
-linux - List all packages that depend on a certain package with pacman -
-Unix &amp; Linux Stack Exchange</a></li>
-<li><a target="_blank" rel="noopener" href="https://bbs.archlinux.org/viewtopic.php?id=267401">cannot
-upgrade - could not satisfy lib32 dependencies</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://www.reddit.com/r/ManjaroLinux/comments/nzlmsy/update_problem_libcanberragstreamer/">Update
-problem- libcanberra-gstreamer</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://bbs.archlinuxcn.org/viewtopic.php?id=10440">使用pacman
--s出现问题</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/nodesource/distributions/issues/636">npm
-update error in arch #636</a></li>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/565949/">arch linux - List all packages that depend on a certain package with pacman - Unix &amp; Linux Stack Exchange</a></li>
+<li><a target="_blank" rel="noopener" href="https://bbs.archlinux.org/viewtopic.php?id=267401">cannot upgrade - could not satisfy lib32 dependencies</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.reddit.com/r/ManjaroLinux/comments/nzlmsy/update_problem_libcanberragstreamer/">Update problem- libcanberra-gstreamer</a></li>
+<li><a target="_blank" rel="noopener" href="https://bbs.archlinuxcn.org/viewtopic.php?id=10440">使用pacman -s出现问题</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/nodesource/distributions/issues/636">npm update error in arch #636</a></li>
 </ol>
 
     </div>
@@ -422,13 +420,13 @@ update error in arch #636</a></li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">197k</span>
+    <span title="站点总字数">198k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:59</span>
+    <span title="站点阅读时长">3:01</span>
   </span>
 </div>
 

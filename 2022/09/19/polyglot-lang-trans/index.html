@@ -316,21 +316,20 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>我想从天城文字体文件得到它所支持的字符，字体文件中存储的是图形，而我想得到文本形式，本质上是编码。<a
-href="https://panqiincs.me/2022/09/18/supported-glyphs/">上篇文章</a>介绍的方法得到了所支持字形的名称，我发现字形名称就是天城文的拉丁字母记号，那么应该可以通过文字转写得到对应的天城文文本。</p>
+        <p>我想从天城文字体文件得到它所支持的字符，字体文件中存储的是图形，而我想得到文本形式，本质上是编码。<a href="https://panqiincs.me/2022/09/18/supported-glyphs/">上篇文章</a>介绍的方法得到了所支持字形的名称，我发现字形名称就是天城文的拉丁字母记号，那么应该可以通过文字转写得到对应的天城文文本。</p>
 <span id="more"></span>
-<p>举个例子，上篇文章中有个字形名称是<code>dKKha</code>，实际表示的是kkha，这是天城文क्ख的拉丁字母转写。क्ख是个合字，根据<a
-href="https://panqiincs.me/2022/07/14/python-devanagari/">Python处理天城文的经验</a>一文提供的代码，可得到它由下面几个字符组成：</p>
+
+<p>举个例子，上篇文章中有个字形名称是<code>dKKha</code>，实际表示的是kkha，这是天城文क्ख的拉丁字母转写。क्ख是个合字，根据<a href="https://panqiincs.me/2022/07/14/python-devanagari/">Python处理天城文的经验</a>一文提供的代码，可得到它由下面几个字符组成：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">क b&#x27;\\u0915&#x27; DEVANAGARI LETTER KA</span><br><span class="line">् b&#x27;\\u094d&#x27; DEVANAGARI SIGN VIRAMA</span><br><span class="line">ख b&#x27;\\u0916&#x27; DEVANAGARI LETTER KHA</span><br></pre></td></tr></table></figure>
+
 <p>क的转写是ka，ख的转写是kha，virama符号将ka附着的元音去掉，变成了k，和后面的kha结合便是kkha，那么将kkha转写为天城文便是क्ख。有很多网站可以做拉丁字母和天城文之间的转写。</p>
-<p>Python的Polyglot库有文字转写的功能，可参考<a
-target="_blank" rel="noopener" href="https://polyglot.readthedocs.io/en/latest/Transliteration.html">Transliteration
-Documentation</a>。参照文档，可通过接口函数得到所支持的语言种类，使用之前要下载相应的语言包，在这里就不赘述了。由于它不支持梵语，所以选择同为使用天城文书写的印地语（Hindi）。下面这段代码测试两种语言之间的转写是否正确：</p>
+<p>Python的Polyglot库有文字转写的功能，可参考<a target="_blank" rel="noopener" href="https://polyglot.readthedocs.io/en/latest/Transliteration.html">Transliteration Documentation</a>。参照文档，可通过接口函数得到所支持的语言种类，使用之前要下载相应的语言包，在这里就不赘述了。由于它不支持梵语，所以选择同为使用天城文书写的印地语（Hindi）。下面这段代码测试两种语言之间的转写是否正确：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> polyglot.transliteration <span class="keyword">import</span> Transliterator</span><br><span class="line"><span class="keyword">import</span> unicodedata</span><br><span class="line"></span><br><span class="line">hindi_text = <span class="string">u&quot;परिवर्तन&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Original Hindi word:&quot;</span>, hindi_text)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Composed by:&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> hindi_text:</span><br><span class="line">    <span class="built_in">print</span>(c, c.encode(<span class="string">&quot;unicode_escape&quot;</span>), unicodedata.name(c))</span><br><span class="line"></span><br><span class="line">trans = Transliterator(source_lang=<span class="string">&quot;hi&quot;</span>, target_lang=<span class="string">&quot;la&quot;</span>)</span><br><span class="line">latin_text = trans.transliterate(hindi_text)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hindi trans to Latin:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(hindi_text, <span class="string">&quot; -&gt; &quot;</span>, latin_text)</span><br><span class="line"></span><br><span class="line">trans = Transliterator(source_lang=<span class="string">&quot;la&quot;</span>, target_lang=<span class="string">&quot;hi&quot;</span>)</span><br><span class="line">hindi_text = trans.transliterate(latin_text)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\nLatin trans to Hindi:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(latin_text, <span class="string">&quot; -&gt; &quot;</span>, hindi_text)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Composed by:&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> hindi_text:</span><br><span class="line">    <span class="built_in">print</span>(c, c.encode(<span class="string">&quot;unicode_escape&quot;</span>), unicodedata.name(c))</span><br></pre></td></tr></table></figure>
+
 <p>得到如下结果：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">Original Hindi word: परिवर्तन</span><br><span class="line">Composed by:</span><br><span class="line">प b&#x27;\\u092a&#x27; DEVANAGARI LETTER PA</span><br><span class="line">र b&#x27;\\u0930&#x27; DEVANAGARI LETTER RA</span><br><span class="line">ि b&#x27;\\u093f&#x27; DEVANAGARI VOWEL SIGN I</span><br><span class="line">व b&#x27;\\u0935&#x27; DEVANAGARI LETTER VA</span><br><span class="line">र b&#x27;\\u0930&#x27; DEVANAGARI LETTER RA</span><br><span class="line">् b&#x27;\\u094d&#x27; DEVANAGARI SIGN VIRAMA</span><br><span class="line">त b&#x27;\\u0924&#x27; DEVANAGARI LETTER TA</span><br><span class="line">न b&#x27;\\u0928&#x27; DEVANAGARI LETTER NA</span><br><span class="line">Hindi trans to Latin:</span><br><span class="line">परिवर्तन  -&gt;  privrtn</span><br><span class="line"></span><br><span class="line">Latin trans to Hindi:</span><br><span class="line">privrtn  -&gt;  परिवर्टन</span><br><span class="line">Composed by:</span><br><span class="line">प b&#x27;\\u092a&#x27; DEVANAGARI LETTER PA</span><br><span class="line">र b&#x27;\\u0930&#x27; DEVANAGARI LETTER RA</span><br><span class="line">ि b&#x27;\\u093f&#x27; DEVANAGARI VOWEL SIGN I</span><br><span class="line">व b&#x27;\\u0935&#x27; DEVANAGARI LETTER VA</span><br><span class="line">र b&#x27;\\u0930&#x27; DEVANAGARI LETTER RA</span><br><span class="line">् b&#x27;\\u094d&#x27; DEVANAGARI SIGN VIRAMA</span><br><span class="line">ट b&#x27;\\u091f&#x27; DEVANAGARI LETTER TTA</span><br><span class="line">न b&#x27;\\u0928&#x27; DEVANAGARI LETTER NA</span><br></pre></td></tr></table></figure>
-<p>上面的代码先从Hindi转写为Latin，再从Latin转写为Hindi，没能还原成最开始的Hindi字符，所以Polyglot库的转写功能不可信任。另外有个<a
-target="_blank" rel="noopener" href="https://py-googletrans.readthedocs.io/en/latest/">googletrans</a>也可以做转写，它用的是谷歌翻译的接口，应该会更可靠，但由于奇怪的版本号依赖问题，安装不成功。</p>
+
+<p>上面的代码先从Hindi转写为Latin，再从Latin转写为Hindi，没能还原成最开始的Hindi字符，所以Polyglot库的转写功能不可信任。另外有个<a target="_blank" rel="noopener" href="https://py-googletrans.readthedocs.io/en/latest/">googletrans</a>也可以做转写，它用的是谷歌翻译的接口，应该会更可靠，但由于奇怪的版本号依赖问题，安装不成功。</p>
 <p>该问题暂时没有解决，就无法通过转写实现文章开头提到的需求。但我觉得这部分内容比较有趣，所以还是发了出来，希望对有需要的人有所帮助。</p>
 
     </div>
@@ -409,13 +408,13 @@ target="_blank" rel="noopener" href="https://py-googletrans.readthedocs.io/en/la
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">197k</span>
+    <span title="站点总字数">198k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:59</span>
+    <span title="站点阅读时长">3:01</span>
   </span>
 </div>
 

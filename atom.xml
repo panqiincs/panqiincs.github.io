@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2022-11-25T08:02:43.920Z</updated>
+  <updated>2022-11-25T11:47:27.871Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -17,16 +17,14 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>CPA安全方案的构建与证明</title>
+    <title>CPA安全方案的构建与安全性证明</title>
     <link href="https://panqiincs.me/2022/11/25/crypto-cpa-security/"/>
     <id>https://panqiincs.me/2022/11/25/crypto-cpa-security/</id>
     <published>2022-11-25T00:39:36.000Z</published>
-    <updated>2022-11-25T08:02:43.920Z</updated>
+    <updated>2022-11-25T11:47:27.871Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;cpa安全性定义&quot;&gt;CPA安全性定义&lt;/h2&gt;
-&lt;p&gt;选择明文攻击（Chosen-Plaintext
-Attack）指的是敌手能够做多次实验，选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;CPA安全性定义&quot;&gt;&lt;a href=&quot;#CPA安全性定义&quot; class=&quot;headerlink&quot; title=&quot;CPA安全性定义&quot;&gt;&lt;/a&gt;CPA安全性定义&lt;/h2&gt;&lt;p&gt;选择明文攻击（Chosen-Plaintext Attack）指的是敌手能够做多次实验，选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。&lt;/p&gt;</summary>
     
     
     
@@ -51,9 +49,7 @@ Attack）指的是敌手能够做多次实验，选择不同的明文作为输�
     <updated>2022-11-23T10:56:14.783Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;证明过程&quot;&gt;证明过程&lt;/h2&gt;
-&lt;p&gt;归约证明（proof by
-reduction）是现代密码学中证明方案安全性的重要方法，甚至是一些教材中使用的唯一方法。它的思路是，假设某个问题难以解决，然后证明基于该问题的构造方法在该假设下是安全的。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;证明过程&quot;&gt;&lt;a href=&quot;#证明过程&quot; class=&quot;headerlink&quot; title=&quot;证明过程&quot;&gt;&lt;/a&gt;证明过程&lt;/h2&gt;&lt;p&gt;归约证明（proof by reduction）是现代密码学中证明方案安全性的重要方法，甚至是一些教材中使用的唯一方法。它的思路是，假设某个问题难以解决，然后证明基于该问题的构造方法在该假设下是安全的。&lt;/p&gt;</summary>
     
     
     
@@ -76,8 +72,7 @@ reduction）是现代密码学中证明方案安全性的重要方法，甚至�
     <updated>2022-11-23T10:55:29.690Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;起因&quot;&gt;起因&lt;/h2&gt;
-&lt;p&gt;因为要处理天城文，最近学习了该文字的基础知识，了解了计算机如何存储和显示字符。查阅资料时用到了英语，处理文本用到了Python语言，我又切身体会到了语言（包括自然语言和编程语言）的重要性。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot; title=&quot;起因&quot;&gt;&lt;/a&gt;起因&lt;/h2&gt;&lt;p&gt;因为要处理天城文，最近学习了该文字的基础知识，了解了计算机如何存储和显示字符。查阅资料时用到了英语，处理文本用到了Python语言，我又切身体会到了语言（包括自然语言和编程语言）的重要性。&lt;/p&gt;</summary>
     
     
     
@@ -100,8 +95,7 @@ reduction）是现代密码学中证明方案安全性的重要方法，甚至�
     <updated>2022-11-19T16:49:05.258Z</updated>
     
     
-    <summary type="html">&lt;p&gt;我想从天城文字体文件得到它所支持的字符，字体文件中存储的是图形，而我想得到文本形式，本质上是编码。&lt;a
-href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文章&lt;/a&gt;介绍的方法得到了所支持字形的名称，我发现字形名称就是天城文的拉丁字母记号，那么应该可以通过文字转写得到对应的天城文文本。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;我想从天城文字体文件得到它所支持的字符，字体文件中存储的是图形，而我想得到文本形式，本质上是编码。&lt;a href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文章&lt;/a&gt;介绍的方法得到了所支持字形的名称，我发现字形名称就是天城文的拉丁字母记号，那么应该可以通过文字转写得到对应的天城文文本。&lt;/p&gt;</summary>
     
     
     
@@ -178,8 +172,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <updated>2022-09-20T13:47:13.541Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;使用方法&quot;&gt;使用方法&lt;/h2&gt;
-&lt;p&gt;使用Python的Pillow库可将程序中指定的文本绘制到画布（canvas）上，下面的代码是标准步骤，绘制一段天城文（devanagari）文本，并保存图片到本地。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;使用方法&quot;&gt;&lt;a href=&quot;#使用方法&quot; class=&quot;headerlink&quot; title=&quot;使用方法&quot;&gt;&lt;/a&gt;使用方法&lt;/h2&gt;&lt;p&gt;使用Python的Pillow库可将程序中指定的文本绘制到画布（canvas）上，下面的代码是标准步骤，绘制一段天城文（devanagari）文本，并保存图片到本地。&lt;/p&gt;</summary>
     
     
     
@@ -210,8 +203,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <updated>2022-11-23T10:55:23.927Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;文字特性&quot;&gt;文字特性&lt;/h2&gt;
-&lt;p&gt;天城文（Devanagari）是诸多南亚语言的文字，其中最有名的当属梵语（Sanskrit）。天城文作为婆罗米系元音附标文字，特点鲜明，下面介绍用计算机处理天城文所需的基础知识。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;文字特性&quot;&gt;&lt;a href=&quot;#文字特性&quot; class=&quot;headerlink&quot; title=&quot;文字特性&quot;&gt;&lt;/a&gt;文字特性&lt;/h2&gt;&lt;p&gt;天城文（Devanagari）是诸多南亚语言的文字，其中最有名的当属梵语（Sanskrit）。天城文作为婆罗米系元音附标文字，特点鲜明，下面介绍用计算机处理天城文所需的基础知识。&lt;/p&gt;</summary>
     
     
     
@@ -252,8 +244,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <updated>2022-10-20T16:13:08.286Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;单摆系统&quot;&gt;单摆系统&lt;/h2&gt;
-&lt;p&gt;最近几个学期我在上「自动控制原理」课程，在讲解「控制系统的数学模型」这部分内容时，我使用了经典的单摆系统模型作为实例，在课堂上取得了不错的效果。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;单摆系统&quot;&gt;&lt;a href=&quot;#单摆系统&quot; class=&quot;headerlink&quot; title=&quot;单摆系统&quot;&gt;&lt;/a&gt;单摆系统&lt;/h2&gt;&lt;p&gt;最近几个学期我在上「自动控制原理」课程，在讲解「控制系统的数学模型」这部分内容时，我使用了经典的单摆系统模型作为实例，在课堂上取得了不错的效果。&lt;/p&gt;</summary>
     
     
     
@@ -278,8 +269,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <updated>2022-10-20T16:17:57.574Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;升级内容&quot;&gt;升级内容&lt;/h2&gt;
-&lt;p&gt;4月中旬忙里偷闲对网站做了几年以来最大的升级。将NeXT主题从7.x版本升级到8.x版本，页面链接的前缀从http变成了https，还修改了向搜索引擎提交网站地图的配置。虽从网站外观上看不出任何变化，但背后的改变是巨大的。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;升级内容&quot;&gt;&lt;a href=&quot;#升级内容&quot; class=&quot;headerlink&quot; title=&quot;升级内容&quot;&gt;&lt;/a&gt;升级内容&lt;/h2&gt;&lt;p&gt;4月中旬忙里偷闲对网站做了几年以来最大的升级。将NeXT主题从7.x版本升级到8.x版本，页面链接的前缀从http变成了https，还修改了向搜索引擎提交网站地图的配置。虽从网站外观上看不出任何变化，但背后的改变是巨大的。&lt;/p&gt;</summary>
     
     
     
@@ -306,8 +296,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <updated>2022-10-20T16:27:51.156Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;卡顿和弹窗&quot;&gt;卡顿和弹窗&lt;/h2&gt;
-&lt;p&gt;场景一，朋友才买了一两年的台式机非常卡顿，编辑文档都不流畅，更别说看电影打游戏了。硬件性能肯定是没问题的，于是他想让我帮忙重装下系统。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;卡顿和弹窗&quot;&gt;&lt;a href=&quot;#卡顿和弹窗&quot; class=&quot;headerlink&quot; title=&quot;卡顿和弹窗&quot;&gt;&lt;/a&gt;卡顿和弹窗&lt;/h2&gt;&lt;p&gt;场景一，朋友才买了一两年的台式机非常卡顿，编辑文档都不流畅，更别说看电影打游戏了。硬件性能肯定是没问题的，于是他想让我帮忙重装下系统。&lt;/p&gt;</summary>
     
     
     
@@ -420,8 +409,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <updated>2022-06-04T04:30:16.405Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;介绍&quot;&gt;介绍&lt;/h2&gt;
-&lt;p&gt;求解微分方程的数值解一般使用MATLAB等数值计算软件，其实C++也可以求解微分方程，要用到odeint库，它是boost库的一部分。官方教程和示例比较晦涩，本文力求用较短的篇幅介绍它的基本用法。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h2&gt;&lt;p&gt;求解微分方程的数值解一般使用MATLAB等数值计算软件，其实C++也可以求解微分方程，要用到odeint库，它是boost库的一部分。官方教程和示例比较晦涩，本文力求用较短的篇幅介绍它的基本用法。&lt;/p&gt;</summary>
     
     
     
@@ -448,9 +436,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <updated>2022-02-17T05:08:43.307Z</updated>
     
     
-    <summary type="html">&lt;p&gt;最近将&lt;a
-href=&quot;https://panqiincs.me/2021/06/07/dialect-changes/&quot;&gt;黄冈城区语音的变迁&lt;/a&gt;一文分享到黄冈本地的论坛中，没想到天涯网黄冈版块的热帖——&lt;a
-href=&quot;http://bbs.tianya.cn/post-5213-1577-1.shtml&quot;&gt;黄州往事&lt;/a&gt;的作者也在论坛中，从他的回复中我得到了更多有关的信息，非常开心。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;最近将&lt;a href=&quot;https://panqiincs.me/2021/06/07/dialect-changes/&quot;&gt;黄冈城区语音的变迁&lt;/a&gt;一文分享到黄冈本地的论坛中，没想到天涯网黄冈版块的热帖——&lt;a href=&quot;http://bbs.tianya.cn/post-5213-1577-1.shtml&quot;&gt;黄州往事&lt;/a&gt;的作者也在论坛中，从他的回复中我得到了更多有关的信息，非常开心。&lt;/p&gt;</summary>
     
     
     

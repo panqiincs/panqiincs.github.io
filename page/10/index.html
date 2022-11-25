@@ -423,8 +423,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="需求">需求</h2>
-<p>如果想在远程PC上看到树莓派摄像头拍摄的视频，可以将树莓派配置成一个视频流服务器。但要实现精细控制，比如得到每帧图像的时间戳，或用OpenCV处理每帧图像，这种方法就不行。</p>
+          <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>如果想在远程PC上看到树莓派摄像头拍摄的视频，可以将树莓派配置成一个视频流服务器。但要实现精细控制，比如得到每帧图像的时间戳，或用OpenCV处理每帧图像，这种方法就不行。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/03/03/compress-transmit-image/#more" rel="contents">
@@ -538,9 +537,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="硬件pwm">硬件PWM</h2>
-<p>本文针对的是Raspberry Pi 2 Model
-B硬件。从理论上讲，对于任意GPIO口，可以通过设定延时来输出PWM信号，这被称作<strong>软件PWM</strong>。由于Linux不是实时操作系统，对于一些要求<strong>硬实时</strong>的应用，例如通过PWM信号控制舵机，最好使用<strong>硬件PWM</strong>。</p>
+          <h2 id="硬件PWM"><a href="#硬件PWM" class="headerlink" title="硬件PWM"></a>硬件PWM</h2><p>本文针对的是Raspberry Pi 2 Model B硬件。从理论上讲，对于任意GPIO口，可以通过设定延时来输出PWM信号，这被称作<strong>软件PWM</strong>。由于Linux不是实时操作系统，对于一些要求<strong>硬实时</strong>的应用，例如通过PWM信号控制舵机，最好使用<strong>硬件PWM</strong>。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/11/19/raspberry-pi-hardware-pwm-module/#more" rel="contents">
@@ -636,7 +633,7 @@ B硬件。从理论上讲，对于任意GPIO口，可以通过设定延时来输
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1k</span>
+      <span>1.1k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -654,9 +651,7 @@ B硬件。从理论上讲，对于任意GPIO口，可以通过设定延时来输
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="问题">问题</h2>
-<p><a
-href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I/O多路复用之epoll</a>一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行<code>read</code>或<code>write</code>都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。</p>
+          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I&#x2F;O多路复用之epoll</a>一文简单介绍了I&#x2F;O多路复用模型。I&#x2F;O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行<code>read</code>或<code>write</code>都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/08/05/multiplexing-and-nonblocking-io/#more" rel="contents">
@@ -752,7 +747,7 @@ href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I/O多路复�
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4.1k</span>
+      <span>4.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -770,9 +765,7 @@ href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I/O多路复�
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="简介">简介</h2>
-<p>I/O多路复用（I/O
-multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I/O操作。能够进行I/O操作，具体来说就是，在描述符上执行I/O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。</p>
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>I&#x2F;O多路复用（I&#x2F;O multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I&#x2F;O操作。能够进行I&#x2F;O操作，具体来说就是，在描述符上执行I&#x2F;O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/08/01/io-multiplexing-with-epoll/#more" rel="contents">
@@ -886,9 +879,7 @@ multiplexing）使得程序可以同时监测多个文件描述符，查看它�
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="数据结构">数据结构</h2>
-<p>Linux内核的链表（linked
-list）实现比较特别。通常来说，链表的结构体会包含需要数据部分，例如下面结构体中的<code>my_item</code>成员：</p>
+          <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>Linux内核的链表（linked list）实现比较特别。通常来说，链表的结构体会包含需要数据部分，例如下面结构体中的<code>my_item</code>成员：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/05/17/kernel-linked-list/#more" rel="contents">
@@ -1098,7 +1089,7 @@ list）实现比较特别。通常来说，链表的结构体会包含需要数�
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>408</span>
+      <span>390</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -1394,13 +1385,13 @@ list）实现比较特别。通常来说，链表的结构体会包含需要数�
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">197k</span>
+    <span title="站点总字数">198k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:59</span>
+    <span title="站点阅读时长">3:01</span>
   </span>
 </div>
 
