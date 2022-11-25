@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+  <meta name="baidu-site-verification" content="code-J9YbvwThrX">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="CPA安全性定义 选择明文攻击（Chosen-Plaintext Attack）指的是敌手能够做多次实验，选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CPA安全方案的构建与证明">
+<meta property="og:url" content="https://panqiincs.me/2022/11/25/crypto-cpa-security/index.html">
+<meta property="og:site_name" content="辛未羊的网络日志">
+<meta property="og:description" content="CPA安全性定义 选择明文攻击（Chosen-Plaintext Attack）指的是敌手能够做多次实验，选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-25T00:39:36.000Z">
+<meta property="article:modified_time" content="2022-11-25T08:02:43.920Z">
+<meta property="article:author" content="Krist Pan">
+<meta property="article:tag" content="密码学">
+<meta property="article:tag" content="归约证明">
+<meta property="article:tag" content="选择明文攻击">
+<meta property="article:tag" content="伪随机函数">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://panqiincs.me/2022/11/25/crypto-cpa-security/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://panqiincs.me/2022/11/25/crypto-cpa-security/","path":"2022/11/25/crypto-cpa-security/","title":"CPA安全方案的构建与证明"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CPA安全方案的构建与证明 | 辛未羊的网络日志</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-39536948-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "blyiajm41p");
+</script>
+
+<link rel="dns-prefetch" href="https://vercel.panqiincs.me">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="辛未羊的网络日志" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">辛未羊的网络日志</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-series"><a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#cpa%E5%AE%89%E5%85%A8%E6%80%A7%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">CPA安全性定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%AA%E9%9A%8F%E6%9C%BA%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">伪随机函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E6%9E%84%E5%BB%BA"><span class="nav-number">3.</span> <span class="nav-text">方案构建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E8%AF%81%E6%98%8E"><span class="nav-number">4.</span> <span class="nav-text">安全性证明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E8%A6%81%E7%BB%93%E6%9E%9C"><span class="nav-number">4.1.</span> <span class="nav-text">重要结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%92%E7%BA%A6%E8%AF%81%E6%98%8E"><span class="nav-number">4.2.</span> <span class="nav-text">归约证明</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Krist Pan"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Krist Pan</p>
+  <div class="site-description" itemprop="description">记录生活和学习的清静之地</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">220</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/panqiincs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;panqiincs" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.kawabangga.com/" title="https:&#x2F;&#x2F;www.kawabangga.com&#x2F;" rel="noopener" target="_blank">卡瓦邦噶</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.boatsky.com/" title="https:&#x2F;&#x2F;www.boatsky.com&#x2F;" rel="noopener" target="_blank">太空船</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.feidaoboke.com/" title="https:&#x2F;&#x2F;www.feidaoboke.com" rel="noopener" target="_blank">飞刀博客</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.ohyee.cc/" title="https:&#x2F;&#x2F;www.ohyee.cc&#x2F;" rel="noopener" target="_blank">OhYee</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://dusays.com/" title="https:&#x2F;&#x2F;dusays.com&#x2F;" rel="noopener" target="_blank">杜老师说</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://h4ck.org.cn/" title="https:&#x2F;&#x2F;h4ck.org.cn&#x2F;" rel="noopener" target="_blank">obaby</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://thiscute.world/" title="https:&#x2F;&#x2F;thiscute.world&#x2F;" rel="noopener" target="_blank">ryan4yin</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://geektutu.com/" title="https:&#x2F;&#x2F;geektutu.com&#x2F;" rel="noopener" target="_blank">极客兔兔</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://panqiincs.me/2022/11/25/crypto-cpa-security/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Krist Pan">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的网络日志">
+      <meta itemprop="description" content="记录生活和学习的清静之地">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="CPA安全方案的构建与证明 | 辛未羊的网络日志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CPA安全方案的构建与证明
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-25 08:39:36" itemprop="dateCreated datePublished" datetime="2022-11-25T08:39:36+08:00">2022-11-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">大学课程</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2022/11/25/crypto-cpa-security/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2022/11/25/crypto-cpa-security/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="cpa安全性定义">CPA安全性定义</h2>
+<p>选择明文攻击（Chosen-Plaintext
+Attack）指的是敌手能够做多次实验，选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。</p>
+<span id="more"></span>
+<p>攻击过程可形式化为，允许敌手<span
+class="math inline">\(\mathcal{A}\)</span>和加密预言机（encryption
+oracle）自由交互，<span
+class="math inline">\(\mathcal{A}\)</span>访问预言机<span
+class="math inline">\(\mathcal{O}\)</span>的过程记为<span
+class="math inline">\(\mathcal{A}^{\mathcal{O}(\cdot)}\)</span>，如果<span
+class="math inline">\(\mathcal{O}\)</span>是加密算法<span
+class="math inline">\(\mathsf{Enc}_k\)</span>，则记为<span
+class="math inline">\(\mathcal{A}^{\mathsf{Enc}_k(\cdot)}\)</span>。一次询问过程为，<span
+class="math inline">\(\mathcal{A}\)</span>提供明文消息<span
+class="math inline">\(m\)</span>作为输入，预言机返回密文<span
+class="math inline">\(c\gets\mathsf{Enc}_k(m)\)</span>作为回复。安全性的定义要求为：即使<span
+class="math inline">\(\mathcal{A}\)</span>能访问加密预言机，也无法区分两条任意消息的密文。</p>
+<p>定义CPA不可区分实验<span
+class="math inline">\(\mathsf{PrivK}_{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)\)</span>：</p>
+<ol type="1">
+<li>生成密钥<span
+class="math inline">\(k\gets\mathsf{Gen}(1^n)\)</span></li>
+<li>敌手<span
+class="math inline">\(\mathcal{A}\)</span>能访问预言机<span
+class="math inline">\(\mathsf{Enc}_k(\cdot)\)</span>，输入<span
+class="math inline">\(1^n\)</span>给<span
+class="math inline">\(\mathcal{A}\)</span>，<span
+class="math inline">\(\mathcal{A}\)</span>输出一对长度相等的消息<span
+class="math inline">\(m_0\)</span>和<span
+class="math inline">\(m_1\)</span></li>
+<li>选择随机比特<span
+class="math inline">\(b\gets\{0,1\}\)</span>，计算出密文<span
+class="math inline">\(c\gets\mathsf{Enc}_k(m_b)\)</span>交给<span
+class="math inline">\(\mathcal{A}\)</span>，<span
+class="math inline">\(c\)</span>称为挑战密文</li>
+<li>敌手<span
+class="math inline">\(\mathcal{A}\)</span>继续访问预言机，输出一个比特<span
+class="math inline">\(b&#39;\)</span></li>
+<li>如果<span class="math inline">\(b=b&#39;\)</span>，则该实验输出<span
+class="math inline">\(1\)</span>，否则<span
+class="math inline">\(输出0\)</span></li>
+</ol>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/privk_cpa.png"
+alt="CPA不可区分实验" />
+<figcaption aria-hidden="true">CPA不可区分实验</figcaption>
+</figure>
+<p>定义描述了敌手<span
+class="math inline">\(\mathcal{A}\)</span>利用预言机<span
+class="math inline">\(\mathsf{Enc}_k(\cdot)\)</span>攻击方案<span
+class="math inline">\(\Pi\)</span>的过程，当<span
+class="math inline">\(\mathsf{PrivK}_{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)=1\)</span>时，<span
+class="math inline">\(\mathcal{A}\)</span>成功攻破方案。如果对于概率多项式敌手<span
+class="math inline">\(\mathcal{A}\)</span>，存在可忽略函数<span
+class="math inline">\(\mathsf{negl}\)</span>，使得 <span
+class="math display">\[
+\mathrm{Pr}\Big[\mathsf{PrivK}_{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)=1\Big]
+\le \frac{1}{2} + \mathsf{negl}(n) \tag{1}
+\]</span> 则方案是选择明文攻击条件下的不可区分加密。</p>
+<h2 id="伪随机函数">伪随机函数</h2>
+<p>构造选择明文攻击条件下安全的加密方案需要用到伪随机函数。伪随机函数<span
+class="math inline">\(F_k(\cdot)\)</span>通过固定密钥<span
+class="math inline">\(k\in\{0,1\}^{n}\)</span>将<span
+class="math inline">\(n\)</span>长度的字符串映射到另一个<span
+class="math inline">\(n\)</span>长度的字符串。如果对所有的多项式时间区分器<span
+class="math inline">\(D\)</span>，存在可忽略函数<span
+class="math inline">\(\mathsf{negl}\)</span>，满足 <span
+class="math display">\[
+\left| \mathrm{Pr}\big[D^{F_k(\cdot)}(1^n)=1\big] -
+\mathrm{Pr}\big[D^{f(\cdot)}(1^n)=1\big] \right| \le \mathsf{negl}(n)
+\tag{2}
+\]</span> 则称<span
+class="math inline">\(F\)</span>是一个伪随机函数，其中<span
+class="math inline">\(k\gets\{0,1\}^n\)</span>是均匀随机选择的，<span
+class="math inline">\(f\)</span>是从所有将<span
+class="math inline">\(n\)</span>长度字符串映射到<span
+class="math inline">\(n\)</span>长度字符串的函数集合<span
+class="math inline">\(\mathsf{Func}_n\)</span>中均匀随机选择的。定义是说无法在概率多项式时间内以不可忽略的概率成功区分伪随机函数<span
+class="math inline">\(F\)</span>和真正的随机函数<span
+class="math inline">\(f\)</span>，和伪随机数发生器的定义很相似。</p>
+<h2 id="方案构建">方案构建</h2>
+<p>令<span
+class="math inline">\(F\)</span>是伪随机函数，定义消息长度为<span
+class="math inline">\(n\)</span>的对称密钥加密方案<span
+class="math inline">\(\Pi=(\mathsf{Gen},\mathsf{Enc},\mathsf{Dec})\)</span>如下：</p>
+<ul>
+<li><span class="math inline">\(\mathsf{Gen}\)</span>：输入<span
+class="math inline">\(1^n\)</span>，均匀随机选择密钥<span
+class="math inline">\(k\gets\{0,1\}^n\)</span></li>
+<li><span class="math inline">\(\mathsf{Enc}\)</span>：输入密钥<span
+class="math inline">\(k\gets\{0,1\}^n\)</span>，以及消息<span
+class="math inline">\(m\gets\{0,1\}^n\)</span>，均匀选择<span
+class="math inline">\(r\gets\{0,1\}^n\)</span>，输出密文 <span
+class="math display">\[
+c:=\left \langle r, F_k(r) \oplus m \right \rangle
+\]</span></li>
+<li><span class="math inline">\(\mathsf{Enc}\)</span>：输入密钥<span
+class="math inline">\(k\gets\{0,1\}^n\)</span>，以及密文<span
+class="math inline">\(c:=\left \langle r, s \right
+\rangle\)</span>，输出明文消息 <span class="math display">\[
+m:=F_k(r)\oplus s
+\]</span></li>
+</ul>
+<p>简单定义<span
+class="math inline">\(\mathsf{Enc}_k(m)=F_k(m)\)</span>是不可行的，因为<span
+class="math inline">\(\mathsf{Enc}_k(\cdot)=F_k(\cdot)\)</span>是确定函数，在不同的实验中给定相同的输入一定会得到相同的输出，经过多次尝试，总能找到某个明文对应的密文和挑战密文相同，从而破解方案。</p>
+<h2 id="安全性证明">安全性证明</h2>
+<h3 id="重要结果">重要结果</h3>
+<p>将加密方案<span class="math inline">\(\Pi\)</span>中的伪随机函数<span
+class="math inline">\(F_k\)</span>替换成随机函数<span
+class="math inline">\(f\gets\mathsf{Func}_n\)</span>得到的加密方案记为<span
+class="math inline">\(\widetilde{\Pi}=(\widetilde{\mathsf{Gen}},\widetilde{\mathsf{Enc}},\widetilde{\mathsf{Dec}})\)</span>，敌手<span
+class="math inline">\(\mathcal{A}\)</span>最多向加密预言机询问<span
+class="math inline">\(q(n)\)</span>次，那么<span
+class="math inline">\(\mathcal{A}\)</span>攻破<span
+class="math inline">\(\widetilde{\Pi}\)</span>的概率 <span
+class="math display">\[
+\mathrm{Pr}[\mathsf{PrivK}_{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)=1]
+\le \frac{1}{2} + \frac{q(n)}{2^n} \tag{3}
+\]</span> 下面分析上面的结果是如何得来的。令<span
+class="math inline">\(r_c\)</span>为生成挑战密文<span
+class="math inline">\(c=\left\langle r_c, f(r_c)\oplus m_b
+\right\rangle\)</span>时用到的随机字符串。<span
+class="math inline">\(\mathcal{A}\)</span>向加密预言机询问<span
+class="math inline">\(q(n)\)</span>次可得到<span
+class="math inline">\(\{\left\langle r_i, f(r_i)
+\right\rangle\}\)</span>，因为<span
+class="math inline">\(c_i=\left\langle r_i,s_i
+\right\rangle\)</span>，<span class="math inline">\(f(r_i)=s_i\oplus
+m_i\)</span>，其中<span
+class="math inline">\(i=1,\dots,q(n)\)</span>。</p>
+<p>分两种情况讨论：</p>
+<ol type="1">
+<li>加密预言机在回答<span
+class="math inline">\(\mathcal{A}\)</span>的询问时用到过<span
+class="math inline">\(r_c\)</span>，记作事件<span
+class="math inline">\(\mathsf{Repeat}\)</span>。这种情况下<span
+class="math inline">\(\mathcal{A}\)</span>能轻易判断出哪条消息被加密，只需根据<span
+class="math inline">\(\left\langle r_c, f(r_c)
+\right\rangle\)</span>计算<span
+class="math inline">\(m_0\)</span>和<span
+class="math inline">\(m_1\)</span>对应的密文，必有一条和<span
+class="math inline">\(c\)</span>相同。<span
+class="math inline">\(r_c\in\{r_i\}\)</span>的概率为<span
+class="math inline">\(q(n)/2^n\)</span>，故该事件发生的概率最多为<span
+class="math inline">\(q(n)/2^n\)</span>。</li>
+<li>加密预言机在回答<span
+class="math inline">\(\mathcal{A}\)</span>的询问时从未用到过值<span
+class="math inline">\(r_c\)</span>，记作事件<span
+class="math inline">\(\overline{\mathsf{Repeat}}\)</span>。这种情况下<span
+class="math inline">\(\mathcal{A}\)</span>和加密预言机的交互过程中没有掌握任何关于<span
+class="math inline">\(f(r_c)\)</span>的信息，这意味着<span
+class="math inline">\(f(r_c)\)</span>和<span
+class="math inline">\(m_b\)</span>做异或后的值完全随机（与「一次性密码」类似），所以<span
+class="math inline">\(\mathcal{A}\)</span>输出<span
+class="math inline">\(b&#39;=b\)</span>的概率是<span
+class="math inline">\(1/2\)</span>。</li>
+</ol>
+<p>综合这两种情况，可得<span
+class="math inline">\(\mathcal{A}\)</span>攻破<span
+class="math inline">\(\widetilde\Pi\)</span>的概率 <span
+class="math display">\[
+\begin{align}
+\mathrm{Pr}\Big[\mathsf{PrivK}_{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)=1\Big]
+&amp; =
+\mathrm{Pr}\Big[\mathsf{PrivK}_{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)=1
+\wedge \mathsf{Repeat}\Big] +
+\mathrm{Pr}\Big[\mathsf{PrivK}_{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)=1
+\wedge \overline{\mathsf{Repeat}}\Big] \\
+&amp; \le \mathrm{Pr}\big[\mathsf{Repeat}\big] +
+\mathrm{Pr}\Big[\mathsf{PrivK}_{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)=1
+\wedge \overline{\mathsf{Repeat}}\Big] \\
+&amp; \le \frac{q(n)}{2^n} + \frac{1}{2}
+\end{align}
+\]</span></p>
+<p>即得到<span class="math inline">\((3)\)</span>的结果。定义函数 <span
+class="math display">\[
+\varepsilon(n) :=
+\mathrm{Pr}\Big[\mathsf{PrivK}_{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)=1\Big]
+- \frac{1}{2} \tag{4}
+\]</span> 根据<span
+class="math inline">\(\varepsilon\)</span>的定义，则<span
+class="math inline">\(\mathcal{A}\)</span>攻破<span
+class="math inline">\(\Pi\)</span>的概率可表示为 <span
+class="math display">\[
+\mathrm{Pr}\Big[\mathsf{PrivK}_{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)=1\Big]
+= \frac{1}{2} + \varepsilon(n) \tag{5}
+\]</span> 只有当<span
+class="math inline">\(\varepsilon(n)\)</span>为可忽略函数时，方案<span
+class="math inline">\(\Pi\)</span>才是安全的。</p>
+<h3 id="归约证明">归约证明</h3>
+<p>构造区分器<span class="math inline">\(\mathcal{D}\)</span>，它将<span
+class="math inline">\(\mathcal{A}\)</span>当作子程序运行。<span
+class="math inline">\(\mathcal{D}\)</span>使用某函数的预言机<span
+class="math inline">\(\mathcal{O}\)</span>，目标是判断该函数是「伪随机的」（即<span
+class="math inline">\(F_k,
+k\gets\{0,1\}^n\)</span>）还是「随机的」（即<span
+class="math inline">\(f\gets\mathsf{Func}_n\)</span>）。<span
+class="math inline">\(\mathcal{D}\)</span>模拟<span
+class="math inline">\(\mathcal{A}\)</span>的不可区分性实验，观察<span
+class="math inline">\(\mathcal{A}\)</span>成功与否。</p>
+<p><span class="math inline">\(\mathcal{D}\)</span>的输入为<span
+class="math inline">\(1^n\)</span>和可访问的预言机<span
+class="math inline">\(\mathcal{O}\)</span>，让<span
+class="math inline">\(\mathcal{A}\)</span>执行CPA不可区分实验的步骤，只不过用的是<span
+class="math inline">\(\mathcal{D}\)</span>提供的预言机。那么<span
+class="math inline">\(\mathcal{A}\)</span>作为<span
+class="math inline">\(\mathcal{D}\)</span>的子程序运行时的视图与<span
+class="math inline">\(\mathcal{A}\)</span>攻击加密方案是相同的。所以有
+<span class="math display">\[
+\mathrm{Pr}\big[D^{F_k(\cdot)}(1^n)=1\big] =
+\mathrm{Pr}\Big[\mathsf{PrivK}_{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)=1\Big]
+\tag{6}
+\]</span> <span class="math display">\[
+\mathrm{Pr}\big[D^{f(\cdot)}(1^n)=1\big] =
+\mathrm{Pr}\Big[\mathsf{PrivK}_{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)=1\Big]
+\tag{7}
+\]</span></p>
+<p>综合<span class="math inline">\((3)\)</span>、<span
+class="math inline">\((5)\)</span>、<span
+class="math inline">\((6)\)</span>、<span
+class="math inline">\((7)\)</span>的结果可得 <span
+class="math display">\[
+\left| \mathrm{Pr}\big[D^{F_k(\cdot)}(1^n)=1\big] -
+\mathrm{Pr}\big[D^{f(\cdot)}(1^n)=1\big] \right| \ge \varepsilon(n) -
+\frac{q(n)}{2^n} \tag{8}
+\]</span></p>
+<p>有了上面的结果后，构造规约证明。首先分析使用随机函数<span
+class="math inline">\(f\)</span>的加密方案<span
+class="math inline">\(\widetilde\Pi\)</span>的安全性，然后声明使用伪随机函数<span
+class="math inline">\(F_k\)</span>的加密方案<span
+class="math inline">\(\Pi\)</span>是不安全的，通过归约法即可得到<span
+class="math inline">\(F_k\)</span>不是伪随机函数。具体过程如下：</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/reduction_prf.png"
+alt="CPA安全性证明示意图" />
+<figcaption aria-hidden="true">CPA安全性证明示意图</figcaption>
+</figure>
+<ol type="1">
+<li>指定<span class="math inline">\(\mathcal{A}\)</span>攻击方案<span
+class="math inline">\(\Pi\)</span>，成功的概率与<span
+class="math inline">\(1/2\)</span>的差值为<span
+class="math inline">\(\varepsilon(n)\)</span></li>
+<li>假设：问题<span
+class="math inline">\(\mathsf{X}\)</span>难以解决，无法在概率多项式时间内以不可忽略的概率区分<span
+class="math inline">\(F_k\)</span>和<span
+class="math inline">\(f\)</span></li>
+<li>归约：构造区分器<span
+class="math inline">\(\mathcal{D}\)</span>，它将<span
+class="math inline">\(\mathcal{A}\)</span>当作子程序运行，执行CPA不可区分实验，可得到结论
+<span class="math display">\[
+\left| \mathrm{Pr}\big[D^{F_k(\cdot)}(1^n)=1\big] -
+\mathrm{Pr}\big[D^{f(\cdot)}(1^n)=1\big] \right| \ge \varepsilon(n) -
+\frac{q(n)}{2^n}
+\]</span></li>
+<li>矛盾：若<span
+class="math inline">\(\varepsilon(n)\)</span>不可忽略，则上面得到的概率也不可忽略，这与假设相矛盾</li>
+<li>结论：敌手<span
+class="math inline">\(\mathcal{A}\)</span>无法以不可忽略的概率攻破方案<span
+class="math inline">\(\Pi\)</span>，所以方案<span
+class="math inline">\(\Pi\)</span>是CPA安全的</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Krist Pan
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://panqiincs.me/2022/11/25/crypto-cpa-security/" title="CPA安全方案的构建与证明">https://panqiincs.me/2022/11/25/crypto-cpa-security/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag"># 密码学</a>
+              <a href="/tags/%E5%BD%92%E7%BA%A6%E8%AF%81%E6%98%8E/" rel="tag"># 归约证明</a>
+              <a href="/tags/%E9%80%89%E6%8B%A9%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB/" rel="tag"># 选择明文攻击</a>
+              <a href="/tags/%E4%BC%AA%E9%9A%8F%E6%9C%BA%E5%87%BD%E6%95%B0/" rel="tag"># 伪随机函数</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/22/crypto-proof-method/" rel="prev" title="密码学中的归约证明过程">
+                  <i class="fa fa-chevron-left"></i> 密码学中的归约证明过程
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2013 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Krist Pan</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">197k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:59</span>
+  </span>
+</div>
+
+
+  <div>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id: "JjD4gEghP0h7Vn4U",ck: "JjD4gEghP0h7Vn4U"})</script>
+  </div>
+
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"https://vercel.panqiincs.me","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"欢迎留言交流","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/2022/11/25/crypto-cpa-security/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>
