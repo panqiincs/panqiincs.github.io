@@ -21,15 +21,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="CPA安全性定义 选择明文攻击（Chosen-Plaintext Attack）指的是敌手能够做多次实验，选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。">
+    <meta name="description" content="CPA安全性定义 选择明文攻击（Chosen-Plaintext Attack）指的是敌手能够选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CPA安全方案的构建与安全性证明">
 <meta property="og:url" content="https://panqiincs.me/2022/11/25/crypto-cpa-security/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="CPA安全性定义 选择明文攻击（Chosen-Plaintext Attack）指的是敌手能够做多次实验，选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。">
+<meta property="og:description" content="CPA安全性定义 选择明文攻击（Chosen-Plaintext Attack）指的是敌手能够选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-11-25T00:39:36.000Z">
-<meta property="article:modified_time" content="2022-11-25T11:56:46.167Z">
+<meta property="article:modified_time" content="2022-11-25T12:51:42.529Z">
 <meta property="article:author" content="Krist Pan">
 <meta property="article:tag" content="密码学">
 <meta property="article:tag" content="归约证明">
@@ -318,7 +318,7 @@
     <div class="post-body" itemprop="articleBody">
         <h2 id="cpa安全性定义">CPA安全性定义</h2>
 <p>选择明文攻击（Chosen-Plaintext
-Attack）指的是敌手能够做多次实验，选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。</p>
+Attack）指的是敌手能够选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。</p>
 <span id="more"></span>
 <p>攻击过程可形式化为，允许敌手<span
 class="math inline">\(\mathcal{A}\)</span>和加密预言机（encryption
@@ -421,9 +421,8 @@ class="math inline">\(f\)</span>是「真正的」随机函数。</p>
 class="math inline">\(D\)</span>，存在可忽略函数<span
 class="math inline">\(\mathsf{negl}\)</span>，满足 <span
 class="math display">\[
-\left| \mathrm{Pr}\big[D^{F_k(\cdot)}(1^n)=1\big] -
-\mathrm{Pr}\big[D^{f(\cdot)}(1^n)=1\big] \right| \le \mathsf{negl}(n)
-\tag{2}
+\left| \mathrm{Pr} \big[ D^{F_k(\cdot)}(1^n)=1 \big] - \mathrm{Pr} \big[
+D^{f(\cdot)}(1^n)=1 \big] \right| \le \mathsf{negl}(n) \tag{2}
 \]</span> 则称<span
 class="math inline">\(F\)</span>是一个伪随机函数，其中<span
 class="math inline">\(k\gets\{0,1\}^n\)</span>是均匀随机选择的，<span
@@ -508,7 +507,7 @@ class="math inline">\(i=1,\dots,q(n)\)</span>。</p>
 class="math inline">\(\mathcal{A}\)</span>的询问时至少用到过一次<span
 class="math inline">\(r_c\)</span>，记作事件<span
 class="math inline">\(\mathsf{Repeat}\)</span>，表示<span
-class="math inline">\(r_c\)</span>重复使用了。这种情况下，<span
+class="math inline">\(r_c\)</span>重复使用。这种情况下，<span
 class="math inline">\(\mathcal{A}\)</span>能轻易判断出哪条消息被加密，只需根据<span
 class="math inline">\(\left\langle r_c,f(r_c)
 \right\rangle\)</span>计算<span
@@ -550,14 +549,14 @@ class="math inline">\(\widetilde\Pi\)</span>的概率</p>
 \]</span></p>
 <p>即得到<span
 class="math inline">\((3)\)</span>的结果。从上面的分析可知，该方案安全性的关键在于避免生成挑战密文<span
-class="math inline">\(r_c\)</span>时用到的<span
+class="math inline">\(c\)</span>时用到的<span
 class="math inline">\(r_c\)</span>在回答敌手询问时被加密预言机使用，但即使是重复使用了，概率也是可以忽略的。</p>
 <p>定义函数 <span class="math display">\[
 \varepsilon(n) \overset{\mathrm{def}}{=} \mathrm{Pr} \Big[
 \mathsf{PrivK}_{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)=1 \Big] - \frac{1}{2}
 \tag{4}
 \]</span> 根据<span
-class="math inline">\(\varepsilon\)</span>的定义，则<span
+class="math inline">\(\varepsilon\)</span>的定义，<span
 class="math inline">\(\mathcal{A}\)</span>攻破<span
 class="math inline">\(\Pi\)</span>的概率可表示为 <span
 class="math display">\[
@@ -570,7 +569,7 @@ class="math inline">\(\Pi\)</span>才是安全的。</p>
 <p>构造区分器<span class="math inline">\(\mathcal{D}\)</span>，它将<span
 class="math inline">\(\mathcal{A}\)</span>当作子程序运行。<span
 class="math inline">\(\mathcal{D}\)</span>使用某函数的预言机<span
-class="math inline">\(\mathcal{O}\)</span>，目标是判断该函数是「伪随机的」（即<span
+class="math inline">\(\mathcal{O}\)</span>，要判断该函数是「伪随机的」（即<span
 class="math inline">\(F_k,
 k\gets\{0,1\}^n\)</span>）还是「随机的」（即<span
 class="math inline">\(f\gets\mathsf{Func}_n\)</span>）。<span
