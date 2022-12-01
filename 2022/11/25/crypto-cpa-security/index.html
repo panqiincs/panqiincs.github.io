@@ -29,7 +29,7 @@
 <meta property="og:description" content="安全性定义 选择明文攻击（Chosen-Plaintext Attack）指的是敌手能够选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-11-25T00:39:36.000Z">
-<meta property="article:modified_time" content="2022-11-29T07:24:40.112Z">
+<meta property="article:modified_time" content="2022-12-01T00:53:42.479Z">
 <meta property="article:author" content="Krist Pan">
 <meta property="article:tag" content="密码学">
 <meta property="article:tag" content="归约证明">
@@ -519,7 +519,7 @@ class="math inline">\(q(n)/2^n\)</span>。</li>
 <li>加密预言机在回答<span
 class="math inline">\(\mathcal{A}\)</span>的询问时从未用到过<span
 class="math inline">\(r_c\)</span>，记作事件<span
-class="math inline">\(\overline{\mathsf{Repeat}}\)</span>。那么<span
+class="math inline">\(\mathsf{\overline{Repeat}}\)</span>。那么<span
 class="math inline">\(\mathcal{A}\)</span>和加密预言机的交互过程中没有掌握任何关于<span
 class="math inline">\(f(r_c)\)</span>的信息，这意味着<span
 class="math inline">\(f(r_c)\)</span>和<span
@@ -539,10 +539,10 @@ class="math display">\[
 \mathsf{PrivK}_{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)=1 \wedge
 \mathsf{Repeat} \Big] + \mathrm{Pr} \Big[
 \mathsf{PrivK}_{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)=1 \wedge
-\overline{\mathsf{Repeat}} \Big] \\
+\mathsf{\overline{Repeat}} \Big] \\
 &amp; \le \mathrm{Pr} \big[ \mathsf{Repeat} \big] + \mathrm{Pr} \Big[
 \mathsf{PrivK}_{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)=1 \wedge
-\overline{\mathsf{Repeat}} \Big] \\
+\mathsf{\overline{Repeat}} \Big] \\
 &amp; \le \frac{q(n)}{2^n}+\frac{1}{2}
 \end{align}
 \]</span></p>
