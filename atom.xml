@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2022-12-01T04:45:25.033Z</updated>
+  <updated>2022-12-02T14:31:46.237Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -21,12 +21,12 @@
     <link href="https://panqiincs.me/2022/11/25/crypto-cpa-security/"/>
     <id>https://panqiincs.me/2022/11/25/crypto-cpa-security/</id>
     <published>2022-11-25T00:39:36.000Z</published>
-    <updated>2022-12-01T04:45:25.033Z</updated>
+    <updated>2022-12-02T14:31:46.237Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;安全性定义&quot;&gt;安全性定义&lt;/h2&gt;
 &lt;p&gt;选择明文攻击（Chosen-Plaintext
-Attack）指的是敌手能够选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。&lt;/p&gt;</summary>
+Attack）指敌手能够选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。&lt;/p&gt;</summary>
     
     
     
