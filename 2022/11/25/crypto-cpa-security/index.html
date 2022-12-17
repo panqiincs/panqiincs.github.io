@@ -29,7 +29,7 @@
 <meta property="og:description" content="安全性定义 选择明文攻击（Chosen-Plaintext Attack）指敌手能够选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-11-25T00:39:36.000Z">
-<meta property="article:modified_time" content="2022-12-16T11:46:31.321Z">
+<meta property="article:modified_time" content="2022-12-17T05:19:46.675Z">
 <meta property="article:author" content="Krist Pan">
 <meta property="article:tag" content="密码学">
 <meta property="article:tag" content="归约证明">
@@ -280,14 +280,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>7.1k</span>
+      <span>7.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>6 分钟</span>
+      <span>7 分钟</span>
     </span>
 </div>
 
@@ -299,11 +299,11 @@
     
     <div class="post-body" itemprop="articleBody">
         <h2 id="安全性定义">安全性定义</h2>
-<p>选择明文攻击（Chosen-Plaintext
+<p><strong>选择明文攻击</strong>（Chosen-Plaintext
 Attack）指敌手能够选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。</p>
 <span id="more"></span>
 <p>攻击过程可形式化为，允许敌手<span
-class="math inline">\(\mathcal{A}\)</span>和加密预言机（encryption
+class="math inline">\(\mathcal{A}\)</span>和<strong>加密预言机</strong>（encryption
 oracle）自由交互，<span
 class="math inline">\(\mathcal{A}\)</span>访问预言机<span
 class="math inline">\(\mathcal{O}\)</span>的过程记为<span
@@ -321,8 +321,7 @@ class="math inline">\(\mathsf{PrivK}_{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)\)</span
 <ol type="1">
 <li>生成密钥<span
 class="math inline">\(k\gets\mathsf{Gen}(1^n)\)</span></li>
-<li>敌手<span
-class="math inline">\(\mathcal{A}\)</span>能访问预言机<span
+<li><span class="math inline">\(\mathcal{A}\)</span>能访问预言机<span
 class="math inline">\(\mathsf{Enc}_k(\cdot)\)</span>，输入<span
 class="math inline">\(1^n\)</span>给<span
 class="math inline">\(\mathcal{A}\)</span>，<span
@@ -334,7 +333,7 @@ class="math inline">\(b\gets\{0,1\}\)</span>，计算出密文<span
 class="math inline">\(c\gets\mathsf{Enc}_k(m_b)\)</span>交给<span
 class="math inline">\(\mathcal{A}\)</span>，<span
 class="math inline">\(c\)</span>称为挑战密文</li>
-<li>敌手<span
+<li><span
 class="math inline">\(\mathcal{A}\)</span>继续访问预言机，输出一个比特<span
 class="math inline">\(b&#39;\)</span></li>
 <li>如果<span class="math inline">\(b=b&#39;\)</span>，则该实验输出<span
@@ -359,11 +358,11 @@ class="math display">\[
 \mathrm{Pr}\Big[\mathsf{PrivK}_{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)=1\Big]
 \le \frac{1}{2} + \mathsf{negl}(n) \tag{1}
 \]</span>
-则方案是选择明文攻击条件下的不可区分加密，或者说是CPA安全的。</p>
+则方案是选择明文攻击条件下的不可区分加密，或者说是<strong>CPA安全</strong>的。</p>
 <h2 id="伪随机函数">伪随机函数</h2>
 <p>从<a
-href="https://panqiincs.me/2022/11/22/crypto-proof-method/">密码学中的归约证明过程</a>一文可知，伪随机数发生器能够保证窃听者存在时的安全性，构造CPA安全的加密方案则需要用到伪随机函数（pseudorandom
-function）。</p>
+href="https://panqiincs.me/2022/11/22/crypto-proof-method/">密码学中的归约证明过程</a>一文可知，伪随机数发生器能够保证窃听者存在时的安全性，<strong>伪随机函数</strong>（pseudorandom
+function）则可以用来构造CPA安全的加密方案。</p>
 <figure>
 <img
 src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/random_func.png"
@@ -392,12 +391,12 @@ class="math inline">\(F_k(\cdot)\)</span>通过固定密钥<span
 class="math inline">\(k\in\{0,1\}^{n}\)</span>将<span
 class="math inline">\(n\)</span>长度的字符串映射到另一个<span
 class="math inline">\(n\)</span>长度的字符串。每个密钥对应一种函数分布，所以<span
-class="math inline">\(F_k\)</span>最多可以从<span
-class="math inline">\(2^n\)</span>个不同函数的分布中选择出来。</p>
+class="math inline">\(F_k\)</span>最多可从<span
+class="math inline">\(2^n\)</span>个不同的函数分布中选择。</p>
 <p>考虑所有将<span class="math inline">\(n\)</span>长度字符串映射到<span
 class="math inline">\(n\)</span>长度字符串的函数，它们构成的集合记作<span
-class="math inline">\(\mathsf{Func}_n\)</span>，通过将函数看成查找表（look-up
-table），分析可得集合的大小为<span class="math inline">\(2^{n\cdot
+class="math inline">\(\mathsf{Func}_n\)</span>，将函数看成查找表（look-up
+table），可得集合的大小为<span class="math inline">\(2^{n\cdot
 2^n}\)</span>。从中均匀随机选择一个函数<span
 class="math inline">\(f\in\mathsf{Func}_n\)</span>，那么<span
 class="math inline">\(f\)</span>是「真正的」随机函数。</p>
@@ -419,7 +418,7 @@ class="math inline">\(2^{n\cdot
 2^n}\)</span>个不同的函数分布中选择出来的，但任意区分器都无法在多项式时间内区分到底是在和<span
 class="math inline">\(F_k\)</span>还是<span
 class="math inline">\(f\)</span>交互。</p>
-<p>基于伪随机函数构建CPA安全的加密方案，方案安全性证明的关键点在于，如果敌手能够攻破该方案，则它能将伪随机函数和真正的随机函数区分开来。我们能在后面的归约证明过程中看到这一点。</p>
+<p>基于伪随机函数构建CPA安全的加密方案，方案安全性证明的关键点在于，<strong>如果敌手能够攻破该方案，则它能将伪随机函数和真正的随机函数区分开来</strong>。我们能在后面的归约证明过程中看到这一点。</p>
 <h2 id="方案构建">方案构建</h2>
 <p>令<span
 class="math inline">\(F\)</span>是伪随机函数，定义消息长度为<span
@@ -452,7 +451,7 @@ alt="加密过程" />
 <p>简单定义<span
 class="math inline">\(\mathsf{Enc}_k(m)=F_k(m)\)</span>是不可行的，因为<span
 class="math inline">\(\mathsf{Enc}_k(\cdot)=F_k(\cdot)\)</span>是确定函数（deterministic
-function），给定相同的输入一定会得到相同的输出。经过多次实验尝试，总能找到某个明文对应的密文和挑战密文相同，从而破解方案。任何CPA安全的加密方案必须是概率的（probabilistic），随机性必须是加密过程的一部分，以保证相同明文得到的密文是不同的。</p>
+function），给定相同的输入一定会得到相同的输出。敌手经过多次实验尝试，总能找到某个明文对应的密文与挑战密文相同，从而破解方案。任何CPA安全的加密方案必须是概率的（probabilistic），随机性必须是加密过程的一部分，以保证<strong>相同的明文得到不同的密文</strong>。</p>
 <p>该构造方案是概率的，通过伪随机函数将随机值<span
 class="math inline">\(r\)</span>映射到另一个字符串，然后将字符串与明文异或，得到密文。<span
 class="math inline">\(F_k(r)\)</span>对于观察密文<span
@@ -463,10 +462,15 @@ class="math inline">\(r\)</span>没有在之前某次加密中使用过。</p>
 <h3 id="攻破方案的概率">攻破方案的概率</h3>
 <p>将加密方案<span class="math inline">\(\Pi\)</span>中的伪随机函数<span
 class="math inline">\(F_k\)</span>替换成随机函数<span
-class="math inline">\(f\gets\mathsf{Func}_n\)</span>得到的加密方案记为<span
-class="math inline">\(\widetilde{\Pi}=(\widetilde{\mathsf{Gen}},\widetilde{\mathsf{Enc}},\widetilde{\mathsf{Dec}})\)</span>，敌手<span
+class="math inline">\(f\gets\mathsf{Func}_n\)</span>，得到的加密方案记为<span
+class="math inline">\(\widetilde{\Pi}=(\widetilde{\mathsf{Gen}},\widetilde{\mathsf{Enc}},\widetilde{\mathsf{Dec}})\)</span>。除了真正的随机函数<span
+class="math inline">\(f\)</span>取代了<span
+class="math inline">\(F_k\)</span>之外，<span
+class="math inline">\(\widetilde{\Pi}\)</span>与<span
+class="math inline">\(\Pi\)</span>完全相同。敌手<span
 class="math inline">\(\mathcal{A}\)</span>最多向加密预言机询问<span
-class="math inline">\(q(n)\)</span>次，那么<span
+class="math inline">\(q(n)\)</span>次，其中<span
+class="math inline">\(q(\cdot)\)</span>是多项式。那么<span
 class="math inline">\(\mathcal{A}\)</span>攻破<span
 class="math inline">\(\widetilde{\Pi}\)</span>的概率</p>
 <p><span class="math display">\[
@@ -474,9 +478,8 @@ class="math inline">\(\widetilde{\Pi}\)</span>的概率</p>
 \mathsf{PrivK}_{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)=1 \Big]
 \le \frac{1}{2}+\frac{q(n)}{2^n} \tag{3}
 \]</span></p>
-<p>下面分析<span
-class="math inline">\((3)\)</span>的结果是如何得到的。令<span
-class="math inline">\(r_c\)</span>为生成挑战密文<span
+<p>下面分析如何得到<span class="math inline">\((3)\)</span>的结果。</p>
+<p>令<span class="math inline">\(r_c\)</span>为生成挑战密文<span
 class="math inline">\(c=\left\langle r_c,f(r_c) \oplus m_b
 \right\rangle\)</span>时用到的随机值。<span
 class="math inline">\(\mathcal{A}\)</span>向加密预言机询问<span
@@ -487,9 +490,8 @@ class="math inline">\(\mathcal{A}\)</span>的密文<span
 class="math inline">\(c_i=\left\langle r_i,s_i
 \right\rangle\)</span>，<span class="math inline">\(f(r_i)=s_i\oplus
 m_i\)</span>，其中<span
-class="math inline">\(i=1,\dots,q(n)\)</span>。</p>
-<p>根据随机值<span
-class="math inline">\(r_c\)</span>是否被重复使用，分情况讨论：</p>
+class="math inline">\(i=1,\dots,q(n)\)</span>。根据随机值<span
+class="math inline">\(r_c\)</span>是否被重复使用，分两种情况讨论：</p>
 <ol type="1">
 <li>加密预言机在回答<span
 class="math inline">\(\mathcal{A}\)</span>的询问时至少用到过一次<span
@@ -535,9 +537,9 @@ class="math display">\[
 \end{align}
 \]</span></p>
 <p>即得到<span
-class="math inline">\((3)\)</span>的结果。从上面的分析可知，该方案安全性的关键在于，避免生成挑战密文<span
+class="math inline">\((3)\)</span>的结果。从上面的分析可知，该方案安全性的关键在于，<strong>避免生成挑战密文<span
 class="math inline">\(c\)</span>时所用到的随机值<span
-class="math inline">\(r_c\)</span>在回答敌手询问时被加密预言机使用，但即使是重复使用了，概率也是可以忽略的。</p>
+class="math inline">\(r_c\)</span>在回答敌手询问时被加密预言机使用</strong>，但即使是重复使用了，概率也是可以忽略的。</p>
 <p>定义函数 <span class="math display">\[
 \varepsilon(n) \overset{\mathrm{def}}{=} \mathrm{Pr} \Big[
 \mathsf{PrivK}_{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)=1 \Big] - \frac{1}{2}
@@ -555,7 +557,7 @@ class="math inline">\(\Pi\)</span>才是安全的。</p>
 <h3 id="归约证明">归约证明</h3>
 <p>构造区分器<span class="math inline">\(\mathcal{D}\)</span>，它将<span
 class="math inline">\(\mathcal{A}\)</span>当作子程序运行。<span
-class="math inline">\(\mathcal{D}\)</span>使用某函数的预言机<span
+class="math inline">\(\mathcal{D}\)</span>访问使用某函数的预言机<span
 class="math inline">\(\mathcal{O}\)</span>，要判断该函数是「伪随机的」（即<span
 class="math inline">\(F_k,
 k\gets\{0,1\}^n\)</span>）还是「随机的」（即<span
@@ -567,9 +569,9 @@ class="math inline">\(\mathcal{O}\)</span>使用的是伪随机函数还是随�
 <p>向<span class="math inline">\(\mathcal{D}\)</span>输入<span
 class="math inline">\(1^n\)</span>和可访问的预言机<span
 class="math inline">\(\mathcal{O}\)</span>，让<span
-class="math inline">\(\mathcal{A}\)</span>执行CPA不可区分实验的步骤：</p>
+class="math inline">\(\mathcal{A}\)</span>执行CPA不可区分实验：</p>
 <ol type="1">
-<li><span class="math inline">\(\mathcal{A}\)</span>能访问预言机<span
+<li><span class="math inline">\(\mathcal{A}\)</span>可以访问<span
 class="math inline">\(\mathcal{O}\)</span>，对<span
 class="math inline">\(\mathcal{A}\)</span>输入<span
 class="math inline">\(1^n\)</span>，<span
@@ -578,7 +580,8 @@ class="math inline">\(m_0\)</span>和<span
 class="math inline">\(m_1\)</span></li>
 <li>随机选择<span
 class="math inline">\(b\gets\{0,1\}\)</span>，均匀随机选择<span
-class="math inline">\(r\gets\{0,1\}^n\)</span>，向预言机询问得到<span
+class="math inline">\(r\gets\{0,1\}^n\)</span>，向<span
+class="math inline">\(\mathcal{O}\)</span>询问得到<span
 class="math inline">\(s&#39;\gets\mathcal{O}(r)\)</span>，将<span
 class="math inline">\(c:=\left \langle r,s&#39;\oplus m_b \right
 \rangle\)</span>交给<span
@@ -595,7 +598,7 @@ class="math inline">\(0\)</span></li>
 </ol>
 <p>那么，<span class="math inline">\(\mathcal{A}\)</span>作为<span
 class="math inline">\(\mathcal{D}\)</span>的子程序运行时的视图与<span
-class="math inline">\(\mathcal{A}\)</span>攻击加密方案时的视图是相同的，而且过程完全相同。<span
+class="math inline">\(\mathcal{A}\)</span>攻击加密方案时的视图相同，而且过程完全一样。<span
 class="math inline">\(\mathcal{O}\)</span>使用伪随机函数<span
 class="math inline">\(F_k\)</span>与加密方案<span
 class="math inline">\(\Pi\)</span>对应，<span
