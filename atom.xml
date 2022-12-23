@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2022-12-17T05:19:46.675Z</updated>
+  <updated>2022-12-23T16:45:20.960Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>C标准库中的短模式匹配算法</title>
+    <link href="https://panqiincs.me/2022/12/22/short-pattern-search/"/>
+    <id>https://panqiincs.me/2022/12/22/short-pattern-search/</id>
+    <published>2022-12-21T21:48:01.000Z</published>
+    <updated>2022-12-23T16:45:20.960Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;我要在大数组中搜索连续出现的数字序列，数组元素是16位整型，绝大部分数字序列的长度是2或3。很显然，这和字符串匹配算法很类似，只是元素类型不同。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="程序设计" scheme="https://panqiincs.me/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+    <category term="strstr" scheme="https://panqiincs.me/tags/strstr/"/>
+    
+    <category term="字符串匹配" scheme="https://panqiincs.me/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CPA安全方案的构建与安全性证明</title>
     <link href="https://panqiincs.me/2022/11/25/crypto-cpa-security/"/>
     <id>https://panqiincs.me/2022/11/25/crypto-cpa-security/</id>
     <published>2022-11-25T00:39:36.000Z</published>
-    <updated>2022-12-17T05:19:46.675Z</updated>
+    <updated>2022-12-18T10:43:04.399Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;安全性定义&quot;&gt;安全性定义&lt;/h2&gt;
@@ -154,7 +175,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <link href="https://panqiincs.me/2022/09/01/places-visited/"/>
     <id>https://panqiincs.me/2022/09/01/places-visited/</id>
     <published>2022-09-01T14:13:34.000Z</published>
-    <updated>2022-12-18T10:36:27.313Z</updated>
+    <updated>2022-12-22T03:13:24.176Z</updated>
     
     
     <summary type="html">&lt;p&gt;最近得到一张全国分县地图，将我去过的县级行政区全部涂上了颜色。必须是出了机场、车站、高速服务区才算去过，不然「去过」的地方可多了。&lt;/p&gt;</summary>
@@ -207,11 +228,11 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <link href="https://panqiincs.me/2022/07/14/python-devanagari/"/>
     <id>https://panqiincs.me/2022/07/14/python-devanagari/</id>
     <published>2022-07-14T01:41:52.000Z</published>
-    <updated>2022-11-23T10:55:23.927Z</updated>
+    <updated>2022-12-18T13:33:27.067Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;文字特性&quot;&gt;文字特性&lt;/h2&gt;
-&lt;p&gt;天城文（Devanagari）是诸多南亚语言的文字，其中最有名的当属梵语（Sanskrit）。天城文作为婆罗米系元音附标文字，特点鲜明，下面介绍用计算机处理天城文所需的基础知识。&lt;/p&gt;</summary>
+&lt;p&gt;天城文（Devanagari）是诸多南亚语言的文字，其中最有名的当属梵语（Sanskrit）。天城文作为婆罗米系&lt;strong&gt;元音附标文字&lt;/strong&gt;，特点鲜明，下面介绍用计算机处理天城文所需的基础知识。&lt;/p&gt;</summary>
     
     
     
@@ -354,7 +375,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <link href="https://panqiincs.me/2022/02/18/attempt-amann-analysis/"/>
     <id>https://panqiincs.me/2022/02/18/attempt-amann-analysis/</id>
     <published>2022-02-18T10:06:52.000Z</published>
-    <updated>2022-11-05T05:57:45.418Z</updated>
+    <updated>2022-12-18T13:37:34.586Z</updated>
     
     
     <summary type="html">&lt;p&gt;高等代数我比较熟悉，因为经常用，还系统地复习过，但数学分析就生疏很多。我想尝试用Amann和Escher合著的Analysis来复习数学分析，一共有3卷，是德语国家常用的教材。&lt;/p&gt;</summary>
@@ -375,7 +396,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <link href="https://panqiincs.me/2022/01/14/xinchou-guangxi-trip/"/>
     <id>https://panqiincs.me/2022/01/14/xinchou-guangxi-trip/</id>
     <published>2022-01-14T11:42:24.000Z</published>
-    <updated>2022-04-18T04:33:29.447Z</updated>
+    <updated>2022-12-18T13:40:16.120Z</updated>
     
     
     <summary type="html">&lt;p&gt;放寒假后，我们三人不想那么早就回家，决定去广西南边玩。我们的主要目的地是北海，由于是自驾游，沿途碰到感兴趣的地方随时可以下车看看。&lt;/p&gt;</summary>
@@ -512,27 +533,6 @@ href=&quot;http://bbs.tianya.cn/post-5213-1577-1.shtml&quot;&gt;黄州往事&lt;
     <category term="长江" scheme="https://panqiincs.me/tags/%E9%95%BF%E6%B1%9F/"/>
     
     <category term="水灾" scheme="https://panqiincs.me/tags/%E6%B0%B4%E7%81%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>读「控制系统设计」</title>
-    <link href="https://panqiincs.me/2021/06/20/control-system-design/"/>
-    <id>https://panqiincs.me/2021/06/20/control-system-design/</id>
-    <published>2021-06-20T07:04:54.000Z</published>
-    <updated>2021-11-25T15:05:49.254Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;2021年春学期我只有一门课，叫做「控制系统设计」，使用的教材和课程同名，著者是哈工大的王广雄、何朕。这本书的内容非常丰富，难度不小，所以这学期我的备课压力相当大，同时收获也很多。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
-    
-    
-    <category term="教材" scheme="https://panqiincs.me/tags/%E6%95%99%E6%9D%90/"/>
-    
-    <category term="控制理论" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/"/>
     
   </entry>
   
