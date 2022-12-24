@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="文字特性天城文（Devanagari）是诸多南亚语言的文字，其中最有名的当属梵语（Sanskrit）。天城文作为婆罗米系元音附标文字，特点鲜明，下面介绍用计算机处理天城文所需的基础知识。">
+    <meta name="description" content="文字特性 天城文（Devanagari）是诸多南亚语言的文字，其中最有名的当属梵语（Sanskrit）。天城文作为婆罗米系元音附标文字，特点鲜明，下面介绍用计算机处理天城文所需的基础知识。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="天城文基础及计算机处理方法">
 <meta property="og:url" content="https://panqiincs.me/2022/07/14/python-devanagari/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="文字特性天城文（Devanagari）是诸多南亚语言的文字，其中最有名的当属梵语（Sanskrit）。天城文作为婆罗米系元音附标文字，特点鲜明，下面介绍用计算机处理天城文所需的基础知识。">
+<meta property="og:description" content="文字特性 天城文（Devanagari）是诸多南亚语言的文字，其中最有名的当属梵语（Sanskrit）。天城文作为婆罗米系元音附标文字，特点鲜明，下面介绍用计算机处理天城文所需的基础知识。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-14T01:41:52.000Z">
 <meta property="article:modified_time" content="2022-12-18T13:33:27.067Z">
@@ -288,7 +288,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.7k</span>
+      <span>2.6k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -306,47 +306,72 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="文字特性"><a href="#文字特性" class="headerlink" title="文字特性"></a>文字特性</h2><p>天城文（Devanagari）是诸多南亚语言的文字，其中最有名的当属梵语（Sanskrit）。天城文作为婆罗米系<strong>元音附标文字</strong>，特点鲜明，下面介绍用计算机处理天城文所需的基础知识。</p>
+        <h2 id="文字特性">文字特性</h2>
+<p>天城文（Devanagari）是诸多南亚语言的文字，其中最有名的当属梵语（Sanskrit）。天城文作为婆罗米系<strong>元音附标文字</strong>，特点鲜明，下面介绍用计算机处理天城文所需的基础知识。</p>
 <span id="more"></span>
-
-<h3 id="基本字符"><a href="#基本字符" class="headerlink" title="基本字符"></a>基本字符</h3><p>Unicode为天城文分配的区间是U+0900-U+097F，共128个<strong>码位</strong>（code point），表示的基本字符分为如下几类：</p>
-<ol>
-<li>辅音（consonants）字母。辅音字母附着一个固有元音&#x2F;a&#x2F;，比如字符क是Devanagari Letter KA，即表示&#x2F;ka&#x2F;而不是&#x2F;k&#x2F;。辅音字母和非独立元音组合在一起时，固有的元音会被替代。</li>
-<li>独立元音（independent vowels）字母。可以单独出现的元音，如字符अ是Devanagari Letter A。独立元音用于书写以元音开头的音节。</li>
-<li>非独立元音（dependent vowels）字母。非独立元音不会单独出现，而是基于基本形态和其他字母组合出现，基本形态可能会置于其他字母的左右上下方向。如字符ि是左侧非独立元音字符Devanagari Vowel Sign I，和其他辅音组合后：ि + क &#x3D; कि，用英文转写表示就是I + KA &#x3D; KI，即辅音字母和非独立元音组合时替代了固有元音。</li>
-<li>半音（<strong>virama</strong>）符号。符号्的作用是抑制辅音的附着元音，क + ् &#x3D; क्，KA + Virama &#x3D; K，该符号随处可见。</li>
+<h3 id="基本字符">基本字符</h3>
+<p>Unicode为天城文分配的区间是U+0900-U+097F，共128个<strong>码位</strong>（code
+point），表示的基本字符分为如下几类：</p>
+<ol type="1">
+<li>辅音（consonants）字母。辅音字母附着一个固有元音/a/，比如字符क是Devanagari
+Letter
+KA，即表示/ka/而不是/k/。辅音字母和非独立元音组合在一起时，固有的元音会被替代。</li>
+<li>独立元音（independent
+vowels）字母。可以单独出现的元音，如字符अ是Devanagari Letter
+A。独立元音用于书写以元音开头的音节。</li>
+<li>非独立元音（dependent
+vowels）字母。非独立元音不会单独出现，而是基于基本形态和其他字母组合出现，基本形态可能会置于其他字母的左右上下方向。如字符ि是左侧非独立元音字符Devanagari
+Vowel Sign I，和其他辅音组合后：ि + क = कि，用英文转写表示就是I + KA =
+KI，即辅音字母和非独立元音组合时替代了固有元音。</li>
+<li>半音（<strong>virama</strong>）符号。符号्的作用是抑制辅音的附着元音，क
++ ् = क्，KA + Virama = K，该符号随处可见。</li>
 <li>部分组合得到的辅音字母。有的辅音字母虽然从视觉上可看成多个基本单元的组合，但Unicode还是为它们分配了单独的码位。</li>
 <li>其他特殊字符。如U+0900-U+0903，详情参考文档。</li>
 </ol>
-<h3 id="字素"><a href="#字素" class="headerlink" title="字素"></a>字素</h3><p>字素（grapheme）可看成<strong>基本书写单元</strong>，要么是单个码位的符号，要么是由多个码位构成的组合符号。本文中字素和基本书写单元表达相同的意义。例如，क和क्都是字素，其中क是单个码位，क्由两个码位组合而成。但是非独立元音ि就不是字素，因为它和辅音字母组合后的书写形态才有意义。</p>
-<p>天城文中有大量由辅音、非独立元音和特殊符号所组成的字素。如下字素均由两个码位组成，辅音字母分别位于组合后得到的基本书写单元的上下左右方向：शू &#x3D; श + ू ， क़ं &#x3D; क़ + ं ， भो &#x3D; भ + ो ， यि &#x3D; य + ि 。</p>
+<h3 id="字素">字素</h3>
+<p>字素（grapheme）可看成<strong>基本书写单元</strong>，要么是单个码位的符号，要么是由多个码位构成的组合符号。本文中字素和基本书写单元表达相同的意义。例如，क和क्都是字素，其中क是单个码位，क्由两个码位组合而成。但是非独立元音ि就不是字素，因为它和辅音字母组合后的书写形态才有意义。</p>
+<p>天城文中有大量由辅音、非独立元音和特殊符号所组成的字素。如下字素均由两个码位组成，辅音字母分别位于组合后得到的基本书写单元的上下左右方向：शू
+= श + ू ， क़ं = क़ + ं ， भो = भ + ो ， यि = य + ि 。</p>
 <p>需要注意，Unicode字符中除了一些特殊符号和非独立元音字母外，其它可独立出现的字符也是基本书写单元。</p>
-<h3 id="合字"><a href="#合字" class="headerlink" title="合字"></a>合字</h3><p>其间去除元音的连续辅音（或称为辅音丛）按照法则连写在一起，称为<strong>合字</strong>（ligature），如：ल्क &#x3D; ल् + क ， त्स्न &#x3D; त् + स् + न ， क्ष्म्य &#x3D; क् + ष् + म् + य。可看到前面是利用virama符号去除固有元音后得到的死辅音（dead consonant），末尾是附着固有元音的活辅音（live consonant）。合字规则可看成是字素组合形成新的形态。</p>
-<p>天城文的合写规则非常繁杂，可参考<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Devanagari_conjuncts">Devanagari conjuncts</a>页面。单是由两个辅音构成的合字就有1296种，再加上由多个辅音构成的合字，总共应该超过1500种。一般来说，系统不会支持所有的合字，不同字体文件和应用软件所支持的类型和数量不同。</p>
-<h2 id="计算机处理"><a href="#计算机处理" class="headerlink" title="计算机处理"></a>计算机处理</h2><h3 id="字符处理"><a href="#字符处理" class="headerlink" title="字符处理"></a>字符处理</h3><p>下面的Python代码将U+0900-U+097F范围内的128个Unicode码位所对应的天城文字符打印出来：</p>
+<h3 id="合字">合字</h3>
+<p>其间去除元音的连续辅音（或称为辅音丛）按照法则连写在一起，称为<strong>合字</strong>（ligature），如：ल्क
+= ल् + क ， त्स्न = त् + स् + न ， क्ष्म्य = क् + ष् + म् +
+य。可看到前面是利用virama符号去除固有元音后得到的死辅音（dead
+consonant），末尾是附着固有元音的活辅音（live
+consonant）。合字规则可看成是字素组合形成新的形态。</p>
+<p>天城文的合写规则非常繁杂，可参考<a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Devanagari_conjuncts">Devanagari
+conjuncts</a>页面。单是由两个辅音构成的合字就有1296种，再加上由多个辅音构成的合字，总共应该超过1500种。一般来说，系统不会支持所有的合字，不同字体文件和应用软件所支持的类型和数量不同。</p>
+<h2 id="计算机处理">计算机处理</h2>
+<h3 id="字符处理">字符处理</h3>
+<p>下面的Python代码将U+0900-U+097F范围内的128个Unicode码位所对应的天城文字符打印出来：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0x0900</span>, <span class="number">0x0980</span>):</span><br><span class="line">    <span class="built_in">print</span>(c, <span class="built_in">chr</span>(c))</span><br></pre></td></tr></table></figure>
-
 <p>要想得到组成该单词的Unicode字符，可以用<code>for</code>语句遍历Unicode字符串：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unicodedata</span><br><span class="line"></span><br><span class="line">sanskrit_text = <span class="string">u&quot;सत्याग्रह&quot;</span></span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> sanskrit_text:</span><br><span class="line">    <span class="built_in">print</span>(c, c.encode(<span class="string">&quot;unicode_escape&quot;</span>), unicodedata.name(c))</span><br></pre></td></tr></table></figure>
-
 <p>得到如下结果：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">स b&#x27;\\u0938&#x27; DEVANAGARI LETTER SA</span><br><span class="line">त b&#x27;\\u0924&#x27; DEVANAGARI LETTER TA</span><br><span class="line">् b&#x27;\\u094d&#x27; DEVANAGARI SIGN VIRAMA</span><br><span class="line">य b&#x27;\\u092f&#x27; DEVANAGARI LETTER YA</span><br><span class="line">ा b&#x27;\\u093e&#x27; DEVANAGARI VOWEL SIGN AA</span><br><span class="line">ग b&#x27;\\u0917&#x27; DEVANAGARI LETTER GA</span><br><span class="line">् b&#x27;\\u094d&#x27; DEVANAGARI SIGN VIRAMA</span><br><span class="line">र b&#x27;\\u0930&#x27; DEVANAGARI LETTER RA</span><br><span class="line">ह b&#x27;\\u0939&#x27; DEVANAGARI LETTER HA</span><br></pre></td></tr></table></figure>
-
 <p>一共由9个Unicode字符组成，还附有它们的Unicode编码和描述。相反地，我们可以将单个Unicode字符拼在一起，系统会处理合写形态：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">u&quot;\u0938\u0924\u094d\u092f\u093e&quot;</span>)</span><br><span class="line">सत्या</span><br></pre></td></tr></table></figure>
-
-<h3 id="显示处理过程"><a href="#显示处理过程" class="headerlink" title="显示处理过程"></a>显示处理过程</h3><p>从上面的介绍可知，天城文字符根据上下文会改变形态。系统环境中的字体和应用程序的不同，以及字符之间的相对位置都会影响形态。由于很多字素和合写字符没有分配编码，因此计算机显示天城文的过程比较复杂，过程总结如下：</p>
-<ol>
+<h3 id="显示处理过程">显示处理过程</h3>
+<p>从上面的介绍可知，天城文字符根据上下文会改变形态。系统环境中的字体和应用程序的不同，以及字符之间的相对位置都会影响形态。由于很多字素和合写字符没有分配编码，因此计算机显示天城文的过程比较复杂，过程总结如下：</p>
+<ol type="1">
 <li>天城文文本在计算机中存储的内容是Unicode码，具体的存储形态与编码格式（如UTF-8）有关，解析编码格式即得到组成文本的Unicode码；</li>
 <li>字体文件提供字形（glyph），合字的字形都在字体文件中，但有些字素的字形不一定在字体文件中；</li>
 <li>系统软件根据规则<strong>将编码映射到字形</strong>，最后根据字形将字符显示在屏幕上。对于一些字素，将字形按一定规则重叠起来显示。</li>
 </ol>
 <p>汉字的数量虽多，但Unicode为每个汉字都分配了编码，而且编码和字体文件中的字形是一一映射的关系，所以计算机显示汉字的过程比天城文要简单。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://unicode.org/charts/PDF/U0900.pdf">Devanagari Unicode Characters</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.unicode.org/versions/Unicode14.0.0/ch12.pdf">Unicode Standard Chapter 12.1</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/27331819/">What’s the difference between a character, a code point, a glyph and a grapheme?</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/6805311/">python - Combining Devanagari characters - Stack Overflow</a></li>
+<h2 id="参考资料">参考资料</h2>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://unicode.org/charts/PDF/U0900.pdf">Devanagari
+Unicode Characters</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.unicode.org/versions/Unicode14.0.0/ch12.pdf">Unicode
+Standard Chapter 12.1</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/27331819/">What's the
+difference between a character, a code point, a glyph and a
+grapheme?</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/6805311/">python -
+Combining Devanagari characters - Stack Overflow</a></li>
 </ol>
 
     </div>
