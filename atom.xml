@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2022-12-24T00:32:48.145Z</updated>
+  <updated>2023-01-09T15:37:13.234Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2023年初柳州之行</title>
+    <link href="https://panqiincs.me/2023/01/09/renyin-liuzhou-trip/"/>
+    <id>https://panqiincs.me/2023/01/09/renyin-liuzhou-trip/</id>
+    <published>2023-01-09T13:24:32.000Z</published>
+    <updated>2023-01-09T15:37:13.234Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;今年寒假本想自驾去海南，可惜铁三角之一的那位小伙比香港记者跑得还快，一放假就回家了，没有凑足人数，于是作罢。1月6日上午临时决定一个人去柳州转转，收拾好东西后，中午就出发了。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="柳州" scheme="https://panqiincs.me/tags/%E6%9F%B3%E5%B7%9E/"/>
+    
+  </entry>
   
   <entry>
     <title>C标准库中的短模式匹配算法</title>
@@ -129,11 +148,11 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="程序设计" scheme="https://panqiincs.me/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
     
+    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
+    
     <category term="天城文" scheme="https://panqiincs.me/tags/%E5%A4%A9%E5%9F%8E%E6%96%87/"/>
     
     <category term="devanagari" scheme="https://panqiincs.me/tags/devanagari/"/>
-    
-    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
     
     <category term="转写" scheme="https://panqiincs.me/tags/%E8%BD%AC%E5%86%99/"/>
     
@@ -156,6 +175,8 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="程序设计" scheme="https://panqiincs.me/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
     
+    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
+    
     <category term="天城文" scheme="https://panqiincs.me/tags/%E5%A4%A9%E5%9F%8E%E6%96%87/"/>
     
     <category term="devanagari" scheme="https://panqiincs.me/tags/devanagari/"/>
@@ -163,8 +184,6 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="合字" scheme="https://panqiincs.me/tags/%E5%90%88%E5%AD%97/"/>
     
     <category term="ligature" scheme="https://panqiincs.me/tags/ligature/"/>
-    
-    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
     
     <category term="字体文件" scheme="https://panqiincs.me/tags/%E5%AD%97%E4%BD%93%E6%96%87%E4%BB%B6/"/>
     
@@ -207,6 +226,8 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="程序设计" scheme="https://panqiincs.me/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
     
+    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
+    
     <category term="天城文" scheme="https://panqiincs.me/tags/%E5%A4%A9%E5%9F%8E%E6%96%87/"/>
     
     <category term="devanagari" scheme="https://panqiincs.me/tags/devanagari/"/>
@@ -214,8 +235,6 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="合字" scheme="https://panqiincs.me/tags/%E5%90%88%E5%AD%97/"/>
     
     <category term="ligature" scheme="https://panqiincs.me/tags/ligature/"/>
-    
-    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
     
     <category term="pillow" scheme="https://panqiincs.me/tags/pillow/"/>
     
@@ -239,6 +258,10 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="程序设计" scheme="https://panqiincs.me/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
     
+    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
+    
+    <category term="字体" scheme="https://panqiincs.me/tags/%E5%AD%97%E4%BD%93/"/>
+    
     <category term="天城文" scheme="https://panqiincs.me/tags/%E5%A4%A9%E5%9F%8E%E6%96%87/"/>
     
     <category term="devanagari" scheme="https://panqiincs.me/tags/devanagari/"/>
@@ -255,13 +278,9 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     
     <category term="ligature" scheme="https://panqiincs.me/tags/ligature/"/>
     
-    <category term="字体" scheme="https://panqiincs.me/tags/%E5%AD%97%E4%BD%93/"/>
-    
     <category term="glyph" scheme="https://panqiincs.me/tags/glyph/"/>
     
     <category term="字形" scheme="https://panqiincs.me/tags/%E5%AD%97%E5%BD%A2/"/>
-    
-    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
     
   </entry>
   
@@ -510,29 +529,6 @@ href=&quot;http://bbs.tianya.cn/post-5213-1577-1.shtml&quot;&gt;黄州往事&lt;
     <category term="pacman" scheme="https://panqiincs.me/tags/pacman/"/>
     
     <category term="npm" scheme="https://panqiincs.me/tags/npm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我的家乡与长江水患</title>
-    <link href="https://panqiincs.me/2021/07/19/hometown-and-flood/"/>
-    <id>https://panqiincs.me/2021/07/19/hometown-and-flood/</id>
-    <published>2021-07-19T08:18:13.000Z</published>
-    <updated>2022-04-22T00:16:40.306Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;我的家乡湖北黄冈位于长江中游，她享受着母亲河带来的便利，同时也饱受着长江水患的侵扰，在江边长大的人对洪水都有深刻的记忆。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="胡言乱语" scheme="https://panqiincs.me/categories/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/"/>
-    
-    
-    <category term="黄冈" scheme="https://panqiincs.me/tags/%E9%BB%84%E5%86%88/"/>
-    
-    <category term="长江" scheme="https://panqiincs.me/tags/%E9%95%BF%E6%B1%9F/"/>
-    
-    <category term="水灾" scheme="https://panqiincs.me/tags/%E6%B0%B4%E7%81%BE/"/>
     
   </entry>
   
