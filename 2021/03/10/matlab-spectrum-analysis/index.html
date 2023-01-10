@@ -21,13 +21,16 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="理论准备 上一篇文章介绍了获取模拟信号频谱的过程：先将模拟信号转换为数字信号，然后对数字信号做DFT，得到的频谱序列能够反映模拟信号频谱的特征。">
+    <meta name="description" content="理论准备上一篇文章介绍了获取模拟信号频谱的过程：先将模拟信号转换为数字信号，然后对数字信号做DFT，得到的频谱序列能够反映模拟信号频谱的特征。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用MATLAB做频谱分析">
 <meta property="og:url" content="https://panqiincs.me/2021/03/10/matlab-spectrum-analysis/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="理论准备 上一篇文章介绍了获取模拟信号频谱的过程：先将模拟信号转换为数字信号，然后对数字信号做DFT，得到的频谱序列能够反映模拟信号频谱的特征。">
+<meta property="og:description" content="理论准备上一篇文章介绍了获取模拟信号频谱的过程：先将模拟信号转换为数字信号，然后对数字信号做DFT，得到的频谱序列能够反映模拟信号频谱的特征。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/matlab_analog_spectrum.svg">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/matlab_xat_xajw.svg">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/matlab_xan_xak.svg">
 <meta property="article:published_time" content="2021-03-10T13:13:14.000Z">
 <meta property="article:modified_time" content="2022-10-20T16:20:57.720Z">
 <meta property="article:author" content="Krist Pan">
@@ -37,6 +40,7 @@
 <meta property="article:tag" content="dft">
 <meta property="article:tag" content="频谱分析">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/matlab_analog_spectrum.svg">
 
 
 <link rel="canonical" href="https://panqiincs.me/2021/03/10/matlab-spectrum-analysis/">
@@ -299,131 +303,41 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="理论准备">理论准备</h2>
-<p><a
-href="https://panqiincs.me/2021/03/09/analog-signal-spectrum/">上一篇文章</a>介绍了获取模拟信号频谱的过程：先将模拟信号转换为数字信号，然后对数字信号做DFT，得到的频谱序列能够反映模拟信号频谱的特征。</p>
+        <h2 id="理论准备"><a href="#理论准备" class="headerlink" title="理论准备"></a>理论准备</h2><p><a href="https://panqiincs.me/2021/03/09/analog-signal-spectrum/">上一篇文章</a>介绍了获取模拟信号频谱的过程：先将模拟信号转换为数字信号，然后对数字信号做DFT，得到的频谱序列能够反映模拟信号频谱的特征。</p>
 <span id="more"></span>
-<p>具体来说，<span
-class="math inline">\(X(k)\)</span>能反映真实的频谱<span
-class="math inline">\(X(j\Omega)\)</span>的特性，以<span
-class="math inline">\(X(e^{j\omega})\)</span>为桥梁。<span
-class="math inline">\(X(j\Omega)\)</span>中的自变量<span
-class="math inline">\(\Omega\)</span>是角频率，单位是rad/s，还要转换为更习惯的以Hz为单位的频率变量<span
-class="math inline">\(F\)</span>。整个转换过程记为</p>
-<p><span class="math display">\[
-\begin{equation}
-X(k) \to X(e^{j\omega}) \to X(j\Omega) \to X(j2\pi F)  \tag{1}
-\end{equation}
-\]</span></p>
-<p>得到<span
-class="math inline">\(X(k)\)</span>的值之后，频率变量换算的过程非常关键，这样才知道每个频率成分所占的比重。换算的过程为</p>
-<p><span class="math display">\[
-\begin{equation}
-k \to \omega \to \Omega \to F  \tag{2}
-\end{equation}
-\]</span></p>
-<p><span class="math inline">\(k\)</span>的范围是<span
-class="math inline">\(0\)</span>到<span
-class="math inline">\(N-1\)</span>，记为半开半闭区间<span
-class="math inline">\([0, N)\)</span>，对应的<span
-class="math inline">\(\omega\)</span>的范围是<span
-class="math inline">\([0, 2\pi)\)</span>，它们之间的转换公式为</p>
-<p><span class="math display">\[
-\begin{equation}
-\omega = \frac{2\pi}{N}k  \tag{3}
-\end{equation}
-\]</span></p>
-<p><span class="math inline">\(\Omega\)</span>与<span
-class="math inline">\(\omega\)</span>之间的关系为</p>
-<p><span class="math display">\[
-\begin{equation}
-\Omega = \frac{\omega}{T_s} = \omega F_s  \tag{4}
-\end{equation}
-\]</span></p>
-<p>所以，<span class="math inline">\(\Omega\)</span>与<span
-class="math inline">\(k\)</span>的转换关系为</p>
-<p><span class="math display">\[
-\begin{equation}
-\Omega = \frac{2\pi k}{N} F_s  \tag{5}
-\end{equation}
-\]</span></p>
-<p>角频率<span class="math inline">\(\Omega\)</span>与频率<span
-class="math inline">\(F\)</span>的转换关系为</p>
-<p><span class="math display">\[
-\begin{equation}
-F = \frac{\Omega}{2\pi} = \frac{k}{N} F_s  \tag{6}
-\end{equation}
-\]</span></p>
-<p>公式<span
-class="math inline">\((6)\)</span>就是最终要在代码中实现的频率轴换算公式。频谱的大小则要将DFT的值乘以采样周期<span
-class="math inline">\(T_s\)</span>。</p>
-<h2 id="周期信号">周期信号</h2>
-<p>先看周期信号的例子，本例来源于MATLAB官方。假设现有一模拟信号<span
-class="math inline">\(x(t)\)</span>，它由两个不同频率的正弦波叠加得到的，频率分别为<span
-class="math inline">\(f_1=15 \mathrm{Hz}\)</span>和<span
-class="math inline">\(f_2=40 \mathrm{Hz}\)</span>，解析表达式</p>
-<p><span class="math display">\[
-x(t) = 1.3\sin \omega_1 t + 1.7\sin \omega_2 (t-2)
-\]</span></p>
-<p>那么，角频率<span class="math inline">\(\omega_1=2\pi
-f_1\)</span>、<span class="math inline">\(\omega_2=2\pi
-f_2\)</span>，在MATLAB中对该模拟信号进行采样，然后通过<code>fft</code>函数计算其离散傅里叶变换DFT的代码如下：</p>
+
+<p>具体来说，$X(k)$能反映真实的频谱$X(j\Omega)$的特性，以$X(e^{j\omega})$为桥梁。$X(j\Omega)$中的自变量$\Omega$是角频率，单位是rad&#x2F;s，还要转换为更习惯的以Hz为单位的频率变量$F$。整个转换过程记为</p>
+<p>$$<br>\begin{equation}<br>X(k) \to X(e^{j\omega}) \to X(j\Omega) \to X(j2\pi F)  \tag{1}<br>\end{equation}<br>$$</p>
+<p>得到$X(k)$的值之后，频率变量换算的过程非常关键，这样才知道每个频率成分所占的比重。换算的过程为</p>
+<p>$$<br>\begin{equation}<br>k \to \omega \to \Omega \to F  \tag{2}<br>\end{equation}<br>$$</p>
+<p>$k$的范围是$0$到$N-1$，记为半开半闭区间$[0, N)$，对应的$\omega$的范围是$[0, 2\pi)$，它们之间的转换公式为</p>
+<p>$$<br>\begin{equation}<br>\omega &#x3D; \frac{2\pi}{N}k  \tag{3}<br>\end{equation}<br>$$</p>
+<p>$\Omega$与$\omega$之间的关系为</p>
+<p>$$<br>\begin{equation}<br>\Omega &#x3D; \frac{\omega}{T_s} &#x3D; \omega F_s  \tag{4}<br>\end{equation}<br>$$</p>
+<p>所以，$\Omega$与$k$的转换关系为</p>
+<p>$$<br>\begin{equation}<br>\Omega &#x3D; \frac{2\pi k}{N} F_s  \tag{5}<br>\end{equation}<br>$$</p>
+<p>角频率$\Omega$与频率$F$的转换关系为</p>
+<p>$$<br>\begin{equation}<br>F &#x3D; \frac{\Omega}{2\pi} &#x3D; \frac{k}{N} F_s  \tag{6}<br>\end{equation}<br>$$</p>
+<p>公式$(6)$就是最终要在代码中实现的频率轴换算公式。频谱的大小则要将DFT的值乘以采样周期$T_s$。</p>
+<h2 id="周期信号"><a href="#周期信号" class="headerlink" title="周期信号"></a>周期信号</h2><p>先看周期信号的例子，本例来源于MATLAB官方。假设现有一模拟信号$x(t)$，它由两个不同频率的正弦波叠加得到的，频率分别为$f_1&#x3D;15 \mathrm{Hz}$和$f_2&#x3D;40 \mathrm{Hz}$，解析表达式</p>
+<p>$$<br>x(t) &#x3D; 1.3\sin \omega_1 t + 1.7\sin \omega_2 (t-2)<br>$$</p>
+<p>那么，角频率$\omega_1&#x3D;2\pi f_1$、$\omega_2&#x3D;2\pi f_2$，在MATLAB中对该模拟信号进行采样，然后通过<code>fft</code>函数计算其离散傅里叶变换DFT的代码如下：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fs = <span class="number">100</span>;                                <span class="comment">% sample frequency (Hz)</span></span><br><span class="line">t = <span class="number">0</span>:<span class="number">1</span>/fs:<span class="number">10</span><span class="number">-1</span>/fs;                      <span class="comment">% 10 second span time vector</span></span><br><span class="line">x = (<span class="number">1.3</span>)*<span class="built_in">sin</span>(<span class="number">2</span>*<span class="built_in">pi</span>*<span class="number">15</span>*t) ...             <span class="comment">% 15 Hz component</span></span><br><span class="line">  + (<span class="number">1.7</span>)*<span class="built_in">sin</span>(<span class="number">2</span>*<span class="built_in">pi</span>*<span class="number">40</span>*(t<span class="number">-2</span>));            <span class="comment">% 40 Hz component</span></span><br><span class="line">y = fft(x)*<span class="number">1</span>/fs;        <span class="comment">% multiply sample period</span></span><br><span class="line">n = <span class="built_in">length</span>(x);          <span class="comment">% number of samples</span></span><br><span class="line">f = (<span class="number">0</span>:n<span class="number">-1</span>)/n*fs;       <span class="comment">% frequency range</span></span><br><span class="line">y = <span class="built_in">abs</span>(y);             <span class="comment">% magnitude of spectrum</span></span><br><span class="line"><span class="built_in">figure</span>(<span class="number">1</span>); <span class="built_in">plot</span>(f(<span class="number">1</span>:<span class="built_in">floor</span>(n/<span class="number">2</span>)), y(<span class="number">1</span>:<span class="built_in">floor</span>(n/<span class="number">2</span>)));</span><br><span class="line">xlabel(<span class="string">&#x27;Frequency (Hz)&#x27;</span>); ylabel(<span class="string">&#x27;Magnitude&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<p>第1到4行代码是采样过程，第6行使用<code>fft</code>计算频谱，第8行根据公式<span
-class="math inline">\((6)\)</span>做频率轴尺度换算。DFT的幅值关于中点<span
-class="math inline">\(N/2\)</span>对称，所以可以只显示前一半频率轴的图像，对应第11到第12行代码。得到的频谱图为</p>
-<figure>
-<img
-src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/matlab_analog_spectrum.svg"
-alt="图1 连续周期信号的频谱" />
-<figcaption aria-hidden="true">图1 连续周期信号的频谱</figcaption>
-</figure>
-<p>只有15Hz和40Hz两个分量，跟<span
-class="math inline">\(x(t)\)</span>的频率成分是吻合的。本例中的采样频率为100Hz，大于两倍的40Hz，所以能将两个频率分量都计算出来。读者可以尝试减小采样频率，看看会得到什么样的频谱图。</p>
-<h2 id="非周期信号">非周期信号</h2>
-<p>现有一有限长的非周期模拟信号<span
-class="math inline">\(x_a(t)\)</span>，它的解析表达式为</p>
-<p><span class="math display">\[
-\begin{equation}
-x_a(t) =
-\begin{cases}
-1 + \cos 2\pi t,  &amp; -0.5 \le t \le 0.5 \\
-0, &amp; 其他
-\end{cases}  \tag{7}
-\end{equation}
-\]</span></p>
-<p><span
-class="math inline">\(x_a(t)\)</span>的频谱用傅里叶变换描述，借助软件工具，可以计算得到</p>
-<p><span class="math display">\[
-\begin{equation}
-X_a(j\omega) = \int_{-\infty}^{+\infty} x_a(t) e^{-j\omega t}
-\mathrm{d}t = \int_{-0.5}^{0.5} (1 + \cos 2\pi t) e^{-j\omega t}
-\mathrm{d}t
-= -\frac{8\pi^{2} \sin{\frac{\omega}{2}}}{\omega^{3} -
-4\pi^{2}\omega}  \tag{8}
-\end{equation}
-\]</span></p>
-<p>该频谱是个实函数。信号及其频谱<span class="math inline">\(X_a(j2\pi
-f)\)</span>的图像如图2所示，频谱图横轴的单位为Hz，可以发现大于8Hz的频率分量趋于0，可以认为它是个带宽有限的信号，带宽小于8Hz。</p>
-<figure>
-<img
-src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/matlab_xat_xajw.svg"
-alt="图2 连续非周期信号及其频谱" />
-<figcaption aria-hidden="true">图2 连续非周期信号及其频谱</figcaption>
-</figure>
+
+<p>第1到4行代码是采样过程，第6行使用<code>fft</code>计算频谱，第8行根据公式$(6)$做频率轴尺度换算。DFT的幅值关于中点$N&#x2F;2$对称，所以可以只显示前一半频率轴的图像，对应第11到第12行代码。得到的频谱图为</p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/matlab_analog_spectrum.svg" alt="图1 连续周期信号的频谱"></p>
+<p>只有15Hz和40Hz两个分量，跟$x(t)$的频率成分是吻合的。本例中的采样频率为100Hz，大于两倍的40Hz，所以能将两个频率分量都计算出来。读者可以尝试减小采样频率，看看会得到什么样的频谱图。</p>
+<h2 id="非周期信号"><a href="#非周期信号" class="headerlink" title="非周期信号"></a>非周期信号</h2><p>现有一有限长的非周期模拟信号$x_a(t)$，它的解析表达式为</p>
+<p>$$<br>\begin{equation}<br>x_a(t) &#x3D;<br>\begin{cases}<br>1 + \cos 2\pi t,  &amp; -0.5 \le t \le 0.5 \<br>0, &amp; 其他<br>\end{cases}  \tag{7}<br>\end{equation}<br>$$</p>
+<p>$x_a(t)$的频谱用傅里叶变换描述，借助软件工具，可以计算得到</p>
+<p>$$<br>\begin{equation}<br>X_a(j\omega) &#x3D; \int_{-\infty}^{+\infty} x_a(t) e^{-j\omega t} \mathrm{d}t &#x3D; \int_{-0.5}^{0.5} (1 + \cos 2\pi t) e^{-j\omega t} \mathrm{d}t<br>&#x3D; -\frac{8\pi^{2} \sin{\frac{\omega}{2}}}{\omega^{3} - 4\pi^{2}\omega}  \tag{8}<br>\end{equation}<br>$$</p>
+<p>该频谱是个实函数。信号及其频谱$X_a(j2\pi f)$的图像如图2所示，频谱图横轴的单位为Hz，可以发现大于8Hz的频率分量趋于0，可以认为它是个带宽有限的信号，带宽小于8Hz。</p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/matlab_xat_xajw.svg" alt="图2 连续非周期信号及其频谱"></p>
 <p>现在分析这个持续时间为2s的信号的频谱.根据采样定理可知，采样频率取16Hz即可。全部代码如下：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">T = <span class="number">2</span>;       <span class="comment">% 信号的持续时间为2s，也是做周期延拓时的周期</span></span><br><span class="line">fs = <span class="number">16</span>;     <span class="comment">% 采样频率</span></span><br><span class="line">N = T*fs;    <span class="comment">% 采样点个数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 采样过程，得到离散信号</span></span><br><span class="line">t = -T/<span class="number">2</span>:T/N:T/<span class="number">2</span>-T/N;</span><br><span class="line">xn = <span class="number">1</span> + <span class="built_in">cos</span>(<span class="number">2</span>*<span class="built_in">pi</span>*t);</span><br><span class="line">k1 = <span class="built_in">find</span>(t &lt; <span class="number">-0.5</span>); xn(k1) = <span class="number">0</span>;</span><br><span class="line">k2 = <span class="built_in">find</span>(t &gt; <span class="number">0.5</span>); xn(k2) = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">x = [xn(N/<span class="number">2</span>+<span class="number">1</span>:N), xn(<span class="number">1</span>:N/<span class="number">2</span>)];  <span class="comment">% 将负半轴的数据接到正半轴数据的后面</span></span><br><span class="line">y = fft(x)*<span class="number">1</span>/fs;               <span class="comment">% 将DFT的值乘以采样周期</span></span><br><span class="line">yshift = fftshift(<span class="built_in">real</span>(y));    <span class="comment">% 移位，使得以频率0为中心</span></span><br><span class="line">fshift = (-N/<span class="number">2</span>:N/<span class="number">2</span><span class="number">-1</span>)/N*fs;    <span class="comment">% 构造以频率0为中心的频率轴</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">figure</span>(<span class="number">2</span>)</span><br><span class="line">subplot(<span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>); stem(<span class="number">0</span>:N<span class="number">-1</span>, xn, <span class="string">&#x27;.&#x27;</span>); xlim([<span class="number">0</span>, N]); grid on</span><br><span class="line">subplot(<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>); stem(fshift, yshift, <span class="string">&#x27;.&#x27;</span>); grid on</span><br></pre></td></tr></table></figure>
-<p>第5到9行代码是根据信号的解析表达式得到离散信号的过程。第11行代码将负半轴的数据接到正半轴数据的后面，然后交给第12行计算DFT。因为DFT的本质是信号的周期延拓的DFS，将原信号周期延拓之后，再从下标<span
-class="math inline">\(0\)</span>到<span
-class="math inline">\(N-1\)</span>取一个周期，即为第11行代码得到的序列。第13行代码使用<code>fftshift</code>函数将数据移位，得到关于频率0对称的数据。第14行代码再构造一个关于频率0对称的频率轴，频率转换关系同样遵循公式<span
-class="math inline">\((6)\)</span>，接下来就可以画图显示。代码的运行结果如图3所示，分别为采样序列<span
-class="math inline">\(x_a(n)\)</span>与它的DFT的图像。</p>
-<figure>
-<img
-src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/matlab_xan_xak.svg"
-alt="图3 采样序列及其DFT" />
-<figcaption aria-hidden="true">图3 采样序列及其DFT</figcaption>
-</figure>
+
+<p>第5到9行代码是根据信号的解析表达式得到离散信号的过程。第11行代码将负半轴的数据接到正半轴数据的后面，然后交给第12行计算DFT。因为DFT的本质是信号的周期延拓的DFS，将原信号周期延拓之后，再从下标$0$到$N-1$取一个周期，即为第11行代码得到的序列。第13行代码使用<code>fftshift</code>函数将数据移位，得到关于频率0对称的数据。第14行代码再构造一个关于频率0对称的频率轴，频率转换关系同样遵循公式$(6)$，接下来就可以画图显示。代码的运行结果如图3所示，分别为采样序列$x_a(n)$与它的DFT的图像。</p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/matlab_xan_xak.svg" alt="图3 采样序列及其DFT"></p>
 <p>很明显，图2和图3的结果是一致的。这就证明了用DFT来分析连续信号的频谱是有效的。</p>
 
     </div>

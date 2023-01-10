@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="定义 开环传递函数是控制理论中极其重要的概念。首先要明确，它指的是闭环系统的开环传递函数，也就是说，但凡提到这一概念，一定是针对闭环系统而言的。">
+    <meta name="description" content="定义开环传递函数是控制理论中极其重要的概念。首先要明确，它指的是闭环系统的开环传递函数，也就是说，但凡提到这一概念，一定是针对闭环系统而言的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="开环传递函数的作用">
 <meta property="og:url" content="https://panqiincs.me/2021/01/29/open-loop-tf/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="定义 开环传递函数是控制理论中极其重要的概念。首先要明确，它指的是闭环系统的开环传递函数，也就是说，但凡提到这一概念，一定是针对闭环系统而言的。">
+<meta property="og:description" content="定义开环传递函数是控制理论中极其重要的概念。首先要明确，它指的是闭环系统的开环传递函数，也就是说，但凡提到这一概念，一定是针对闭环系统而言的。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-29T14:21:27.000Z">
 <meta property="article:modified_time" content="2022-10-22T15:09:35.114Z">
@@ -297,37 +297,19 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="定义">定义</h2>
-<p>开环传递函数是控制理论中极其重要的概念。首先要明确，它指的是<strong>闭环系统</strong>的开环传递函数，也就是说，但凡提到这一概念，一定是针对闭环系统而言的。</p>
+        <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>开环传递函数是控制理论中极其重要的概念。首先要明确，它指的是<strong>闭环系统</strong>的开环传递函数，也就是说，但凡提到这一概念，一定是针对闭环系统而言的。</p>
 <span id="more"></span>
-<p>对于典型的闭环控制系统，开环传递函数定义为前向通道的传递函数<span
-class="math inline">\(G(s)\)</span>和主反馈通道的传递函数<span
-class="math inline">\(H(s)\)</span>的乘积<span
-class="math inline">\(G(s)H(s)\)</span>。闭环传递函数和开环传递函数之间的关系是：</p>
-<p><span class="math display">\[
-\Phi(s) = \frac{G(s)}{1+G(s)H(s)}
-\]</span></p>
+
+<p>对于典型的闭环控制系统，开环传递函数定义为前向通道的传递函数$G(s)$和主反馈通道的传递函数$H(s)$的乘积$G(s)H(s)$。闭环传递函数和开环传递函数之间的关系是：</p>
+<p>$$<br>\Phi(s) &#x3D; \frac{G(s)}{1+G(s)H(s)}<br>$$</p>
 <p>正是这个重要的关系式成就了开环传递函数的地位。经典控制理论有三大分析方法：时域法、根轨迹法和频域法，开环传递函数在这三种分析方法中都发挥了重要的作用。</p>
-<h2 id="时域法">时域法</h2>
-<p>闭环传递函数<span
-class="math inline">\(\Phi(s)\)</span>的分母多项式<span
-class="math inline">\(1+G(s)H(s)=0\)</span>称为系统的特征方程，特征方程的根全部分布在<span
-class="math inline">\(s\)</span>左半平面时，系统才是稳定的。如果知道了开环传递函数<span
-class="math inline">\(G(s)H(s)\)</span>，就可以直接写出特征方程，从而判断系统的稳定性。</p>
-<p>除了判断系统的稳定性，还可以计算稳态误差。从开环传递函数的形式可以得到开环增益<span
-class="math inline">\(K\)</span>和系统的型别<span
-class="math inline">\(\nu\)</span>，这两个参数就决定了系统的稳态误差，这就是时域分析中求解稳态误差的静态误差系数法。</p>
-<h2 id="根轨迹法">根轨迹法</h2>
-<p>根轨迹法是通过开环传递函数<span
-class="math inline">\(G(s)H(s)\)</span>的零点和极点，去判断闭环传递函数的极点的位置，闭环极点的位置决定系统的稳定性和性能。绘制根轨迹的法则都从如下的公式推导而来：</p>
-<p><span class="math display">\[
-G(s)H(s) = -1
-\]</span></p>
-<h2 id="频域法">频域法</h2>
-<p>在频域法中，可以通过开环系统的频率特性去判断闭环系统的稳定性，这就是Nyquist稳定性判据。稳定裕度也是从开环系统的频率特性定义而来，用于衡量闭环系统的相对稳定性，也就是稳定程度。</p>
-<h2 id="优点">优点</h2>
-<p>引入开环传递函数有如下优点：</p>
-<ol type="1">
+<h2 id="时域法"><a href="#时域法" class="headerlink" title="时域法"></a>时域法</h2><p>闭环传递函数$\Phi(s)$的分母多项式$1+G(s)H(s)&#x3D;0$称为系统的特征方程，特征方程的根全部分布在$s$左半平面时，系统才是稳定的。如果知道了开环传递函数$G(s)H(s)$，就可以直接写出特征方程，从而判断系统的稳定性。</p>
+<p>除了判断系统的稳定性，还可以计算稳态误差。从开环传递函数的形式可以得到开环增益$K$和系统的型别$\nu$，这两个参数就决定了系统的稳态误差，这就是时域分析中求解稳态误差的静态误差系数法。</p>
+<h2 id="根轨迹法"><a href="#根轨迹法" class="headerlink" title="根轨迹法"></a>根轨迹法</h2><p>根轨迹法是通过开环传递函数$G(s)H(s)$的零点和极点，去判断闭环传递函数的极点的位置，闭环极点的位置决定系统的稳定性和性能。绘制根轨迹的法则都从如下的公式推导而来：</p>
+<p>$$<br>G(s)H(s) &#x3D; -1<br>$$</p>
+<h2 id="频域法"><a href="#频域法" class="headerlink" title="频域法"></a>频域法</h2><p>在频域法中，可以通过开环系统的频率特性去判断闭环系统的稳定性，这就是Nyquist稳定性判据。稳定裕度也是从开环系统的频率特性定义而来，用于衡量闭环系统的相对稳定性，也就是稳定程度。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>引入开环传递函数有如下优点：</p>
+<ol>
 <li>简化计算。最典型的莫过于根轨迹法，当某个参数变化时，不需要重复求解高阶代数方程就可以判断闭环极点的移动轨迹。这一点在高性能计算机出现之前尤为重要。</li>
 <li>开环传递函数可直接配置。系统的稳定性和性能由闭环传递函数直接决定，但它是从各环节的传递函数计算出来的，无法直接配置。而开环传递函数是各个环节传递函数的乘积，在设计系统时，开环零点和极点可以直接配置，进而决定闭环系统的性能。</li>
 <li>开环特性容易测量。很多实际系统中的输出是无法直接测量的，反馈通道其实就是测量环节，起着量纲转换的作用。将主反馈通道打断，在输入端接上测试信号，并记录测量环节的输出信号，就能够得到系统的开环特性。例如，输入不同频率的信号，就能绘制开环系统的频率特性图（Bode图或Nyquist图），即使系统的模型是未知的，也能通过开环频率特性判断系统的稳定性和稳定程度。</li>
