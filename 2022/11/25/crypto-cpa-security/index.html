@@ -21,13 +21,17 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="安全性定义 选择明文攻击（Chosen-Plaintext Attack）指敌手能够选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。">
+    <meta name="description" content="安全性定义选择明文攻击（Chosen-Plaintext Attack）指敌手能够选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CPA安全方案的构建与安全性证明">
 <meta property="og:url" content="https://panqiincs.me/2022/11/25/crypto-cpa-security/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="安全性定义 选择明文攻击（Chosen-Plaintext Attack）指敌手能够选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。">
+<meta property="og:description" content="安全性定义选择明文攻击（Chosen-Plaintext Attack）指敌手能够选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/privk_cpa.png">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/random_func.png">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/cpa_scheme.png">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/reduction_prf.png">
 <meta property="article:published_time" content="2022-11-25T00:39:36.000Z">
 <meta property="article:modified_time" content="2022-12-18T10:43:04.399Z">
 <meta property="article:author" content="Krist Pan">
@@ -36,6 +40,7 @@
 <meta property="article:tag" content="选择明文攻击">
 <meta property="article:tag" content="伪随机函数">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/privk_cpa.png">
 
 
 <link rel="canonical" href="https://panqiincs.me/2022/11/25/crypto-cpa-security/">
@@ -280,14 +285,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>7.2k</span>
+      <span>6.9k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>7 分钟</span>
+      <span>6 分钟</span>
     </span>
 </div>
 
@@ -298,364 +303,67 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="安全性定义">安全性定义</h2>
-<p><strong>选择明文攻击</strong>（Chosen-Plaintext
-Attack）指敌手能够选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。</p>
+        <h2 id="安全性定义"><a href="#安全性定义" class="headerlink" title="安全性定义"></a>安全性定义</h2><p><strong>选择明文攻击</strong>（Chosen-Plaintext Attack）指敌手能够选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。</p>
 <span id="more"></span>
-<p>攻击过程可形式化为，允许敌手<span
-class="math inline">\(\mathcal{A}\)</span>和<strong>加密预言机</strong>（encryption
-oracle）自由交互，<span
-class="math inline">\(\mathcal{A}\)</span>访问预言机<span
-class="math inline">\(\mathcal{O}\)</span>的过程记为<span
-class="math inline">\(\mathcal{A}^{\mathcal{O}(\cdot)}\)</span>，如果<span
-class="math inline">\(\mathcal{O}\)</span>是加密算法<span
-class="math inline">\(\mathsf{Enc}_k\)</span>，则记为<span
-class="math inline">\(\mathcal{A}^{\mathsf{Enc}_k(\cdot)}\)</span>。<span
-class="math inline">\(\mathcal{A}\)</span>提供明文消息<span
-class="math inline">\(m\)</span>作为输入，预言机返回密文<span
-class="math inline">\(c\gets\mathsf{Enc}_k(m)\)</span>作为回复，这便是一次询问过程。安全性的定义要求：即使<span
-class="math inline">\(\mathcal{A}\)</span>能访问加密预言机，也无法区分两条任意消息的密文。</p>
-<p>对称密钥加密方案<span
-class="math inline">\(\Pi=(\mathsf{Gen},\mathsf{Enc},\mathsf{Dec})\)</span>，<strong>CPA不可区分实验</strong>记作<span
-class="math inline">\(\mathsf{PrivK}_{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)\)</span>，定义如下：</p>
-<ol type="1">
-<li>生成密钥<span
-class="math inline">\(k\gets\mathsf{Gen}(1^n)\)</span></li>
-<li><span class="math inline">\(\mathcal{A}\)</span>能访问预言机<span
-class="math inline">\(\mathsf{Enc}_k(\cdot)\)</span>，输入<span
-class="math inline">\(1^n\)</span>给<span
-class="math inline">\(\mathcal{A}\)</span>，<span
-class="math inline">\(\mathcal{A}\)</span>输出一对长度相等的消息<span
-class="math inline">\(m_0\)</span>和<span
-class="math inline">\(m_1\)</span></li>
-<li>选择随机比特<span
-class="math inline">\(b\gets\{0,1\}\)</span>，计算出密文<span
-class="math inline">\(c\gets\mathsf{Enc}_k(m_b)\)</span>交给<span
-class="math inline">\(\mathcal{A}\)</span>，<span
-class="math inline">\(c\)</span>称为挑战密文</li>
-<li><span
-class="math inline">\(\mathcal{A}\)</span>继续访问预言机，输出一个比特<span
-class="math inline">\(b&#39;\)</span></li>
-<li>如果<span class="math inline">\(b=b&#39;\)</span>，则该实验输出<span
-class="math inline">\(1\)</span>，否则输出<span
-class="math inline">\(0\)</span></li>
+
+<p>攻击过程可形式化为，允许敌手$\mathcal{A}$和<strong>加密预言机</strong>（encryption oracle）自由交互，$\mathcal{A}$访问预言机$\mathcal{O}$的过程记为$\mathcal{A}^{\mathcal{O}(\cdot)}$，如果$\mathcal{O}$是加密算法$\mathsf{Enc}_k$，则记为$\mathcal{A}^{\mathsf{Enc}_k(\cdot)}$。$\mathcal{A}$提供明文消息$m$作为输入，预言机返回密文$c\gets\mathsf{Enc}_k(m)$作为回复，这便是一次询问过程。安全性的定义要求：即使$\mathcal{A}$能访问加密预言机，也无法区分两条任意消息的密文。</p>
+<p>对称密钥加密方案$\Pi&#x3D;(\mathsf{Gen},\mathsf{Enc},\mathsf{Dec})$，<strong>CPA不可区分实验</strong>记作$\mathsf{PrivK}_{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)$，定义如下：</p>
+<ol>
+<li>生成密钥$k\gets\mathsf{Gen}(1^n)$</li>
+<li>$\mathcal{A}$能访问预言机$\mathsf{Enc}_k(\cdot)$，输入$1^n$给$\mathcal{A}$，$\mathcal{A}$输出一对长度相等的消息$m_0$和$m_1$</li>
+<li>选择随机比特$b\gets{0,1}$，计算出密文$c\gets\mathsf{Enc}_k(m_b)$交给$\mathcal{A}$，$c$称为挑战密文</li>
+<li>$\mathcal{A}$继续访问预言机，输出一个比特$b’$</li>
+<li>如果$b&#x3D;b’$，则该实验输出$1$，否则输出$0$</li>
 </ol>
-<figure>
-<img
-src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/privk_cpa.png"
-alt="CPA不可区分实验" />
-<figcaption aria-hidden="true">CPA不可区分实验</figcaption>
-</figure>
-<p>定义描述了敌手<span
-class="math inline">\(\mathcal{A}\)</span>利用预言机<span
-class="math inline">\(\mathsf{Enc}_k(\cdot)\)</span>攻击方案<span
-class="math inline">\(\Pi\)</span>的过程，当<span
-class="math inline">\(\mathsf{PrivK}_{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)=1\)</span>时，<span
-class="math inline">\(\mathcal{A}\)</span>成功攻破方案。如果对任意概率多项式敌手<span
-class="math inline">\(\mathcal{A}\)</span>，存在可忽略函数<span
-class="math inline">\(\mathsf{negl}\)</span>，使得 <span
-class="math display">\[
-\mathrm{Pr}\Big[\mathsf{PrivK}_{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)=1\Big]
-\le \frac{1}{2} + \mathsf{negl}(n) \tag{1}
-\]</span>
-则方案是选择明文攻击条件下的不可区分加密，或者说是<strong>CPA安全</strong>的。</p>
-<h2 id="伪随机函数">伪随机函数</h2>
-<p>从<a
-href="https://panqiincs.me/2022/11/22/crypto-proof-method/">密码学中的归约证明过程</a>一文可知，伪随机数发生器能够保证窃听者存在时的安全性，<strong>伪随机函数</strong>（pseudorandom
-function）则可以用来构造CPA安全的加密方案。</p>
-<figure>
-<img
-src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/random_func.png"
-alt="伪随机函数" />
-<figcaption aria-hidden="true">伪随机函数</figcaption>
-</figure>
-<p>现研究将<span
-class="math inline">\(n\)</span>长度字符串映射到另一个<span
-class="math inline">\(n\)</span>长度字符串的伪随机函数。带密钥的函数<span
-class="math inline">\(F\)</span>是双输入函数： <span
-class="math display">\[
-F:\{0,1\}^* \times \{0,1\}^* \to \{0,1\}^*
-\]</span> 第一个输入为密钥<span
-class="math inline">\(k\)</span>，第二个输入才是输入。一般来说，密钥<span
-class="math inline">\(k\)</span>一旦选择好就固定了，于是考虑单输入函数：
-<span class="math display">\[
-F_k:\{0,1\}^* \to \{0,1\}^*
-\]</span> <span class="math display">\[
-F_k(x) \overset{\mathrm{def}}{=} F(k,x)
-\]</span> 通常假设<span
-class="math inline">\(F\)</span>是定长的，即密钥<span
-class="math inline">\(k\)</span>、输入<span
-class="math inline">\(x\)</span>和函数值<span
-class="math inline">\(F_k(x)\)</span>的长度相同。那么伪随机函数<span
-class="math inline">\(F_k(\cdot)\)</span>通过固定密钥<span
-class="math inline">\(k\in\{0,1\}^{n}\)</span>将<span
-class="math inline">\(n\)</span>长度的字符串映射到另一个<span
-class="math inline">\(n\)</span>长度的字符串。每个密钥对应一种函数分布，所以<span
-class="math inline">\(F_k\)</span>最多可从<span
-class="math inline">\(2^n\)</span>个不同的函数分布中选择。</p>
-<p>考虑所有将<span class="math inline">\(n\)</span>长度字符串映射到<span
-class="math inline">\(n\)</span>长度字符串的函数，它们构成的集合记作<span
-class="math inline">\(\mathsf{Func}_n\)</span>，将函数看成查找表（look-up
-table），可得集合的大小为<span class="math inline">\(2^{n\cdot
-2^n}\)</span>。从中均匀随机选择一个函数<span
-class="math inline">\(f\in\mathsf{Func}_n\)</span>，那么<span
-class="math inline">\(f\)</span>是「真正的」随机函数。</p>
-<p>如果对所有的多项式时间区分器<span
-class="math inline">\(D\)</span>，存在可忽略函数<span
-class="math inline">\(\mathsf{negl}\)</span>，满足 <span
-class="math display">\[
-\left| \mathrm{Pr} \big[ D^{F_k(\cdot)}(1^n)=1 \big] - \mathrm{Pr} \big[
-D^{f(\cdot)}(1^n)=1 \big] \right| \le \mathsf{negl}(n) \tag{2}
-\]</span> 则称<span
-class="math inline">\(F\)</span>是伪随机函数，其中<span
-class="math inline">\(k\gets\{0,1\}^n\)</span>是均匀随机选择的，<span
-class="math inline">\(f\)</span>是从所有将<span
-class="math inline">\(n\)</span>长度字符串映射到<span
-class="math inline">\(n\)</span>长度字符串的函数集合<span
-class="math inline">\(\mathsf{Func}_n\)</span>中均匀随机选择的。前者是从<span
-class="math inline">\(2^n\)</span>个不同的函数分布中选择出来的，后者是从<span
-class="math inline">\(2^{n\cdot
-2^n}\)</span>个不同的函数分布中选择出来的，但任意区分器都无法在多项式时间内区分到底是在和<span
-class="math inline">\(F_k\)</span>还是<span
-class="math inline">\(f\)</span>交互。</p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/privk_cpa.png" alt="CPA不可区分实验"></p>
+<p>定义描述了敌手$\mathcal{A}$利用预言机$\mathsf{Enc}<em>k(\cdot)$攻击方案$\Pi$的过程，当$\mathsf{PrivK}</em>{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)&#x3D;1$时，$\mathcal{A}$成功攻破方案。如果对任意概率多项式敌手$\mathcal{A}$，存在可忽略函数$\mathsf{negl}$，使得<br>$$<br>\mathrm{Pr}\Big[\mathsf{PrivK}_{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)&#x3D;1\Big] \le \frac{1}{2} + \mathsf{negl}(n) \tag{1}<br>$$<br>则方案是选择明文攻击条件下的不可区分加密，或者说是<strong>CPA安全</strong>的。</p>
+<h2 id="伪随机函数"><a href="#伪随机函数" class="headerlink" title="伪随机函数"></a>伪随机函数</h2><p>从<a href="https://panqiincs.me/2022/11/22/crypto-proof-method/">密码学中的归约证明过程</a>一文可知，伪随机数发生器能够保证窃听者存在时的安全性，<strong>伪随机函数</strong>（pseudorandom function）则可以用来构造CPA安全的加密方案。</p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/random_func.png" alt="伪随机函数"></p>
+<p>现研究将$n$长度字符串映射到另一个$n$长度字符串的伪随机函数。带密钥的函数$F$是双输入函数：<br>$$<br>F:{0,1}^* \times {0,1}^* \to {0,1}^*<br>$$<br>第一个输入为密钥$k$，第二个输入才是输入。一般来说，密钥$k$一旦选择好就固定了，于是考虑单输入函数：<br>$$<br>F_k:{0,1}^* \to {0,1}^*<br>$$<br>$$<br>F_k(x) \overset{\mathrm{def}}{&#x3D;} F(k,x)<br>$$<br>通常假设$F$是定长的，即密钥$k$、输入$x$和函数值$F_k(x)$的长度相同。那么伪随机函数$F_k(\cdot)$通过固定密钥$k\in{0,1}^{n}$将$n$长度的字符串映射到另一个$n$长度的字符串。每个密钥对应一种函数分布，所以$F_k$最多可从$2^n$个不同的函数分布中选择。</p>
+<p>考虑所有将$n$长度字符串映射到$n$长度字符串的函数，它们构成的集合记作$\mathsf{Func}_n$，将函数看成查找表（look-up table），可得集合的大小为$2^{n\cdot 2^n}$。从中均匀随机选择一个函数$f\in\mathsf{Func}_n$，那么$f$是「真正的」随机函数。</p>
+<p>如果对所有的多项式时间区分器$D$，存在可忽略函数$\mathsf{negl}$，满足<br>$$<br>\left| \mathrm{Pr} \big[ D^{F_k(\cdot)}(1^n)&#x3D;1 \big] - \mathrm{Pr} \big[ D^{f(\cdot)}(1^n)&#x3D;1 \big] \right| \le \mathsf{negl}(n) \tag{2}<br>$$<br>则称$F$是伪随机函数，其中$k\gets{0,1}^n$是均匀随机选择的，$f$是从所有将$n$长度字符串映射到$n$长度字符串的函数集合$\mathsf{Func}_n$中均匀随机选择的。前者是从$2^n$个不同的函数分布中选择出来的，后者是从$2^{n\cdot 2^n}$个不同的函数分布中选择出来的，但任意区分器都无法在多项式时间内区分到底是在和$F_k$还是$f$交互。</p>
 <p>基于伪随机函数构建CPA安全的加密方案，方案安全性证明的关键点在于，<strong>如果敌手能够攻破该方案，则它能将伪随机函数和真正的随机函数区分开来</strong>。我们能在后面的归约证明过程中看到这一点。</p>
-<h2 id="方案构建">方案构建</h2>
-<p>令<span
-class="math inline">\(F\)</span>是伪随机函数，定义消息长度为<span
-class="math inline">\(n\)</span>的对称密钥加密方案<span
-class="math inline">\(\Pi=(\mathsf{Gen},\mathsf{Enc},\mathsf{Dec})\)</span>如下：</p>
+<h2 id="方案构建"><a href="#方案构建" class="headerlink" title="方案构建"></a>方案构建</h2><p>令$F$是伪随机函数，定义消息长度为$n$的对称密钥加密方案$\Pi&#x3D;(\mathsf{Gen},\mathsf{Enc},\mathsf{Dec})$如下：</p>
 <ul>
-<li><span class="math inline">\(\mathsf{Gen}\)</span>：输入<span
-class="math inline">\(1^n\)</span>，均匀随机选择密钥<span
-class="math inline">\(k\gets\{0,1\}^n\)</span></li>
-<li><span class="math inline">\(\mathsf{Enc}\)</span>：输入密钥<span
-class="math inline">\(k\in\{0,1\}^n\)</span>，以及消息<span
-class="math inline">\(m\in\{0,1\}^n\)</span>，均匀随机选择<span
-class="math inline">\(r\gets\{0,1\}^n\)</span>，输出密文 <span
-class="math display">\[
-c:=\left \langle r, F_k(r) \oplus m_b \right \rangle
-\]</span></li>
-<li><span class="math inline">\(\mathsf{Dec}\)</span>：输入密钥<span
-class="math inline">\(k\in\{0,1\}^n\)</span>，以及密文<span
-class="math inline">\(c=\left \langle r, s \right
-\rangle\)</span>，输出明文消息 <span class="math display">\[
-m:=F_k(r)\oplus s
-\]</span></li>
+<li>$\mathsf{Gen}$：输入$1^n$，均匀随机选择密钥$k\gets{0,1}^n$</li>
+<li>$\mathsf{Enc}$：输入密钥$k\in{0,1}^n$，以及消息$m\in{0,1}^n$，均匀随机选择$r\gets{0,1}^n$，输出密文<br>$$<br>c:&#x3D;\left \langle r, F_k(r) \oplus m_b \right \rangle<br>$$</li>
+<li>$\mathsf{Dec}$：输入密钥$k\in{0,1}^n$，以及密文$c&#x3D;\left \langle r, s \right \rangle$，输出明文消息<br>$$<br>m:&#x3D;F_k(r)\oplus s<br>$$</li>
 </ul>
-<figure>
-<img
-src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/cpa_scheme.png"
-alt="加密过程" />
-<figcaption aria-hidden="true">加密过程</figcaption>
-</figure>
-<p>简单定义<span
-class="math inline">\(\mathsf{Enc}_k(m)=F_k(m)\)</span>是不可行的，因为<span
-class="math inline">\(\mathsf{Enc}_k(\cdot)=F_k(\cdot)\)</span>是确定函数（deterministic
-function），给定相同的输入一定会得到相同的输出。敌手经过多次实验尝试，总能找到某个明文对应的密文与挑战密文相同，从而破解方案。任何CPA安全的加密方案必须是概率的（probabilistic），随机性必须是加密过程的一部分，以保证<strong>相同的明文得到不同的密文</strong>。</p>
-<p>该构造方案是概率的，通过伪随机函数将随机值<span
-class="math inline">\(r\)</span>映射到另一个字符串，然后将字符串与明文异或，得到密文。<span
-class="math inline">\(F_k(r)\)</span>对于观察密文<span
-class="math inline">\(\left\langle r,s
-\right\rangle\)</span>的敌手来说，看上去是完全随机的。因此，该加密方案和「一次一密」非常相似，只要<span
-class="math inline">\(r\)</span>没有在之前某次加密中使用过。</p>
-<h2 id="安全性证明">安全性证明</h2>
-<h3 id="攻破方案的概率">攻破方案的概率</h3>
-<p>将加密方案<span class="math inline">\(\Pi\)</span>中的伪随机函数<span
-class="math inline">\(F_k\)</span>替换成随机函数<span
-class="math inline">\(f\gets\mathsf{Func}_n\)</span>，得到的加密方案记为<span
-class="math inline">\(\widetilde{\Pi}=(\widetilde{\mathsf{Gen}},\widetilde{\mathsf{Enc}},\widetilde{\mathsf{Dec}})\)</span>。除了真正的随机函数<span
-class="math inline">\(f\)</span>取代了<span
-class="math inline">\(F_k\)</span>之外，<span
-class="math inline">\(\widetilde{\Pi}\)</span>与<span
-class="math inline">\(\Pi\)</span>完全相同。敌手<span
-class="math inline">\(\mathcal{A}\)</span>最多向加密预言机询问<span
-class="math inline">\(q(n)\)</span>次，其中<span
-class="math inline">\(q(\cdot)\)</span>是多项式。那么<span
-class="math inline">\(\mathcal{A}\)</span>攻破<span
-class="math inline">\(\widetilde{\Pi}\)</span>的概率</p>
-<p><span class="math display">\[
-\mathrm{Pr} \Big[
-\mathsf{PrivK}_{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)=1 \Big]
-\le \frac{1}{2}+\frac{q(n)}{2^n} \tag{3}
-\]</span></p>
-<p>下面分析如何得到<span class="math inline">\((3)\)</span>的结果。</p>
-<p>令<span class="math inline">\(r_c\)</span>为生成挑战密文<span
-class="math inline">\(c=\left\langle r_c,f(r_c) \oplus m_b
-\right\rangle\)</span>时用到的随机值。<span
-class="math inline">\(\mathcal{A}\)</span>向加密预言机询问<span
-class="math inline">\(q(n)\)</span>次可得到<span
-class="math inline">\(\{\left\langle r_i,f(r_i)
-\right\rangle\}\)</span>，因为返回给<span
-class="math inline">\(\mathcal{A}\)</span>的密文<span
-class="math inline">\(c_i=\left\langle r_i,s_i
-\right\rangle\)</span>，<span class="math inline">\(f(r_i)=s_i\oplus
-m_i\)</span>，其中<span
-class="math inline">\(i=1,\dots,q(n)\)</span>。根据随机值<span
-class="math inline">\(r_c\)</span>是否被重复使用，分两种情况讨论：</p>
-<ol type="1">
-<li>加密预言机在回答<span
-class="math inline">\(\mathcal{A}\)</span>的询问时至少用到过一次<span
-class="math inline">\(r_c\)</span>，记作事件<span
-class="math inline">\(\mathsf{Repeat}\)</span>。这种情况下<span
-class="math inline">\(\mathcal{A}\)</span>能轻易判断出哪条消息被加密，只需根据询问预言机得到的<span
-class="math inline">\(\left\langle r_c,f(r_c)
-\right\rangle\)</span>计算<span
-class="math inline">\(m_0\)</span>和<span
-class="math inline">\(m_1\)</span>对应的密文，其中必有一条与挑战密文<span
-class="math inline">\(c\)</span>相同。<span
-class="math inline">\(r_c\in\{r_i\}\)</span>的概率最多为<span
-class="math inline">\(q(n)/2^n\)</span>，所以该事件发生的概率最多为<span
-class="math inline">\(q(n)/2^n\)</span>。</li>
-<li>加密预言机在回答<span
-class="math inline">\(\mathcal{A}\)</span>的询问时从未用到过<span
-class="math inline">\(r_c\)</span>，记作事件<span
-class="math inline">\(\lnot\mathsf{Repeat}\)</span>。那么<span
-class="math inline">\(\mathcal{A}\)</span>和加密预言机的交互过程中没有掌握任何关于<span
-class="math inline">\(f(r_c)\)</span>的信息，这意味着<span
-class="math inline">\(f(r_c)\)</span>和<span
-class="math inline">\(m_b\)</span>做异或后的值完全随机（与「一次一密」类似），所以<span
-class="math inline">\(\mathcal{A}\)</span>输出<span
-class="math inline">\(b&#39;=b\)</span>的概率是<span
-class="math inline">\(1/2\)</span>。</li>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/cpa_scheme.png" alt="加密过程"></p>
+<p>简单定义$\mathsf{Enc}_k(m)&#x3D;F_k(m)$是不可行的，因为$\mathsf{Enc}_k(\cdot)&#x3D;F_k(\cdot)$是确定函数（deterministic function），给定相同的输入一定会得到相同的输出。敌手经过多次实验尝试，总能找到某个明文对应的密文与挑战密文相同，从而破解方案。任何CPA安全的加密方案必须是概率的（probabilistic），随机性必须是加密过程的一部分，以保证<strong>相同的明文得到不同的密文</strong>。</p>
+<p>该构造方案是概率的，通过伪随机函数将随机值$r$映射到另一个字符串，然后将字符串与明文异或，得到密文。$F_k(r)$对于观察密文$\left\langle r,s \right\rangle$的敌手来说，看上去是完全随机的。因此，该加密方案和「一次一密」非常相似，只要$r$没有在之前某次加密中使用过。</p>
+<h2 id="安全性证明"><a href="#安全性证明" class="headerlink" title="安全性证明"></a>安全性证明</h2><h3 id="攻破方案的概率"><a href="#攻破方案的概率" class="headerlink" title="攻破方案的概率"></a>攻破方案的概率</h3><p>将加密方案$\Pi$中的伪随机函数$F_k$替换成随机函数$f\gets\mathsf{Func}_n$，得到的加密方案记为$\widetilde{\Pi}&#x3D;(\widetilde{\mathsf{Gen}},\widetilde{\mathsf{Enc}},\widetilde{\mathsf{Dec}})$。除了真正的随机函数$f$取代了$F_k$之外，$\widetilde{\Pi}$与$\Pi$完全相同。敌手$\mathcal{A}$最多向加密预言机询问$q(n)$次，其中$q(\cdot)$是多项式。那么$\mathcal{A}$攻破$\widetilde{\Pi}$的概率</p>
+<p>$$<br>\mathrm{Pr} \Big[ \mathsf{PrivK}_{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)&#x3D;1 \Big] \le \frac{1}{2}+\frac{q(n)}{2^n} \tag{3}<br>$$</p>
+<p>下面分析如何得到$(3)$的结果。</p>
+<p>令$r_c$为生成挑战密文$c&#x3D;\left\langle r_c,f(r_c) \oplus m_b \right\rangle$时用到的随机值。$\mathcal{A}$向加密预言机询问$q(n)$次可得到${\left\langle r_i,f(r_i) \right\rangle}$，因为返回给$\mathcal{A}$的密文$c_i&#x3D;\left\langle r_i,s_i \right\rangle$，$f(r_i)&#x3D;s_i\oplus m_i$，其中$i&#x3D;1,\dots,q(n)$。根据随机值$r_c$是否被重复使用，分两种情况讨论：</p>
+<ol>
+<li>加密预言机在回答$\mathcal{A}$的询问时至少用到过一次$r_c$，记作事件$\mathsf{Repeat}$。这种情况下$\mathcal{A}$能轻易判断出哪条消息被加密，只需根据询问预言机得到的$\left\langle r_c,f(r_c) \right\rangle$计算$m_0$和$m_1$对应的密文，其中必有一条与挑战密文$c$相同。$r_c\in{r_i}$的概率最多为$q(n)&#x2F;2^n$，所以该事件发生的概率最多为$q(n)&#x2F;2^n$。</li>
+<li>加密预言机在回答$\mathcal{A}$的询问时从未用到过$r_c$，记作事件$\lnot\mathsf{Repeat}$。那么$\mathcal{A}$和加密预言机的交互过程中没有掌握任何关于$f(r_c)$的信息，这意味着$f(r_c)$和$m_b$做异或后的值完全随机（与「一次一密」类似），所以$\mathcal{A}$输出$b’&#x3D;b$的概率是$1&#x2F;2$。</li>
 </ol>
-<p>综合这两种情况，可得<span
-class="math inline">\(\mathcal{A}\)</span>攻破<span
-class="math inline">\(\widetilde\Pi\)</span>的概率 <span
-class="math display">\[
-\begin{align}
-\mathrm{Pr} \Big[
-\mathsf{PrivK}_{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)=1 \Big]
-&amp; = \mathrm{Pr} \Big[
-\mathsf{PrivK}_{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)=1 \wedge
-\mathsf{Repeat} \Big] + \mathrm{Pr} \Big[
-\mathsf{PrivK}_{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)=1 \wedge
-\lnot\mathsf{Repeat} \Big] \\
-&amp; \le \mathrm{Pr} \big[ \mathsf{Repeat} \big] + \mathrm{Pr} \Big[
-\mathsf{PrivK}_{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)=1 \big |
-\lnot\mathsf{Repeat} \Big] \\
-&amp; \le \frac{q(n)}{2^n}+\frac{1}{2}
-\end{align}
-\]</span></p>
-<p>即得到<span
-class="math inline">\((3)\)</span>的结果。从上面的分析可知，该方案安全性的关键在于，<strong>避免生成挑战密文<span
-class="math inline">\(c\)</span>时所用到的随机值<span
-class="math inline">\(r_c\)</span>在加密预言机回答敌手询问时被使用</strong>，但即使是重复使用了，概率也是可以忽略的。</p>
-<p>定义函数 <span class="math display">\[
-\varepsilon(n) \overset{\mathrm{def}}{=} \mathrm{Pr} \Big[
-\mathsf{PrivK}_{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)=1 \Big] - \frac{1}{2}
-\tag{4}
-\]</span> 根据<span
-class="math inline">\(\varepsilon\)</span>的定义，<span
-class="math inline">\(\mathcal{A}\)</span>攻破<span
-class="math inline">\(\Pi\)</span>的概率可表示为 <span
-class="math display">\[
-\mathrm{Pr} \Big[ \mathsf{PrivK}_{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)=1
-\Big] = \frac{1}{2} + \varepsilon(n) \tag{5}
-\]</span> 只有当<span
-class="math inline">\(\varepsilon(n)\)</span>为可忽略函数时，方案<span
-class="math inline">\(\Pi\)</span>才是安全的。</p>
-<h3 id="归约证明">归约证明</h3>
-<p>构造区分器<span class="math inline">\(\mathcal{D}\)</span>，它将<span
-class="math inline">\(\mathcal{A}\)</span>当作子程序运行。<span
-class="math inline">\(\mathcal{D}\)</span>访问使用某函数的预言机<span
-class="math inline">\(\mathcal{O}\)</span>，要判断该函数是「伪随机的」（即<span
-class="math inline">\(F_k,
-k\gets\{0,1\}^n\)</span>）还是「随机的」（即<span
-class="math inline">\(f\gets\mathsf{Func}_n\)</span>）。<span
-class="math inline">\(\mathcal{D}\)</span>模拟<span
-class="math inline">\(\mathcal{A}\)</span>的不可区分性实验，观察<span
-class="math inline">\(\mathcal{A}\)</span>成功与否，以确定<span
-class="math inline">\(\mathcal{O}\)</span>使用的是伪随机函数还是随机函数。</p>
-<p>向<span class="math inline">\(\mathcal{D}\)</span>输入<span
-class="math inline">\(1^n\)</span>和可访问的预言机<span
-class="math inline">\(\mathcal{O}\)</span>，让<span
-class="math inline">\(\mathcal{A}\)</span>执行CPA不可区分实验：</p>
-<ol type="1">
-<li><span class="math inline">\(\mathcal{A}\)</span>可以访问<span
-class="math inline">\(\mathcal{O}\)</span>，对<span
-class="math inline">\(\mathcal{A}\)</span>输入<span
-class="math inline">\(1^n\)</span>，<span
-class="math inline">\(\mathcal{A}\)</span>输出一对长度相等的消息<span
-class="math inline">\(m_0\)</span>和<span
-class="math inline">\(m_1\)</span></li>
-<li>随机选择<span
-class="math inline">\(b\gets\{0,1\}\)</span>，均匀随机选择<span
-class="math inline">\(r\gets\{0,1\}^n\)</span>，向<span
-class="math inline">\(\mathcal{O}\)</span>询问得到<span
-class="math inline">\(s&#39;\gets\mathcal{O}(r)\)</span>，将<span
-class="math inline">\(c:=\left \langle r,s&#39;\oplus m_b \right
-\rangle\)</span>交给<span
-class="math inline">\(\mathcal{A}\)</span></li>
-<li><span class="math inline">\(\mathcal{A}\)</span>继续访问<span
-class="math inline">\(\mathcal{O}\)</span>，<span
-class="math inline">\(\mathcal{O}\)</span>继续回答<span
-class="math inline">\(\mathcal{A}\)</span>的询问，<span
-class="math inline">\(\mathcal{A}\)</span>最终输出一个比特<span
-class="math inline">\(b&#39;\)</span></li>
-<li>如果<span class="math inline">\(b=b&#39;\)</span>，则该实验输出<span
-class="math inline">\(1\)</span>，否则输出<span
-class="math inline">\(0\)</span></li>
+<p>综合这两种情况，可得$\mathcal{A}$攻破$\widetilde\Pi$的概率<br>$$<br>\begin{align}<br>\mathrm{Pr} \Big[ \mathsf{PrivK}<em>{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)&#x3D;1 \Big]<br>&amp; &#x3D; \mathrm{Pr} \Big[ \mathsf{PrivK}</em>{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)&#x3D;1 \wedge \mathsf{Repeat} \Big] + \mathrm{Pr} \Big[ \mathsf{PrivK}<em>{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)&#x3D;1 \wedge \lnot\mathsf{Repeat} \Big] \<br>&amp; \le \mathrm{Pr} \big[ \mathsf{Repeat} \big] + \mathrm{Pr} \Big[ \mathsf{PrivK}</em>{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)&#x3D;1 \big | \lnot\mathsf{Repeat} \Big] \<br>&amp; \le \frac{q(n)}{2^n}+\frac{1}{2}<br>\end{align}<br>$$</p>
+<p>即得到$(3)$的结果。从上面的分析可知，该方案安全性的关键在于，<strong>避免生成挑战密文$c$时所用到的随机值$r_c$在加密预言机回答敌手询问时被使用</strong>，但即使是重复使用了，概率也是可以忽略的。</p>
+<p>定义函数<br>$$<br>\varepsilon(n) \overset{\mathrm{def}}{&#x3D;} \mathrm{Pr} \Big[ \mathsf{PrivK}<em>{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)&#x3D;1 \Big] - \frac{1}{2} \tag{4}<br>$$<br>根据$\varepsilon$的定义，$\mathcal{A}$攻破$\Pi$的概率可表示为<br>$$<br>\mathrm{Pr} \Big[ \mathsf{PrivK}</em>{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)&#x3D;1 \Big] &#x3D; \frac{1}{2} + \varepsilon(n) \tag{5}<br>$$<br>只有当$\varepsilon(n)$为可忽略函数时，方案$\Pi$才是安全的。</p>
+<h3 id="归约证明"><a href="#归约证明" class="headerlink" title="归约证明"></a>归约证明</h3><p>构造区分器$\mathcal{D}$，它将$\mathcal{A}$当作子程序运行。$\mathcal{D}$访问使用某函数的预言机$\mathcal{O}$，要判断该函数是「伪随机的」（即$F_k, k\gets{0,1}^n$）还是「随机的」（即$f\gets\mathsf{Func}_n$）。$\mathcal{D}$模拟$\mathcal{A}$的不可区分性实验，观察$\mathcal{A}$成功与否，以确定$\mathcal{O}$使用的是伪随机函数还是随机函数。</p>
+<p>向$\mathcal{D}$输入$1^n$和可访问的预言机$\mathcal{O}$，让$\mathcal{A}$执行CPA不可区分实验：</p>
+<ol>
+<li>$\mathcal{A}$可以访问$\mathcal{O}$，对$\mathcal{A}$输入$1^n$，$\mathcal{A}$输出一对长度相等的消息$m_0$和$m_1$</li>
+<li>随机选择$b\gets{0,1}$，均匀随机选择$r\gets{0,1}^n$，向$\mathcal{O}$询问得到$s’\gets\mathcal{O}(r)$，将$c:&#x3D;\left \langle r,s’\oplus m_b \right \rangle$交给$\mathcal{A}$</li>
+<li>$\mathcal{A}$继续访问$\mathcal{O}$，$\mathcal{O}$继续回答$\mathcal{A}$的询问，$\mathcal{A}$最终输出一个比特$b’$</li>
+<li>如果$b&#x3D;b’$，则该实验输出$1$，否则输出$0$</li>
 </ol>
-<p>那么，<span class="math inline">\(\mathcal{A}\)</span>作为<span
-class="math inline">\(\mathcal{D}\)</span>的子程序运行时的视图与<span
-class="math inline">\(\mathcal{A}\)</span>攻击加密方案时的视图相同，而且过程完全一样。<span
-class="math inline">\(\mathcal{O}\)</span>使用伪随机函数<span
-class="math inline">\(F_k\)</span>与加密方案<span
-class="math inline">\(\Pi\)</span>对应，<span
-class="math inline">\(\mathcal{O}\)</span>使用随机函数<span
-class="math inline">\(f\)</span>与加密方案<span
-class="math inline">\(\widetilde{\Pi}\)</span>对应，所以 <span
-class="math display">\[
-\mathrm{Pr} \big[ D^{F_k(\cdot)}(1^n)=1 \big] = \mathrm{Pr} \Big[
-\mathsf{PrivK}_{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)=1 \Big] \tag{6}
-\]</span> <span class="math display">\[
-\mathrm{Pr} \big[ D^{f(\cdot)}(1^n)=1 \big] = \mathrm{Pr} \Big[
-\mathsf{PrivK}_{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)=1 \Big]
-\tag{7}
-\]</span> 综合<span class="math inline">\((3)\)</span>、<span
-class="math inline">\((5)\)</span>、<span
-class="math inline">\((6)\)</span>、<span
-class="math inline">\((7)\)</span>可得 <span class="math display">\[
-\mathrm{Pr} \big[ D^{F_k(\cdot)}(1^n)=1 \big] - \mathrm{Pr} \big[
-D^{f(\cdot)}(1^n)=1 \big] \ge \varepsilon(n) - \frac{q(n)}{2^n} \tag{8}
-\]</span></p>
+<p>那么，$\mathcal{A}$作为$\mathcal{D}$的子程序运行时的视图与$\mathcal{A}$攻击加密方案时的视图相同，而且过程完全一样。$\mathcal{O}$使用伪随机函数$F_k$与加密方案$\Pi$对应，$\mathcal{O}$使用随机函数$f$与加密方案$\widetilde{\Pi}$对应，所以<br>$$<br>\mathrm{Pr} \big[ D^{F_k(\cdot)}(1^n)&#x3D;1 \big] &#x3D; \mathrm{Pr} \Big[ \mathsf{PrivK}<em>{\mathcal{A},\Pi}^{\mathsf{cpa}}(n)&#x3D;1 \Big] \tag{6}<br>$$<br>$$<br>\mathrm{Pr} \big[ D^{f(\cdot)}(1^n)&#x3D;1 \big] &#x3D; \mathrm{Pr} \Big[ \mathsf{PrivK}</em>{\mathcal{A},\widetilde{\Pi}}^{\mathsf{cpa}}(n)&#x3D;1 \Big] \tag{7}<br>$$<br>综合$(3)$、$(5)$、$(6)$、$(7)$可得<br>$$<br>\mathrm{Pr} \big[ D^{F_k(\cdot)}(1^n)&#x3D;1 \big] - \mathrm{Pr} \big[ D^{f(\cdot)}(1^n)&#x3D;1 \big] \ge \varepsilon(n) - \frac{q(n)}{2^n} \tag{8}<br>$$</p>
 <p>有了上面的结果，构造归约证明，过程如下：</p>
-<figure>
-<img
-src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/reduction_prf.png"
-alt="归约证明示意图" />
-<figcaption aria-hidden="true">归约证明示意图</figcaption>
-</figure>
-<ol type="1">
-<li>指定敌手<span
-class="math inline">\(\mathcal{A}\)</span>攻击方案<span
-class="math inline">\(\Pi\)</span>，成功的概率与<span
-class="math inline">\(1/2\)</span>的差值为<span
-class="math inline">\(\varepsilon(n)\)</span></li>
-<li>假设：问题<span
-class="math inline">\(\mathsf{X}\)</span>难以解决，无法在概率多项式时间内以不可忽略的概率区分<span
-class="math inline">\(F_k\)</span>和<span
-class="math inline">\(f\)</span></li>
-<li>归约：构造区分器<span
-class="math inline">\(\mathcal{D}\)</span>，它将<span
-class="math inline">\(\mathcal{A}\)</span>当作子程序运行，执行CPA不可区分实验，可得到结论
-<span class="math display">\[
-\mathrm{Pr} \big[ D^{F_k(\cdot)}(1^n)=1 \big] - \mathrm{Pr} \big[
-D^{f(\cdot)}(1^n)=1 \big] \ge \varepsilon(n) - \frac{q(n)}{2^n}
-\]</span></li>
-<li>矛盾：若<span
-class="math inline">\(\varepsilon(n)\)</span>不可忽略，则上面得到的概率也不可忽略，这与假设相矛盾</li>
-<li>结论：<span
-class="math inline">\(\mathcal{A}\)</span>无法以不可忽略的概率攻破方案<span
-class="math inline">\(\Pi\)</span>，方案<span
-class="math inline">\(\Pi\)</span>是CPA安全的</li>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/reduction_prf.png" alt="归约证明示意图"></p>
+<ol>
+<li>指定敌手$\mathcal{A}$攻击方案$\Pi$，成功的概率与$1&#x2F;2$的差值为$\varepsilon(n)$</li>
+<li>假设：问题$\mathsf{X}$难以解决，无法在概率多项式时间内以不可忽略的概率区分$F_k$和$f$</li>
+<li>归约：构造区分器$\mathcal{D}$，它将$\mathcal{A}$当作子程序运行，执行CPA不可区分实验，可得到结论<br>$$<br>\mathrm{Pr} \big[ D^{F_k(\cdot)}(1^n)&#x3D;1 \big] - \mathrm{Pr} \big[ D^{f(\cdot)}(1^n)&#x3D;1 \big] \ge \varepsilon(n) - \frac{q(n)}{2^n}<br>$$</li>
+<li>矛盾：若$\varepsilon(n)$不可忽略，则上面得到的概率也不可忽略，这与假设相矛盾</li>
+<li>结论：$\mathcal{A}$无法以不可忽略的概率攻破方案$\Pi$，方案$\Pi$是CPA安全的</li>
 </ol>
-<h2 id="参考资料">参考资料</h2>
-<ol type="1">
-<li><a target="_blank" rel="noopener" href="https://github.com/YuZhang/cryptography">Cryptography
-Course Slides</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://book.douban.com/subject/5954556/">现代密码学</a></li>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/YuZhang/cryptography">Cryptography Course Slides</a></li>
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/5954556/">现代密码学</a></li>
 </ol>
 
     </div>
