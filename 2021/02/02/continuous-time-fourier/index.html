@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="基础知识本文讨论的连续信号指的是连续时间信号（continuous-time signal），以时间为自变量，以信号的幅度为函数值。连续信号在自变量的连续取值上都有定义，例如，作为时间的函数的语音信号就是连续信号。">
+    <meta name="description" content="基础知识 本文讨论的连续信号指的是连续时间信号（continuous-time signal），以时间为自变量，以信号的幅度为函数值。连续信号在自变量的连续取值上都有定义，例如，作为时间的函数的语音信号就是连续信号。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="连续信号的傅里叶分析">
 <meta property="og:url" content="https://panqiincs.me/2021/02/02/continuous-time-fourier/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="基础知识本文讨论的连续信号指的是连续时间信号（continuous-time signal），以时间为自变量，以信号的幅度为函数值。连续信号在自变量的连续取值上都有定义，例如，作为时间的函数的语音信号就是连续信号。">
+<meta property="og:description" content="基础知识 本文讨论的连续信号指的是连续时间信号（continuous-time signal），以时间为自变量，以信号的幅度为函数值。连续信号在自变量的连续取值上都有定义，例如，作为时间的函数的语音信号就是连续信号。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-02T02:30:14.000Z">
 <meta property="article:modified_time" content="2022-05-01T10:16:28.333Z">
@@ -280,7 +280,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4k</span>
+      <span>3.9k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -298,56 +298,182 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>本文讨论的连续信号指的是连续时间信号（continuous-time signal），以时间为自变量，以信号的幅度为函数值。连续信号在自变量的连续取值上都有定义，例如，作为时间的函数的语音信号就是连续信号。</p>
+        <h2 id="基础知识">基础知识</h2>
+<p>本文讨论的连续信号指的是连续时间信号（continuous-time
+signal），以时间为自变量，以信号的幅度为函数值。连续信号在自变量的连续取值上都有定义，例如，作为时间的函数的语音信号就是连续信号。</p>
 <span id="more"></span>
-
-<p>周期信号是幅值随着时间重复变化的信号，一个周期连续时间信号具有这样的性质，即存在一个正值的$T$，对所有的$t$来说，有$x(t) &#x3D; x(t+T)$，那么$T$就是该信号的周期。$T$的整数倍也是周期，所以周期有无数个，将满足条件的最小的周期$T$称为<strong>基波周期</strong>。正弦函数$x(t) &#x3D; \sin \omega t$就是周期函数，基波周期$T &#x3D; 2 \pi &#x2F; \left| \omega \right|$，$\omega$称为角频率，加绝对值符号是因为$\omega$可能为负数。</p>
-<p>由于正弦函数计算不方便，因此引入周期复指数信号$x(t) &#x3D; e^{j \omega t}$，由周期信号的定义式</p>
-<p>$$<br>\begin{equation}<br>e^{j \omega (t + T)} &#x3D; e^{j \omega t} \cdot e^{j \omega T} &#x3D; e^{j \omega t}  \tag{1}<br>\end{equation}<br>$$</p>
-<p>所以$e^{j \omega T} &#x3D; 1$，于是得到复指数信号的基波周期</p>
-<p>$$<br>\begin{equation}<br>T &#x3D; \frac{2\pi}{\left| \omega \right|}  \tag{2}<br>\end{equation}<br>$$</p>
+<p>周期信号是幅值随着时间重复变化的信号，一个周期连续时间信号具有这样的性质，即存在一个正值的<span
+class="math inline">\(T\)</span>，对所有的<span
+class="math inline">\(t\)</span>来说，有<span class="math inline">\(x(t)
+= x(t+T)\)</span>，那么<span
+class="math inline">\(T\)</span>就是该信号的周期。<span
+class="math inline">\(T\)</span>的整数倍也是周期，所以周期有无数个，将满足条件的最小的周期<span
+class="math inline">\(T\)</span>称为<strong>基波周期</strong>。正弦函数<span
+class="math inline">\(x(t) = \sin \omega
+t\)</span>就是周期函数，基波周期<span class="math inline">\(T = 2 \pi /
+\left| \omega \right|\)</span>，<span
+class="math inline">\(\omega\)</span>称为角频率，加绝对值符号是因为<span
+class="math inline">\(\omega\)</span>可能为负数。</p>
+<p>由于正弦函数计算不方便，因此引入周期复指数信号<span
+class="math inline">\(x(t) = e^{j \omega
+t}\)</span>，由周期信号的定义式</p>
+<p><span class="math display">\[
+\begin{equation}
+e^{j \omega (t + T)} = e^{j \omega t} \cdot e^{j \omega T} = e^{j \omega
+t}  \tag{1}
+\end{equation}
+\]</span></p>
+<p>所以<span class="math inline">\(e^{j \omega T} =
+1\)</span>，于是得到复指数信号的基波周期</p>
+<p><span class="math display">\[
+\begin{equation}
+T = \frac{2\pi}{\left| \omega \right|}  \tag{2}
+\end{equation}
+\]</span></p>
 <p>由欧拉公式</p>
-<p>$$<br>\begin{equation}<br>e^{j \omega t} &#x3D; \cos \omega t + j \sin \omega t  \tag{3}<br>\end{equation}<br>$$</p>
-<p>所以，$\cos \omega t$是周期复指数信号的实部，$\sin \omega t$是周期复指数信号的虚部。将$\omega$替换成$-\omega$得</p>
-<p>$$<br>\begin{equation}<br>e^{-j \omega t} &#x3D; \cos \omega t - j \sin \omega t  \tag{4}<br>\end{equation}<br>$$</p>
+<p><span class="math display">\[
+\begin{equation}
+e^{j \omega t} = \cos \omega t + j \sin \omega t  \tag{3}
+\end{equation}
+\]</span></p>
+<p>所以，<span class="math inline">\(\cos \omega
+t\)</span>是周期复指数信号的实部，<span class="math inline">\(\sin
+\omega t\)</span>是周期复指数信号的虚部。将<span
+class="math inline">\(\omega\)</span>替换成<span
+class="math inline">\(-\omega\)</span>得</p>
+<p><span class="math display">\[
+\begin{equation}
+e^{-j \omega t} = \cos \omega t - j \sin \omega t  \tag{4}
+\end{equation}
+\]</span></p>
 <p>联立上述两个方程便得到正弦信号和周期复指数信号的等式关系</p>
-<p>$$<br>\begin{equation}<br>\cos \omega t &#x3D; \frac{1}{2}(e^{j \omega t} + e^{-j \omega t})  \tag{5}<br>\end{equation}<br>$$</p>
-<p>$$<br>\begin{equation}<br>\sin \omega t &#x3D; \frac{1}{2j}(e^{j \omega t} - e^{-j \omega t})  \tag{6}<br>\end{equation}<br>$$</p>
-<p>需要注意，$\cos \omega t$也是正弦信号，它和$\sin \omega t$只有相位上的差别。</p>
-<h2 id="傅里叶级数"><a href="#傅里叶级数" class="headerlink" title="傅里叶级数"></a>傅里叶级数</h2><h3 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h3><p>从数学上可以证明，任何满足Dirichlet条件的周期函数$x(t)$都可以表示成一组成谐波关系的复指数信号的线性组合</p>
-<p>$$<br>\begin{equation}<br>x(t) &#x3D; \sum_{k&#x3D;-\infty}^{+\infty} a_k e^{j k \omega_0 t} &#x3D; \sum_{k&#x3D;-\infty}^{+\infty} a_k e^{j k (2\pi &#x2F; T) t}  \tag{7}<br>\end{equation}<br>$$</p>
-<p>该式称为<strong>傅里叶级数</strong>。$T$是$x(t)$的基波周期，$\omega_0&#x3D;2\pi&#x2F;T$为<strong>基波频率</strong>，系数$a_k$的计算公式如下</p>
-<p>$$<br>\begin{equation}<br>a_k &#x3D; \frac{1}{T}\int_{T} x(t) e^{-j k \omega_0 t} \mathrm{d}t &#x3D; \frac{1}{T}\int_{T} x(t) e^{-j k (2\pi &#x2F; T) t} \mathrm{d}t  \tag{8}<br>\end{equation}<br>$$</p>
-<p>系数$\left{ a_k \right}$称为$x(t)$的<strong>频谱系数</strong>。这些复数系数是对信号$x(t)$中的每一个谐波分量大小的度量。</p>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>以正弦信号$x(t) &#x3D; \sin \omega t$为例，因为</p>
-<p>$$<br>\sin \omega t &#x3D; \frac{1}{2j}(e^{j \omega t} - e^{-j \omega t}) &#x3D; \frac{j}{2} e^{j \omega t} - \frac{j}{2} e^{-j \omega t}<br>$$</p>
-<p>所以$a_{1}&#x3D;-j&#x2F;2$，$a_{-1}&#x3D;j&#x2F;2$，$k \ne \pm 1$时，$a_k &#x3D; 0$。</p>
-<p>当$x(t)$为一半时间为$0$、一半时间为$1$，且关于纵轴对称的方波信号时，可计算得到</p>
-<p>$$<br>a_0 &#x3D; \frac{1}{2}<br>$$</p>
-<p>$$<br>a_k &#x3D; \frac{\sin (\pi k&#x2F;2)}{k \pi}, k \ne 0<br>$$</p>
+<p><span class="math display">\[
+\begin{equation}
+\cos \omega t = \frac{1}{2}(e^{j \omega t} + e^{-j \omega t})  \tag{5}
+\end{equation}
+\]</span></p>
+<p><span class="math display">\[
+\begin{equation}
+\sin \omega t = \frac{1}{2j}(e^{j \omega t} - e^{-j \omega t})  \tag{6}
+\end{equation}
+\]</span></p>
+<p>需要注意，<span class="math inline">\(\cos \omega
+t\)</span>也是正弦信号，它和<span class="math inline">\(\sin \omega
+t\)</span>只有相位上的差别。</p>
+<h2 id="傅里叶级数">傅里叶级数</h2>
+<h3 id="推导">推导</h3>
+<p>从数学上可以证明，任何满足Dirichlet条件的周期函数<span
+class="math inline">\(x(t)\)</span>都可以表示成一组成谐波关系的复指数信号的线性组合</p>
+<p><span class="math display">\[
+\begin{equation}
+x(t) = \sum_{k=-\infty}^{+\infty} a_k e^{j k \omega_0 t} =
+\sum_{k=-\infty}^{+\infty} a_k e^{j k (2\pi / T) t}  \tag{7}
+\end{equation}
+\]</span></p>
+<p>该式称为<strong>傅里叶级数</strong>。<span
+class="math inline">\(T\)</span>是<span
+class="math inline">\(x(t)\)</span>的基波周期，<span
+class="math inline">\(\omega_0=2\pi/T\)</span>为<strong>基波频率</strong>，系数<span
+class="math inline">\(a_k\)</span>的计算公式如下</p>
+<p><span class="math display">\[
+\begin{equation}
+a_k = \frac{1}{T}\int_{T} x(t) e^{-j k \omega_0 t} \mathrm{d}t =
+\frac{1}{T}\int_{T} x(t) e^{-j k (2\pi / T) t} \mathrm{d}t  \tag{8}
+\end{equation}
+\]</span></p>
+<p>系数<span class="math inline">\(\left\{ a_k
+\right\}\)</span>称为<span
+class="math inline">\(x(t)\)</span>的<strong>频谱系数</strong>。这些复数系数是对信号<span
+class="math inline">\(x(t)\)</span>中的每一个谐波分量大小的度量。</p>
+<h3 id="示例">示例</h3>
+<p>以正弦信号<span class="math inline">\(x(t) = \sin \omega
+t\)</span>为例，因为</p>
+<p><span class="math display">\[
+\sin \omega t = \frac{1}{2j}(e^{j \omega t} - e^{-j \omega t}) =
+\frac{j}{2} e^{j \omega t} - \frac{j}{2} e^{-j \omega t}
+\]</span></p>
+<p>所以<span class="math inline">\(a_{1}=-j/2\)</span>，<span
+class="math inline">\(a_{-1}=j/2\)</span>，<span class="math inline">\(k
+\ne \pm 1\)</span>时，<span class="math inline">\(a_k = 0\)</span>。</p>
+<p>当<span class="math inline">\(x(t)\)</span>为一半时间为<span
+class="math inline">\(0\)</span>、一半时间为<span
+class="math inline">\(1\)</span>，且关于纵轴对称的方波信号时，可计算得到</p>
+<p><span class="math display">\[
+a_0 = \frac{1}{2}
+\]</span></p>
+<p><span class="math display">\[
+a_k = \frac{\sin (\pi k/2)}{k \pi}, k \ne 0
+\]</span></p>
 <p>于是可以得到复指数形式的傅里叶级数</p>
-<p>$$<br>x(t) &#x3D; \frac{1}{2} + \frac{1}{\pi}(e^{j \omega t} + e^{-j \omega t}) - \frac{1}{3\pi} (e^{j 3\omega t} + e^{-j 3\omega t}) + \frac{1}{5\pi} (e^{j 5\omega t} + e^{-j 5\omega t}) - \cdots<br>$$</p>
+<p><span class="math display">\[
+x(t) = \frac{1}{2} + \frac{1}{\pi}(e^{j \omega t} + e^{-j \omega t}) -
+\frac{1}{3\pi} (e^{j 3\omega t} + e^{-j 3\omega t}) + \frac{1}{5\pi}
+(e^{j 5\omega t} + e^{-j 5\omega t}) - \cdots
+\]</span></p>
 <p>将它转换成正弦信号形式，得</p>
-<p>$$<br>x(t) &#x3D; \frac{1}{2} + \frac{2}{\pi} \cos \omega t - \frac{2}{3\pi} \cos 3\omega t + \frac{2}{5\pi} \cos 5\omega t - \cdots<br>$$</p>
+<p><span class="math display">\[
+x(t) = \frac{1}{2} + \frac{2}{\pi} \cos \omega t - \frac{2}{3\pi} \cos
+3\omega t + \frac{2}{5\pi} \cos 5\omega t - \cdots
+\]</span></p>
 <p>后面的项数越多，对方波的逼近程度越高，下面的MATLAB程序可以演示这一过程：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">T1 = <span class="number">1</span>; T = <span class="number">4</span> * T1;   <span class="comment">% 基波周期</span></span><br><span class="line">w0 = <span class="number">2</span>*<span class="built_in">pi</span>/T;          <span class="comment">% 基波频率</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 创建方波信号</span></span><br><span class="line">t = <span class="number">-3</span>/<span class="number">2</span>*T:<span class="number">0.01</span>:<span class="number">3</span>/<span class="number">2</span>*T;</span><br><span class="line">x = <span class="built_in">zeros</span>(<span class="built_in">size</span>(t));</span><br><span class="line"><span class="keyword">for</span> k = <span class="number">1</span>:<span class="built_in">length</span>(t)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">abs</span>(t(k)) &lt; T1 || <span class="built_in">abs</span>(t(k)-T) &lt; T1 || <span class="built_in">abs</span>(t(k)+T) &lt; T1</span><br><span class="line">        x(k) = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="built_in">plot</span>(t, x); axis([<span class="number">-3</span>/<span class="number">2</span>*T, <span class="number">3</span>/<span class="number">2</span>*T, <span class="number">-0.5</span>, <span class="number">1.5</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">% 用傅里叶级数逼近方波信号</span></span><br><span class="line">N = <span class="number">15</span>;</span><br><span class="line">x_hat = <span class="number">1</span>/<span class="number">2</span>;</span><br><span class="line"><span class="keyword">for</span> n = <span class="number">1</span>:N</span><br><span class="line">    x_hat = x_hat + (<span class="number">-1</span>)^(n+<span class="number">1</span>)*<span class="number">2</span>/<span class="built_in">pi</span>/(<span class="number">2</span>*n<span class="number">-1</span>)*<span class="built_in">cos</span>((<span class="number">2</span>*n<span class="number">-1</span>)*w0*t);</span><br><span class="line">    <span class="built_in">plot</span>(t, x_hat);</span><br><span class="line">    <span class="built_in">hold</span> on; <span class="built_in">plot</span>(t, x, <span class="string">&#x27;LineWidth&#x27;</span>, <span class="number">1</span>); <span class="built_in">hold</span> off;</span><br><span class="line">    pause(<span class="number">0.5</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-
-<p>所以，连续时间信号可以用傅里叶级数和来表示。根据傅里叶级数的系数可以画出周期信号的频谱，连续周期信号的频谱只在离散的频率点处有值（值可能为$0$），频率值都是基波频率$\omega_0$的倍数，相邻频率点之间的间隔为基波频率$\omega_0$。</p>
-<h2 id="傅里叶变换"><a href="#傅里叶变换" class="headerlink" title="傅里叶变换"></a>傅里叶变换</h2><h3 id="推导-1"><a href="#推导-1" class="headerlink" title="推导"></a>推导</h3><p>当周期信号$x(t)$的基波周期$T$越来越大时，相邻频率点之间的间隔$\omega_0&#x3D;2\pi&#x2F;T$越来越小，频谱越来越密集。可以想象，当$T$趋向无穷大时，间隔会趋近于$0$，频谱就由离散变成连续，此时周期信号就变成了非周期信号，求和形式的傅里叶级数表达式就变成了积分形式</p>
-<p>$$<br>\begin{equation}<br>x(t) &#x3D; \frac{1}{2\pi} \int_{-\infty}^{+\infty} X(j \omega)e^{j \omega t} \mathrm{d}\omega  \tag{9}<br>\end{equation}<br>$$</p>
-<p>其中，$X(j \omega)$称为连续非周期信号$x(t)$的<strong>傅里叶变换</strong>，是个复函数，计算式为</p>
-<p>$$<br>\begin{equation}<br>X(j \omega) &#x3D; \int_{-\infty}^{+\infty} x(t) e^{-j \omega t} \mathrm{d}t  \tag{10}<br>\end{equation}<br>$$</p>
-<p>$X(jw)$又称为$x(t)$的<strong>频谱</strong>，它提供将$x(t)$表示为不同频率正弦信号的线性组合（就是积分）所需要的信息。</p>
-<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><p>常值函数$f(t)&#x3D;1, t \in (-\infty, +\infty)$的傅里叶变换</p>
-<p>$$<br>X(j\omega) &#x3D; 2\pi \delta(\omega)<br>$$</p>
-<p>也就是说，常值信号的频谱在所有频段上均为零，仅在零频率（直流）上有个$\delta$函数。</p>
-<p>单位脉冲函数$\delta(t)$的傅里叶变换</p>
-<p>$$<br>X(j\omega) &#x3D; 1<br>$$</p>
+<p>所以，连续时间信号可以用傅里叶级数和来表示。根据傅里叶级数的系数可以画出周期信号的频谱，连续周期信号的频谱只在离散的频率点处有值（值可能为<span
+class="math inline">\(0\)</span>），频率值都是基波频率<span
+class="math inline">\(\omega_0\)</span>的倍数，相邻频率点之间的间隔为基波频率<span
+class="math inline">\(\omega_0\)</span>。</p>
+<h2 id="傅里叶变换">傅里叶变换</h2>
+<h3 id="推导-1">推导</h3>
+<p>当周期信号<span class="math inline">\(x(t)\)</span>的基波周期<span
+class="math inline">\(T\)</span>越来越大时，相邻频率点之间的间隔<span
+class="math inline">\(\omega_0=2\pi/T\)</span>越来越小，频谱越来越密集。可以想象，当<span
+class="math inline">\(T\)</span>趋向无穷大时，间隔会趋近于<span
+class="math inline">\(0\)</span>，频谱就由离散变成连续，此时周期信号就变成了非周期信号，求和形式的傅里叶级数表达式就变成了积分形式</p>
+<p><span class="math display">\[
+\begin{equation}
+x(t) = \frac{1}{2\pi} \int_{-\infty}^{+\infty} X(j \omega)e^{j \omega t}
+\mathrm{d}\omega  \tag{9}
+\end{equation}
+\]</span></p>
+<p>其中，<span class="math inline">\(X(j
+\omega)\)</span>称为连续非周期信号<span
+class="math inline">\(x(t)\)</span>的<strong>傅里叶变换</strong>，是个复函数，计算式为</p>
+<p><span class="math display">\[
+\begin{equation}
+X(j \omega) = \int_{-\infty}^{+\infty} x(t) e^{-j \omega t}
+\mathrm{d}t  \tag{10}
+\end{equation}
+\]</span></p>
+<p><span class="math inline">\(X(jw)\)</span>又称为<span
+class="math inline">\(x(t)\)</span>的<strong>频谱</strong>，它提供将<span
+class="math inline">\(x(t)\)</span>表示为不同频率正弦信号的线性组合（就是积分）所需要的信息。</p>
+<h3 id="示例-1">示例</h3>
+<p>常值函数<span class="math inline">\(f(t)=1, t \in (-\infty,
++\infty)\)</span>的傅里叶变换</p>
+<p><span class="math display">\[
+X(j\omega) = 2\pi \delta(\omega)
+\]</span></p>
+<p>也就是说，常值信号的频谱在所有频段上均为零，仅在零频率（直流）上有个<span
+class="math inline">\(\delta\)</span>函数。</p>
+<p>单位脉冲函数<span
+class="math inline">\(\delta(t)\)</span>的傅里叶变换</p>
+<p><span class="math display">\[
+X(j\omega) = 1
+\]</span></p>
 <p>也就是说，单位冲激信号的频谱在所有频段上均相等。</p>
-<p>单位阶跃函数$u(t)$的傅里叶变换</p>
-<p>$$<br>X(j\omega)&#x3D;\pi \delta(\omega) + \frac{1}{j\omega}<br>$$</p>
-<p>单位阶跃信号的频谱有个连续变化的部分和一个$\delta$函数。$\delta$函数代表了直流分量，其他各次谐波构成连续谱，幅度随着频率的增加而很快衰减。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>综上所示，无论是连续周期信号的傅里叶级数还是连续非周期信号的傅里叶变换，都相当于把一个信号表示为一组复指数信号的线性组合。对周期信号而已，这些复指数信号的幅度为$\left{ a_k \right}$，并且在成谐波关系的一组离散点$k\omega_0, , k&#x3D;0,\pm 1, \pm 2, \cdots$上出现。对非周期信号而已，这些复指数信号出现在连续频率上，「幅度」为$X(j\omega)(d\omega&#x2F;2\pi)$。因此，正弦信号可以看做频率信号分析中的「基本成分」。</p>
+<p>单位阶跃函数<span class="math inline">\(u(t)\)</span>的傅里叶变换</p>
+<p><span class="math display">\[
+X(j\omega)=\pi \delta(\omega) + \frac{1}{j\omega}
+\]</span></p>
+<p>单位阶跃信号的频谱有个连续变化的部分和一个<span
+class="math inline">\(\delta\)</span>函数。<span
+class="math inline">\(\delta\)</span>函数代表了直流分量，其他各次谐波构成连续谱，幅度随着频率的增加而很快衰减。</p>
+<h2 id="总结">总结</h2>
+<p>综上所示，无论是连续周期信号的傅里叶级数还是连续非周期信号的傅里叶变换，都相当于把一个信号表示为一组复指数信号的线性组合。对周期信号而已，这些复指数信号的幅度为<span
+class="math inline">\(\left\{ a_k
+\right\}\)</span>，并且在成谐波关系的一组离散点<span
+class="math inline">\(k\omega_0, \, k=0,\pm 1, \pm 2,
+\cdots\)</span>上出现。对非周期信号而已，这些复指数信号出现在连续频率上，「幅度」为<span
+class="math inline">\(X(j\omega)(d\omega/2\pi)\)</span>。因此，正弦信号可以看做频率信号分析中的「基本成分」。</p>
 
     </div>
 
@@ -424,7 +550,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">203k</span>
+    <span title="站点总字数">204k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
