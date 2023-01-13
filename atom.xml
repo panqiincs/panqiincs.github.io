@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-01-10T06:59:02.285Z</updated>
+  <updated>2023-01-13T14:33:57.232Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2022年暑假贵州湖南自驾游</title>
+    <link href="https://panqiincs.me/2023/01/13/renyin-summer-trip/"/>
+    <id>https://panqiincs.me/2023/01/13/renyin-summer-trip/</id>
+    <published>2023-01-13T09:58:39.000Z</published>
+    <updated>2023-01-13T14:33:57.232Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;2022年暑假，北海铁三角一起去贵州和湖南玩了一圈，当时因为懒没有写游记。前几天去柳州我都扯出了篇文章，于是觉得去年暑假的旅行也应该记录下来。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="旅行" scheme="https://panqiincs.me/tags/%E6%97%85%E8%A1%8C/"/>
+    
+  </entry>
   
   <entry>
     <title>2023年初柳州之行</title>
@@ -90,7 +109,7 @@ Attack）指敌手能够选择不同的明文作为输入提供给加密算法�
     <link href="https://panqiincs.me/2022/11/22/crypto-proof-method/"/>
     <id>https://panqiincs.me/2022/11/22/crypto-proof-method/</id>
     <published>2022-11-22T10:00:00.000Z</published>
-    <updated>2023-01-11T09:36:23.020Z</updated>
+    <updated>2023-01-13T07:55:45.711Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;证明过程&quot;&gt;证明过程&lt;/h2&gt;
@@ -150,11 +169,11 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="程序设计" scheme="https://panqiincs.me/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
     
+    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
+    
     <category term="天城文" scheme="https://panqiincs.me/tags/%E5%A4%A9%E5%9F%8E%E6%96%87/"/>
     
     <category term="devanagari" scheme="https://panqiincs.me/tags/devanagari/"/>
-    
-    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
     
     <category term="转写" scheme="https://panqiincs.me/tags/%E8%BD%AC%E5%86%99/"/>
     
@@ -177,6 +196,8 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="程序设计" scheme="https://panqiincs.me/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
     
+    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
+    
     <category term="天城文" scheme="https://panqiincs.me/tags/%E5%A4%A9%E5%9F%8E%E6%96%87/"/>
     
     <category term="devanagari" scheme="https://panqiincs.me/tags/devanagari/"/>
@@ -184,8 +205,6 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="合字" scheme="https://panqiincs.me/tags/%E5%90%88%E5%AD%97/"/>
     
     <category term="ligature" scheme="https://panqiincs.me/tags/ligature/"/>
-    
-    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
     
     <category term="字体文件" scheme="https://panqiincs.me/tags/%E5%AD%97%E4%BD%93%E6%96%87%E4%BB%B6/"/>
     
@@ -206,9 +225,9 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
     
     
-    <category term="地图" scheme="https://panqiincs.me/tags/%E5%9C%B0%E5%9B%BE/"/>
-    
     <category term="旅行" scheme="https://panqiincs.me/tags/%E6%97%85%E8%A1%8C/"/>
+    
+    <category term="地图" scheme="https://panqiincs.me/tags/%E5%9C%B0%E5%9B%BE/"/>
     
   </entry>
   
@@ -228,6 +247,8 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="程序设计" scheme="https://panqiincs.me/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
     
+    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
+    
     <category term="天城文" scheme="https://panqiincs.me/tags/%E5%A4%A9%E5%9F%8E%E6%96%87/"/>
     
     <category term="devanagari" scheme="https://panqiincs.me/tags/devanagari/"/>
@@ -235,8 +256,6 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="合字" scheme="https://panqiincs.me/tags/%E5%90%88%E5%AD%97/"/>
     
     <category term="ligature" scheme="https://panqiincs.me/tags/ligature/"/>
-    
-    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
     
     <category term="pillow" scheme="https://panqiincs.me/tags/pillow/"/>
     
@@ -260,6 +279,10 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="程序设计" scheme="https://panqiincs.me/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
     
+    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
+    
+    <category term="字体" scheme="https://panqiincs.me/tags/%E5%AD%97%E4%BD%93/"/>
+    
     <category term="天城文" scheme="https://panqiincs.me/tags/%E5%A4%A9%E5%9F%8E%E6%96%87/"/>
     
     <category term="devanagari" scheme="https://panqiincs.me/tags/devanagari/"/>
@@ -276,13 +299,9 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     
     <category term="ligature" scheme="https://panqiincs.me/tags/ligature/"/>
     
-    <category term="字体" scheme="https://panqiincs.me/tags/%E5%AD%97%E4%BD%93/"/>
-    
     <category term="glyph" scheme="https://panqiincs.me/tags/glyph/"/>
     
     <category term="字形" scheme="https://panqiincs.me/tags/%E5%AD%97%E5%BD%A2/"/>
-    
-    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
     
   </entry>
   
@@ -508,29 +527,6 @@ href=&quot;http://bbs.tianya.cn/post-5213-1577-1.shtml&quot;&gt;黄州往事&lt;
     <category term="黄冈话" scheme="https://panqiincs.me/tags/%E9%BB%84%E5%86%88%E8%AF%9D/"/>
     
     <category term="黄州话" scheme="https://panqiincs.me/tags/%E9%BB%84%E5%B7%9E%E8%AF%9D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Manjaro升级错误解决方法</title>
-    <link href="https://panqiincs.me/2021/08/17/manjaro-update-errors/"/>
-    <id>https://panqiincs.me/2021/08/17/manjaro-update-errors/</id>
-    <published>2021-08-17T06:00:04.000Z</published>
-    <updated>2022-10-20T16:19:53.541Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;Manjaro是非常优秀的Linux发行版，我用了这么久没过出大问题，更没有碰到过滚动升级发行版偶尔出现的升级后系统倒地不起的情况。但有时候系统升级会出点小问题，下面将我碰到的问题及其解决办法列出来。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="工具使用" scheme="https://panqiincs.me/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
-    
-    
-    <category term="manjaro" scheme="https://panqiincs.me/tags/manjaro/"/>
-    
-    <category term="pacman" scheme="https://panqiincs.me/tags/pacman/"/>
-    
-    <category term="npm" scheme="https://panqiincs.me/tags/npm/"/>
     
   </entry>
   
