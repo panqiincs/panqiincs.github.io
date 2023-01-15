@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-01-14T11:26:48.168Z</updated>
+  <updated>2023-01-15T03:35:19.209Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://panqiincs.me/2023/01/13/renyin-summer-trip/"/>
     <id>https://panqiincs.me/2023/01/13/renyin-summer-trip/</id>
     <published>2023-01-13T09:58:39.000Z</published>
-    <updated>2023-01-14T11:26:48.168Z</updated>
+    <updated>2023-01-15T03:35:19.209Z</updated>
     
     
     <summary type="html">&lt;p&gt;2022年暑假，北海铁三角一起去贵州和湖南玩了一圈，当时因为懒没有写游记。前几天去柳州我都扯出了篇文章，于是觉得去年暑假的旅行也应该记录下来。&lt;/p&gt;</summary>
@@ -94,13 +94,13 @@ Attack）指敌手能够选择不同的明文作为输入提供给加密算法�
     <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
     
     
-    <category term="选择明文攻击" scheme="https://panqiincs.me/tags/%E9%80%89%E6%8B%A9%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB/"/>
-    
-    <category term="伪随机函数" scheme="https://panqiincs.me/tags/%E4%BC%AA%E9%9A%8F%E6%9C%BA%E5%87%BD%E6%95%B0/"/>
+    <category term="密码学" scheme="https://panqiincs.me/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
     
     <category term="归约证明" scheme="https://panqiincs.me/tags/%E5%BD%92%E7%BA%A6%E8%AF%81%E6%98%8E/"/>
     
-    <category term="密码学" scheme="https://panqiincs.me/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    <category term="选择明文攻击" scheme="https://panqiincs.me/tags/%E9%80%89%E6%8B%A9%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB/"/>
+    
+    <category term="伪随机函数" scheme="https://panqiincs.me/tags/%E4%BC%AA%E9%9A%8F%E6%9C%BA%E5%87%BD%E6%95%B0/"/>
     
   </entry>
   
@@ -121,9 +121,9 @@ reduction）是现代密码学中证明方案安全性的重要方法，甚至�
     <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
     
     
-    <category term="归约证明" scheme="https://panqiincs.me/tags/%E5%BD%92%E7%BA%A6%E8%AF%81%E6%98%8E/"/>
-    
     <category term="密码学" scheme="https://panqiincs.me/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    
+    <category term="归约证明" scheme="https://panqiincs.me/tags/%E5%BD%92%E7%BA%A6%E8%AF%81%E6%98%8E/"/>
     
     <category term="伪随机数" scheme="https://panqiincs.me/tags/%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0/"/>
     
