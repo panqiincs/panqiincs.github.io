@@ -9,8 +9,8 @@
 
 
     <url>
-        <loc>https://panqiincs.me/2018/01/30/cpp-const-keyword/</loc>
-        <lastmod>2023-01-15T03:40:21.196Z</lastmod>
+        <loc>https://panqiincs.me/2018/01/12/bayesian-and-love/</loc>
+        <lastmod>2023-01-15T06:02:21.306Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -27,14 +27,6 @@
     <url>
         <loc>https://panqiincs.me/2015/07/31/preview-markdown-with-emacs/</loc>
         <lastmod>2023-01-15T03:23:24.223Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2018/01/12/bayesian-and-love/</loc>
-        <lastmod>2023-01-15T02:52:45.885Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -721,7 +713,7 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2019/03/07/clrs-getting-started/</loc>
+        <loc>https://panqiincs.me/2019/03/10/clrs-growth-of-functions/</loc>
         <lastmod>2021-12-14T05:43:33.520Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -729,7 +721,7 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2019/03/10/clrs-growth-of-functions/</loc>
+        <loc>https://panqiincs.me/2019/03/07/clrs-getting-started/</loc>
         <lastmod>2021-12-14T05:43:33.520Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
