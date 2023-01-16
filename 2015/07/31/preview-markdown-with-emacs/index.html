@@ -29,7 +29,7 @@
 <meta property="og:description" content="需求 配置好Emacs的markdown模式后，就可以通过快捷键预览markdown文本对应的网页，配置和使用方法可参考Markdown Mode for Emacs。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2015-07-31T03:21:59.000Z">
-<meta property="article:modified_time" content="2023-01-15T03:23:24.223Z">
+<meta property="article:modified_time" content="2023-01-16T09:38:32.459Z">
 <meta property="article:author" content="Krist Pan">
 <meta property="article:tag" content="emacs">
 <meta property="article:tag" content="markdown">
@@ -306,24 +306,24 @@ Emacs</a>。</p>
 <p>Python有将markdown转化为HTML的命令，只不过它的名字不叫markdown。我通过<code>locate</code>命令找到了它：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo updatedb</span><br><span class="line">$ locate markdown | grep bin</span><br><span class="line">/usr/bin/markdown_py</span><br><span class="line">/usr/bin/markdown_py-2.7</span><br></pre></td></tr></table></figure>
 <p>随便找个markdown文件，尝试下<code>markdown_py</code>命令的效果：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ markdown_py filename.markdown &gt; result</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ markdown_py file.md &gt; result</span><br></pre></td></tr></table></figure>
 <p>打开result文件，发现它就是一个HTML文本，所以这就是符合我们要求的命令。查看一下文件的信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ll /usr/bin | grep markdown</span><br><span class="line">lrwxrwxrwx.   1 root  root          15 Mar 22 18:06 markdown_py -&gt; markdown_py-2.7</span><br><span class="line">-rwxr-xr-x.   1 root  root        1013 Feb  9  2012 markdown_py-2.7</span><br></pre></td></tr></table></figure>
 <p>原来<code>markdown_py</code>就是<code>markdown_py-2.7</code>的一个软链接。所以，我们再建立一个名为<code>markdown</code>的软链接指向<code>markdown_py-2.7</code>就可以解决问题了：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /usr/bin</span><br><span class="line">$ sudo <span class="built_in">ln</span> -s markdown_py-2.7 markdown</span><br></pre></td></tr></table></figure>
 <p>敲下<code>C-c C-c p</code>快捷键看效果，发现网页是乱码的。如果markdown的内容是中文，那么转换出来的HTML在浏览器中打开就无法自动识别编码。这个时候，我们可以借助markdown对HTML标记的支持，在markdown文件开头中加入编码信息：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sed -i <span class="string">&#x27;1i\&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;&#x27;</span> *.markdown</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sed -i <span class="string">&#x27;1i\&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;&#x27;</span> *.md</span><br></pre></td></tr></table></figure>
 <p>我最开始使用的就是这个方法，虽然奏效了，但是每个markdown文本中都要加这行代码，大煞风景。有没有更优雅的解决办法呢？于是，我找到了pandoc工具。</p>
 <h2 id="pandoc">pandoc</h2>
 <p>pandoc支持多种输出格式，我们现在只关注HTML格式。pandoc将Markdown转化为HTML并将结果定向到标准输出：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pandoc -f markdown -t html filename.markdown</span><br></pre></td></tr></table></figure>
-<p>为了防止中文乱码，要加上<code>--ascii</code>选项。pandoc还支持语法高亮和LaTeX数学公式。我的网站框架Octopress默认使用pygments支持语法高亮，因此加上<code>--highlight-stype pygments</code>
-选项。加上<code>--mathjax</code>选项以支持LaTeX数学公式。得到的最终形式是：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pandoc -f markdown -t html -s --mathjax --highlight-style pygments filename.markdown</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pandoc -f markdown -t html file.md</span><br></pre></td></tr></table></figure>
+<p>为了防止中文乱码，要加上<code>--ascii</code>选项。pandoc还支持语法高亮和LaTeX数学公式。加上<code>--highlight-stype pygments</code>
+选项使用pygments支持语法高亮，加上<code>--mathjax</code>选项以支持LaTeX数学公式。得到的最终形式是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pandoc -f markdown -t html -s --mathjax --highlight-style pygments file.md</span><br></pre></td></tr></table></figure>
 <p>但是，如何让Emacs调用这个带很多选项的命令呢？这时候就要用到shell的知识了。在shell中，<code>$1</code>代表第一个命令行参数，我们将上述语句中最后的文件名替换成<code>$1</code>，然后把它封装成一个名为markdown的文本：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandoc -f markdown -t html -s --mathjax --highlight-style pygments <span class="variable">$1</span></span><br></pre></td></tr></table></figure>
-<p>为了直接在命令行中调用它，可将它移动到命令目录中，并增加可执行权限。现在，执行<code>markdown filename.markdown</code>语句的效果与执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pandoc -f markdown -t html -s --mathjax --highlight-style pygments filename.markdown</span><br></pre></td></tr></table></figure>
+<p>为了直接在命令行中调用它，可将它移动到命令目录中，并增加可执行权限。现在，执行<code>markdown file.md</code>语句的效果与执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pandoc -f markdown -t html -s --mathjax --highlight-style pygments file.md</span><br></pre></td></tr></table></figure>
 <p>的效果是一样的，目的达到，最终的预览效果也非常好。</p>
 
     </div>
