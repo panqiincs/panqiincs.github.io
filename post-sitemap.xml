@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://panqiincs.me/2023/02/04/guimao-learning-plan/</loc>
+        <lastmod>2023-02-03T16:54:56.532Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://panqiincs.me/2019/06/05/after-installing-manjaro/</loc>
         <lastmod>2023-02-03T16:46:35.809Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -363,14 +371,6 @@
     <url>
         <loc>https://panqiincs.me/2016/04/21/about-ros/</loc>
         <lastmod>2023-02-03T16:05:55.004Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2023/02/04/guimao-learning-plan/</loc>
-        <lastmod>2023-02-03T16:03:15.988Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
