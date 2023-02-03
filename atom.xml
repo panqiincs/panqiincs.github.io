@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-01-16T05:38:26.664Z</updated>
+  <updated>2023-02-03T16:03:15.988Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2023年学习计划</title>
+    <link href="https://panqiincs.me/2023/02/04/guimao-learning-plan/"/>
+    <id>https://panqiincs.me/2023/02/04/guimao-learning-plan/</id>
+    <published>2023-02-04T02:42:21.000Z</published>
+    <updated>2023-02-03T16:03:15.988Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;今天是立春，是我认为最应该作为一年之始的日子。前几天天气特别暖和，我甚至可以穿着单衣跑步。跑步时在操场边的空地上欣喜地看到了今年的第一抹新绿，春天悄悄地来了。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>2022年暑假贵州湖南之行</title>
@@ -40,7 +57,7 @@
     <link href="https://panqiincs.me/2023/01/09/renyin-liuzhou-trip/"/>
     <id>https://panqiincs.me/2023/01/09/renyin-liuzhou-trip/</id>
     <published>2023-01-09T13:24:32.000Z</published>
-    <updated>2023-01-16T10:10:58.594Z</updated>
+    <updated>2023-02-03T16:27:51.382Z</updated>
     
     
     <summary type="html">&lt;p&gt;今年寒假本想自驾去海南，可惜铁三角之一的那位小伙比香港记者跑得还快，一放假就回家了，没有凑足人数。但我很想出去散心，于是1月6日上午临时决定一个人去柳州转转，收拾好东西后，中午就出发了。&lt;/p&gt;</summary>
@@ -52,8 +69,6 @@
     
     <category term="旅行" scheme="https://panqiincs.me/tags/%E6%97%85%E8%A1%8C/"/>
     
-    <category term="柳州" scheme="https://panqiincs.me/tags/%E6%9F%B3%E5%B7%9E/"/>
-    
   </entry>
   
   <entry>
@@ -61,7 +76,7 @@
     <link href="https://panqiincs.me/2022/12/22/short-pattern-search/"/>
     <id>https://panqiincs.me/2022/12/22/short-pattern-search/</id>
     <published>2022-12-21T21:48:01.000Z</published>
-    <updated>2022-12-24T00:32:48.145Z</updated>
+    <updated>2023-02-03T16:27:45.296Z</updated>
     
     
     <summary type="html">&lt;p&gt;我要在大数组中匹配特定的连续数字序列，数组元素是16位整型数据，绝大部分序列的长度为2或3。很显然，这和字符串匹配算法很类似，只是元素类型不同。&lt;/p&gt;</summary>
@@ -70,8 +85,6 @@
     
     <category term="程序设计" scheme="https://panqiincs.me/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
     
-    
-    <category term="strstr" scheme="https://panqiincs.me/tags/strstr/"/>
     
     <category term="字符串匹配" scheme="https://panqiincs.me/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/"/>
     
@@ -94,9 +107,9 @@ Attack）指敌手能够选择不同的明文作为输入提供给加密算法�
     <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
     
     
-    <category term="密码学" scheme="https://panqiincs.me/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
-    
     <category term="归约证明" scheme="https://panqiincs.me/tags/%E5%BD%92%E7%BA%A6%E8%AF%81%E6%98%8E/"/>
+    
+    <category term="密码学" scheme="https://panqiincs.me/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
     
     <category term="选择明文攻击" scheme="https://panqiincs.me/tags/%E9%80%89%E6%8B%A9%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB/"/>
     
@@ -109,7 +122,7 @@ Attack）指敌手能够选择不同的明文作为输入提供给加密算法�
     <link href="https://panqiincs.me/2022/11/22/crypto-proof-method/"/>
     <id>https://panqiincs.me/2022/11/22/crypto-proof-method/</id>
     <published>2022-11-22T10:00:00.000Z</published>
-    <updated>2023-01-13T07:55:45.711Z</updated>
+    <updated>2023-02-03T16:27:38.473Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;证明过程&quot;&gt;证明过程&lt;/h2&gt;
@@ -121,11 +134,11 @@ reduction）是现代密码学中证明方案安全性的重要方法，甚至�
     <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
     
     
-    <category term="密码学" scheme="https://panqiincs.me/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
-    
     <category term="归约证明" scheme="https://panqiincs.me/tags/%E5%BD%92%E7%BA%A6%E8%AF%81%E6%98%8E/"/>
     
     <category term="伪随机数" scheme="https://panqiincs.me/tags/%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0/"/>
+    
+    <category term="密码学" scheme="https://panqiincs.me/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
     
   </entry>
   
@@ -134,7 +147,7 @@ reduction）是现代密码学中证明方案安全性的重要方法，甚至�
     <link href="https://panqiincs.me/2022/10/11/language-is-important/"/>
     <id>https://panqiincs.me/2022/10/11/language-is-important/</id>
     <published>2022-10-11T11:06:49.000Z</published>
-    <updated>2022-12-18T10:33:52.823Z</updated>
+    <updated>2023-02-03T16:27:22.166Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;起因&quot;&gt;起因&lt;/h2&gt;
@@ -145,11 +158,9 @@ reduction）是现代密码学中证明方案安全性的重要方法，甚至�
     <category term="胡言乱语" scheme="https://panqiincs.me/categories/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/"/>
     
     
+    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
+    
     <category term="英语" scheme="https://panqiincs.me/tags/%E8%8B%B1%E8%AF%AD/"/>
-    
-    <category term="梵语" scheme="https://panqiincs.me/tags/%E6%A2%B5%E8%AF%AD/"/>
-    
-    <category term="拉丁语" scheme="https://panqiincs.me/tags/%E6%8B%89%E4%B8%81%E8%AF%AD/"/>
     
   </entry>
   
@@ -158,7 +169,7 @@ reduction）是现代密码学中证明方案安全性的重要方法，甚至�
     <link href="https://panqiincs.me/2022/09/19/polyglot-lang-trans/"/>
     <id>https://panqiincs.me/2022/09/19/polyglot-lang-trans/</id>
     <published>2022-09-19T00:25:00.000Z</published>
-    <updated>2022-11-19T16:49:05.258Z</updated>
+    <updated>2023-02-03T16:26:57.900Z</updated>
     
     
     <summary type="html">&lt;p&gt;我想从天城文字体文件得到它所支持的字符，字体文件中存储的是图形，而我想得到文本形式，本质上是编码。&lt;a
@@ -175,7 +186,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     
     <category term="devanagari" scheme="https://panqiincs.me/tags/devanagari/"/>
     
-    <category term="转写" scheme="https://panqiincs.me/tags/%E8%BD%AC%E5%86%99/"/>
+    <category term="文字转写" scheme="https://panqiincs.me/tags/%E6%96%87%E5%AD%97%E8%BD%AC%E5%86%99/"/>
     
     <category term="polyglot" scheme="https://panqiincs.me/tags/polyglot/"/>
     
@@ -186,7 +197,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <link href="https://panqiincs.me/2022/09/18/supported-glyphs/"/>
     <id>https://panqiincs.me/2022/09/18/supported-glyphs/</id>
     <published>2022-09-18T04:54:22.000Z</published>
-    <updated>2022-10-12T09:14:55.757Z</updated>
+    <updated>2023-02-03T16:36:36.488Z</updated>
     
     
     <summary type="html">&lt;p&gt;天城文的辅音音丛按照规则合写在一起为合字，所有的合写规则超过1000种，不同字体文件所支持的合写规则数量和种类不一样。我需要获取天城文字体文件支持的所有字形（glyph），以统计它所支持的合字字符。&lt;/p&gt;</summary>
@@ -205,8 +216,6 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="合字" scheme="https://panqiincs.me/tags/%E5%90%88%E5%AD%97/"/>
     
     <category term="ligature" scheme="https://panqiincs.me/tags/ligature/"/>
-    
-    <category term="字体文件" scheme="https://panqiincs.me/tags/%E5%AD%97%E4%BD%93%E6%96%87%E4%BB%B6/"/>
     
   </entry>
   
@@ -236,7 +245,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <link href="https://panqiincs.me/2022/07/15/pillow-draw-devanagari/"/>
     <id>https://panqiincs.me/2022/07/15/pillow-draw-devanagari/</id>
     <published>2022-07-15T00:56:31.000Z</published>
-    <updated>2022-09-20T13:47:13.541Z</updated>
+    <updated>2023-02-03T16:36:12.492Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;使用方法&quot;&gt;使用方法&lt;/h2&gt;
@@ -259,8 +268,6 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     
     <category term="pillow" scheme="https://panqiincs.me/tags/pillow/"/>
     
-    <category term="raqm" scheme="https://panqiincs.me/tags/raqm/"/>
-    
   </entry>
   
   <entry>
@@ -268,7 +275,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <link href="https://panqiincs.me/2022/07/14/python-devanagari/"/>
     <id>https://panqiincs.me/2022/07/14/python-devanagari/</id>
     <published>2022-07-14T01:41:52.000Z</published>
-    <updated>2022-12-26T01:08:13.258Z</updated>
+    <updated>2023-02-03T16:41:57.174Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;文字特性&quot;&gt;文字特性&lt;/h2&gt;
@@ -281,27 +288,15 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     
     <category term="python" scheme="https://panqiincs.me/tags/python/"/>
     
-    <category term="字体" scheme="https://panqiincs.me/tags/%E5%AD%97%E4%BD%93/"/>
-    
     <category term="天城文" scheme="https://panqiincs.me/tags/%E5%A4%A9%E5%9F%8E%E6%96%87/"/>
     
     <category term="devanagari" scheme="https://panqiincs.me/tags/devanagari/"/>
     
     <category term="unicode" scheme="https://panqiincs.me/tags/unicode/"/>
     
-    <category term="码位" scheme="https://panqiincs.me/tags/%E7%A0%81%E4%BD%8D/"/>
-    
-    <category term="grapheme" scheme="https://panqiincs.me/tags/grapheme/"/>
-    
-    <category term="字素" scheme="https://panqiincs.me/tags/%E5%AD%97%E7%B4%A0/"/>
-    
     <category term="合字" scheme="https://panqiincs.me/tags/%E5%90%88%E5%AD%97/"/>
     
     <category term="ligature" scheme="https://panqiincs.me/tags/ligature/"/>
-    
-    <category term="glyph" scheme="https://panqiincs.me/tags/glyph/"/>
-    
-    <category term="字形" scheme="https://panqiincs.me/tags/%E5%AD%97%E5%BD%A2/"/>
     
   </entry>
   
@@ -336,7 +331,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <link href="https://panqiincs.me/2022/04/20/website-great-updates/"/>
     <id>https://panqiincs.me/2022/04/20/website-great-updates/</id>
     <published>2022-04-20T04:49:29.000Z</published>
-    <updated>2022-10-20T16:17:57.574Z</updated>
+    <updated>2023-02-03T16:25:22.486Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;升级内容&quot;&gt;升级内容&lt;/h2&gt;
@@ -349,11 +344,11 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     
     <category term="hexo" scheme="https://panqiincs.me/tags/hexo/"/>
     
+    <category term="blog" scheme="https://panqiincs.me/tags/blog/"/>
+    
     <category term="seo" scheme="https://panqiincs.me/tags/seo/"/>
     
     <category term="sitemap" scheme="https://panqiincs.me/tags/sitemap/"/>
-    
-    <category term="https" scheme="https://panqiincs.me/tags/https/"/>
     
     <category term="next主题" scheme="https://panqiincs.me/tags/next%E4%B8%BB%E9%A2%98/"/>
     
@@ -364,7 +359,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <link href="https://panqiincs.me/2022/04/16/computer-problems/"/>
     <id>https://panqiincs.me/2022/04/16/computer-problems/</id>
     <published>2022-04-16T14:43:53.000Z</published>
-    <updated>2022-10-20T16:27:51.156Z</updated>
+    <updated>2023-02-03T16:38:29.565Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;卡顿和弹窗&quot;&gt;卡顿和弹窗&lt;/h2&gt;
@@ -379,11 +374,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     
     <category term="流氓软件" scheme="https://panqiincs.me/tags/%E6%B5%81%E6%B0%93%E8%BD%AF%E4%BB%B6/"/>
     
-    <category term="打印机" scheme="https://panqiincs.me/tags/%E6%89%93%E5%8D%B0%E6%9C%BA/"/>
-    
     <category term="广告弹窗" scheme="https://panqiincs.me/tags/%E5%B9%BF%E5%91%8A%E5%BC%B9%E7%AA%97/"/>
-    
-    <category term="windows" scheme="https://panqiincs.me/tags/windows/"/>
     
   </entry>
   
@@ -436,7 +427,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <link href="https://panqiincs.me/2022/01/14/xinchou-guangxi-trip/"/>
     <id>https://panqiincs.me/2022/01/14/xinchou-guangxi-trip/</id>
     <published>2022-01-14T11:42:24.000Z</published>
-    <updated>2023-01-13T15:34:21.094Z</updated>
+    <updated>2023-02-03T16:24:45.833Z</updated>
     
     
     <summary type="html">&lt;p&gt;放寒假后，我们三人不想那么早就回家，决定去广西南边玩。我们的主要目的地是北海，由于是自驾游，沿途碰到感兴趣的地方随时可以下车看看。&lt;/p&gt;</summary>
@@ -447,10 +438,6 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     
     
     <category term="旅行" scheme="https://panqiincs.me/tags/%E6%97%85%E8%A1%8C/"/>
-    
-    <category term="广西" scheme="https://panqiincs.me/tags/%E5%B9%BF%E8%A5%BF/"/>
-    
-    <category term="北海" scheme="https://panqiincs.me/tags/%E5%8C%97%E6%B5%B7/"/>
     
   </entry>
   
@@ -498,35 +485,6 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="数值解" scheme="https://panqiincs.me/tags/%E6%95%B0%E5%80%BC%E8%A7%A3/"/>
     
     <category term="单摆" scheme="https://panqiincs.me/tags/%E5%8D%95%E6%91%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>逐渐消失的老黄州口音</title>
-    <link href="https://panqiincs.me/2021/08/29/old-huangzhou-accent/"/>
-    <id>https://panqiincs.me/2021/08/29/old-huangzhou-accent/</id>
-    <published>2021-08-29T14:04:59.000Z</published>
-    <updated>2022-02-17T05:08:43.307Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;最近将&lt;a
-href=&quot;https://panqiincs.me/2021/06/07/dialect-changes/&quot;&gt;黄冈城区语音的变迁&lt;/a&gt;一文分享到黄冈本地的论坛中，没想到天涯网黄冈版块的热帖——&lt;a
-href=&quot;http://bbs.tianya.cn/post-5213-1577-1.shtml&quot;&gt;黄州往事&lt;/a&gt;的作者也在论坛中，从他的回复中我得到了更多有关的信息，非常开心。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="胡言乱语" scheme="https://panqiincs.me/categories/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/"/>
-    
-    
-    <category term="黄冈" scheme="https://panqiincs.me/tags/%E9%BB%84%E5%86%88/"/>
-    
-    <category term="黄州" scheme="https://panqiincs.me/tags/%E9%BB%84%E5%B7%9E/"/>
-    
-    <category term="方言" scheme="https://panqiincs.me/tags/%E6%96%B9%E8%A8%80/"/>
-    
-    <category term="黄冈话" scheme="https://panqiincs.me/tags/%E9%BB%84%E5%86%88%E8%AF%9D/"/>
-    
-    <category term="黄州话" scheme="https://panqiincs.me/tags/%E9%BB%84%E5%B7%9E%E8%AF%9D/"/>
     
   </entry>
   
