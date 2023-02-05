@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-02-03T16:54:56.532Z</updated>
+  <updated>2023-02-04T02:43:13.396Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://panqiincs.me/2023/02/04/guimao-learning-plan/"/>
     <id>https://panqiincs.me/2023/02/04/guimao-learning-plan/</id>
     <published>2023-02-04T02:42:21.000Z</published>
-    <updated>2023-02-03T16:54:56.532Z</updated>
+    <updated>2023-02-04T02:43:13.396Z</updated>
     
     
     <summary type="html">&lt;p&gt;今天是立春，是我认为最应该作为一年之始的日子。前几天天气特别暖和，甚至可以穿着单衣跑步。跑步时在操场边的草地上欣喜地看到了今年的第一抹新绿，春天悄悄地来了。&lt;/p&gt;</summary>
@@ -57,7 +57,7 @@
     <link href="https://panqiincs.me/2023/01/09/renyin-liuzhou-trip/"/>
     <id>https://panqiincs.me/2023/01/09/renyin-liuzhou-trip/</id>
     <published>2023-01-09T13:24:32.000Z</published>
-    <updated>2023-02-03T16:27:51.382Z</updated>
+    <updated>2023-02-04T02:43:13.396Z</updated>
     
     
     <summary type="html">&lt;p&gt;今年寒假本想自驾去海南，可惜铁三角之一的那位小伙比香港记者跑得还快，一放假就回家了，没有凑足人数。但我很想出去散心，于是1月6日上午临时决定一个人去柳州转转，收拾好东西后，中午就出发了。&lt;/p&gt;</summary>
@@ -76,7 +76,7 @@
     <link href="https://panqiincs.me/2022/12/22/short-pattern-search/"/>
     <id>https://panqiincs.me/2022/12/22/short-pattern-search/</id>
     <published>2022-12-21T21:48:01.000Z</published>
-    <updated>2023-02-03T16:27:45.296Z</updated>
+    <updated>2023-02-04T02:43:13.396Z</updated>
     
     
     <summary type="html">&lt;p&gt;我要在大数组中匹配特定的连续数字序列，数组元素是16位整型数据，绝大部分序列的长度为2或3。很显然，这和字符串匹配算法很类似，只是元素类型不同。&lt;/p&gt;</summary>
@@ -122,7 +122,7 @@ Attack）指敌手能够选择不同的明文作为输入提供给加密算法�
     <link href="https://panqiincs.me/2022/11/22/crypto-proof-method/"/>
     <id>https://panqiincs.me/2022/11/22/crypto-proof-method/</id>
     <published>2022-11-22T10:00:00.000Z</published>
-    <updated>2023-02-03T16:27:38.473Z</updated>
+    <updated>2023-02-04T02:43:13.396Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;证明过程&quot;&gt;证明过程&lt;/h2&gt;
@@ -147,7 +147,7 @@ reduction）是现代密码学中证明方案安全性的重要方法，甚至�
     <link href="https://panqiincs.me/2022/10/11/language-is-important/"/>
     <id>https://panqiincs.me/2022/10/11/language-is-important/</id>
     <published>2022-10-11T11:06:49.000Z</published>
-    <updated>2023-02-03T16:27:22.166Z</updated>
+    <updated>2023-02-04T02:43:13.396Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;起因&quot;&gt;起因&lt;/h2&gt;
@@ -169,7 +169,7 @@ reduction）是现代密码学中证明方案安全性的重要方法，甚至�
     <link href="https://panqiincs.me/2022/09/19/polyglot-lang-trans/"/>
     <id>https://panqiincs.me/2022/09/19/polyglot-lang-trans/</id>
     <published>2022-09-19T00:25:00.000Z</published>
-    <updated>2023-02-03T16:26:57.900Z</updated>
+    <updated>2023-02-04T02:43:13.396Z</updated>
     
     
     <summary type="html">&lt;p&gt;我想从天城文字体文件得到它所支持的字符，字体文件中存储的是图形，而我想得到文本形式，本质上是编码。&lt;a
@@ -197,7 +197,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <link href="https://panqiincs.me/2022/09/18/supported-glyphs/"/>
     <id>https://panqiincs.me/2022/09/18/supported-glyphs/</id>
     <published>2022-09-18T04:54:22.000Z</published>
-    <updated>2023-02-03T16:36:36.488Z</updated>
+    <updated>2023-02-04T02:43:13.396Z</updated>
     
     
     <summary type="html">&lt;p&gt;天城文的辅音音丛按照规则合写在一起为合字，所有的合写规则超过1000种，不同字体文件所支持的合写规则数量和种类不一样。我需要获取天城文字体文件支持的所有字形（glyph），以统计它所支持的合字字符。&lt;/p&gt;</summary>
@@ -245,7 +245,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <link href="https://panqiincs.me/2022/07/15/pillow-draw-devanagari/"/>
     <id>https://panqiincs.me/2022/07/15/pillow-draw-devanagari/</id>
     <published>2022-07-15T00:56:31.000Z</published>
-    <updated>2023-02-03T16:36:12.492Z</updated>
+    <updated>2023-02-04T02:43:13.396Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;使用方法&quot;&gt;使用方法&lt;/h2&gt;
@@ -275,7 +275,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <link href="https://panqiincs.me/2022/07/14/python-devanagari/"/>
     <id>https://panqiincs.me/2022/07/14/python-devanagari/</id>
     <published>2022-07-14T01:41:52.000Z</published>
-    <updated>2023-02-03T16:41:57.174Z</updated>
+    <updated>2023-02-04T02:43:13.396Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;文字特性&quot;&gt;文字特性&lt;/h2&gt;
@@ -331,7 +331,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <link href="https://panqiincs.me/2022/04/20/website-great-updates/"/>
     <id>https://panqiincs.me/2022/04/20/website-great-updates/</id>
     <published>2022-04-20T04:49:29.000Z</published>
-    <updated>2023-02-03T16:25:22.486Z</updated>
+    <updated>2023-02-04T02:43:13.393Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;升级内容&quot;&gt;升级内容&lt;/h2&gt;
@@ -359,7 +359,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <link href="https://panqiincs.me/2022/04/16/computer-problems/"/>
     <id>https://panqiincs.me/2022/04/16/computer-problems/</id>
     <published>2022-04-16T14:43:53.000Z</published>
-    <updated>2023-02-03T16:38:29.565Z</updated>
+    <updated>2023-02-04T02:43:13.393Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;卡顿和弹窗&quot;&gt;卡顿和弹窗&lt;/h2&gt;
@@ -427,7 +427,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <link href="https://panqiincs.me/2022/01/14/xinchou-guangxi-trip/"/>
     <id>https://panqiincs.me/2022/01/14/xinchou-guangxi-trip/</id>
     <published>2022-01-14T11:42:24.000Z</published>
-    <updated>2023-02-03T16:24:45.833Z</updated>
+    <updated>2023-02-04T02:43:13.393Z</updated>
     
     
     <summary type="html">&lt;p&gt;放寒假后，我们三人不想那么早就回家，决定去广西南边玩。我们的主要目的地是北海，由于是自驾游，沿途碰到感兴趣的地方随时可以下车看看。&lt;/p&gt;</summary>
