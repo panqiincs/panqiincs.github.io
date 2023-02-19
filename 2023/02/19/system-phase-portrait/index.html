@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+  <meta name="baidu-site-verification" content="code-J9YbvwThrX">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="自治系统 许多动态系统的物理规律可以用常微分方程描述。对于一般的系统，微分方程为如下形式：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统相图及MATLAB绘制方法">
+<meta property="og:url" content="https://panqiincs.me/2023/02/19/system-phase-portrait/index.html">
+<meta property="og:site_name" content="辛未羊的网络日志">
+<meta property="og:description" content="自治系统 许多动态系统的物理规律可以用常微分方程描述。对于一般的系统，微分方程为如下形式：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-02-18T22:24:05.000Z">
+<meta property="article:modified_time" content="2023-02-19T11:09:06.310Z">
+<meta property="article:author" content="Krist Pan">
+<meta property="article:tag" content="matlab">
+<meta property="article:tag" content="微分方程">
+<meta property="article:tag" content="数值解">
+<meta property="article:tag" content="相图">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://panqiincs.me/2023/02/19/system-phase-portrait/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://panqiincs.me/2023/02/19/system-phase-portrait/","path":"2023/02/19/system-phase-portrait/","title":"系统相图及MATLAB绘制方法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>系统相图及MATLAB绘制方法 | 辛未羊的网络日志</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-39536948-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "blyiajm41p");
+</script>
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+<link rel="dns-prefetch" href="https://vercel.panqiincs.me">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="辛未羊的网络日志" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">辛未羊的网络日志</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-series"><a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E6%B2%BB%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">自治系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%9B%BE%E5%8F%8A%E7%BB%98%E5%88%B6%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">相图及绘制原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matlab%E7%BB%98%E5%88%B6%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">MATLAB绘制方法</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Krist Pan"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Krist Pan</p>
+  <div class="site-description" itemprop="description">记录生活和学习的清静之地</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">172</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/panqiincs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;panqiincs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          友情链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.kawabangga.com/" title="https:&#x2F;&#x2F;www.kawabangga.com&#x2F;" rel="noopener" target="_blank">卡瓦邦噶</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.boatsky.com/" title="https:&#x2F;&#x2F;www.boatsky.com&#x2F;" rel="noopener" target="_blank">太空船</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.feidaoboke.com/" title="https:&#x2F;&#x2F;www.feidaoboke.com" rel="noopener" target="_blank">飞刀博客</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.ohyee.cc/" title="https:&#x2F;&#x2F;www.ohyee.cc&#x2F;" rel="noopener" target="_blank">OhYee</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://dusays.com/" title="https:&#x2F;&#x2F;dusays.com&#x2F;" rel="noopener" target="_blank">杜老师说</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://h4ck.org.cn/" title="https:&#x2F;&#x2F;h4ck.org.cn&#x2F;" rel="noopener" target="_blank">obaby</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://panqiincs.me/2023/02/19/system-phase-portrait/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Krist Pan">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的网络日志">
+      <meta itemprop="description" content="记录生活和学习的清静之地">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="系统相图及MATLAB绘制方法 | 辛未羊的网络日志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          系统相图及MATLAB绘制方法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-02-19 06:24:05" itemprop="dateCreated datePublished" datetime="2023-02-19T06:24:05+08:00">2023-02-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">大学课程</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2023/02/19/system-phase-portrait/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2023/02/19/system-phase-portrait/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="自治系统">自治系统</h2>
+<p>许多动态系统的物理规律可以用常微分方程描述。对于一般的系统，微分方程为如下形式：</p>
+<span id="more"></span>
+<p><span class="math display">\[
+\dot{\mathbf{x}} = \mathbf{f}(t,\mathbf{x}, \mathbf{u}) \tag{1}
+\]</span></p>
+<p>其中<span class="math inline">\(\mathbf{x}\)</span>是系统状态，<span
+class="math inline">\(\mathbf{u}\)</span>是外部输入信号，<span
+class="math inline">\(t\)</span>表示系统运行规律随时间变化。如果没有外部输入信号，而且与时间<span
+class="math inline">\(t\)</span>无关，则<span
+class="math inline">\((1)\)</span>变成如下形式：</p>
+<p><span class="math display">\[
+\dot{\mathbf{x}} = \mathbf{f}(\mathbf{x}) \tag{2}
+\]</span></p>
+<p>这样的系统称为<strong>自治系统</strong>（autonomous
+system）或<strong>时不变系统</strong>（time invariant system）。</p>
+<h2 id="相图及绘制原理">相图及绘制原理</h2>
+<p>二阶自治系统在系统分析中有重要的地位，因为方程的解可以通过平面上的曲线表示，也就是<strong>相图</strong>（phase
+portrait），从而方便分析系统的行为。将<span
+class="math inline">\((2)\)</span>写成如下形式：</p>
+<p><span class="math display">\[
+\begin{cases}
+\dot{x}_1(t) = f_1(x_1, x_2) \\
+\dot{x}_2(t) = f_2(x_1, x_2)
+\end{cases}
+\tag{3}
+\]</span></p>
+<p>令<span class="math inline">\(\mathbf{x}(t) = \left[x_1(t), x_2(t)
+\right]^{\mathsf{T}}, t\ge 0\)</span>是方程<span
+class="math inline">\((3)\)</span>的解，初值条件为<span
+class="math inline">\(\mathbf{x}(0) = \left[x_{10}, x_{20}
+\right]^{\mathsf{T}}\)</span>。解<span
+class="math inline">\(\mathbf{x}(t)\)</span>在<span
+class="math inline">\(x_1 - x_2\)</span>平面上的轨迹就是一条经过点<span
+class="math inline">\(\mathbf{x}(0)\)</span>的曲线，这有点类似于参数方程的图像。<span
+class="math inline">\((3)\)</span>的右边正好是<span
+class="math inline">\(\mathbf{x}(t)\)</span>的<strong>梯度</strong><span
+class="math inline">\(\left[\dot{x}_1(t), \dot{x}_2(t)
+\right]^{\mathsf{T}}\)</span>，由此可以得到<span
+class="math inline">\(\mathbf{x}(t)\)</span>曲线上某点的切线方向，因此，<span
+class="math inline">\(\mathbf{f} = \left[f_1, f_2
+\right]^{\mathsf{T}}\)</span>是平面的<strong>向量场</strong>（vector
+field）。先画出向量场，从某点出发，选择合适的步长沿着梯度方向绘制一条轨迹，即对应方程在该初值条件下的解。选择多个出发点，绘制多条轨迹，即得到系统的相图。</p>
+<h2 id="matlab绘制方法">MATLAB绘制方法</h2>
+<p>有了上面的方法，可以用熟悉的软件绘制相图，但想画得美观并不容易。本文以MATLAB为例，绘制一个简单线性系统的相图，系统微分方程为：</p>
+<p><span class="math display">\[
+\begin{cases}
+\dot{x}_1 = -x_1 + x_2 \\
+\dot{x}_2 = -x_2
+\end{cases}
+\tag{4}
+\]</span></p>
+<p>绝大多数非线性微分方程难以求出解析解，实际中一般通过数值计算软件计算其数值解。首先要创建一个函数表示该系统，供后续<code>ode45</code>函数调用：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dxdt</span> = <span class="title">simple</span><span class="params">(t, x)</span></span></span><br><span class="line">    dxdt = [-x(<span class="number">1</span>) + x(<span class="number">2</span>); -x(<span class="number">2</span>)];</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>通过如下代码画出系统的相图：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 合理选择坐标轴范围，让图形直观美观</span></span><br><span class="line">[X1, X2] = <span class="built_in">meshgrid</span>(<span class="number">-2</span>:<span class="number">0.2</span>:<span class="number">2</span>, <span class="number">-2</span>:<span class="number">0.2</span>:<span class="number">2</span>);</span><br><span class="line"><span class="comment">% 根据(3)式右边的f(x)计算梯度</span></span><br><span class="line">X1dot = -X1 - X2;</span><br><span class="line">X2dot = -X2;</span><br><span class="line"><span class="comment">% 用quiver函数画向量场，会自动调节箭头大小</span></span><br><span class="line">quiver(X1, X2, X1dot, X2dot)</span><br></pre></td></tr></table></figure>
+<p>从箭头可看出梯度的方向和大小，从向量场就能大致看出该系统相图的特征，然后选取合适的初值点，绘制多条轨迹。本例中，很容易看出，从任何点出发的轨迹最终都会汇聚到坐标原点，原点的梯度为<span
+class="math inline">\(0\)</span>，是<strong>平衡点</strong>（equilibrium
+point）。选取左上角的点作为初值点，如下代码求出微分方程的数值解，并将轨迹绘制到向量场上：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x0 = [<span class="number">-2</span>, <span class="number">2</span>];</span><br><span class="line">tspan = [<span class="number">0</span>:<span class="number">0.1</span>:<span class="number">10</span>];  <span class="comment">% 时间范围要稍微选大点，不然离极限值太远</span></span><br><span class="line">[~, x] = ode45(@simple, tspan, x0);</span><br><span class="line"><span class="built_in">hold</span> on; <span class="built_in">plot</span>(x(:, <span class="number">1</span>), x(:, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/phase_portrait_vector_field.svg"
+alt="系统的向量场和一条轨迹" />
+<figcaption aria-hidden="true">系统的向量场和一条轨迹</figcaption>
+</figure>
+<p>本例中，可以在图像的边缘等间隔取一些初值点，绘制多条轨迹得到相图，如下图所示：</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/phase_portrait_valid.svg"
+alt="系统的相图" />
+<figcaption aria-hidden="true">系统的相图</figcaption>
+</figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Krist Pan
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://panqiincs.me/2023/02/19/system-phase-portrait/" title="系统相图及MATLAB绘制方法">https://panqiincs.me/2023/02/19/system-phase-portrait/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/matlab/" rel="tag"># matlab</a>
+              <a href="/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" rel="tag"># 微分方程</a>
+              <a href="/tags/%E6%95%B0%E5%80%BC%E8%A7%A3/" rel="tag"># 数值解</a>
+              <a href="/tags/%E7%9B%B8%E5%9B%BE/" rel="tag"># 相图</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/02/04/guimao-learning-plan/" rel="prev" title="2023年学习计划">
+                  <i class="fa fa-chevron-left"></i> 2023年学习计划
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2013 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Krist Pan</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">210k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:11</span>
+  </span>
+</div>
+
+
+  <div>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id: "JjD4gEghP0h7Vn4U",ck: "JjD4gEghP0h7Vn4U"})</script>
+  </div>
+
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"https://vercel.panqiincs.me","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"欢迎留言交流","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/2023/02/19/system-phase-portrait/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>
