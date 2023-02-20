@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-02-19T16:50:47.600Z</updated>
+  <updated>2023-02-20T05:28:07.637Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -21,14 +21,14 @@
     <link href="https://panqiincs.me/2023/02/20/input-to-state-stability/"/>
     <id>https://panqiincs.me/2023/02/20/input-to-state-stability/</id>
     <published>2023-02-19T16:01:02.000Z</published>
-    <updated>2023-02-19T16:50:47.600Z</updated>
+    <updated>2023-02-20T05:28:07.637Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;概念引入&quot;&gt;概念引入&lt;/h2&gt;
 &lt;p&gt;稳定性是控制理论的核心概念。最近通过阅读Applied Nonlinear
 Control和Nonlinear
-Systems两本书系统学习Lyapunov稳定性理论，该内容有总结得非常全面的&lt;a
-href=&quot;http://web.tuat.ac.jp/~gvlab/ronbun/ReadingGroupControl/mls-lyap.pdf&quot;&gt;材料&lt;/a&gt;可供参考。本文介绍比较少见的&lt;strong&gt;输入到状态稳定性&lt;/strong&gt;（input-to-state
+Systems两本书系统学习Lyapunov稳定性理论，想粗读这部分内容可参考&lt;a
+href=&quot;http://web.tuat.ac.jp/~gvlab/ronbun/ReadingGroupControl/mls-lyap.pdf&quot;&gt;这个材料&lt;/a&gt;。本文介绍比较少见的&lt;strong&gt;输入到状态稳定性&lt;/strong&gt;（input-to-state
 stability）。&lt;/p&gt;</summary>
     
     
@@ -51,11 +51,11 @@ stability）。&lt;/p&gt;</summary>
     <link href="https://panqiincs.me/2023/02/19/system-phase-portrait/"/>
     <id>https://panqiincs.me/2023/02/19/system-phase-portrait/</id>
     <published>2023-02-18T22:24:05.000Z</published>
-    <updated>2023-02-19T16:42:51.973Z</updated>
+    <updated>2023-02-20T05:44:17.092Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;自治系统&quot;&gt;自治系统&lt;/h2&gt;
-&lt;p&gt;许多动态系统的物理规律可以用常微分方程描述。对于一般的系统，微分方程为如下形式：&lt;/p&gt;</summary>
+&lt;p&gt;许多动态系统的物理规律可以用常微分方程描述。对于一般的（非线性时变）系统，微分方程为如下形式：&lt;/p&gt;</summary>
     
     
     
@@ -400,9 +400,9 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="网站维护" scheme="https://panqiincs.me/categories/%E7%BD%91%E7%AB%99%E7%BB%B4%E6%8A%A4/"/>
     
     
-    <category term="blog" scheme="https://panqiincs.me/tags/blog/"/>
-    
     <category term="hexo" scheme="https://panqiincs.me/tags/hexo/"/>
+    
+    <category term="blog" scheme="https://panqiincs.me/tags/blog/"/>
     
     <category term="seo" scheme="https://panqiincs.me/tags/seo/"/>
     

@@ -21,15 +21,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="自治系统 许多动态系统的物理规律可以用常微分方程描述。对于一般的系统，微分方程为如下形式：">
+    <meta name="description" content="自治系统 许多动态系统的物理规律可以用常微分方程描述。对于一般的（非线性时变）系统，微分方程为如下形式：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="系统相图及MATLAB绘制方法">
 <meta property="og:url" content="https://panqiincs.me/2023/02/19/system-phase-portrait/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="自治系统 许多动态系统的物理规律可以用常微分方程描述。对于一般的系统，微分方程为如下形式：">
+<meta property="og:description" content="自治系统 许多动态系统的物理规律可以用常微分方程描述。对于一般的（非线性时变）系统，微分方程为如下形式：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-18T22:24:05.000Z">
-<meta property="article:modified_time" content="2023-02-19T16:42:51.973Z">
+<meta property="article:modified_time" content="2023-02-20T05:44:17.092Z">
 <meta property="article:author" content="Krist Pan">
 <meta property="article:tag" content="控制理论">
 <meta property="article:tag" content="matlab">
@@ -281,7 +281,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.8k</span>
+      <span>1.9k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -300,7 +300,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <h2 id="自治系统">自治系统</h2>
-<p>许多动态系统的物理规律可以用常微分方程描述。对于一般的系统，微分方程为如下形式：</p>
+<p>许多动态系统的物理规律可以用常微分方程描述。对于一般的（非线性时变）系统，微分方程为如下形式：</p>
 <span id="more"></span>
 <p><span class="math display">\[
 \dot{\mathbf{x}} = \mathbf{f}(t,\mathbf{x}, \mathbf{u}) \tag{1}
@@ -315,10 +315,10 @@ class="math inline">\((1)\)</span>变成如下形式：</p>
 \dot{\mathbf{x}} = \mathbf{f}(\mathbf{x}) \tag{2}
 \]</span></p>
 <p>这样的系统称为<strong>自治系统</strong>（autonomous
-system）或<strong>时不变系统</strong>（time invariant system）。</p>
+system）或<strong>时不变系统</strong>（time-invariant system）。</p>
 <h2 id="相图及绘制原理">相图及绘制原理</h2>
-<p>二阶自治系统在系统分析中有重要的地位，因为方程的解可以通过平面上的曲线表示，也就是<strong>相图</strong>（phase
-portrait）。相图是一般（非线性）系统控制理论的重要分析工具。将<span
+<p>二阶自治系统在系统分析中有重要的地位，因为方程的解可以表示为平面上的曲线，也就是<strong>相图</strong>（phase
+portrait），相图是控制理论中分析非线性系统的重要工具。将<span
 class="math inline">\((2)\)</span>写成如下形式：</p>
 <p><span class="math display">\[
 \begin{cases}
@@ -342,7 +342,7 @@ class="math inline">\(\left[\dot{x}_1(t), \dot{x}_2(t)
 class="math inline">\(\mathbf{x}(t)\)</span>曲线上某点的切线方向，因此，<span
 class="math inline">\(\mathbf{f} = \left[f_1, f_2
 \right]^{\mathsf{T}}\)</span>是平面的<strong>向量场</strong>（vector
-field）。先画出向量场，从某点出发，选择合适的步长沿着梯度方向绘制一条轨迹，即对应方程在该初值条件下的解。选择多个初始点，绘制多条轨迹，即得到系统的相图。</p>
+field）。先画出向量场，从某初值点出发，选择合适的步长沿着梯度方向绘制一条轨迹，即对应方程在该初值条件下的解。选择多个初始点，绘制多条轨迹以足够展示系统的特征，即得到相图。</p>
 <h2 id="matlab绘制方法">MATLAB绘制方法</h2>
 <p>有了上面的方法，可以用熟悉的软件绘制相图，但想画得美观并不容易。本文以MATLAB为例，绘制一个简单线性系统的相图，系统微分方程为：</p>
 <p><span class="math display">\[
@@ -352,13 +352,13 @@ field）。先画出向量场，从某点出发，选择合适的步长沿着梯
 \end{cases}
 \tag{4}
 \]</span></p>
-<p>绝大多数非线性微分方程难以求出解析解，实际中一般通过数值计算软件计算其数值解。首先要创建一个函数表示该系统，供后续<code>ode45</code>函数调用：</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dxdt</span> = <span class="title">simple</span><span class="params">(t, x)</span></span></span><br><span class="line">    dxdt = [-x(<span class="number">1</span>) + x(<span class="number">2</span>); -x(<span class="number">2</span>)];</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>通过如下代码画出系统的相图：</p>
+<p>绝大多数非线性微分方程难以求出解析解，实际中一般计算其数值解，系统<span
+class="math inline">\((4)\)</span>的解析解虽然容易得到，但为了保持一般性，我们还是求它的数值解。首先要创建一个函数表示该系统，供后续<code>ode45</code>函数调用：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dxdt</span> = <span class="title">simple</span><span class="params">(t, x)</span></span></span><br><span class="line">    dxdt = [-x(<span class="number">1</span>) + x(<span class="number">2</span>); -x(<span class="number">2</span>)]; <span class="comment">% 将(4)式表示为向量形式</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>通过如下代码画出系统的向量场：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 合理选择坐标轴范围，让图形直观美观</span></span><br><span class="line">[X1, X2] = <span class="built_in">meshgrid</span>(<span class="number">-2</span>:<span class="number">0.2</span>:<span class="number">2</span>, <span class="number">-2</span>:<span class="number">0.2</span>:<span class="number">2</span>);</span><br><span class="line"><span class="comment">% 根据(3)式右边的f(x)计算梯度</span></span><br><span class="line">X1dot = -X1 - X2;</span><br><span class="line">X2dot = -X2;</span><br><span class="line"><span class="comment">% 用quiver函数画向量场，会自动调节箭头大小</span></span><br><span class="line">quiver(X1, X2, X1dot, X2dot)</span><br></pre></td></tr></table></figure>
-<p>从箭头可看出梯度的方向和大小，从向量场就能大致看出该系统相图的特征，然后选取合适的初值点，绘制多条轨迹。本例中，很容易看出，从任何点出发的轨迹最终都会汇聚到坐标原点，原点的梯度为<span
-class="math inline">\(0\)</span>，是<strong>平衡点</strong>（equilibrium
-point）。选取左上角的点作为初值点，如下代码求出微分方程的数值解，并将轨迹绘制到向量场上：</p>
+<p>箭头表示梯度的方向和大小，所以从向量场就能大致看出该系统相图的特征，然后选取合适的初值点，绘制多条相轨迹。本例中，很容易看出，从任何点出发的轨迹最终都会汇聚到坐标原点，原点的梯度为零，是<strong>平衡点</strong>（equilibrium
+point）。选取左上角的点为初值点，如下代码求出微分方程的数值解，并将轨迹绘制到向量场上：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x0 = [<span class="number">-2</span>, <span class="number">2</span>];</span><br><span class="line">tspan = [<span class="number">0</span>:<span class="number">0.1</span>:<span class="number">10</span>];  <span class="comment">% 时间范围要稍微选大点，不然离极限值太远</span></span><br><span class="line">[~, x] = ode45(@simple, tspan, x0);</span><br><span class="line"><span class="built_in">hold</span> on; <span class="built_in">plot</span>(x(:, <span class="number">1</span>), x(:, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
 <figure>
 <img
@@ -373,7 +373,8 @@ src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/phase_portrait_
 alt="系统的相图" />
 <figcaption aria-hidden="true">系统的相图</figcaption>
 </figure>
-<p>上面的图还挺漂亮吧，这样的话，课件中的图形质量就有保障了。</p>
+<p>很容易从相图看出，系统是渐进稳定的（asymptotically
+stable）。上面的图相当漂亮，这样的话，课件中的图形质量就有保障了。</p>
 <h2 id="参考资料">参考资料</h2>
 <ol type="1">
 <li><a
