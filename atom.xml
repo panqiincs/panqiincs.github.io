@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-02-20T05:28:07.637Z</updated>
+  <updated>2023-02-23T15:54:53.890Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>系统的输入到状态稳定性</title>
+    <title>控制系统的输入到状态稳定性</title>
     <link href="https://panqiincs.me/2023/02/20/input-to-state-stability/"/>
     <id>https://panqiincs.me/2023/02/20/input-to-state-stability/</id>
     <published>2023-02-19T16:01:02.000Z</published>
-    <updated>2023-02-20T05:28:07.637Z</updated>
+    <updated>2023-02-23T15:54:53.890Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;概念引入&quot;&gt;概念引入&lt;/h2&gt;
@@ -47,11 +47,11 @@ stability）。&lt;/p&gt;</summary>
   </entry>
   
   <entry>
-    <title>系统相图及MATLAB绘制方法</title>
+    <title>动态系统相图及MATLAB绘制方法</title>
     <link href="https://panqiincs.me/2023/02/19/system-phase-portrait/"/>
     <id>https://panqiincs.me/2023/02/19/system-phase-portrait/</id>
     <published>2023-02-18T22:24:05.000Z</published>
-    <updated>2023-02-20T05:44:17.092Z</updated>
+    <updated>2023-02-23T15:59:03.269Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;自治系统&quot;&gt;自治系统&lt;/h2&gt;
