@@ -28,7 +28,6 @@
 <meta property="og:site_name" content="辛未羊的网络日志">
 <meta property="og:description" content="天城文的辅音音丛按照规则合写在一起为合字，所有的合写规则超过1000种，不同字体文件所支持的合写规则数量和种类不一样。我需要获取天城文字体文件支持的所有字形（glyph），以统计它所支持的合字字符。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/supported_glyphs.png">
 <meta property="article:published_time" content="2022-09-18T04:54:22.000Z">
 <meta property="article:modified_time" content="2023-02-04T02:43:13.396Z">
 <meta property="article:author" content="辛未羊">
@@ -38,7 +37,6 @@
 <meta property="article:tag" content="合字">
 <meta property="article:tag" content="ligature">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/supported_glyphs.png">
 
 
 <link rel="canonical" href="https://panqiincs.me/2022/09/18/supported-glyphs/">
@@ -300,16 +298,20 @@
     <div class="post-body" itemprop="articleBody">
         <p>天城文的辅音音丛按照规则合写在一起为合字，所有的合写规则超过1000种，不同字体文件所支持的合写规则数量和种类不一样。我需要获取天城文字体文件支持的所有字形（glyph），以统计它所支持的合字字符。</p>
 <span id="more"></span>
-
-<p>在StackOverflow上找到了<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/4458696/">一些解决方案</a>，最高赞的方法并不满足我的需求，因为它是根据Unicode码位来访问字形的，但Unicode中没有天城文合字的码位。上述方法用到了Python的fontTools库，为我提供了线索。</p>
-<p>处理OpenType和TrueType字体文件的是fontTools的<code>ffFont</code>类，官方文档在<a target="_blank" rel="noopener" href="https://fonttools.readthedocs.io/en/latest/ttLib/ttFont.html">这里</a>。<code>TTFont</code>对象有形如<code>getGlyphXXXX()</code>的接口函数，返回字形名称。我用的是<code>getGlyphOrder()</code>函数，因为它按照字形在字体文件中的顺序进行排序，方便比对。下面的代码打印字体文件中所有字形的名称，其中<code>getGlyphID()</code>函数返回字形在字体文件中的位置序号。</p>
+<p>在StackOverflow上找到了<a
+target="_blank" rel="noopener" href="https://stackoverflow.com/questions/4458696/">一些解决方案</a>，最高赞的方法并不满足我的需求，因为它是根据Unicode码位来访问字形的，但Unicode中没有天城文合字的码位。上述方法用到了Python的fontTools库，为我提供了线索。</p>
+<p>处理OpenType和TrueType字体文件的是fontTools的<code>ffFont</code>类，官方文档在<a
+target="_blank" rel="noopener" href="https://fonttools.readthedocs.io/en/latest/ttLib/ttFont.html">这里</a>。<code>TTFont</code>对象有形如<code>getGlyphXXXX()</code>的接口函数，返回字形名称。我用的是<code>getGlyphOrder()</code>函数，因为它按照字形在字体文件中的顺序进行排序，方便比对。下面的代码打印字体文件中所有字形的名称，其中<code>getGlyphID()</code>函数返回字形在字体文件中的位置序号。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fontTools <span class="keyword">import</span> ttLib</span><br><span class="line"></span><br><span class="line">tt = ttLib.TTFont(<span class="string">&quot;../fonts/Devanagari.ttf&quot;</span>)</span><br><span class="line"></span><br><span class="line">glyph_name_list = tt.getGlyphOrder()</span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> glyph_name_list:</span><br><span class="line">    <span class="built_in">print</span>(tt.getGlyphID(name), name)</span><br></pre></td></tr></table></figure>
-
 <p>输出的部分内容如下，之间省略了很多行：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">0 .notdef</span><br><span class="line">1 NULL</span><br><span class="line">2 CR</span><br><span class="line">3 space</span><br><span class="line">4 nbspace</span><br><span class="line">5 A</span><br><span class="line">6 B</span><br><span class="line">7 C</span><br><span class="line">...</span><br><span class="line">728 DoubleDanda</span><br><span class="line">729 dShortA</span><br><span class="line">730 dA</span><br><span class="line">731 dCandraA</span><br><span class="line">...</span><br><span class="line">894 dKKa</span><br><span class="line">895 dKKha</span><br><span class="line">896 dKCa</span><br><span class="line">897 dKJa</span><br><span class="line">...</span><br><span class="line">1384 dSiddhirastu</span><br><span class="line">1385 dOmJain</span><br><span class="line">1386 dOm</span><br><span class="line">1387 flowerpunc</span><br></pre></td></tr></table></figure>
-
 <p>该字体文件的字形名称简洁明了，一看就知道是什么字符，而Windows下的<code>Nirmala.ttf</code>在字形命名上做得非常糟糕。各种文字的字体文件都会包含拉丁字母和其他常用的字符，所以开头是<code>ABC</code>字母。从第729个开始，字形名称以<code>d</code>开头，表明是天城文字形。前面的<code>dShortA</code>、<code>dA</code>是单个字母，后面的<code>dTtKa</code>、<code>dTtTtha</code>一看就是辅音音丛，字形是合字。最后一个是<code>flowerpunc</code>，是像花儿一样的字形。总共有1387个字形，顺序和字体文件完全相符，见下图：</p>
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/supported_glyphs.png" alt="字体文件支持的所有字符"></p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/supported_glyphs.png"
+alt="字体文件支持的所有字符" />
+<figcaption aria-hidden="true">字体文件支持的所有字符</figcaption>
+</figure>
 <p>该字体库还有个<code>getGlyphSet()</code>接口，返回一个类似于字典（dict-like）的字形集（GlyphSet），将字形名称映射到字形对象上。字形对象有<code>draw()</code>方法，可以将字形绘制出来。由于我暂时没有这种需求，所以没有深究。</p>
 
     </div>
@@ -388,7 +390,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">214k</span>
+    <span title="站点总字数">215k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
