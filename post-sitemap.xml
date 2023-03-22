@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://panqiincs.me/2023/03/22/blog-ten-years/</loc>
+        <lastmod>2023-03-22T07:03:35.298Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2022/07/14/python-devanagari/</loc>
+        <lastmod>2023-03-21T07:37:16.055Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://panqiincs.me/2016/06/20/driving-license/</loc>
         <lastmod>2023-03-13T10:26:38.812Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -139,14 +155,6 @@
     <url>
         <loc>https://panqiincs.me/2021/01/28/huanggang-county/</loc>
         <lastmod>2023-02-05T09:22:32.906Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2022/07/14/python-devanagari/</loc>
-        <lastmod>2023-02-04T02:43:13.396Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

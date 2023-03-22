@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-02-23T15:54:53.890Z</updated>
+  <updated>2023-03-22T07:03:35.298Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>网站十周年记</title>
+    <link href="https://panqiincs.me/2023/03/22/blog-ten-years/"/>
+    <id>https://panqiincs.me/2023/03/22/blog-ten-years/</id>
+    <published>2023-03-22T03:19:12.000Z</published>
+    <updated>2023-03-22T07:03:35.298Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;十年&quot;&gt;十年&lt;/h2&gt;
+&lt;p&gt;距离&lt;a
+href=&quot;https://panqiincs.me/2013/03/22/start-blogging/&quot;&gt;网站第一篇文章&lt;/a&gt;已有整整十年，十周年是伟大的里程碑。2013年我读大四，在长沙的学生宿舍搭建了网站。2023年我参加工作已近七年，在桂林的教工宿舍敲下这篇文章。匆匆十年，多少当年一起写日志的网友没有坚持下来，网站屹立至今而且越来越精彩，我非常自豪。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="网站维护" scheme="https://panqiincs.me/categories/%E7%BD%91%E7%AB%99%E7%BB%B4%E6%8A%A4/"/>
+    
+    
+    <category term="blog" scheme="https://panqiincs.me/tags/blog/"/>
+    
+  </entry>
   
   <entry>
     <title>控制系统的输入到状态稳定性</title>
@@ -333,7 +354,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <link href="https://panqiincs.me/2022/07/14/python-devanagari/"/>
     <id>https://panqiincs.me/2022/07/14/python-devanagari/</id>
     <published>2022-07-14T01:41:52.000Z</published>
-    <updated>2023-02-04T02:43:13.396Z</updated>
+    <updated>2023-03-21T07:37:16.055Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;文字特性&quot;&gt;文字特性&lt;/h2&gt;
@@ -477,25 +498,6 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="教材" scheme="https://panqiincs.me/tags/%E6%95%99%E6%9D%90/"/>
     
     <category term="数学分析" scheme="https://panqiincs.me/tags/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2022年初广西自驾游</title>
-    <link href="https://panqiincs.me/2022/01/14/xinchou-guangxi-trip/"/>
-    <id>https://panqiincs.me/2022/01/14/xinchou-guangxi-trip/</id>
-    <published>2022-01-14T11:42:24.000Z</published>
-    <updated>2023-03-03T04:46:29.732Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;放寒假后，我们三人不想那么早就回家，决定去广西南边玩。我们的主要目的地是北海，由于是自驾游，沿途碰到感兴趣的地方随时可以下车看看。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
-    
-    
-    <category term="旅行" scheme="https://panqiincs.me/tags/%E6%97%85%E8%A1%8C/"/>
     
   </entry>
   

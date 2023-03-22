@@ -29,7 +29,7 @@
 <meta property="og:description" content="文字特性 天城文（Devanagari）是诸多南亚语言的文字，其中最有名的当属梵语（Sanskrit）。天城文作为婆罗米系元音附标文字，特点鲜明，下面介绍用计算机处理天城文所需的基础知识。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-14T01:41:52.000Z">
-<meta property="article:modified_time" content="2023-02-04T02:43:13.396Z">
+<meta property="article:modified_time" content="2023-03-21T07:37:16.055Z">
 <meta property="article:author" content="Krist Pan">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="天城文">
@@ -130,7 +130,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E5%AD%97%E7%89%B9%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">文字特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%AD%97%E7%AC%A6"><span class="nav-number">1.1.</span> <span class="nav-text">基本字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%B4%A0"><span class="nav-number">1.2.</span> <span class="nav-text">字素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%88%E5%AD%97"><span class="nav-number">1.3.</span> <span class="nav-text">合字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%A4%84%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">计算机处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E5%A4%84%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">字符处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">显示处理过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E5%AD%97%E7%89%B9%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">文字特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%AD%97%E7%AC%A6"><span class="nav-number">1.1.</span> <span class="nav-text">基本字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%B4%A0"><span class="nav-number">1.2.</span> <span class="nav-text">字素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%88%E5%AD%97"><span class="nav-number">1.3.</span> <span class="nav-text">合字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%A4%84%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">计算机处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E5%A4%84%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">字符处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">字符显示的过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -145,7 +145,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">110</span>
+          <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -344,12 +344,12 @@ conjuncts</a>页面。单是由两个辅音构成的合字就有1296种，再加
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">स b&#x27;\\u0938&#x27; DEVANAGARI LETTER SA</span><br><span class="line">त b&#x27;\\u0924&#x27; DEVANAGARI LETTER TA</span><br><span class="line">् b&#x27;\\u094d&#x27; DEVANAGARI SIGN VIRAMA</span><br><span class="line">य b&#x27;\\u092f&#x27; DEVANAGARI LETTER YA</span><br><span class="line">ा b&#x27;\\u093e&#x27; DEVANAGARI VOWEL SIGN AA</span><br><span class="line">ग b&#x27;\\u0917&#x27; DEVANAGARI LETTER GA</span><br><span class="line">् b&#x27;\\u094d&#x27; DEVANAGARI SIGN VIRAMA</span><br><span class="line">र b&#x27;\\u0930&#x27; DEVANAGARI LETTER RA</span><br><span class="line">ह b&#x27;\\u0939&#x27; DEVANAGARI LETTER HA</span><br></pre></td></tr></table></figure>
 <p>一共由9个Unicode字符组成，还附有它们的Unicode编码和描述。相反地，我们可以将单个Unicode字符拼在一起，系统会处理合写形态：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">u&quot;\u0938\u0924\u094d\u092f\u093e&quot;</span>)</span><br><span class="line">सत्या</span><br></pre></td></tr></table></figure>
-<h3 id="显示处理过程">显示处理过程</h3>
+<h3 id="字符显示的过程">字符显示的过程</h3>
 <p>从上面的介绍可知，天城文字符根据上下文会改变形态。系统环境中的字体和应用程序的不同，以及字符之间的相对位置都会影响形态。由于很多字素和合写字符没有分配编码，因此计算机显示天城文的过程比较复杂，过程总结如下：</p>
 <ol type="1">
-<li>天城文文本在计算机中存储的内容是Unicode码，具体的存储形态与编码格式（如UTF-8）有关，解析编码格式即得到组成文本的Unicode码；</li>
-<li>字体文件提供字形（glyph），合字的字形都在字体文件中，但有些字素的字形不一定在字体文件中；</li>
-<li>系统软件根据规则<strong>将编码映射到字形</strong>，最后根据字形将字符显示在屏幕上。对于一些字素，将字形按一定规则重叠起来显示。</li>
+<li>天城文文本在计算机中存储的内容是Unicode码，具体的存储形态与编码格式（如UTF-8）有关，解析编码格式即得到组成文本的Unicode码</li>
+<li>字体文件提供字形（glyph），合字的字形都在字体文件中，但有些字素的字形不一定在字体文件中</li>
+<li>系统软件根据规则<strong>将编码映射到字形</strong>，最后根据字形将字符显示在屏幕上。对于一些字素，将字形按一定规则重叠起来显示</li>
 </ol>
 <p>汉字的数量虽多，但Unicode为每个汉字都分配了编码，而且编码和字体文件中的字形是一一映射的关系，所以计算机显示汉字的过程比天城文要简单。</p>
 <h2 id="参考资料">参考资料</h2>
@@ -443,13 +443,13 @@ Combining Devanagari characters - Stack Overflow</a></li>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">213k</span>
+    <span title="站点总字数">215k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:14</span>
+    <span title="站点阅读时长">3:15</span>
   </span>
 </div>
 
