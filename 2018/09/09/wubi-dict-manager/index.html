@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="起因 最近学会了五笔输入法。我学的是新世纪版，因版权原因，网络上的码表资源不多，很多爱好者都自己制作码表，而且很少对外传播。作为程序员，写代码生成码表自然不在话下，于是我用C++写了个五笔码表管理工具RimeWubiDictMngr。">
+    <meta name="description" content="起因最近学会了五笔输入法。我学的是新世纪版，因版权原因，网络上的码表资源不多，很多爱好者都自己制作码表，而且很少对外传播。作为程序员，写代码生成码表自然不在话下，于是我用C++写了个五笔码表管理工具RimeWubiDictMngr。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="写了个五笔码表管理器">
 <meta property="og:url" content="https://panqiincs.me/2018/09/09/wubi-dict-manager/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="起因 最近学会了五笔输入法。我学的是新世纪版，因版权原因，网络上的码表资源不多，很多爱好者都自己制作码表，而且很少对外传播。作为程序员，写代码生成码表自然不在话下，于是我用C++写了个五笔码表管理工具RimeWubiDictMngr。">
+<meta property="og:description" content="起因最近学会了五笔输入法。我学的是新世纪版，因版权原因，网络上的码表资源不多，很多爱好者都自己制作码表，而且很少对外传播。作为程序员，写代码生成码表自然不在话下，于是我用C++写了个五笔码表管理工具RimeWubiDictMngr。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-09-09T14:24:41.000Z">
 <meta property="article:modified_time" content="2022-10-20T13:37:07.877Z">
@@ -296,35 +296,28 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="起因">起因</h2>
-<p>最近学会了五笔输入法。我学的是新世纪版，因版权原因，网络上的码表资源不多，很多爱好者都自己制作码表，而且很少对外传播。作为程序员，写代码生成码表自然不在话下，于是我用C++写了个五笔码表管理工具<a
-target="_blank" rel="noopener" href="https://github.com/panqiincs/RimeWubiDictMngr">RimeWubiDictMngr</a>。</p>
+        <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>最近学会了五笔输入法。我学的是新世纪版，因版权原因，网络上的码表资源不多，很多爱好者都自己制作码表，而且很少对外传播。作为程序员，写代码生成码表自然不在话下，于是我用C++写了个五笔码表管理工具<a target="_blank" rel="noopener" href="https://github.com/panqiincs/RimeWubiDictMngr">RimeWubiDictMngr</a>。</p>
 <span id="more"></span>
+
 <p>我没有使用C++标准库，而是用的Qt基础库，主要原因是<code>QString</code>对Unicode支持很好，处理汉字很方便。该工具暂时没有界面，只能称作一个功能简单的库，以后有必要再添加界面。</p>
-<h2 id="码表格式">码表格式</h2>
-<p>我用的是Rime输入法，它的优点在于，码表包含权重（weight）信息，码表文件<code>wubinc.dict.yaml</code>的部分条目如下：</p>
+<h2 id="码表格式"><a href="#码表格式" class="headerlink" title="码表格式"></a>码表格式</h2><p>我用的是Rime输入法，它的优点在于，码表包含权重（weight）信息，码表文件<code>wubinc.dict.yaml</code>的部分条目如下：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">剖</span>	<span class="string">ukj</span>	<span class="number">113738</span></span><br><span class="line"><span class="string">问题</span>	<span class="string">ukjg</span>	<span class="number">20455144</span></span><br><span class="line"><span class="string">总是</span>	<span class="string">ukjg</span>	<span class="number">2866329</span></span><br><span class="line"><span class="string">总量</span>	<span class="string">ukjg</span>	<span class="number">751184</span></span><br><span class="line"><span class="string">剖</span>	<span class="string">ukjh</span>	<span class="number">90990</span></span><br></pre></td></tr></table></figure>
+
 <p>每一行包含三个字段，依次是：词语（text），编码（code）和权重（weight），用制表符<code>\t</code>隔开。当出现重码时，例如，编码<code>ukjg</code>对应三个词，「问题」一词的权重最大，会排在候选框的最前面。</p>
-<h2 id="必备资源">必备资源</h2>
-<p>对五笔输入法而言，编码表是最核心的。编码表的内容是汉字对应的五笔编码，有了单字的五笔编码，就能根据规则生成词组的编码。不同的版本（86版、98版和新世纪版）对应不同的编码表。本文以新世纪版为例，如果需要生成其它版本的码表，更换编码表即可。项目<code>resource</code>目录中的<code>hanzi_code.txt</code>文件即为编码表（由于版权原因，未提供完整文件，请自行解决）。文件内容如下：</p>
+<h2 id="必备资源"><a href="#必备资源" class="headerlink" title="必备资源"></a>必备资源</h2><p>对五笔输入法而言，编码表是最核心的。编码表的内容是汉字对应的五笔编码，有了单字的五笔编码，就能根据规则生成词组的编码。不同的版本（86版、98版和新世纪版）对应不同的编码表。本文以新世纪版为例，如果需要生成其它版本的码表，更换编码表即可。项目<code>resource</code>目录中的<code>hanzi_code.txt</code>文件即为编码表（由于版权原因，未提供完整文件，请自行解决）。文件内容如下：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">工</span>	<span class="string">a</span></span><br><span class="line"><span class="string">工</span>	<span class="string">aa</span></span><br><span class="line"><span class="string">工</span>	<span class="string">aaa</span></span><br><span class="line"><span class="string">㠭</span>	<span class="string">aaaa</span></span><br><span class="line"><span class="string">工</span>	<span class="string">aaaa</span></span><br><span class="line"><span class="string">㐂</span>	<span class="string">aaab</span></span><br></pre></td></tr></table></figure>
-<p>要生成高质量的码表，少不了词频表。词频表是字词使用频率的信息，词频越高，字词越常见。本工具以词频为依据分配权重。词频表来自<a
-target="_blank" rel="noopener" href="https://www.plecoforums.com/threads/word-frequency-list-based-on-a-15-billion-character-corpus-bcc-blcu-chinese-corpus.5859/">BLCU
-Chinese Corpus</a>和<a
-target="_blank" rel="noopener" href="https://github.com/ling0322/webdict">webdict</a>。我将它们合并得到了一个总表，有超过150万个词。舍弃词频小于1000的词语，最后剩下141810个。项目<code>resource</code>目录中的<code>word_freq.txt</code>文件即为词频表，它的部分内容如下：</p>
+
+<p>要生成高质量的码表，少不了词频表。词频表是字词使用频率的信息，词频越高，字词越常见。本工具以词频为依据分配权重。词频表来自<a target="_blank" rel="noopener" href="https://www.plecoforums.com/threads/word-frequency-list-based-on-a-15-billion-character-corpus-bcc-blcu-chinese-corpus.5859/">BLCU Chinese Corpus</a>和<a target="_blank" rel="noopener" href="https://github.com/ling0322/webdict">webdict</a>。我将它们合并得到了一个总表，有超过150万个词。舍弃词频小于1000的词语，最后剩下141810个。项目<code>resource</code>目录中的<code>word_freq.txt</code>文件即为词频表，它的部分内容如下：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">的</span>	<span class="number">1017399760</span></span><br><span class="line"><span class="string">了</span>	<span class="number">269794532</span></span><br><span class="line"><span class="string">.</span></span><br><span class="line"><span class="string">.</span> <span class="comment"># 省略若干 </span></span><br><span class="line"><span class="string">.</span></span><br><span class="line"><span class="string">我们</span>	<span class="number">44509105</span></span><br><span class="line"><span class="string">.</span></span><br><span class="line"><span class="string">.</span> <span class="comment"># 省略很多</span></span><br><span class="line"><span class="string">.</span></span><br><span class="line"><span class="string">文过饰非</span>	<span class="number">3220</span></span><br><span class="line"><span class="string">.</span></span><br><span class="line"><span class="string">.</span> <span class="comment"># 省略很多</span></span><br><span class="line"><span class="string">.</span></span><br><span class="line"><span class="string">不合格率</span>	<span class="number">1000</span></span><br><span class="line"><span class="string">不入耳</span>	<span class="number">1000</span></span><br></pre></td></tr></table></figure>
-<h2 id="使用方法">使用方法</h2>
-<h3 id="扩充基础词库">扩充基础词库</h3>
-<p>以其它软件（如QQ五笔，极点五笔）的词库（必须为文本文件）为参考，添加其中的词汇，扩充码表。如果已有的码表文件为空，那么实际上是从零开始构建基础码表。使用示例如下：</p>
+
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="扩充基础词库"><a href="#扩充基础词库" class="headerlink" title="扩充基础词库"></a>扩充基础词库</h3><p>以其它软件（如QQ五笔，极点五笔）的词库（必须为文本文件）为参考，添加其中的词汇，扩充码表。如果已有的码表文件为空，那么实际上是从零开始构建基础码表。使用示例如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">RimeWubiDictMngr rwdm;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加载已有码表，如果文件为空，则从零开始生成码表</span></span><br><span class="line">rwdm.<span class="built_in">loadMainDict</span>(<span class="string">&quot;dict.yaml&quot;</span>);</span><br><span class="line"><span class="comment">// 扩充码表，ADD_HIGH表示只提取高频词（以词频表为依据），其它舍弃</span></span><br><span class="line">rwdm.<span class="built_in">expandMainDict</span>(<span class="string">&quot;qq_wubi.txt&quot;</span>, RimeWubiDictMngr::ADD_HIGH);</span><br><span class="line"><span class="comment">// 保存码表到文件</span></span><br><span class="line">rwdm.<span class="built_in">saveMainDict</span>(<span class="string">&quot;full_result.txt&quot;</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="添加自定义词组">添加自定义词组</h3>
-<p>可添加专业词汇、朋友姓名等自定义词组。如果文件中的词汇在词频表中，根据词频分配权重，如果不在，则分配默认权重。使用方法如下：</p>
+
+<h3 id="添加自定义词组"><a href="#添加自定义词组" class="headerlink" title="添加自定义词组"></a>添加自定义词组</h3><p>可添加专业词汇、朋友姓名等自定义词组。如果文件中的词汇在词频表中，根据词频分配权重，如果不在，则分配默认权重。使用方法如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">RimeWubiDictMngr rwdm;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加载已有码表</span></span><br><span class="line">rwdm.<span class="built_in">loadMainDict</span>(<span class="string">&quot;dict.yaml&quot;</span>);</span><br><span class="line"><span class="comment">// 添加用户词汇，ADD_ALL表示提取文件中所有词汇</span></span><br><span class="line">rwdm.<span class="built_in">expandMainDict</span>(<span class="string">&quot;names.txt&quot;</span>, RimeWubiDictMngr::ADD_ALL);</span><br><span class="line"><span class="comment">// 将添加进去的用户词汇单独保存</span></span><br><span class="line">rwdm.<span class="built_in">saveUserDict</span>(<span class="string">&quot;names.dict.txt&quot;</span>);</span><br><span class="line"><span class="comment">// 保存总码表到文件</span></span><br><span class="line">rwdm.<span class="built_in">saveMainDict</span>(<span class="string">&quot;full_result.txt&quot;</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="制作码表文件">制作码表文件</h3>
-<p>项目的<code>resource</code>目录下分别有后缀为<code>head</code>和<code>tail</code>的文件，是Rime五笔码表文件的头部和尾部内容。为上述步骤中生成的<code>full_result.txt</code>文件添加头部和尾部，即为标准可用的码表文件。</p>
-<h3 id="码表格式转换">码表格式转换</h3>
-<p>不同五笔输入法软件的码表格式不同，可以通过<a
-target="_blank" rel="noopener" href="https://github.com/studyzy/imewlconverter">深蓝词库转换</a>工具将Rime的码表转换成其它软件的格式。</p>
+
+<h3 id="制作码表文件"><a href="#制作码表文件" class="headerlink" title="制作码表文件"></a>制作码表文件</h3><p>项目的<code>resource</code>目录下分别有后缀为<code>head</code>和<code>tail</code>的文件，是Rime五笔码表文件的头部和尾部内容。为上述步骤中生成的<code>full_result.txt</code>文件添加头部和尾部，即为标准可用的码表文件。</p>
+<h3 id="码表格式转换"><a href="#码表格式转换" class="headerlink" title="码表格式转换"></a>码表格式转换</h3><p>不同五笔输入法软件的码表格式不同，可以通过<a target="_blank" rel="noopener" href="https://github.com/studyzy/imewlconverter">深蓝词库转换</a>工具将Rime的码表转换成其它软件的格式。</p>
 
     </div>
 
