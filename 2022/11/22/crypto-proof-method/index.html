@@ -21,15 +21,13 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="证明过程归约证明（proof by reduction）是现代密码学中证明方案安全性的重要方法，甚至是一些教材中使用的唯一方法。它的思路是，假设某个问题难以解决，然后证明基于该问题的构造方法在该假设下是安全的。">
+    <meta name="description" content="证明过程 归约证明（proof by reduction）是现代密码学中证明方案安全性的重要方法，甚至是一些教材中使用的唯一方法。它的思路是，假设某个问题难以解决，然后证明基于该问题的构造方法在该假设下是安全的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="密码学中的归约证明过程">
 <meta property="og:url" content="https://panqiincs.me/2022/11/22/crypto-proof-method/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="证明过程归约证明（proof by reduction）是现代密码学中证明方案安全性的重要方法，甚至是一些教材中使用的唯一方法。它的思路是，假设某个问题难以解决，然后证明基于该问题的构造方法在该假设下是安全的。">
+<meta property="og:description" content="证明过程 归约证明（proof by reduction）是现代密码学中证明方案安全性的重要方法，甚至是一些教材中使用的唯一方法。它的思路是，假设某个问题难以解决，然后证明基于该问题的构造方法在该假设下是安全的。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/reduction.png">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/reduction_prg.png">
 <meta property="article:published_time" content="2022-11-22T10:00:00.000Z">
 <meta property="article:modified_time" content="2023-03-22T13:27:25.635Z">
 <meta property="article:author" content="辛未羊">
@@ -37,7 +35,6 @@
 <meta property="article:tag" content="伪随机数">
 <meta property="article:tag" content="密码学">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/reduction.png">
 
 
 <link rel="canonical" href="https://panqiincs.me/2022/11/22/crypto-proof-method/">
@@ -280,7 +277,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.3k</span>
+      <span>2.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -298,34 +295,147 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="证明过程"><a href="#证明过程" class="headerlink" title="证明过程"></a>证明过程</h2><p>归约证明（proof by reduction）是现代密码学中证明方案安全性的重要方法，甚至是一些教材中使用的唯一方法。它的思路是，假设某个问题难以解决，然后证明基于该问题的构造方法在该假设下是安全的。</p>
+        <h2 id="证明过程">证明过程</h2>
+<p>归约证明（proof by
+reduction）是现代密码学中证明方案安全性的重要方法，甚至是一些教材中使用的唯一方法。它的思路是，假设某个问题难以解决，然后证明基于该问题的构造方法在该假设下是安全的。</p>
 <span id="more"></span>
-
-<p>想要证明某构造方案$\Pi$安全，假设已知问题$\mathsf{X}$难以解决，将成功攻破该方案$\Pi$的有效敌手$\mathcal{A}$转化为成功解决问题$\mathsf{X}$的有效算法$\mathcal{A}’$，这与假设相矛盾，所以方案$\Pi$无法攻破，方案是安全的。具体过程如下：</p>
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/reduction.png" alt="归约证明示意图"></p>
-<ol>
-<li>指定概率多项式时间的敌手$\mathcal{A}$攻击方案$\Pi$，成功的概率为$\varepsilon(n)$</li>
-<li>假设：问题$\mathsf{X}$难以解决，即无法在概率多项式时间内以不可忽略的概率解决</li>
-<li>归约：构造有效算法$\mathcal{A}’$，它将$\mathcal{A}$当作子程序运行，从问题$\mathsf{X}$的实例$\mathsf{x}$模拟出一个$\Pi$的实例，输入给$\mathcal{A}$，如果$\mathcal{A}$成功攻破，则$\mathcal{A}’$成功解决实例$\mathsf{x}$的概率至少为多项式的倒数$1&#x2F;p(n)$</li>
-<li>矛盾：那么$\mathcal{A}’$解决问题$\mathsf{X}$的概率为$\varepsilon(n)&#x2F;p(n)$，若$\varepsilon(n)$不可忽略，则$\varepsilon(n)&#x2F;p(n)$也不可忽略，这与假设相矛盾</li>
-<li>结论：敌手$\mathcal{A}$无法以不可忽略的概率攻破方案$\Pi$，或者说$\Pi$是计算安全的</li>
+<p>想要证明某构造方案<span
+class="math inline">\(\Pi\)</span>安全，假设已知问题<span
+class="math inline">\(\mathsf{X}\)</span>难以解决，将成功攻破该方案<span
+class="math inline">\(\Pi\)</span>的有效敌手<span
+class="math inline">\(\mathcal{A}\)</span>转化为成功解决问题<span
+class="math inline">\(\mathsf{X}\)</span>的有效算法<span
+class="math inline">\(\mathcal{A}&#39;\)</span>，这与假设相矛盾，所以方案<span
+class="math inline">\(\Pi\)</span>无法攻破，方案是安全的。具体过程如下：</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/reduction.png"
+alt="归约证明示意图" />
+<figcaption aria-hidden="true">归约证明示意图</figcaption>
+</figure>
+<ol type="1">
+<li>指定概率多项式时间的敌手<span
+class="math inline">\(\mathcal{A}\)</span>攻击方案<span
+class="math inline">\(\Pi\)</span>，成功的概率为<span
+class="math inline">\(\varepsilon(n)\)</span></li>
+<li>假设：问题<span
+class="math inline">\(\mathsf{X}\)</span>难以解决，即无法在概率多项式时间内以不可忽略的概率解决</li>
+<li>归约：构造有效算法<span
+class="math inline">\(\mathcal{A}&#39;\)</span>，它将<span
+class="math inline">\(\mathcal{A}\)</span>当作子程序运行，从问题<span
+class="math inline">\(\mathsf{X}\)</span>的实例<span
+class="math inline">\(\mathsf{x}\)</span>模拟出一个<span
+class="math inline">\(\Pi\)</span>的实例，输入给<span
+class="math inline">\(\mathcal{A}\)</span>，如果<span
+class="math inline">\(\mathcal{A}\)</span>成功攻破，则<span
+class="math inline">\(\mathcal{A}&#39;\)</span>成功解决实例<span
+class="math inline">\(\mathsf{x}\)</span>的概率至少为多项式的倒数<span
+class="math inline">\(1/p(n)\)</span></li>
+<li>矛盾：那么<span
+class="math inline">\(\mathcal{A}&#39;\)</span>解决问题<span
+class="math inline">\(\mathsf{X}\)</span>的概率为<span
+class="math inline">\(\varepsilon(n)/p(n)\)</span>，若<span
+class="math inline">\(\varepsilon(n)\)</span>不可忽略，则<span
+class="math inline">\(\varepsilon(n)/p(n)\)</span>也不可忽略，这与假设相矛盾</li>
+<li>结论：敌手<span
+class="math inline">\(\mathcal{A}\)</span>无法以不可忽略的概率攻破方案<span
+class="math inline">\(\Pi\)</span>，或者说<span
+class="math inline">\(\Pi\)</span>是计算安全的</li>
 </ol>
-<p>第3步归约中的概率$1&#x2F;p(n)$我是这么理解的，它表示从$\mathcal{A}’$的输入到$\mathcal{A}$的输入以及从$\mathcal{A}$的输出到$\mathcal{A}’$的输出这两个交互过程成功的概率。只有整个过程全部成功，才认为$\mathcal{A}’$成功解决问题的实例$\mathsf{x}$，总的概率为$1&#x2F;p(n)$乘以$\mathcal{A}$攻破$\Pi$的概率$\varepsilon(n)$。</p>
-<h2 id="简单的证明例子"><a href="#简单的证明例子" class="headerlink" title="简单的证明例子"></a>简单的证明例子</h2><p>伪随机数发生器（pseudorandom generator, PRG）输入长度为$n$的种子$s$，算法$G$输出长度为$l(n)$的字符串。满足$l(n)&gt;n$称为扩展性，即用短的种子生成长的字符串。无法区分它和均匀随机选择的字符串称为伪随机性，用数学语言描述就是，对于概率多项式时间的区分器$\mathcal{D}$来说，存在可忽略函数$\mathsf{negl}$满足：<br>$$<br>\left| \mathrm{Pr}[D(r)&#x3D;1] - \mathrm{Pr}[D(G(s))&#x3D;1] \right| \le \mathsf{negl}(n)<br>$$<br>其中$r$是从$\left { 0,1 \right}^{l(n)}$中均匀随机选择的，种子$s$是从$\left { 0,1 \right}^{n}$中均匀随机选择的。</p>
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/reduction_prg.png" alt="伪随机数发生器的归约证明"></p>
-<p>我们用归约方法证明：如果$F(s)$是伪随机数发生器，则$G(s)&#x3D;F(s)\oplus 1^n$也是。关键在于将证明$G(s)$的伪随机性转化为证明$F(s)$的伪随机性，过程如下：</p>
-<ol>
-<li>指定概率多项式时间的区分器$\mathcal{D}$，$\mathcal{D}$成功区分$G(s)$和$r$的概率<br>$$<br>\varepsilon(n) &#x3D; \mathrm{Pr}[D(r)&#x3D;1] - \mathrm{Pr}[D(G(s))&#x3D;1]<br>$$</li>
-<li>假设：问题$\mathsf{X}$难以解决，即成功区分$F(s)$和$r$的概率可忽略</li>
-<li>归约：构造算法$\mathcal{D}’$区分$F(s)$和$r$，$\mathcal{D}’$将$\mathcal{D}$作为子程序运行，计算$\mathcal{D}’$成功区分的概率<br>$$<br>\begin{align}<br>\mathrm{Pr}[D’(r)&#x3D;1] - \mathrm{Pr}[D’(F(s))&#x3D;1]<br>&amp; &#x3D; \mathrm{Pr}[D(r\oplus 1^n)&#x3D;1] - \mathrm{Pr}[D(F(s)\oplus 1^n)&#x3D;1] \<br>&amp; &#x3D; \mathrm{Pr}[D(r)&#x3D;1] - \mathrm{Pr}[D(G(s))&#x3D;1] \<br>&amp; &#x3D; \varepsilon(n)<br>\end{align}<br>$$</li>
-<li>矛盾：若$\mathcal{D}’$成功区分$F(s)$和$r$的概率$\varepsilon(n)$不可忽略，则与假设矛盾</li>
-<li>结论：$\mathcal{D}$无法以不可忽略的概率区分$G(s)$和$r$，$G(s)$也是伪随机数发生器，得证</li>
+<p>第3步归约中的概率<span
+class="math inline">\(1/p(n)\)</span>我是这么理解的，它表示从<span
+class="math inline">\(\mathcal{A}&#39;\)</span>的输入到<span
+class="math inline">\(\mathcal{A}\)</span>的输入以及从<span
+class="math inline">\(\mathcal{A}\)</span>的输出到<span
+class="math inline">\(\mathcal{A}&#39;\)</span>的输出这两个交互过程成功的概率。只有整个过程全部成功，才认为<span
+class="math inline">\(\mathcal{A}&#39;\)</span>成功解决问题的实例<span
+class="math inline">\(\mathsf{x}\)</span>，总的概率为<span
+class="math inline">\(1/p(n)\)</span>乘以<span
+class="math inline">\(\mathcal{A}\)</span>攻破<span
+class="math inline">\(\Pi\)</span>的概率<span
+class="math inline">\(\varepsilon(n)\)</span>。</p>
+<h2 id="简单的证明例子">简单的证明例子</h2>
+<p>伪随机数发生器（pseudorandom generator, PRG）输入长度为<span
+class="math inline">\(n\)</span>的种子<span
+class="math inline">\(s\)</span>，算法<span
+class="math inline">\(G\)</span>输出长度为<span
+class="math inline">\(l(n)\)</span>的字符串。满足<span
+class="math inline">\(l(n)&gt;n\)</span>称为扩展性，即用短的种子生成长的字符串。无法区分它和均匀随机选择的字符串称为伪随机性，用数学语言描述就是，对于概率多项式时间的区分器<span
+class="math inline">\(\mathcal{D}\)</span>来说，存在可忽略函数<span
+class="math inline">\(\mathsf{negl}\)</span>满足： <span
+class="math display">\[
+\left| \mathrm{Pr}[D(r)=1] - \mathrm{Pr}[D(G(s))=1] \right| \le
+\mathsf{negl}(n)
+\]</span> 其中<span class="math inline">\(r\)</span>是从<span
+class="math inline">\(\left \{ 0,1
+\right\}^{l(n)}\)</span>中均匀随机选择的，种子<span
+class="math inline">\(s\)</span>是从<span class="math inline">\(\left \{
+0,1 \right\}^{n}\)</span>中均匀随机选择的。</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/reduction_prg.png"
+alt="伪随机数发生器的归约证明" />
+<figcaption aria-hidden="true">伪随机数发生器的归约证明</figcaption>
+</figure>
+<p>我们用归约方法证明：如果<span
+class="math inline">\(F(s)\)</span>是伪随机数发生器，则<span
+class="math inline">\(G(s)=F(s)\oplus
+1^n\)</span>也是。关键在于将证明<span
+class="math inline">\(G(s)\)</span>的伪随机性转化为证明<span
+class="math inline">\(F(s)\)</span>的伪随机性，过程如下：</p>
+<ol type="1">
+<li>指定概率多项式时间的区分器<span
+class="math inline">\(\mathcal{D}\)</span>，<span
+class="math inline">\(\mathcal{D}\)</span>成功区分<span
+class="math inline">\(G(s)\)</span>和<span
+class="math inline">\(r\)</span>的概率 <span class="math display">\[
+\varepsilon(n) = \mathrm{Pr}[D(r)=1] - \mathrm{Pr}[D(G(s))=1]
+\]</span></li>
+<li>假设：问题<span
+class="math inline">\(\mathsf{X}\)</span>难以解决，即成功区分<span
+class="math inline">\(F(s)\)</span>和<span
+class="math inline">\(r\)</span>的概率可忽略</li>
+<li>归约：构造算法<span
+class="math inline">\(\mathcal{D}&#39;\)</span>区分<span
+class="math inline">\(F(s)\)</span>和<span
+class="math inline">\(r\)</span>，<span
+class="math inline">\(\mathcal{D}&#39;\)</span>将<span
+class="math inline">\(\mathcal{D}\)</span>作为子程序运行，计算<span
+class="math inline">\(\mathcal{D}&#39;\)</span>成功区分的概率 <span
+class="math display">\[
+\begin{align}
+\mathrm{Pr}[D&#39;(r)=1] - \mathrm{Pr}[D&#39;(F(s))=1]
+&amp; = \mathrm{Pr}[D(r\oplus 1^n)=1] - \mathrm{Pr}[D(F(s)\oplus 1^n)=1]
+\\
+&amp; = \mathrm{Pr}[D(r)=1] - \mathrm{Pr}[D(G(s))=1] \\
+&amp; = \varepsilon(n)
+\end{align}
+\]</span></li>
+<li>矛盾：若<span
+class="math inline">\(\mathcal{D}&#39;\)</span>成功区分<span
+class="math inline">\(F(s)\)</span>和<span
+class="math inline">\(r\)</span>的概率<span
+class="math inline">\(\varepsilon(n)\)</span>不可忽略，则与假设矛盾</li>
+<li>结论：<span
+class="math inline">\(\mathcal{D}\)</span>无法以不可忽略的概率区分<span
+class="math inline">\(G(s)\)</span>和<span
+class="math inline">\(r\)</span>，<span
+class="math inline">\(G(s)\)</span>也是伪随机数发生器，得证</li>
 </ol>
-<p>上面的例子中$1&#x2F;p(n)$的值为$1$，可以认为$\mathcal{D}’$与$\mathcal{D}$的交互过程非常「顺利」。</p>
-<h2 id="经典算法对应的基础问题"><a href="#经典算法对应的基础问题" class="headerlink" title="经典算法对应的基础问题"></a>经典算法对应的基础问题</h2><p>通过归约可将要证明的结论等价为更基础的问题，上面的例子将$G(s)$的伪随机性等价为$F(s)$的伪随机性。类似地，很多密码方案的安全性可以等价为一些基础问题的困难性。比如，RSA算法之所以安全是因为大整数质因数分解很困难，ElGamal算法之所以安全是因为离散对数求解困难。所以，在证明方案的安全性时，可将安全性证明归约到求解基础问题的困难性上。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://github.com/YuZhang/cryptography">Cryptography Course Slides</a></li>
-<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/5954556/">现代密码学</a></li>
+<p>上面的例子中<span class="math inline">\(1/p(n)\)</span>的值为<span
+class="math inline">\(1\)</span>，可以认为<span
+class="math inline">\(\mathcal{D}&#39;\)</span>与<span
+class="math inline">\(\mathcal{D}\)</span>的交互过程非常「顺利」。</p>
+<h2 id="经典算法对应的基础问题">经典算法对应的基础问题</h2>
+<p>通过归约可将要证明的结论等价为更基础的问题，上面的例子将<span
+class="math inline">\(G(s)\)</span>的伪随机性等价为<span
+class="math inline">\(F(s)\)</span>的伪随机性。类似地，很多密码方案的安全性可以等价为一些基础问题的困难性。比如，RSA算法之所以安全是因为大整数质因数分解很困难，ElGamal算法之所以安全是因为离散对数求解困难。所以，在证明方案的安全性时，可将安全性证明归约到求解基础问题的困难性上。</p>
+<h2 id="参考资料">参考资料</h2>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://github.com/YuZhang/cryptography">Cryptography
+Course Slides</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://book.douban.com/subject/5954556/">现代密码学</a></li>
 </ol>
 
     </div>
