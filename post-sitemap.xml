@@ -9,8 +9,24 @@
 
 
     <url>
+        <loc>https://panqiincs.me/2019/06/05/after-installing-manjaro/</loc>
+        <lastmod>2023-04-15T09:47:20.680Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2021/01/29/open-loop-tf/</loc>
+        <lastmod>2023-04-15T09:43:44.366Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://panqiincs.me/2023/03/22/blog-ten-years/</loc>
-        <lastmod>2023-03-24T00:26:07.236Z</lastmod>
+        <lastmod>2023-04-15T09:40:26.285Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -473,14 +489,6 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2019/06/05/after-installing-manjaro/</loc>
-        <lastmod>2023-02-04T02:43:13.390Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://panqiincs.me/2014/04/16/keep-a-dairy/</loc>
         <lastmod>2023-02-04T02:43:13.386Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -571,14 +579,6 @@
     <url>
         <loc>https://panqiincs.me/2021/03/22/blog-eight-years/</loc>
         <lastmod>2022-11-09T05:07:56.386Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2021/01/29/open-loop-tf/</loc>
-        <lastmod>2022-10-22T15:09:35.114Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
