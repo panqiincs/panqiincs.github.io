@@ -17,9 +17,9 @@
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="Manjaro是非常优秀的Linux发行版，我用了这么久没过出大问题，更没有碰到过滚动升级发行版偶尔出现的升级后系统倒地不起的情况。但有时候系统升级会出点小问题，下面将我碰到的问题及其解决办法列出来。">
 <meta property="og:type" content="article">
@@ -296,8 +296,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-        <p>Manjaro是非常优秀的Linux发行版，我用了这么久没过出大问题，更没有碰到过滚动升级发行版偶尔出现的升级后系统倒地不起的情况。但有时候系统升级会出点小问题，下面将我碰到的问题及其解决办法列出来。</p>
+    <div class="post-body" itemprop="articleBody"><p>Manjaro是非常优秀的Linux发行版，我用了这么久没过出大问题，更没有碰到过滚动升级发行版偶尔出现的升级后系统倒地不起的情况。但有时候系统升级会出点小问题，下面将我碰到的问题及其解决办法列出来。</p>
 <span id="more"></span>
 <p>最常见的升级错误是由软件版本依赖造成的。软件仓库中的版本更新后，问题可能就消失了，不着急的话可以等等。运行<code>pacman -Qtdq</code>命令可得到未被其他软件用到的包，如果是这些包的依赖关系导致升级失败，卸载它们即可解决问题。</p>
 <p>我遇到过<code>wxgtk2</code>导致的升级失败问题，最后一行错误信息如下：</p>
@@ -349,7 +348,7 @@ update error in arch #636</a></li>
       <a href="https://panqiincs.me/2021/08/17/manjaro-update-errors/" title="Manjaro升级错误解决方法">https://panqiincs.me/2021/08/17/manjaro-update-errors/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
@@ -441,6 +440,8 @@ update error in arch #636</a></li>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
 
   
+
+
 
 
 

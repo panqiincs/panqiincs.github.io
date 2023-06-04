@@ -17,9 +17,9 @@
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="嵌入式开发中硬件资源非常宝贵，当工程中包含大量的未调用函数时，生成的二进制文件的体积会增大，浪费宝贵的存储资源。手动统计和删除未调用函数很不方便，有的平台代码可能以后会用到，删除也不合适。">
 <meta property="og:type" content="article">
@@ -295,8 +295,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-        <p>嵌入式开发中硬件资源非常宝贵，当工程中包含大量的未调用函数时，生成的二进制文件的体积会增大，浪费宝贵的存储资源。手动统计和删除未调用函数很不方便，有的平台代码可能以后会用到，删除也不合适。</p>
+    <div class="post-body" itemprop="articleBody"><p>嵌入式开发中硬件资源非常宝贵，当工程中包含大量的未调用函数时，生成的二进制文件的体积会增大，浪费宝贵的存储资源。手动统计和删除未调用函数很不方便，有的平台代码可能以后会用到，删除也不合适。</p>
 <span id="more"></span>
 <p>DS-5是ARM架构处理器常用的开发平台，包括编辑器、编译器、调试器等一全套开发工具。DS-5编译器提供相关的选项可以自动统计未调用的函数，并且能够在不删除代码的情况下，自动忽略对应的代码段，不链接到最终的目标文件中，减小二进制文件的体积。过程如下：</p>
 <ol type="1">
@@ -339,7 +338,7 @@ unused functions</a></li>
       <a href="https://panqiincs.me/2017/07/03/eliminate-unused-functions/" title="DS5编译器优化未使用函数">https://panqiincs.me/2017/07/03/eliminate-unused-functions/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
   </li>
 </ul>
 </div>
@@ -430,6 +429,8 @@ unused functions</a></li>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
 
   
+
+
 
 
 
