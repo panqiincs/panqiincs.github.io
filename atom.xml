@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-04-15T09:40:26.285Z</updated>
+  <updated>2023-06-10T06:05:42.369Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一个灵活的采样控制仿真框架</title>
+    <link href="https://panqiincs.me/2023/06/10/flexible-sampling-control/"/>
+    <id>https://panqiincs.me/2023/06/10/flexible-sampling-control/</id>
+    <published>2023-06-10T03:52:09.000Z</published>
+    <updated>2023-06-10T06:05:42.369Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文介绍如何使用MATLAB/Simulink搭建一个灵活的采样控制（sampling
+control）仿真框架。除了最常见的周期控制外，还能非常方便地实现更加灵活的控制策略。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
+    
+    
+    <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
+    
+    <category term="采样控制" scheme="https://panqiincs.me/tags/%E9%87%87%E6%A0%B7%E6%8E%A7%E5%88%B6/"/>
+    
+    <category term="simulink" scheme="https://panqiincs.me/tags/simulink/"/>
+    
+    <category term="控制系统仿真" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%BB%BF%E7%9C%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>网站十周年记</title>
@@ -473,27 +499,6 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="一阶系统" scheme="https://panqiincs.me/tags/%E4%B8%80%E9%98%B6%E7%B3%BB%E7%BB%9F/"/>
     
     <category term="负反馈" scheme="https://panqiincs.me/tags/%E8%B4%9F%E5%8F%8D%E9%A6%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>尝试下Amann的数学分析</title>
-    <link href="https://panqiincs.me/2022/02/18/attempt-amann-analysis/"/>
-    <id>https://panqiincs.me/2022/02/18/attempt-amann-analysis/</id>
-    <published>2022-02-18T10:06:52.000Z</published>
-    <updated>2022-12-18T13:37:34.586Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;高等代数我比较熟悉，因为经常用，还系统地复习过，但数学分析就生疏很多。我想尝试用Amann和Escher合著的Analysis来复习数学分析，一共有3卷，是德语国家常用的教材。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
-    
-    
-    <category term="教材" scheme="https://panqiincs.me/tags/%E6%95%99%E6%9D%90/"/>
-    
-    <category term="数学分析" scheme="https://panqiincs.me/tags/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/"/>
     
   </entry>
   
