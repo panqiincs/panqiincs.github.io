@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-06-10T06:05:42.369Z</updated>
+  <updated>2023-06-10T06:13:41.688Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://panqiincs.me/2023/06/10/flexible-sampling-control/"/>
     <id>https://panqiincs.me/2023/06/10/flexible-sampling-control/</id>
     <published>2023-06-10T03:52:09.000Z</published>
-    <updated>2023-06-10T06:05:42.369Z</updated>
+    <updated>2023-06-10T06:13:41.688Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文介绍如何使用MATLAB/Simulink搭建一个灵活的采样控制（sampling
