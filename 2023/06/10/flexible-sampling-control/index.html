@@ -29,12 +29,12 @@
 <meta property="og:description" content="本文介绍如何使用MATLAB&#x2F;Simulink搭建一个灵活的采样控制（sampling control）仿真框架。除了最常见的周期控制外，还能非常方便地实现更加灵活的控制策略。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-06-10T03:52:09.000Z">
-<meta property="article:modified_time" content="2023-06-10T06:13:41.688Z">
+<meta property="article:modified_time" content="2023-06-16T05:05:58.821Z">
 <meta property="article:author" content="辛未羊">
+<meta property="article:tag" content="控制系统仿真">
 <meta property="article:tag" content="matlab">
 <meta property="article:tag" content="采样控制">
 <meta property="article:tag" content="simulink">
-<meta property="article:tag" content="控制系统仿真">
 <meta name="twitter:card" content="summary">
 
 
@@ -303,8 +303,8 @@ control）仿真框架。除了最常见的周期控制外，还能非常方便�
 <span id="more"></span>
 <p>很多物理系统的运行规律用连续微分方程模型描述。如果采用计算机控制，需要间断地对某些变量进行<strong>测量</strong>和<strong>控制</strong>，这种方式称为<strong>采样控制</strong>。采样控制必然涉及到连续信号与离散信号之间的转换。</p>
 <p>设系统的状态为连续信号<span
-class="math inline">\(x(t)\)</span>，每隔一段时间从传感器获取状态值，即在某些时间点上对<span
-class="math inline">\(x(t)\)</span>采样得到<span
+class="math inline">\(x(t)\)</span>，每隔一段时间从传感器获取状态值，即在某些时刻对<span
+class="math inline">\(x(t)\)</span>采样，得到<span
 class="math inline">\(x(t_k)\)</span>，它的离散的。根据<span
 class="math inline">\(x(t_k)\)</span>和控制目标计算得到一个控制量<span
 class="math inline">\(u(t_k)\)</span>，将离散的<span
@@ -320,7 +320,7 @@ src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/discrete_ss_mod
 alt="状态空间模型的离散化" />
 <figcaption aria-hidden="true">状态空间模型的离散化</figcaption>
 </figure>
-<p>测量和控制两个通道如果每隔固定周期进行采样和保持，则可以按照上述步骤将连续模型转化为离散模型，再进行分析。但如果采样和控制的时间很灵活，这种方法就不可行了。Simulink中的<strong>使能触发子系统</strong>（<strong>enabled
+<p>测量和控制两个通道如果每隔固定周期进行采样和保持，则可以按照上述步骤将连续模型转化为离散模型，再进行分析。但如果采样和控制的时间很灵活，这种方法就不可行了。Simulink的<strong>使能触发子系统</strong>（<strong>enabled
 and triggered
 subsystem</strong>）模块可以实现灵活的采样控制。下面的实例验证了该模块的主要特性：</p>
 <figure>
@@ -335,14 +335,14 @@ src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/simulink_ets_sc
 alt="模块功能验证结果" />
 <figcaption aria-hidden="true">模块功能验证结果</figcaption>
 </figure>
-<p>示波器中第一个信号是使能信号，信号值为1时模块的功能才会开启。第二个信号是采样触发信号，设置为下降沿到来时触发一次采样，将输出值更新为输入信号在采样时刻的值。输入的正弦信号和输出信号在同一个图中。可以看到，当使能信号为0或触发信号新的下降沿没有到来时，模块的输出保持不变，所以它有零阶保持器的特征。Simulink中还有单独的使能子系统模块和触发子系统模块，使能触发子系统是两种功能的综合，当只用到其中一种时，可以选择这两个单一功能模块。</p>
+<p>示波器中第一个信号是使能信号，信号值为1时模块功能才会开启。第二个信号是采样触发信号，设置为下降沿到来时触发采样，将输出值更新为输入信号最新的采样值。输入的正弦信号和输出信号在同一个图中。可以看到，当使能信号为0或触发信号新的下降沿没有到来时，模块的输出保持不变，所以它有零阶保持器的特征。Simulink还有单独的使能子系统模块和触发子系统模块，使能触发子系统是两种功能的综合，当只用到其中一种时，可以选择这两个单一功能模块。</p>
 <figure>
 <img
 src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/simulink_ets_control.png"
 alt="采样控制仿真框架" />
 <figcaption aria-hidden="true">采样控制仿真框架</figcaption>
 </figure>
-<p>上图是将使能触发子系统用于状态反馈控制系统仿真中的例子。使能信号可以控制两个通道的通断，触发信号控制采样时间。在本例中，使能信号是常量1，即保持通道一直打开，触发信号采用方波，实现的是普通的周期（periodic）控制。修改使能信号和触发信号，则可实现其他更加灵活的控制策略，如事件触发（event-triggered）控制、自触发（self-triggered）控制等。</p>
+<p>上图展示的仿真实例是将使能触发子系统用于状态反馈控制系统仿真。使能信号可以控制两个通道的通断，触发信号控制采样时刻。在本例中，使能信号是常量1，即保持通道一直打开，触发信号采用方波，实现的是普通的周期（periodic）控制。修改使能信号和触发信号，则可实现其他更加灵活的控制策略，如事件触发（event-triggered）控制、自触发（self-triggered）控制等。</p>
 <h2 id="参考">参考</h2>
 <ol type="1">
 <li><a
@@ -377,10 +377,10 @@ Enabled and Triggered Subsystems</a></li>
 </div>
 
           <div class="post-tags">
+              <a href="/tags/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%BB%BF%E7%9C%9F/" rel="tag"># 控制系统仿真</a>
               <a href="/tags/matlab/" rel="tag"># matlab</a>
               <a href="/tags/%E9%87%87%E6%A0%B7%E6%8E%A7%E5%88%B6/" rel="tag"># 采样控制</a>
               <a href="/tags/simulink/" rel="tag"># simulink</a>
-              <a href="/tags/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%BB%BF%E7%9C%9F/" rel="tag"># 控制系统仿真</a>
           </div>
 
         
