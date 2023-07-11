@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-07-11T03:34:52.917Z</updated>
+  <updated>2023-07-11T08:59:10.281Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="https://panqiincs.me/2023/07/11/gnu-octave-tips/"/>
     <id>https://panqiincs.me/2023/07/11/gnu-octave-tips/</id>
     <published>2023-07-11T02:29:52.000Z</published>
-    <updated>2023-07-11T03:34:52.917Z</updated>
+    <updated>2023-07-11T08:59:10.281Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;为什么用octave&quot;&gt;为什么用Octave&lt;/h2&gt;
-&lt;p&gt;MATLAB功能强大，但正版价格非常昂贵，而且有地缘冲突带来的制裁风险。有很多开源免费软件可以替代MATLAB的一部分功能，如Octave、FreeMat、Scilab、R、IDL等，这其中Octave最兼容MATLAB，而且性能非常好，详情请参考&lt;a
+&lt;p&gt;MATLAB功能强大，但正版价格非常昂贵，而且有地缘冲突带来的制裁风险。有很多开源免费软件可以替代MATLAB的一部分功能，如Octave、FreeMat、Scilab、R、IDL等，这其中Octave最兼容MATLAB，而且性能非常好，详情可参考&lt;a
 href=&quot;https://userpages.umbc.edu/~gobbert/papers/BrewsterGobbertTR2011.pdf&quot;&gt;这篇文章&lt;/a&gt;。&lt;/p&gt;</summary>
     
     
