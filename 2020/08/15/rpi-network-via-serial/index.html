@@ -142,7 +142,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -153,7 +153,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">177</span>
+        <span class="site-state-item-count">179</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -280,7 +280,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.4k</span>
+      <span>1.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -297,13 +297,12 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>如果树莓派无法使用以太网或者WiFi，该如何接入到TCP/IP网络呢？这个需求看似奇怪，还真给我遇到了。其实树莓派可以通过串口线和其他设备实现网络通信。</p>
+    <div class="post-body" itemprop="articleBody"><p>如果树莓派无法使用以太网或者WiFi，该如何接入到TCP&#x2F;IP网络呢？这个需求看似奇怪，还真给我遇到了。其实树莓派可以通过串口线和其他设备实现网络通信。</p>
 <span id="more"></span>
-<p>以使用WiFi接入到网络为例，WiFi定义了OSI模型中的物理层和数据链路层，在WiFi之上承载了网络层的IP协议，再往上就是传输层，传输层最重要的协议是TCP。树莓派的UART串口不适合直接传输TCP/IP数据，需要用PPP协议（<strong>P</strong>oint-to-<strong>P</strong>oint
-<strong>P</strong>rotocol，点对点协议）封装串口数据，那么数据链路层使用的是PPP协议，然后再在PPP协议上承载IP协议，就有了网络接口。另一个可用在串口线上的数据链路层协议是SLIP（Serial
-Line IP），在互联网发展早期很流行，现在已经被PPP协议取代了。</p>
+
+<p>以使用WiFi接入到网络为例，WiFi定义了OSI模型中的物理层和数据链路层，在WiFi之上承载了网络层的IP协议，再往上就是传输层，传输层最重要的协议是TCP。树莓派的UART串口不适合直接传输TCP&#x2F;IP数据，需要用PPP协议（<strong>P</strong>oint-to-<strong>P</strong>oint <strong>P</strong>rotocol，点对点协议）封装串口数据，那么数据链路层使用的是PPP协议，然后再在PPP协议上承载IP协议，就有了网络接口。另一个可用在串口线上的数据链路层协议是SLIP（Serial Line IP），在互联网发展早期很流行，现在已经被PPP协议取代了。</p>
 <p>我们就使用上面提到的思路。先做如下准备：</p>
-<ol type="1">
+<ol>
 <li>树莓派有两个串口，硬件串口默认分配给蓝牙模块上，所以需要做一些设置，恢复硬件串口与GPIO的映射关系，这样就可以通过GPIO使用高性能的硬件串口。网上很容易找到方法，这里就不多说了。</li>
 <li>通信双方都要安装ppp协议，树莓派上使用<code>sudo apt-get install ppp</code>命令安装。</li>
 <li>如果通信的另一方也是个树莓派，可以用3根杜邦线连接两个树莓派的TXD、RXD和GND引脚，TXD与RXD要交叉连接。如果通信的另一方是个Linux主机，需要一个串口转USB模块，USB一端插到计算机上，另一端也和上面一样，用3根杜邦线接到树莓派的串口上。本文以另一方是Linux主机为例讲解。</li>
@@ -311,20 +310,16 @@ Line IP），在互联网发展早期很流行，现在已经被PPP协议取代�
 <p>上面的准备工作做好之后，在树莓派上通过<code>/dev/ttyAMA0</code>访问串口，在Linux主机上通过<code>/dev/ttyUSB0</code>访问串口。先使用minicom等串口工具测试串口，确保工作正常，然后往下看。</p>
 <p>在树莓派上，运行如下的命令开启PPP守护进程，在串口线上创建一个连接：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">stty</span> -F /dev/ttyAMA0 raw</span><br><span class="line"><span class="built_in">stty</span> -F /dev/ttyAMA0 -a</span><br><span class="line">pppd /dev/ttyAMA0 115200 10.0.0.2:10.0.0.1 noauth <span class="built_in">local</span> debug dump defaultroute nocrtscts persist maxfail 0 holdoff 1</span><br></pre></td></tr></table></figure>
-<p><code>persist maxfail 0 holdoff 1</code>参数设置pppd永远开启连接，其他参数的意义可以看pppd的<a
-target="_blank" rel="noopener" href="https://linux.die.net/man/8/pppd">man
-page</a>。上面设置的IP地址中，<code>10.0.0.2</code>是树莓派的IP地址，<code>10.0.0.1</code>是Linux主机的地址。IP地址可以自由选择，无冲突即可。</p>
+
+<p><code>persist maxfail 0 holdoff 1</code>参数设置pppd永远开启连接，其他参数的意义可以看pppd的<a target="_blank" rel="noopener" href="https://linux.die.net/man/8/pppd">man page</a>。上面设置的IP地址中，<code>10.0.0.2</code>是树莓派的IP地址，<code>10.0.0.1</code>是Linux主机的地址。IP地址可以自由选择，无冲突即可。</p>
 <p>在Linux主机上也开启pppd守护进程：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">stty</span> -F /dev/ttyUSB0 raw</span><br><span class="line">sudo pppd /dev/ttyUSB0 115200 10.0.0.1:10.0.0.2 proxyarp <span class="built_in">local</span> noauth debug nodetach dump nocrtscts passive persist maxfail 0 holdoff 1</span><br></pre></td></tr></table></figure>
+
 <p>当两个设备都运行了pppd时，它们会握手并建立一条通信链路。屏幕上会打印很多输出字符，提示通过ppp接口构建了网络连接。此时可以在Linux主机上ping树莓派的IP地址来验证通信是否正常。</p>
-<p>接下来就可以通过IP地址互相访问。我测试了一下文件传输，当串口波特率设置为115200时，传输速率为10KB/s左右，和计算结果是相符的。</p>
-<h2 id="参考链接">参考链接</h2>
-<ol type="1">
-<li><a
-target="_blank" rel="noopener" href="https://www.instructables.com/id/Connect-the-Raspberry-Pi-to-network-using-UART/">Connect
-the Raspberry Pi to Network Using UART</a></li>
-<li><a target="_blank" rel="noopener" href="https://elinux.org/RPi_Serial_Connection">RPi Serial
-Connection</a></li>
+<p>接下来就可以通过IP地址互相访问。我测试了一下文件传输，当串口波特率设置为115200时，传输速率为10KB&#x2F;s左右，和计算结果是相符的。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.instructables.com/id/Connect-the-Raspberry-Pi-to-network-using-UART/">Connect the Raspberry Pi to Network Using UART</a></li>
+<li><a target="_blank" rel="noopener" href="https://elinux.org/RPi_Serial_Connection">RPi Serial Connection</a></li>
 </ol>
 
     </div>

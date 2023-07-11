@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="主要内容 本章介绍堆排序（heapsort）算法。堆排序算法的复杂度和归并排序相同，但是仅需要常数个额外的元素空间存储临时数据。堆（heap）不仅仅用在堆排序中，还可以构造一种有效的优先队列（priority queue）。">
+    <meta name="description" content="主要内容本章介绍堆排序（heapsort）算法。堆排序算法的复杂度和归并排序相同，但是仅需要常数个额外的元素空间存储临时数据。堆（heap）不仅仅用在堆排序中，还可以构造一种有效的优先队列（priority queue）。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法导论第 6 章：堆排序">
 <meta property="og:url" content="https://panqiincs.me/2019/04/11/clrs-heapsort/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="主要内容 本章介绍堆排序（heapsort）算法。堆排序算法的复杂度和归并排序相同，但是仅需要常数个额外的元素空间存储临时数据。堆（heap）不仅仅用在堆排序中，还可以构造一种有效的优先队列（priority queue）。">
+<meta property="og:description" content="主要内容本章介绍堆排序（heapsort）算法。堆排序算法的复杂度和归并排序相同，但是仅需要常数个额外的元素空间存储临时数据。堆（heap）不仅仅用在堆排序中，还可以构造一种有效的优先队列（priority queue）。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-04-11T02:29:43.000Z">
 <meta property="article:modified_time" content="2021-12-14T05:43:33.520Z">
@@ -142,7 +142,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -153,7 +153,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">177</span>
+        <span class="site-state-item-count">179</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -280,7 +280,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>7.4k</span>
+      <span>7.3k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -297,201 +297,100 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="主要内容">主要内容</h2>
-<p>本章介绍<strong>堆排序</strong>（heapsort）算法。堆排序算法的复杂度和归并排序相同，但是仅需要常数个额外的元素空间存储临时数据。堆（heap）不仅仅用在堆排序中，还可以构造一种有效的优先队列（priority
-queue）。</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>本章介绍<strong>堆排序</strong>（heapsort）算法。堆排序算法的复杂度和归并排序相同，但是仅需要常数个额外的元素空间存储临时数据。堆（heap）不仅仅用在堆排序中，还可以构造一种有效的优先队列（priority queue）。</p>
 <span id="more"></span>
-<h3 id="堆">堆</h3>
-<p>二叉堆一般用数组实现，可以看成是一个近似的完全二叉树，树的每个节点对应数组中的一个元素。根节点为<span
-class="math inline">\(A[1]\)</span>，给定一个下标<span
-class="math inline">\(i\)</span>，很容易计算它的父节点、左孩子和右孩子的下标分别为<span
-class="math inline">\(\lfloor i/2 \rfloor\)</span>，<span
-class="math inline">\(2i\)</span>，<span
-class="math inline">\(2i+1\)</span>。需注意，用C语言实现时，数组要多分配一个元素的空间。</p>
+
+<h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>二叉堆一般用数组实现，可以看成是一个近似的完全二叉树，树的每个节点对应数组中的一个元素。根节点为$A[1]$，给定一个下标$i$，很容易计算它的父节点、左孩子和右孩子的下标分别为$\lfloor i&#x2F;2 \rfloor$，$2i$，$2i+1$。需注意，用C语言实现时，数组要多分配一个元素的空间。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> __<span class="title">heap</span> &#123;</span></span><br><span class="line">    <span class="type">int</span>  length;     <span class="comment">// 容纳元素个数的上限</span></span><br><span class="line">    <span class="type">int</span>  heap_size;  <span class="comment">// 当前元素个数</span></span><br><span class="line">    <span class="type">int</span> *data;       <span class="comment">// 存放元素的内存</span></span><br><span class="line">&#125; Heap;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  PARENT(i)  (i/2)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  LEFT(i)    (2*i)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  RIGHT(i)   (2*i+1)</span></span><br></pre></td></tr></table></figure>
+
 <p>二叉堆可分为两种：最大堆和最小堆。在最大堆中，最大堆性质指的除了根以外，其它所有节点都要满足父节点的值大于或等于当前节点的值。最小堆性质相反。堆排序算法中使用的是最大堆。</p>
-<p>由于堆可看作一颗完全二叉树，所以包含<span
-class="math inline">\(n\)</span>个元素的堆的高度为<span
-class="math inline">\(\Theta(\lg
-n)\)</span>。堆结构上的一些基本操作至多与树的高度成正比，即时间复杂度为<span
-class="math inline">\(O(\lg n)\)</span>。</p>
+<p>由于堆可看作一颗完全二叉树，所以包含$n$个元素的堆的高度为$\Theta(\lg n)$。堆结构上的一些基本操作至多与树的高度成正比，即时间复杂度为$O(\lg n)$。</p>
 <p>需要知道，树的<strong>高度</strong>和<strong>深度</strong>分别定义如下：</p>
 <ul>
 <li>高度：节点的高度为从该节点到一片树叶的最长路径的长度，所有树叶的高度为0</li>
 <li>深度：节点的深度为从根到该节点的唯一路径长，根的深度为0</li>
 </ul>
-<h3 id="维护堆的性质">维护堆的性质</h3>
-<p>下面的<code>MaxHeapify</code>过程维护以<code>root</code>为根节点的堆的最大堆性质。在调用它的时候，假定根节点<code>root</code>的两个孩子都是最大堆，通过让新进的元素在最大堆中「逐级下降」，使得子树重新遵循最大堆的性质。代码如下：</p>
+<h3 id="维护堆的性质"><a href="#维护堆的性质" class="headerlink" title="维护堆的性质"></a>维护堆的性质</h3><p>下面的<code>MaxHeapify</code>过程维护以<code>root</code>为根节点的堆的最大堆性质。在调用它的时候，假定根节点<code>root</code>的两个孩子都是最大堆，通过让新进的元素在最大堆中「逐级下降」，使得子树重新遵循最大堆的性质。代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">MaxHeapify</span><span class="params">(Heap *hp, <span class="type">int</span> root)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> left = LEFT(root);</span><br><span class="line">    <span class="type">int</span> right = RIGHT(root); </span><br><span class="line">    <span class="type">int</span> largest;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 在root, left和right中选出值最大的，记录在largest中</span></span><br><span class="line">    <span class="keyword">if</span> (left &lt;= hp-&gt;heap_size &amp;&amp; hp-&gt;data[left] &gt; hp-&gt;data[root]) &#123;</span><br><span class="line">        largest = left;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        largest = root;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (right &lt;= hp-&gt;heap_size &amp;&amp; hp-&gt;data[right] &gt; hp-&gt;data[largest]) &#123;</span><br><span class="line">        largest = right;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果root是最大的，则满足最大堆性质，函数结束</span></span><br><span class="line">    <span class="comment">// 否则</span></span><br><span class="line">    <span class="keyword">if</span> (largest != root) &#123;</span><br><span class="line">        Exch(hp-&gt;data, root, largest);  <span class="comment">// 将最大值交换到根部</span></span><br><span class="line">        MaxHeapify(hp, largest);        <span class="comment">// 以该节点为根的树可能不满足性质，递归调用</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>由于每个子树的大小至多为<span
-class="math inline">\(2n/3\)</span>（最坏情况发生在最底层恰好半满的时候），所以上述过程的递归式为：</p>
-<p><span class="math display">\[
-T(n) \le T(2n/3) + \Theta(1)
-\]</span></p>
-<p>根据主定理，递归式的解为<span class="math inline">\(T(n) = O(\lg
-n)\)</span>，对于树高为<span
-class="math inline">\(h\)</span>的节点，<code>MaxHeapify</code>的时间复杂度为<span
-class="math inline">\(O(h)\)</span>。</p>
-<h3 id="建堆">建堆</h3>
-<p>可以用自底向上的方法利用过程<code>MaxHeapify</code>把数组转换为最大堆。叶节点的下标范围是从<span
-class="math inline">\(\lfloor n/2 \rfloor+1\)</span>到<span
-class="math inline">\(n\)</span>，每个叶节点可以看成只包含一个元素的堆。<code>BuildMaxHeap</code>堆树中的其它节点都调用一次<code>MaxHeapify</code>。</p>
+
+<p>由于每个子树的大小至多为$2n&#x2F;3$（最坏情况发生在最底层恰好半满的时候），所以上述过程的递归式为：</p>
+<p>$$<br>T(n) \le T(2n&#x2F;3) + \Theta(1)<br>$$</p>
+<p>根据主定理，递归式的解为$T(n) &#x3D; O(\lg n)$，对于树高为$h$的节点，<code>MaxHeapify</code>的时间复杂度为$O(h)$。</p>
+<h3 id="建堆"><a href="#建堆" class="headerlink" title="建堆"></a>建堆</h3><p>可以用自底向上的方法利用过程<code>MaxHeapify</code>把数组转换为最大堆。叶节点的下标范围是从$\lfloor n&#x2F;2 \rfloor+1$到$n$，每个叶节点可以看成只包含一个元素的堆。<code>BuildMaxHeap</code>堆树中的其它节点都调用一次<code>MaxHeapify</code>。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 需注意数组A[]要从下标1开始存放数据，n为数组的实际大小减1</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">BuildMaxHeap</span><span class="params">(Heap *hp, <span class="type">int</span> A[], <span class="type">int</span> n)</span></span><br><span class="line">&#123;</span><br><span class="line">    hp-&gt;length = n;</span><br><span class="line">    hp-&gt;heap_size = n;</span><br><span class="line">    hp-&gt;data = A;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = hp-&gt;heap_size/<span class="number">2</span>; i &gt;= <span class="number">1</span>; i--) &#123;</span><br><span class="line">        MaxHeapify(hp, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>BuildMaxHeap</code>需要调用<span
-class="math inline">\(O(n)\)</span>次<code>MaxHeapify</code>，所以，总的时间复杂度为<span
-class="math inline">\(O(n \lg
-n)\)</span>，但这并不是渐近紧确界。实际上，可以计算得到它的时间复杂度为<span
-class="math inline">\(O(n)\)</span>，可以在线性时间内将一个无序数组构造成一个最大堆。</p>
-<h3 id="堆排序算法">堆排序算法</h3>
-<p>堆排序算法的实现代码如下：</p>
+
+<p><code>BuildMaxHeap</code>需要调用$O(n)$次<code>MaxHeapify</code>，所以，总的时间复杂度为$O(n \lg n)$，但这并不是渐近紧确界。实际上，可以计算得到它的时间复杂度为$O(n)$，可以在线性时间内将一个无序数组构造成一个最大堆。</p>
+<h3 id="堆排序算法"><a href="#堆排序算法" class="headerlink" title="堆排序算法"></a>堆排序算法</h3><p>堆排序算法的实现代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组A[]要从下标1开始存放数据，n为数组的实际大小减1</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">HeapSort</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> n)</span></span><br><span class="line">&#123;</span><br><span class="line">    Heap heap;</span><br><span class="line">    BuildMaxHeap(&amp;heap, A, n);      <span class="comment">// 构建最大堆</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n; i &gt;= <span class="number">2</span>; i--) &#123;</span><br><span class="line">        Exch(heap.data, <span class="number">1</span>, i);      <span class="comment">// 将最大值A[1]与A[n]交换，于是A[1]放到正确的位置</span></span><br><span class="line">        heap.heap_size--;           <span class="comment">// 将节点n从堆中去掉</span></span><br><span class="line">        MaxHeapify(&amp;heap, <span class="number">1</span>);       <span class="comment">// 新的根节点可能违背最大堆的性质，重新维护</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>每次调用<code>BuildMaxHeap</code>的时间复杂度为<span
-class="math inline">\(O(n)\)</span>，调用了<span
-class="math inline">\(n-1\)</span>次<code>MaxHeapify</code>，每次时间为<span
-class="math inline">\(O(\lg
-n)\)</span>。所以堆排序算法的时间复杂度为<span class="math inline">\(O(n
-\lg n)\)</span>。下面的测试代码展示了使用方法：</p>
+
+<p>每次调用<code>BuildMaxHeap</code>的时间复杂度为$O(n)$，调用了$n-1$次<code>MaxHeapify</code>，每次时间为$O(\lg n)$。所以堆排序算法的时间复杂度为$O(n \lg n)$。下面的测试代码展示了使用方法：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 打印数组内容</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">PrintArray</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> start, <span class="type">int</span> end)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = start; i &lt;= end; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">TestHeapSort</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> A[<span class="number">11</span>] = &#123;<span class="number">-1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">16</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">14</span>, <span class="number">8</span>, <span class="number">7</span>&#125;;</span><br><span class="line">    PrintArray(A, <span class="number">1</span>, <span class="number">10</span>);</span><br><span class="line">    HeapSort(A, <span class="number">10</span>);</span><br><span class="line">    PrintArray(A, <span class="number">1</span>, <span class="number">10</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="优先队列">优先队列</h3>
-<p>堆的另一个常见应用是优先队列。类似地，优先队列也有两种形式，最大优先队列和最小优先队列。本章基于最大堆实现最大优先队列。优先队列应用广泛，比如用于操作系统的作业调度。一个最大有限队列有如下基本操作：</p>
+
+<h3 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列"></a>优先队列</h3><p>堆的另一个常见应用是优先队列。类似地，优先队列也有两种形式，最大优先队列和最小优先队列。本章基于最大堆实现最大优先队列。优先队列应用广泛，比如用于操作系统的作业调度。一个最大有限队列有如下基本操作：</p>
 <ul>
 <li><code>INSERT(S, x)</code>：把元素插入到集合中</li>
 <li><code>MAXIMUM(S)</code>：返回集合中具有最大关键字的元素</li>
 <li><code>EXTRACT-MAX(S)</code>：去掉并返回集合中具有最大关键字的元素</li>
 <li><code>INCREASE-KEY(S, x, k)</code>：将元素的关键字增加</li>
 </ul>
-<p>显然，优先队列可以用堆来实现。过程<code>HeapMaximum</code>可以在<span
-class="math inline">\(O(1)\)</span>时间内完成：</p>
+<p>显然，优先队列可以用堆来实现。过程<code>HeapMaximum</code>可以在$O(1)$时间内完成：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">HeapMaximum</span><span class="params">(Heap *hp)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> hp-&gt;data[<span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>过程<code>HeapExtractMax</code>实现<code>EXTRACT-MAX</code>操作，代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">HeapExtractMax</span><span class="params">(Heap *hp)</span></span><br><span class="line">&#123;</span><br><span class="line">    assert(hp-&gt;heap_size &gt;= <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> max = hp-&gt;data[<span class="number">1</span>];</span><br><span class="line">    hp-&gt;data[<span class="number">1</span>] = hp-&gt;data[hp-&gt;heap_size];</span><br><span class="line">    hp-&gt;heap_size--;</span><br><span class="line">    MaxHeapify(hp, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>它的时间复杂度为<span class="math inline">\(O(\lg
-n)\)</span>，因为除了时间复杂度为<span class="math inline">\(O(\lg
-n)\)</span>的<code>MaxHeapify</code>以外，其它操作都在常数时间内完成。</p>
+
+<p>它的时间复杂度为$O(\lg n)$，因为除了时间复杂度为$O(\lg n)$的<code>MaxHeapify</code>以外，其它操作都在常数时间内完成。</p>
 <p>过程<code>HeapIncreaseKey</code>能够实现<code>INCREASE-KEY</code>功能，代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">HeapIncreaseKey</span><span class="params">(Heap *hp, <span class="type">int</span> idx, <span class="type">int</span> key)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (key &lt; hp-&gt;data[idx]) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Key is smaller than current!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    hp-&gt;data[idx] = key;</span><br><span class="line">    <span class="comment">// 重新维护最大堆性质</span></span><br><span class="line">    <span class="keyword">while</span> (idx &gt; <span class="number">1</span> &amp;&amp; hp-&gt;data[PARENT(idx)] &lt; hp-&gt;data[idx]) &#123;</span><br><span class="line">        Exch(hp-&gt;data, idx, PARENT(idx));</span><br><span class="line">        idx = PARENT(idx);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>HeapIncreaseKey</code>的时间复杂度为<span
-class="math inline">\(O(\lg
-n)\)</span>，因为在算法中，从关键字更新的节点到根节点的路径长度为<span
-class="math inline">\(O(\lg n)\)</span>。</p>
+
+<p><code>HeapIncreaseKey</code>的时间复杂度为$O(\lg n)$，因为在算法中，从关键字更新的节点到根节点的路径长度为$O(\lg n)$。</p>
 <p>过程<code>MaxHeapInsert</code>能够实现<code>INSERT</code>操作，代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">MaxHeapInsert</span><span class="params">(Heap *hp, <span class="type">int</span> key)</span></span><br><span class="line">&#123;</span><br><span class="line">    hp-&gt;heap_size++;</span><br><span class="line">    hp-&gt;data[hp-&gt;heap_size] = INT_MIN;</span><br><span class="line">    HeapIncreaseKey(hp, hp-&gt;heap_size, key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在包含<span
-class="math inline">\(n\)</span>个元素的堆上，<code>MaxHeapInsert</code>的运行时间为<span
-class="math inline">\(O(\lg n)\)</span>。</p>
-<p>综上所述，在一个包含<span
-class="math inline">\(n\)</span>个元素的堆中，所有优先队列的操作都可以在<span
-class="math inline">\(O(\lg n)\)</span>时间内完成。</p>
+
+<p>在包含$n$个元素的堆上，<code>MaxHeapInsert</code>的运行时间为$O(\lg n)$。</p>
+<p>综上所述，在一个包含$n$个元素的堆中，所有优先队列的操作都可以在$O(\lg n)$时间内完成。</p>
 <p>下面的测试代码展示了使用方法：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">TestPriorityQueue</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    Heap heap;</span><br><span class="line">    <span class="type">int</span> A[<span class="number">20</span>] = &#123;<span class="number">-1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">16</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">14</span>, <span class="number">8</span>, <span class="number">7</span>&#125;;</span><br><span class="line">    BuildMaxHeap(&amp;heap, A, <span class="number">10</span>);</span><br><span class="line">    PrintHeap(&amp;heap);</span><br><span class="line">    HeapMaximum(&amp;heap);</span><br><span class="line">    PrintHeap(&amp;heap);</span><br><span class="line">    HeapIncreaseKey(&amp;heap, <span class="number">2</span>, <span class="number">22</span>);</span><br><span class="line">    PrintHeap(&amp;heap);</span><br><span class="line">    MaxHeapInsert(&amp;heap, <span class="number">25</span>);</span><br><span class="line">    PrintHeap(&amp;heap);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="习题解答">习题解答</h2>
-<h3 id="练习题">练习题</h3>
-<p><strong>6.1-1</strong> 解答：高度为<span
-class="math inline">\(h\)</span>的堆中，元素最多有<span
-class="math inline">\(2^{h+1}\)</span>个，最少有<span
-class="math inline">\(2^h+1\)</span>个。</p>
-<p><strong>6.1-2</strong> 解答：根据上面的结果，高度为<span
-class="math inline">\(h\)</span>的堆，元素个数<span
-class="math inline">\(n\)</span>范围是<span
-class="math inline">\([2^h+1, 2^{h+1}-1]\)</span>，所以<span
-class="math inline">\(h = \lfloor \lg n \rfloor\)</span>。</p>
+
+<h2 id="习题解答"><a href="#习题解答" class="headerlink" title="习题解答"></a>习题解答</h2><h3 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h3><p><strong>6.1-1</strong> 解答：高度为$h$的堆中，元素最多有$2^{h+1}$个，最少有$2^h+1$个。</p>
+<p><strong>6.1-2</strong> 解答：根据上面的结果，高度为$h$的堆，元素个数$n$范围是$[2^h+1, 2^{h+1}-1]$，所以$h &#x3D; \lfloor \lg n \rfloor$。</p>
 <p><strong>6.1-3</strong> 解答：根据最大堆性质，很容易得证。</p>
 <p><strong>6.1-4</strong> 解答：最小元素位于数组最后。</p>
 <p><strong>6.1-5</strong> 解答：已排序好的数组是最小堆。</p>
 <p><strong>6.1-6</strong> 解答：不是。</p>
-<p><strong>6.1-7</strong> 解答：叶子节点没有孩子节点，即有<span
-class="math inline">\(2i &gt; n\)</span>，即<span
-class="math inline">\(i &gt; \lfloor n/2 \rfloor\)</span>，得证。</p>
-<p><strong>6.2-3</strong>
-解答：则此时满足最大堆性质，数组不会有任何修改。</p>
-<p><strong>6.2-4</strong> 解答：当<span class="math inline">\(i &gt;
-A.heapsize/2\)</span>时，节点为叶节点，调用函数，<code>largest</code>即为<code>i</code>，不会修改数组。</p>
-<p><strong>6.2-5</strong>
-解答：<code>MAX-HEAPIFY</code>用递归实现，可能产生低效代码，可以用循环结构替代递归。代码如下：</p>
+<p><strong>6.1-7</strong> 解答：叶子节点没有孩子节点，即有$2i &gt; n$，即$i &gt; \lfloor n&#x2F;2 \rfloor$，得证。</p>
+<p><strong>6.2-3</strong> 解答：则此时满足最大堆性质，数组不会有任何修改。</p>
+<p><strong>6.2-4</strong> 解答：当$i &gt; A.heapsize&#x2F;2$时，节点为叶节点，调用函数，<code>largest</code>即为<code>i</code>，不会修改数组。</p>
+<p><strong>6.2-5</strong> 解答：<code>MAX-HEAPIFY</code>用递归实现，可能产生低效代码，可以用循环结构替代递归。代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">MaxHeapify</span><span class="params">(Heap *hp, <span class="type">int</span> root)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (root &lt;= hp-&gt;heap_size) &#123;</span><br><span class="line">        <span class="type">int</span> left = LEFT(root);</span><br><span class="line">        <span class="type">int</span> right = RIGHT(root);</span><br><span class="line">        <span class="type">int</span> largest;</span><br><span class="line">        <span class="keyword">if</span> (left &lt;= hp-&gt;heap_size &amp;&amp; hp-&gt;data[left] &gt; hp-&gt;data[root]) &#123;</span><br><span class="line">            largest = left;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            largest = root;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (right &lt;= hp-&gt;heap_size &amp;&amp; hp-&gt;data[right] &gt; hp-&gt;data[largest]) &#123;</span><br><span class="line">            largest = right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (largest == root) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Exch(hp-&gt;data, root, largest);</span><br><span class="line">        root = largest;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>6.3-2</strong>
-解答：调用过程<code>MAX-HEAPIFY</code>的前提是左堆和右堆都是最大堆，所以要从树叶到根。</p>
-<p><strong>6.3-3</strong> 解答：可以用归纳法证明，当<span
-class="math inline">\(h=0\)</span>时，叶子节点最多有<span
-class="math inline">\(\lceil n/2^{h+1}
-\rceil\)</span>个，成立；当高度为<span
-class="math inline">\(t\)</span>的节点有<span
-class="math inline">\(\lceil n/2^{t+1} \rceil\)</span>个，则高度为<span
-class="math inline">\(t+1\)</span>的节点个数最多是它的一半，为<span
-class="math inline">\(\lceil n/2^{t+2} \rceil\)</span>；所以，得证。</p>
+
+<p><strong>6.3-2</strong> 解答：调用过程<code>MAX-HEAPIFY</code>的前提是左堆和右堆都是最大堆，所以要从树叶到根。</p>
+<p><strong>6.3-3</strong> 解答：可以用归纳法证明，当$h&#x3D;0$时，叶子节点最多有$\lceil n&#x2F;2^{h+1} \rceil$个，成立；当高度为$t$的节点有$\lceil n&#x2F;2^{t+1} \rceil$个，则高度为$t+1$的节点个数最多是它的一半，为$\lceil n&#x2F;2^{t+2} \rceil$；所以，得证。</p>
 <p><strong>6.4-2</strong> 解答：利用循环不变量证明算法的正确性，略。</p>
-<p><strong>6.4-3</strong>
-解答：如果是升序排列，第1行构建最大堆耗费时间为<span
-class="math inline">\(\Theta(n \lg n)\)</span>，第5行耗费时间<span
-class="math inline">\(\Theta(\lg n)\)</span>，整个循环过程耗时<span
-class="math inline">\(\Theta(n \lg n)\)</span>，总的耗费时间为<span
-class="math inline">\(\Theta(n \lg
-n)\)</span>；如果是降序排列，由于此时<code>MAX-HEAPIFY</code>仅耗费常数时间，所以第一行构建最大堆耗费时间为<span
-class="math inline">\(\Theta(n)\)</span>，循环过程依然耗费时间<span
-class="math inline">\(\Theta(n \lg n)\)</span>，所以总的时间也为<span
-class="math inline">\(\Theta(n \lg n)\)</span>。</p>
+<p><strong>6.4-3</strong> 解答：如果是升序排列，第1行构建最大堆耗费时间为$\Theta(n \lg n)$，第5行耗费时间$\Theta(\lg n)$，整个循环过程耗时$\Theta(n \lg n)$，总的耗费时间为$\Theta(n \lg n)$；如果是降序排列，由于此时<code>MAX-HEAPIFY</code>仅耗费常数时间，所以第一行构建最大堆耗费时间为$\Theta(n)$，循环过程依然耗费时间$\Theta(n \lg n)$，所以总的时间也为$\Theta(n \lg n)$。</p>
 <p><strong>6.4-4</strong> 解答：6.4.3已经表明了这一点。</p>
-<p><strong>6.5-4</strong> 解答：把关键字设置为<span
-class="math inline">\(-\infty\)</span>能够确保把它放在数组末尾的位置能够满足最大堆序性质，可以避免多余的操作。</p>
+<p><strong>6.5-4</strong> 解答：把关键字设置为$-\infty$能够确保把它放在数组末尾的位置能够满足最大堆序性质，可以避免多余的操作。</p>
 <p><strong>6.5-5</strong> 解答：通过循环不变量证明算法的正确性，略。</p>
 <p><strong>6.5-6</strong> 解答：该过程的代码可以修改为：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">HeapIncreaseKey</span><span class="params">(Heap *hp, <span class="type">int</span> idx, <span class="type">int</span> key)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (key &lt; hp-&gt;data[idx]) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Key is smaller than current!\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 避免交换操作，借鉴插入排序的做法</span></span><br><span class="line">    <span class="keyword">while</span> (idx &gt; <span class="number">1</span> &amp;&amp; hp-&gt;data[PARENT(idx)] &lt; key) &#123;</span><br><span class="line">        hp-&gt;data[idx] = hp-&gt;data[PARENT(idx)];</span><br><span class="line">        idx = PARENT(idx);</span><br><span class="line">    &#125;</span><br><span class="line">    hp-&gt;data[idx] = key;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>6.5-7</strong>
-解答：实现先进先出的队列，入队操作通过<code>MAX-HEAP-INSERT</code>完成，先入队的元素关键字大，后入队的关键字依次减小，出队操作通过<code>HEAP-EXTRACT-MAX</code>完成；实现堆栈，入队操作通过<code>MAX-HEAP-INSERT</code>完成，先入队的元素关键字小，后入队的关键字依次增大，出队操作通过<code>HEAP-EXTRACT-MAX</code>完成。</p>
-<p><strong>6.5-8</strong>
-解答：用最后一个元素替补被删除的节点，将堆的大小减一，重新保持堆序性质，代码如下：</p>
+
+<p><strong>6.5-7</strong> 解答：实现先进先出的队列，入队操作通过<code>MAX-HEAP-INSERT</code>完成，先入队的元素关键字大，后入队的关键字依次减小，出队操作通过<code>HEAP-EXTRACT-MAX</code>完成；实现堆栈，入队操作通过<code>MAX-HEAP-INSERT</code>完成，先入队的元素关键字小，后入队的关键字依次增大，出队操作通过<code>HEAP-EXTRACT-MAX</code>完成。</p>
+<p><strong>6.5-8</strong> 解答：用最后一个元素替补被删除的节点，将堆的大小减一，重新保持堆序性质，代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">MaxHeapDelete</span><span class="params">(Heap *hp, <span class="type">int</span> idx)</span></span><br><span class="line">&#123;</span><br><span class="line">    hp-&gt;data[idx] = hp-&gt;data[hp-&gt;heap_size];</span><br><span class="line">    hp-&gt;heap_size--;</span><br><span class="line">    MaxHeapify(hp, idx);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>6.5-9</strong>
-解答：将每个链表的值依次插入到堆中，然后将堆中的元素一个个蹦出来。</p>
-<h3 id="思考题">思考题</h3>
-<p><strong>6-1</strong> （用插入的方法建堆）
-可以通过反复调用<code>MAX-HEAP-INSERT</code>实现向一个堆中插入元素。请问：</p>
-<ol type="1">
-<li>当输入数据相同时，两种方法生成的堆是否总是一样？如果是，请证明；否则，请举出一个反例。
-解答：不相同，比如输入序列为为1、 2、
-3，用前面的方法建堆得到3、2、1，用插入的方法得到3、1、2</li>
-<li>证明：在最坏情况下，用插入的方法建立包含<span
-class="math inline">\(n\)</span>个元素的堆的时间复杂度为<span
-class="math inline">\(\Theta(n \lg n)\)</span>。
-解答：<code>MAX-HEAP-INSERT</code>要调用<code>HEAP-INSERT-KEY</code>，它的复杂度为<span
-class="math inline">\(\Theta(\lg n)\)</span>，调用<span
-class="math inline">\(n\)</span>次<code>MAX-HEAP-INSERT</code>，所以复杂度为<span
-class="math inline">\(\Theta(n \lg n)\)</span>。</li>
+
+<p><strong>6.5-9</strong> 解答：将每个链表的值依次插入到堆中，然后将堆中的元素一个个蹦出来。</p>
+<h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><p><strong>6-1</strong> （用插入的方法建堆） 可以通过反复调用<code>MAX-HEAP-INSERT</code>实现向一个堆中插入元素。请问：</p>
+<ol>
+<li>当输入数据相同时，两种方法生成的堆是否总是一样？如果是，请证明；否则，请举出一个反例。<br>解答：不相同，比如输入序列为为1、 2、 3，用前面的方法建堆得到3、2、1，用插入的方法得到3、1、2</li>
+<li>证明：在最坏情况下，用插入的方法建立包含$n$个元素的堆的时间复杂度为$\Theta(n \lg n)$。<br>解答：<code>MAX-HEAP-INSERT</code>要调用<code>HEAP-INSERT-KEY</code>，它的复杂度为$\Theta(\lg n)$，调用$n$次<code>MAX-HEAP-INSERT</code>，所以复杂度为$\Theta(n \lg n)$。</li>
 </ol>
-<p><strong>6-2</strong> （对d叉堆的分析）
-d叉堆与二叉堆很类似，但（一个可能的例外是）其中的每个非叶节点有<span
-class="math inline">\(d\)</span>个孩子，而不是仅仅2个。</p>
-<ol type="1">
-<li>如何在一个数组中表示一个d叉堆？
-解答：将数组的位置0作为根节点，节点<span
-class="math inline">\(i\)</span>的父节点在位置<span
-class="math inline">\(\lfloor (i-1)/d \rfloor\)</span>，<span
-class="math inline">\(d\)</span>个孩子节点位置从<span
-class="math inline">\(di+1\)</span>到<span
-class="math inline">\(di+d\)</span></li>
-<li>包含<span
-class="math inline">\(n\)</span>个元素的d叉堆的高度是多少？请用<span
-class="math inline">\(n\)</span>和<span
-class="math inline">\(d\)</span>表示。 解答：<span
-class="math inline">\(\lceil \log_d n \rceil\)</span></li>
-<li>请给出EXTRACT-MAX在d叉最大堆上的一个有效实现，并用<span
-class="math inline">\(d\)</span>和<span
-class="math inline">\(n\)</span>表示出它的时间复杂度。
-解答：和二叉堆类似，时间复杂度为<span class="math inline">\(O(d \log_d
-n)\)</span></li>
-<li>给出<code>INSERT</code>在d叉最大堆上的一个有效实现，并用<span
-class="math inline">\(d\)</span>和<span
-class="math inline">\(n\)</span>表示出它的时间复杂度。
-解答：和二叉堆类似，时间复杂度为<span class="math inline">\(O(\log_d
-n)\)</span></li>
-<li>给出<code>INCREASE-KEY(A, i, k)</code>的一个有效实现。当<span
-class="math inline">\(k &lt;
-A[i]\)</span>时，它会触发一个错误，否则执行<span
-class="math inline">\(A[i]=k\)</span>，并更新相应的d叉最大堆。请用<span
-class="math inline">\(d\)</span>和<span
-class="math inline">\(n\)</span>表示出它的时间复杂度。
-解答：和二叉堆类似，时间复杂度为<span class="math inline">\(O(\log_d
-n)\)</span></li>
+<p><strong>6-2</strong> （对d叉堆的分析） d叉堆与二叉堆很类似，但（一个可能的例外是）其中的每个非叶节点有$d$个孩子，而不是仅仅2个。</p>
+<ol>
+<li>如何在一个数组中表示一个d叉堆？<br>解答：将数组的位置0作为根节点，节点$i$的父节点在位置$\lfloor (i-1)&#x2F;d \rfloor$，$d$个孩子节点位置从$di+1$到$di+d$</li>
+<li>包含$n$个元素的d叉堆的高度是多少？请用$n$和$d$表示。<br>解答：$\lceil \log_d n \rceil$</li>
+<li>请给出EXTRACT-MAX在d叉最大堆上的一个有效实现，并用$d$和$n$表示出它的时间复杂度。<br>解答：和二叉堆类似，时间复杂度为$O(d \log_d n)$</li>
+<li>给出<code>INSERT</code>在d叉最大堆上的一个有效实现，并用$d$和$n$表示出它的时间复杂度。<br>解答：和二叉堆类似，时间复杂度为$O(\log_d n)$</li>
+<li>给出<code>INCREASE-KEY(A, i, k)</code>的一个有效实现。当$k &lt; A[i]$时，它会触发一个错误，否则执行$A[i]&#x3D;k$，并更新相应的d叉最大堆。请用$d$和$n$表示出它的时间复杂度。<br>解答：和二叉堆类似，时间复杂度为$O(\log_d n)$</li>
 </ol>
 
     </div>

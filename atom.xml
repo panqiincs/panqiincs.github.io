@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-07-03T01:15:02.085Z</updated>
+  <updated>2023-07-11T03:34:52.917Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -17,6 +17,31 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Octave软件使用经验</title>
+    <link href="https://panqiincs.me/2023/07/11/gnu-octave-tips/"/>
+    <id>https://panqiincs.me/2023/07/11/gnu-octave-tips/</id>
+    <published>2023-07-11T02:29:52.000Z</published>
+    <updated>2023-07-11T03:34:52.917Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;为什么用Octave&quot;&gt;&lt;a href=&quot;#为什么用Octave&quot; class=&quot;headerlink&quot; title=&quot;为什么用Octave&quot;&gt;&lt;/a&gt;为什么用Octave&lt;/h2&gt;&lt;p&gt;MATLAB功能强大，但正版价格非常昂贵，而且有地缘冲突带来的制裁风险。有很多开源免费软件可以替代MATLAB的一部分功能，如Octave、FreeMat、Scilab、R、IDL等，这其中Octave最兼容MATLAB，而且性能非常好，详情请参考&lt;a href=&quot;https://userpages.umbc.edu/~gobbert/papers/BrewsterGobbertTR2011.pdf&quot;&gt;这篇文章&lt;/a&gt;。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工具使用" scheme="https://panqiincs.me/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    
+    
+    <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
+    
+    <category term="控制系统仿真" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%BB%BF%E7%9C%9F/"/>
+    
+    <category term="octave" scheme="https://panqiincs.me/tags/octave/"/>
+    
+    <category term="根轨迹" scheme="https://panqiincs.me/tags/%E6%A0%B9%E8%BD%A8%E8%BF%B9/"/>
+    
+  </entry>
+  
+  <entry>
     <title>李达实验班老师的课堂语录</title>
     <link href="https://panqiincs.me/2023/06/26/lida-teachers-quotes/"/>
     <id>https://panqiincs.me/2023/06/26/lida-teachers-quotes/</id>
@@ -24,8 +49,7 @@
     <updated>2023-07-03T01:15:02.085Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;说明&quot;&gt;说明&lt;/h2&gt;
-&lt;p&gt;2023年6月23日，湖南大学2009级李达实验班的同学在本科毕业十周年之际去长沙看望老师。中午用餐时，师生们聊起了当初在网络上流传的老师课堂语录，可惜如今很难再找到了。英语成矫林老师（我们都称呼她Linda）当晚在朋友圈写道：&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h2&gt;&lt;p&gt;2023年6月23日，湖南大学2009级李达实验班的同学在本科毕业十周年之际去长沙看望老师。中午用餐时，师生们聊起了当初在网络上流传的老师课堂语录，可惜如今很难再找到了。英语成矫林老师（我们都称呼她Linda）当晚在朋友圈写道：&lt;/p&gt;</summary>
     
     
     
@@ -46,8 +70,7 @@
     <updated>2023-06-16T05:05:58.821Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文介绍如何使用MATLAB/Simulink搭建一个灵活的采样控制（sampling
-control）仿真框架。除了最常见的周期控制外，还能非常方便地实现更加灵活的控制策略。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文介绍如何使用MATLAB&amp;#x2F;Simulink搭建一个灵活的采样控制（sampling control）仿真框架。除了最常见的周期控制外，还能非常方便地实现更加灵活的控制策略。&lt;/p&gt;</summary>
     
     
     
@@ -72,9 +95,7 @@ control）仿真框架。除了最常见的周期控制外，还能非常方便�
     <updated>2023-04-15T09:40:26.285Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;十年&quot;&gt;十年&lt;/h2&gt;
-&lt;p&gt;距离&lt;a
-href=&quot;https://panqiincs.me/2013/03/22/start-blogging/&quot;&gt;网站第一篇文章&lt;/a&gt;已经整整十年了，十周年是一个伟大的里程碑。当年一起写日志的网友很多已经没有继续坚持，而我的网站一直保持着更新，我为此感到非常自豪。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;十年&quot;&gt;&lt;a href=&quot;#十年&quot; class=&quot;headerlink&quot; title=&quot;十年&quot;&gt;&lt;/a&gt;十年&lt;/h2&gt;&lt;p&gt;距离&lt;a href=&quot;https://panqiincs.me/2013/03/22/start-blogging/&quot;&gt;网站第一篇文章&lt;/a&gt;已经整整十年了，十周年是一个伟大的里程碑。当年一起写日志的网友很多已经没有继续坚持，而我的网站一直保持着更新，我为此感到非常自豪。&lt;/p&gt;</summary>
     
     
     
@@ -93,12 +114,7 @@ href=&quot;https://panqiincs.me/2013/03/22/start-blogging/&quot;&gt;网站第一
     <updated>2023-03-22T13:23:37.211Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;概念引入&quot;&gt;概念引入&lt;/h2&gt;
-&lt;p&gt;稳定性是控制理论的核心概念。最近通过阅读Applied Nonlinear
-Control和Nonlinear
-Systems两本书系统学习Lyapunov稳定性理论，想粗读这部分内容可参考&lt;a
-href=&quot;http://web.tuat.ac.jp/~gvlab/ronbun/ReadingGroupControl/mls-lyap.pdf&quot;&gt;这个材料&lt;/a&gt;。本文介绍比较少见的&lt;strong&gt;输入到状态稳定性&lt;/strong&gt;（input-to-state
-stability）。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;概念引入&quot;&gt;&lt;a href=&quot;#概念引入&quot; class=&quot;headerlink&quot; title=&quot;概念引入&quot;&gt;&lt;/a&gt;概念引入&lt;/h2&gt;&lt;p&gt;稳定性是控制理论的核心概念。最近通过阅读Applied Nonlinear Control和Nonlinear Systems两本书系统学习Lyapunov稳定性理论，想粗读这部分内容可参考&lt;a href=&quot;http://web.tuat.ac.jp/~gvlab/ronbun/ReadingGroupControl/mls-lyap.pdf&quot;&gt;这个材料&lt;/a&gt;。本文介绍比较少见的&lt;strong&gt;输入到状态稳定性&lt;/strong&gt;（input-to-state stability）。&lt;/p&gt;</summary>
     
     
     
@@ -123,8 +139,7 @@ stability）。&lt;/p&gt;</summary>
     <updated>2023-03-22T13:45:42.815Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;自治系统&quot;&gt;自治系统&lt;/h2&gt;
-&lt;p&gt;许多动态系统的物理规律可以用常微分方程描述。对于一般的（非线性时变）系统，微分方程为如下形式：&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;自治系统&quot;&gt;&lt;a href=&quot;#自治系统&quot; class=&quot;headerlink&quot; title=&quot;自治系统&quot;&gt;&lt;/a&gt;自治系统&lt;/h2&gt;&lt;p&gt;许多动态系统的物理规律可以用常微分方程描述。对于一般的（非线性时变）系统，微分方程为如下形式：&lt;/p&gt;</summary>
     
     
     
@@ -225,9 +240,7 @@ stability）。&lt;/p&gt;</summary>
     <updated>2023-03-22T13:32:18.840Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;安全性定义&quot;&gt;安全性定义&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;选择明文攻击&lt;/strong&gt;（Chosen-Plaintext
-Attack）指敌手能够选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;安全性定义&quot;&gt;&lt;a href=&quot;#安全性定义&quot; class=&quot;headerlink&quot; title=&quot;安全性定义&quot;&gt;&lt;/a&gt;安全性定义&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;选择明文攻击&lt;/strong&gt;（Chosen-Plaintext Attack）指敌手能够选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。&lt;/p&gt;</summary>
     
     
     
@@ -252,9 +265,7 @@ Attack）指敌手能够选择不同的明文作为输入提供给加密算法�
     <updated>2023-03-22T13:27:25.635Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;证明过程&quot;&gt;证明过程&lt;/h2&gt;
-&lt;p&gt;归约证明（proof by
-reduction）是现代密码学中证明方案安全性的重要方法，甚至是一些教材中使用的唯一方法。它的思路是，假设某个问题难以解决，然后证明基于该问题的构造方法在该假设下是安全的。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;证明过程&quot;&gt;&lt;a href=&quot;#证明过程&quot; class=&quot;headerlink&quot; title=&quot;证明过程&quot;&gt;&lt;/a&gt;证明过程&lt;/h2&gt;&lt;p&gt;归约证明（proof by reduction）是现代密码学中证明方案安全性的重要方法，甚至是一些教材中使用的唯一方法。它的思路是，假设某个问题难以解决，然后证明基于该问题的构造方法在该假设下是安全的。&lt;/p&gt;</summary>
     
     
     
@@ -277,8 +288,7 @@ reduction）是现代密码学中证明方案安全性的重要方法，甚至�
     <updated>2023-02-04T02:43:13.396Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;起因&quot;&gt;起因&lt;/h2&gt;
-&lt;p&gt;因为要处理天城文，最近学习了该文字的基础知识，了解了计算机如何存储和显示字符。查阅资料时用到了英语，处理文本用到了Python语言，我又切身体会到了语言（包括自然语言和编程语言）的重要性。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot; title=&quot;起因&quot;&gt;&lt;/a&gt;起因&lt;/h2&gt;&lt;p&gt;因为要处理天城文，最近学习了该文字的基础知识，了解了计算机如何存储和显示字符。查阅资料时用到了英语，处理文本用到了Python语言，我又切身体会到了语言（包括自然语言和编程语言）的重要性。&lt;/p&gt;</summary>
     
     
     
@@ -299,8 +309,7 @@ reduction）是现代密码学中证明方案安全性的重要方法，甚至�
     <updated>2023-02-04T02:43:13.396Z</updated>
     
     
-    <summary type="html">&lt;p&gt;我想从天城文字体文件得到它所支持的字符，字体文件中存储的是图形，而我想得到文本形式，本质上是编码。&lt;a
-href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文章&lt;/a&gt;介绍的方法得到了所支持字形的名称，我发现字形名称就是天城文的拉丁字母记号，那么应该可以通过文字转写得到对应的天城文文本。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;我想从天城文字体文件得到它所支持的字符，字体文件中存储的是图形，而我想得到文本形式，本质上是编码。&lt;a href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文章&lt;/a&gt;介绍的方法得到了所支持字形的名称，我发现字形名称就是天城文的拉丁字母记号，那么应该可以通过文字转写得到对应的天城文文本。&lt;/p&gt;</summary>
     
     
     
@@ -375,8 +384,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <updated>2023-02-04T02:43:13.396Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;使用方法&quot;&gt;使用方法&lt;/h2&gt;
-&lt;p&gt;使用Python的Pillow库可将程序中指定的文本绘制到画布（canvas）上，下面的代码是标准步骤，绘制一段天城文（devanagari）文本，并保存图片到本地。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;使用方法&quot;&gt;&lt;a href=&quot;#使用方法&quot; class=&quot;headerlink&quot; title=&quot;使用方法&quot;&gt;&lt;/a&gt;使用方法&lt;/h2&gt;&lt;p&gt;使用Python的Pillow库可将程序中指定的文本绘制到画布（canvas）上，下面的代码是标准步骤，绘制一段天城文（devanagari）文本，并保存图片到本地。&lt;/p&gt;</summary>
     
     
     
@@ -405,8 +413,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <updated>2023-03-21T07:37:16.055Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;文字特性&quot;&gt;文字特性&lt;/h2&gt;
-&lt;p&gt;天城文（Devanagari）是诸多南亚语言的文字，其中最有名的当属梵语（Sanskrit）。天城文作为婆罗米系&lt;strong&gt;元音附标文字&lt;/strong&gt;，特点鲜明，下面介绍用计算机处理天城文所需的基础知识。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;文字特性&quot;&gt;&lt;a href=&quot;#文字特性&quot; class=&quot;headerlink&quot; title=&quot;文字特性&quot;&gt;&lt;/a&gt;文字特性&lt;/h2&gt;&lt;p&gt;天城文（Devanagari）是诸多南亚语言的文字，其中最有名的当属梵语（Sanskrit）。天城文作为婆罗米系&lt;strong&gt;元音附标文字&lt;/strong&gt;，特点鲜明，下面介绍用计算机处理天城文所需的基础知识。&lt;/p&gt;</summary>
     
     
     
@@ -435,8 +442,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <updated>2022-10-20T16:13:08.286Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;单摆系统&quot;&gt;单摆系统&lt;/h2&gt;
-&lt;p&gt;最近几个学期我在上「自动控制原理」课程，在讲解「控制系统的数学模型」这部分内容时，我使用了经典的单摆系统模型作为实例，在课堂上取得了不错的效果。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;单摆系统&quot;&gt;&lt;a href=&quot;#单摆系统&quot; class=&quot;headerlink&quot; title=&quot;单摆系统&quot;&gt;&lt;/a&gt;单摆系统&lt;/h2&gt;&lt;p&gt;最近几个学期我在上「自动控制原理」课程，在讲解「控制系统的数学模型」这部分内容时，我使用了经典的单摆系统模型作为实例，在课堂上取得了不错的效果。&lt;/p&gt;</summary>
     
     
     
@@ -461,8 +467,7 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <updated>2023-06-04T09:41:57.034Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;升级内容&quot;&gt;升级内容&lt;/h2&gt;
-&lt;p&gt;4月中旬忙里偷闲对网站做了几年以来最大的升级。将NeXT主题从7.x版本升级到8.x版本，页面链接的前缀从http变成了https，还修改了向搜索引擎提交网站地图的配置。虽从网站外观上看不出任何变化，但背后的改变是巨大的。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;升级内容&quot;&gt;&lt;a href=&quot;#升级内容&quot; class=&quot;headerlink&quot; title=&quot;升级内容&quot;&gt;&lt;/a&gt;升级内容&lt;/h2&gt;&lt;p&gt;4月中旬忙里偷闲对网站做了几年以来最大的升级。将NeXT主题从7.x版本升级到8.x版本，页面链接的前缀从http变成了https，还修改了向搜索引擎提交网站地图的配置。虽从网站外观上看不出任何变化，但背后的改变是巨大的。&lt;/p&gt;</summary>
     
     
     
@@ -476,28 +481,6 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="seo" scheme="https://panqiincs.me/tags/seo/"/>
     
     <category term="sitemap" scheme="https://panqiincs.me/tags/sitemap/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>帮人解决过的电脑问题</title>
-    <link href="https://panqiincs.me/2022/04/16/computer-problems/"/>
-    <id>https://panqiincs.me/2022/04/16/computer-problems/</id>
-    <published>2022-04-16T14:43:53.000Z</published>
-    <updated>2023-03-22T12:36:16.083Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;卡顿和弹窗&quot;&gt;卡顿和弹窗&lt;/h2&gt;
-&lt;p&gt;场景一，朋友才买了一两年的台式机非常卡顿，编辑文档都不流畅，更别说看电影打游戏了。硬件性能肯定是没问题的，于是他想让我帮忙重装下系统。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="工具使用" scheme="https://panqiincs.me/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
-    
-    
-    <category term="流氓软件" scheme="https://panqiincs.me/tags/%E6%B5%81%E6%B0%93%E8%BD%AF%E4%BB%B6/"/>
-    
-    <category term="广告弹窗" scheme="https://panqiincs.me/tags/%E5%B9%BF%E5%91%8A%E5%BC%B9%E7%AA%97/"/>
     
   </entry>
   
