@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="主要内容本章讨论顺序统计量，即某个集合中大小排名第几的元素。">
+    <meta name="description" content="主要内容 本章讨论顺序统计量，即某个集合中大小排名第几的元素。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法导论第 9 章：中位数与顺序统计量">
 <meta property="og:url" content="https://panqiincs.me/2019/06/04/clrs-order-statistics/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="主要内容本章讨论顺序统计量，即某个集合中大小排名第几的元素。">
+<meta property="og:description" content="主要内容 本章讨论顺序统计量，即某个集合中大小排名第几的元素。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-06-04T04:50:16.000Z">
 <meta property="article:modified_time" content="2022-05-01T14:43:58.029Z">
@@ -296,20 +296,30 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h2><p>本章讨论<strong>顺序统计量</strong>，即某个集合中大小排名第几的元素。</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="主要内容">主要内容</h2>
+<p>本章讨论<strong>顺序统计量</strong>，即某个集合中大小排名第几的元素。</p>
 <span id="more"></span>
-
 <p>比如最小值是第一个顺序统计量，最大值是最后一个顺序统计量，<strong>中位数</strong>是集合的中点元素。如果元素有奇数个，有唯一的中位数；如果元素有偶数个，有两个中位数，一般选取较小的那个。将问题一般化，则是从含有互异元素的集合中找到特定大小排名的元素。</p>
-<h2 id="最小值和最大值"><a href="#最小值和最大值" class="headerlink" title="最小值和最大值"></a>最小值和最大值</h2><p>在一个含有$n$个元素的集合中，最多需要$n-1$次比较就能确定最小元素。下面是代码实现：</p>
+<h2 id="最小值和最大值">最小值和最大值</h2>
+<p>在一个含有<span
+class="math inline">\(n\)</span>个元素的集合中，最多需要<span
+class="math inline">\(n-1\)</span>次比较就能确定最小元素。下面是代码实现：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">mininum</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> n)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> min = A[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (min &gt; A[i]) &#123;</span><br><span class="line">            min = A[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> min;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这是是最好的结果，对于最小值问题，至少也需要$n-1$次比较。</p>
-<p>在某些应用中，我们需要同时找到最大值和最小值。最简单的办法是分别独立地找到最大值和最小值，那么一共需要$2n-2$次比较。实际上有更好的办法，可以对输入元素成对地处理：首先将它们相互比较，然后把较小的与当前最小值比较，把最大的与当前最大值比较。这样每两个元素共需要3次比较。总的比较次数至多是$3 \lfloor n&#x2F;2 \rfloor$。</p>
-<h2 id="期望为线性时间的选择算法"><a href="#期望为线性时间的选择算法" class="headerlink" title="期望为线性时间的选择算法"></a>期望为线性时间的选择算法</h2><p>一般选择问题看起来要比找最小值这样的简单问题更难，但其实这两个问题的渐进运行时间同为$\Theta(n)$。本节介绍一种解决选择问题的分治算法<code>RANDOMIZED-SELECT</code>。类似于快速排序，对数组进行递归划分。但不同的是，快速排序递归处理划分的两边，而该算法只处理划分的一边，所以性能也有差异。实现要用到第七章介绍的<a href="https://panqiincs.me/2019/05/08/clrs-quicksort/">快速排序</a>中的<code>randomized_partition</code>函数，代码如下：</p>
+<p>这是是最好的结果，对于最小值问题，至少也需要<span
+class="math inline">\(n-1\)</span>次比较。</p>
+<p>在某些应用中，我们需要同时找到最大值和最小值。最简单的办法是分别独立地找到最大值和最小值，那么一共需要<span
+class="math inline">\(2n-2\)</span>次比较。实际上有更好的办法，可以对输入元素成对地处理：首先将它们相互比较，然后把较小的与当前最小值比较，把最大的与当前最大值比较。这样每两个元素共需要3次比较。总的比较次数至多是<span
+class="math inline">\(3 \lfloor n/2 \rfloor\)</span>。</p>
+<h2 id="期望为线性时间的选择算法">期望为线性时间的选择算法</h2>
+<p>一般选择问题看起来要比找最小值这样的简单问题更难，但其实这两个问题的渐进运行时间同为<span
+class="math inline">\(\Theta(n)\)</span>。本节介绍一种解决选择问题的分治算法<code>RANDOMIZED-SELECT</code>。类似于快速排序，对数组进行递归划分。但不同的是，快速排序递归处理划分的两边，而该算法只处理划分的一边，所以性能也有差异。实现要用到第七章介绍的<a
+href="https://panqiincs.me/2019/05/08/clrs-quicksort/">快速排序</a>中的<code>randomized_partition</code>函数，代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">randomized_select</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> p, <span class="type">int</span> r, <span class="type">int</span> i)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (p == r) &#123;</span><br><span class="line">        <span class="keyword">return</span> A[p];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    q = randomized_partition(A, p, r);</span><br><span class="line">    </span><br><span class="line">    k = q - p + <span class="number">1</span>;  <span class="comment">// 主元是第k大的数</span></span><br><span class="line">    <span class="keyword">if</span> (i == k) &#123;</span><br><span class="line">        <span class="keyword">return</span> A[q];</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i &lt; k) &#123;</span><br><span class="line">        <span class="keyword">return</span> randomized_select(A, p, q<span class="number">-1</span>, i);    <span class="comment">// 在左边找</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> randomized_select(A, q+<span class="number">1</span>, r, i-k);  <span class="comment">// 在右边找</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以证明，上述算法的期望运行时间为$O(n)$，即，若所有元素是互异的，在期望线性时间内，可以找到任一顺序统计量，特别是中位数。</p>
-<h2 id="最坏情况为线性时间的选择算法"><a href="#最坏情况为线性时间的选择算法" class="headerlink" title="最坏情况为线性时间的选择算法"></a>最坏情况为线性时间的选择算法</h2><p>还有一个最坏情况下运行时间为$O(n)$的选择算法<code>SELECT</code>，也通过对数组的递归划分来找出所需元素。过程和代码从略。</p>
+<p>可以证明，上述算法的期望运行时间为<span
+class="math inline">\(O(n)\)</span>，即，若所有元素是互异的，在期望线性时间内，可以找到任一顺序统计量，特别是中位数。</p>
+<h2 id="最坏情况为线性时间的选择算法">最坏情况为线性时间的选择算法</h2>
+<p>还有一个最坏情况下运行时间为<span
+class="math inline">\(O(n)\)</span>的选择算法<code>SELECT</code>，也通过对数组的递归划分来找出所需元素。过程和代码从略。</p>
 
     </div>
 
@@ -384,13 +394,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">219k</span>
+    <span title="站点总字数">220k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:19</span>
+    <span title="站点阅读时长">3:20</span>
   </span>
 </div>
 

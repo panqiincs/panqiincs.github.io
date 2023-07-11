@@ -28,10 +28,6 @@
 <meta property="og:site_name" content="辛未羊的网络日志">
 <meta property="og:description" content="本文介绍如何使用MATLAB&#x2F;Simulink搭建一个灵活的采样控制（sampling control）仿真框架。除了最常见的周期控制外，还能非常方便地实现更加灵活的控制策略。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/discrete_ss_model.png">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/simulink_ets_diagram.png">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/simulink_ets_scope.png">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/simulink_ets_control.png">
 <meta property="article:published_time" content="2023-06-10T03:52:09.000Z">
 <meta property="article:modified_time" content="2023-06-16T05:05:58.821Z">
 <meta property="article:author" content="辛未羊">
@@ -40,7 +36,6 @@
 <meta property="article:tag" content="simulink">
 <meta property="article:tag" content="控制系统仿真">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/discrete_ss_model.png">
 
 
 <link rel="canonical" href="https://panqiincs.me/2023/06/10/flexible-sampling-control/">
@@ -286,7 +281,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1k</span>
+      <span>1.1k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -303,21 +298,58 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>本文介绍如何使用MATLAB&#x2F;Simulink搭建一个灵活的采样控制（sampling control）仿真框架。除了最常见的周期控制外，还能非常方便地实现更加灵活的控制策略。</p>
+    <div class="post-body" itemprop="articleBody"><p>本文介绍如何使用MATLAB/Simulink搭建一个灵活的采样控制（sampling
+control）仿真框架。除了最常见的周期控制外，还能非常方便地实现更加灵活的控制策略。</p>
 <span id="more"></span>
-
 <p>很多物理系统的运行规律用连续微分方程模型描述。如果采用计算机控制，需要间断地对某些变量进行<strong>测量</strong>和<strong>控制</strong>，这种方式称为<strong>采样控制</strong>。采样控制必然涉及到连续信号与离散信号之间的转换。</p>
-<p>设系统的状态为连续信号$x(t)$，每隔一段时间从传感器获取状态值，即在某些时刻对$x(t)$采样，得到$x(t_k)$，它的离散的。根据$x(t_k)$和控制目标计算得到一个控制量$u(t_k)$，将离散的$u(t_k)$转换为连续的$u(t)$信号，才能对被控对象产生作用，如果用<strong>零阶保持器</strong>（zero-order hold, <strong>ZOH</strong>），$u(t)$就是阶梯信号。下图（来源：<a target="_blank" rel="noopener" href="https://faculty.washington.edu/chx/teaching/me547/dt_zoh/">Discretization | Xu Chen</a>）展示了整个过程：</p>
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/discrete_ss_model.png" alt="状态空间模型的离散化"></p>
-<p>测量和控制两个通道如果每隔固定周期进行采样和保持，则可以按照上述步骤将连续模型转化为离散模型，再进行分析。但如果采样和控制的时间很灵活，这种方法就不可行了。Simulink的<strong>使能触发子系统</strong>（<strong>enabled and triggered subsystem</strong>）模块可以实现灵活的采样控制。下面的实例验证了该模块的主要特性：</p>
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/simulink_ets_diagram.png" alt="模块功能验证框图"></p>
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/simulink_ets_scope.png" alt="模块功能验证结果"></p>
+<p>设系统的状态为连续信号<span
+class="math inline">\(x(t)\)</span>，每隔一段时间从传感器获取状态值，即在某些时刻对<span
+class="math inline">\(x(t)\)</span>采样，得到<span
+class="math inline">\(x(t_k)\)</span>，它的离散的。根据<span
+class="math inline">\(x(t_k)\)</span>和控制目标计算得到一个控制量<span
+class="math inline">\(u(t_k)\)</span>，将离散的<span
+class="math inline">\(u(t_k)\)</span>转换为连续的<span
+class="math inline">\(u(t)\)</span>信号，才能对被控对象产生作用，如果用<strong>零阶保持器</strong>（zero-order
+hold, <strong>ZOH</strong>），<span
+class="math inline">\(u(t)\)</span>就是阶梯信号。下图（来源：<a
+target="_blank" rel="noopener" href="https://faculty.washington.edu/chx/teaching/me547/dt_zoh/">Discretization
+| Xu Chen</a>）展示了整个过程：</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/discrete_ss_model.png"
+alt="状态空间模型的离散化" />
+<figcaption aria-hidden="true">状态空间模型的离散化</figcaption>
+</figure>
+<p>测量和控制两个通道如果每隔固定周期进行采样和保持，则可以按照上述步骤将连续模型转化为离散模型，再进行分析。但如果采样和控制的时间很灵活，这种方法就不可行了。Simulink的<strong>使能触发子系统</strong>（<strong>enabled
+and triggered
+subsystem</strong>）模块可以实现灵活的采样控制。下面的实例验证了该模块的主要特性：</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/simulink_ets_diagram.png"
+alt="模块功能验证框图" />
+<figcaption aria-hidden="true">模块功能验证框图</figcaption>
+</figure>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/simulink_ets_scope.png"
+alt="模块功能验证结果" />
+<figcaption aria-hidden="true">模块功能验证结果</figcaption>
+</figure>
 <p>示波器中第一个信号是使能信号，信号值为1时模块功能才会开启。第二个信号是采样触发信号，设置为下降沿到来时触发采样，将输出值更新为输入信号最新的采样值。输入的正弦信号和输出信号在同一个图中。可以看到，当使能信号为0或触发信号新的下降沿没有到来时，模块的输出保持不变，所以它有零阶保持器的特征。Simulink还有单独的使能子系统模块和触发子系统模块，使能触发子系统是两种功能的综合，当只用到其中一种时，可以选择这两个单一功能模块。</p>
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/simulink_ets_control.png" alt="采样控制仿真框架"></p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/simulink_ets_control.png"
+alt="采样控制仿真框架" />
+<figcaption aria-hidden="true">采样控制仿真框架</figcaption>
+</figure>
 <p>上图展示的仿真实例是将使能触发子系统用于状态反馈控制系统仿真。使能信号可以控制两个通道的通断，触发信号控制采样时刻。在本例中，使能信号是常量1，即保持通道一直打开，触发信号采用方波，实现的是普通的周期（periodic）控制。修改使能信号和触发信号，则可实现其他更加灵活的控制策略，如事件触发（event-triggered）控制、自触发（self-triggered）控制等。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://www.mathworks.com/help/simulink/ug/triggered-and-enabled-subsystems.html">Using Enabled and Triggered Subsystems</a></li>
-<li><a target="_blank" rel="noopener" href="https://faculty.washington.edu/chx/teaching/me547/">UW ME 547 Linear Systems | Xu Chen</a></li>
+<h2 id="参考">参考</h2>
+<ol type="1">
+<li><a
+target="_blank" rel="noopener" href="https://www.mathworks.com/help/simulink/ug/triggered-and-enabled-subsystems.html">Using
+Enabled and Triggered Subsystems</a></li>
+<li><a target="_blank" rel="noopener" href="https://faculty.washington.edu/chx/teaching/me547/">UW ME
+547 Linear Systems | Xu Chen</a></li>
 </ol>
 
     </div>
@@ -395,13 +427,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">219k</span>
+    <span title="站点总字数">220k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:19</span>
+    <span title="站点阅读时长">3:20</span>
   </span>
 </div>
 
