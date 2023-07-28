@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-07-28T12:07:15.572Z</updated>
+  <updated>2023-07-28T12:56:20.505Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -21,10 +21,10 @@
     <link href="https://panqiincs.me/2023/07/28/start-planting-flowers/"/>
     <id>https://panqiincs.me/2023/07/28/start-planting-flowers/</id>
     <published>2023-07-28T10:48:41.000Z</published>
-    <updated>2023-07-28T12:07:15.572Z</updated>
+    <updated>2023-07-28T12:56:20.505Z</updated>
     
     
-    <summary type="html">&lt;p&gt;刚放暑假不久，同事托我帮忙浇花，两天一次。浇过几次后，浇出味道来了，觉得这事情挺有意思的。我也想养花了，于是中午便去花鸟市场转了转。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;同事托我暑假帮忙浇花，两天一次。浇过几次后，浇出味道来了，觉得这事情挺有意思的。于是我也想养花了，中午便去花鸟市场转了转。&lt;/p&gt;</summary>
     
     
     
@@ -179,13 +179,13 @@ stability）。&lt;/p&gt;</summary>
     
     <category term="控制理论" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/"/>
     
-    <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
+    <category term="相图" scheme="https://panqiincs.me/tags/%E7%9B%B8%E5%9B%BE/"/>
     
     <category term="微分方程" scheme="https://panqiincs.me/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/"/>
     
     <category term="数值解" scheme="https://panqiincs.me/tags/%E6%95%B0%E5%80%BC%E8%A7%A3/"/>
     
-    <category term="相图" scheme="https://panqiincs.me/tags/%E7%9B%B8%E5%9B%BE/"/>
+    <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
     
   </entry>
   
@@ -355,13 +355,13 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     
     <category term="python" scheme="https://panqiincs.me/tags/python/"/>
     
-    <category term="天城文" scheme="https://panqiincs.me/tags/%E5%A4%A9%E5%9F%8E%E6%96%87/"/>
-    
-    <category term="devanagari" scheme="https://panqiincs.me/tags/devanagari/"/>
-    
     <category term="文字转写" scheme="https://panqiincs.me/tags/%E6%96%87%E5%AD%97%E8%BD%AC%E5%86%99/"/>
     
+    <category term="天城文" scheme="https://panqiincs.me/tags/%E5%A4%A9%E5%9F%8E%E6%96%87/"/>
+    
     <category term="polyglot" scheme="https://panqiincs.me/tags/polyglot/"/>
+    
+    <category term="devanagari" scheme="https://panqiincs.me/tags/devanagari/"/>
     
   </entry>
   
