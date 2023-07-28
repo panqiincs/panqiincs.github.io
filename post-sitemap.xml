@@ -9,6 +9,46 @@
 
 
     <url>
+        <loc>https://panqiincs.me/2015/11/19/raspberry-pi-hardware-pwm-module/</loc>
+        <lastmod>2023-07-28T11:51:43.016Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2019/07/26/develop-stm32-on-linux/</loc>
+        <lastmod>2023-07-28T11:51:24.630Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2019/09/25/mcu-gpio-settings/</loc>
+        <lastmod>2023-07-28T11:51:03.971Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2020/07/10/rpi-stm32-spi-communication/</loc>
+        <lastmod>2023-07-28T11:50:50.205Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2020/08/15/rpi-network-via-serial/</loc>
+        <lastmod>2023-07-28T11:50:34.375Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://panqiincs.me/2023/07/28/start-planting-flowers/</loc>
         <lastmod>2023-07-28T11:44:49.112Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -289,14 +329,6 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2015/11/19/raspberry-pi-hardware-pwm-module/</loc>
-        <lastmod>2023-02-05T09:48:55.219Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://panqiincs.me/2015/07/31/preview-markdown-with-emacs/</loc>
         <lastmod>2023-02-05T09:47:52.853Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -369,14 +401,6 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2019/07/26/develop-stm32-on-linux/</loc>
-        <lastmod>2023-02-04T02:43:13.393Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://panqiincs.me/2019/07/29/domain-name-two-years/</loc>
         <lastmod>2023-02-04T02:43:13.393Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -402,14 +426,6 @@
 
     <url>
         <loc>https://panqiincs.me/2020/07/28/countryside-nearby/</loc>
-        <lastmod>2023-02-04T02:43:13.393Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2020/08/15/rpi-network-via-serial/</loc>
         <lastmod>2023-02-04T02:43:13.393Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -633,14 +649,6 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2019/09/25/mcu-gpio-settings/</loc>
-        <lastmod>2022-10-20T16:26:48.117Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://panqiincs.me/2020/08/10/bad-translations/</loc>
         <lastmod>2022-10-20T16:24:23.950Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -731,14 +739,6 @@
     <url>
         <loc>https://panqiincs.me/2019/04/25/nginx-log-to-mysql/</loc>
         <lastmod>2022-06-02T14:41:23.759Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2020/07/10/rpi-stm32-spi-communication/</loc>
-        <lastmod>2022-05-18T16:37:18.292Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
