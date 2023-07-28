@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://panqiincs.me/2023/07/28/start-planting-flowers/</loc>
+        <lastmod>2023-07-28T12:07:15.572Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://panqiincs.me/2015/11/19/raspberry-pi-hardware-pwm-module/</loc>
         <lastmod>2023-07-28T11:51:43.016Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -43,14 +51,6 @@
     <url>
         <loc>https://panqiincs.me/2020/08/15/rpi-network-via-serial/</loc>
         <lastmod>2023-07-28T11:50:34.375Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2023/07/28/start-planting-flowers/</loc>
-        <lastmod>2023-07-28T11:44:49.112Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
