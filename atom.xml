@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-07-11T08:59:10.281Z</updated>
+  <updated>2023-07-28T11:44:49.112Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我也开始养花啦</title>
+    <link href="https://panqiincs.me/2023/07/28/start-planting-flowers/"/>
+    <id>https://panqiincs.me/2023/07/28/start-planting-flowers/</id>
+    <published>2023-07-28T10:48:41.000Z</published>
+    <updated>2023-07-28T11:44:49.112Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;刚放暑假不久，有同事托我帮忙浇花，两天一次。浇过几次后，浇出味道来了，觉得这事情挺有意思的。我也想养花了，于是今天中午便去花鸟市场转了转。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="养花" scheme="https://panqiincs.me/tags/%E5%85%BB%E8%8A%B1/"/>
+    
+  </entry>
   
   <entry>
     <title>Octave软件使用经验</title>
@@ -477,32 +496,6 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="单摆" scheme="https://panqiincs.me/tags/%E5%8D%95%E6%91%86/"/>
     
     <category term="单摆周期公式" scheme="https://panqiincs.me/tags/%E5%8D%95%E6%91%86%E5%91%A8%E6%9C%9F%E5%85%AC%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>记一次网站重大升级</title>
-    <link href="https://panqiincs.me/2022/04/20/website-great-updates/"/>
-    <id>https://panqiincs.me/2022/04/20/website-great-updates/</id>
-    <published>2022-04-20T04:49:29.000Z</published>
-    <updated>2023-06-04T09:41:57.034Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;升级内容&quot;&gt;升级内容&lt;/h2&gt;
-&lt;p&gt;4月中旬忙里偷闲对网站做了几年以来最大的升级。将NeXT主题从7.x版本升级到8.x版本，页面链接的前缀从http变成了https，还修改了向搜索引擎提交网站地图的配置。虽从网站外观上看不出任何变化，但背后的改变是巨大的。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="网站维护" scheme="https://panqiincs.me/categories/%E7%BD%91%E7%AB%99%E7%BB%B4%E6%8A%A4/"/>
-    
-    
-    <category term="hexo" scheme="https://panqiincs.me/tags/hexo/"/>
-    
-    <category term="blog" scheme="https://panqiincs.me/tags/blog/"/>
-    
-    <category term="seo" scheme="https://panqiincs.me/tags/seo/"/>
-    
-    <category term="sitemap" scheme="https://panqiincs.me/tags/sitemap/"/>
     
   </entry>
   
