@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-07-28T12:56:20.505Z</updated>
+  <updated>2023-07-30T09:11:39.280Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LMI基础及YALMIP求解实例</title>
+    <link href="https://panqiincs.me/2023/07/30/lmi-intro-yalmip/"/>
+    <id>https://panqiincs.me/2023/07/30/lmi-intro-yalmip/</id>
+    <published>2023-07-30T07:16:17.000Z</published>
+    <updated>2023-07-30T09:11:39.280Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;教材&quot;&gt;教材&lt;/h2&gt;
+&lt;p&gt;最近通过阅读段广仁院士的英文著作&lt;a
+href=&quot;https://book.douban.com/subject/20932689/&quot;&gt;LMIs in Control
+Systems&lt;/a&gt;学习&lt;strong&gt;线性矩阵不等式&lt;/strong&gt;（Linear Matrix
+Inequality,
+&lt;strong&gt;LMI&lt;/strong&gt;），本文是第一章的主要内容，并附带了一个用YALMIP库求解LMI的例子。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
+    
+    
+    <category term="控制理论" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/"/>
+    
+    <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
+    
+    <category term="lmi" scheme="https://panqiincs.me/tags/lmi/"/>
+    
+    <category term="线性矩阵不等式" scheme="https://panqiincs.me/tags/%E7%BA%BF%E6%80%A7%E7%9F%A9%E9%98%B5%E4%B8%8D%E7%AD%89%E5%BC%8F/"/>
+    
+    <category term="yalmip" scheme="https://panqiincs.me/tags/yalmip/"/>
+    
+  </entry>
   
   <entry>
     <title>我也开始养花啦</title>
@@ -179,13 +211,13 @@ stability）。&lt;/p&gt;</summary>
     
     <category term="控制理论" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/"/>
     
-    <category term="相图" scheme="https://panqiincs.me/tags/%E7%9B%B8%E5%9B%BE/"/>
+    <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
     
     <category term="微分方程" scheme="https://panqiincs.me/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/"/>
     
     <category term="数值解" scheme="https://panqiincs.me/tags/%E6%95%B0%E5%80%BC%E8%A7%A3/"/>
     
-    <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
+    <category term="相图" scheme="https://panqiincs.me/tags/%E7%9B%B8%E5%9B%BE/"/>
     
   </entry>
   
@@ -355,13 +387,13 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     
     <category term="python" scheme="https://panqiincs.me/tags/python/"/>
     
-    <category term="文字转写" scheme="https://panqiincs.me/tags/%E6%96%87%E5%AD%97%E8%BD%AC%E5%86%99/"/>
-    
     <category term="天城文" scheme="https://panqiincs.me/tags/%E5%A4%A9%E5%9F%8E%E6%96%87/"/>
     
-    <category term="polyglot" scheme="https://panqiincs.me/tags/polyglot/"/>
-    
     <category term="devanagari" scheme="https://panqiincs.me/tags/devanagari/"/>
+    
+    <category term="文字转写" scheme="https://panqiincs.me/tags/%E6%96%87%E5%AD%97%E8%BD%AC%E5%86%99/"/>
+    
+    <category term="polyglot" scheme="https://panqiincs.me/tags/polyglot/"/>
     
   </entry>
   
@@ -470,32 +502,6 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="合字" scheme="https://panqiincs.me/tags/%E5%90%88%E5%AD%97/"/>
     
     <category term="ligature" scheme="https://panqiincs.me/tags/ligature/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>控制理论的经典实例：单摆系统</title>
-    <link href="https://panqiincs.me/2022/05/19/pendulum-as-example/"/>
-    <id>https://panqiincs.me/2022/05/19/pendulum-as-example/</id>
-    <published>2022-05-19T01:17:23.000Z</published>
-    <updated>2022-10-20T16:13:08.286Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;单摆系统&quot;&gt;单摆系统&lt;/h2&gt;
-&lt;p&gt;最近几个学期我在上「自动控制原理」课程，在讲解「控制系统的数学模型」这部分内容时，我使用了经典的单摆系统模型作为实例，在课堂上取得了不错的效果。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
-    
-    
-    <category term="控制理论" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/"/>
-    
-    <category term="微分方程" scheme="https://panqiincs.me/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/"/>
-    
-    <category term="单摆" scheme="https://panqiincs.me/tags/%E5%8D%95%E6%91%86/"/>
-    
-    <category term="单摆周期公式" scheme="https://panqiincs.me/tags/%E5%8D%95%E6%91%86%E5%91%A8%E6%9C%9F%E5%85%AC%E5%BC%8F/"/>
     
   </entry>
   
