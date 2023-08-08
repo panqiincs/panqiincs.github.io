@@ -10,7 +10,7 @@
 
     <url>
         <loc>https://panqiincs.me/2023/08/08/la-determinant-matrix/</loc>
-        <lastmod>2023-08-08T09:06:44.636Z</lastmod>
+        <lastmod>2023-08-08T10:25:13.089Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -889,7 +889,7 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2019/06/03/clrs-linear-time-sort/</loc>
+        <loc>https://panqiincs.me/2019/05/08/clrs-quicksort/</loc>
         <lastmod>2021-12-14T05:43:33.520Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -897,7 +897,7 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2019/05/08/clrs-quicksort/</loc>
+        <loc>https://panqiincs.me/2019/06/03/clrs-linear-time-sort/</loc>
         <lastmod>2021-12-14T05:43:33.520Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

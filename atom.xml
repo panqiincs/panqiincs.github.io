@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-08-08T09:06:44.636Z</updated>
+  <updated>2023-08-08T10:25:13.089Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="https://panqiincs.me/2023/08/08/la-determinant-matrix/"/>
     <id>https://panqiincs.me/2023/08/08/la-determinant-matrix/</id>
     <published>2023-08-07T18:22:41.000Z</published>
-    <updated>2023-08-08T09:06:44.636Z</updated>
+    <updated>2023-08-08T10:25:13.089Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;开个头&quot;&gt;开个头&lt;/h2&gt;
-&lt;p&gt;我打算将线性代数的重要内容梳理一遍，本文是第一篇。根据自己的理解将核心内容（太简单的内容就不多费笔墨了）描述出来，尽量少摆公式。主要参考资料是复旦大学的&lt;a
+&lt;p&gt;我打算将线性代数的重要内容梳理一遍，根据自己的理解将核心内容（简单的内容就不多费笔墨了）描述出来，尽量少摆公式。主要参考资料是复旦大学的&lt;a
 href=&quot;https://book.douban.com/subject/3171745/&quot;&gt;高等代数教材&lt;/a&gt;，可以搭配&lt;a
 href=&quot;https://www.bilibili.com/video/BV1mJ411r7ZB/&quot;&gt;谢启鸿的视频&lt;/a&gt;学习。&lt;/p&gt;</summary>
     
