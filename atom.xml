@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-08-01T13:21:06.335Z</updated>
+  <updated>2023-08-08T09:06:44.636Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>线性代数：行列式和矩阵</title>
+    <link href="https://panqiincs.me/2023/08/08/la-determinant-matrix/"/>
+    <id>https://panqiincs.me/2023/08/08/la-determinant-matrix/</id>
+    <published>2023-08-07T18:22:41.000Z</published>
+    <updated>2023-08-08T09:06:44.636Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;开个头&quot;&gt;开个头&lt;/h2&gt;
+&lt;p&gt;我打算将线性代数的重要内容梳理一遍，本文是第一篇。根据自己的理解将核心内容（太简单的内容就不多费笔墨了）描述出来，尽量少摆公式。主要参考资料是复旦大学的&lt;a
+href=&quot;https://book.douban.com/subject/3171745/&quot;&gt;高等代数教材&lt;/a&gt;，可以搭配&lt;a
+href=&quot;https://www.bilibili.com/video/BV1mJ411r7ZB/&quot;&gt;谢启鸿的视频&lt;/a&gt;学习。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
+    
+    
+    <category term="矩阵乘法" scheme="https://panqiincs.me/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"/>
+    
+    <category term="行列式" scheme="https://panqiincs.me/tags/%E8%A1%8C%E5%88%97%E5%BC%8F/"/>
+    
+    <category term="分块矩阵" scheme="https://panqiincs.me/tags/%E5%88%86%E5%9D%97%E7%9F%A9%E9%98%B5/"/>
+    
+  </entry>
   
   <entry>
     <title>LMI基础及YALMIP求解实例</title>
@@ -36,6 +62,8 @@ Inequality,
     <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
     
     
+    <category term="控制理论" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/"/>
+    
     <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
     
     <category term="lmi" scheme="https://panqiincs.me/tags/lmi/"/>
@@ -43,8 +71,6 @@ Inequality,
     <category term="线性矩阵不等式" scheme="https://panqiincs.me/tags/%E7%BA%BF%E6%80%A7%E7%9F%A9%E9%98%B5%E4%B8%8D%E7%AD%89%E5%BC%8F/"/>
     
     <category term="yalmip" scheme="https://panqiincs.me/tags/yalmip/"/>
-    
-    <category term="控制理论" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/"/>
     
   </entry>
   
@@ -84,11 +110,11 @@ href=&quot;https://userpages.umbc.edu/~gobbert/papers/BrewsterGobbertTR2011.pdf&
     <category term="工具使用" scheme="https://panqiincs.me/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
     
     
-    <category term="octave" scheme="https://panqiincs.me/tags/octave/"/>
-    
     <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
     
     <category term="控制系统仿真" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%BB%BF%E7%9C%9F/"/>
+    
+    <category term="octave" scheme="https://panqiincs.me/tags/octave/"/>
     
     <category term="根轨迹" scheme="https://panqiincs.me/tags/%E6%A0%B9%E8%BD%A8%E8%BF%B9/"/>
     
@@ -134,11 +160,11 @@ control）仿真框架。除了最常见的周期控制外，还能非常方便�
     
     <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
     
-    <category term="控制系统仿真" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%BB%BF%E7%9C%9F/"/>
-    
     <category term="采样控制" scheme="https://panqiincs.me/tags/%E9%87%87%E6%A0%B7%E6%8E%A7%E5%88%B6/"/>
     
     <category term="simulink" scheme="https://panqiincs.me/tags/simulink/"/>
+    
+    <category term="控制系统仿真" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%BB%BF%E7%9C%9F/"/>
     
   </entry>
   
@@ -209,9 +235,9 @@ stability）。&lt;/p&gt;</summary>
     <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
     
     
-    <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
-    
     <category term="控制理论" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/"/>
+    
+    <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
     
     <category term="微分方程" scheme="https://panqiincs.me/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/"/>
     
@@ -472,36 +498,6 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="ligature" scheme="https://panqiincs.me/tags/ligature/"/>
     
     <category term="pillow" scheme="https://panqiincs.me/tags/pillow/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>天城文基础及计算机处理方法</title>
-    <link href="https://panqiincs.me/2022/07/14/python-devanagari/"/>
-    <id>https://panqiincs.me/2022/07/14/python-devanagari/</id>
-    <published>2022-07-14T01:41:52.000Z</published>
-    <updated>2023-03-21T07:37:16.055Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;文字特性&quot;&gt;文字特性&lt;/h2&gt;
-&lt;p&gt;天城文（Devanagari）是诸多南亚语言的文字，其中最有名的当属梵语（Sanskrit）。天城文作为婆罗米系&lt;strong&gt;元音附标文字&lt;/strong&gt;，特点鲜明，下面介绍用计算机处理天城文所需的基础知识。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="程序设计" scheme="https://panqiincs.me/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
-    
-    
-    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
-    
-    <category term="天城文" scheme="https://panqiincs.me/tags/%E5%A4%A9%E5%9F%8E%E6%96%87/"/>
-    
-    <category term="devanagari" scheme="https://panqiincs.me/tags/devanagari/"/>
-    
-    <category term="unicode" scheme="https://panqiincs.me/tags/unicode/"/>
-    
-    <category term="合字" scheme="https://panqiincs.me/tags/%E5%90%88%E5%AD%97/"/>
-    
-    <category term="ligature" scheme="https://panqiincs.me/tags/ligature/"/>
     
   </entry>
   
