@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-08-08T10:25:13.089Z</updated>
+  <updated>2023-08-09T13:29:58.919Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>线性代数：线性空间与线性映射</title>
+    <link href="https://panqiincs.me/2023/08/09/la-linear-space-map/"/>
+    <id>https://panqiincs.me/2023/08/09/la-linear-space-map/</id>
+    <published>2023-08-09T10:35:05.000Z</published>
+    <updated>2023-08-09T13:29:58.919Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;线性空间&quot;&gt;线性空间&lt;/h2&gt;
+&lt;h3 id=&quot;定义&quot;&gt;定义&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;空间&lt;/strong&gt;是数学中常见的概念，我的理解是，空间就是个集合，不同空间中的元素有不同的运算，满足不同的性质。&lt;strong&gt;线性&lt;/strong&gt;，就是满足齐次性和可加性。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
+    
+    
+    <category term="线性空间" scheme="https://panqiincs.me/tags/%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/"/>
+    
+    <category term="线性映射" scheme="https://panqiincs.me/tags/%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84/"/>
+    
+  </entry>
   
   <entry>
     <title>线性代数：行列式和矩阵</title>
@@ -468,36 +491,6 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="地图" scheme="https://panqiincs.me/tags/%E5%9C%B0%E5%9B%BE/"/>
     
     <category term="旅行" scheme="https://panqiincs.me/tags/%E6%97%85%E8%A1%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用Python的Pillow库绘制天城文</title>
-    <link href="https://panqiincs.me/2022/07/15/pillow-draw-devanagari/"/>
-    <id>https://panqiincs.me/2022/07/15/pillow-draw-devanagari/</id>
-    <published>2022-07-15T00:56:31.000Z</published>
-    <updated>2023-02-04T02:43:13.396Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;使用方法&quot;&gt;使用方法&lt;/h2&gt;
-&lt;p&gt;使用Python的Pillow库可将程序中指定的文本绘制到画布（canvas）上，下面的代码是标准步骤，绘制一段天城文（devanagari）文本，并保存图片到本地。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="程序设计" scheme="https://panqiincs.me/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
-    
-    
-    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
-    
-    <category term="天城文" scheme="https://panqiincs.me/tags/%E5%A4%A9%E5%9F%8E%E6%96%87/"/>
-    
-    <category term="devanagari" scheme="https://panqiincs.me/tags/devanagari/"/>
-    
-    <category term="合字" scheme="https://panqiincs.me/tags/%E5%90%88%E5%AD%97/"/>
-    
-    <category term="ligature" scheme="https://panqiincs.me/tags/ligature/"/>
-    
-    <category term="pillow" scheme="https://panqiincs.me/tags/pillow/"/>
     
   </entry>
   
