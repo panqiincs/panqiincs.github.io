@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-08-12T09:02:48.062Z</updated>
+  <updated>2023-08-12T10:07:27.138Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我两个手机号的故事</title>
+    <link href="https://panqiincs.me/2023/08/12/phone-numbers/"/>
+    <id>https://panqiincs.me/2023/08/12/phone-numbers/</id>
+    <published>2023-08-12T09:16:24.000Z</published>
+    <updated>2023-08-12T10:07:27.138Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;下午在宿舍搞学习的时候，正好碰到有师傅在门外处理网络接入设备，和他聊了会儿天，聊到了校园套餐是如何实惠。我目前在用的两个手机号都是在学校办理的。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>线性代数：线性空间与线性映射</title>
@@ -472,27 +489,6 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="合字" scheme="https://panqiincs.me/tags/%E5%90%88%E5%AD%97/"/>
     
     <category term="ligature" scheme="https://panqiincs.me/tags/ligature/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我去过的县级行政区</title>
-    <link href="https://panqiincs.me/2022/09/01/places-visited/"/>
-    <id>https://panqiincs.me/2022/09/01/places-visited/</id>
-    <published>2022-09-01T14:13:34.000Z</published>
-    <updated>2022-12-22T03:13:24.176Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;最近得到一张全国分县地图，将我去过的县级行政区全部涂上了颜色。必须是出了机场、车站、高速服务区才算去过，不然「去过」的地方可多了。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
-    
-    
-    <category term="地图" scheme="https://panqiincs.me/tags/%E5%9C%B0%E5%9B%BE/"/>
-    
-    <category term="旅行" scheme="https://panqiincs.me/tags/%E6%97%85%E8%A1%8C/"/>
     
   </entry>
   
