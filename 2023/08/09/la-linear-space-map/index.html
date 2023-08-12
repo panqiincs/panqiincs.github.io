@@ -29,10 +29,11 @@
 <meta property="og:description" content="线性空间 定义 空间是数学中常见的概念，我的理解是，空间就是个集合，不同空间的元素有不同的运算，满足不同的性质。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-09T10:35:05.000Z">
-<meta property="article:modified_time" content="2023-08-10T15:58:47.419Z">
+<meta property="article:modified_time" content="2023-08-12T09:02:48.062Z">
 <meta property="article:author" content="辛未羊">
 <meta property="article:tag" content="线性空间">
 <meta property="article:tag" content="线性映射">
+<meta property="article:tag" content="线性变换">
 <meta name="twitter:card" content="summary">
 
 
@@ -126,7 +127,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4"><span class="nav-number">1.</span> <span class="nav-text">线性空间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%85%B3%E7%B3%BB"><span class="nav-number">1.2.</span> <span class="nav-text">线性关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E7%9A%84%E7%A7%A9"><span class="nav-number">1.3.</span> <span class="nav-text">矩阵的秩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%9E%84"><span class="nav-number">1.4.</span> <span class="nav-text">同构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E5%8F%98%E6%8D%A2"><span class="nav-number">1.5.</span> <span class="nav-text">基变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%90%E7%A9%BA%E9%97%B4"><span class="nav-number">1.6.</span> <span class="nav-text">子空间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84"><span class="nav-number">2.</span> <span class="nav-text">线性映射</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4"><span class="nav-number">1.</span> <span class="nav-text">线性空间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%85%B3%E7%B3%BB"><span class="nav-number">1.2.</span> <span class="nav-text">线性关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E7%9A%84%E7%A7%A9"><span class="nav-number">1.3.</span> <span class="nav-text">矩阵的秩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%9E%84"><span class="nav-number">1.4.</span> <span class="nav-text">同构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E5%8F%98%E6%8D%A2"><span class="nav-number">1.5.</span> <span class="nav-text">基变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%90%E7%A9%BA%E9%97%B4"><span class="nav-number">1.6.</span> <span class="nav-text">子空间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84"><span class="nav-number">2.</span> <span class="nav-text">线性映射</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84%E4%B8%8E%E7%9F%A9%E9%98%B5"><span class="nav-number">2.1.</span> <span class="nav-text">线性映射与矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84%E7%9A%84%E5%83%8F%E4%B8%8E%E6%A0%B8"><span class="nav-number">2.2.</span> <span class="nav-text">线性映射的像与核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%8F%98%E5%AD%90%E7%A9%BA%E9%97%B4"><span class="nav-number">2.3.</span> <span class="nav-text">不变子空间</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -152,7 +153,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">187</span>
+        <span class="site-state-item-count">188</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -285,14 +286,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.8k</span>
+      <span>7.3k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
+      <span>7 分钟</span>
     </span>
 </div>
 
@@ -433,7 +434,204 @@ class="math inline">\(S\)</span>生成的子空间或<strong>张成</strong>的�
 <p>若维数公式没有最后一项依然满足，则<span class="math inline">\(V_1 +
 V_2\)</span>是<strong>直和</strong>。这个概念可以推广到多个子空间的直和。</p>
 <h2 id="线性映射">线性映射</h2>
-<p>以后接着写。</p>
+<h3 id="线性映射与矩阵">线性映射与矩阵</h3>
+<p>具有线性性质的映射就是<strong>线性映射</strong>，如果该映射是双射，则称它为线性同构，简称同构。集合到自身的线性映射称为<strong>线性变换</strong>。列向量空间的线性映射可以用矩阵来定义。</p>
+<p>现假设数域<span class="math inline">\(\mathbb{K}\)</span>上的<span
+class="math inline">\(n\)</span>维线性空间<span
+class="math inline">\(V\)</span>有一组基<span
+class="math inline">\(\left\{ \boldsymbol{e}_1, \boldsymbol{e}_2,
+\cdots, \boldsymbol{e}_n \right\}\)</span>，数域<span
+class="math inline">\(\mathbb{K}\)</span>上的<span
+class="math inline">\(m\)</span>维线性空间<span
+class="math inline">\(U\)</span>有一组基<span
+class="math inline">\(\left\{ \boldsymbol{f}_1, \boldsymbol{f}_2,
+\cdots, \boldsymbol{f}_m \right\}\)</span>，<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>是<span
+class="math inline">\(V \to U\)</span>的线性映射，而且<span
+class="math inline">\(V\)</span>的基向量在<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>下的像已知，有 <span
+class="math display">\[
+\left\{
+\begin{array}{}
+\boldsymbol{\varphi}(\boldsymbol{e}_1) = a_{11}\boldsymbol{f}_1 +
+a_{12}\boldsymbol{f}_2 + \cdots + a_{1m}\boldsymbol{f}_m\\
+\boldsymbol{\varphi}(\boldsymbol{e}_2) = a_{21}\boldsymbol{f}_1 +
+a_{22}\boldsymbol{f}_2 + \cdots + a_{2m}\boldsymbol{f}_m\\
+\cdots \cdots\\
+\boldsymbol{\varphi}(\boldsymbol{e}_n) = a_{n1}\boldsymbol{f}_1 +
+a_{n2}\boldsymbol{f}_2 + \cdots + a_{nm}\boldsymbol{f}_m\\
+\end{array}
+\right.
+\]</span> 用矩阵乘法形式表示更为紧凑 <span class="math display">\[
+\left(
+\boldsymbol{\varphi}(\boldsymbol{e}_1),
+\boldsymbol{\varphi}(\boldsymbol{e}_2), \cdots,
+\boldsymbol{\varphi}(\boldsymbol{e}_n)
+\right)
+=
+\left(
+\boldsymbol{f}_1, \boldsymbol{f}_2, \cdots, \boldsymbol{f}_m
+\right)
+\left( \begin{matrix}
+a_{11} &amp; a_{21} &amp; \cdots &amp; a_{n1}\\
+a_{12} &amp; a_{22} &amp; \cdots &amp; a_{n2}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+a_{1m} &amp; a_{2m} &amp; \cdots &amp; a_{nm}\\
+\end{matrix} \right)
+\]</span></p>
+<p><span class="math inline">\(V\)</span>中的向量<span
+class="math inline">\(\boldsymbol{\alpha}\)</span>的坐标已知 <span
+class="math display">\[
+\boldsymbol{\alpha} =
+\left(
+\boldsymbol{e}_1, \boldsymbol{e}_2, \cdots, \boldsymbol{e}_n
+\right)
+\left(
+\begin{array}{c}
+\lambda _1\\
+\lambda _2\\
+\vdots\\
+\lambda _n\\
+\end{array}
+\right)
+\]</span></p>
+<p>那么<span class="math inline">\(\boldsymbol{\varphi}\)</span>将<span
+class="math inline">\(V\)</span>中的<span
+class="math inline">\(\boldsymbol{\alpha}\)</span>映射到<span
+class="math inline">\(U\)</span>中的<span
+class="math inline">\(\boldsymbol{\varphi}(\boldsymbol{\alpha})\)</span>，有
+<span class="math display">\[
+\boldsymbol{\varphi}(\boldsymbol{\alpha})=
+\left(
+\boldsymbol{\varphi}(\boldsymbol{e}_1),
+\boldsymbol{\varphi}(\boldsymbol{e}_2), \cdots,
+\boldsymbol{\varphi}(\boldsymbol{e}_n)
+\right)
+\left(
+\begin{array}{c}
+\lambda _1\\
+\lambda _2\\
+\vdots\\
+\lambda _n\\
+\end{array}
+\right)
+=
+\left(
+\boldsymbol{f}_1, \boldsymbol{f}_2, \cdots, \boldsymbol{f}_m
+\right)
+\left( \begin{matrix}
+a_{11} &amp; a_{21} &amp; \cdots &amp; a_{n1}\\
+a_{12} &amp; a_{22} &amp; \cdots &amp; a_{n2}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+a_{1m} &amp; a_{2m} &amp; \cdots &amp; a_{nm}\\
+\end{matrix} \right)
+\left(
+\begin{array}{c}
+\lambda _1\\
+\lambda _2\\
+\vdots\\
+\lambda _n\\
+\end{array}
+\right)
+\]</span></p>
+<p>所以<span
+class="math inline">\(\boldsymbol{\varphi}(\boldsymbol{\alpha})\)</span>在<span
+class="math inline">\(U\)</span>的基<span class="math inline">\(\left\{
+\boldsymbol{f}_1, \boldsymbol{f}_2, \cdots, \boldsymbol{f}_m
+\right\}\)</span>下的坐标为 <span class="math display">\[
+\left(
+\begin{array}{c}
+\mu _1\\
+\mu _2\\
+\vdots\\
+\mu _n\\
+\end{array}
+\right)=
+\left( \begin{matrix}
+a_{11} &amp; a_{21} &amp; \cdots &amp; a_{n1}\\
+a_{12} &amp; a_{22} &amp; \cdots &amp; a_{n2}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+a_{1m} &amp; a_{2m} &amp; \cdots &amp; a_{nm}\\
+\end{matrix} \right)
+\left(
+\begin{array}{c}
+\lambda _1\\
+\lambda _2\\
+\vdots\\
+\lambda _n\\
+\end{array}
+\right)
+\]</span></p>
+<p>上面的这个矩阵称为<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>在已给定基<span
+class="math inline">\(\left\{ \boldsymbol{e}_1, \boldsymbol{e}_2,
+\cdots, \boldsymbol{e}_n \right\}\)</span>与<span
+class="math inline">\(\left\{ \boldsymbol{f}_1, \boldsymbol{f}_2,
+\cdots, \boldsymbol{f}_m
+\right\}\)</span>下的<strong>表示矩阵</strong>。涉及到多个空间之间的映射时，则要多乘几个矩阵。<strong>矩阵乘法的几何意义是线性映射的复合</strong>，所以可以使用矩阵（代数工具）来研究线性映射（几何对象）。</p>
+<p>类似地，要研究同一个线性映射在不同基下的表示矩阵。假设<span
+class="math inline">\(V\)</span>在两组基下的表示矩阵分别为<span
+class="math inline">\(\boldsymbol{A}\)</span>和<span
+class="math inline">\(\boldsymbol{B}\)</span>，且两组基之间的过渡矩阵为<span
+class="math inline">\(\boldsymbol{P}\)</span>，那么有<span
+class="math inline">\(\boldsymbol{B}=\boldsymbol{P}^{-1}\boldsymbol{A}\boldsymbol{P}\)</span>。如果<span
+class="math inline">\(\boldsymbol{A}\)</span>和<span
+class="math inline">\(\boldsymbol{B}\)</span>为方阵，且<span
+class="math inline">\(\boldsymbol{P}\)</span>是非奇异阵，则称<span
+class="math inline">\(\boldsymbol{A}\)</span>与<span
+class="math inline">\(\boldsymbol{B}\)</span>是<strong>相似</strong>矩阵。方阵表示的线性映射是线性变换，<strong>线性变换在不同基下的表示矩阵是相似的</strong>。后面会学习到，可以找到一组适当的基，使得线性变换在这组基下的表示矩阵具有简单的形状。</p>
+<h3 id="线性映射的像与核">线性映射的像与核</h3>
+<p>线性映射<span class="math inline">\(\boldsymbol{\varphi}: V \to
+U\)</span>，<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>的全体像元组成<span
+class="math inline">\(U\)</span>的子集称为<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>的<strong>像</strong>，记为<span
+class="math inline">\(\mathrm{Im} \,
+\boldsymbol{\varphi}\)</span>。<span
+class="math inline">\(V\)</span>中在<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>下映射为零向量的全体向量构成<span
+class="math inline">\(V\)</span>的子集，称为<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>的<strong>核</strong>，记为<span
+class="math inline">\(\mathrm{Ker} \,
+\boldsymbol{\varphi}\)</span>。像与核分别是值域和定义域的子集，而且都是各自的子空间，即<span
+class="math inline">\(\mathrm{Im} \,
+\boldsymbol{\varphi}\)</span>是<span
+class="math inline">\(U\)</span>的子空间，<span
+class="math inline">\(\mathrm{Ker} \,
+\boldsymbol{\varphi}\)</span>是<span
+class="math inline">\(V\)</span>的子空间。<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>在给定基下的表示矩阵为<span
+class="math inline">\(\boldsymbol{A}\)</span>，它们的维数有如下结论
+<span class="math display">\[
+\dim \mathrm{Im} \, \boldsymbol{\varphi} =
+\mathrm{rank}(\boldsymbol{A}), \, \dim \mathrm{Ker} \,
+\boldsymbol{\varphi} = n - \mathrm{rank}(\boldsymbol{A})
+\]</span> <span class="math display">\[
+\dim \mathrm{Ker} \, \boldsymbol{\varphi} + \dim \mathrm{Im} \,
+\boldsymbol{\varphi} = \dim V
+\]</span></p>
+<h3 id="不变子空间">不变子空间</h3>
+<p><span class="math inline">\(\boldsymbol{\varphi}\)</span>是<span
+class="math inline">\(V\)</span>上的线性变换，<span
+class="math inline">\(U\)</span>是<span
+class="math inline">\(V\)</span>的子空间，如果<span
+class="math inline">\(\boldsymbol{\varphi}(U) \subseteq
+U\)</span>，则称<span class="math inline">\(U\)</span>是<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>的<strong>不变子空间</strong>。零子空间、全空间<span
+class="math inline">\(V\)</span>、<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>的像、<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>的核，都是<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>的不变子空间。</p>
+<p>如果<span class="math inline">\(V=V_1 \oplus V_2 \oplus \cdots \oplus
+V_m\)</span>，其中每个<span
+class="math inline">\(V_i\)</span>都是线性变换<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>的不变子空间，那么<span
+class="math inline">\(V\)</span>中存在一组基（可由<span
+class="math inline">\(V_i\)</span>的基合并而成），使得<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>在这组基下的表示矩阵为分块对角矩阵，其中的小分块为<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>在各不变子空间下的表示矩阵。如果<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>有<span
+class="math inline">\(n\)</span>个一维不变子空间，而且直和构成全空间，那么表示矩阵就变成了对角阵。这个结论在标准型理论中很重要。</p>
 
     </div>
 
@@ -462,6 +660,7 @@ V_2\)</span>是<strong>直和</strong>。这个概念可以推广到多个子空
           <div class="post-tags">
               <a href="/tags/%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/" rel="tag"># 线性空间</a>
               <a href="/tags/%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84/" rel="tag"># 线性映射</a>
+              <a href="/tags/%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/" rel="tag"># 线性变换</a>
           </div>
 
         
@@ -504,13 +703,13 @@ V_2\)</span>是<strong>直和</strong>。这个概念可以推广到多个子空
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">229k</span>
+    <span title="站点总字数">233k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:28</span>
+    <span title="站点阅读时长">3:32</span>
   </span>
 </div>
 
