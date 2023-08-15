@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-08-13T14:37:32.017Z</updated>
+  <updated>2023-08-15T10:32:54.839Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>线性代数：特征值</title>
+    <link href="https://panqiincs.me/2023/08/15/la-eigenvalue/"/>
+    <id>https://panqiincs.me/2023/08/15/la-eigenvalue/</id>
+    <published>2023-08-15T09:32:36.000Z</published>
+    <updated>2023-08-15T10:32:54.839Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;特征值和特征向量&quot;&gt;特征值和特征向量&lt;/h2&gt;
+&lt;p&gt;从&lt;a
+href=&quot;https://panqiincs.me/2023/08/09/la-linear-space-map/&quot;&gt;线性代数：线性空间与线性映射&lt;/a&gt;一文可知，一个线性变换在不同基下的表示矩阵是相似的。现在探讨哪类矩阵相似于对角阵，以及如何找到对应的基。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
+    
+    
+    <category term="特征值" scheme="https://panqiincs.me/tags/%E7%89%B9%E5%BE%81%E5%80%BC/"/>
+    
+    <category term="对角化" scheme="https://panqiincs.me/tags/%E5%AF%B9%E8%A7%92%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>我的两个手机号</title>
@@ -38,7 +61,7 @@
     <link href="https://panqiincs.me/2023/08/09/la-linear-space-map/"/>
     <id>https://panqiincs.me/2023/08/09/la-linear-space-map/</id>
     <published>2023-08-09T10:35:05.000Z</published>
-    <updated>2023-08-14T06:53:37.682Z</updated>
+    <updated>2023-08-15T10:08:54.345Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;线性空间&quot;&gt;线性空间&lt;/h2&gt;
@@ -189,7 +212,7 @@ href=&quot;https://userpages.umbc.edu/~gobbert/papers/BrewsterGobbertTR2011.pdf&
     <link href="https://panqiincs.me/2023/06/10/flexible-sampling-control/"/>
     <id>https://panqiincs.me/2023/06/10/flexible-sampling-control/</id>
     <published>2023-06-10T03:52:09.000Z</published>
-    <updated>2023-06-16T05:05:58.821Z</updated>
+    <updated>2023-08-14T14:33:48.438Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文介绍如何使用MATLAB/Simulink搭建一个灵活的采样控制（sampling
@@ -462,33 +485,6 @@ href=&quot;https://panqiincs.me/2022/09/18/supported-glyphs/&quot;&gt;上篇文�
     <category term="文字转写" scheme="https://panqiincs.me/tags/%E6%96%87%E5%AD%97%E8%BD%AC%E5%86%99/"/>
     
     <category term="polyglot" scheme="https://panqiincs.me/tags/polyglot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python获取字体文件所支持的字形</title>
-    <link href="https://panqiincs.me/2022/09/18/supported-glyphs/"/>
-    <id>https://panqiincs.me/2022/09/18/supported-glyphs/</id>
-    <published>2022-09-18T04:54:22.000Z</published>
-    <updated>2023-02-04T02:43:13.396Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;天城文的辅音音丛按照规则合写在一起为合字，所有的合写规则超过1000种，不同字体文件所支持的合写规则数量和种类不一样。我需要获取天城文字体文件支持的所有字形（glyph），以统计它所支持的合字字符。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="程序设计" scheme="https://panqiincs.me/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
-    
-    
-    <category term="python" scheme="https://panqiincs.me/tags/python/"/>
-    
-    <category term="天城文" scheme="https://panqiincs.me/tags/%E5%A4%A9%E5%9F%8E%E6%96%87/"/>
-    
-    <category term="devanagari" scheme="https://panqiincs.me/tags/devanagari/"/>
-    
-    <category term="合字" scheme="https://panqiincs.me/tags/%E5%90%88%E5%AD%97/"/>
-    
-    <category term="ligature" scheme="https://panqiincs.me/tags/ligature/"/>
     
   </entry>
   
