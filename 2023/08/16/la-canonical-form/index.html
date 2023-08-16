@@ -21,15 +21,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="多项式矩阵 相似标准型这部分内容的目的在于，找一类比较简单的矩阵，使任一同阶矩阵均与这类矩阵中的某一个相似。思路是首先找出相似矩阵的不变量，不仅在相似关系下保持不变，而且足以判断两个矩阵是否相似，这叫做全系不变量；然后找出一类比较简单的矩阵，利用全系不变量判断与这类矩阵中的某个相似。">
+    <meta name="description" content="多项式矩阵 相似标准型这部分内容的目的在于，找一类比较简单的矩阵，使任一同阶矩阵均与这类矩阵中的某一个相似。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性代数：相似标准型">
 <meta property="og:url" content="https://panqiincs.me/2023/08/16/la-canonical-form/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="多项式矩阵 相似标准型这部分内容的目的在于，找一类比较简单的矩阵，使任一同阶矩阵均与这类矩阵中的某一个相似。思路是首先找出相似矩阵的不变量，不仅在相似关系下保持不变，而且足以判断两个矩阵是否相似，这叫做全系不变量；然后找出一类比较简单的矩阵，利用全系不变量判断与这类矩阵中的某个相似。">
+<meta property="og:description" content="多项式矩阵 相似标准型这部分内容的目的在于，找一类比较简单的矩阵，使任一同阶矩阵均与这类矩阵中的某一个相似。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-16T08:51:59.000Z">
-<meta property="article:modified_time" content="2023-08-16T11:51:07.383Z">
+<meta property="article:modified_time" content="2023-08-16T15:37:02.864Z">
 <meta property="article:author" content="辛未羊">
 <meta property="article:tag" content="多项式矩阵">
 <meta property="article:tag" content="jordan标准型">
@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">121</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">192</span>
+        <span class="site-state-item-count">194</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -303,8 +303,9 @@
     
     
     <div class="post-body" itemprop="articleBody"><h2 id="多项式矩阵">多项式矩阵</h2>
-<p>相似标准型这部分内容的目的在于，找一类比较简单的矩阵，使任一同阶矩阵均与这类矩阵中的某一个相似。思路是首先找出相似矩阵的不变量，不仅在相似关系下保持不变，而且足以判断两个矩阵是否相似，这叫做<strong>全系不变量</strong>；然后找出一类比较简单的矩阵，利用全系不变量判断与这类矩阵中的某个相似。</p>
+<p>相似标准型这部分内容的目的在于，找一类比较简单的矩阵，使任一同阶矩阵均与这类矩阵中的某一个相似。</p>
 <span id="more"></span>
+<p>思路是首先找出相似矩阵的不变量，不仅在相似关系下保持不变，而且足以判断两个矩阵是否相似，这叫做<strong>全系不变量</strong>；然后找出一类比较简单的矩阵，利用全系不变量判断与这类矩阵中的某个相似。</p>
 <p>多项式矩阵，或<span
 class="math inline">\(\lambda\)</span>-矩阵，指的是矩阵的元素<span
 class="math inline">\(a_{ij}(\lambda)\)</span>是以<span
@@ -568,6 +569,9 @@ class="math inline">\(\boldsymbol{\varphi}\)</span>在这组基下的表示矩�
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2023/08/17/la-quadratic-form/" rel="next" title="线性代数：二次型与正定性">
+                  线性代数：二次型与正定性 <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -599,13 +603,13 @@ class="math inline">\(\boldsymbol{\varphi}\)</span>在这组基下的表示矩�
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">243k</span>
+    <span title="站点总字数">247k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:41</span>
+    <span title="站点阅读时长">3:45</span>
   </span>
 </div>
 
