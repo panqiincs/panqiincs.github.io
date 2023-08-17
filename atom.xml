@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-08-16T15:43:30.914Z</updated>
+  <updated>2023-08-17T02:19:04.671Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="https://panqiincs.me/2023/08/17/la-quadratic-form/"/>
     <id>https://panqiincs.me/2023/08/17/la-quadratic-form/</id>
     <published>2023-08-16T16:07:13.000Z</published>
-    <updated>2023-08-16T15:43:30.914Z</updated>
+    <updated>2023-08-17T02:19:04.671Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;二次型&quot;&gt;二次型&lt;/h2&gt;
-&lt;p&gt;二次型是一个多项式，其中所有项的次数都是二次的，这里的「型」表示齐次多项式。&lt;/p&gt;</summary>
+&lt;p&gt;二次型是个多项式，其中所有项的次数都是二次的，这里的「型」表示齐次多项式。&lt;/p&gt;</summary>
     
     
     
@@ -33,6 +33,8 @@
     
     
     <category term="二次型" scheme="https://panqiincs.me/tags/%E4%BA%8C%E6%AC%A1%E5%9E%8B/"/>
+    
+    <category term="正定" scheme="https://panqiincs.me/tags/%E6%AD%A3%E5%AE%9A/"/>
     
     <category term="正定矩阵" scheme="https://panqiincs.me/tags/%E6%AD%A3%E5%AE%9A%E7%9F%A9%E9%98%B5/"/>
     
@@ -43,7 +45,7 @@
     <link href="https://panqiincs.me/2023/08/16/la-canonical-form/"/>
     <id>https://panqiincs.me/2023/08/16/la-canonical-form/</id>
     <published>2023-08-16T08:51:59.000Z</published>
-    <updated>2023-08-16T15:37:02.864Z</updated>
+    <updated>2023-08-17T02:23:56.451Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;多项式矩阵&quot;&gt;多项式矩阵&lt;/h2&gt;

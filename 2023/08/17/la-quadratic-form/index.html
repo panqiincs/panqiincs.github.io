@@ -21,17 +21,18 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="二次型 二次型是一个多项式，其中所有项的次数都是二次的，这里的「型」表示齐次多项式。">
+    <meta name="description" content="二次型 二次型是个多项式，其中所有项的次数都是二次的，这里的「型」表示齐次多项式。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性代数：二次型与正定性">
 <meta property="og:url" content="https://panqiincs.me/2023/08/17/la-quadratic-form/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="二次型 二次型是一个多项式，其中所有项的次数都是二次的，这里的「型」表示齐次多项式。">
+<meta property="og:description" content="二次型 二次型是个多项式，其中所有项的次数都是二次的，这里的「型」表示齐次多项式。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-16T16:07:13.000Z">
-<meta property="article:modified_time" content="2023-08-16T15:43:30.914Z">
+<meta property="article:modified_time" content="2023-08-17T02:19:04.671Z">
 <meta property="article:author" content="辛未羊">
 <meta property="article:tag" content="二次型">
+<meta property="article:tag" content="正定">
 <meta property="article:tag" content="正定矩阵">
 <meta name="twitter:card" content="summary">
 
@@ -152,7 +153,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">194</span>
+        <span class="site-state-item-count">195</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -303,7 +304,7 @@
     
     
     <div class="post-body" itemprop="articleBody"><h2 id="二次型">二次型</h2>
-<p>二次型是一个多项式，其中所有项的次数都是二次的，这里的「型」表示齐次多项式。</p>
+<p>二次型是个多项式，其中所有项的次数都是二次的，这里的「型」表示齐次多项式。</p>
 <span id="more"></span>
 <p>设<span class="math inline">\(f\)</span>是数域<span
 class="math inline">\(\mathbb{K}\)</span>上的<span
@@ -384,7 +385,7 @@ class="math inline">\(\left\{ \boldsymbol{e}_1, \boldsymbol{e}_2,
 \cdots, \boldsymbol{e}_n \right\}\)</span>到<span
 class="math inline">\(\left\{ \boldsymbol{f}_1, \boldsymbol{f}_2,
 \cdots, \boldsymbol{f}_n
-\right\}\)</span>的过渡矩阵。这个矩阵的意义也可以看成是两组变元<span
+\right\}\)</span>的过渡矩阵。关于这个矩阵的意义，也可以看成是两组变元<span
 class="math inline">\(\boldsymbol{x}\)</span>与<span
 class="math inline">\(\boldsymbol{y}\)</span>之间的线性关系。将上面的关系代入到<span
 class="math inline">\(f(x_1,x_2,\cdots,x_n) =
@@ -418,7 +419,7 @@ class="math inline">\(\boldsymbol{A}\)</span>合同，可以将零放在一起�
 <span class="math display">\[
 d_1&gt;0,\cdots,d_p&gt;0;d_{p+1}&lt;0,\cdots,d_r&lt;0.
 \]</span></p>
-<p>做适当的变元替换，可知<span
+<p>做适当的变元替换，可得<span
 class="math inline">\(\boldsymbol{A}\)</span>合同于对角阵 <span
 class="math display">\[
 \mathrm{diag}\{1,\cdots,1;-1,\cdots,-1;0,\cdots,0\}
@@ -532,6 +533,7 @@ class="math inline">\(n\)</span>个顺序主子式全大于零。</p>
 
           <div class="post-tags">
               <a href="/tags/%E4%BA%8C%E6%AC%A1%E5%9E%8B/" rel="tag"># 二次型</a>
+              <a href="/tags/%E6%AD%A3%E5%AE%9A/" rel="tag"># 正定</a>
               <a href="/tags/%E6%AD%A3%E5%AE%9A%E7%9F%A9%E9%98%B5/" rel="tag"># 正定矩阵</a>
           </div>
 
