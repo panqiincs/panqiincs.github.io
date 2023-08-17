@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+  <meta name="baidu-site-verification" content="code-J9YbvwThrX">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="内积空间 现将「长度」、「距离」的概念推广到一般的线性空间中。距离可以看作是长度的派生概念，而长度又可以看成是内积的派生概念。这里给出复数域上内积的定义，因为实数域可以看成是复数域的特例。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性代数：内积空间">
+<meta property="og:url" content="https://panqiincs.me/2023/08/18/la-inner-product-space/index.html">
+<meta property="og:site_name" content="辛未羊的网络日志">
+<meta property="og:description" content="内积空间 现将「长度」、「距离」的概念推广到一般的线性空间中。距离可以看作是长度的派生概念，而长度又可以看成是内积的派生概念。这里给出复数域上内积的定义，因为实数域可以看成是复数域的特例。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-17T16:01:12.000Z">
+<meta property="article:modified_time" content="2023-08-17T15:10:11.737Z">
+<meta property="article:author" content="辛未羊">
+<meta property="article:tag" content="内积空间">
+<meta property="article:tag" content="内积">
+<meta property="article:tag" content="范数">
+<meta property="article:tag" content="正交">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://panqiincs.me/2023/08/18/la-inner-product-space/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://panqiincs.me/2023/08/18/la-inner-product-space/","path":"2023/08/18/la-inner-product-space/","title":"线性代数：内积空间"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>线性代数：内积空间 | 辛未羊的网络日志</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-39536948-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "blyiajm41p");
+</script>
+
+
+
+<link rel="dns-prefetch" href="https://vercel.panqiincs.me">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="辛未羊的网络日志" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">辛未羊的网络日志</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-series"><a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%A7%AF%E7%A9%BA%E9%97%B4"><span class="nav-number">1.</span> <span class="nav-text">内积空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%A7%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%AD%A3%E4%BA%A4%E5%9F%BA"><span class="nav-number">2.</span> <span class="nav-text">内积的表示和正交基</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="辛未羊"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">辛未羊</p>
+  <div class="site-description" itemprop="description">记录生活和学习的清静之地</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">199</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/panqiincs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;panqiincs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          友情链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.kawabangga.com/" title="https:&#x2F;&#x2F;www.kawabangga.com&#x2F;" rel="noopener" target="_blank">卡瓦邦噶</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.boatsky.com/" title="https:&#x2F;&#x2F;www.boatsky.com&#x2F;" rel="noopener" target="_blank">太空船</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.feidaoboke.com/" title="https:&#x2F;&#x2F;www.feidaoboke.com&#x2F;" rel="noopener" target="_blank">飞刀博客</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.ohyee.cc/" title="https:&#x2F;&#x2F;www.ohyee.cc&#x2F;" rel="noopener" target="_blank">OhYee</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://dusays.com/" title="https:&#x2F;&#x2F;dusays.com&#x2F;" rel="noopener" target="_blank">杜老师说</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://h4ck.org.cn/" title="https:&#x2F;&#x2F;h4ck.org.cn&#x2F;" rel="noopener" target="_blank">obaby</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://zyq.today/" title="https:&#x2F;&#x2F;zyq.today&#x2F;" rel="noopener" target="_blank">小乔</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.catchwang.com/" title="https:&#x2F;&#x2F;www.catchwang.com&#x2F;" rel="noopener" target="_blank">云晓晨</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.yt-blog.top/" title="https:&#x2F;&#x2F;www.yt-blog.top&#x2F;" rel="noopener" target="_blank">Fgaoxing</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://panqiincs.me/2023/08/18/la-inner-product-space/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="辛未羊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的网络日志">
+      <meta itemprop="description" content="记录生活和学习的清静之地">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="线性代数：内积空间 | 辛未羊的网络日志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          线性代数：内积空间
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-08-18 00:01:12" itemprop="dateCreated datePublished" datetime="2023-08-18T00:01:12+08:00">2023-08-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">大学课程</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2023/08/18/la-inner-product-space/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2023/08/18/la-inner-product-space/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="内积空间">内积空间</h2>
+<p>现将「长度」、「距离」的概念推广到一般的线性空间中。距离可以看作是长度的派生概念，而长度又可以看成是内积的派生概念。这里给出<strong>复数域</strong>上内积的定义，因为实数域可以看成是复数域的特例。</p>
+<span id="more"></span>
+<p>存在某种规则，使得复数域上的线性空间<span
+class="math inline">\(V\)</span>中任意一组有序向量<span
+class="math inline">\(\{\boldsymbol{\alpha},\boldsymbol{\beta}\}\)</span>，都唯一地对应一个复数，记为<span
+class="math inline">\((\boldsymbol{\alpha},\boldsymbol{\beta})\)</span>，适合如下4条规则：</p>
+<ol type="1">
+<li><span
+class="math inline">\((\boldsymbol{\alpha},\boldsymbol{\beta})=\overline{(\boldsymbol{\beta},\boldsymbol{\alpha})}\)</span></li>
+<li><span
+class="math inline">\((\boldsymbol{\alpha}+\boldsymbol{\beta},\boldsymbol{\gamma})=(\boldsymbol{\alpha},\boldsymbol{\gamma})+(\boldsymbol{\beta},\boldsymbol{\gamma})\)</span></li>
+<li><span
+class="math inline">\((c\boldsymbol{\alpha},\boldsymbol{\beta})=c(\boldsymbol{\alpha},\boldsymbol{\beta})\)</span>，<span
+class="math inline">\(c\)</span>为任一复数</li>
+<li><span
+class="math inline">\((\boldsymbol{\alpha},\boldsymbol{\alpha})\ge
+0\)</span>且等号成立当且仅当<span
+class="math inline">\(\boldsymbol{\alpha}=0\)</span></li>
+</ol>
+<p>则称在<span
+class="math inline">\(V\)</span>上定义了一个<strong>内积</strong>，<span
+class="math inline">\((\boldsymbol{\alpha},\boldsymbol{\beta})\)</span>是<span
+class="math inline">\(\boldsymbol{\alpha}\)</span>与<span
+class="math inline">\(\boldsymbol{\beta}\)</span>的内积。有限维实内积空间称为Euclid空间或<strong>欧氏空间</strong>，有限维复内积空间称为<strong>酉空间</strong>。</p>
+<p>例如两个列向量<span
+class="math inline">\(\boldsymbol{\alpha}=(x_1,x_2,\cdots,x_n)&#39;,\,\boldsymbol{\beta}=(y_1,y_2,\cdots,y_n)&#39;\)</span>，若是<span
+class="math inline">\(n\)</span>维实列向量空间<span
+class="math inline">\(\mathbb{R}_n\)</span>上的，则标准内积定义为 <span
+class="math display">\[
+(\boldsymbol{\alpha},\boldsymbol{\beta})=x_1 y_1 + x_2 y_2 + \cdots +
+x_n y_n
+\]</span></p>
+<p>若是<span class="math inline">\(n\)</span>维复列向量空间<span
+class="math inline">\(\mathbb{C}_n\)</span>上的，则标准内积定义为 <span
+class="math display">\[
+(\boldsymbol{\alpha},\boldsymbol{\beta})=x_1\overline{y}_1 +
+x_2\overline{y}_2 + \cdots + x_n\overline{y}_n
+\]</span></p>
+<p>再例如，<span class="math inline">\(V\)</span>是<span
+class="math inline">\(\left[a,b\right]\)</span>区间上连续函数全体构成的线性空间，<span
+class="math inline">\(f(t),g(t)\in V\)</span>，定义 <span
+class="math display">\[
+(f,g)=\int_a^b f(t)g(t)\mathrm{d}t
+\]</span></p>
+<p>是一个内积，于是<span
+class="math inline">\(V\)</span>成为无限维实内积空间。</p>
+<p>有了内积的概念后，可以定义向量的长度（或<strong>范数</strong>）。向量<span
+class="math inline">\(\alpha\)</span>的长度（或范数）定义为 <span
+class="math display">\[
+\lVert\boldsymbol{\alpha}\rVert =
+(\boldsymbol{\alpha},\boldsymbol{\alpha})^{\frac{1}{2}}
+\]</span></p>
+<p>利用范数可定义内积空间两个向量的距离。设<span
+class="math inline">\(\boldsymbol{\alpha},\boldsymbol{\beta}\in
+V\)</span>，<span
+class="math inline">\(\boldsymbol{\alpha}\)</span>与<span
+class="math inline">\(\boldsymbol{\beta}\)</span>之间的<strong>距离</strong>
+<span class="math display">\[
+d(\boldsymbol{\alpha},\boldsymbol{\beta}) =
+\lVert\boldsymbol{\alpha}-\boldsymbol{\beta}\rVert
+\]</span></p>
+<p>内积与范数之间满足的如下关系称为<strong>Cauchy-Schwarz不等式</strong>
+<span class="math display">\[
+\left\vert (\boldsymbol{\alpha},\boldsymbol{\beta})
+\right\vert\le\lVert\boldsymbol{\alpha}\rVert \cdot
+\lVert\boldsymbol{\beta}\rVert
+\]</span></p>
+<p>当<span class="math inline">\(V\)</span>是实内积空间时，非零向量<span
+class="math inline">\(\boldsymbol{\alpha}\)</span>与<span
+class="math inline">\(\boldsymbol{\beta}\)</span>之间的夹角满足 <span
+class="math display">\[
+\cos\theta=\frac{(\boldsymbol{\alpha},\boldsymbol{\beta})}{\lVert\boldsymbol{\alpha}\rVert
+\lVert\boldsymbol{\beta}\rVert}
+\]</span></p>
+<p>如果<span
+class="math inline">\((\boldsymbol{\alpha},\boldsymbol{\beta})=0\)</span>，则称<span
+class="math inline">\(\boldsymbol{\alpha}\)</span>与<span
+class="math inline">\(\boldsymbol{\beta}\)</span>垂直或<strong>正交</strong>，用<span
+class="math inline">\(\boldsymbol{\alpha}\perp\boldsymbol{\beta}\)</span>来表示，此时<span
+class="math inline">\(\boldsymbol{\alpha}\)</span>与<span
+class="math inline">\(\boldsymbol{\beta}\)</span>的夹角为<span
+class="math inline">\(90^\circ\)</span>。</p>
+<h2 id="内积的表示和正交基">内积的表示和正交基</h2>
+<p>现研究给定有限维内积空间下的一组基后，如何用坐标向量来表示向量的内积。具体来说，<span
+class="math inline">\(\{\boldsymbol{v}_1,\boldsymbol{v}_1,\cdots,\boldsymbol{v}_n\}\)</span>是内积空间<span
+class="math inline">\(V\)</span>的一组基，如果 <span
+class="math display">\[
+(\boldsymbol{v}_i,\boldsymbol{v}_j)=g_{ij}(i,j=1,2,\cdots,n)
+\]</span> <span class="math display">\[
+\boldsymbol{\alpha}=a_1\boldsymbol{v}_1+a_2\boldsymbol{v}_2+\cdots+a_n\boldsymbol{v}_n
+\]</span> <span class="math display">\[
+\boldsymbol{\beta}=b_1\boldsymbol{v}_1+b_2\boldsymbol{v}_2+\cdots+b_n\boldsymbol{v}_n
+\]</span></p>
+<p>利用向量内积的性质，当<span
+class="math inline">\(V\)</span>是欧氏空间（实内积空间）时， <span
+class="math display">\[
+(\boldsymbol{\alpha},\boldsymbol{\beta})=(\sum_{i=1}^n
+a_i\boldsymbol{v_i}, \sum_{j=1}^n b_j\boldsymbol{v_j})=\sum_{i,j=1}^n
+a_i g_{ij} b_j
+\]</span></p>
+<p>写成矩阵形式 <span class="math display">\[
+(\boldsymbol{\alpha},\boldsymbol{\beta})
+=(a_1,a_2,\cdots,a_n)
+\left( \begin{matrix}
+g_{11} &amp; g_{12} &amp; \cdots &amp; a_{1n}\\
+g_{21} &amp; g_{22} &amp; \cdots &amp; a_{2n}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+g_{n1} &amp; g_{n2} &amp; \cdots &amp; a_{nn}\\
+\end{matrix} \right)
+\left(
+\begin{array}{c}
+b_1\\
+b_2\\
+\vdots\\
+b_n\\
+\end{array}
+\right)
+\]</span></p>
+<p>其中矩阵 <span class="math display">\[
+\boldsymbol{G}=
+\left( \begin{matrix}
+g_{11} &amp; g_{12} &amp; \cdots &amp; a_{1n}\\
+g_{21} &amp; g_{22} &amp; \cdots &amp; a_{2n}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+g_{n1} &amp; g_{n2} &amp; \cdots &amp; a_{nn}\\
+\end{matrix} \right)
+=
+\left( \begin{matrix}
+(\boldsymbol{v}_1,\boldsymbol{v}_1) &amp;
+(\boldsymbol{v}_1,\boldsymbol{v}_2) &amp; \cdots &amp;
+(\boldsymbol{v}_1,\boldsymbol{v}_n)\\
+(\boldsymbol{v}_2,\boldsymbol{v}_1) &amp;
+(\boldsymbol{v}_2,\boldsymbol{v}_2) &amp; \cdots &amp;
+(\boldsymbol{v}_2,\boldsymbol{v}_n)\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+(\boldsymbol{v}_n,\boldsymbol{v}_1) &amp;
+(\boldsymbol{v}_n,\boldsymbol{v}_2) &amp; \cdots &amp;
+(\boldsymbol{v}_n,\boldsymbol{v}_n)\\
+\end{matrix} \right)
+\]</span></p>
+<p>称为基向量<span
+class="math inline">\(\{\boldsymbol{v}_1,\boldsymbol{v}_1,\cdots,\boldsymbol{v}_n\}\)</span>的<strong>Gram矩阵</strong>或内积空间<span
+class="math inline">\(V\)</span>在给定基下的<strong>度量矩阵</strong>。于是便得到内积在给定基下的表示
+<span class="math display">\[
+(\boldsymbol{\alpha},\boldsymbol{\beta})=\boldsymbol{x}&#39;\boldsymbol{G}\boldsymbol{y}
+\]</span></p>
+<p>其中<span
+class="math inline">\(\boldsymbol{x},\boldsymbol{y}\)</span>分别是向量<span
+class="math inline">\(\boldsymbol{\alpha},\boldsymbol{\beta}\)</span>在给定基下的坐标向量。容易验证<span
+class="math inline">\(\boldsymbol{G}\)</span>是正定实对称矩阵。由此看出，若给定<span
+class="math inline">\(n\)</span>维欧式空间的一组基，则欧式空间上的内积和<span
+class="math inline">\(n\)</span>阶正定实对称矩阵一一对应。</p>
+<p>设<span
+class="math inline">\(V\)</span>是酉空间（复内积空间），用<span
+class="math inline">\(\boldsymbol{H}\)</span>表示<span
+class="math inline">\(V\)</span>在给定基下的度量矩阵，则有 <span
+class="math display">\[
+(\boldsymbol{\alpha},\boldsymbol{\beta})=\boldsymbol{x}&#39;\boldsymbol{H}\overline{\boldsymbol{y}}
+\]</span></p>
+<p>其中<span
+class="math inline">\(\boldsymbol{x},\boldsymbol{y}\)</span>分别是向量<span
+class="math inline">\(\boldsymbol{\alpha},\boldsymbol{\beta}\)</span>在给定基下的坐标向量，<span
+class="math inline">\(\boldsymbol{H}\)</span>是正定<strong>Hermite矩阵</strong>。</p>
+<p>那么，很自然地会提出这样的问题：<span
+class="math inline">\(V\)</span>中是否存在一组基，它的Gram矩阵是单位阵<span
+class="math inline">\(\boldsymbol{I}_n\)</span>？如果存在，那么在这组基下的内积表示会特别简单。此时度量矩阵<span
+class="math inline">\(\boldsymbol{G}=\boldsymbol{I}_n\)</span>或<span
+class="math inline">\(\boldsymbol{H}=\boldsymbol{I}_n\)</span>，则有
+<span class="math display">\[
+(\boldsymbol{v}_i,\boldsymbol{v}_j)=0(i\ne
+j),\,(\boldsymbol{v}_i,\boldsymbol{v}_i)=1
+\]</span></p>
+<p>把内积空间中满足上面条件的一组基称为<strong>标准正交基</strong>。在标准正交基下，度量矩阵就是单位阵。内积空间中线性无关的一组向量可通过<strong>Gram-Schmidt正交化方法</strong>转化成一组正交基。所以，任一有限维内积空间均有标准正交基。</p>
+<p><span class="math inline">\(U\)</span>是内积空间<span
+class="math inline">\(V\)</span>的子空间，令 <span
+class="math display">\[
+U^{\perp}=\{\boldsymbol{v}\in V \vert (\boldsymbol{v},U)=0\}
+\]</span></p>
+<p>容易验证<span class="math inline">\(U^{\perp}\)</span>是<span
+class="math inline">\(V\)</span>的子空间，<span
+class="math inline">\(U^{\perp}\)</span>称为<span
+class="math inline">\(U\)</span>的<strong>正交补空间</strong>。可以得到结论，<span
+class="math inline">\(V=U\oplus U^{\perp}\)</span>，且<span
+class="math inline">\(U\)</span>上任一组标准正交基均可扩张为<span
+class="math inline">\(V\)</span>上的标准正交基，很明显，<span
+class="math inline">\(U\)</span>的一组标准正交基和<span
+class="math inline">\(U^{\perp}\)</span>的一组标准正交基一起组成<span
+class="math inline">\(V\)</span>的一组标准正交基。</p>
+<p>若对任意的<span class="math inline">\(\boldsymbol{\alpha}\in
+V_i\)</span>和任意的<span class="math inline">\(\boldsymbol{\beta}\in
+V_j(j\ne i)\)</span>均有<span
+class="math inline">\((\boldsymbol{\alpha},\boldsymbol{\beta})=0\)</span>，则称子空间<span
+class="math inline">\(V_i\)</span>和<span
+class="math inline">\(V_j\)</span>正交。若<span
+class="math inline">\(V=V_1+V_2+\cdots+V_k\)</span>且<span
+class="math inline">\(V_i\)</span>两两正交，则称<span
+class="math inline">\(V\)</span>是<span
+class="math inline">\(V_i(i=1,2,\cdots,k)\)</span>的正交和，记为 <span
+class="math display">\[
+V=V_1\perp V_2\perp\cdots\perp V_k
+\]</span></p>
+<p>正交和一定是直和，而且任一子空间<span
+class="math inline">\(V_i\)</span>必与其余子空间的和正交。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>辛未羊
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://panqiincs.me/2023/08/18/la-inner-product-space/" title="线性代数：内积空间">https://panqiincs.me/2023/08/18/la-inner-product-space/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%86%85%E7%A7%AF%E7%A9%BA%E9%97%B4/" rel="tag"># 内积空间</a>
+              <a href="/tags/%E5%86%85%E7%A7%AF/" rel="tag"># 内积</a>
+              <a href="/tags/%E8%8C%83%E6%95%B0/" rel="tag"># 范数</a>
+              <a href="/tags/%E6%AD%A3%E4%BA%A4/" rel="tag"># 正交</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/17/la-quadratic-form/" rel="prev" title="线性代数：二次型与正定性">
+                  <i class="fa fa-angle-left"></i> 线性代数：二次型与正定性
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2013 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">辛未羊</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">252k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:49</span>
+  </span>
+</div>
+
+
+  <div>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id: "JjD4gEghP0h7Vn4U",ck: "JjD4gEghP0h7Vn4U"})</script>
+  </div>
+
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"https://vercel.panqiincs.me","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"欢迎留言交流","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/2023/08/18/la-inner-product-space/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>
