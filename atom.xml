@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-08-17T15:10:11.737Z</updated>
+  <updated>2023-08-18T13:25:36.903Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -20,8 +20,8 @@
     <title>线性代数：内积空间</title>
     <link href="https://panqiincs.me/2023/08/18/la-inner-product-space/"/>
     <id>https://panqiincs.me/2023/08/18/la-inner-product-space/</id>
-    <published>2023-08-17T16:01:12.000Z</published>
-    <updated>2023-08-17T15:10:11.737Z</updated>
+    <published>2023-08-18T07:01:12.000Z</published>
+    <updated>2023-08-18T13:25:36.903Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;内积空间&quot;&gt;内积空间&lt;/h2&gt;
@@ -46,8 +46,8 @@
     <title>线性代数：二次型与正定性</title>
     <link href="https://panqiincs.me/2023/08/17/la-quadratic-form/"/>
     <id>https://panqiincs.me/2023/08/17/la-quadratic-form/</id>
-    <published>2023-08-16T16:07:13.000Z</published>
-    <updated>2023-08-17T07:13:51.910Z</updated>
+    <published>2023-08-17T02:07:13.000Z</published>
+    <updated>2023-08-18T13:33:21.551Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;二次型&quot;&gt;二次型&lt;/h2&gt;
@@ -71,7 +71,7 @@
     <link href="https://panqiincs.me/2023/08/16/la-canonical-form/"/>
     <id>https://panqiincs.me/2023/08/16/la-canonical-form/</id>
     <published>2023-08-16T08:51:59.000Z</published>
-    <updated>2023-08-17T07:15:23.258Z</updated>
+    <updated>2023-08-18T13:32:16.861Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;多项式矩阵&quot;&gt;多项式矩阵&lt;/h2&gt;
@@ -93,7 +93,7 @@
     <link href="https://panqiincs.me/2023/08/15/la-eigenvalue/"/>
     <id>https://panqiincs.me/2023/08/15/la-eigenvalue/</id>
     <published>2023-08-15T09:32:36.000Z</published>
-    <updated>2023-08-17T07:15:39.341Z</updated>
+    <updated>2023-08-18T13:31:31.701Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;特征值和特征向量&quot;&gt;特征值和特征向量&lt;/h2&gt;
@@ -133,7 +133,7 @@ href=&quot;https://panqiincs.me/2023/08/09/la-linear-space-map/&quot;&gt;线性�
     <link href="https://panqiincs.me/2023/08/09/la-linear-space-map/"/>
     <id>https://panqiincs.me/2023/08/09/la-linear-space-map/</id>
     <published>2023-08-09T10:35:05.000Z</published>
-    <updated>2023-08-17T07:17:21.998Z</updated>
+    <updated>2023-08-18T13:30:51.534Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;线性空间&quot;&gt;线性空间&lt;/h2&gt;
@@ -158,11 +158,11 @@ href=&quot;https://panqiincs.me/2023/08/09/la-linear-space-map/&quot;&gt;线性�
     <link href="https://panqiincs.me/2023/08/08/la-determinant-matrix/"/>
     <id>https://panqiincs.me/2023/08/08/la-determinant-matrix/</id>
     <published>2023-08-07T18:22:41.000Z</published>
-    <updated>2023-08-17T07:19:48.448Z</updated>
+    <updated>2023-08-18T13:28:44.332Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;开个头&quot;&gt;开个头&lt;/h2&gt;
-&lt;p&gt;我打算将线性代数的重要内容梳理一遍，根据自己的理解将核心内容（简单的内容就不多费笔墨了）描述出来，尽量少摆公式。主要参考资料是复旦大学的&lt;a
+&lt;p&gt;我打算将线性代数的重要内容过一遍，根据自己的理解将核心内容（简单的内容就不多费笔墨了）描述出来，尽量少摆公式。主要参考资料是复旦大学的&lt;a
 href=&quot;https://book.douban.com/subject/3171745/&quot;&gt;高等代数教材&lt;/a&gt;，可以搭配&lt;a
 href=&quot;https://www.bilibili.com/video/BV1mJ411r7ZB/&quot;&gt;谢启鸿的视频&lt;/a&gt;学习。&lt;/p&gt;</summary>
     
@@ -184,7 +184,7 @@ href=&quot;https://www.bilibili.com/video/BV1mJ411r7ZB/&quot;&gt;谢启鸿的视
     <link href="https://panqiincs.me/2023/07/30/lmi-intro-yalmip/"/>
     <id>https://panqiincs.me/2023/07/30/lmi-intro-yalmip/</id>
     <published>2023-07-30T07:16:17.000Z</published>
-    <updated>2023-08-17T10:24:55.394Z</updated>
+    <updated>2023-08-18T13:08:42.435Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;教材&quot;&gt;教材&lt;/h2&gt;

@@ -28,8 +28,8 @@
 <meta property="og:site_name" content="辛未羊的网络日志">
 <meta property="og:description" content="二次型 二次型是个多项式，其中所有项的次数都是二次的，这里的「型」表示齐次多项式。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-08-16T16:07:13.000Z">
-<meta property="article:modified_time" content="2023-08-17T07:13:51.910Z">
+<meta property="article:published_time" content="2023-08-17T02:07:13.000Z">
+<meta property="article:modified_time" content="2023-08-18T13:33:21.551Z">
 <meta property="article:author" content="辛未羊">
 <meta property="article:tag" content="正定">
 <meta property="article:tag" content="二次型">
@@ -253,7 +253,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-08-17 00:07:13" itemprop="dateCreated datePublished" datetime="2023-08-17T00:07:13+08:00">2023-08-17</time>
+      <time title="创建时间：2023-08-17 10:07:13" itemprop="dateCreated datePublished" datetime="2023-08-17T10:07:13+08:00">2023-08-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -324,21 +324,19 @@ f(x_1,x_2,\cdots,x_n) = \boldsymbol{x}&#39;\boldsymbol{A}\boldsymbol{x}
 \]</span></p>
 <p>其中 <span class="math display">\[
 \boldsymbol{A}=
-\left( \begin{matrix}
-a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n}\\
-a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n}\\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
-a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}\\
-\end{matrix} \right),\,
+\left(\begin{matrix}
+  a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n}\\
+  a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n}\\
+  \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+  a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}\\
+\end{matrix}\right),\,
 \boldsymbol{x}=
-\left(
-\begin{array}{c}
-x_1\\
-x_2\\
-\vdots\\
-x_n\\
-\end{array}
-\right)
+\left(\begin{array}{c}
+  x_1\\
+  x_2\\
+  \vdots\\
+  x_n\\
+\end{array}\right)
 \]</span></p>
 <p>矩阵<span
 class="math inline">\(\boldsymbol{A}\)</span>是对称阵，即<span
@@ -354,28 +352,24 @@ class="math inline">\(\left\{ \boldsymbol{f}_1, \boldsymbol{f}_2,
 \cdots, \boldsymbol{f}_n \right\}\)</span>，向量<span
 class="math inline">\(\boldsymbol{x}\)</span>在两组基下的坐标有如下关系
 <span class="math display">\[
-\left(
-\begin{array}{c}
-x_1\\
-x_2\\
-\vdots\\
-x_n\\
-\end{array}
-\right) =
-\left( \begin{matrix}
-c_{11} &amp; c_{12} &amp; \cdots &amp; c_{1n}\\
-c_{21} &amp; c_{22} &amp; \cdots &amp; c_{2n}\\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
-c_{n1} &amp; c_{n2} &amp; \cdots &amp; c_{nn}\\
-\end{matrix} \right)
-\left(
-\begin{array}{c}
-y_1\\
-y_2\\
-\vdots\\
-y_n\\
-\end{array}
-\right)
+\left(\begin{array}{c}
+  x_1\\
+  x_2\\
+  \vdots\\
+  x_n\\
+\end{array}\right) =
+\left(\begin{matrix}
+  c_{11} &amp; c_{12} &amp; \cdots &amp; c_{1n}\\
+  c_{21} &amp; c_{22} &amp; \cdots &amp; c_{2n}\\
+  \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+  c_{n1} &amp; c_{n2} &amp; \cdots &amp; c_{nn}\\
+\end{matrix}\right)
+\left(\begin{array}{c}
+  y_1\\
+  y_2\\
+  \vdots\\
+  y_n\\
+\end{array}\right)
 \]</span> <span class="math display">\[
 \boldsymbol{x}=\boldsymbol{C}\boldsymbol{y}
 \]</span></p>
@@ -468,12 +462,10 @@ class="math inline">\(f\)</span>的秩<span
 class="math inline">\(r\)</span>，实对称矩阵<span
 class="math inline">\(\boldsymbol{A}\)</span>是半正定阵当且仅当它合同于对角阵
 <span class="math display">\[
-\left(
-\begin{matrix}
-\boldsymbol{I}_r &amp; \boldsymbol{O}\\
-\boldsymbol{O} &amp; \boldsymbol{O}
-\end{matrix}
-\right)
+\left(\begin{matrix}
+  \boldsymbol{I}_r &amp; \boldsymbol{O}\\
+  \boldsymbol{O} &amp; \boldsymbol{O}\\
+\end{matrix}\right)
 \]</span></li>
 <li>实二次型<span
 class="math inline">\(f(x_1,x_2,\cdots,x_n)\)</span>半负定的充要条件是<span
@@ -482,22 +474,20 @@ class="math inline">\(f\)</span>的秩<span
 class="math inline">\(r\)</span>，实对称矩阵<span
 class="math inline">\(\boldsymbol{A}\)</span>是半负定阵当且仅当它合同于对角阵
 <span class="math display">\[
-\left(
-\begin{matrix}
--\boldsymbol{I}_r &amp; \boldsymbol{O}\\
-\boldsymbol{O} &amp; \boldsymbol{O}
-\end{matrix}
-\right)
+\left(\begin{matrix}
+  -\boldsymbol{I}_r &amp; \boldsymbol{O}\\
+  \boldsymbol{O} &amp; \boldsymbol{O}\\
+\end{matrix}\right)
 \]</span></li>
 </ol>
 <p><span class="math inline">\(n\)</span>阶矩阵<span
 class="math inline">\(\boldsymbol{A}=(a_{ij})\)</span>的<span
 class="math inline">\(n\)</span>个子式 <span class="math display">\[
 \begin{vmatrix}
-a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1k}\\
-a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2k}\\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
-a_{k1} &amp; a_{k2} &amp; \cdots &amp; a_{kk}\\
+  a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1k}\\
+  a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2k}\\
+  \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+  a_{k1} &amp; a_{k2} &amp; \cdots &amp; a_{kk}\\
 \end{vmatrix}
 \,(k=1,2,\cdots,n)
 \]</span></p>
@@ -586,7 +576,7 @@ class="math inline">\(n\)</span>个顺序主子式全大于零。</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:49</span>
+    <span title="站点阅读时长">3:50</span>
   </span>
 </div>
 

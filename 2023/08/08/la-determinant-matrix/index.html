@@ -21,15 +21,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="开个头 我打算将线性代数的重要内容梳理一遍，根据自己的理解将核心内容（简单的内容就不多费笔墨了）描述出来，尽量少摆公式。主要参考资料是复旦大学的高等代数教材，可以搭配谢启鸿的视频学习。">
+    <meta name="description" content="开个头 我打算将线性代数的重要内容过一遍，根据自己的理解将核心内容（简单的内容就不多费笔墨了）描述出来，尽量少摆公式。主要参考资料是复旦大学的高等代数教材，可以搭配谢启鸿的视频学习。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性代数：行列式和矩阵">
 <meta property="og:url" content="https://panqiincs.me/2023/08/08/la-determinant-matrix/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="开个头 我打算将线性代数的重要内容梳理一遍，根据自己的理解将核心内容（简单的内容就不多费笔墨了）描述出来，尽量少摆公式。主要参考资料是复旦大学的高等代数教材，可以搭配谢启鸿的视频学习。">
+<meta property="og:description" content="开个头 我打算将线性代数的重要内容过一遍，根据自己的理解将核心内容（简单的内容就不多费笔墨了）描述出来，尽量少摆公式。主要参考资料是复旦大学的高等代数教材，可以搭配谢启鸿的视频学习。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-07T18:22:41.000Z">
-<meta property="article:modified_time" content="2023-08-17T07:19:48.448Z">
+<meta property="article:modified_time" content="2023-08-18T13:28:44.332Z">
 <meta property="article:author" content="辛未羊">
 <meta property="article:tag" content="矩阵乘法">
 <meta property="article:tag" content="行列式">
@@ -304,20 +304,20 @@
     
     
     <div class="post-body" itemprop="articleBody"><h2 id="开个头">开个头</h2>
-<p>我打算将线性代数的重要内容梳理一遍，根据自己的理解将核心内容（简单的内容就不多费笔墨了）描述出来，尽量少摆公式。主要参考资料是复旦大学的<a
+<p>我打算将线性代数的重要内容过一遍，根据自己的理解将核心内容（简单的内容就不多费笔墨了）描述出来，尽量少摆公式。主要参考资料是复旦大学的<a
 target="_blank" rel="noopener" href="https://book.douban.com/subject/3171745/">高等代数教材</a>，可以搭配<a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mJ411r7ZB/">谢启鸿的视频</a>学习。</p>
 <span id="more"></span>
 <h2 id="行列式">行列式</h2>
-<p>网络上似乎有个定论，<strong>第一章讲行列式的线性代数教材都不是好教材</strong>，但复旦大学这本是例外。它从求解二元一次方程组出发，引入二阶行列式，总结出二阶行列式的性质，然后根据这些性质，用二阶行列式来定义三阶行列式，最后将定义和性质推广到一般的<span
+<p>网上似乎有个定论，<strong>第一章讲行列式的线性代数教材都不是好教材</strong>，但复旦大学这本是例外。它从求解二元一次方程组出发，引入二阶行列式，总结出二阶行列式的性质，然后根据这些性质，用二阶行列式来定义三阶行列式，最后将定义和性质推广到一般的<span
 class="math inline">\(n\)</span>阶行列式。<span
 class="math inline">\(n\)</span>阶行列式可以用<span
 class="math inline">\(n-1\)</span>阶行列式定义，最终可以将高阶行列式的计算归结到二阶行列式的计算，这种<strong>递归定义</strong>比逆序数那种变态的定义更容易接受，不至于让初来乍到人生地不熟的大一新生绝望。</p>
 <p>恩，还是堆几个公式吧。二元一次方程组 <span class="math display">\[
 \left\{
 \begin{array}{}
-a_{11}x_1 + a_{12}x_2 =  b_1\\
-a_{21}x_1 + a_{22}x_2 =  b_2
+  a_{11}x_1 + a_{12}x_2 =  b_1\\
+  a_{21}x_1 + a_{22}x_2 =  b_2\\
 \end{array}
 \right.
 \]</span></p>
@@ -326,23 +326,23 @@ class="math display">\[
 x_1 = \frac{
 \begin{vmatrix}
   b_1 &amp; a_{12}\\
-  b_2 &amp; a_{22}
+  b_2 &amp; a_{22}\\
 \end{vmatrix}
 }{
 \begin{vmatrix}
   a_{11} &amp; a_{12}\\
-  a_{21} &amp; a_{22}
+  a_{21} &amp; a_{22}\\
 \end{vmatrix}
 },\,
 x_2 = \frac{
 \begin{vmatrix}
   a_{11} &amp; b_1\\
-  a_{21} &amp; b_2
+  a_{21} &amp; b_2\\
 \end{vmatrix}
 }{
 \begin{vmatrix}
   a_{11} &amp; a_{12}\\
-  a_{21} &amp; a_{22}
+  a_{21} &amp; a_{22}\\
 \end{vmatrix}
 }
 \]</span></p>
@@ -362,24 +362,24 @@ x_2 = \frac{
 = a_{11}
 \begin{vmatrix}
   a_{22} &amp; a_{23}\\
-  a_{32} &amp; a_{33}
+  a_{32} &amp; a_{33}\\
 \end{vmatrix}
 - a_{21}
 \begin{vmatrix}
   a_{12} &amp; a_{13}\\
-  a_{32} &amp; a_{33}
+  a_{32} &amp; a_{33}\\
 \end{vmatrix}
 + a_{31}
 \begin{vmatrix}
   a_{12} &amp; a_{13}\\
-  a_{22} &amp; a_{23}
+  a_{22} &amp; a_{23}\\
 \end{vmatrix}
 \]</span></p>
 <p>在上述过程中，很自然地看出行列式按一行或一列展开的展开式，后面的低阶行列式是<strong>代数余子式</strong>。另外，<span
 class="math inline">\(n\)</span>元线性方程组的解可以用非常整齐的行列式表示，这就是在理论上非常重要的<strong>Cramer法则</strong>。从定义式计算行列式很复杂，要反复利用性质，尽可能多地使行列式的元素变为零，从而简化计算。</p>
 <h2 id="矩阵">矩阵</h2>
-<p>矩阵的所有运算中，乘法是重点。利用矩阵乘法法则，线性方程组可以用非常简洁的形式表示。方阵的逆阵的计算与伴随矩阵和行列式有关，矩阵行列式不等于零时逆矩才存在。</p>
-<p>Gauss消元法解线性方程组的三种基本操作对应矩阵的3种变换，称为<strong>初等变换</strong>，通过初等行变换和初等列变换可以将矩阵化为阶梯形矩阵。初等变换对应着初等矩阵，将矩阵左乘初等矩阵相当与对它做初等行变换，将矩阵右乘初等矩阵相当与对它做初等列变换。经有限次初等变换得到的矩阵与原矩阵<strong>等价</strong>，或称两个矩阵相抵。根据初等变换法可以得到求逆矩阵的高效算法。</p>
+<p>矩阵的所有运算中，乘法是重点。利用矩阵乘法法则，线性方程组可以表示成非常简洁的形式。方阵逆矩阵的计算与伴随矩阵和行列式有关，矩阵行列式不等于零时逆矩阵才存在。</p>
+<p>Gauss消元法解线性方程组的三种基本操作对应矩阵的三种变换，称为<strong>初等变换</strong>，通过初等行变换和初等列变换可以将矩阵化为阶梯形矩阵。初等变换对应着初等矩阵，将矩阵左乘初等矩阵相当与对它做初等行变换，将矩阵右乘初等矩阵相当与对它做初等列变换。经有限次初等变换得到的矩阵与原矩阵<strong>等价</strong>，或称两个矩阵相抵。根据初等变换法可以得到求逆矩阵的高效算法。</p>
 <p>将矩阵分块可以简化矩阵运算。分块矩阵的乘法与普通矩阵的乘法在形式上类似，只是在处理块与块之间的乘法时必须保证符合矩阵相乘的条件。看一个例子就能明白，下面这两个矩阵，左边分成<span
 class="math inline">\(2 \times 3\)</span>个块，右边分成<span
 class="math inline">\(3 \times
@@ -388,48 +388,51 @@ class="math inline">\(2 \times
 2\)</span>块，每一块为对应位置的分块相乘的结果，各个相乘的小块也符合乘法规则。
 <span class="math display">\[
 \left(\begin{array}{cc|c|cc}
-1 &amp; 0 &amp; 2 &amp; -1 &amp; 0\\
-0 &amp; 1 &amp; 1 &amp; -2 &amp; 1\\
-\hline
-0 &amp; 0 &amp; 3 &amp; 1 &amp; 0\\
-1 &amp; 0 &amp; -2 &amp; 0 &amp; 1
+  1 &amp; 0 &amp; 2 &amp; -1 &amp; 0\\
+  0 &amp; 1 &amp; 1 &amp; -2 &amp; 1\\
+  \hline
+  0 &amp; 0 &amp; 3 &amp; 1 &amp; 0\\
+  1 &amp; 0 &amp; -2 &amp; 0 &amp; 1\\
 \end{array}\right)
 \left(\begin{array}{cc|c}
-1 &amp; 0 &amp; 2\\
-0 &amp; 1 &amp; 0\\
-\hline
--1 &amp; 1 &amp; 3\\
-\hline
-0 &amp; 1 &amp; -1\\
-2 &amp; 0 &amp; 1
+  1 &amp; 0 &amp; 2\\
+  0 &amp; 1 &amp; 0\\
+  \hline
+  -1 &amp; 1 &amp; 3\\
+  \hline
+  0 &amp; 1 &amp; -1\\
+  2 &amp; 0 &amp; 1\\
 \end{array}\right)
 \]</span></p>
 <p>线性代数中很多地方不经意间用到了分块矩阵相乘的结果，例如很常见的
 <span class="math display">\[
-\left(\begin{array}{c c c}
-a_{11} &amp; a_{12} &amp; a_{13}\\
-a_{21} &amp; a_{22} &amp; a_{23}\\
-a_{31} &amp; a_{32} &amp; a_{33}
+\left(\begin{array}{ccc}
+  a_{11} &amp; a_{12} &amp; a_{13}\\
+  a_{21} &amp; a_{22} &amp; a_{23}\\
+  a_{31} &amp; a_{32} &amp; a_{33}\\
 \end{array}\right)
 \left(\begin{array}{c}
-x_1\\
-x_2\\
-x_3
+  x_1\\
+  x_2\\
+  x_3\\
 \end{array}\right)
-= x_1 \left(\begin{array}{c}
-a_{11}\\
-a_{21}\\
-a_{31}
+= x_1
+\left(\begin{array}{c}
+  a_{11}\\
+  a_{21}\\
+  a_{31}\\
 \end{array}\right)
-+ x_2 \left(\begin{array}{c}
-a_{12}\\
-a_{22}\\
-a_{32}
++ x_2
+\left(\begin{array}{c}
+  a_{12}\\
+  a_{22}\\
+  a_{32}\\
 \end{array}\right)
-+ x_3 \left(\begin{array}{c}
-a_{13}\\
-a_{23}\\
-a_{33}
++ x_3
+\left(\begin{array}{c}
+  a_{13}\\
+  a_{23}\\
+  a_{33}\\
 \end{array}\right)
 \]</span></p>
 <p>即，矩阵和列向量相乘等价于矩阵各个列向量的线性组合。</p>
@@ -513,7 +516,7 @@ a_{33}
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:49</span>
+    <span title="站点阅读时长">3:50</span>
   </span>
 </div>
 
