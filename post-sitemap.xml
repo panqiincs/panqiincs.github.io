@@ -9,8 +9,16 @@
 
 
     <url>
+        <loc>https://panqiincs.me/2023/08/15/la-eigenvalue/</loc>
+        <lastmod>2023-08-19T14:19:59.866Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://panqiincs.me/2023/08/17/la-quadratic-form/</loc>
-        <lastmod>2023-08-18T13:33:21.551Z</lastmod>
+        <lastmod>2023-08-19T14:17:58.160Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -19,14 +27,6 @@
     <url>
         <loc>https://panqiincs.me/2023/08/16/la-canonical-form/</loc>
         <lastmod>2023-08-18T13:32:16.861Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2023/08/15/la-eigenvalue/</loc>
-        <lastmod>2023-08-18T13:31:31.701Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

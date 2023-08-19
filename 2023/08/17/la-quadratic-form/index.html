@@ -29,7 +29,7 @@
 <meta property="og:description" content="二次型 二次型是个多项式，其中所有项的次数都是二次的，这里的「型」表示齐次多项式。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-17T02:07:13.000Z">
-<meta property="article:modified_time" content="2023-08-18T13:33:21.551Z">
+<meta property="article:modified_time" content="2023-08-19T14:17:58.160Z">
 <meta property="article:author" content="辛未羊">
 <meta property="article:tag" content="正定">
 <meta property="article:tag" content="二次型">
@@ -127,7 +127,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%AC%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">二次型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%83%AF%E6%80%A7%E5%AE%9A%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">惯性定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%AE%9A%E5%9E%8B%E4%B8%8E%E6%AD%A3%E5%AE%9A%E7%9F%A9%E9%98%B5"><span class="nav-number">3.</span> <span class="nav-text">正定型与正定矩阵</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%AC%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">二次型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%83%AF%E6%80%A7%E5%AE%9A%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">惯性定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%AE%9A%E5%9E%8B%E4%B8%8E%E6%AD%A3%E5%AE%9A%E7%9F%A9%E9%98%B5"><span class="nav-number">3.</span> <span class="nav-text">正定型与正定矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hermite%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">Hermite型</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -286,7 +286,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4k</span>
+      <span>4.6k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -403,7 +403,7 @@ class="math inline">\(n\)</span>阶对称阵，则一定存在这样的非奇异
 class="math inline">\(\boldsymbol{C}\)</span>，使<span
 class="math inline">\(\boldsymbol{C}&#39;\boldsymbol{A}\boldsymbol{C}\)</span>为对角阵。</p>
 <h2 id="惯性定理">惯性定理</h2>
-<p>任意一个实对称阵合同于一个对角阵，不妨设实对称矩阵<span
+<p>先讨论<strong>实数域</strong>上的二次型，即<strong>实二次型</strong>。任意一个实对称阵合同于一个对角阵，不妨设实对称矩阵<span
 class="math inline">\(\boldsymbol{A}\)</span>已经是对称阵： <span
 class="math display">\[
 \boldsymbol{A}=\mathrm{diag}\{d_1,d_2,\cdots,d_r,0,\cdots,0\}
@@ -439,9 +439,16 @@ class="math inline">\(r\)</span>是该二次型的<strong>秩</strong>，<span
 class="math inline">\(p\)</span>是它的<strong>正惯性指数</strong>，<span
 class="math inline">\(q=r-p\)</span>是它的<strong>负惯性指数</strong>，<span
 class="math inline">\(s=p-q\)</span>称为<span
-class="math inline">\(f\)</span>的<strong>符号差</strong>。秩与符号差（或正负惯性指数）是实对称阵在合同关系下的<strong>全系不变量</strong>。</p>
+class="math inline">\(f\)</span>的<strong>符号差</strong>。秩与符号差（或正负惯性指数）是<strong>实对称阵</strong>在合同关系下的<strong>全系不变量</strong>。</p>
+<p>再讨论复数域上的二次型，即<strong>复二次型</strong>。由于复二次型
+<span class="math display">\[
+f(x_1,x_2,\cdots,x_n) = d_1 x_1^2 + d_1 x_2^2 + \cdots + d_r x_r^2
+\]</span></p>
+<p>必可以化为<span
+class="math inline">\(z_1^2+z_2^2+\cdots+z_r^2\)</span>的形式，所以秩<span
+class="math inline">\(r\)</span>是是<strong>复对称阵</strong>在合同关系下唯一的<strong>全系不变量</strong>。</p>
 <h2 id="正定型与正定矩阵">正定型与正定矩阵</h2>
-<p>这里讨论的都是实二次型。二次型和矩阵<strong>正定</strong>、<strong>负定</strong>、<strong>半正定</strong>、<strong>半负定</strong>的定义在这里就不列出来了。有如下结论：</p>
+<p>这里讨论的都是<strong>实二次型</strong>。二次型和矩阵<strong>正定</strong>、<strong>负定</strong>、<strong>半正定</strong>、<strong>半负定</strong>的定义在这里就不列出来了。有如下结论：</p>
 <ol type="1">
 <li>实二次型<span
 class="math inline">\(f(x_1,x_2,\cdots,x_n)\)</span>正定的充要条件是<span
@@ -496,6 +503,22 @@ class="math inline">\(\boldsymbol{A}\)</span>的<strong>顺序主子式</strong>
 class="math inline">\(n\)</span>阶实对称矩阵<span
 class="math inline">\(\boldsymbol{A}\)</span>是正定阵的充要条件是它的<span
 class="math inline">\(n\)</span>个顺序主子式全大于零。</p>
+<h2 id="hermite型">Hermite型</h2>
+<p>复数域上有<span
+class="math inline">\(n\)</span>个变元的二次齐次函数称为Hermite型：
+<span class="math display">\[
+f(x_1,x_2,\cdots,x_n) =
+\sum_{j=1}^{n}\sum_{i=1}^{n}a_{ij}\overline{x_i}x_j
+\]</span></p>
+<p>其中<span
+class="math inline">\(\overline{a}_{ij}=a_{ji}\)</span>。容易验证，虽然变元和系数都是复数域上的，但函数值却总是实数。当变元和系数都在实数域上，<span
+class="math inline">\(f\)</span>就是实二次型。类似地，Hermite型可以写成矩阵相乘的形式
+<span class="math display">\[
+f(x_1,x_2,\cdots,x_n) =
+\overline{\boldsymbol{x}}&#39;\boldsymbol{A}\boldsymbol{x}
+\]</span></p>
+<p>而且满足<span
+class="math inline">\(\overline{\boldsymbol{A}}&#39;=\boldsymbol{A}\)</span>，这样的矩阵称为<strong>Hermite矩阵</strong>。Hermite矩阵和实对称矩阵特性相似，也有很多类似的结论。</p>
 
     </div>
 
@@ -570,13 +593,13 @@ class="math inline">\(n\)</span>个顺序主子式全大于零。</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">252k</span>
+    <span title="站点总字数">254k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:50</span>
+    <span title="站点阅读时长">3:51</span>
   </span>
 </div>
 
