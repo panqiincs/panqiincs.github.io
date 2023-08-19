@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-08-18T13:25:36.903Z</updated>
+  <updated>2023-08-19T16:51:09.987Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://panqiincs.me/2023/08/18/la-inner-product-space/"/>
     <id>https://panqiincs.me/2023/08/18/la-inner-product-space/</id>
     <published>2023-08-18T07:01:12.000Z</published>
-    <updated>2023-08-18T13:25:36.903Z</updated>
+    <updated>2023-08-19T16:51:09.987Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;内积空间&quot;&gt;内积空间&lt;/h2&gt;
@@ -31,6 +31,10 @@
     
     <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
     
+    
+    <category term="正定" scheme="https://panqiincs.me/tags/%E6%AD%A3%E5%AE%9A/"/>
+    
+    <category term="正定矩阵" scheme="https://panqiincs.me/tags/%E6%AD%A3%E5%AE%9A%E7%9F%A9%E9%98%B5/"/>
     
     <category term="内积空间" scheme="https://panqiincs.me/tags/%E5%86%85%E7%A7%AF%E7%A9%BA%E9%97%B4/"/>
     
