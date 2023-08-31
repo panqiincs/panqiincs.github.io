@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-08-19T16:51:09.987Z</updated>
+  <updated>2023-08-31T11:42:55.417Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2023年夏云南自驾游</title>
+    <link href="https://panqiincs.me/2023/08/31/guimao-yunnan-trip/"/>
+    <id>https://panqiincs.me/2023/08/31/guimao-yunnan-trip/</id>
+    <published>2023-08-31T11:01:07.000Z</published>
+    <updated>2023-08-31T11:42:55.417Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;昆明&quot;&gt;昆明&lt;/h2&gt;
+&lt;p&gt;8月23日上午，我们一行四人从桂林出发，从贵州进入云南，晚上11点抵达昆明的酒店，路上花了大概13小时。春城夜晚温度在20度以下，很凉爽，是避暑的好地方。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="旅行" scheme="https://panqiincs.me/tags/%E6%97%85%E8%A1%8C/"/>
+    
+  </entry>
   
   <entry>
     <title>线性代数：内积空间</title>
@@ -461,33 +481,6 @@ stability）。&lt;/p&gt;</summary>
     
     
     <category term="字符串匹配" scheme="https://panqiincs.me/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CPA安全方案的构建与安全性证明</title>
-    <link href="https://panqiincs.me/2022/11/25/crypto-cpa-security/"/>
-    <id>https://panqiincs.me/2022/11/25/crypto-cpa-security/</id>
-    <published>2022-11-25T00:39:36.000Z</published>
-    <updated>2023-03-22T13:32:18.840Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;安全性定义&quot;&gt;安全性定义&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;选择明文攻击&lt;/strong&gt;（Chosen-Plaintext
-Attack）指敌手能够选择不同的明文作为输入提供给加密算法，得到相应的密文，以此确定其他密文对应的明文，从而破解方案。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
-    
-    
-    <category term="归约证明" scheme="https://panqiincs.me/tags/%E5%BD%92%E7%BA%A6%E8%AF%81%E6%98%8E/"/>
-    
-    <category term="密码学" scheme="https://panqiincs.me/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
-    
-    <category term="选择明文攻击" scheme="https://panqiincs.me/tags/%E9%80%89%E6%8B%A9%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB/"/>
-    
-    <category term="伪随机函数" scheme="https://panqiincs.me/tags/%E4%BC%AA%E9%9A%8F%E6%9C%BA%E5%87%BD%E6%95%B0/"/>
     
   </entry>
   
