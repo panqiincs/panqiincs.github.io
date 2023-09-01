@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+  <meta name="baidu-site-verification" content="code-J9YbvwThrX">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文是Reddit r&#x2F;ControlTheory一篇帖子的总结。这篇帖子以倒立摆为例，介绍如何在MATLAB中用解微分方程的方式做控制系统仿真，并与常规仿真方法的结果做比较。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用ode45函数做控制系统仿真">
+<meta property="og:url" content="https://panqiincs.me/2023/09/01/pendulum-simulation/index.html">
+<meta property="og:site_name" content="辛未羊的网络日志">
+<meta property="og:description" content="本文是Reddit r&#x2F;ControlTheory一篇帖子的总结。这篇帖子以倒立摆为例，介绍如何在MATLAB中用解微分方程的方式做控制系统仿真，并与常规仿真方法的结果做比较。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-01T05:50:57.000Z">
+<meta property="article:modified_time" content="2023-09-01T05:54:37.369Z">
+<meta property="article:author" content="辛未羊">
+<meta property="article:tag" content="matlab">
+<meta property="article:tag" content="微分方程">
+<meta property="article:tag" content="控制系统仿真">
+<meta property="article:tag" content="ode45">
+<meta property="article:tag" content="lsim">
+<meta property="article:tag" content="倒立摆">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://panqiincs.me/2023/09/01/pendulum-simulation/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://panqiincs.me/2023/09/01/pendulum-simulation/","path":"2023/09/01/pendulum-simulation/","title":"用ode45函数做控制系统仿真"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>用ode45函数做控制系统仿真 | 辛未羊的网络日志</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-39536948-1","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "blyiajm41p");
+</script>
+
+
+
+<link rel="dns-prefetch" href="https://vercel.panqiincs.me">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="辛未羊的网络日志" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">辛未羊的网络日志</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-series"><a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="辛未羊"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">辛未羊</p>
+  <div class="site-description" itemprop="description">记录生活和学习的清静之地</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">125</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">202</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/panqiincs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;panqiincs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          友情链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.kawabangga.com/" title="https:&#x2F;&#x2F;www.kawabangga.com&#x2F;" rel="noopener" target="_blank">卡瓦邦噶</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.boatsky.com/" title="https:&#x2F;&#x2F;www.boatsky.com&#x2F;" rel="noopener" target="_blank">太空船</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.feidaoboke.com/" title="https:&#x2F;&#x2F;www.feidaoboke.com&#x2F;" rel="noopener" target="_blank">飞刀博客</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.ohyee.cc/" title="https:&#x2F;&#x2F;www.ohyee.cc&#x2F;" rel="noopener" target="_blank">OhYee</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://dusays.com/" title="https:&#x2F;&#x2F;dusays.com&#x2F;" rel="noopener" target="_blank">杜老师说</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://h4ck.org.cn/" title="https:&#x2F;&#x2F;h4ck.org.cn&#x2F;" rel="noopener" target="_blank">obaby</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://zyq.today/" title="https:&#x2F;&#x2F;zyq.today&#x2F;" rel="noopener" target="_blank">小乔</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.catchwang.com/" title="https:&#x2F;&#x2F;www.catchwang.com&#x2F;" rel="noopener" target="_blank">云晓晨</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.yt-blog.top/" title="https:&#x2F;&#x2F;www.yt-blog.top&#x2F;" rel="noopener" target="_blank">Fgaoxing</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://panqiincs.me/2023/09/01/pendulum-simulation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="辛未羊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的网络日志">
+      <meta itemprop="description" content="记录生活和学习的清静之地">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="用ode45函数做控制系统仿真 | 辛未羊的网络日志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          用ode45函数做控制系统仿真
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-01 13:50:57" itemprop="dateCreated datePublished" datetime="2023-09-01T13:50:57+08:00">2023-09-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">大学课程</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2023/09/01/pendulum-simulation/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2023/09/01/pendulum-simulation/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>本文是Reddit r/ControlTheory一篇<a
+target="_blank" rel="noopener" href="https://www.reddit.com/r/ControlTheory/comments/l3wpil/matlab_codes_with_ode45_and_linear_control/">帖子</a>的总结。这篇帖子以倒立摆为例，介绍如何在MATLAB中用解微分方程的方式做控制系统仿真，并与常规仿真方法的结果做比较。</p>
+<span id="more"></span>
+<p>所用模型是倒立摆在平衡点附近的近似线性模型，这个模型很常见，从代码中也能很容易看出来，所以我就不再列出。采用反馈控制，将测量输出<span
+class="math inline">\(y\)</span>（本例中就是系统的状态，<span
+class="math inline">\(y=Cx\)</span>，<span
+class="math inline">\(C\)</span>矩阵为单位阵）与参考输入<span
+class="math inline">\(r\)</span>做比较，得到差值，将差值乘以矩阵<span
+class="math inline">\(K\)</span>后，作为倒立摆模型的输入，即 <span
+class="math display">\[
+u = K(r-y)
+\]</span></p>
+<p>控制本质上就是解微分方程，MATLAB解微分方程最常用的是<code>ode45</code>函数，它求解的微分方程的标准形式为<span
+class="math inline">\(y&#39;=f(t,y)\)</span>，右边的表达式是时间<span
+class="math inline">\(t\)</span>和变量<span
+class="math inline">\(y\)</span>的函数。我以前被这个表达式迷惑了，以为它只能求解没有外部输入的非强迫系统（unforced
+system），控制系统一般有外部输入信号，所以无法用<code>ode45</code>做控制系统仿真。其实不然，右边的表达式可以非常灵活，能够处理有外部输入信号的情况。全部代码如下：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 倒立摆近似线性模型的参数</span></span><br><span class="line">m = <span class="number">1</span>; M = <span class="number">5</span>; L = <span class="number">2</span>; g = <span class="number">10</span>;</span><br><span class="line">A = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>;</span><br><span class="line">     <span class="number">0</span>, <span class="number">-1</span>/M, m*g/M, <span class="number">0</span>;</span><br><span class="line">     <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>;</span><br><span class="line">     <span class="number">0</span>, <span class="number">-1</span>/(M*L), (m+M)*g/(M*L), <span class="number">0</span>];</span><br><span class="line">B = [<span class="number">0</span>; <span class="number">1</span>/M; <span class="number">0</span>; <span class="number">1</span>/(M*L)];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x0 = [<span class="number">0</span>; <span class="number">0</span>; <span class="built_in">pi</span>+<span class="number">0.1</span>; <span class="number">0.5</span>];  <span class="comment">% 初始条件</span></span><br><span class="line">tspan = <span class="number">0</span>:<span class="number">0.001</span>:<span class="number">10</span>;        <span class="comment">% 仿真时间</span></span><br><span class="line">r = [<span class="number">0</span>; <span class="number">0</span>; <span class="built_in">pi</span>; <span class="number">0</span>];         <span class="comment">% 参考输入</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 配置极点，得到状态反馈矩阵K</span></span><br><span class="line">p = [<span class="number">-1.5</span>; <span class="number">-1.6</span>; <span class="number">-1.7</span>; <span class="number">-1.8</span>];</span><br><span class="line">K = place(A, B, p);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 输入给系统的控制信号为u = K*(r-y)，将它作为模型的参数</span></span><br><span class="line">[t, y] = ode45(@(t, y) model(y, m, M, L, g, K*(r-y)), tspan, x0);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 绘制各个状态值随时间变化的曲线</span></span><br><span class="line">x = y(:, <span class="number">1</span>); x_dot = y(:, <span class="number">2</span>);</span><br><span class="line">theta = y(:, <span class="number">3</span>); theta_dot = y(:, <span class="number">4</span>);</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">1</span>); <span class="built_in">hold</span> on</span><br><span class="line"><span class="built_in">plot</span>(t, x, <span class="string">&#x27;r&#x27;</span>, t, x_dot, <span class="string">&#x27;g&#x27;</span>); grid on;</span><br><span class="line"><span class="built_in">plot</span>(t, theta, <span class="string">&#x27;m&#x27;</span>, t, theta_dot, <span class="string">&#x27;k&#x27;</span>); grid on</span><br><span class="line"></span><br><span class="line"><span class="comment">% 倒立摆的微分方程模型，形式可以非常灵活</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dydt</span> = <span class="title">model</span><span class="params">(y, m, M, L, g, u)</span></span></span><br><span class="line">    dydt = <span class="built_in">zeros</span>(<span class="number">4</span>, <span class="number">1</span>);</span><br><span class="line">    dydt(<span class="number">1</span>) = y(<span class="number">2</span>);</span><br><span class="line">    dydt(<span class="number">2</span>) = (<span class="number">-1</span>/M)*y(<span class="number">2</span>) + (m*g/M)*(y(<span class="number">3</span>)-<span class="built_in">pi</span>) + (<span class="number">1</span>/M)*u;</span><br><span class="line">    dydt(<span class="number">3</span>) = y(<span class="number">4</span>);</span><br><span class="line">    dydt(<span class="number">4</span>) = (<span class="number">-1</span>/(M*L))*y(<span class="number">2</span>) + ((m+M)*g/(M*L))*(y(<span class="number">3</span>)-<span class="built_in">pi</span>) + (<span class="number">1</span>/(M*L))*u;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>MATLAB中对这样的系统做仿真一般用<code>lsim</code>函数，因为它可以自定义输入信号，还可以包含初始条件。由于该线性模型是平衡点附近的近似模型，本例中的初始条件<span
+class="math inline">\(x_0 \ne
+0\)</span>，不是零点，因此模型变成如下形式： <span
+class="math display">\[
+\dot{x} = A(x-x_0) + Bu
+\]</span></p>
+<p>将<span class="math inline">\(u = K(r-y)=K(r-Cx)\)</span>代入得：
+<span class="math display">\[
+\dot{x} = (A-BKC)x+BKr-Ax_0
+\]</span></p>
+<p>本文使用<code>lsim</code>函数的接口为：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[y, tOut, x] = lsim(sys, u, t, x0)</span><br></pre></td></tr></table></figure>
+<p>右边的<span
+class="math inline">\(BKr-Ax_0\)</span>并不是模型标准表达式中的<span
+class="math inline">\(Bu\)</span>形式，无法直接构成<code>lsim</code>函数的<code>u</code>参数。可以通过小技巧变成如下形式：
+<span class="math display">\[
+\dot{x} = (A-BKC)x+\left[BK,-Ax_0\right]
+\begin{bmatrix}
+r\\
+1\\
+\end{bmatrix}
+\]</span></p>
+<p>即扩展输入信号<span class="math inline">\(r\)</span>，在末尾加个<span
+class="math inline">\(1\)</span>，构造成一个「虚拟」输入信号，将它作为<code>lsim</code>的<code>u</code>参数，<span
+class="math inline">\(\left[BK,-Ax_0\right]\)</span>成了和输入信号相乘的<span
+class="math inline">\(B\)</span>矩阵。因此，得到如下仿真代码：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 倒立摆近似线性模型的参数</span></span><br><span class="line">m = <span class="number">1</span>; M = <span class="number">5</span>; L = <span class="number">2</span>; g = <span class="number">10</span>;</span><br><span class="line">A = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>;</span><br><span class="line">     <span class="number">0</span>, <span class="number">-1</span>/M, m*g/M, <span class="number">0</span>;</span><br><span class="line">     <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>;</span><br><span class="line">     <span class="number">0</span>, <span class="number">-1</span>/(M*L), (m+M)*g/(M*L), <span class="number">0</span>];</span><br><span class="line">B = [<span class="number">0</span>; <span class="number">1</span>/M; <span class="number">0</span>; <span class="number">1</span>/(M*L)];</span><br><span class="line">C = <span class="built_in">eye</span>(<span class="built_in">size</span>(A));</span><br><span class="line"></span><br><span class="line"><span class="comment">% 配置极点，得到状态反馈矩阵K</span></span><br><span class="line">p = [<span class="number">-1.5</span>; <span class="number">-1.6</span>; <span class="number">-1.7</span>; <span class="number">-1.8</span>];</span><br><span class="line">K = place(A, B, p);</span><br><span class="line"></span><br><span class="line">x0 = [<span class="number">0</span>; <span class="number">0</span>; <span class="built_in">pi</span>+<span class="number">0.1</span>; <span class="number">0.5</span>];  <span class="comment">% 初始条件</span></span><br><span class="line">tspan = <span class="number">0</span>:<span class="number">0.001</span>:<span class="number">10</span>;        <span class="comment">% 仿真时间</span></span><br><span class="line">r = [<span class="number">0</span>; <span class="number">0</span>; <span class="built_in">pi</span>; <span class="number">0</span>];         <span class="comment">% 参考输入</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 为lsim构造合适的u参数</span></span><br><span class="line">r_t = [r; <span class="number">1</span>] * <span class="built_in">ones</span>(<span class="built_in">size</span>(tspan));</span><br><span class="line"><span class="comment">% 闭环系统的模型</span></span><br><span class="line">sys_cl = ss(A-B*K*C, [B*K, -A*x0], C, <span class="number">0</span>);</span><br><span class="line">[y, tspan, x] = lsim(sys_cl, r_t, tspan, x0);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 绘制各个状态值随时间变化的曲线</span></span><br><span class="line"><span class="built_in">figure</span>(<span class="number">2</span>); <span class="built_in">hold</span> on</span><br><span class="line"><span class="built_in">plot</span>(tspan, y(:, <span class="number">1</span>), <span class="string">&#x27;r&#x27;</span>, tspan, y(:, <span class="number">2</span>), <span class="string">&#x27;g&#x27;</span>); grid on;</span><br><span class="line"><span class="built_in">plot</span>(tspan, y(:, <span class="number">3</span>), <span class="string">&#x27;m&#x27;</span>, tspan, y(:, <span class="number">4</span>), <span class="string">&#x27;k&#x27;</span>); grid on;</span><br></pre></td></tr></table></figure>
+<p>可以验证，用<code>ode45</code>和<code>lsim</code>得到的结果完全一样。对比来看，<code>lsim</code>是MATLAB中专门用于控制系统仿真的函数，使用更方便，<code>ode45</code>则更通用，可以做更复杂更灵活的仿真，如事件触发控制（event-triggered
+control）。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>辛未羊
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://panqiincs.me/2023/09/01/pendulum-simulation/" title="用ode45函数做控制系统仿真">https://panqiincs.me/2023/09/01/pendulum-simulation/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/matlab/" rel="tag"># matlab</a>
+              <a href="/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" rel="tag"># 微分方程</a>
+              <a href="/tags/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%BB%BF%E7%9C%9F/" rel="tag"># 控制系统仿真</a>
+              <a href="/tags/ode45/" rel="tag"># ode45</a>
+              <a href="/tags/lsim/" rel="tag"># lsim</a>
+              <a href="/tags/%E5%80%92%E7%AB%8B%E6%91%86/" rel="tag"># 倒立摆</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/08/31/guimao-yunnan-trip/" rel="prev" title="2023年夏云南自驾游">
+                  <i class="fa fa-angle-left"></i> 2023年夏云南自驾游
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2013 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">辛未羊</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">262k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:58</span>
+  </span>
+</div>
+
+
+  <div>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id: "JjD4gEghP0h7Vn4U",ck: "JjD4gEghP0h7Vn4U"})</script>
+  </div>
+
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"https://vercel.panqiincs.me","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"欢迎留言交流","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/2023/09/01/pendulum-simulation/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>

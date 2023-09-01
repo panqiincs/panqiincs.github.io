@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-08-31T12:01:03.237Z</updated>
+  <updated>2023-09-01T05:54:37.369Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用ode45函数做控制系统仿真</title>
+    <link href="https://panqiincs.me/2023/09/01/pendulum-simulation/"/>
+    <id>https://panqiincs.me/2023/09/01/pendulum-simulation/</id>
+    <published>2023-09-01T05:50:57.000Z</published>
+    <updated>2023-09-01T05:54:37.369Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文是Reddit r/ControlTheory一篇&lt;a
+href=&quot;https://www.reddit.com/r/ControlTheory/comments/l3wpil/matlab_codes_with_ode45_and_linear_control/&quot;&gt;帖子&lt;/a&gt;的总结。这篇帖子以倒立摆为例，介绍如何在MATLAB中用解微分方程的方式做控制系统仿真，并与常规仿真方法的结果做比较。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
+    
+    
+    <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
+    
+    <category term="微分方程" scheme="https://panqiincs.me/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/"/>
+    
+    <category term="控制系统仿真" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%BB%BF%E7%9C%9F/"/>
+    
+    <category term="ode45" scheme="https://panqiincs.me/tags/ode45/"/>
+    
+    <category term="lsim" scheme="https://panqiincs.me/tags/lsim/"/>
+    
+    <category term="倒立摆" scheme="https://panqiincs.me/tags/%E5%80%92%E7%AB%8B%E6%91%86/"/>
+    
+  </entry>
   
   <entry>
     <title>2023年夏云南自驾游</title>
@@ -462,25 +492,6 @@ stability）。&lt;/p&gt;</summary>
     
     
     <category term="旅行" scheme="https://panqiincs.me/tags/%E6%97%85%E8%A1%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C标准库中的短模式匹配算法</title>
-    <link href="https://panqiincs.me/2022/12/22/short-pattern-search/"/>
-    <id>https://panqiincs.me/2022/12/22/short-pattern-search/</id>
-    <published>2022-12-21T21:48:01.000Z</published>
-    <updated>2023-02-04T02:43:13.396Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;我要在大数组中匹配特定的连续数字序列，数组元素是16位整型数据，绝大部分序列的长度为2或3。很显然，这和字符串匹配算法很类似，只是元素类型不同。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="程序设计" scheme="https://panqiincs.me/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
-    
-    
-    <category term="字符串匹配" scheme="https://panqiincs.me/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/"/>
     
   </entry>
   
