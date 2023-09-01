@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-09-01T05:54:37.369Z</updated>
+  <updated>2023-09-01T09:29:55.504Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="https://panqiincs.me/2023/09/01/pendulum-simulation/"/>
     <id>https://panqiincs.me/2023/09/01/pendulum-simulation/</id>
     <published>2023-09-01T05:50:57.000Z</published>
-    <updated>2023-09-01T05:54:37.369Z</updated>
+    <updated>2023-09-01T09:29:55.504Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文是Reddit r/ControlTheory一篇&lt;a
-href=&quot;https://www.reddit.com/r/ControlTheory/comments/l3wpil/matlab_codes_with_ode45_and_linear_control/&quot;&gt;帖子&lt;/a&gt;的总结。这篇帖子以倒立摆为例，介绍如何在MATLAB中用解微分方程的方式做控制系统仿真，并与常规仿真方法的结果做比较。&lt;/p&gt;</summary>
+href=&quot;https://www.reddit.com/r/ControlTheory/comments/l3wpil/matlab_codes_with_ode45_and_linear_control/&quot;&gt;帖子&lt;/a&gt;的总结。这篇帖子以倒立摆为例，介绍如何在MATLAB中用解微分方程的方式做控制系统仿真，并与常规仿真方法做比较。&lt;/p&gt;</summary>
     
     
     
@@ -51,7 +51,7 @@ href=&quot;https://www.reddit.com/r/ControlTheory/comments/l3wpil/matlab_codes_w
     <link href="https://panqiincs.me/2023/08/31/guimao-yunnan-trip/"/>
     <id>https://panqiincs.me/2023/08/31/guimao-yunnan-trip/</id>
     <published>2023-08-31T11:01:07.000Z</published>
-    <updated>2023-08-31T12:01:03.237Z</updated>
+    <updated>2023-09-01T06:41:14.971Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;昆明&quot;&gt;昆明&lt;/h2&gt;
