@@ -10,7 +10,7 @@
 
     <url>
         <loc>https://panqiincs.me/2023/08/31/guimao-yunnan-trip/</loc>
-        <lastmod>2023-09-03T12:05:47.364Z</lastmod>
+        <lastmod>2023-09-03T15:28:55.900Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -569,6 +569,14 @@
     </url>
 
     <url>
+        <loc>https://panqiincs.me/2017/07/03/eliminate-unused-functions/</loc>
+        <lastmod>2023-02-04T02:43:13.390Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://panqiincs.me/2017/01/07/bingshen-year-summary/</loc>
         <lastmod>2023-02-04T02:43:13.390Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -586,14 +594,6 @@
 
     <url>
         <loc>https://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/</loc>
-        <lastmod>2023-02-04T02:43:13.390Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2017/07/03/eliminate-unused-functions/</loc>
         <lastmod>2023-02-04T02:43:13.390Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
