@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-10-25T06:14:39.964Z</updated>
+  <updated>2023-11-07T15:29:07.583Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Amann数学分析：基础知识</title>
+    <link href="https://panqiincs.me/2023/11/07/amann-foundations/"/>
+    <id>https://panqiincs.me/2023/11/07/amann-foundations/</id>
+    <published>2023-11-07T14:32:36.000Z</published>
+    <updated>2023-11-07T15:29:07.583Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;2022年初，我想&lt;a
+href=&quot;https://panqiincs.me/2022/02/18/attempt-amann-analysis/&quot;&gt;尝试下Amann的数学分析&lt;/a&gt;。第一章的重点是实数理论，当时觉得太严密、细致和枯燥，就没有读完。最近我开始读第二章，读完后准备写点体会。为了保持完整性，所以将第一章的前沿翻译出来，放在这里占个坑。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>2023年国庆游高中母校</title>
@@ -477,25 +495,6 @@ stability）。&lt;/p&gt;</summary>
     
     <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>2022年夏贵州湖南之行</title>
-    <link href="https://panqiincs.me/2023/01/13/renyin-summer-trip/"/>
-    <id>https://panqiincs.me/2023/01/13/renyin-summer-trip/</id>
-    <published>2023-01-13T09:58:39.000Z</published>
-    <updated>2023-08-01T15:00:51.071Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;2022年盛夏，北海铁三角一起去贵州和湖南玩了一圈，当时因为懒没有写游记。前几天去柳州我都扯出了篇文章，于是觉得去年夏天的旅行也应该记录下来。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
-    
-    
-    <category term="旅行" scheme="https://panqiincs.me/tags/%E6%97%85%E8%A1%8C/"/>
     
   </entry>
   
