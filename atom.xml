@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2023-10-25T06:14:39.964Z</updated>
+  <updated>2024-01-02T14:08:35.493Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2023年网站流量统计</title>
+    <link href="https://panqiincs.me/2024/01/01/guimao-website-traffic/"/>
+    <id>https://panqiincs.me/2024/01/01/guimao-website-traffic/</id>
+    <published>2024-01-01T12:23:00.000Z</published>
+    <updated>2024-01-02T14:08:35.493Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;我从2022年6月开始使用&lt;a
+href=&quot;https://51.la/&quot;&gt;51LA&lt;/a&gt;统计网站访问数据，和Google
+Analytics各有长短，非常好用。2023年是第一个完整统计的自然年，在新年的第一天把2023年的统计数据贴出来给大家看看。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="网站维护" scheme="https://panqiincs.me/categories/%E7%BD%91%E7%AB%99%E7%BB%B4%E6%8A%A4/"/>
+    
+    
+    <category term="blog" scheme="https://panqiincs.me/tags/blog/"/>
+    
+  </entry>
   
   <entry>
     <title>2023年国庆游高中母校</title>
@@ -477,25 +498,6 @@ stability）。&lt;/p&gt;</summary>
     
     <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>2022年夏贵州湖南之行</title>
-    <link href="https://panqiincs.me/2023/01/13/renyin-summer-trip/"/>
-    <id>https://panqiincs.me/2023/01/13/renyin-summer-trip/</id>
-    <published>2023-01-13T09:58:39.000Z</published>
-    <updated>2023-08-01T15:00:51.071Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;2022年盛夏，北海铁三角一起去贵州和湖南玩了一圈，当时因为懒没有写游记。前几天去柳州我都扯出了篇文章，于是觉得去年夏天的旅行也应该记录下来。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
-    
-    
-    <category term="旅行" scheme="https://panqiincs.me/tags/%E6%97%85%E8%A1%8C/"/>
     
   </entry>
   
