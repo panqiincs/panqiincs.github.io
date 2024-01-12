@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://panqiincs.me/2023/03/22/blog-ten-years/</loc>
+        <lastmod>2024-01-12T06:29:27.415Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://panqiincs.me/2024/01/10/second-hand-books/</loc>
         <lastmod>2024-01-12T04:25:40.937Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -259,14 +267,6 @@
     <url>
         <loc>https://panqiincs.me/2021/01/29/open-loop-tf/</loc>
         <lastmod>2023-04-15T09:43:44.366Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2023/03/22/blog-ten-years/</loc>
-        <lastmod>2023-04-15T09:40:26.285Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1011,6 +1011,14 @@
     <url>
         <loc>https://panqiincs.me/2016/09/17/new-life-new-blog/</loc>
         <lastmod>2021-10-01T14:34:41.798Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2021/03/20/continuous-spectrum/</loc>
+        <lastmod>2021-09-19T13:13:20.218Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
