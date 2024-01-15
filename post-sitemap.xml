@@ -9,8 +9,24 @@
 
 
     <url>
+        <loc>https://panqiincs.me/2023/11/09/pendulum-control-design/</loc>
+        <lastmod>2024-01-15T17:15:38.552Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2024/01/01/guimao-website-traffic/</loc>
+        <lastmod>2024-01-15T17:04:26.256Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://panqiincs.me/2024/01/14/goodbye-dormitory/</loc>
-        <lastmod>2024-01-14T14:57:39.562Z</lastmod>
+        <lastmod>2024-01-14T15:06:13.621Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -27,14 +43,6 @@
     <url>
         <loc>https://panqiincs.me/2024/01/10/second-hand-books/</loc>
         <lastmod>2024-01-12T04:25:40.937Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2024/01/01/guimao-website-traffic/</loc>
-        <lastmod>2024-01-02T14:08:35.493Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

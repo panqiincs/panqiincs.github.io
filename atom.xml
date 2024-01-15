@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2024-01-14T14:57:39.562Z</updated>
+  <updated>2024-01-14T15:06:13.621Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -21,10 +21,10 @@
     <link href="https://panqiincs.me/2024/01/14/goodbye-dormitory/"/>
     <id>https://panqiincs.me/2024/01/14/goodbye-dormitory/</id>
     <published>2024-01-14T03:18:43.000Z</published>
-    <updated>2024-01-14T14:57:39.562Z</updated>
+    <updated>2024-01-14T15:06:13.621Z</updated>
     
     
-    <summary type="html">&lt;p&gt;学校昨天开始放寒假，室友已办完离职手续，今天就搬走。学校要将我们这栋公寓改成学生宿舍，3月初我也要搬到校外住。来学校工作后我一直住在这里，已经有四年多了。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;学校昨天开始放寒假，室友已办完离职手续，今天就搬走。学校要将这栋公寓改成学生宿舍，3月初我也要搬到校外住。来学校工作后我一直住在这里，已经有四年多了。&lt;/p&gt;</summary>
     
     
     
@@ -55,7 +55,7 @@
     <link href="https://panqiincs.me/2024/01/01/guimao-website-traffic/"/>
     <id>https://panqiincs.me/2024/01/01/guimao-website-traffic/</id>
     <published>2024-01-01T12:23:00.000Z</published>
-    <updated>2024-01-02T14:08:35.493Z</updated>
+    <updated>2024-01-15T17:04:26.256Z</updated>
     
     
     <summary type="html">&lt;p&gt;我从2022年6月开始使用&lt;a
@@ -68,6 +68,34 @@ Analytics各有长短，非常好用。2023年是第一个完整统计的自然�
     
     
     <category term="blog" scheme="https://panqiincs.me/tags/blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>倒立摆的状态反馈控制</title>
+    <link href="https://panqiincs.me/2023/11/09/pendulum-control-design/"/>
+    <id>https://panqiincs.me/2023/11/09/pendulum-control-design/</id>
+    <published>2023-11-09T07:39:13.000Z</published>
+    <updated>2024-01-15T17:15:38.552Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;系统模型&quot;&gt;系统模型&lt;/h2&gt;
+&lt;p&gt;一阶倒立摆是控制理论教学中常用的被控对象，本文使用它的近似线性模型，状态方程为&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
+    
+    
+    <category term="控制理论" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/"/>
+    
+    <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
+    
+    <category term="控制系统仿真" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%BB%BF%E7%9C%9F/"/>
+    
+    <category term="lsim" scheme="https://panqiincs.me/tags/lsim/"/>
+    
+    <category term="倒立摆" scheme="https://panqiincs.me/tags/%E5%80%92%E7%AB%8B%E6%91%86/"/>
     
   </entry>
   
@@ -457,36 +485,6 @@ href=&quot;https://panqiincs.me/2013/03/22/start-blogging/&quot;&gt;网站第一
     
     
     <category term="blog" scheme="https://panqiincs.me/tags/blog/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>控制系统的输入到状态稳定性</title>
-    <link href="https://panqiincs.me/2023/02/20/input-to-state-stability/"/>
-    <id>https://panqiincs.me/2023/02/20/input-to-state-stability/</id>
-    <published>2023-02-19T16:01:02.000Z</published>
-    <updated>2023-03-22T13:23:37.211Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;概念引入&quot;&gt;概念引入&lt;/h2&gt;
-&lt;p&gt;稳定性是控制理论的核心概念。最近通过阅读Applied Nonlinear
-Control和Nonlinear
-Systems两本书系统学习Lyapunov稳定性理论，想粗读这部分内容可参考&lt;a
-href=&quot;http://web.tuat.ac.jp/~gvlab/ronbun/ReadingGroupControl/mls-lyap.pdf&quot;&gt;这个材料&lt;/a&gt;。本文介绍比较少见的&lt;strong&gt;输入到状态稳定性&lt;/strong&gt;（input-to-state
-stability）。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
-    
-    
-    <category term="控制理论" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/"/>
-    
-    <category term="输入到状态稳定" scheme="https://panqiincs.me/tags/%E8%BE%93%E5%85%A5%E5%88%B0%E7%8A%B6%E6%80%81%E7%A8%B3%E5%AE%9A/"/>
-    
-    <category term="稳定性" scheme="https://panqiincs.me/tags/%E7%A8%B3%E5%AE%9A%E6%80%A7/"/>
-    
-    <category term="lyapunov" scheme="https://panqiincs.me/tags/lyapunov/"/>
     
   </entry>
   
