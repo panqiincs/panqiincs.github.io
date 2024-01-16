@@ -21,15 +21,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="系统模型 一阶倒立摆是控制理论教学中常用的被控对象，本文使用它的近似线性模型，状态方程为">
+    <meta name="description" content="系统模型 一阶倒立摆是控制理论学习中常见的被控对象，本文使用它的近似线性模型，状态方程为">
 <meta property="og:type" content="article">
 <meta property="og:title" content="倒立摆的状态反馈控制">
 <meta property="og:url" content="https://panqiincs.me/2023/11/09/pendulum-control-design/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="系统模型 一阶倒立摆是控制理论教学中常用的被控对象，本文使用它的近似线性模型，状态方程为">
+<meta property="og:description" content="系统模型 一阶倒立摆是控制理论学习中常见的被控对象，本文使用它的近似线性模型，状态方程为">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-09T07:39:13.000Z">
-<meta property="article:modified_time" content="2024-01-16T06:08:48.885Z">
+<meta property="article:modified_time" content="2024-01-16T06:28:19.910Z">
 <meta property="article:author" content="辛未羊">
 <meta property="article:tag" content="控制理论">
 <meta property="article:tag" content="matlab">
@@ -306,7 +306,7 @@
     
     
     <div class="post-body" itemprop="articleBody"><h2 id="系统模型">系统模型</h2>
-<p>一阶倒立摆是控制理论教学中常用的被控对象，本文使用它的近似线性模型，状态方程为</p>
+<p>一阶倒立摆是控制理论学习中常见的被控对象，本文使用它的近似线性模型，状态方程为</p>
 <span id="more"></span>
 <p><span class="math display">\[
 \left[ \begin{array}{c}
@@ -337,14 +337,14 @@ x_4\\
 <p>其中<span class="math inline">\(x_1=x, x_2=\dot{x}, x_3=\theta,
 x_4=\dot{\theta}\)</span>，<span
 class="math inline">\(x\)</span>是小车的位移，<span
-class="math inline">\(\theta\)</span>是杆与垂线的夹角，当<span
-class="math inline">\(\theta=0\)</span>时杆是垂直的。假设传感器测量位移<span
+class="math inline">\(\theta\)</span>是杆与垂直线的夹角。当<span
+class="math inline">\(\theta=0\)</span>时杆是垂直的，所以系统平衡点（系统状态等于零）即为目标位置，这种设置更方便。假设传感器测量位移<span
 class="math inline">\(x\)</span>和夹角<span
 class="math inline">\(\theta\)</span>，而且系统输出<span
 class="math inline">\(y\)</span>由这两个量构成，则该系统在MATLAB中的表示代码如下：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">M = <span class="number">0.5</span>; m = <span class="number">0.2</span>; b = <span class="number">0.1</span>; I = <span class="number">0.006</span>; g = <span class="number">9.8</span>; l = <span class="number">0.3</span>;</span><br><span class="line">den = I*(M+m)+M*m*l^<span class="number">2</span>;</span><br><span class="line">A = [<span class="number">0</span>,        <span class="number">1</span>,                 <span class="number">0</span>,        <span class="number">0</span>;</span><br><span class="line">     <span class="number">0</span>, -(I+m*l^<span class="number">2</span>)*b/den, -(m^<span class="number">2</span>*g*l^<span class="number">2</span>)/den, <span class="number">0</span>;</span><br><span class="line">     <span class="number">0</span>,        <span class="number">0</span>,                 <span class="number">0</span>,        <span class="number">1</span>;</span><br><span class="line">     <span class="number">0</span>,   (m*l*b)/den,     m*g*l*(M+m)/den, <span class="number">0</span>];</span><br><span class="line">B = [      <span class="number">0</span>;</span><br><span class="line">     (I+m*l^<span class="number">2</span>)/den;</span><br><span class="line">           <span class="number">0</span>;</span><br><span class="line">       -m*l/den];</span><br><span class="line">C = [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>;</span><br><span class="line">     <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>];</span><br><span class="line">D = [<span class="number">0</span>;</span><br><span class="line">     <span class="number">0</span>];</span><br><span class="line">sys_open = ss(A, B, C, D);</span><br></pre></td></tr></table></figure>
 <p>开环系统的极点即为矩阵<span
-class="math inline">\(A\)</span>的特征值，可以运行<code>eig(A)</code>命令得到，可知开环系统是不稳定的。运行如下命令可得系统能控矩阵的秩为4，系统是能控的。</p>
+class="math inline">\(A\)</span>的特征值，可以通过运行<code>eig(A)</code>命令得到，可知开环系统是不稳定的。运行如下命令可得系统能控矩阵的秩为4，所以系统是能控的。</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">co = ctrb(sys_open);</span><br><span class="line">rank(co);</span><br></pre></td></tr></table></figure>
 <h2 id="状态反馈控制">状态反馈控制</h2>
 <p>假设系统输入信号为<span
@@ -361,13 +361,14 @@ class="math inline">\(u=-Kx\)</span>则是零输入时的特殊情况。可得�
 class="math inline">\(A-BK\)</span>矩阵的特征值）能够配置到任意位置。如下命令求解出状态反馈矩阵<span
 class="math inline">\(K\)</span>，将闭环系统极点配置到指定位置。</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">poles = [<span class="number">-5</span>; <span class="number">-10</span>; <span class="number">-5</span>+<span class="number">10</span><span class="built_in">j</span>; <span class="number">-5</span><span class="number">-10</span><span class="built_in">j</span>];  <span class="comment">% 根据期望性能指标选取极点</span></span><br><span class="line">K = place(A, B, poles);</span><br></pre></td></tr></table></figure>
-<p>系统状态随时间变化表达式</p>
+<p>系统状态随时间变化的表达式</p>
 <p><span class="math display">\[
 x(t) = e^{(A-BK)t}x(0) + \int_0^t
-e^{(A-BK)(t-\tau)}Br(\tau)d\tau  \tag{4}
+e^{(A-BK)(t-\tau)}Br(\tau)\mathrm{d}\tau  \tag{4}
 \]</span></p>
 <p>假设闭环系统稳定，则指数项<span
-class="math inline">\(e^{(A-BK)t}\)</span>一定是衰减的。如果输入是定值，即<span
+class="math inline">\(e^{(A-BK)t}\)</span>一定是衰减的。</p>
+<p>如果输入是定值，即<span
 class="math inline">\(r(t)=r_{ss}\)</span>时，根据<span
 class="math inline">\((3)\)</span>式可知系统状态终值<span
 class="math inline">\(x_{ss}\)</span>满足</p>
@@ -381,18 +382,18 @@ x_{ss} = -(A-BK)^{-1}Br_{ss}  \tag{6}
 y_{ss} = -C(A-BK)^{-1}Br_{ss}  \tag{7}
 \]</span></p>
 <p>在经典控制理论中，系统是单输入单输出的，输入<span
-class="math inline">\(r(t)\)</span>通常作为系统的给定值，将输出与输入做比较得到误差，根据误差计算控制量使输出跟踪输入。但从上面的分析可看出，在状态空间法中，<span
+class="math inline">\(r(t)\)</span>通常作为系统的给定值，将输出与输入比较得到误差，根据误差计算控制量使输出跟踪输入。但从上面的分析可看出，在状态空间法中，输入<span
 class="math inline">\(r(t)\)</span>和控制量<span
-class="math inline">\(u\)</span>的维数相同，大部分情况下无法完整表示状态<span
+class="math inline">\(u(t)\)</span>的维数相同，大部分情况下无法完整表示状态<span
 class="math inline">\(x\)</span>或输出<span
 class="math inline">\(y\)</span>的目标值，也就无法通过<span
 class="math inline">\((2)\)</span>那种形式的控制律达到跟踪控制的效果。</p>
 <p>本文讨论的倒立摆模型中，<span
-class="math inline">\(u\)</span>是个标量（施加在小车上的力），而且计算可得<span
+class="math inline">\(u\)</span>是个标量（施加在小车上的力），而且可计算得到<span
 class="math inline">\(C(A-BK)^{-1}B\)</span>矩阵的值为</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; -C*inv(A-B*K)*B</span><br><span class="line"><span class="built_in">ans</span> = </span><br><span class="line">   <span class="number">-0.0071</span></span><br><span class="line">    <span class="number">0.0000</span></span><br></pre></td></tr></table></figure>
-<p>因此，可以结合<span class="math inline">\((7)\)</span>式合理配置<span
-class="math inline">\(r_{ss}\)</span>的值让位移<span
+<p>因此，可以结合<span class="math inline">\((7)\)</span>式合理选取<span
+class="math inline">\(r_{ss}\)</span>的值使位移<span
 class="math inline">\(x\)</span>达到期望值，但角度<span
 class="math inline">\(\theta\)</span>会趋于零，无法控制到任意给定值。下面的代码将闭环系统模型表示出来，通过<code>lsim</code>函数得到系统输出。</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Ac = A - B*K; Bc = B;</span><br><span class="line">Cc = C; Dc = D;</span><br><span class="line">sys_closed = ss(Ac, Bc, Cc, Dc);</span><br><span class="line">t = <span class="number">0</span>:<span class="number">0.01</span>:<span class="number">2</span>;</span><br><span class="line"><span class="comment">% 位移x的终值为0.1时的输入信号</span></span><br><span class="line">rss = <span class="number">0.1</span>/(<span class="number">-0.0071</span>);</span><br><span class="line">r = rss*<span class="built_in">ones</span>(<span class="built_in">size</span>(t));</span><br><span class="line">x0 = [<span class="number">-0.2</span>; <span class="number">0</span>; <span class="number">0.1</span>; <span class="number">0</span>];  <span class="comment">% 系统初始状态</span></span><br><span class="line">y = lsim(sys_closed, r, t, x0);</span><br><span class="line"><span class="built_in">plot</span>(t, y(:, <span class="number">1</span>), t, y(:, <span class="number">2</span>)); grid on</span><br></pre></td></tr></table></figure>
@@ -404,7 +405,7 @@ alt="小车位置和摆杆角度变化曲线" />
 <figcaption aria-hidden="true">小车位置和摆杆角度变化曲线</figcaption>
 </figure>
 <h2 id="参考资料">参考资料</h2>
-<p>本文是我在复习相关知识时整理出来的笔记，放在这里方便自己取用，主要参考如下资料：</p>
+<p>本文是我在复习相关知识时整理的笔记，放在这里方便自己取用，主要参考如下资料：</p>
 <ol type="1">
 <li><a
 target="_blank" rel="noopener" href="https://ctms.engin.umich.edu/CTMS/index.php?example=InvertedPendulum&amp;section=ControlStateSpace">Inverted
