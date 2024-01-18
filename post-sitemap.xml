@@ -9,8 +9,16 @@
 
 
     <url>
+        <loc>https://panqiincs.me/2023/11/09/pendulum-control-design/</loc>
+        <lastmod>2024-01-18T08:31:51.861Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://panqiincs.me/2023/11/26/pendulum-state-observer/</loc>
-        <lastmod>2024-01-18T08:20:00.051Z</lastmod>
+        <lastmod>2024-01-18T08:31:22.725Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -19,14 +27,6 @@
     <url>
         <loc>https://panqiincs.me/2024/01/14/goodbye-dormitory/</loc>
         <lastmod>2024-01-18T05:22:20.860Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2023/11/09/pendulum-control-design/</loc>
-        <lastmod>2024-01-18T05:19:01.156Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
