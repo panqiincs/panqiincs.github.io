@@ -55,7 +55,7 @@
     <link href="https://panqiincs.me/2024/01/01/guimao-website-traffic/"/>
     <id>https://panqiincs.me/2024/01/01/guimao-website-traffic/</id>
     <published>2024-01-01T12:23:00.000Z</published>
-    <updated>2024-01-18T17:18:28.323Z</updated>
+    <updated>2024-01-22T06:29:48.345Z</updated>
     
     
     <summary type="html">&lt;p&gt;我从2022年6月开始使用&lt;a
@@ -68,6 +68,27 @@ Analytics各有长短，非常好用。2023年是第一个完整统计的自然�
     
     
     <category term="blog" scheme="https://panqiincs.me/tags/blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MATLAB实现倒立摆演示动画</title>
+    <link href="https://panqiincs.me/2023/12/28/pendulum-animation/"/>
+    <id>https://panqiincs.me/2023/12/28/pendulum-animation/</id>
+    <published>2023-12-28T13:30:49.000Z</published>
+    <updated>2024-01-22T06:27:08.619Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;前几篇文章以一阶倒立摆为例介绍了状态反馈控制器和状态观测器的设计与仿真，系统状态变化通过曲线展现，本文用MATLAB实现了倒立摆的动画演示，更加直观，效果如下图所示。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工具使用" scheme="https://panqiincs.me/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    
+    
+    <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
+    
+    <category term="倒立摆" scheme="https://panqiincs.me/tags/%E5%80%92%E7%AB%8B%E6%91%86/"/>
     
   </entry>
   
@@ -133,11 +154,11 @@ href=&quot;https://panqiincs.me/2023/11/09/pendulum-control-design/&quot;&gt;倒
   </entry>
   
   <entry>
-    <title>倒立摆的状态反馈控制</title>
+    <title>倒立摆的状态反馈控制仿真</title>
     <link href="https://panqiincs.me/2023/11/09/pendulum-control-design/"/>
     <id>https://panqiincs.me/2023/11/09/pendulum-control-design/</id>
     <published>2023-11-09T07:39:13.000Z</published>
-    <updated>2024-01-19T02:02:00.744Z</updated>
+    <updated>2024-01-22T06:17:02.442Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;系统模型&quot;&gt;系统模型&lt;/h2&gt;
@@ -475,28 +496,6 @@ href=&quot;https://userpages.umbc.edu/~gobbert/papers/BrewsterGobbertTR2011.pdf&
     <category term="octave" scheme="https://panqiincs.me/tags/octave/"/>
     
     <category term="根轨迹" scheme="https://panqiincs.me/tags/%E6%A0%B9%E8%BD%A8%E8%BF%B9/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>李达实验班老师的课堂语录</title>
-    <link href="https://panqiincs.me/2023/06/26/lida-teachers-quotes/"/>
-    <id>https://panqiincs.me/2023/06/26/lida-teachers-quotes/</id>
-    <published>2023-06-26T13:52:38.000Z</published>
-    <updated>2023-07-03T01:15:02.085Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;说明&quot;&gt;说明&lt;/h2&gt;
-&lt;p&gt;2023年6月23日，湖南大学2009级李达实验班的同学在本科毕业十周年之际去长沙看望老师。中午用餐时，师生们聊起了当初在网络上流传的老师课堂语录，可惜如今很难再找到了。英语成矫林老师（我们都称呼她Linda）当晚在朋友圈写道：&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
-    
-    
-    <category term="湖南大学" scheme="https://panqiincs.me/tags/%E6%B9%96%E5%8D%97%E5%A4%A7%E5%AD%A6/"/>
-    
-    <category term="李达实验班" scheme="https://panqiincs.me/tags/%E6%9D%8E%E8%BE%BE%E5%AE%9E%E9%AA%8C%E7%8F%AD/"/>
     
   </entry>
   
