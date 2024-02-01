@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2024-01-19T02:06:09.746Z</updated>
+  <updated>2024-02-01T15:30:19.730Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://panqiincs.me/2024/01/14/goodbye-dormitory/"/>
     <id>https://panqiincs.me/2024/01/14/goodbye-dormitory/</id>
     <published>2024-01-14T03:18:43.000Z</published>
-    <updated>2024-01-19T02:06:09.746Z</updated>
+    <updated>2024-02-01T15:30:19.730Z</updated>
     
     
     <summary type="html">&lt;p&gt;学校昨天开始放寒假，室友已办完离职手续，今天就搬走。学校下学期要将这栋教师宿舍改成学生宿舍，3月初我也要搬到校外住。来学校工作后我一直住在这里，已经有四年多了。&lt;/p&gt;</summary>
@@ -220,8 +220,6 @@ href=&quot;https://www.reddit.com/r/ControlTheory/comments/l3wpil/matlab_codes_w
     
     <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
     
-    <category term="微分方程" scheme="https://panqiincs.me/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/"/>
-    
     <category term="控制系统仿真" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%BB%BF%E7%9C%9F/"/>
     
     <category term="ode45" scheme="https://panqiincs.me/tags/ode45/"/>
@@ -229,6 +227,8 @@ href=&quot;https://www.reddit.com/r/ControlTheory/comments/l3wpil/matlab_codes_w
     <category term="lsim" scheme="https://panqiincs.me/tags/lsim/"/>
     
     <category term="倒立摆" scheme="https://panqiincs.me/tags/%E5%80%92%E7%AB%8B%E6%91%86/"/>
+    
+    <category term="微分方程" scheme="https://panqiincs.me/tags/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/"/>
     
   </entry>
   
@@ -268,10 +268,6 @@ href=&quot;https://www.reddit.com/r/ControlTheory/comments/l3wpil/matlab_codes_w
     <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
     
     
-    <category term="正定" scheme="https://panqiincs.me/tags/%E6%AD%A3%E5%AE%9A/"/>
-    
-    <category term="正定矩阵" scheme="https://panqiincs.me/tags/%E6%AD%A3%E5%AE%9A%E7%9F%A9%E9%98%B5/"/>
-    
     <category term="内积空间" scheme="https://panqiincs.me/tags/%E5%86%85%E7%A7%AF%E7%A9%BA%E9%97%B4/"/>
     
     <category term="内积" scheme="https://panqiincs.me/tags/%E5%86%85%E7%A7%AF/"/>
@@ -279,6 +275,10 @@ href=&quot;https://www.reddit.com/r/ControlTheory/comments/l3wpil/matlab_codes_w
     <category term="范数" scheme="https://panqiincs.me/tags/%E8%8C%83%E6%95%B0/"/>
     
     <category term="正交" scheme="https://panqiincs.me/tags/%E6%AD%A3%E4%BA%A4/"/>
+    
+    <category term="正定" scheme="https://panqiincs.me/tags/%E6%AD%A3%E5%AE%9A/"/>
+    
+    <category term="正定矩阵" scheme="https://panqiincs.me/tags/%E6%AD%A3%E5%AE%9A%E7%9F%A9%E9%98%B5/"/>
     
   </entry>
   
@@ -300,9 +300,9 @@ href=&quot;https://www.reddit.com/r/ControlTheory/comments/l3wpil/matlab_codes_w
     
     <category term="正定" scheme="https://panqiincs.me/tags/%E6%AD%A3%E5%AE%9A/"/>
     
-    <category term="二次型" scheme="https://panqiincs.me/tags/%E4%BA%8C%E6%AC%A1%E5%9E%8B/"/>
-    
     <category term="正定矩阵" scheme="https://panqiincs.me/tags/%E6%AD%A3%E5%AE%9A%E7%9F%A9%E9%98%B5/"/>
+    
+    <category term="二次型" scheme="https://panqiincs.me/tags/%E4%BA%8C%E6%AC%A1%E5%9E%8B/"/>
     
   </entry>
   
@@ -443,13 +443,13 @@ Inequality,
     
     <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
     
+    <category term="正定" scheme="https://panqiincs.me/tags/%E6%AD%A3%E5%AE%9A/"/>
+    
     <category term="lmi" scheme="https://panqiincs.me/tags/lmi/"/>
     
     <category term="线性矩阵不等式" scheme="https://panqiincs.me/tags/%E7%BA%BF%E6%80%A7%E7%9F%A9%E9%98%B5%E4%B8%8D%E7%AD%89%E5%BC%8F/"/>
     
     <category term="yalmip" scheme="https://panqiincs.me/tags/yalmip/"/>
-    
-    <category term="正定" scheme="https://panqiincs.me/tags/%E6%AD%A3%E5%AE%9A/"/>
     
   </entry>
   
