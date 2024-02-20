@@ -633,7 +633,23 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2019/03/01/clrs-learning-plan/</loc>
+        <loc>https://panqiincs.me/2017/01/07/bingshen-year-summary/</loc>
+        <lastmod>2023-02-04T02:43:13.390Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/</loc>
+        <lastmod>2023-02-04T02:43:13.390Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/</loc>
         <lastmod>2023-02-04T02:43:13.390Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -673,31 +689,15 @@
     </url>
 
     <url>
+        <loc>https://panqiincs.me/2019/03/01/clrs-learning-plan/</loc>
+        <lastmod>2023-02-04T02:43:13.390Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://panqiincs.me/2019/05/31/childhood-crayfish/</loc>
-        <lastmod>2023-02-04T02:43:13.390Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2017/01/07/bingshen-year-summary/</loc>
-        <lastmod>2023-02-04T02:43:13.390Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/</loc>
-        <lastmod>2023-02-04T02:43:13.390Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/</loc>
         <lastmod>2023-02-04T02:43:13.390Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
