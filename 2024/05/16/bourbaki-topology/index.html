@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+  <meta name="baidu-site-verification" content="code-J9YbvwThrX">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="拓扑学是学习现代数学时绕不开的内容。布尔巴基数学原理《拓扑学》的引言中透彻阐述了拓扑相关概念的演化，对初学者极具启发和指导意义，本文是它的中文翻译。我后续可能会写一些拓扑学的笔记，以这篇译文作为开篇相当合适。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="拓扑相关概念的演化">
+<meta property="og:url" content="https://panqiincs.me/2024/05/16/bourbaki-topology/index.html">
+<meta property="og:site_name" content="辛未羊的网络日志">
+<meta property="og:description" content="拓扑学是学习现代数学时绕不开的内容。布尔巴基数学原理《拓扑学》的引言中透彻阐述了拓扑相关概念的演化，对初学者极具启发和指导意义，本文是它的中文翻译。我后续可能会写一些拓扑学的笔记，以这篇译文作为开篇相当合适。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-05-16T12:56:02.000Z">
+<meta property="article:modified_time" content="2024-05-17T10:38:56.822Z">
+<meta property="article:author" content="辛未羊">
+<meta property="article:tag" content="拓扑学">
+<meta property="article:tag" content="布尔巴基">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://panqiincs.me/2024/05/16/bourbaki-topology/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://panqiincs.me/2024/05/16/bourbaki-topology/","path":"2024/05/16/bourbaki-topology/","title":"拓扑相关概念的演化"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>拓扑相关概念的演化 | 辛未羊的网络日志</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-39536948-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "blyiajm41p");
+</script>
+
+
+
+<link rel="dns-prefetch" href="https://vercel.panqiincs.me">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="辛未羊的网络日志" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">辛未羊的网络日志</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-series"><a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="辛未羊"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">辛未羊</p>
+  <div class="site-description" itemprop="description">记录生活和学习的清静之地</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">136</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">210</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/panqiincs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;panqiincs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          友情链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.kawabangga.com/" title="https:&#x2F;&#x2F;www.kawabangga.com&#x2F;" rel="noopener" target="_blank">卡瓦邦噶</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.boatsky.com/" title="https:&#x2F;&#x2F;www.boatsky.com&#x2F;" rel="noopener" target="_blank">太空船</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.feidaoboke.com/" title="https:&#x2F;&#x2F;www.feidaoboke.com&#x2F;" rel="noopener" target="_blank">飞刀博客</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.ohyee.cc/" title="https:&#x2F;&#x2F;www.ohyee.cc&#x2F;" rel="noopener" target="_blank">OhYee</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://dusays.com/" title="https:&#x2F;&#x2F;dusays.com&#x2F;" rel="noopener" target="_blank">杜老师说</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://h4ck.org.cn/" title="https:&#x2F;&#x2F;h4ck.org.cn&#x2F;" rel="noopener" target="_blank">obaby</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://zyq.today/" title="https:&#x2F;&#x2F;zyq.today&#x2F;" rel="noopener" target="_blank">小乔</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.yt-blog.top/" title="https:&#x2F;&#x2F;www.yt-blog.top&#x2F;" rel="noopener" target="_blank">Fgaoxing</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://panqiincs.me/2024/05/16/bourbaki-topology/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="辛未羊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的网络日志">
+      <meta itemprop="description" content="记录生活和学习的清静之地">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="拓扑相关概念的演化 | 辛未羊的网络日志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          拓扑相关概念的演化
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-16 20:56:02" itemprop="dateCreated datePublished" datetime="2024-05-16T20:56:02+08:00">2024-05-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">大学课程</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2024/05/16/bourbaki-topology/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2024/05/16/bourbaki-topology/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>11 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>拓扑学是学习现代数学时绕不开的内容。布尔巴基数学原理《拓扑学》的引言中透彻阐述了拓扑相关概念的演化，对初学者极具启发和指导意义，本文是它的中文翻译。我后续可能会写一些拓扑学的笔记，以这篇译文作为开篇相当合适。</p>
+<span id="more"></span>
+<p>数学的众多领域中，存在着一种与《代数学》系列著作中探讨的代数结构（如群、环、域等）截然不同的结构类型。这些结构，赋予了极限、连续性与邻域等直观概念以数学化的内涵，它们构成了本书的讨论核心。</p>
+<p>历史上，极限与连续性的概念在数学的早期发展中便已显现，尤其在几何学领域。随着分析学的发展及其在实验科学中的应用，这些概念的重要性日益凸显，因为它们与实验测量和近似概念紧密相关。大多数实验测量涉及数字的确定，因此数学中极限和连续性的概念最初主要出现在实数理论及其衍生领域（如复数、实变量或复变量的实函数或复函数、欧氏几何及相关几何学）。</p>
+<p>近年来，人们逐渐认识到这些概念的应用范围远远超出了经典分析中的实数和复数（详见第一章的历史注释）。通过深入的分析和抽象，其核心本质得以提炼，形成了一个在多个数学分支中都显示出巨大实用价值的工具。</p>
+<p>为了深入理解极限、连续性和邻域概念的本质，我们将首先探讨邻域的概念（尽管在历史上它比其他两个概念出现得晚）。从物理概念的近似出发，我们可以自然地定义一个集合<span
+class="math inline">\(E\)</span>的子集<span
+class="math inline">\(A\)</span>是元素<span
+class="math inline">\(a\)</span>的邻域，如果用近似<span
+class="math inline">\(a\)</span>的元素替换<span
+class="math inline">\(a\)</span>时，该新元素也属于<span
+class="math inline">\(A\)</span>，前提是所涉及的「误差」足够小；换言之，如果<span
+class="math inline">\(E\)</span>中所有「足够接近」<span
+class="math inline">\(a\)</span>的点都属于<span
+class="math inline">\(A\)</span>。只要「足够小的误差」或「一个元素足够接近另一个元素」的概念能够被精确定义，这个定义就具有实际意义。沿着这个思路，一个直观的想法是假设两个元素之间的「距离」可以用一个正实数来衡量。一旦在集合中定义了任意两个元素之间的「距离」，那么定义一个元素<span
+class="math inline">\(a\)</span>的「邻域」就变得清晰：如果一个子集包含了所有与<span
+class="math inline">\(a\)</span>距离小于某个预设的严格正实数的元素，那么这个子集就是<span
+class="math inline">\(a\)</span>的一个邻域。当然，除非我们对「距离」施加某些条件或公理（例如，在欧氏几何中，三角不等式应适用于我们的广义距离），否则我们无法期望从这个定义中发展出一个有意义的理论。通过这种方式，我们得到了欧氏几何的一个广泛推广。继续使用几何学的语言是方便的：因此，在定义了「距离」的集合中的元素被称为点，而集合本身被称为空间。我们将在第九章探讨这类空间。</p>
+<p>到目前为止，我们尚未成功地摆脱对实数的依赖。然而，如此定义的空间具有许多性质，这些性质可以在不涉及产生它们的「距离」的情况下被描述。例如，任何包含<span
+class="math inline">\(a\)</span>的邻域的子集仍然是<span
+class="math inline">\(a\)</span>的邻域，并且<span
+class="math inline">\(a\)</span>的两个邻域的交集也是<span
+class="math inline">\(a\)</span>的邻域。这些性质以及其他性质衍生出许多后续结果，可以在不依赖于最初定义邻域所需的「距离」概念的情况下被推导出来。我们得到了一些不涉及大小或距离的陈述。</p>
+<p>因此，我们最终形成了拓扑空间的一般概念，它不依赖于任何关于实数的初步理论。我们将说，只要我们以某种方式将集合<span
+class="math inline">\(E\)</span>的每个元素与<span
+class="math inline">\(E\)</span>的子集族相关联，这些子集被称为该元素的邻域，那么集合<span
+class="math inline">\(E\)</span>就带有一个拓扑结构——前提是这些邻域满足某些条件（拓扑结构的公理）。显然，所施加的公理选择在某种程度上是任意的，并且在历史上一直是大量实验的主题（详见第一章的历史注释）。最终确定的公理系统足以满足数学当前的需求，而不会陷入过度和无意义的概括。</p>
+<p>一个带有拓扑结构的集合被称为拓扑空间，它的元素被称为点。研究拓扑结构的数学分支被称为拓扑学（词源学上，「地点的科学」，虽然不是一个特别有表现力的名称），现在它比早期的名称「位置分析」更受欢迎。</p>
+<p>为了表述邻域的概念，我们从一个元素「足够接近」另一个元素的模糊概念出发。相反，拓扑结构现在使我们能够精确地理解「这样的性质适用于所有足够接近<span
+class="math inline">\(a\)</span>的点」的含义：根据定义，这意味着具有这种性质的点集对于所讨论的拓扑结构来说是<span
+class="math inline">\(a\)</span>的一个邻域。</p>
+<p>从邻域的概念出发，衍生出了一系列其他概念，这些概念的研究构成了拓扑学的核心：集合的内部、集合的闭包、集合的边界、开集、闭集等（详见第一章第一节）。例如，如果一个子集<span
+class="math inline">\(A\)</span>是一个开集，那么只要一个点<span
+class="math inline">\(a\)</span>属于<span
+class="math inline">\(A\)</span>，所有足够接近<span
+class="math inline">\(a\)</span>的点都属于<span
+class="math inline">\(A\)</span>；换句话说，如果<span
+class="math inline">\(A\)</span>是它每个点的邻域。邻域的公理对所有这些概念都有一定的影响；例如，两个开集的交集是一个开集（因为我们假设<span
+class="math inline">\(a\)</span>的两个邻域的交集是<span
+class="math inline">\(a\)</span>的一个邻域）。相反，我们可以从这些派生概念中的一个开始，而不是从邻域的概念开始；例如，我们可以假设开集是已知的，并将开集族的性质作为公理（其中一个性质刚才已经作为例子说明了）。然后我们可以验证，从对开集的了解，可以重建邻域；邻域的公理现在是我们作为起点的新开集公理的结果。因此，拓扑结构可以用各种不同的方式定义，这些方式基本上是等价的。在本书中，我们将从开集的概念开始，因为相应的公理是最简单的。</p>
+<p>一旦定义了拓扑结构，就可以精确地描述连续性的概念。直观地说，如果一个函数在某个点上连续，那么当自变量充分接近该点时，函数值的变化也会很小。因此，只要函数的自变量空间和值空间是拓扑空间，连续性就有一个确切的含义。精确的定义见第一章第二节。</p>
+<p>与连续性一样，极限的概念涉及两个集合，每个集合都被赋予了合适的结构，以及一个集合到另一个集合的映射。例如，实数序列<span
+class="math inline">\(a_n\)</span>的极限涉及自然数集<span
+class="math inline">\(\mathbb{N}\)</span>、实数集<span
+class="math inline">\(\mathbb{R}\)</span>以及前一个集合到后一个集合的映射。如果对于<span
+class="math inline">\(a\)</span>的任何邻域<span
+class="math inline">\(V\)</span>，这个邻域都包含除有限个<span
+class="math inline">\(n\)</span>值以外的所有<span
+class="math inline">\(a_n\)</span>，那么实数<span
+class="math inline">\(a\)</span>就被称为序列的极限；也就是说，如果<span
+class="math inline">\(a_n\)</span>属于<span
+class="math inline">\(V\)</span>的自然数<span
+class="math inline">\(n\)</span>的集合是<span
+class="math inline">\(\mathbb{N}\)</span>的一个子集，它的补集是有限的。注意，由于我们在谈论邻域，所以假设<span
+class="math inline">\(\mathbb{R}\)</span>带有一个拓扑结构；至于集合<span
+class="math inline">\(\mathbb{N}\)</span>，我们已经让某个子集族扮演了一个特殊的角色，即那些补集是有限的子集。这是一个普遍的事实：每当我们谈论极限时，我们都在考虑一个集合<span
+class="math inline">\(E\)</span>到拓扑空间<span
+class="math inline">\(F\)</span>的映射<span
+class="math inline">\(f\)</span>，并且我们说对于<span
+class="math inline">\(F\)</span>中<span
+class="math inline">\(a\)</span>的任何邻域<span
+class="math inline">\(V\)</span>，<span
+class="math inline">\(E\)</span>中满足其像<span
+class="math inline">\(f(x)\)</span>属于<span
+class="math inline">\(V\)</span>的元素<span
+class="math inline">\(x\)</span>的集合（这个集合就是「逆像」<span
+class="math inline">\(f^{-1}(V)\)</span>）都属于<span
+class="math inline">\(E\)</span>的某个预先给定的子集族<span
+class="math inline">\(\mathfrak{F}\)</span>，那么<span
+class="math inline">\(f\)</span>就有一个<span
+class="math inline">\(F\)</span>中的点<span
+class="math inline">\(a\)</span>作为极限。为了使极限的概念具有通常赋予它的基本性质，族<span
+class="math inline">\(\mathfrak{F}\)</span>必须满足某些公理，这些公理在第一章第六节中说明。<span
+class="math inline">\(E\)</span>的这样一个子集族<span
+class="math inline">\(\mathfrak{F}\)</span>称为<span
+class="math inline">\(E\)</span>上的一个滤子。滤子的概念，它与极限的概念是不可分割的，也出现在拓扑学的其他上下文中；例如，拓扑空间中一点的邻域形成了一个滤子。</p>
+<p>对所有这些概念的一般研究是第一章的主要目的。此外，在那里还考虑了特殊类别的拓扑空间，满足更严格公理的空间，或者通过特定程序从其他给定空间获得的空间。正如我们已经说过的，集合上的拓扑结构使人们能够对「只要<span
+class="math inline">\(x\)</span>足够靠近<span
+class="math inline">\(a\)</span>，<span
+class="math inline">\(x\)</span>就具有性质<span
+class="math inline">\(P(x)\)</span>」这句话给出确切的含义。但是，除了定义了「距离」的情况外，不清楚应该如何理解「每一对足够靠近的点<span
+class="math inline">\(x\)</span>、<span
+class="math inline">\(y\)</span>都具有性质<span
+class="math inline">\(P(x,y)\)</span>」这句话，因为先验地，我们没有办法比较两个不同点的邻域。现在，在经典分析中经常出现一对彼此靠近的点的概念（例如，在涉及一致连续性的命题中）。因此，重要的是我们应该能够在完全一般性的情况下精确地理解这个概念，因此我们被引导去定义比拓扑结构更丰富的结构，即一致结构。它们是第二章的主题。本书的其他章节专门讨论除了拓扑结构或一致结构之外，还存在其他一些结构的问题。例如，一个带有合适的拓扑结构（在某种意义上与群结构相容）的群称为拓扑群。第三章研究了拓扑群，我们将特别看到每个拓扑群如何被赋予某些一致结构。</p>
+<p>在第四章中，我们将前面的原则应用于有理数域。这使我们能够定义实数域；由于它的重要性，我们对其进行了相当详细的研究。在接下来的章节中，我们从实数开始，定义了一些拓扑空间，这些空间在拓扑学应用于经典几何学中特别有意义：有限维向量空间、球面、射影空间等。我们还考虑了与实数加法群密切相关的某些拓扑群，我们用公理来刻画它们，这将引导我们定义和给出经典分析中最重要的函数的基本性质：指数函数、对数函数和三角函数。</p>
+<p>在第九章中，我们回到了一般的拓扑空间，但现在有了一个新的工具，即实数，可供我们使用。特别地，我们研究了其拓扑由「距离」定义的空间；这些空间具有某些性质，其中一些性质不能扩展到更一般的空间。在第十章中，我们研究了拓扑空间到一致空间（函数空间）的映射集；这些集合，经过适当的拓扑化，具有有趣的性质，这些性质已经在经典分析中发挥了重要作用。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>辛未羊
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://panqiincs.me/2024/05/16/bourbaki-topology/" title="拓扑相关概念的演化">https://panqiincs.me/2024/05/16/bourbaki-topology/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%8B%93%E6%89%91%E5%AD%A6/" rel="tag"># 拓扑学</a>
+              <a href="/tags/%E5%B8%83%E5%B0%94%E5%B7%B4%E5%9F%BA/" rel="tag"># 布尔巴基</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/05/11/learn-indo-european/" rel="prev" title="我想学的印欧语系语言">
+                  <i class="fa fa-angle-left"></i> 我想学的印欧语系语言
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2013 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">辛未羊</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">144k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:44</span>
+  </span>
+</div>
+
+
+  <div>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id: "JjD4gEghP0h7Vn4U",ck: "JjD4gEghP0h7Vn4U"})</script>
+  </div>
+
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://unpkg.com/animejs@3.2.2/lib/anime.min.js" integrity="sha256-tc4b48P1MPGS4PJXHRlChGCW1mEZy62jS/3JEsSHPzU=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"https://vercel.panqiincs.me","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"欢迎留言交流","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/2024/05/16/bourbaki-topology/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>
