@@ -553,7 +553,7 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2022/10/11/language-is-important/</loc>
+        <loc>https://panqiincs.me/2022/09/19/polyglot-lang-trans/</loc>
         <lastmod>2023-02-04T02:43:13.396Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -561,7 +561,7 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2022/09/19/polyglot-lang-trans/</loc>
+        <loc>https://panqiincs.me/2022/10/11/language-is-important/</loc>
         <lastmod>2023-02-04T02:43:13.396Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -577,22 +577,6 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2020/06/24/sunset-on-li-river/</loc>
-        <lastmod>2023-02-04T02:43:13.393Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2020/10/31/software-used-in-teaching/</loc>
-        <lastmod>2023-02-04T02:43:13.393Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://panqiincs.me/2019/07/29/domain-name-two-years/</loc>
         <lastmod>2023-02-04T02:43:13.393Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -602,6 +586,22 @@
 
     <url>
         <loc>https://panqiincs.me/2020/04/15/during-the-pandemic/</loc>
+        <lastmod>2023-02-04T02:43:13.393Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2020/06/24/sunset-on-li-river/</loc>
+        <lastmod>2023-02-04T02:43:13.393Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2020/10/31/software-used-in-teaching/</loc>
         <lastmod>2023-02-04T02:43:13.393Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -649,22 +649,6 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2018/06/13/dpt-rp1-user-experience/</loc>
-        <lastmod>2023-02-04T02:43:13.390Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2019/03/01/clrs-learning-plan/</loc>
-        <lastmod>2023-02-04T02:43:13.390Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://panqiincs.me/2017/01/07/bingshen-year-summary/</loc>
         <lastmod>2023-02-04T02:43:13.390Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -706,6 +690,22 @@
 
     <url>
         <loc>https://panqiincs.me/2017/09/10/after-installing-opensuse-leap/</loc>
+        <lastmod>2023-02-04T02:43:13.390Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2018/06/13/dpt-rp1-user-experience/</loc>
+        <lastmod>2023-02-04T02:43:13.390Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2019/03/01/clrs-learning-plan/</loc>
         <lastmod>2023-02-04T02:43:13.390Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -1017,22 +1017,6 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2019/05/08/clrs-quicksort/</loc>
-        <lastmod>2021-12-14T05:43:33.520Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2019/06/03/clrs-linear-time-sort/</loc>
-        <lastmod>2021-12-14T05:43:33.520Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://panqiincs.me/2019/04/10/clrs-probability/</loc>
         <lastmod>2021-12-14T05:43:33.520Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1042,6 +1026,22 @@
 
     <url>
         <loc>https://panqiincs.me/2019/04/11/clrs-heapsort/</loc>
+        <lastmod>2021-12-14T05:43:33.520Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2019/05/08/clrs-quicksort/</loc>
+        <lastmod>2021-12-14T05:43:33.520Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2019/06/03/clrs-linear-time-sort/</loc>
         <lastmod>2021-12-14T05:43:33.520Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
