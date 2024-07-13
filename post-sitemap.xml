@@ -10,7 +10,7 @@
 
     <url>
         <loc>https://panqiincs.me/2024/07/13/today-in-history/</loc>
-        <lastmod>2024-07-13T09:11:32.592Z</lastmod>
+        <lastmod>2024-07-13T14:31:32.655Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1009,14 +1009,6 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2019/03/07/clrs-getting-started/</loc>
-        <lastmod>2021-12-14T05:43:33.520Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://panqiincs.me/2019/03/10/clrs-growth-of-functions/</loc>
         <lastmod>2021-12-14T05:43:33.520Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1026,6 +1018,14 @@
 
     <url>
         <loc>https://panqiincs.me/2019/04/10/clrs-probability/</loc>
+        <lastmod>2021-12-14T05:43:33.520Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2019/03/07/clrs-getting-started/</loc>
         <lastmod>2021-12-14T05:43:33.520Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
