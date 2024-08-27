@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2024-07-26T06:15:57.541Z</updated>
+  <updated>2024-08-24T08:50:24.449Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>高棉文的基本特征</title>
+    <link href="https://panqiincs.me/2024/08/24/khmer-script/"/>
+    <id>https://panqiincs.me/2024/08/24/khmer-script/</id>
+    <published>2024-08-24T08:22:55.000Z</published>
+    <updated>2024-08-24T08:50:24.449Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;unicode编码&quot;&gt;Unicode编码&lt;/h2&gt;
+&lt;p&gt;高棉文的Unicode码位范围是U+1780-U+17FF，一共128个，有些码位并没有分配字符。根据字符类型可以分为下面几个类型。&lt;/p&gt;
+&lt;p&gt;U+1780-U+17A4范围内的字符均为辅音字母。
+U+17A3-U+17B3范围内的字符均为独立元音。
+U+17B4和U+17B5两个字符主要用于处理高棉文中某些特定的书写需</summary>
+      
+    
+    
+    
+    <category term="程序设计" scheme="https://panqiincs.me/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+    <category term="高棉文" scheme="https://panqiincs.me/tags/%E9%AB%98%E6%A3%89%E6%96%87/"/>
+    
+    <category term="柬埔寨语" scheme="https://panqiincs.me/tags/%E6%9F%AC%E5%9F%94%E5%AF%A8%E8%AF%AD/"/>
+    
+  </entry>
   
   <entry>
     <title>我记忆中的7月13日</title>
@@ -451,32 +479,6 @@ href=&quot;https://panqiincs.me/2023/08/09/la-linear-space-map/&quot;&gt;线性�
     <category term="线性映射" scheme="https://panqiincs.me/tags/%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84/"/>
     
     <category term="线性变换" scheme="https://panqiincs.me/tags/%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>线性代数：行列式和矩阵</title>
-    <link href="https://panqiincs.me/2023/08/08/la-determinant-matrix/"/>
-    <id>https://panqiincs.me/2023/08/08/la-determinant-matrix/</id>
-    <published>2023-08-07T18:22:41.000Z</published>
-    <updated>2023-08-18T13:28:44.332Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;开个头&quot;&gt;开个头&lt;/h2&gt;
-&lt;p&gt;我打算将线性代数的重要内容过一遍，根据自己的理解将核心内容（简单的内容就不多费笔墨了）描述出来，尽量少摆公式。主要参考资料是复旦大学的&lt;a
-href=&quot;https://book.douban.com/subject/3171745/&quot;&gt;高等代数教材&lt;/a&gt;，可以搭配&lt;a
-href=&quot;https://www.bilibili.com/video/BV1mJ411r7ZB/&quot;&gt;谢启鸿的视频&lt;/a&gt;学习。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
-    
-    
-    <category term="矩阵乘法" scheme="https://panqiincs.me/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"/>
-    
-    <category term="行列式" scheme="https://panqiincs.me/tags/%E8%A1%8C%E5%88%97%E5%BC%8F/"/>
-    
-    <category term="分块矩阵" scheme="https://panqiincs.me/tags/%E5%88%86%E5%9D%97%E7%9F%A9%E9%98%B5/"/>
     
   </entry>
   
