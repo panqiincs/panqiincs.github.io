@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://panqiincs.me/2024/09/15/nonsense-phonics/</loc>
+        <lastmod>2024-09-15T09:14:30.215Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2024/07/13/today-in-history/</loc>
+        <lastmod>2024-09-15T08:07:56.880Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://panqiincs.me/2022/07/15/pillow-draw-devanagari/</loc>
         <lastmod>2024-08-29T07:30:16.657Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -19,14 +35,6 @@
     <url>
         <loc>https://panqiincs.me/2023/12/07/discrete-observer-design/</loc>
         <lastmod>2024-08-07T05:22:04.026Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2024/07/13/today-in-history/</loc>
-        <lastmod>2024-07-26T06:15:57.541Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -657,7 +665,7 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2017/01/07/bingshen-year-summary/</loc>
+        <loc>https://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/</loc>
         <lastmod>2023-02-04T02:43:13.390Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -665,7 +673,7 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/</loc>
+        <loc>https://panqiincs.me/2017/01/07/bingshen-year-summary/</loc>
         <lastmod>2023-02-04T02:43:13.390Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
