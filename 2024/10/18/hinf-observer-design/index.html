@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+  <meta name="baidu-site-verification" content="code-J9YbvwThrX">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="线性系统模型 本文介绍如下类型线性系统的状态观测器设计：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="H无穷大状态观测器设计与仿真">
+<meta property="og:url" content="https://panqiincs.me/2024/10/18/hinf-observer-design/index.html">
+<meta property="og:site_name" content="辛未羊的网络日志">
+<meta property="og:description" content="线性系统模型 本文介绍如下类型线性系统的状态观测器设计：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-18T13:19:59.000Z">
+<meta property="article:modified_time" content="2024-10-18T13:21:20.565Z">
+<meta property="article:author" content="辛未羊">
+<meta property="article:tag" content="控制理论">
+<meta property="article:tag" content="matlab">
+<meta property="article:tag" content="控制系统仿真">
+<meta property="article:tag" content="lmi">
+<meta property="article:tag" content="线性矩阵不等式">
+<meta property="article:tag" content="yalmip">
+<meta property="article:tag" content="状态观测器">
+<meta property="article:tag" content="h无穷大">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://panqiincs.me/2024/10/18/hinf-observer-design/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://panqiincs.me/2024/10/18/hinf-observer-design/","path":"2024/10/18/hinf-observer-design/","title":"H无穷大状态观测器设计与仿真"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>H无穷大状态观测器设计与仿真 | 辛未羊的网络日志</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-39536948-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "blyiajm41p");
+</script>
+
+
+
+<link rel="dns-prefetch" href="https://vercel.panqiincs.me">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="辛未羊的网络日志" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">辛未羊的网络日志</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-series"><a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">线性系统模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E8%A7%82%E6%B5%8B%E5%99%A8%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.</span> <span class="nav-text">状态观测器设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">3.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%82%E6%B5%8B%E5%99%A8%E5%8F%8D%E9%A6%88%E7%9F%A9%E9%98%B5"><span class="nav-number">4.</span> <span class="nav-text">观测器反馈矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E5%8F%8D%E9%A6%88%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="nav-number">5.</span> <span class="nav-text">状态反馈控制器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BF%E7%9C%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%BB%93%E6%9E%9C"><span class="nav-number">6.</span> <span class="nav-text">仿真设计与结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="辛未羊"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">辛未羊</p>
+  <div class="site-description" itemprop="description">记录生活和学习的清静之地</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">140</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">214</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/panqiincs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;panqiincs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          友情链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.kawabangga.com/" title="https:&#x2F;&#x2F;www.kawabangga.com&#x2F;" rel="noopener" target="_blank">卡瓦邦噶</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.boatsky.com/" title="https:&#x2F;&#x2F;www.boatsky.com&#x2F;" rel="noopener" target="_blank">太空船</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.feidaoboke.com/" title="https:&#x2F;&#x2F;www.feidaoboke.com&#x2F;" rel="noopener" target="_blank">飞刀博客</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.ohyee.cc/" title="https:&#x2F;&#x2F;www.ohyee.cc&#x2F;" rel="noopener" target="_blank">OhYee</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://dusays.com/" title="https:&#x2F;&#x2F;dusays.com&#x2F;" rel="noopener" target="_blank">杜老师说</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://h4ck.org.cn/" title="https:&#x2F;&#x2F;h4ck.org.cn&#x2F;" rel="noopener" target="_blank">obaby</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://zyq.today/" title="https:&#x2F;&#x2F;zyq.today&#x2F;" rel="noopener" target="_blank">小乔</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.yt-blog.top/" title="https:&#x2F;&#x2F;www.yt-blog.top&#x2F;" rel="noopener" target="_blank">Fgaoxing</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://it3q.com/" title="https:&#x2F;&#x2F;it3q.com&#x2F;" rel="noopener" target="_blank">呱牛笔记</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://panqiincs.me/2024/10/18/hinf-observer-design/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="辛未羊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的网络日志">
+      <meta itemprop="description" content="记录生活和学习的清静之地">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="H无穷大状态观测器设计与仿真 | 辛未羊的网络日志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          H无穷大状态观测器设计与仿真
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-10-18 21:19:59" itemprop="dateCreated datePublished" datetime="2024-10-18T21:19:59+08:00">2024-10-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">大学课程</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2024/10/18/hinf-observer-design/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2024/10/18/hinf-observer-design/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="线性系统模型">线性系统模型</h2>
+<p>本文介绍如下类型线性系统的状态观测器设计：</p>
+<span id="more"></span>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/hinf_system_model.png"
+alt="系统模型" />
+<figcaption aria-hidden="true">系统模型</figcaption>
+</figure>
+<p>相比于标准状态空间模型，上述模型还将扰动信号<span
+class="math inline">\(w(t)\)</span>考虑在内。<span
+class="math inline">\(y(t)\)</span>是测量输出，可看成是传感器系统模型，<span
+class="math inline">\(z(t)\)</span>是系统输出。目标是设计一个全阶状态观测器，使得扰动信号<span
+class="math inline">\(w(t)\)</span>对状态估计误差的影响足够小。</p>
+<h2 id="状态观测器设计">状态观测器设计</h2>
+<p>采用如下形式的观测器：</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/hinf_observer_form.png"
+alt="状态观测器的形式" />
+<figcaption aria-hidden="true">状态观测器的形式</figcaption>
+</figure>
+<p>稍微推算下就能发现，<span
+class="math inline">\((9.23)\)</span>与<span
+class="math inline">\((1)(2)\)</span>所描述的观测器等价：</p>
+<p><span class="math display">\[
+\dot{\hat{x}}=A\hat{x}+B_1u-L(y-\hat{y})  \tag{1}
+\]</span> <span class="math display">\[
+\hat{y}=C_1\hat{x}+D_1u  \tag{2}
+\]</span></p>
+<p>它其实就是<a
+href="https://panqiincs.me/2023/11/26/pendulum-state-observer/">倒立摆的状态观测器设计</a>中采用的Luenberger状态观测器，仅仅只是正负号不同，在理论分析和仿真时要注意这点。接下来便是一些常规的理论推导：</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/hinf_observer_deduce.png"
+alt="观测器的理论推导" />
+<figcaption aria-hidden="true">观测器的理论推导</figcaption>
+</figure>
+<p><span
+class="math inline">\((9.25)\)</span>所示的动态方程描述了状态估计误差<span
+class="math inline">\(e\)</span>和系统输出估计误差<span
+class="math inline">\(\tilde{z}\)</span>之间的关系。还得到了从<span
+class="math inline">\(w\)</span>到<span
+class="math inline">\(\tilde{z}\)</span>的传递函数<span
+class="math inline">\(G_{\tilde{z}w}(s)\)</span>，要使它的<span
+class="math inline">\(H_{\infty}\)</span>范数尽量小，就能抑制扰动信号对系统输出估计误差的影响。</p>
+<h2 id="问题描述">问题描述</h2>
+<p>下图中的问题<span class="math inline">\((9.3)\)</span>描述了<span
+class="math inline">\(H_{\infty}\)</span>状态观测器的目标，如果<span
+class="math inline">\(\lVert G_{\tilde{z}w}(s)
+\rVert_{\infty}&lt;\gamma\)</span>，那么状态估计误差<span
+class="math inline">\(e\)</span>就会趋于零。</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/hinf_problem_formulation.png"
+alt="H无穷大状态观测器问题描述" />
+<figcaption aria-hidden="true">H无穷大状态观测器问题描述</figcaption>
+</figure>
+<h2 id="观测器反馈矩阵">观测器反馈矩阵</h2>
+<p>接下来要求解状态观测器反馈矩阵<span
+class="math inline">\(L\)</span>，有如下定理：</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/hinf_observer_theorem.png"
+alt="观测器反馈矩阵计算的定理" />
+<figcaption aria-hidden="true">观测器反馈矩阵计算的定理</figcaption>
+</figure>
+<p>求解上面的线性矩阵不等式（LMI）问题即可得到<span
+class="math inline">\(L\)</span>矩阵，可以在MATLAB中使用YALMIP求解。</p>
+<h2 id="状态反馈控制器">状态反馈控制器</h2>
+<p>接下来利用观测器得到的状态估计<span
+class="math inline">\(\hat{x}\)</span>设计控制器，采用如下状态反馈控制律，为和前面的<span
+class="math inline">\(A+LC_1\)</span>在形式上保持一致，没有加负号：</p>
+<p><span class="math display">\[
+u=K\hat{x}  \tag{3}
+\]</span></p>
+<p>根据控制性能指标要求选取合适的<span
+class="math inline">\(K\)</span>矩阵。将<span
+class="math inline">\((3)\)</span>代入到<span
+class="math inline">\((9.22)\)</span>中可得</p>
+<p><span class="math display">\[
+\dot{x}=(A+B_1K)x+B_1Ke+B_2w  \tag{4}
+\]</span></p>
+<p>将<span class="math inline">\((9.25)\)</span>和<span
+class="math inline">\((4)\)</span>合并，得到如下矩阵方程</p>
+<p><span class="math display">\[
+\left[ \begin{array}{c}
+\dot{x}\\
+\dot{e}\\
+\end{array} \right] =\left[ \begin{matrix}
+A+B_1K&amp;  B_1K\\
+0&amp;  A+LC_1\\
+\end{matrix} \right] \left[ \begin{array}{c}
+x\\
+e\\
+\end{array} \right] +\left[ \begin{array}{c}
+B_2\\
+B_2+LD_2\\
+\end{array} \right] w
+\tag{5}
+\]</span></p>
+<p>系统状态<span class="math inline">\(x\)</span>和状态估计误差<span
+class="math inline">\(e\)</span>可以在仿真中直接得到，为了看到输出估计误差，将系统输出方程设置为</p>
+<p><span class="math display">\[
+\tilde{z}=\left[
+\begin{matrix}
+0&amp; C_2\\
+\end{matrix}
+\right]
+\left[
+\begin{array}{c}
+x\\
+e\\
+\end{array}
+\right]
+\tag{6}
+\]</span></p>
+<p>根据<span
+class="math inline">\((5)(6)\)</span>即可设计基于状态估计的反馈控制器。</p>
+<h2 id="仿真设计与结果">仿真设计与结果</h2>
+<p>最后通过仿真验证<span
+class="math inline">\(H_{\infty}\)</span>状态观测器对扰动信号<span
+class="math inline">\(w(t)\)</span>的抑制能力。最好将<span
+class="math inline">\(L\)</span>矩阵的求解、观测器设计和控制器设计的代码放到同一个文件中，这样就能使用最精确的<span
+class="math inline">\(L\)</span>矩阵。MATLAB的默认输出精度是小数点后4位，根据我的经验，<span
+class="math inline">\(L\)</span>的舍入误差对观测器性能影响较大。</p>
+<p>下面的代码带有矩阵维数检查，对于不同的模型，只需要做少量修改既可运行：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%% Model described by (9.22)</span></span><br><span class="line">n = <span class="number">3</span>;  <span class="comment">% dimension of state x</span></span><br><span class="line">l = <span class="number">2</span>;  <span class="comment">% dimension of measured state y</span></span><br><span class="line">m = <span class="number">2</span>;  <span class="comment">% dimension of output z</span></span><br><span class="line">p = <span class="number">1</span>;  <span class="comment">% dimension of disturbance w</span></span><br><span class="line">r = <span class="number">2</span>;  <span class="comment">% dimension of input u</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% n by n matrix</span></span><br><span class="line">A = [<span class="number">2.8982</span>, <span class="number">-3.1606</span>,  <span class="number">0.6816</span>;</span><br><span class="line">     <span class="number">6.3595</span>, <span class="number">-4.2055</span>,  <span class="number">4.5423</span>;</span><br><span class="line">     <span class="number">3.2046</span>, <span class="number">-3.1761</span>, <span class="number">-3.8142</span>];</span><br><span class="line"><span class="keyword">if</span> ~<span class="built_in">isequal</span>(<span class="built_in">size</span>(A), [n, n])</span><br><span class="line">    fprintf(<span class="string">&#x27;Dimension of A is wrong!!\n&#x27;</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">% n by r matrix</span></span><br><span class="line">B1 = [<span class="number">2.0310</span>,  <span class="number">1.2164</span>;</span><br><span class="line">      <span class="number">0.4084</span>,  <span class="number">0.2794</span>;</span><br><span class="line">     <span class="number">-0.7775</span>, <span class="number">-0.3307</span>];</span><br><span class="line"><span class="keyword">if</span> ~<span class="built_in">isequal</span>(<span class="built_in">size</span>(B1), [n, r])</span><br><span class="line">    fprintf(<span class="string">&#x27;Dimension of B1 is wrong!!\n&#x27;</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">% n by p matrix</span></span><br><span class="line">B2 = [<span class="number">-0.0785</span>;</span><br><span class="line">      <span class="number">-0.0853</span>;</span><br><span class="line">      <span class="number">-0.0986</span>];</span><br><span class="line"><span class="keyword">if</span> ~<span class="built_in">isequal</span>(<span class="built_in">size</span>(B2), [n, p])</span><br><span class="line">    fprintf(<span class="string">&#x27;Dimension of B2 is wrong!!\n&#x27;</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">% l by n matrix</span></span><br><span class="line">C1 = [<span class="number">-0.8778</span>, <span class="number">-4.9442</span>, <span class="number">-4.5084</span>;</span><br><span class="line">       <span class="number">4.0161</span>, <span class="number">-2.0259</span>,  <span class="number">1.9318</span>];</span><br><span class="line"><span class="keyword">if</span> ~<span class="built_in">isequal</span>(<span class="built_in">size</span>(C1), [l, n])</span><br><span class="line">    fprintf(<span class="string">&#x27;Dimension of C1 is wrong!!\n&#x27;</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">% l by r matrix</span></span><br><span class="line">D1 = [<span class="number">0.6004</span>,  <span class="number">0.2107</span>;</span><br><span class="line">      <span class="number">1.9320</span>, <span class="number">-0.3997</span>];</span><br><span class="line"><span class="keyword">if</span> ~<span class="built_in">isequal</span>(<span class="built_in">size</span>(D1), [l, r])</span><br><span class="line">    fprintf(<span class="string">&#x27;Dimension of D1 is wrong!!\n&#x27;</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">% l by p matrix</span></span><br><span class="line">D2 = [<span class="number">0.0330</span>;</span><br><span class="line">     <span class="number">-0.0414</span>];</span><br><span class="line"><span class="keyword">if</span> ~<span class="built_in">isequal</span>(<span class="built_in">size</span>(D2), [l, p])</span><br><span class="line">    fprintf(<span class="string">&#x27;Dimension of D2 is wrong!!\n&#x27;</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">% m by n matrix</span></span><br><span class="line">C2 = [<span class="number">0.9607</span>, <span class="number">1.5600</span>, <span class="number">2.8558</span>;</span><br><span class="line">     <span class="number">-2.4371</span>, <span class="number">1.3634</span>, <span class="number">0.0095</span>];</span><br><span class="line"><span class="keyword">if</span> ~<span class="built_in">isequal</span>(<span class="built_in">size</span>(C2), [m, n])</span><br><span class="line">    fprintf(<span class="string">&#x27;Dimension of C2 is wrong!!\n&#x27;</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%% Solve LMI to get L</span></span><br><span class="line">yalmip(<span class="string">&#x27;clear&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">gamma</span> = <span class="number">1e-8</span>;</span><br><span class="line">P = sdpvar(n, n);</span><br><span class="line">W = sdpvar(n, l, <span class="string">&#x27;full&#x27;</span>);</span><br><span class="line">M = [A&#x27;*P+C1&#x27;*W&#x27;+P*A+W*C1, P*B2+W*D2, C2&#x27;;</span><br><span class="line">     (P*B2+W*D2)&#x27;, -<span class="built_in">gamma</span>*<span class="built_in">eye</span>(p), <span class="built_in">zeros</span>(p, m);</span><br><span class="line">     C2, <span class="built_in">zeros</span>(m, p), -<span class="built_in">gamma</span>*<span class="built_in">eye</span>(m)];</span><br><span class="line"></span><br><span class="line">Constraints = [P &gt;= <span class="number">0</span>; M &lt;= <span class="number">0</span>];</span><br><span class="line">Objective = [];</span><br><span class="line">options = sdpsettings(<span class="string">&#x27;verbose&#x27;</span>, <span class="number">0</span>);  <span class="comment">% 1: print verbose</span></span><br><span class="line">sol = optimize(Constraints, Objective, options);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> sol.problem == <span class="number">0</span></span><br><span class="line">    L = value(P)\value(W);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">disp</span>(<span class="string">&#x27;Hmm, something went wrong!&#x27;</span>);</span><br><span class="line">    sol.info</span><br><span class="line">    yalmiperror(sol.problem)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%% State observer, observer-based controller</span></span><br><span class="line"><span class="comment">% Pole placement to get K</span></span><br><span class="line">poles = [<span class="number">-5</span>; <span class="number">-7</span>+<span class="number">7</span><span class="built_in">j</span>; <span class="number">-7</span><span class="number">-7</span><span class="built_in">j</span>];</span><br><span class="line">K = place(A, -B1, poles);</span><br><span class="line"><span class="comment">% Build the model of (5)(6)</span></span><br><span class="line">Aco = [A+B1*K, B1*K;</span><br><span class="line">       <span class="built_in">zeros</span>(<span class="built_in">size</span>(A)), A+L*C1];</span><br><span class="line">Bco = [B2; B2+L*D2];</span><br><span class="line">Cco = [<span class="built_in">zeros</span>(<span class="built_in">size</span>(C2)), C2]; Dco = <span class="number">0</span>;</span><br><span class="line">sys_co = ss(Aco, Bco, Cco, Dco);</span><br><span class="line"><span class="comment">% Run lsim to simulate</span></span><br><span class="line">t = <span class="number">0</span>:<span class="number">0.01</span>:<span class="number">4</span>;</span><br><span class="line">xe0 = <span class="built_in">zeros</span>(<span class="number">6</span>, <span class="number">1</span>);</span><br><span class="line">w = wgn(<span class="number">1</span>, <span class="built_in">length</span>(t), <span class="number">100</span>, <span class="string">&#x27;real&#x27;</span>);     <span class="comment">% while noise with power of 100dBW</span></span><br><span class="line">[zt, t, xe] = lsim(sys_co, w, t, xe0);  <span class="comment">% save output in zt, save state in xe</span></span><br><span class="line"><span class="comment">% Plots</span></span><br><span class="line">subplot(<span class="number">311</span>); <span class="built_in">plot</span>(t, w, <span class="string">&#x27;LineWidth&#x27;</span>, <span class="number">1</span>); grid on</span><br><span class="line">subplot(<span class="number">312</span>); <span class="built_in">plot</span>(t, xe(:, <span class="number">4</span>:<span class="number">6</span>), <span class="string">&#x27;LineWidth&#x27;</span>, <span class="number">1</span>); grid on</span><br><span class="line">subplot(<span class="number">313</span>); <span class="built_in">plot</span>(t, zt(:, <span class="number">1</span>:<span class="number">2</span>), <span class="string">&#x27;LineWidth&#x27;</span>, <span class="number">1</span>); grid on</span><br></pre></td></tr></table></figure>
+<p>得到扰动信号<span
+class="math inline">\(w(t)\)</span>、状态估计误差<span
+class="math inline">\(e(t)\)</span>和输出估计误差<span
+class="math inline">\(\tilde{z}(t)\)</span>随时间变化的曲线如下：</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/hinf_observer_plots.svg"
+alt="状态观测器性能" />
+<figcaption aria-hidden="true">状态观测器性能</figcaption>
+</figure>
+<p>很明显，所设计的<span
+class="math inline">\(H_{\infty}\)</span>状态观测器对扰动信号<span
+class="math inline">\(w(t)\)</span>有很强的抑制能力，达到了<span
+class="math inline">\((9.26)\)</span>要求的性能。</p>
+<h2 id="参考资料">参考资料</h2>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/20932689/">LMIs in Control
+Systems</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://book.douban.com/subject/6082221/">现代控制工程</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>辛未羊
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://panqiincs.me/2024/10/18/hinf-observer-design/" title="H无穷大状态观测器设计与仿真">https://panqiincs.me/2024/10/18/hinf-observer-design/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/" rel="tag"># 控制理论</a>
+              <a href="/tags/matlab/" rel="tag"># matlab</a>
+              <a href="/tags/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%BB%BF%E7%9C%9F/" rel="tag"># 控制系统仿真</a>
+              <a href="/tags/lmi/" rel="tag"># lmi</a>
+              <a href="/tags/%E7%BA%BF%E6%80%A7%E7%9F%A9%E9%98%B5%E4%B8%8D%E7%AD%89%E5%BC%8F/" rel="tag"># 线性矩阵不等式</a>
+              <a href="/tags/yalmip/" rel="tag"># yalmip</a>
+              <a href="/tags/%E7%8A%B6%E6%80%81%E8%A7%82%E6%B5%8B%E5%99%A8/" rel="tag"># 状态观测器</a>
+              <a href="/tags/h%E6%97%A0%E7%A9%B7%E5%A4%A7/" rel="tag"># h无穷大</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/10/12/guilin-fm-channels/" rel="prev" title="桂林城区FM调频广播实测">
+                  <i class="fa fa-angle-left"></i> 桂林城区FM调频广播实测
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2013 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">辛未羊</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">148k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:59</span>
+  </span>
+</div>
+
+
+
+
+
+  <div>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id: "JjD4gEghP0h7Vn4U",ck: "JjD4gEghP0h7Vn4U"})</script>
+  </div>
+
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"https://vercel.panqiincs.me","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"欢迎留言交流","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/2024/10/18/hinf-observer-design/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>
