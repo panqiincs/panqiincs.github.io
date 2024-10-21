@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2024-10-19T13:59:41.530Z</updated>
+  <updated>2024-10-19T14:04:56.546Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://panqiincs.me/2024/10/19/system-passivity/"/>
     <id>https://panqiincs.me/2024/10/19/system-passivity/</id>
     <published>2024-10-19T11:59:20.000Z</published>
-    <updated>2024-10-19T13:59:41.530Z</updated>
+    <updated>2024-10-19T14:04:56.546Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;定义&quot;&gt;定义&lt;/h2&gt;
@@ -47,11 +47,11 @@
     <link href="https://panqiincs.me/2024/10/18/hinf-observer-design/"/>
     <id>https://panqiincs.me/2024/10/18/hinf-observer-design/</id>
     <published>2024-10-18T13:19:59.000Z</published>
-    <updated>2024-10-18T13:21:20.565Z</updated>
+    <updated>2024-10-20T04:35:35.837Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;线性系统模型&quot;&gt;线性系统模型&lt;/h2&gt;
-&lt;p&gt;本文介绍如下类型线性系统的状态观测器设计：&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;系统模型&quot;&gt;系统模型&lt;/h2&gt;
+&lt;p&gt;本文介绍如下形式线性系统的状态观测器设计：&lt;/p&gt;</summary>
     
     
     
@@ -81,7 +81,7 @@
     <link href="https://panqiincs.me/2024/10/12/guilin-fm-channels/"/>
     <id>https://panqiincs.me/2024/10/12/guilin-fm-channels/</id>
     <published>2024-10-12T12:24:46.000Z</published>
-    <updated>2024-10-19T11:07:14.203Z</updated>
+    <updated>2024-10-21T10:24:11.166Z</updated>
     
     
     <summary type="html">&lt;p&gt;昨天买了台德生PL330收音机，这是全波段收音机中的爆款，在国内外都有很好的口碑，而且价格不算贵。收到机子后，我立刻手动搜索了桂林城区的FM调频广播信号。&lt;/p&gt;</summary>
@@ -260,7 +260,7 @@ Analytics各有优点，非常好用。2023年是第一个完整统计的自然�
     <link href="https://panqiincs.me/2023/12/07/discrete-observer-design/"/>
     <id>https://panqiincs.me/2023/12/07/discrete-observer-design/</id>
     <published>2023-12-07T05:13:42.000Z</published>
-    <updated>2024-08-07T05:22:04.026Z</updated>
+    <updated>2024-10-20T05:11:40.225Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;系统离散化&quot;&gt;系统离散化&lt;/h2&gt;
