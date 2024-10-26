@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2024-10-26T07:05:30.406Z</updated>
+  <updated>2024-10-26T09:39:12.572Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -21,16 +21,18 @@
     <link href="https://panqiincs.me/2024/10/26/input-output-stability/"/>
     <id>https://panqiincs.me/2024/10/26/input-output-stability/</id>
     <published>2024-10-26T04:08:29.000Z</published>
-    <updated>2024-10-26T07:05:30.406Z</updated>
+    <updated>2024-10-26T09:39:12.572Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;简介&lt;/h2&gt;
-&lt;p&gt;与状态空间模型不同，输入输出模型直接将系统的输入与输出关联起来，无需通过状态方程描述内部结构，而是将系统视为一个黑箱。输入输出稳定性关注于输入和输出的关系，而Lyapunov稳定性重于系统状态的行为。&lt;/p&gt;</summary>
+&lt;p&gt;与状态空间模型不同，输入输出模型直接将系统的输入和输出联系起来，而无需通过状态方程描述内部结构，通常将系统视为一个黑箱。输入输出稳定性关注输入与输出之间的关系，而Lyapunov稳定性则着重于系统状态的演变。&lt;/p&gt;</summary>
     
     
     
     <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
     
+    
+    <category term="控制理论" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/"/>
     
     <category term="稳定性" scheme="https://panqiincs.me/tags/%E7%A8%B3%E5%AE%9A%E6%80%A7/"/>
     
