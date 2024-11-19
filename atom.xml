@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2024-11-18T13:12:08.926Z</updated>
+  <updated>2024-11-19T02:30:41.545Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://panqiincs.me/2024/11/18/feedback-stability/"/>
     <id>https://panqiincs.me/2024/11/18/feedback-stability/</id>
     <published>2024-11-18T01:16:17.000Z</published>
-    <updated>2024-11-18T13:12:08.926Z</updated>
+    <updated>2024-11-19T02:30:41.545Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;简介&lt;/h2&gt;
@@ -45,7 +45,7 @@
     <link href="https://panqiincs.me/2024/10/26/input-output-stability/"/>
     <id>https://panqiincs.me/2024/10/26/input-output-stability/</id>
     <published>2024-10-26T04:08:29.000Z</published>
-    <updated>2024-11-16T12:18:58.388Z</updated>
+    <updated>2024-11-19T02:30:14.959Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;简介&lt;/h2&gt;
@@ -65,15 +65,15 @@
   </entry>
   
   <entry>
-    <title>被动系统的定义和特性</title>
+    <title>无源系统的定义和特性</title>
     <link href="https://panqiincs.me/2024/10/19/system-passivity/"/>
     <id>https://panqiincs.me/2024/10/19/system-passivity/</id>
     <published>2024-10-19T11:59:20.000Z</published>
-    <updated>2024-11-15T05:19:04.322Z</updated>
+    <updated>2024-11-19T02:29:34.196Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;定义&quot;&gt;定义&lt;/h2&gt;
-&lt;p&gt;Passivity既可以翻译为「被动性」，也可以翻译为「无源性」。在电路理论中，无源系统的说法更为常见，因为它与是否存在能量来源密切相关。而在控制理论中，被动系统的用法则更加普遍，因此本文采用「被动性」这个译名。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;术语&quot;&gt;术语&lt;/h2&gt;
+&lt;p&gt;Passivity的字面翻译是「被动性」，但在各个领域中通常都翻译为「无源性」，因为这一术语与物理系统中能量传递和消耗的特性有关。Passivity描述系统不会产生能量而只能存储或消耗能量的特性。&lt;/p&gt;</summary>
     
     
     
@@ -83,8 +83,6 @@
     <category term="控制理论" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/"/>
     
     <category term="稳定性" scheme="https://panqiincs.me/tags/%E7%A8%B3%E5%AE%9A%E6%80%A7/"/>
-    
-    <category term="被动性" scheme="https://panqiincs.me/tags/%E8%A2%AB%E5%8A%A8%E6%80%A7/"/>
     
     <category term="无源性" scheme="https://panqiincs.me/tags/%E6%97%A0%E6%BA%90%E6%80%A7/"/>
     
