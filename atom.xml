@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2024-11-19T02:54:14.214Z</updated>
+  <updated>2025-01-22T09:10:35.731Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>再次入手「Smith电子学」</title>
+    <link href="https://panqiincs.me/2025/01/22/new-smith-electronics/"/>
+    <id>https://panqiincs.me/2025/01/22/new-smith-electronics/</id>
+    <published>2025-01-22T07:42:30.000Z</published>
+    <updated>2025-01-22T09:10:35.731Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;几年前，为了深入学习模拟电路，我买了套&lt;a
+href=&quot;https://panqiincs.me/2020/06/28/sedra-smith-electronics/&quot;&gt;台版「Smith电子学」&lt;/a&gt;。这套书是北美人写的经典教材，台版的翻译和制作水准都很高，我非常喜欢。后来由于学习重心转移，两本大部头在书柜里躺了几年，于是去年将它&lt;a
+href=&quot;https://panqiincs.me/2024/01/10/second-hand-books/&quot;&gt;转卖给了有缘人&lt;/a&gt;。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
+    
+    
+    <category term="教材" scheme="https://panqiincs.me/tags/%E6%95%99%E6%9D%90/"/>
+    
+    <category term="模拟电路" scheme="https://panqiincs.me/tags/%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>反馈系统的稳定性</title>
@@ -458,36 +481,6 @@ href=&quot;https://www.reddit.com/r/ControlTheory/comments/l3wpil/matlab_codes_w
     
     
     <category term="旅行" scheme="https://panqiincs.me/tags/%E6%97%85%E8%A1%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>线性代数：内积空间</title>
-    <link href="https://panqiincs.me/2023/08/18/la-inner-product-space/"/>
-    <id>https://panqiincs.me/2023/08/18/la-inner-product-space/</id>
-    <published>2023-08-18T07:01:12.000Z</published>
-    <updated>2023-09-22T04:31:21.802Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;内积空间&quot;&gt;内积空间&lt;/h2&gt;
-&lt;p&gt;现将「长度」、「距离」的概念推广到一般的线性空间中。距离可以看作是长度的派生概念，而长度又可以看成是内积的派生概念。这里给出&lt;strong&gt;复数域&lt;/strong&gt;上内积的定义，因为实数域可以看成是复数域的特例。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
-    
-    
-    <category term="正定" scheme="https://panqiincs.me/tags/%E6%AD%A3%E5%AE%9A/"/>
-    
-    <category term="正定矩阵" scheme="https://panqiincs.me/tags/%E6%AD%A3%E5%AE%9A%E7%9F%A9%E9%98%B5/"/>
-    
-    <category term="内积空间" scheme="https://panqiincs.me/tags/%E5%86%85%E7%A7%AF%E7%A9%BA%E9%97%B4/"/>
-    
-    <category term="内积" scheme="https://panqiincs.me/tags/%E5%86%85%E7%A7%AF/"/>
-    
-    <category term="范数" scheme="https://panqiincs.me/tags/%E8%8C%83%E6%95%B0/"/>
-    
-    <category term="正交" scheme="https://panqiincs.me/tags/%E6%AD%A3%E4%BA%A4/"/>
     
   </entry>
   

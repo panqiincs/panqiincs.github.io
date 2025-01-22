@@ -9,8 +9,24 @@
 
 
     <url>
+        <loc>https://panqiincs.me/2025/01/22/new-smith-electronics/</loc>
+        <lastmod>2025-01-22T09:10:35.731Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://panqiincs.me/2022/07/14/python-devanagari/</loc>
-        <lastmod>2025-01-08T05:05:07.382Z</lastmod>
+        <lastmod>2025-01-22T07:41:31.289Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2020/06/28/sedra-smith-electronics/</loc>
+        <lastmod>2025-01-10T12:41:59.234Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -955,14 +971,6 @@
     <url>
         <loc>https://panqiincs.me/2019/04/25/nginx-log-to-mysql/</loc>
         <lastmod>2022-06-02T14:41:23.759Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2020/06/28/sedra-smith-electronics/</loc>
-        <lastmod>2022-05-01T14:48:34.390Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
