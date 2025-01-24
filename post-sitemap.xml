@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://panqiincs.me/2020/06/28/sedra-smith-electronics/</loc>
+        <lastmod>2025-01-24T05:24:02.730Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2019/04/16/is-teaching-in-english-good/</loc>
+        <lastmod>2025-01-24T05:19:20.859Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://panqiincs.me/2025/01/22/new-smith-electronics/</loc>
         <lastmod>2025-01-22T09:10:35.731Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -19,14 +35,6 @@
     <url>
         <loc>https://panqiincs.me/2022/07/14/python-devanagari/</loc>
         <lastmod>2025-01-22T07:41:31.289Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2020/06/28/sedra-smith-electronics/</loc>
-        <lastmod>2025-01-10T12:41:59.234Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -811,14 +819,6 @@
     <url>
         <loc>https://panqiincs.me/2016/07/06/hello-shenzhen/</loc>
         <lastmod>2023-02-04T02:43:13.386Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2019/04/16/is-teaching-in-english-good/</loc>
-        <lastmod>2023-02-03T16:16:38.268Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
