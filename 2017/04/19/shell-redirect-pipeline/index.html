@@ -24,7 +24,7 @@
     <meta name="description" content="介绍 Shell实现：基本功能一文介绍了如何实现shell的基本功能，本文介绍如何实现I&#x2F;O重定向和管道。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shell实现：重定向和管道">
-<meta property="og:url" content="https://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/index.html">
+<meta property="og:url" content="https://panqiincs.me/2017/04/19/shell-redirect-pipeline/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
 <meta property="og:description" content="介绍 Shell实现：基本功能一文介绍了如何实现shell的基本功能，本文介绍如何实现I&#x2F;O重定向和管道。">
 <meta property="og:locale" content="zh_CN">
@@ -39,10 +39,10 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/">
+<link rel="canonical" href="https://panqiincs.me/2017/04/19/shell-redirect-pipeline/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/","path":"2017/04/19/write-a-shell-redirect-and-pipeline/","title":"Shell实现：重定向和管道"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://panqiincs.me/2017/04/19/shell-redirect-pipeline/","path":"2017/04/19/shell-redirect-pipeline/","title":"Shell实现：重定向和管道"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Shell实现：重定向和管道 | 辛未羊的网络日志</title>
@@ -225,7 +225,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/">
+    <link itemprop="mainEntityOfPage" href="https://panqiincs.me/2017/04/19/shell-redirect-pipeline/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -275,8 +275,8 @@
     </span>
     <span class="post-meta-item-text">Waline：</span>
   
-    <a title="waline" href="/2017/04/19/write-a-shell-redirect-and-pipeline/#waline" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" data-path="/2017/04/19/write-a-shell-redirect-and-pipeline/" itemprop="commentCount"></span>
+    <a title="waline" href="/2017/04/19/shell-redirect-pipeline/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2017/04/19/shell-redirect-pipeline/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -382,7 +382,7 @@ target="_blank" rel="noopener" href="https://book.douban.com/subject/1219329/">U
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/" title="Shell实现：重定向和管道">https://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/</a>
+      <a href="https://panqiincs.me/2017/04/19/shell-redirect-pipeline/" title="Shell实现：重定向和管道">https://panqiincs.me/2017/04/19/shell-redirect-pipeline/</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -402,7 +402,7 @@ target="_blank" rel="noopener" href="https://book.douban.com/subject/1219329/">U
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2017/02/26/write-a-shell-basic-functionality/" rel="prev" title="Shell实现：基本功能">
+                <a href="/2017/02/26/shell-basic-functionality/" rel="prev" title="Shell实现：基本功能">
                   <i class="fa fa-angle-left"></i> Shell实现：基本功能
                 </a>
             </div>
@@ -505,7 +505,7 @@ target="_blank" rel="noopener" href="https://book.douban.com/subject/1219329/">U
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
-<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"https://vercel.panqiincs.me","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"欢迎留言交流","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/2017/04/19/write-a-shell-redirect-and-pipeline/"}</script>
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"https://vercel.panqiincs.me","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"欢迎留言交流","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/2017/04/19/shell-redirect-pipeline/"}</script>
 <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
 <script>
 document.addEventListener('page:loaded', () => {

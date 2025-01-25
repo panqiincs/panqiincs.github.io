@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://panqiincs.me/2023/08/31/guimao-yunnan-trip/</loc>
+        <lastmod>2025-01-25T07:27:39.203Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://panqiincs.me/2020/06/28/sedra-smith-electronics/</loc>
         <lastmod>2025-01-24T05:24:02.730Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -17,7 +25,7 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2019/04/16/is-teaching-in-english-good/</loc>
+        <loc>https://panqiincs.me/2019/04/16/teaching-in-english/</loc>
         <lastmod>2025-01-24T05:19:20.859Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -217,14 +225,6 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2023/08/31/guimao-yunnan-trip/</loc>
-        <lastmod>2023-12-17T15:32:32.989Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://panqiincs.me/2023/10/09/guimao-huanggao-compus/</loc>
         <lastmod>2023-10-25T06:14:39.964Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -337,7 +337,7 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2015/11/19/raspberry-pi-hardware-pwm-module/</loc>
+        <loc>https://panqiincs.me/2015/11/19/rpi-hardware-pwm/</loc>
         <lastmod>2023-07-28T11:51:43.016Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -545,7 +545,7 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2018/05/26/process-pdf-using-imagemagick/</loc>
+        <loc>https://panqiincs.me/2018/05/26/process-pdf-imagemagick/</loc>
         <lastmod>2023-02-05T09:52:55.350Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -737,7 +737,7 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/</loc>
+        <loc>https://panqiincs.me/2017/02/26/shell-basic-functionality/</loc>
         <lastmod>2023-02-04T02:43:13.390Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -745,7 +745,7 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2017/04/19/write-a-shell-redirect-and-pipeline/</loc>
+        <loc>https://panqiincs.me/2017/04/19/shell-redirect-pipeline/</loc>
         <lastmod>2023-02-04T02:43:13.390Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -769,7 +769,7 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2017/09/10/after-installing-opensuse-leap/</loc>
+        <loc>https://panqiincs.me/2017/09/10/after-installing-leap/</loc>
         <lastmod>2023-02-04T02:43:13.390Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -937,7 +937,7 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2015/08/05/multiplexing-and-nonblocking-io/</loc>
+        <loc>https://panqiincs.me/2015/08/05/multiplexing-nonblocking-io/</loc>
         <lastmod>2022-10-17T05:38:40.559Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
