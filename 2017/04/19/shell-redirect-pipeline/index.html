@@ -29,7 +29,7 @@
 <meta property="og:description" content="介绍 Shell实现：基本功能一文介绍了如何实现shell的基本功能，本文介绍如何实现I&#x2F;O重定向和管道。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-04-19T13:13:18.000Z">
-<meta property="article:modified_time" content="2023-02-04T02:43:13.390Z">
+<meta property="article:modified_time" content="2025-01-28T06:31:31.921Z">
 <meta property="article:author" content="辛未羊">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="shell">
@@ -306,7 +306,7 @@
     
     <div class="post-body" itemprop="articleBody"><h2 id="介绍">介绍</h2>
 <p><a
-href="https://panqiincs.me/2017/02/26/write-a-shell-basic-functionality/">Shell实现：基本功能</a>一文介绍了如何实现shell的基本功能，本文介绍如何实现I/O重定向和管道。</p>
+href="https://panqiincs.me/2017/02/26/shell-basic-functionality/">Shell实现：基本功能</a>一文介绍了如何实现shell的基本功能，本文介绍如何实现I/O重定向和管道。</p>
 <span id="more"></span>
 <p>I/O重定向使得程序可以自由地指定数据的流向，不一定从键盘读取数据或输出结果到屏幕上。管道使得一条命令的输出可以作为另一条命令的输入，多条命令可以配合完成一项任务。例如下面的命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">ls</span> -l &gt; 1.txt</span><br><span class="line">$ <span class="built_in">cat</span> 1.txt</span><br><span class="line">total 24</span><br><span class="line">-rw-r--r-- 1 krist <span class="built_in">users</span>     0 Apr 15 16:37 1.txt</span><br><span class="line">-rw-r--r-- 1 krist <span class="built_in">users</span>    86 Apr 15 09:56 Makefile</span><br><span class="line">-rw-r--r-- 1 krist <span class="built_in">users</span> 13177 Apr 15 09:56 psh.c</span><br><span class="line">-rw-r--r-- 1 krist <span class="built_in">users</span>    21 Apr 15 10:05 README.md</span><br><span class="line">$ <span class="built_in">cat</span> &lt; 1.txt | <span class="built_in">wc</span> -l</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
