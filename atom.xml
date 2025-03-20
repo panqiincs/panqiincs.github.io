@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2025-02-26T03:11:36.831Z</updated>
+  <updated>2025-03-20T06:13:49.735Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>四旋翼飞行器的建模</title>
+    <link href="https://panqiincs.me/2025/03/18/quadrotor-dynamics/"/>
+    <id>https://panqiincs.me/2025/03/18/quadrotor-dynamics/</id>
+    <published>2025-03-18T05:03:20.000Z</published>
+    <updated>2025-03-20T06:13:49.735Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;引言&quot;&gt;引言&lt;/h2&gt;
+&lt;p&gt;本文是我在学习四旋翼飞行器建模时做的笔记，主要依据&lt;a
+href=&quot;https://github.com/yrlu/quadrotor&quot;&gt;这个项目&lt;/a&gt;的文档。鉴于理论力学早就全部还给老师，文中对基础力学知识进行了必要的阐述，虽不够详尽，但应足以辅助形象理解。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
+    
+    
+    <category term="控制理论" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/"/>
+    
+    <category term="四旋翼" scheme="https://panqiincs.me/tags/%E5%9B%9B%E6%97%8B%E7%BF%BC/"/>
+    
+  </entry>
   
   <entry>
     <title>老骥伏枥：电脑仰卧起坐抢救记</title>
@@ -447,29 +470,6 @@ href=&quot;https://panqiincs.me/2022/02/18/attempt-amann-analysis/&quot;&gt;尝�
     
     <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>2023年国庆游高中母校</title>
-    <link href="https://panqiincs.me/2023/10/09/guimao-huanggao-compus/"/>
-    <id>https://panqiincs.me/2023/10/09/guimao-huanggao-compus/</id>
-    <published>2023-10-09T12:23:37.000Z</published>
-    <updated>2023-10-25T06:14:39.964Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;9月底放假之前我就从校友群得知高中校园在9月30日和10月1日对校友开放，还可以进食堂吃饭。那两天校友群里有不少人发了访校的照片，我看到后非常羡慕。我10月2日才回黄州，心想这次只能错过了。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
-    
-    
-    <category term="黄冈" scheme="https://panqiincs.me/tags/%E9%BB%84%E5%86%88/"/>
-    
-    <category term="旅行" scheme="https://panqiincs.me/tags/%E6%97%85%E8%A1%8C/"/>
-    
-    <category term="黄冈中学" scheme="https://panqiincs.me/tags/%E9%BB%84%E5%86%88%E4%B8%AD%E5%AD%A6/"/>
     
   </entry>
   
