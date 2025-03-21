@@ -29,7 +29,7 @@
 <meta property="og:description" content="引言 本文是我在学习四旋翼飞行器建模时做的笔记，主要依据这个项目的文档。鉴于理论力学早就全部还给老师，文中对基础力学知识进行了必要的阐述，虽不够详尽，但应足以辅助形象理解。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-18T05:03:20.000Z">
-<meta property="article:modified_time" content="2025-03-21T13:50:42.628Z">
+<meta property="article:modified_time" content="2025-03-21T14:18:58.978Z">
 <meta property="article:author" content="辛未羊">
 <meta property="article:tag" content="控制理论">
 <meta property="article:tag" content="四旋翼">
@@ -125,7 +125,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9D%90%E6%A0%87%E8%BD%B4%E5%92%8C%E5%8F%82%E8%80%83%E7%B3%BB"><span class="nav-number">2.</span> <span class="nav-text">坐标轴和参考系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%83%AF%E6%80%A7%E7%89%B9%E5%BE%81"><span class="nav-number">3.</span> <span class="nav-text">惯性特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B5%E6%9C%BA%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">电机模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9A%E4%BD%93%E8%BF%90%E5%8A%A8%E5%AD%A6"><span class="nav-number">5.</span> <span class="nav-text">刚体运动学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B3%E5%8A%A8%E5%8A%A8%E5%8A%9B%E5%AD%A6"><span class="nav-number">6.</span> <span class="nav-text">平动动力学</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E5%8A%A8%E5%8A%A8%E5%8A%9B%E5%AD%A6"><span class="nav-number">6.1.</span> <span class="nav-text">转动动力学</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.2.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9D%90%E6%A0%87%E8%BD%B4%E5%92%8C%E5%8F%82%E8%80%83%E7%B3%BB"><span class="nav-number">2.</span> <span class="nav-text">坐标轴和参考系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%83%AF%E6%80%A7%E7%89%B9%E5%BE%81"><span class="nav-number">3.</span> <span class="nav-text">惯性特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B5%E6%9C%BA%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">电机模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9A%E4%BD%93%E5%8A%A8%E5%8A%9B%E5%AD%A6"><span class="nav-number">5.</span> <span class="nav-text">刚体动力学</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E5%8A%A8%E5%AD%A6"><span class="nav-number">5.1.</span> <span class="nav-text">运动学</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B3%E5%8A%A8%E5%8A%A8%E5%8A%9B%E5%AD%A6"><span class="nav-number">5.2.</span> <span class="nav-text">平动动力学</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E5%8A%A8%E5%8A%A8%E5%8A%9B%E5%AD%A6"><span class="nav-number">5.3.</span> <span class="nav-text">转动动力学</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -281,7 +281,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.8k</span>
+      <span>2.9k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -363,7 +363,8 @@ src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/uav_model_frame
 alt="图1 四旋翼飞行器的坐标系" />
 <figcaption aria-hidden="true">图1 四旋翼飞行器的坐标系</figcaption>
 </figure>
-<h2 id="刚体运动学">刚体运动学</h2>
+<h2 id="刚体动力学">刚体动力学</h2>
+<h3 id="运动学">运动学</h3>
 <p>四旋翼飞行器中，将机体坐标系<span
 class="math inline">\(\mathcal{B}\)</span>中的向量转换到惯性坐标系<span
 class="math inline">\(\mathcal{A}\)</span>的<strong>旋转矩阵</strong>为</p>
@@ -433,7 +434,7 @@ class="math inline">\(\dot{\phi}, \dot{\theta},
 \end{bmatrix}
 \begin{bmatrix} \dot{\phi} \\ \dot{\theta} \\ \dot{\psi} \end{bmatrix}
 \]</span></p>
-<h2 id="平动动力学">平动动力学</h2>
+<h3 id="平动动力学">平动动力学</h3>
 <p>四旋翼飞行器的<strong>平动动力学方程</strong>基于牛顿第二定律（Newton's
 laws of motion）建立，描述了质心在惯性坐标系<span
 class="math inline">\(\mathcal{A}\)</span>中的加速度与外力的关系。其形式为：</p>
@@ -469,6 +470,7 @@ class="math inline">\(\phi\)</span>和<span
 class="math inline">\(\theta\)</span>决定）驱动飞行器前后或左右移动。</p>
 <h3 id="转动动力学">转动动力学</h3>
 <p>四旋翼飞行器的<strong>转动动力学方程</strong>基于欧拉方程（Euler's
+rotation
 equations）建立，描述了机体角加速度与外力矩（由旋翼推力差产生）及陀螺效应（角速度与角动量的耦合）的关系：</p>
 <p><span class="math display">\[
 I \begin{bmatrix} \dot{p} \\ \dot{q} \\ \dot{r} \end{bmatrix} =
@@ -554,7 +556,7 @@ r\)</span>），需控制器补偿。悬停时有<span class="math inline">\(p
 0\)</span>，陀螺效应可忽略，方程则简化为<span class="math inline">\(I
 \dot{\boldsymbol{\omega}} =
 \boldsymbol{\tau}_{\text{ext}}\)</span>。</p>
-<h3 id="总结">总结</h3>
+<h2 id="总结">总结</h2>
 <p>平动动力学方程与转动动力学方程共同构建了四旋翼飞行器的完整动力学模型体系。平动动力学方程在惯性坐标系<span
 class="math inline">\(\mathcal{A}\)</span>中构建，完整表征了质心运动规律：</p>
 <p><span class="math display">\[
