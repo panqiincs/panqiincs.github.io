@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -323,10 +323,10 @@ Toolchain</a>是目标平台为ARM嵌入式处理器的工具链软件。一般�
 <h2 id="stm32cubemx">STM32CubeMX</h2>
 <p>ST官方的固件库已经停止更新，官方推荐用STM32CubeMX生成项目的初始化代码。STM32CubeMX是图形化界面，点击鼠标就能配置，比固件库方便很多。</p>
 <p>STM32CubeMX依赖Java运行环境，要安装JRE 1.8：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S jdk8-openjdk</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -S jdk8-openjdk</span><br></pre></td></tr></table></figure>
 <p>在ST的<a
 target="_blank" rel="noopener" href="https://www.st.com/zh/development-tools/stm32cubemx.html">官方网站</a>上下载安装文件，我下载的是5.3.0版本。解压后有三个文件，Windows通过运行exe文件安装，Linux通过运行<code>.linux</code>后缀的文件安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./SetupSTM32CubeMX-5.3.0.linux</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> ./SetupSTM32CubeMX-5.3.0.linux</span><br></pre></td></tr></table></figure>
 <p>会跳出一个图形化安装界面，不停地点下一步就行。安装完成后，启动软件，点击File
 - New
 Project新建一个工程。此时会看到选择芯片型号的界面，可以通过勾选筛选条件过滤出目标芯片，我的芯片型号是STM32F103RCT6，ARM
@@ -374,11 +374,11 @@ Configuration，打开json配置文件，添加一些信息帮助插件做代码
 <p>现在就可以构建工程了，在项目的根目录下直接运行<code>make</code>命令，编译链接完成后，工程根目录下会多出一个<code>build/</code>目录，里面有我们需要的<code>LedTest.bin</code>文件。</p>
 <h2 id="stm32flash">stm32flash</h2>
 <p>最后将二进制文件烧写到芯片中。一般来说，用JLink是最方便的，不仅可以烧写软件还能够进行硬件调试。我没有JLink，手头只有一根可以供电和烧写软件的USB转串口线，所以我介绍另一款名为stm32flash的烧写软件。stm32flash需要自己下载源码后编译安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/stm32duino/stm32flash</span><br><span class="line"><span class="built_in">cd</span> stm32flash/</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/stm32duino/stm32flash</span><br><span class="line"><span class="built_in">cd</span> stm32flash/</span><br><span class="line">make</span><br><span class="line"><span class="built_in">sudo</span> make install</span><br></pre></td></tr></table></figure>
 <p>用跳线帽将板子的BOOT0引脚接3.3V，BOOT1引脚接地，用USB转串口线将板子和电脑连接，然后上电。我的Linux系统默认就有CH340芯片的驱动，上电后多了一个名为<code>/dev/ttyUSB0</code>的设备。可以用stm32flash查看串口的信息：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo stm32flash /dev/ttyUSB0</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> stm32flash /dev/ttyUSB0</span><br></pre></td></tr></table></figure>
 <p>一切正常，然后用下面的命令将编译生成的二进制文件烧写入芯片中：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo stm32flash -w LedTest.bin -v -g 0x00 /dev/ttyUSB0</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> stm32flash -w LedTest.bin -v -g 0x00 /dev/ttyUSB0</span><br></pre></td></tr></table></figure>
 <p>烧写完后就可以在板子上看到LED闪烁的效果。该软件更多的功能可以通过运行<code>stm32flash -h</code>命令查看。</p>
 <h2 id="参考">参考</h2>
 <ol type="1">

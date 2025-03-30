@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -305,9 +305,9 @@
 <h2 id="配置修改">配置修改</h2>
 <h3 id="更改软件源">更改软件源</h3>
 <p>修改软件源以获取更快的下载速度，国内建议使用USTC源。以42.3为例，在终端下的配置方法如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 禁用原有软件源</span></span><br><span class="line">sudo zypper mr -da</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加中科大镜像源</span></span><br><span class="line">sudo zypper ar -<span class="built_in">fc</span> https://mirrors.ustc.edu.cn/opensuse/distribution/leap/42.3/repo/oss USTC:42.3:OSS</span><br><span class="line">sudo zypper ar -<span class="built_in">fc</span> https://mirrors.ustc.edu.cn/opensuse/distribution/leap/42.3/repo/non-oss USTC:42.3:NON-OSS</span><br><span class="line">sudo zypper ar -<span class="built_in">fc</span> https://mirrors.ustc.edu.cn/opensuse/update/leap/42.3/oss USTC:42.3:UPDATE-OSS</span><br><span class="line">sudo zypper ar -<span class="built_in">fc</span> https://mirrors.ustc.edu.cn/opensuse/update/leap/42.3/non-oss USTC:42.3:UPDATE-NON-OSS</span><br><span class="line"></span><br><span class="line"><span class="comment"># 手动刷新软件源</span></span><br><span class="line">sudo zypper ref</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 禁用原有软件源</span></span><br><span class="line"><span class="built_in">sudo</span> zypper mr -da</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加中科大镜像源</span></span><br><span class="line"><span class="built_in">sudo</span> zypper ar -<span class="built_in">fc</span> https://mirrors.ustc.edu.cn/opensuse/distribution/leap/42.3/repo/oss USTC:42.3:OSS</span><br><span class="line"><span class="built_in">sudo</span> zypper ar -<span class="built_in">fc</span> https://mirrors.ustc.edu.cn/opensuse/distribution/leap/42.3/repo/non-oss USTC:42.3:NON-OSS</span><br><span class="line"><span class="built_in">sudo</span> zypper ar -<span class="built_in">fc</span> https://mirrors.ustc.edu.cn/opensuse/update/leap/42.3/oss USTC:42.3:UPDATE-OSS</span><br><span class="line"><span class="built_in">sudo</span> zypper ar -<span class="built_in">fc</span> https://mirrors.ustc.edu.cn/opensuse/update/leap/42.3/non-oss USTC:42.3:UPDATE-NON-OSS</span><br><span class="line"></span><br><span class="line"><span class="comment"># 手动刷新软件源</span></span><br><span class="line"><span class="built_in">sudo</span> zypper ref</span><br></pre></td></tr></table></figure>
 <p>然后进行一次全面的系统升级：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper update</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> zypper update</span><br></pre></td></tr></table></figure>
 <!--more-->
 <h3 id="鼠标操作修改">鼠标操作修改</h3>
 <p>OpenSUSE Leap
@@ -320,14 +320,14 @@ Language），确认之后，系统会自动下载语言相关的组件和字体
 <p>然后配置输入法，在Input
 Method配置中选择中文输入法的Pinyin，此输入法体验较差。推荐使用大名鼎鼎的<a
 target="_blank" rel="noopener" href="http://rime.im/">RIME中州韵输入法</a>。在KDE桌面环境中，默认使用fcitx输入法框架，使用如下的命令安装Rime：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper install fcitx-rime</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> zypper install fcitx-rime</span><br></pre></td></tr></table></figure>
 <p>安装完成后注销，再次登入系统会发现Rime已经在输入法候选中了，按Ctrl+Space即可切换输入法。</p>
 <p>你有可能会发现，在网页以及输入法中，有的中文字符相貌奇特（比如「门」、「画」等汉字），这是字体问题。据我尝试，安装文泉驿微米黑字体后即可显示正常：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper install wqy-microhei-fonts</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> zypper install wqy-microhei-fonts</span><br></pre></td></tr></table></figure>
 <h2 id="驱动安装">驱动安装</h2>
 <h3 id="nvidia显卡驱动">NVIDIA显卡驱动</h3>
 <p>添加软件源后安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper addrepo -f https://download.nvidia.com/opensuse/leap/42.3 nvidia</span><br><span class="line">sudo zypper install-new-recommends</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> zypper addrepo -f https://download.nvidia.com/opensuse/leap/42.3 nvidia</span><br><span class="line"><span class="built_in">sudo</span> zypper install-new-recommends</span><br></pre></td></tr></table></figure>
 <h3 id="无线网卡驱动">无线网卡驱动</h3>
 <p>Linux内核默认支持大多数主流的无线网卡。如果你的无线网卡无法使用，需要手动安装无线网卡驱动。一般的流程都是先确定网卡型号，然后在网上寻找驱动，有的网卡有现成的安装包，也有需要自己下载源码，编译安装的。详情请参考<a
 target="_blank" rel="noopener" href="http://opensuse-guide.org/wlan.php">这里</a>。</p>
@@ -335,60 +335,60 @@ target="_blank" rel="noopener" href="http://opensuse-guide.org/wlan.php">这里<
 <h3 id="google浏览器">Google浏览器</h3>
 <p>OpenSUSE Leap 42.3默认安装了Firefox，但我更喜欢用Google
 Chrome浏览器。首先添加相应的软件源：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper ar http://dl.google.com/linux/chrome/rpm/stable/x86_64 Google-Chrome</span><br><span class="line">sudo zypper ref</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> zypper ar http://dl.google.com/linux/chrome/rpm/stable/x86_64 Google-Chrome</span><br><span class="line"><span class="built_in">sudo</span> zypper ref</span><br></pre></td></tr></table></figure>
 <p>然后下载并导入公钥:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.google.com/linux/linux_signing_key.pub</span><br><span class="line">sudo rpm --import linux_signing_key.pub</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.google.com/linux/linux_signing_key.pub</span><br><span class="line"><span class="built_in">sudo</span> rpm --import linux_signing_key.pub</span><br></pre></td></tr></table></figure>
 <p>最后安装浏览器：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper install google-chrome-stable</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> zypper install google-chrome-stable</span><br></pre></td></tr></table></figure>
 <p>在KDE桌面环境中打开新安装的Chrome会出现一个KDE
 Wallet提示窗口，要求输入密码。要去掉这个提示窗口，需要在<code>/usr/bin/google-chrome-stable</code>文件底部相应的语句末尾添加<code>"--password-store=basic"</code>选项，修改后如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exec</span> -a <span class="string">&quot;<span class="variable">$0</span>&quot;</span> <span class="string">&quot;<span class="variable">$HERE</span>/chrome&quot;</span>  <span class="string">&quot;<span class="variable">$@</span>&quot;</span> <span class="string">&quot;--password-store=basic&quot;</span></span><br></pre></td></tr></table></figure>
 <p>修改完成后，打开浏览器就不会出现弹出窗口了。需要注意的是，每次升级Chrome后，提示窗口会再次出现，要重新设置一次。</p>
 <h3 id="浏览器插件">浏览器插件</h3>
 <p>许多网站需要安装浏览器插件，以支持在线视频音频和游戏。在命令行中安装如下插件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># flash和xine插件需要添加Pacman仓库</span></span><br><span class="line">sudo zypper addrepo -f http://packman.inode.at/suse/openSUSE_Leap_42.3/ packman</span><br><span class="line">sudo zypper install freshplayerplugin xine-browser-plugin</span><br><span class="line"><span class="comment"># Java插件</span></span><br><span class="line">sudo zypper install java-1_8_0-openjdk-plugin</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># flash和xine插件需要添加Pacman仓库</span></span><br><span class="line"><span class="built_in">sudo</span> zypper addrepo -f http://packman.inode.at/suse/openSUSE_Leap_42.3/ packman</span><br><span class="line"><span class="built_in">sudo</span> zypper install freshplayerplugin xine-browser-plugin</span><br><span class="line"><span class="comment"># Java插件</span></span><br><span class="line"><span class="built_in">sudo</span> zypper install java-1_8_0-openjdk-plugin</span><br></pre></td></tr></table></figure>
 <h3 id="图片处理工具">图片处理工具</h3>
 <p>ImageMagick是功能强大的图片编辑、转换工具：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper install ImageMagick</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> zypper install ImageMagick</span><br></pre></td></tr></table></figure>
 <h3 id="办公软件">办公软件</h3>
 <p>感谢金山公司为WPS
 Office开发了Linux版，和Windows版的功能几无差别，还没有恼人的广告。在金山的官方网站上下载rpm文件，然后安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rpm -ivh wps-office-xx.x.x.xxxx.xxxxxx.rpm</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> rpm -ivh wps-office-xx.x.x.xxxx.xxxxxx.rpm</span><br></pre></td></tr></table></figure>
 <p>Linux版的WPS
 Office干净清爽，没有乱七八糟的广告，心疼Windows用户一秒钟。</p>
 <h3 id="多媒体播放">多媒体播放</h3>
 <p>视频播放器VLC和SMPlayer任选其一即可：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper install vlc vlc-codecs smplayer</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> zypper install vlc vlc-codecs smplayer</span><br></pre></td></tr></table></figure>
 <h3 id="多媒体codecs">多媒体Codecs</h3>
 <p>添加软件源：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper addrepo -f http://packman.inode.at/suse/openSUSE_Leap_42.3/ packman</span><br><span class="line">sudo zypper addrepo -f http://opensuse-guide.org/repo/openSUSE_Leap_42.3/ dvd</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> zypper addrepo -f http://packman.inode.at/suse/openSUSE_Leap_42.3/ packman</span><br><span class="line"><span class="built_in">sudo</span> zypper addrepo -f http://opensuse-guide.org/repo/openSUSE_Leap_42.3/ dvd</span><br></pre></td></tr></table></figure>
 <p>然后安装必需的软件包：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper install ffmpeg lame gstreamer-plugins-bad gstreamer-plugins-ugly gstreamer-plugins-libav \</span><br><span class="line">gstreamer-plugins-ugly-orig-addon libdvdcss2</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> zypper install ffmpeg lame gstreamer-plugins-bad gstreamer-plugins-ugly gstreamer-plugins-libav \</span><br><span class="line">gstreamer-plugins-ugly-orig-addon libdvdcss2</span><br></pre></td></tr></table></figure>
 <h2 id="开发环境">开发环境</h2>
 <h3 id="版本管理">版本管理</h3>
 <p>版本管理软件git：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper install git</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> zypper install git</span><br></pre></td></tr></table></figure>
 <h3 id="cc">C/C++</h3>
 <p>用下面的命令可以很方便地安装C/C++开发环境：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper install -t pattern devel_C_C++</span><br></pre></td></tr></table></figure>
 <h3 id="python">Python</h3>
 <p>如果没有什么历史兼容问题，推荐直接从Python3开始。交互式的环境iPython是必备的：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper install ipython ipython3</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> zypper install ipython ipython3</span><br></pre></td></tr></table></figure>
 <p>其他的安装包按照自己的需求自行安装。下面是我安装的部分Python包：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper install python3-pandas python3-lxml python3-beautifulsoup4 python3-requests python3-numpy \</span><br><span class="line">python3-scipy python3-matplotlib</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> zypper install python3-pandas python3-lxml python3-beautifulsoup4 python3-requests python3-numpy \</span><br><span class="line">python3-scipy python3-matplotlib</span><br></pre></td></tr></table></figure>
 <h3 id="编辑器">编辑器</h3>
 <p>我用的是微软的Visual Studio
 Code，自带强大的自动补全功能，配上Vim插件，体验非常完美！安装前要添加相应的软件源，新建文件<code>/etc/zypp/repos.d/vscode.repo</code>，内容如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[code]</span><br><span class="line">name=vscode</span><br><span class="line">enabled=1</span><br><span class="line">autorefresh=1</span><br><span class="line">baseurl=https://packages.microsoft.com/yumrepos/vscode</span><br><span class="line">type=rpm-md</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://packages.microsoft.com/keys/microsoft.asc</span><br><span class="line">keeppackages=0</span><br></pre></td></tr></table></figure>
 <p>然后导入公钥并安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc</span><br><span class="line">sudo zypper refresh</span><br><span class="line">sudo zypper install code</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> rpm --import https://packages.microsoft.com/keys/microsoft.asc</span><br><span class="line"><span class="built_in">sudo</span> zypper refresh</span><br><span class="line"><span class="built_in">sudo</span> zypper install code</span><br></pre></td></tr></table></figure>
 <h2 id="其他工具">其他工具</h2>
 <p>Yakuake是一个下拉式终端：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper install yakuake</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> zypper install yakuake</span><br></pre></td></tr></table></figure>
 <p>Curl是文件传输工具，wget是文件下载工具，qBittorent是流行的BT下载工具：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper install curl wget qbittorrent</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> zypper install curl wget qbittorrent</span><br></pre></td></tr></table></figure>
 <p>Youtube-dl可以下载YouTube视频，Stellarium是非常强大的星图软件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper install youtube-dl stellarium</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> zypper install youtube-dl stellarium</span><br></pre></td></tr></table></figure>
 <h2 id="参考">参考</h2>
 <ol type="1">
 <li><a

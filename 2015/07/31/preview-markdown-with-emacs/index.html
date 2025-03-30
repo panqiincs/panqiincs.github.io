@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -307,13 +307,13 @@ Emacs</a>。</p>
 <p>但前提是，系统中要有将markdown文本转化为HTML文本的命令。否则，按下预览网页的快捷键后，Emacs将提示<code>/bin/bash: markdown: command not found</code>。我找到了两种办法来解决这个问题。</p>
 <h2 id="markdown_py">markdown_py</h2>
 <p>Python有将markdown转化为HTML的命令，只不过它的名字不叫markdown。我通过<code>locate</code>命令找到了它：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sudo updatedb</span><br><span class="line">$ locate markdown | grep bin</span><br><span class="line">/usr/bin/markdown_py</span><br><span class="line">/usr/bin/markdown_py-2.7</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> updatedb</span><br><span class="line">$ locate markdown | grep bin</span><br><span class="line">/usr/bin/markdown_py</span><br><span class="line">/usr/bin/markdown_py-2.7</span><br></pre></td></tr></table></figure>
 <p>随便找个markdown文件，尝试下<code>markdown_py</code>命令的效果：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ markdown_py file.md &gt; result</span><br></pre></td></tr></table></figure>
 <p>打开result文件，发现它就是一个HTML文本，所以这就是符合我们要求的命令。查看一下文件的信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ll /usr/bin | grep markdown</span><br><span class="line">lrwxrwxrwx.   1 root  root          15 Mar 22 18:06 markdown_py -&gt; markdown_py-2.7</span><br><span class="line">-rwxr-xr-x.   1 root  root        1013 Feb  9  2012 markdown_py-2.7</span><br></pre></td></tr></table></figure>
 <p>原来<code>markdown_py</code>就是<code>markdown_py-2.7</code>的一个软链接。所以，我们再建立一个名为<code>markdown</code>的软链接指向<code>markdown_py-2.7</code>就可以解决问题了：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /usr/bin</span><br><span class="line">$ sudo <span class="built_in">ln</span> -s markdown_py-2.7 markdown</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /usr/bin</span><br><span class="line">$ <span class="built_in">sudo</span> <span class="built_in">ln</span> -s markdown_py-2.7 markdown</span><br></pre></td></tr></table></figure>
 <p>敲下<code>C-c C-c p</code>快捷键看效果，发现网页是乱码的。如果markdown的内容是中文，那么转换出来的HTML在浏览器中打开就无法自动识别编码。这个时候，我们可以借助markdown对HTML标记的支持，在markdown文件开头中加入编码信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sed -i <span class="string">&#x27;1i\&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;&#x27;</span> *.md</span><br></pre></td></tr></table></figure>
 <p>我最开始使用的就是这个方法，虽然奏效了，但是每个markdown文本中都要加这行代码，大煞风景。有没有更优雅的解决办法呢？于是，我找到了pandoc工具。</p>

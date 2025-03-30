@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -29,7 +29,7 @@
 <meta property="og:description" content="引言 本文是我在学习四旋翼飞行器建模时做的笔记，主要依据这个项目的文档。鉴于理论力学早就全部还给老师，文中对基础力学知识进行了必要的阐述，虽不够详尽，但应足以辅助形象理解。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-18T05:03:20.000Z">
-<meta property="article:modified_time" content="2025-03-22T09:43:54.233Z">
+<meta property="article:modified_time" content="2025-03-23T10:08:03.499Z">
 <meta property="article:author" content="辛未羊">
 <meta property="article:tag" content="控制理论">
 <meta property="article:tag" content="四旋翼">
@@ -281,7 +281,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.9k</span>
+      <span>3k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -319,8 +319,8 @@ class="math inline">\(\mathbf{b}_3\)</span>指向正上方。机体坐标系用�
 <p>惯性积描述绕不同轴的旋转之间的耦合效应。由于<span
 class="math inline">\(\mathbf{b}_i\)</span>是主轴，四旋翼绕这些轴旋转时，不会产生交叉的惯性积（类似「不同方向的力不互相干扰」），因此相对于质心的惯性矩阵<span
 class="math inline">\(I\)</span>在<span
-class="math inline">\(\mathbf{b}_i\)</span>坐标系下是一个对角矩阵：
-<span class="math display">\[
+class="math inline">\(\mathbf{b}_i\)</span>坐标系下是一个对角矩阵：</p>
+<p><span class="math display">\[
 I = \begin{bmatrix}
 绕 \mathbf{b}_1 的转动惯量 &amp; 0 &amp; 0 \\
 0 &amp; 绕 \mathbf{b}_2 的转动惯量 &amp; 0 \\
@@ -375,7 +375,7 @@ s\theta + c\theta s\phi s\psi \\
 c\theta s\psi + c\psi s\phi s\theta &amp; c\phi c\psi &amp; s\psi
 s\theta - c\psi c\theta s\phi \\
 -c\phi s\theta &amp; s\phi &amp; c\phi c\theta
-\end{bmatrix}
+\end{bmatrix} \tag{1}
 \]</span></p>
 <p>上标<span
 class="math inline">\(\mathcal{A}\)</span>表示目标坐标系，即我们希望将向量转换到惯性坐标系<span
@@ -395,7 +395,7 @@ class="math inline">\(Z-X-Y\)</span>欧拉角构建。</p>
 <p>角速度矢量</p>
 <p><span class="math display">\[
 \mathbin{^\mathcal{A}\omega_\mathcal{B}} = p\mathbf{b}_1 + q\mathbf{b}_2
-+ r\mathbf{b}_3
++ r\mathbf{b}_3 \tag{2}
 \]</span></p>
 <p>符号<span
 class="math inline">\(\mathbin{^\mathcal{A}\omega_\mathcal{B}}\)</span>中的上标<span
@@ -433,14 +433,16 @@ class="math inline">\(\dot{\phi}, \dot{\theta},
 \sin\theta &amp; 0 &amp; \cos\phi \cos\theta
 \end{bmatrix}
 \begin{bmatrix} \dot{\phi} \\ \dot{\theta} \\ \dot{\psi} \end{bmatrix}
+\tag{3}
 \]</span></p>
 <h3 id="平动动力学">平动动力学</h3>
 <p>四旋翼飞行器的<strong>平动动力学方程</strong>基于牛顿第二定律（Newton's
 laws of motion）建立，描述了质心在惯性坐标系<span
 class="math inline">\(\mathcal{A}\)</span>中的加速度与外力的关系。其形式为：</p>
 <p><span class="math display">\[
-m \ddot{\mathbf{r}} = \begin{bmatrix} 0 \\ 0 \\ -mg \end{bmatrix} + R
-\begin{bmatrix} 0 \\ 0 \\ F_1+F_2+F_3+F_4 \end{bmatrix}
+m \ddot{\mathbf{r}} =
+\begin{bmatrix} 0 \\ 0 \\ -mg \end{bmatrix} +
+R \begin{bmatrix} 0 \\ 0 \\ F_1+F_2+F_3+F_4 \end{bmatrix} \tag{4}
 \]</span></p>
 <p>在四旋翼中，合外力由重力和旋翼推力组成。方程中的列向量表示出了这两个力在惯性坐标系<span
 class="math inline">\(\mathcal{A}\)</span>的三个轴<span
@@ -477,7 +479,7 @@ I \begin{bmatrix} \dot{p} \\ \dot{q} \\ \dot{r} \end{bmatrix} =
 \begin{bmatrix} L(F_2 - F_4) \\ L(F_3 - F_1) \\ M_1 - M_2 + M_3 - M_4
 \end{bmatrix} -
 \begin{bmatrix} p \\ q \\ r \end{bmatrix} \times I \begin{bmatrix} p \\
-q \\ r \end{bmatrix}
+q \\ r \end{bmatrix} \tag{5}
 \]</span></p>
 <p>它是根据刚体转动的欧拉方程</p>
 <p><span class="math display">\[
@@ -529,7 +531,7 @@ class="math inline">\(\mathbf{u}_2\)</span>由旋翼推力差和反扭矩产生�
 -L &amp; 0 &amp; L &amp; 0 \\
 \gamma &amp; -\gamma &amp; \gamma &amp; -\gamma
 \end{bmatrix} \begin{bmatrix} F_1 \\ F_2 \\ F_3 \\ F_4 \end{bmatrix},
-\quad \gamma = \frac{k_M}{k_F}
+\quad \gamma = \frac{k_M}{k_F} \tag{6}
 \]</span></p>
 <p><strong><span
 class="math inline">\(\mathbf{u}_2\)</span>通过调整旋翼推力差产生控制力矩，实现对滚转、俯仰和偏航角的调节。</strong>增加旋翼2的推力（<span

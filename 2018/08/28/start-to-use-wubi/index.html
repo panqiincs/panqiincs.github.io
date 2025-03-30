@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -304,7 +304,7 @@
 <p>五笔有三个版本，86版、98版和新世纪版。在我看来，用86版的唯一理由是和历史兼容，毕竟它有30多年的历史，用户和资源最多。我是新学，毫无疑问学习新世纪版。新世纪版是五笔的发明人——王永民先生推出的「终极版」，是三个版本中最规范、最易学的。我购买了正版的「王码五笔」软件（Windows下使用），支持一下王永民先生。网上有不少人举个别几个例子来抨击新世纪五笔的拆字很「荒谬」，我觉得是很可笑的。汉字的构造很复杂，连国家制订的汉字笔顺标准都有争议，何况是拆字呢。有的字的拆法，不可能让所有人都满意，记住就可以了，还不满意就自己修改码表，口舌之争毫无意义。</p>
 <p>在Linux下用五笔推荐<a
 target="_blank" rel="noopener" href="https://rime.im/">Rime输入法</a>。在我当前用的openSUSE系统中，默认的输入法框架为fcitx，通过下面的命令安装Rime：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo zypper install fcitx-rime</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> zypper install fcitx-rime</span><br></pre></td></tr></table></figure>
 <p>Rime自带86版五笔，新世纪版需要自己配置。输入法的配置文件在<code>~/.config/fcitx/rime</code>目录中。以86版的对应文件为模板，在该目录中新建两个文件：</p>
 <ul>
 <li><code>wubinc.schema.yaml</code>：方案定义文件，核心配置项基本保持不变</li>

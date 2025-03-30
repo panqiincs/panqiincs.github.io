@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
@@ -317,7 +317,7 @@ Line IP），在互联网发展早期很流行，现在已经被PPP协议取代�
 target="_blank" rel="noopener" href="https://linux.die.net/man/8/pppd">man
 page</a>。上面设置的IP地址中，<code>10.0.0.2</code>是树莓派的IP地址，<code>10.0.0.1</code>是Linux主机的地址。IP地址可以自由选择，无冲突即可。</p>
 <p>在Linux主机上也开启pppd守护进程：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">stty</span> -F /dev/ttyUSB0 raw</span><br><span class="line">sudo pppd /dev/ttyUSB0 115200 10.0.0.1:10.0.0.2 proxyarp <span class="built_in">local</span> noauth debug nodetach dump nocrtscts passive persist maxfail 0 holdoff 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">stty</span> -F /dev/ttyUSB0 raw</span><br><span class="line"><span class="built_in">sudo</span> pppd /dev/ttyUSB0 115200 10.0.0.1:10.0.0.2 proxyarp <span class="built_in">local</span> noauth debug nodetach dump nocrtscts passive persist maxfail 0 holdoff 1</span><br></pre></td></tr></table></figure>
 <p>当两个设备都运行了pppd时，它们会握手并建立一条通信链路。屏幕上会打印很多输出字符，提示通过ppp接口构建了网络连接。此时可以在Linux主机上ping树莓派的IP地址来验证通信是否正常。</p>
 <p>接下来就可以通过IP地址互相访问。我测试了一下文件传输，当串口波特率设置为115200时，传输速率为10KB/s左右，和计算结果是相符的。</p>
 <h2 id="参考链接">参考链接</h2>
