@@ -29,7 +29,7 @@
 <meta property="og:description" content="引言 本文是我在学习四旋翼飞行器建模时做的笔记，主要依据这个项目的文档。鉴于理论力学早就全部还给老师，文中对基础力学知识进行了必要的阐述，虽不够详尽，但应足以辅助形象理解。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-18T05:03:20.000Z">
-<meta property="article:modified_time" content="2025-03-23T10:08:03.499Z">
+<meta property="article:modified_time" content="2025-04-04T07:01:12.310Z">
 <meta property="article:author" content="辛未羊">
 <meta property="article:tag" content="控制理论">
 <meta property="article:tag" content="四旋翼">
@@ -281,14 +281,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>3k</span>
+      <span>3.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>11 分钟</span>
+      <span>13 分钟</span>
     </span>
 </div>
 
@@ -365,40 +365,103 @@ alt="图1 四旋翼飞行器的坐标系" />
 </figure>
 <h2 id="刚体动力学">刚体动力学</h2>
 <h3 id="运动学">运动学</h3>
-<p>四旋翼飞行器中，将机体坐标系<span
-class="math inline">\(\mathcal{B}\)</span>中的向量转换到惯性坐标系<span
-class="math inline">\(\mathcal{A}\)</span>的<strong>旋转矩阵</strong>为</p>
+<p>四旋翼飞行器的姿态转换采用Z-X-Y欧拉角体系描述。从惯性坐标系<span
+class="math inline">\(\mathcal{A}\)</span>到机体坐标系为<span
+class="math inline">\(\mathcal{B}\)</span>的坐标系转换通过三次基本旋转实现：</p>
+<ol type="1">
+<li><strong>偏航角</strong>旋转：绕<span
+class="math inline">\(\mathcal{A}\)</span>的Z轴（<span
+class="math inline">\(\mathbf{a}_3\)</span>）旋转<span
+class="math inline">\(\psi\)</span>角（<strong>yaw</strong>），得到中间坐标系<span
+class="math inline">\(\mathcal{E}\)</span>，对应旋转矩阵<span
+class="math inline">\(R_z(\psi)\)</span></li>
+<li><strong>滚转角</strong>旋转：绕<span
+class="math inline">\(\mathcal{E}\)</span>的X轴（<span
+class="math inline">\(\mathbf{e}_1\)</span>）旋转<span
+class="math inline">\(\phi\)</span>角（<strong>roll</strong>），得到中间坐标系<span
+class="math inline">\(\mathcal{F}\)</span>，对应旋转矩阵<span
+class="math inline">\(R_x(\phi)\)</span></li>
+<li><strong>俯仰角</strong>旋转：绕<span
+class="math inline">\(\mathcal{F}\)</span>的Y轴（<span
+class="math inline">\(\mathbf{f}_2\)</span>）旋转<span
+class="math inline">\(\theta\)</span>角（<strong>pitch</strong>），最终得到机体坐标系<span
+class="math inline">\(\mathcal{B}\)</span>，对应旋转矩阵<span
+class="math inline">\(R_y(\theta)\)</span></li>
+</ol>
+<p>各基本旋转矩阵定义如下（<span class="math inline">\(c_\alpha \equiv
+\cos\alpha\)</span>，<span class="math inline">\(s_\alpha \equiv
+\sin\alpha\)</span>）：</p>
 <p><span class="math display">\[
-\mathbin{^\mathcal{A}[R]_\mathcal{B}} = \begin{bmatrix}
-c\psi c\theta - s\phi s\psi s\theta &amp; -c\phi s\psi &amp; c\psi
-s\theta + c\theta s\phi s\psi \\
-c\theta s\psi + c\psi s\phi s\theta &amp; c\phi c\psi &amp; s\psi
-s\theta - c\psi c\theta s\phi \\
--c\phi s\theta &amp; s\phi &amp; c\phi c\theta
+\begin{aligned}
+R_x(\phi) &amp;= \begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; c_\phi &amp; -s_\phi \\
+0 &amp; s_\phi &amp; c_\phi
+\end{bmatrix}, \quad
+R_y(\theta) = \begin{bmatrix}
+c_\theta &amp; 0 &amp; s_\theta \\
+0 &amp; 1 &amp; 0 \\
+-s_\theta &amp; 0 &amp; c_\theta
+\end{bmatrix}, \\
+R_z(\psi) &amp;= \begin{bmatrix}
+c_\psi &amp; -s_\psi &amp; 0 \\
+s_\psi &amp; c_\psi &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}.
+\end{aligned}
+\]</span></p>
+<p>在这里介绍下<strong>坐标变换</strong>基本原理。设向量在惯性坐标系<span
+class="math inline">\(\mathcal{A}\)</span>中的坐标表示为<span
+class="math inline">\(^\mathcal{A}\mathbf{p}\)</span>，当坐标系<span
+class="math inline">\(\mathcal{A}\)</span>旋转角度<span
+class="math inline">\(\alpha\)</span>后得到新坐标系<span
+class="math inline">\(\mathcal{B}\)</span>，同一向量在<span
+class="math inline">\(\mathcal{B}\)</span>中的坐标表示为<span
+class="math inline">\(^\mathcal{B}\mathbf{p}\)</span>，二者的坐标变换关系由旋转矩阵<span
+class="math inline">\(R(\alpha)\)</span>建立：</p>
+<p><span class="math display">\[
+{}^\mathcal{A}\mathbf{p} = R(\alpha) \cdot {}^\mathcal{B}\mathbf{p}
+\]</span></p>
+<p>所以，将机体坐标系<span
+class="math inline">\(\mathcal{B}\)</span>中的坐标左乘旋转矩阵<span
+class="math inline">\(R(\alpha)\)</span>，即可得到该向量在惯性坐标系<span
+class="math inline">\(\mathcal{A}\)</span>中的坐标。</p>
+<p>因此，根据坐标系旋转的链式法则，惯性坐标系<span
+class="math inline">\(\mathcal{A}\)</span>与机体坐标系<span
+class="math inline">\(\mathcal{B}\)</span>间的坐标变换关系为：</p>
+<p><span class="math display">\[
+^\mathcal{A}\mathbf{p} = R_z(\psi) R_x(\phi) R_y(\theta) \cdot
+{}^\mathcal{B}\mathbf{p}
+\]</span></p>
+<p>将三个基本旋转矩阵按Z-X-Y顺序相乘，得到完整的将机体坐标系<span
+class="math inline">\(\mathcal{B}\)</span>中的向量转换到惯性坐标系<span
+class="math inline">\(\mathcal{A}\)</span>的姿态<strong>旋转矩阵</strong>：</p>
+<p><span class="math display">\[
+^\mathcal{A}[R]_\mathcal{B} =
+\begin{bmatrix}
+c_\psi c_\theta - s_\phi s_\psi s_\theta &amp; -c_\phi s_\psi &amp;
+c_\psi s_\theta + c_\theta s_\phi s_\psi \\
+c_\theta s_\psi + c_\psi s_\phi s_\theta &amp; c_\phi c_\psi &amp;
+s_\psi s_\theta - c_\psi c_\theta s_\phi \\
+-c_\phi s_\theta &amp; s_\phi &amp; c_\phi c_\theta
 \end{bmatrix} \tag{1}
 \]</span></p>
 <p>上标<span
 class="math inline">\(\mathcal{A}\)</span>表示目标坐标系，即我们希望将向量转换到惯性坐标系<span
 class="math inline">\(\mathcal{A}\)</span>中。下标<span
 class="math inline">\(\mathcal{B}\)</span>表示源坐标系，即原始向量是在机体坐标系<span
-class="math inline">\(\mathcal{B}\)</span>中表示的。<span
-class="math inline">\(c = \cos\)</span>，<span class="math inline">\(s =
-\sin\)</span>。<span
-class="math inline">\(\phi\)</span>称为<strong>滚转角</strong>（roll），是绕<span
-class="math inline">\(\mathbf{b}_1\)</span>转的角度；<span
-class="math inline">\(\theta\)</span>称为<strong>俯仰角</strong>（pitch），是绕<span
-class="math inline">\(\mathbf{b}_2\)</span>转的角度；<span
-class="math inline">\(\psi\)</span>称为<strong>偏航角</strong>（yaw），是绕<span
-class="math inline">\(\mathbf{b}_3\)</span>转的角度。这三个角度称为<strong>欧拉角</strong>，旋转矩阵<span
-class="math inline">\(R\)</span>基于<span
-class="math inline">\(Z-X-Y\)</span>欧拉角构建。</p>
+class="math inline">\(\mathcal{B}\)</span>中表示的。</p>
+<p>矩阵乘积<span class="math inline">\(R_z R_x
+R_y\)</span>的物理意义为：首先对向量施加绕当前坐标系Y轴的俯仰角旋转，再绕更新后X轴的滚转角旋转，最后绕原始Z轴的偏航角旋转。此矩阵可将机体坐标系<span
+class="math inline">\(\mathcal{B}\)</span>中的向量映射至惯性坐标系<span
+class="math inline">\(\mathcal{A}\)</span>，顺序正好和前面的Z-X-Y相反。</p>
 <p>角速度矢量</p>
 <p><span class="math display">\[
-\mathbin{^\mathcal{A}\omega_\mathcal{B}} = p\mathbf{b}_1 + q\mathbf{b}_2
-+ r\mathbf{b}_3 \tag{2}
+^\mathcal{A}\omega_\mathcal{B} = p\mathbf{b}_1 + q\mathbf{b}_2 +
+r\mathbf{b}_3 \tag{2}
 \]</span></p>
 <p>符号<span
-class="math inline">\(\mathbin{^\mathcal{A}\omega_\mathcal{B}}\)</span>中的上标<span
+class="math inline">\(^\mathcal{A}\omega_\mathcal{B}\)</span>中的上标<span
 class="math inline">\(\mathcal{A}\)</span>表明角速度的参考系是<span
 class="math inline">\(\mathcal{A}\)</span>，即我们是从参考系<span
 class="math inline">\(\mathcal{A}\)</span>的视角来观察坐标系<span
@@ -428,9 +491,9 @@ class="math inline">\(\dot{\phi}, \dot{\theta},
 <p><span class="math display">\[
 \begin{bmatrix} p \\ q \\ r \end{bmatrix} =
 \begin{bmatrix}
-\cos\theta &amp; 0 &amp; -\cos\phi \sin\theta \\
-0 &amp; 1 &amp; \sin\phi \\
-\sin\theta &amp; 0 &amp; \cos\phi \cos\theta
+c_\theta &amp; 0 &amp; -c_\phi s_\theta \\
+0 &amp; 1 &amp; s_\phi \\
+s_\theta &amp; 0 &amp; c_\phi c_\theta
 \end{bmatrix}
 \begin{bmatrix} \dot{\phi} \\ \dot{\theta} \\ \dot{\psi} \end{bmatrix}
 \tag{3}
@@ -661,7 +724,7 @@ I\boldsymbol{\omega}\)</span>物理表征陀螺耦合效应。</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">9:33</span>
+    <span title="站点阅读时长">9:35</span>
   </span>
 </div>
 
