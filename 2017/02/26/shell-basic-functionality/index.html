@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Shell的功能 Shell是操作系统中管理进程和运行程序的程序。所有常用的shell都有三个主要功能：">
+    <meta name="description" content="Shell的功能Shell是操作系统中管理进程和运行程序的程序。所有常用的shell都有三个主要功能：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shell实现：基本功能">
 <meta property="og:url" content="https://panqiincs.me/2017/02/26/shell-basic-functionality/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="Shell的功能 Shell是操作系统中管理进程和运行程序的程序。所有常用的shell都有三个主要功能：">
+<meta property="og:description" content="Shell的功能Shell是操作系统中管理进程和运行程序的程序。所有常用的shell都有三个主要功能：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-02-26T04:23:03.000Z">
 <meta property="article:modified_time" content="2025-01-28T06:33:29.421Z">
@@ -127,7 +127,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#shell%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-number">1.</span> <span class="nav-text">Shell的功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell%E7%9A%84%E4%B8%BB%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">Shell的主流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%8D%B0%E6%8F%90%E7%A4%BA%E7%AC%A6"><span class="nav-number">3.</span> <span class="nav-text">打印提示符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E7%94%A8%E6%88%B7%E8%BE%93%E5%85%A5"><span class="nav-number">4.</span> <span class="nav-text">处理用户输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">运行命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fork%E5%92%8Cexec"><span class="nav-number">5.1.</span> <span class="nav-text">fork和exec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%BB%BA%E5%91%BD%E4%BB%A4"><span class="nav-number">5.2.</span> <span class="nav-text">内建命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%BF%A1%E5%8F%B7"><span class="nav-number">6.</span> <span class="nav-text">处理信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-number">1.</span> <span class="nav-text">Shell的功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell%E7%9A%84%E4%B8%BB%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">Shell的主流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%8D%B0%E6%8F%90%E7%A4%BA%E7%AC%A6"><span class="nav-number">3.</span> <span class="nav-text">打印提示符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E7%94%A8%E6%88%B7%E8%BE%93%E5%85%A5"><span class="nav-number">4.</span> <span class="nav-text">处理用户输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">运行命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fork%E5%92%8Cexec"><span class="nav-number">5.1.</span> <span class="nav-text">fork和exec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%BB%BA%E5%91%BD%E4%BB%A4"><span class="nav-number">5.2.</span> <span class="nav-text">内建命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E4%BF%A1%E5%8F%B7"><span class="nav-number">6.</span> <span class="nav-text">处理信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -300,55 +300,45 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="shell的功能">Shell的功能</h2>
-<p>Shell是操作系统中管理进程和运行程序的程序。所有常用的shell都有三个主要功能：</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="Shell的功能"><a href="#Shell的功能" class="headerlink" title="Shell的功能"></a>Shell的功能</h2><p>Shell是操作系统中管理进程和运行程序的程序。所有常用的shell都有三个主要功能：</p>
 <span id="more"></span>
+
 <ul>
-<li>运行程序：grep, date,
-ls等都是一些普通的程序，shell将它们载入内存并运行它们</li>
-<li>管理输入和输出：使用&lt;，&gt;和 |
-符号可以将输入、输出重定向。这样就可以告诉shell将进程的输入和输出连接到一个文件或是其他的进程</li>
+<li>运行程序：grep, date, ls等都是一些普通的程序，shell将它们载入内存并运行它们</li>
+<li>管理输入和输出：使用&lt;，&gt;和 | 符号可以将输入、输出重定向。这样就可以告诉shell将进程的输入和输出连接到一个文件或是其他的进程</li>
 <li>可编程：shell同时也是带有变量和流程控制的编程语言</li>
 </ul>
 <p>本文将介绍如何编写包含最基本功能，即能运行和终止程序的shell。</p>
-<h2 id="shell的主流程">Shell的主流程</h2>
-<p>Shell打印提示符、输入命令、运行命令，如此反复。因此，主流程由下面的循环组成：</p>
+<h2 id="Shell的主流程"><a href="#Shell的主流程" class="headerlink" title="Shell的主流程"></a>Shell的主流程</h2><p>Shell打印提示符、输入命令、运行命令，如此反复。因此，主流程由下面的循环组成：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (;;) &#123;</span><br><span class="line">    print_prompt(prompt_str);</span><br><span class="line">    handle_input(arg_buf, arg_list);</span><br><span class="line">    run_cmd(arg_list);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="打印提示符">打印提示符</h2>
-<p>下面是一个提示符的示例：</p>
+
+<h2 id="打印提示符"><a href="#打印提示符" class="headerlink" title="打印提示符"></a>打印提示符</h2><p>下面是一个提示符的示例：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[psh]krist@linux-szhw:/home/krist/Workspace$</span><br></pre></td></tr></table></figure>
-<p>加上前缀<code>[psh]</code>以和系统自带的shell区别开来。后面依次是用户名（用<code>getlogin_r</code>函数获取）、主机名（用<code>gethostname</code>函数获取）、当前目录（用<code>getcwd</code>函数获取）和命令提示符。如果当前登录的用户是root，命令提示符为<code>#</code>，普通用户则打印美元符号<code>$</code>，因此需要用<code>geteuid</code>函数获取当前的Effective
-User ID。</p>
-<h2 id="处理用户输入">处理用户输入</h2>
-<p>一般需要限制用户单次输入的最多字符数<code>MAX_ARG_LEN</code>以及参数的最大个数<code>MAX_ARG_NUM</code>。用户输入命令，按下回车键即表示当前的命令输入完毕。用<code>getline</code>函数读取一行用户输入，然后将一整条命令拆分。例如命令<code>ls -al /home</code>拆分之后变成<code>ls</code>，<code>-al</code>和<code>/home</code>三个字符串，第一个字符串是命令的名称，后面依次是命令参数。拆分字符使用<code>strsep</code>函数，分割符（delimeter）为空格（Space）。下面是拆分过程的代码：</p>
+
+<p>加上前缀<code>[psh]</code>以和系统自带的shell区别开来。后面依次是用户名（用<code>getlogin_r</code>函数获取）、主机名（用<code>gethostname</code>函数获取）、当前目录（用<code>getcwd</code>函数获取）和命令提示符。如果当前登录的用户是root，命令提示符为<code>#</code>，普通用户则打印美元符号<code>$</code>，因此需要用<code>geteuid</code>函数获取当前的Effective User ID。</p>
+<h2 id="处理用户输入"><a href="#处理用户输入" class="headerlink" title="处理用户输入"></a>处理用户输入</h2><p>一般需要限制用户单次输入的最多字符数<code>MAX_ARG_LEN</code>以及参数的最大个数<code>MAX_ARG_NUM</code>。用户输入命令，按下回车键即表示当前的命令输入完毕。用<code>getline</code>函数读取一行用户输入，然后将一整条命令拆分。例如命令<code>ls -al /home</code>拆分之后变成<code>ls</code>，<code>-al</code>和<code>/home</code>三个字符串，第一个字符串是命令的名称，后面依次是命令参数。拆分字符使用<code>strsep</code>函数，分割符（delimeter）为空格（Space）。下面是拆分过程的代码：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">stringp = input_buf;</span><br><span class="line">arg_num = <span class="number">0</span>;       <span class="comment">// number of arguments</span></span><br><span class="line"><span class="keyword">while</span> (((token = strsep(&amp;stringp, <span class="string">&quot; &quot;</span>)) != <span class="literal">NULL</span>)</span><br><span class="line">        &amp;&amp; (arg_num &lt; MAX_ARG_NUM)) </span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Token is terminated by overwriting the delimiter with a null </span></span><br><span class="line">    <span class="comment">// byte(&#x27;\0&#x27;), so continuous space will result in a token with </span></span><br><span class="line">    <span class="comment">// only a null byte, skip it.</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strcmp</span>(token, <span class="string">&quot;&quot;</span>) != <span class="number">0</span>) &#123;</span><br><span class="line">        arg_vec[arg_num] = token;</span><br><span class="line">        arg_num++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line">arg_vec[arg_num] = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+
 <p>其中<code>input_buf</code>是一个字符数组，存放用户输入的单条命令字符串，<code>arg_vec</code>是字符串数组，存放拆分后的多个字符串。</p>
-<h2 id="运行命令">运行命令</h2>
-<h3 id="fork和exec">fork和exec</h3>
-<p>想必大家都熟悉shell运行命令的流程：用户输入一条命令后，父进程会fork一个子进程，在子进程中使用exec函数运行用户输入的命令，父进程等待子进程退出后，等待用户输入下一条命令，如此反复。代码如下：</p>
+<h2 id="运行命令"><a href="#运行命令" class="headerlink" title="运行命令"></a>运行命令</h2><h3 id="fork和exec"><a href="#fork和exec" class="headerlink" title="fork和exec"></a>fork和exec</h3><p>想必大家都熟悉shell运行命令的流程：用户输入一条命令后，父进程会fork一个子进程，在子进程中使用exec函数运行用户输入的命令，父进程等待子进程退出后，等待用户输入下一条命令，如此反复。代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">exec_cmd</span><span class="params">(<span class="type">char</span> **arg_vec)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span>   status;</span><br><span class="line">    <span class="type">pid_t</span> pid;</span><br><span class="line"></span><br><span class="line">    pid = fork();</span><br><span class="line">    <span class="keyword">if</span> (pid == <span class="number">-1</span>) &#123;</span><br><span class="line">        perror(<span class="string">&quot;fork&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123; <span class="comment">// child process, run the command</span></span><br><span class="line">        <span class="comment">// execvp() returns only if an error occurs</span></span><br><span class="line">        execvp(arg_vec[<span class="number">0</span>], arg_vec);</span><br><span class="line">        perror(<span class="string">&quot;execvp&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;               <span class="comment">// parent process, wait for children to exit</span></span><br><span class="line">        <span class="keyword">while</span> (wait(&amp;status) != pid)</span><br><span class="line">            ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>exec函数毫无疑问选择最方便的<code>execvp</code>，主进程使用<code>wait</code>函数等待子进程退出。</p>
-<h3 id="内建命令">内建命令</h3>
-<p>这个时候一个可以跑的shell就完成了。但是却无法运行<code>cd</code>命令，提示错误如下：</p>
+<h3 id="内建命令"><a href="#内建命令" class="headerlink" title="内建命令"></a>内建命令</h3><p>这个时候一个可以跑的shell就完成了。但是却无法运行<code>cd</code>命令，提示错误如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">execvp: No such file or directory</span><br></pre></td></tr></table></figure>
-<p>运行<code>whereis cd</code>命令，并没有显示可执行文件的路径。原来<code>cd</code>命令是内建命令（build
-in
-command），需要在shell中自己实现，而且它的执行不需要建立子进程，需要额外判断和处理。</p>
+
+<p>运行<code>whereis cd</code>命令，并没有显示可执行文件的路径。原来<code>cd</code>命令是内建命令（build in command），需要在shell中自己实现，而且它的执行不需要建立子进程，需要额外判断和处理。</p>
 <p>我写了一个函数判断是否是内建命令，如果不是内建命令则返回-1，否则按照内建命令的方式运行。目前只实现了<code>cd</code>和<code>exit</code>两个内建命令。代码如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">builtin_cmd</span><span class="params">(<span class="type">char</span> **arg_vec)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strcmp</span>(arg_vec[<span class="number">0</span>], <span class="string">&quot;cd&quot;</span>) == <span class="number">0</span>) &#123; <span class="comment">// cd</span></span><br><span class="line">        <span class="keyword">if</span> ((arg_vec[<span class="number">1</span>] != <span class="literal">NULL</span>) &amp;&amp; (arg_vec[<span class="number">2</span>] == <span class="literal">NULL</span>)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (chdir(arg_vec[<span class="number">1</span>]) == <span class="number">-1</span>) &#123;</span><br><span class="line">                perror(<span class="string">&quot;cd&quot;</span>); </span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;Usage: cd [directory]\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">strcmp</span>(arg_vec[<span class="number">0</span>], <span class="string">&quot;exit&quot;</span>) == <span class="number">0</span>) &#123; <span class="comment">// exit</span></span><br><span class="line">        <span class="built_in">exit</span>(EXIT_SUCCESS); </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>此时，shell主循环中的<code>run_cmd</code>函数演变为：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">run_cmd</span><span class="params">(<span class="type">char</span> **arg_vec)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (arg_vec[<span class="number">0</span>] == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (builtin_cmd(arg_vec) == <span class="number">-1</span>) &#123; <span class="comment">// run build-in commands</span></span><br><span class="line">        exec_cmd(arg_vec); <span class="comment">// run normal commands</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="处理信号">处理信号</h2>
-<p>我们期望shell能够处理信号。在shell的命令行中敲命令运行程序，在程序还在运行时按下<code>Ctrl-C</code>或<code>Ctrl-\</code>键（分别产生<code>SIGINT</code>和<code>SIGQUIT</code>信号），运行的程序会退出，即中断运行子进程；在shell的命令行中不运行命令，直接按下这两个键组合，不能退出shell程序，即父进程不会中断运行，退出shell程序只能通过<code>Ctrl-D</code>按键。实现上述功能需要在父进程中忽略信号<code>SIGINT</code>和<code>SIGQUIT</code>，但是在子进程中恢复对信号<code>SIGINT</code>和<code>SIGQUIT</code>的默认操作。代码很简单，在这里不列出。</p>
-<p>这样，一个具备基本功能的shell就完成了，完整的代码请参考<a
-target="_blank" rel="noopener" href="https://gist.github.com/panqiincs/55c7681a115a6fe7caa2bd743029cb1f">这里</a>。请继续看下一篇：<a
-href="https://panqiincs.me/2017/04/19/shell-redirect-pipeline/">Shell实现：重定向和管道</a>。</p>
-<h2 id="参考">参考</h2>
-<ol type="1">
-<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/4292217/">The Linux
-Programming Interface</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://book.douban.com/subject/1219329/">Unix/Linux编程实践教程</a></li>
+
+<h2 id="处理信号"><a href="#处理信号" class="headerlink" title="处理信号"></a>处理信号</h2><p>我们期望shell能够处理信号。在shell的命令行中敲命令运行程序，在程序还在运行时按下<code>Ctrl-C</code>或<code>Ctrl-\</code>键（分别产生<code>SIGINT</code>和<code>SIGQUIT</code>信号），运行的程序会退出，即中断运行子进程；在shell的命令行中不运行命令，直接按下这两个键组合，不能退出shell程序，即父进程不会中断运行，退出shell程序只能通过<code>Ctrl-D</code>按键。实现上述功能需要在父进程中忽略信号<code>SIGINT</code>和<code>SIGQUIT</code>，但是在子进程中恢复对信号<code>SIGINT</code>和<code>SIGQUIT</code>的默认操作。代码很简单，在这里不列出。</p>
+<p>这样，一个具备基本功能的shell就完成了，完整的代码请参考<a target="_blank" rel="noopener" href="https://gist.github.com/panqiincs/55c7681a115a6fe7caa2bd743029cb1f">这里</a>。请继续看下一篇：<a href="https://panqiincs.me/2017/04/19/shell-redirect-pipeline/">Shell实现：重定向和管道</a>。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/4292217/">The Linux Programming Interface</a></li>
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/1219329/">Unix&#x2F;Linux编程实践教程</a></li>
 </ol>
 
     </div>

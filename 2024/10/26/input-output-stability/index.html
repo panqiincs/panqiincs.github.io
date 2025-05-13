@@ -21,13 +21,21 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="简介 与状态空间模型不同，输入输出模型直接将系统的输入和输出联系起来，而无需通过状态方程描述内部结构，通常将系统视为一个黑箱。输入输出稳定性关注输入与输出之间的关系，而Lyapunov稳定性则着重于系统状态的演变。">
+    <meta name="description" content="简介与状态空间模型不同，输入输出模型直接将系统的输入和输出联系起来，而无需通过状态方程描述内部结构，通常将系统视为一个黑箱。输入输出稳定性关注输入与输出之间的关系，而Lyapunov稳定性则着重于系统状态的演变。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="系统的输入输出稳定性">
 <meta property="og:url" content="https://panqiincs.me/2024/10/26/input-output-stability/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="简介 与状态空间模型不同，输入输出模型直接将系统的输入和输出联系起来，而无需通过状态方程描述内部结构，通常将系统视为一个黑箱。输入输出稳定性关注输入与输出之间的关系，而Lyapunov稳定性则着重于系统状态的演变。">
+<meta property="og:description" content="简介与状态空间模型不同，输入输出模型直接将系统的输入和输出联系起来，而无需通过状态方程描述内部结构，通常将系统视为一个黑箱。输入输出稳定性关注输入与输出之间的关系，而Lyapunov稳定性则着重于系统状态的演变。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_norms.png">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_definition.png">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_small.png">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_ss.png">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_ss_small.png">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_l2_linear.png">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_l2_nonlinear1.png">
+<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_l2_nonlinear2.png">
 <meta property="article:published_time" content="2024-10-26T04:08:29.000Z">
 <meta property="article:modified_time" content="2024-11-19T02:30:14.959Z">
 <meta property="article:author" content="辛未羊">
@@ -35,6 +43,7 @@
 <meta property="article:tag" content="稳定性">
 <meta property="article:tag" content="范数">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_norms.png">
 
 
 <link rel="canonical" href="https://panqiincs.me/2024/10/26/input-output-stability/">
@@ -126,7 +135,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathcall%E7%A8%B3%E5%AE%9A%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">\(\mathcal{L}\)稳定性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B%E7%9A%84mathcall%E7%A8%B3%E5%AE%9A%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">状态空间模型的\(\mathcal{L}\)稳定性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathcall_2%E5%A2%9E%E7%9B%8A"><span class="nav-number">4.</span> <span class="nav-text">\(\mathcal{L}_2\)增益</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathcal-L-%E7%A8%B3%E5%AE%9A%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">$\mathcal{L}$稳定性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B%E7%9A%84-mathcal-L-%E7%A8%B3%E5%AE%9A%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">状态空间模型的$\mathcal{L}$稳定性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mathcal-L-2-%E5%A2%9E%E7%9B%8A"><span class="nav-number">4.</span> <span class="nav-text">$\mathcal{L}_2$增益</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -299,189 +308,37 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="简介">简介</h2>
-<p>与状态空间模型不同，输入输出模型直接将系统的输入和输出联系起来，而无需通过状态方程描述内部结构，通常将系统视为一个黑箱。输入输出稳定性关注输入与输出之间的关系，而Lyapunov稳定性则着重于系统状态的演变。</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>与状态空间模型不同，输入输出模型直接将系统的输入和输出联系起来，而无需通过状态方程描述内部结构，通常将系统视为一个黑箱。输入输出稳定性关注输入与输出之间的关系，而Lyapunov稳定性则着重于系统状态的演变。</p>
 <span id="more"></span>
-<h2 id="mathcall稳定性"><span
-class="math inline">\(\mathcal{L}\)</span>稳定性</h2>
-<p>考虑输入输出关系由如下方程描述的系统 <span class="math display">\[
-y=Hu
-\]</span></p>
-<p>其中，<span
-class="math inline">\(H\)</span>是一个映射或者算子。输入<span
-class="math inline">\(u\)</span>属于一个信号空间，该信号空间中的信号是个函数<span
-class="math inline">\(u:\left[0,\infty\right)\to
-R^m\)</span>，将时间区间<span
-class="math inline">\(\left[0,\infty\right)\)</span>映射到欧氏空间<span
-class="math inline">\(R^m\)</span>。引入范数<span
-class="math inline">\(\lVert u
-\rVert\)</span>来描述信号的大小。接着便为<span
-class="math inline">\(\mathcal{L}_{\infty}\)</span>、<span
-class="math inline">\(\mathcal{L}_2\)</span>和<span
-class="math inline">\(\mathcal{L}_p\)</span>函数空间定义范数。为了与<span
-class="math inline">\(u\)</span>作为<span
-class="math inline">\(R^m\)</span>中向量的范数<span
-class="math inline">\(\lVert u \rVert\)</span>区别开来，用<span
-class="math inline">\(\lVert u \rVert_{\mathcal{L}}\)</span>表示<span
-class="math inline">\(u\)</span>作为函数空间<span
-class="math inline">\(\mathcal{L}\)</span>中函数的范数。<span
-class="math inline">\(\lVert u
-\rVert_{\mathcal{L}}\)</span>的定义基于<span
-class="math inline">\(\lVert u \rVert\)</span>，但要将它们与<span
-class="math inline">\(u\)</span>在欧氏空间中的几种范数<span
-class="math inline">\(\lVert u \rVert_{\infty}\)</span>、<span
-class="math inline">\(\lVert u \rVert_2\)</span>、<span
-class="math inline">\(\lVert u \rVert_p\)</span>区别开来。</p>
-<figure>
-<img
-src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_norms.png"
-alt="不同函数空间的范数" />
-<figcaption aria-hidden="true">不同函数空间的范数</figcaption>
-</figure>
-<p>按照上述记号规则，可以将<span
-class="math inline">\(H\)</span>定义为从<span
-class="math inline">\(\mathcal{L}^m\)</span>到<span
-class="math inline">\(\mathcal{L}^q\)</span>的映射。但这种定义方式并不合适，因为需要考虑不稳定系统。对于不稳定系统，输入<span
-class="math inline">\(u\in\mathcal{L}^m\)</span>可能导致输出<span
-class="math inline">\(y\)</span>不属于<span
-class="math inline">\(\mathcal{L}^q\)</span>。因此，<span
-class="math inline">\(H\)</span>通常定义为从扩展空间<span
-class="math inline">\(\mathcal{L}_e^m\)</span>到扩展空间<span
-class="math inline">\(\mathcal{L}_e^q\)</span>的映射，扩展空间定义为
-<span class="math display">\[
-\mathcal{L}_e^m=\left\{u|u_{\tau}\in\mathcal{L}^m,\forall\tau\in\left[0,\infty\right)\right\}
-\]</span> 其中，<span class="math inline">\(u_{\tau}\)</span>是<span
-class="math inline">\(u\)</span>的截断函数，定义为 <span
-class="math display">\[
-u_{\tau}(t) =
-\begin{cases}
-u(t),  &amp; 0\le t \le \tau \\
-0,     &amp; t&gt;\tau
-\end{cases}
-\]</span></p>
-<p>这种截断方式要求<span
-class="math inline">\(\mathcal{L}_e^m\)</span>空间中的函数，即使在无限时域上可能无界，也必须在每个有限时间段内表现得如同<span
-class="math inline">\(\mathcal{L}^m\)</span>空间中的函数一样。因此，<span
-class="math inline">\(\mathcal{L}^m\)</span>是<span
-class="math inline">\(\mathcal{L}_e^m\)</span>的子集。</p>
-<p>映射<span
-class="math inline">\(H:\mathcal{L}_e^m\to\mathcal{L}_e^q\)</span>被称为因果映射，如果在任意时间<span
-class="math inline">\(t\)</span>的输出<span
-class="math inline">\((Hu)(t)\)</span>只依赖于输入在<span
-class="math inline">\(t\)</span>时刻及之前的值。<strong>因果性</strong>（causality）是由状态空间模型表示的动态系统的内在特性，它的定义等价于
-<span class="math display">\[
-(Hu)_{\tau}=(Hu_{\tau})_{\tau}
-\]</span></p>
-<p>有了输入输出信号空间的定义，便可以定义<strong>输入输出稳定性</strong>（input-output
-stability）。</p>
-<figure>
-<img
-src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_definition.png"
-alt="输入输出稳定性定义" />
-<figcaption aria-hidden="true">输入输出稳定性定义</figcaption>
-</figure>
-<p>对于<span
-class="math inline">\(\mathcal{L}\)</span>稳定的因果系统，可推得<span
-class="math inline">\(u\in\mathcal{L}^m\Rightarrow
-Hu\in\mathcal{L}^q\)</span>，即输入<span
-class="math inline">\(u\)</span>属于<span
-class="math inline">\(\mathcal{L}\)</span>空间，则输出<span
-class="math inline">\(y\)</span>也属于<span
-class="math inline">\(\mathcal{L}\)</span>空间。而有限增益<span
-class="math inline">\(\mathcal{L}\)</span>稳定性不仅要求输出在<span
-class="math inline">\(\mathcal{L}\)</span>空间内，还对输入信号增益有限制。</p>
-<p>在讨论不同类型的函数空间（<span
-class="math inline">\(\mathcal{L}_{\infty}\)</span>、<span
-class="math inline">\(\mathcal{L}_2\)</span>和<span
-class="math inline">\(\mathcal{L}_p\)</span>）时，有不同的<span
-class="math inline">\(\mathcal{L}\)</span>稳定性定义，如<span
-class="math inline">\(\mathcal{L}_{\infty}\)</span>稳定性和<span
-class="math inline">\(\mathcal{L}_2\)</span>稳定性，这是由于不同函数空间中的信号特征不同。以<span
-class="math inline">\(\mathcal{L}_{\infty}\)</span>空间为例，该空间包含按段光滑<strong>有界</strong>函数，因此<span
-class="math inline">\(\mathcal{L}_{\infty}\)</span>稳定性对应于我们熟悉的<strong>有界输入有界输出稳定性</strong>（bounded-input-bounded-output
-stability）的概念。</p>
-<p>上述定义要求不等式<span
-class="math inline">\((6.1)(6.2)\)</span>对输入空间<span
-class="math inline">\(\mathcal{L}^m\)</span>中的所有信号都成立。对于很多实际系统，输入输出之间的关系只定义在输入空间的一个子集上。于是便催生出了<strong>小信号<span
-class="math inline">\(\mathcal{L}\)</span>稳定性</strong>的概念：</p>
-<figure>
-<img
-src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_small.png"
-alt="小信号L稳定性定义" />
-<figcaption aria-hidden="true">小信号L稳定性定义</figcaption>
-</figure>
-<p>小信号<span
-class="math inline">\(\mathcal{L}\)</span>稳定性更适合用于分析系统在特定工作点的行为，而<span
-class="math inline">\(\mathcal{L}\)</span>稳定性则更适合于分析系统整体或在整个工作范围内的行为。</p>
-<h2 id="状态空间模型的mathcall稳定性">状态空间模型的<span
-class="math inline">\(\mathcal{L}\)</span>稳定性</h2>
-<p>Lyapunov稳定性侧重于研究平衡点的稳定性以及状态的渐进特性。接下来探讨如何利用Lyapunov稳定性分析工具来建立由状态空间模型表示的非线性系统的<span
-class="math inline">\(\mathcal{L}\)</span>稳定性。系统状态空间模型为
-<span class="math display">\[
-\dot{x}=f(x,u),\,y=h(x,u)
-\]</span></p>
-<p><span
-class="math inline">\(\mathcal{L}_{\infty}\)</span>稳定性定理体现了与<a
-href="https://panqiincs.me/2023/02/20/input-to-state-stability/"><strong>输入到状态稳定</strong></a>（input-to-state
-stability）的关系：</p>
-<figure>
-<img
-src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_ss.png"
-alt="状态空间模型的L稳定性定义" />
-<figcaption aria-hidden="true">状态空间模型的L稳定性定义</figcaption>
-</figure>
-<p>小信号<span
-class="math inline">\(\mathcal{L}_{\infty}\)</span>稳定性定理体现了与渐进稳定（asymptotically
-stability）的关系：</p>
-<figure>
-<img
-src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_ss_small.png"
-alt="状态空间模型的小信号L稳定性定义" />
-<figcaption
-aria-hidden="true">状态空间模型的小信号L稳定性定义</figcaption>
-</figure>
-<h2 id="mathcall_2增益"><span
-class="math inline">\(\mathcal{L}_2\)</span>增益</h2>
-<p><strong><span
-class="math inline">\(\mathcal{L}_2\)</span>稳定性</strong>是系统分析中非常重要的概念。因为平方可积信号可以视为能量有限的信号，在实际中很常见。在很多控制问题中，例如<span
-class="math inline">\(H_{\infty}\)</span>控制，系统表示为输入到输出的映射，并希望这个映射尽可能小。对于<span
-class="math inline">\(\mathcal{L}_2\)</span>输入信号，要确保系统输入到输出映射是有限增益<span
-class="math inline">\(\mathcal{L}_2\)</span>稳定，而且努力使<span
-class="math inline">\(\mathcal{L}_2\)</span>增益达到最小。分析这些问题时，不仅要能够判断系统是有限增益<span
-class="math inline">\(\mathcal{L}_2\)</span>稳定的，而且还要计算出<span
-class="math inline">\(\mathcal{L}_2\)</span>增益或者它的上限。</p>
+
+<h2 id="mathcal-L-稳定性"><a href="#mathcal-L-稳定性" class="headerlink" title="$\mathcal{L}$稳定性"></a>$\mathcal{L}$稳定性</h2><p>考虑输入输出关系由如下方程描述的系统<br>$$<br>y&#x3D;Hu<br>$$</p>
+<p>其中，$H$是一个映射或者算子。输入$u$属于一个信号空间，该信号空间中的信号是个函数$u:\left[0,\infty\right)\to R^m$，将时间区间$\left[0,\infty\right)$映射到欧氏空间$R^m$。引入范数$\lVert u \rVert$来描述信号的大小。接着便为$\mathcal{L}<em>{\infty}$、$\mathcal{L}<em>2$和$\mathcal{L}<em>p$函数空间定义范数。为了与$u$作为$R^m$中向量的范数$\lVert u \rVert$区别开来，用$\lVert u \rVert</em>{\mathcal{L}}$表示$u$作为函数空间$\mathcal{L}$中函数的范数。$\lVert u \rVert</em>{\mathcal{L}}$的定义基于$\lVert u \rVert$，但要将它们与$u$在欧氏空间中的几种范数$\lVert u \rVert</em>{\infty}$、$\lVert u \rVert_2$、$\lVert u \rVert_p$区别开来。</p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_norms.png" alt="不同函数空间的范数"></p>
+<p>按照上述记号规则，可以将$H$定义为从$\mathcal{L}^m$到$\mathcal{L}^q$的映射。但这种定义方式并不合适，因为需要考虑不稳定系统。对于不稳定系统，输入$u\in\mathcal{L}^m$可能导致输出$y$不属于$\mathcal{L}^q$。因此，$H$通常定义为从扩展空间$\mathcal{L}<em>e^m$到扩展空间$\mathcal{L}<em>e^q$的映射，扩展空间定义为<br>$$<br>\mathcal{L}<em>e^m&#x3D;\left{u|u</em>{\tau}\in\mathcal{L}^m,\forall\tau\in\left[0,\infty\right)\right}<br>$$<br>其中，$u</em>{\tau}$是$u$的截断函数，定义为<br>$$<br>u</em>{\tau}(t) &#x3D;<br>\begin{cases}<br>u(t),  &amp; 0\le t \le \tau \<br>0,     &amp; t&gt;\tau<br>\end{cases}<br>$$</p>
+<p>这种截断方式要求$\mathcal{L}_e^m$空间中的函数，即使在无限时域上可能无界，也必须在每个有限时间段内表现得如同$\mathcal{L}^m$空间中的函数一样。因此，$\mathcal{L}^m$是$\mathcal{L}_e^m$的子集。</p>
+<p>映射$H:\mathcal{L}<em>e^m\to\mathcal{L}<em>e^q$被称为因果映射，如果在任意时间$t$的输出$(Hu)(t)$只依赖于输入在$t$时刻及之前的值。<strong>因果性</strong>（causality）是由状态空间模型表示的动态系统的内在特性，它的定义等价于<br>$$<br>(Hu)</em>{\tau}&#x3D;(Hu</em>{\tau})_{\tau}<br>$$</p>
+<p>有了输入输出信号空间的定义，便可以定义<strong>输入输出稳定性</strong>（input-output stability）。</p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_definition.png" alt="输入输出稳定性定义"></p>
+<p>对于$\mathcal{L}$稳定的因果系统，可推得$u\in\mathcal{L}^m\Rightarrow Hu\in\mathcal{L}^q$，即输入$u$属于$\mathcal{L}$空间，则输出$y$也属于$\mathcal{L}$空间。而有限增益$\mathcal{L}$稳定性不仅要求输出在$\mathcal{L}$空间内，还对输入信号增益有限制。</p>
+<p>在讨论不同类型的函数空间（$\mathcal{L}_{\infty}$、$\mathcal{L}<em>2$和$\mathcal{L}<em>p$）时，有不同的$\mathcal{L}$稳定性定义，如$\mathcal{L}</em>{\infty}$稳定性和$\mathcal{L}<em>2$稳定性，这是由于不同函数空间中的信号特征不同。以$\mathcal{L}</em>{\infty}$空间为例，该空间包含按段光滑<strong>有界</strong>函数，因此$\mathcal{L}</em>{\infty}$稳定性对应于我们熟悉的<strong>有界输入有界输出稳定性</strong>（bounded-input-bounded-output stability）的概念。</p>
+<p>上述定义要求不等式$(6.1)(6.2)$对输入空间$\mathcal{L}^m$中的所有信号都成立。对于很多实际系统，输入输出之间的关系只定义在输入空间的一个子集上。于是便催生出了<strong>小信号$\mathcal{L}$稳定性</strong>的概念：</p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_small.png" alt="小信号L稳定性定义"></p>
+<p>小信号$\mathcal{L}$稳定性更适合用于分析系统在特定工作点的行为，而$\mathcal{L}$稳定性则更适合于分析系统整体或在整个工作范围内的行为。</p>
+<h2 id="状态空间模型的-mathcal-L-稳定性"><a href="#状态空间模型的-mathcal-L-稳定性" class="headerlink" title="状态空间模型的$\mathcal{L}$稳定性"></a>状态空间模型的$\mathcal{L}$稳定性</h2><p>Lyapunov稳定性侧重于研究平衡点的稳定性以及状态的渐进特性。接下来探讨如何利用Lyapunov稳定性分析工具来建立由状态空间模型表示的非线性系统的$\mathcal{L}$稳定性。系统状态空间模型为<br>$$<br>\dot{x}&#x3D;f(x,u),,y&#x3D;h(x,u)<br>$$</p>
+<p>$\mathcal{L}_{\infty}$稳定性定理体现了与<a href="https://panqiincs.me/2023/02/20/input-to-state-stability/"><strong>输入到状态稳定</strong></a>（input-to-state stability）的关系：</p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_ss.png" alt="状态空间模型的L稳定性定义"></p>
+<p>小信号$\mathcal{L}_{\infty}$稳定性定理体现了与渐进稳定（asymptotically stability）的关系：</p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_ss_small.png" alt="状态空间模型的小信号L稳定性定义"></p>
+<h2 id="mathcal-L-2-增益"><a href="#mathcal-L-2-增益" class="headerlink" title="$\mathcal{L}_2$增益"></a>$\mathcal{L}_2$增益</h2><p><strong>$\mathcal{L}_2$稳定性</strong>是系统分析中非常重要的概念。因为平方可积信号可以视为能量有限的信号，在实际中很常见。在很多控制问题中，例如$H_{\infty}$控制，系统表示为输入到输出的映射，并希望这个映射尽可能小。对于$\mathcal{L}_2$输入信号，要确保系统输入到输出映射是有限增益$\mathcal{L}_2$稳定，而且努力使$\mathcal{L}_2$增益达到最小。分析这些问题时，不仅要能够判断系统是有限增益$\mathcal{L}_2$稳定的，而且还要计算出$\mathcal{L}_2$增益或者它的上限。</p>
 <p>对于线性系统，有如下结论：</p>
-<figure>
-<img
-src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_l2_linear.png"
-alt="线性系统的L2增益" />
-<figcaption aria-hidden="true">线性系统的L2增益</figcaption>
-</figure>
-<p>从上述定理可知，<span class="math inline">\(\sup_{\omega\in R}\lVert
-G(j\omega) \rVert\)</span>就是<span
-class="math inline">\(\mathcal{L}_2\)</span>增益，而且它就是<span
-class="math inline">\(G(j\omega)\)</span>的<span
-class="math inline">\(H_{\infty}\)</span>范数。</p>
-<p>对于非线性系统，有两个结论。第一个结论与<a
-href="https://panqiincs.me/2024/10/19/system-passivity/">系统的<strong>无源性</strong></a>有关：</p>
-<figure>
-<img
-src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_l2_nonlinear1.png"
-alt="非线性系统的L2增益" />
-<figcaption aria-hidden="true">非线性系统的L2增益</figcaption>
-</figure>
-<p>第二个结论则与<span
-class="math inline">\((6.20)\)</span>所示的<strong>Hamilton-Jacobi不等式</strong>有关：</p>
-<figure>
-<img
-src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_l2_nonlinear2.png"
-alt="非线性系统的L2增益" />
-<figcaption aria-hidden="true">非线性系统的L2增益</figcaption>
-</figure>
-<h2 id="参考资料">参考资料</h2>
-<ol type="1">
-<li><a
-target="_blank" rel="noopener" href="https://book.douban.com/subject/26986475/">非线性控制</a></li>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_l2_linear.png" alt="线性系统的L2增益"></p>
+<p>从上述定理可知，$\sup_{\omega\in R}\lVert G(j\omega) \rVert$就是$\mathcal{L}<em>2$增益，而且它就是$G(j\omega)$的$H</em>{\infty}$范数。</p>
+<p>对于非线性系统，有两个结论。第一个结论与<a href="https://panqiincs.me/2024/10/19/system-passivity/">系统的<strong>无源性</strong></a>有关：</p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_l2_nonlinear1.png" alt="非线性系统的L2增益"></p>
+<p>第二个结论则与$(6.20)$所示的<strong>Hamilton-Jacobi不等式</strong>有关：</p>
+<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/input_output_l2_nonlinear2.png" alt="非线性系统的L2增益"></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/26986475/">非线性控制</a></li>
 </ol>
 
     </div>

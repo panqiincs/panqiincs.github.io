@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="概念引入 稳定性是控制理论的核心概念。最近通过阅读Applied Nonlinear Control和Nonlinear Systems两本书系统学习Lyapunov稳定性理论，想粗读这部分内容可参考这个材料。本文介绍比较少见的输入到状态稳定性（input-to-state stability）。">
+    <meta name="description" content="概念引入稳定性是控制理论的核心概念。最近通过阅读Applied Nonlinear Control和Nonlinear Systems两本书系统学习Lyapunov稳定性理论，想粗读这部分内容可参考这个材料。本文介绍比较少见的输入到状态稳定性（input-to-state stability）。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="系统的输入到状态稳定性">
 <meta property="og:url" content="https://panqiincs.me/2023/02/20/input-to-state-stability/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="概念引入 稳定性是控制理论的核心概念。最近通过阅读Applied Nonlinear Control和Nonlinear Systems两本书系统学习Lyapunov稳定性理论，想粗读这部分内容可参考这个材料。本文介绍比较少见的输入到状态稳定性（input-to-state stability）。">
+<meta property="og:description" content="概念引入稳定性是控制理论的核心概念。最近通过阅读Applied Nonlinear Control和Nonlinear Systems两本书系统学习Lyapunov稳定性理论，想粗读这部分内容可参考这个材料。本文介绍比较少见的输入到状态稳定性（input-to-state stability）。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-19T16:01:02.000Z">
 <meta property="article:modified_time" content="2024-11-15T05:29:53.875Z">
@@ -300,156 +300,42 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="概念引入">概念引入</h2>
-<p>稳定性是控制理论的核心概念。最近通过阅读Applied Nonlinear
-Control和Nonlinear
-Systems两本书系统学习Lyapunov稳定性理论，想粗读这部分内容可参考<a
-target="_blank" rel="noopener" href="http://web.tuat.ac.jp/~gvlab/ronbun/ReadingGroupControl/mls-lyap.pdf">这个材料</a>。本文介绍比较少见的<strong>输入到状态稳定性</strong>（input-to-state
-stability）。</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="概念引入"><a href="#概念引入" class="headerlink" title="概念引入"></a>概念引入</h2><p>稳定性是控制理论的核心概念。最近通过阅读Applied Nonlinear Control和Nonlinear Systems两本书系统学习Lyapunov稳定性理论，想粗读这部分内容可参考<a target="_blank" rel="noopener" href="http://web.tuat.ac.jp/~gvlab/ronbun/ReadingGroupControl/mls-lyap.pdf">这个材料</a>。本文介绍比较少见的<strong>输入到状态稳定性</strong>（input-to-state stability）。</p>
 <span id="more"></span>
+
 <p>对于一般的控制系统</p>
-<p><span class="math display">\[
-\dot{\mathbf{x}} = \mathbf{f}(t,\mathbf{x}, \mathbf{u}) \tag{1}
-\]</span></p>
-<p>假设它满足微分方程解存在和唯一的条件。当没有外部输入时，假设如下非强迫系统（unforced
-system）</p>
-<p><span class="math display">\[
-\dot{\mathbf{x}} = \mathbf{f}(t,\mathbf{x}, \mathbf{0}) \tag{2}
-\]</span></p>
-<p>有一个<strong>全局一致渐进稳定</strong>（globally uniformly
-asymtotically stable）的平衡点<span class="math inline">\(\mathbf{x} =
-\mathbf{0}\)</span>。但是，当给定一个有界的外部输入<span
-class="math inline">\(\mathbf{u}(t)\)</span>时，系统<span
-class="math inline">\((1)\)</span>的状态<span
-class="math inline">\(\mathbf{x}(t)\)</span>有可能是无界的。举个例子，如下的非线性系统</p>
-<p><span class="math display">\[
-\dot{x}=-3x+(1+2x^2)u \tag{3}
-\]</span></p>
-<p>当<span class="math inline">\(u=0\)</span>时，容易验证系统<span
-class="math inline">\((3)\)</span>有一个<strong>全局指数稳定</strong>（globally
-exponentially stable）的原点。但是，当初值条件<span
-class="math inline">\(x(0)=2\)</span>且外部输入<span
-class="math inline">\(u(t)\equiv 1\)</span>时，微分方程方程的解<span
-class="math inline">\(x(t)=(3-e^t)/(3-2e^t)\)</span>是无界的。</p>
-<p>由此可知，经典的Lyapunov稳定性理论主要针对平衡点附近的稳定性，无法应对外部输入作用下系统的稳定性。Eduardo
-Sontag在1989年提出的输入到状态稳定性解决了这个问题。</p>
-<h2 id="稳定性定义">稳定性定义</h2>
-<p>输入到状态稳定性的定义：对于系统<span
-class="math inline">\((1)\)</span>，如果存在一个<span
-class="math inline">\(\mathcal{KL}\)</span>类函数<span
-class="math inline">\(\beta\)</span>和一个<span
-class="math inline">\(\mathcal{K}\)</span>类函数<span
-class="math inline">\(\gamma\)</span>，使得对任意初始状态<span
-class="math inline">\(\mathbf{x}(0)\)</span>和任意有界输入<span
-class="math inline">\(\mathbf{u}(t)\)</span>，存在解<span
-class="math inline">\(\mathbf{x}(t)\)</span>对所有的<span
-class="math inline">\(t\ge 0\)</span>都满足</p>
-<p><span class="math display">\[
-\left \| \mathbf{x}(t) \right \| \le \beta(\left \| \mathbf{x}(0) \right
-\|,t) + \gamma(\left \| \mathbf{u}(t) \right \|_{\infty}) \tag{4}
-\]</span></p>
-<p>则称系统<span
-class="math inline">\((1)\)</span>是输入到状态稳定的。</p>
-<p>一些论文将<span class="math inline">\(\gamma\)</span>定义为<span
-class="math inline">\(\mathcal{K}_{\infty}\)</span>类函数，其实差别不大。为了理解上述定义，需要了解比较函数（comparision
-function）的概念。</p>
-<h2 id="比较函数">比较函数</h2>
-<p>下面给出<span class="math inline">\(\mathcal{K}\)</span>类函数、<span
-class="math inline">\(\mathcal{K}_{\infty}\)</span>类函数和<span
-class="math inline">\(\mathcal{KL}\)</span>类函数的定义：</p>
-<ol type="1">
-<li>连续函数<span class="math inline">\(\gamma: \left [ 0, a \right )
-\to \left [ 0, \infty \right )\)</span>是<span
-class="math inline">\(\mathcal{K}\)</span>类函数，如果<span
-class="math inline">\(\gamma\)</span>是严格递增函数且<span
-class="math inline">\(\gamma(0)=0\)</span>。所以，<span
-class="math inline">\(\mathcal{K}\)</span>类函数的图像从原点出发，严格单调递增。</li>
-<li>连续函数<span class="math inline">\(\alpha: \left [ 0, a \right )
-\to \left [ 0, \infty \right )\)</span>是<span
-class="math inline">\(\mathcal{K}_{\infty}\)</span>类函数，如果<span
-class="math inline">\(\alpha\)</span>是<span
-class="math inline">\(\mathcal{K}\)</span>类函数，且有<span
-class="math inline">\(a=\infty\)</span>，<span
-class="math inline">\(r\to\infty\)</span>时<span
-class="math inline">\(\alpha(r)\to\infty\)</span>。<span
-class="math inline">\(\mathcal{K}_{\infty}\)</span>类函数与<span
-class="math inline">\(\mathcal{K}\)</span>类函数主要是定义域的区别。</li>
-<li>连续函数<span class="math inline">\(\beta: \left [ 0, a \right )
-\times \left [ 0, \infty \right ) \to \left [ 0, \infty \right
-)\)</span>是<span
-class="math inline">\(\mathcal{KL}\)</span>类函数，如果对于固定的<span
-class="math inline">\(s\)</span>，函数<span
-class="math inline">\(\beta(r,s)\)</span>是<span
-class="math inline">\(\mathcal{K}\)</span>类函数；对于固定的<span
-class="math inline">\(r\)</span>，函数<span
-class="math inline">\(\beta(r,s)\)</span>关于<span
-class="math inline">\(s\)</span>严格递减，且当<span
-class="math inline">\(s\to\infty\)</span>时<span
-class="math inline">\(\beta(r,s)\to 0\)</span>。</li>
+<p>$$<br>\dot{\mathbf{x}} &#x3D; \mathbf{f}(t,\mathbf{x}, \mathbf{u}) \tag{1}<br>$$</p>
+<p>假设它满足微分方程解存在和唯一的条件。当没有外部输入时，假设如下非强迫系统（unforced system）</p>
+<p>$$<br>\dot{\mathbf{x}} &#x3D; \mathbf{f}(t,\mathbf{x}, \mathbf{0}) \tag{2}<br>$$</p>
+<p>有一个<strong>全局一致渐进稳定</strong>（globally uniformly asymtotically stable）的平衡点$\mathbf{x} &#x3D; \mathbf{0}$。但是，当给定一个有界的外部输入$\mathbf{u}(t)$时，系统$(1)$的状态$\mathbf{x}(t)$有可能是无界的。举个例子，如下的非线性系统</p>
+<p>$$<br>\dot{x}&#x3D;-3x+(1+2x^2)u \tag{3}<br>$$</p>
+<p>当$u&#x3D;0$时，容易验证系统$(3)$有一个<strong>全局指数稳定</strong>（globally exponentially stable）的原点。但是，当初值条件$x(0)&#x3D;2$且外部输入$u(t)\equiv 1$时，微分方程方程的解$x(t)&#x3D;(3-e^t)&#x2F;(3-2e^t)$是无界的。</p>
+<p>由此可知，经典的Lyapunov稳定性理论主要针对平衡点附近的稳定性，无法应对外部输入作用下系统的稳定性。Eduardo Sontag在1989年提出的输入到状态稳定性解决了这个问题。</p>
+<h2 id="稳定性定义"><a href="#稳定性定义" class="headerlink" title="稳定性定义"></a>稳定性定义</h2><p>输入到状态稳定性的定义：对于系统$(1)$，如果存在一个$\mathcal{KL}$类函数$\beta$和一个$\mathcal{K}$类函数$\gamma$，使得对任意初始状态$\mathbf{x}(0)$和任意有界输入$\mathbf{u}(t)$，存在解$\mathbf{x}(t)$对所有的$t\ge 0$都满足</p>
+<p>$$<br>\left | \mathbf{x}(t) \right | \le \beta(\left | \mathbf{x}(0) \right |,t) + \gamma(\left | \mathbf{u}(t) \right |_{\infty}) \tag{4}<br>$$</p>
+<p>则称系统$(1)$是输入到状态稳定的。</p>
+<p>一些论文将$\gamma$定义为$\mathcal{K}_{\infty}$类函数，其实差别不大。为了理解上述定义，需要了解比较函数（comparision function）的概念。</p>
+<h2 id="比较函数"><a href="#比较函数" class="headerlink" title="比较函数"></a>比较函数</h2><p>下面给出$\mathcal{K}$类函数、$\mathcal{K}_{\infty}$类函数和$\mathcal{KL}$类函数的定义：</p>
+<ol>
+<li>连续函数$\gamma: \left [ 0, a \right ) \to \left [ 0, \infty \right )$是$\mathcal{K}$类函数，如果$\gamma$是严格递增函数且$\gamma(0)&#x3D;0$。所以，$\mathcal{K}$类函数的图像从原点出发，严格单调递增。</li>
+<li>连续函数$\alpha: \left [ 0, a \right ) \to \left [ 0, \infty \right )$是$\mathcal{K}<em>{\infty}$类函数，如果$\alpha$是$\mathcal{K}$类函数，且有$a&#x3D;\infty$，$r\to\infty$时$\alpha(r)\to\infty$。$\mathcal{K}</em>{\infty}$类函数与$\mathcal{K}$类函数主要是定义域的区别。</li>
+<li>连续函数$\beta: \left [ 0, a \right ) \times \left [ 0, \infty \right ) \to \left [ 0, \infty \right )$是$\mathcal{KL}$类函数，如果对于固定的$s$，函数$\beta(r,s)$是$\mathcal{K}$类函数；对于固定的$r$，函数$\beta(r,s)$关于$s$严格递减，且当$s\to\infty$时$\beta(r,s)\to 0$。</li>
 </ol>
-<h2 id="物理意义">物理意义</h2>
-<h3 id="零输入响应">零输入响应</h3>
-<p>讨论系统<span
-class="math inline">\((1)\)</span>的零输入响应，即假设系统无输入信号，<span
-class="math inline">\(\left \| \mathbf{u}(t) \right
-\|_{\infty}=0\)</span>，则有<span class="math inline">\(\gamma(\left \|
-\mathbf{u}(t) \right \|_{\infty})=0\)</span>，那么<span
-class="math inline">\((4)\)</span>式变为</p>
-<p><span class="math display">\[
-\left \| \mathbf{x}(t) \right \| \le \beta(\left \| \mathbf{x}(0) \right
-\|,t) \tag{5}
-\]</span></p>
+<h2 id="物理意义"><a href="#物理意义" class="headerlink" title="物理意义"></a>物理意义</h2><h3 id="零输入响应"><a href="#零输入响应" class="headerlink" title="零输入响应"></a>零输入响应</h3><p>讨论系统$(1)$的零输入响应，即假设系统无输入信号，$\left | \mathbf{u}(t) \right |<em>{\infty}&#x3D;0$，则有$\gamma(\left | \mathbf{u}(t) \right |</em>{\infty})&#x3D;0$，那么$(4)$式变为</p>
+<p>$$<br>\left | \mathbf{x}(t) \right | \le \beta(\left | \mathbf{x}(0) \right |,t) \tag{5}<br>$$</p>
 <p>分析可得如下结论：</p>
-<ol type="1">
-<li>对于固定的初值条件<span
-class="math inline">\(\mathbf{x}(0)\)</span>，<span
-class="math inline">\(\beta(\left \| \mathbf{x}(0) \right
-\|,t)\)</span>关于时间<span
-class="math inline">\(t\)</span>严格递减，且<span
-class="math inline">\(t\to\infty\)</span>时，<span
-class="math inline">\(\beta(\left \| \mathbf{x}(0) \right \|,t) \to
-0\)</span>，则系统<strong>状态值随时间推移单调递减趋于零</strong>，这种情况下，<strong>输入到状态稳定与全局渐进稳定是等价的</strong>。</li>
-<li>对于固定的时间<span class="math inline">\(t\)</span>，<span
-class="math inline">\(\beta(\left \| \mathbf{x}(0) \right
-\|,t)\)</span>是<span
-class="math inline">\(\mathcal{K}\)</span>类函数，所以<span
-class="math inline">\(\beta(\left \| \mathbf{x}(0) \right
-\|,t)\)</span>关于<span class="math inline">\(\left \| \mathbf{x}(0)
-\right \|\)</span>单调递增；且有<span
-class="math inline">\(\beta(\mathbf{0},t)=0\)</span>，则系统<strong>初始值越大，状态值越大，初始值为零，任意时刻的状态值也为零</strong>。</li>
+<ol>
+<li>对于固定的初值条件$\mathbf{x}(0)$，$\beta(\left | \mathbf{x}(0) \right |,t)$关于时间$t$严格递减，且$t\to\infty$时，$\beta(\left | \mathbf{x}(0) \right |,t) \to 0$，则系统<strong>状态值随时间推移单调递减趋于零</strong>，这种情况下，<strong>输入到状态稳定与全局渐进稳定是等价的</strong>。</li>
+<li>对于固定的时间$t$，$\beta(\left | \mathbf{x}(0) \right |,t)$是$\mathcal{K}$类函数，所以$\beta(\left | \mathbf{x}(0) \right |,t)$关于$\left | \mathbf{x}(0) \right |$单调递增；且有$\beta(\mathbf{0},t)&#x3D;0$，则系统<strong>初始值越大，状态值越大，初始值为零，任意时刻的状态值也为零</strong>。</li>
 </ol>
-<h3 id="零状态响应">零状态响应</h3>
-<p>讨论系统<span
-class="math inline">\((1)\)</span>的零状态响应，即假设系统初始状态为零，<span
-class="math inline">\(\left \| \mathbf{x}(0) \right
-\|=\mathbf{0}\)</span>，那么对于某个特定时刻<span
-class="math inline">\(t\)</span>有<span
-class="math inline">\(\beta(\mathbf{0},t)=0\)</span>，所以<span
-class="math inline">\(t\)</span>时刻的状态值满足不等式</p>
-<p><span class="math display">\[
-\left \| \mathbf{x}(t) \right \| \le \gamma(\left \| \mathbf{u}(t)
-\right \|_{\infty}) \tag{6}
-\]</span></p>
-<p>可得到如下结论：函数<span
-class="math inline">\(\gamma\)</span>严格递增，且输入<span
-class="math inline">\(\left \| \mathbf{u}(t) \right
-\|_{\infty}=0\)</span>时，<span class="math inline">\(\gamma(\left \|
-\mathbf{u}(t) \right
-\|_{\infty})=0\)</span>，则系统<strong>输入的幅值为零时状态值也趋于零</strong>，而且<strong>状态值与输入的幅值成正比</strong>，此时的<span
-class="math inline">\(\gamma\)</span>称为增益。</p>
-<h2 id="参考资料">参考资料</h2>
-<ol type="1">
-<li><a
-target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Input-to-state_stability">Input-to-state
-stability</a></li>
-<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/1574019/">Nonlinear Systems
-- Khalil</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Class_kappa-ell_function">Class
-kappa-ell function</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://pure.rug.nl/ws/files/204131679/Input_to_State_Stabilizing_Control_Under_Denial_of_Service.pdf">Input-to-State
-Stabilizing Control Under Denial-of-Service</a></li>
+<h3 id="零状态响应"><a href="#零状态响应" class="headerlink" title="零状态响应"></a>零状态响应</h3><p>讨论系统$(1)$的零状态响应，即假设系统初始状态为零，$\left | \mathbf{x}(0) \right |&#x3D;\mathbf{0}$，那么对于某个特定时刻$t$有$\beta(\mathbf{0},t)&#x3D;0$，所以$t$时刻的状态值满足不等式</p>
+<p>$$<br>\left | \mathbf{x}(t) \right | \le \gamma(\left | \mathbf{u}(t) \right |_{\infty}) \tag{6}<br>$$</p>
+<p>可得到如下结论：函数$\gamma$严格递增，且输入$\left | \mathbf{u}(t) \right |<em>{\infty}&#x3D;0$时，$\gamma(\left | \mathbf{u}(t) \right |</em>{\infty})&#x3D;0$，则系统<strong>输入的幅值为零时状态值也趋于零</strong>，而且<strong>状态值与输入的幅值成正比</strong>，此时的$\gamma$称为增益。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Input-to-state_stability">Input-to-state stability</a></li>
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/1574019/">Nonlinear Systems - Khalil</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Class_kappa-ell_function">Class kappa-ell function</a></li>
+<li><a target="_blank" rel="noopener" href="https://pure.rug.nl/ws/files/204131679/Input_to_State_Stabilizing_Control_Under_Denial_of_Service.pdf">Input-to-State Stabilizing Control Under Denial-of-Service</a></li>
 </ol>
 
     </div>

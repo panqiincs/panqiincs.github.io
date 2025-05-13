@@ -301,10 +301,11 @@
     
     <div class="post-body" itemprop="articleBody"><p>最近学会了五笔输入法，正在努力适应中。现在的拼音输入法很智能，我用拼音打字很快，学五笔主要为了解决「提笔忘字」的问题。使用时还发现，拆字过程能纠正笔顺错误，挺好。</p>
 <span id="more"></span>
+
 <p>五笔有三个版本，86版、98版和新世纪版。在我看来，用86版的唯一理由是和历史兼容，毕竟它有30多年的历史，用户和资源最多。我是新学，毫无疑问学习新世纪版。新世纪版是五笔的发明人——王永民先生推出的「终极版」，是三个版本中最规范、最易学的。我购买了正版的「王码五笔」软件（Windows下使用），支持一下王永民先生。网上有不少人举个别几个例子来抨击新世纪五笔的拆字很「荒谬」，我觉得是很可笑的。汉字的构造很复杂，连国家制订的汉字笔顺标准都有争议，何况是拆字呢。有的字的拆法，不可能让所有人都满意，记住就可以了，还不满意就自己修改码表，口舌之争毫无意义。</p>
-<p>在Linux下用五笔推荐<a
-target="_blank" rel="noopener" href="https://rime.im/">Rime输入法</a>。在我当前用的openSUSE系统中，默认的输入法框架为fcitx，通过下面的命令安装Rime：</p>
+<p>在Linux下用五笔推荐<a target="_blank" rel="noopener" href="https://rime.im/">Rime输入法</a>。在我当前用的openSUSE系统中，默认的输入法框架为fcitx，通过下面的命令安装Rime：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> zypper install fcitx-rime</span><br></pre></td></tr></table></figure>
+
 <p>Rime自带86版五笔，新世纪版需要自己配置。输入法的配置文件在<code>~/.config/fcitx/rime</code>目录中。以86版的对应文件为模板，在该目录中新建两个文件：</p>
 <ul>
 <li><code>wubinc.schema.yaml</code>：方案定义文件，核心配置项基本保持不变</li>
@@ -312,8 +313,10 @@ target="_blank" rel="noopener" href="https://rime.im/">Rime输入法</a>。在�
 </ul>
 <p>全局配置文件<code>default.yaml</code>最好不要修改。新建用户定制文件<code>default.custom.yaml</code>，例如，要修改输入方案候选项，文件内容如下：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># default.custom.yaml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">patch:</span></span><br><span class="line">  <span class="attr">schema_list:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">schema:</span> <span class="string">luna_pinyin</span>       <span class="comment"># 朙月拼音</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">schema:</span> <span class="string">luna_pinyin_simp</span>  <span class="comment"># 朙月拼音简体字</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">schema:</span> <span class="string">wubinc</span>            <span class="comment"># 新世纪版五笔</span></span><br></pre></td></tr></table></figure>
+
 <p>修改配置后，重新部署才生效。<code>fcitx-rime</code>没有重新部署的按钮，先删除<code>default.yaml</code>文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> ~/.config/fcitx/rime/default.yaml</span><br></pre></td></tr></table></figure>
+
 <p>然后在系统托盘的输入法图标处点右键，单击restart，触发Rime的重新部署。再打开输入法，应该能正常使用新世纪版五笔了。</p>
 
     </div>

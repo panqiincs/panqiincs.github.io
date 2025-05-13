@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="内积空间 现将「长度」、「距离」的概念推广到一般的线性空间中。距离可以看作是长度的派生概念，而长度又可以看成是内积的派生概念。这里给出复数域上内积的定义，因为实数域可以看成是复数域的特例。">
+    <meta name="description" content="内积空间现将「长度」、「距离」的概念推广到一般的线性空间中。距离可以看作是长度的派生概念，而长度又可以看成是内积的派生概念。这里给出复数域上内积的定义，因为实数域可以看成是复数域的特例。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性代数：内积空间">
 <meta property="og:url" content="https://panqiincs.me/2023/08/18/la-inner-product-space/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="内积空间 现将「长度」、「距离」的概念推广到一般的线性空间中。距离可以看作是长度的派生概念，而长度又可以看成是内积的派生概念。这里给出复数域上内积的定义，因为实数域可以看成是复数域的特例。">
+<meta property="og:description" content="内积空间现将「长度」、「距离」的概念推广到一般的线性空间中。距离可以看作是长度的派生概念，而长度又可以看成是内积的派生概念。这里给出复数域上内积的定义，因为实数域可以看成是复数域的特例。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-18T07:01:12.000Z">
 <meta property="article:modified_time" content="2023-09-22T04:31:21.802Z">
@@ -129,7 +129,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%A7%AF%E7%A9%BA%E9%97%B4"><span class="nav-number">1.</span> <span class="nav-text">内积空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%A7%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%AD%A3%E4%BA%A4%E5%9F%BA"><span class="nav-number">2.</span> <span class="nav-text">内积的表示和正交基</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%B4%E9%9A%8F%E7%AE%97%E5%AD%90"><span class="nav-number">3.</span> <span class="nav-text">伴随算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E4%BA%A4%E5%8F%98%E6%8D%A2%E5%92%8C%E9%85%89%E5%8F%98%E6%8D%A2"><span class="nav-number">4.</span> <span class="nav-text">正交变换和酉变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E4%BC%B4%E9%9A%8F%E7%AE%97%E5%AD%90"><span class="nav-number">5.</span> <span class="nav-text">自伴随算子</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%A7%AF%E7%A9%BA%E9%97%B4"><span class="nav-number">1.</span> <span class="nav-text">内积空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%A7%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%AD%A3%E4%BA%A4%E5%9F%BA"><span class="nav-number">2.</span> <span class="nav-text">内积的表示和正交基</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%B8%AD%E7%9F%A9%E9%98%B5-boldsymbol-G-left-begin-matrix-g-11-g-12-cdots-a-1n-g-21-g-22-cdots-a-2n-vdots-vdots-ddots-vdots-g-n1-g-n2-cdots-a-nn-end-matrix-right"><span class="nav-number"></span> <span class="nav-text">其中矩阵$$\boldsymbol{G}&#x3D;\left( \begin{matrix}  g_{11} &amp; g_{12} &amp; \cdots &amp; a_{1n}\  g_{21} &amp; g_{22} &amp; \cdots &amp; a_{2n}\  \vdots &amp; \vdots &amp; \ddots &amp; \vdots\  g_{n1} &amp; g_{n2} &amp; \cdots &amp; a_{nn}\\end{matrix} \right)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%B4%E9%9A%8F%E7%AE%97%E5%AD%90"><span class="nav-number">1.</span> <span class="nav-text">伴随算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E4%BA%A4%E5%8F%98%E6%8D%A2%E5%92%8C%E9%85%89%E5%8F%98%E6%8D%A2"><span class="nav-number">2.</span> <span class="nav-text">正交变换和酉变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E4%BC%B4%E9%9A%8F%E7%AE%97%E5%AD%90"><span class="nav-number">3.</span> <span class="nav-text">自伴随算子</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -302,363 +302,61 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="内积空间">内积空间</h2>
-<p>现将「长度」、「距离」的概念推广到一般的线性空间中。距离可以看作是长度的派生概念，而长度又可以看成是内积的派生概念。这里给出<strong>复数域</strong>上内积的定义，因为实数域可以看成是复数域的特例。</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="内积空间"><a href="#内积空间" class="headerlink" title="内积空间"></a>内积空间</h2><p>现将「长度」、「距离」的概念推广到一般的线性空间中。距离可以看作是长度的派生概念，而长度又可以看成是内积的派生概念。这里给出<strong>复数域</strong>上内积的定义，因为实数域可以看成是复数域的特例。</p>
 <span id="more"></span>
-<p>存在某种规则，使得复数域上的线性空间<span
-class="math inline">\(V\)</span>中任意一组有序向量<span
-class="math inline">\(\{\boldsymbol{\alpha},\boldsymbol{\beta}\}\)</span>，都唯一地对应一个复数，记为<span
-class="math inline">\((\boldsymbol{\alpha},\boldsymbol{\beta})\)</span>，适合如下4条规则：</p>
-<ol type="1">
-<li><span
-class="math inline">\((\boldsymbol{\alpha},\boldsymbol{\beta})=\overline{(\boldsymbol{\beta},\boldsymbol{\alpha})}\)</span></li>
-<li><span
-class="math inline">\((\boldsymbol{\alpha}+\boldsymbol{\beta},\boldsymbol{\gamma})=(\boldsymbol{\alpha},\boldsymbol{\gamma})+(\boldsymbol{\beta},\boldsymbol{\gamma})\)</span></li>
-<li><span
-class="math inline">\((c\boldsymbol{\alpha},\boldsymbol{\beta})=c(\boldsymbol{\alpha},\boldsymbol{\beta})\)</span>，<span
-class="math inline">\(c\)</span>为任一复数</li>
-<li><span
-class="math inline">\((\boldsymbol{\alpha},\boldsymbol{\alpha})\ge
-0\)</span>且等号成立当且仅当<span
-class="math inline">\(\boldsymbol{\alpha}=0\)</span></li>
+
+<p>存在某种规则，使得复数域上的线性空间$V$中任意一组有序向量${\boldsymbol{\alpha},\boldsymbol{\beta}}$，都唯一地对应一个复数，记为$(\boldsymbol{\alpha},\boldsymbol{\beta})$，适合如下4条规则：</p>
+<ol>
+<li>$(\boldsymbol{\alpha},\boldsymbol{\beta})&#x3D;\overline{(\boldsymbol{\beta},\boldsymbol{\alpha})}$</li>
+<li>$(\boldsymbol{\alpha}+\boldsymbol{\beta},\boldsymbol{\gamma})&#x3D;(\boldsymbol{\alpha},\boldsymbol{\gamma})+(\boldsymbol{\beta},\boldsymbol{\gamma})$</li>
+<li>$(c\boldsymbol{\alpha},\boldsymbol{\beta})&#x3D;c(\boldsymbol{\alpha},\boldsymbol{\beta})$，$c$为任一复数</li>
+<li>$(\boldsymbol{\alpha},\boldsymbol{\alpha})\ge 0$且等号成立当且仅当$\boldsymbol{\alpha}&#x3D;0$</li>
 </ol>
-<p>则称在<span
-class="math inline">\(V\)</span>上定义了一个<strong>内积</strong>，<span
-class="math inline">\((\boldsymbol{\alpha},\boldsymbol{\beta})\)</span>是<span
-class="math inline">\(\boldsymbol{\alpha}\)</span>与<span
-class="math inline">\(\boldsymbol{\beta}\)</span>的内积。有限维实内积空间称为Euclid空间或<strong>欧氏空间</strong>，有限维复内积空间称为<strong>酉空间</strong>。</p>
-<p>例如两个列向量<span
-class="math inline">\(\boldsymbol{\alpha}=(x_1,x_2,\cdots,x_n)&#39;,\,\boldsymbol{\beta}=(y_1,y_2,\cdots,y_n)&#39;\)</span>，若是<span
-class="math inline">\(n\)</span>维实列向量空间<span
-class="math inline">\(\mathbb{R}_n\)</span>上的，则标准内积定义为 <span
-class="math display">\[
-(\boldsymbol{\alpha},\boldsymbol{\beta})=x_1 y_1 + x_2 y_2 + \cdots +
-x_n y_n
-\]</span></p>
-<p>若是<span class="math inline">\(n\)</span>维复列向量空间<span
-class="math inline">\(\mathbb{C}_n\)</span>上的，则标准内积定义为 <span
-class="math display">\[
-(\boldsymbol{\alpha},\boldsymbol{\beta})=x_1\overline{y}_1 +
-x_2\overline{y}_2 + \cdots + x_n\overline{y}_n
-\]</span></p>
-<p>再例如，<span class="math inline">\(V\)</span>是<span
-class="math inline">\(\left[a,b\right]\)</span>区间上连续函数全体构成的线性空间，<span
-class="math inline">\(f(t),g(t)\in V\)</span>，定义 <span
-class="math display">\[
-(f,g)=\int_a^b f(t)g(t)\mathrm{d}t
-\]</span></p>
-<p>是一个内积，于是<span
-class="math inline">\(V\)</span>成为无限维实内积空间。</p>
-<p>有了内积的概念后，可以定义向量的长度（或<strong>范数</strong>）。向量<span
-class="math inline">\(\alpha\)</span>的长度（或范数）定义为 <span
-class="math display">\[
-\lVert\boldsymbol{\alpha}\rVert =
-(\boldsymbol{\alpha},\boldsymbol{\alpha})^{\frac{1}{2}}
-\]</span></p>
-<p>利用范数可定义内积空间两个向量的距离。设<span
-class="math inline">\(\boldsymbol{\alpha},\boldsymbol{\beta}\in
-V\)</span>，<span
-class="math inline">\(\boldsymbol{\alpha}\)</span>与<span
-class="math inline">\(\boldsymbol{\beta}\)</span>之间的<strong>距离</strong>
-<span class="math display">\[
-d(\boldsymbol{\alpha},\boldsymbol{\beta}) =
-\lVert\boldsymbol{\alpha}-\boldsymbol{\beta}\rVert
-\]</span></p>
-<p>内积与范数之间满足的如下关系称为<strong>Cauchy-Schwarz不等式</strong>
-<span class="math display">\[
-\left\vert (\boldsymbol{\alpha},\boldsymbol{\beta})
-\right\vert\le\lVert\boldsymbol{\alpha}\rVert \cdot
-\lVert\boldsymbol{\beta}\rVert
-\]</span></p>
-<p>当<span class="math inline">\(V\)</span>是实内积空间时，非零向量<span
-class="math inline">\(\boldsymbol{\alpha}\)</span>与<span
-class="math inline">\(\boldsymbol{\beta}\)</span>之间的夹角满足 <span
-class="math display">\[
-\cos\theta=\frac{(\boldsymbol{\alpha},\boldsymbol{\beta})}{\lVert\boldsymbol{\alpha}\rVert
-\lVert\boldsymbol{\beta}\rVert}
-\]</span></p>
-<p>如果<span
-class="math inline">\((\boldsymbol{\alpha},\boldsymbol{\beta})=0\)</span>，则称<span
-class="math inline">\(\boldsymbol{\alpha}\)</span>与<span
-class="math inline">\(\boldsymbol{\beta}\)</span>垂直或<strong>正交</strong>，用<span
-class="math inline">\(\boldsymbol{\alpha}\perp\boldsymbol{\beta}\)</span>来表示，此时<span
-class="math inline">\(\boldsymbol{\alpha}\)</span>与<span
-class="math inline">\(\boldsymbol{\beta}\)</span>的夹角为<span
-class="math inline">\(90^\circ\)</span>。</p>
-<h2 id="内积的表示和正交基">内积的表示和正交基</h2>
-<p>现研究给定有限维内积空间下的一组基后，如何用坐标向量来表示向量的内积。具体来说，<span
-class="math inline">\(\{\boldsymbol{v}_1,\boldsymbol{v}_1,\cdots,\boldsymbol{v}_n\}\)</span>是内积空间<span
-class="math inline">\(V\)</span>的一组基，如果 <span
-class="math display">\[
-(\boldsymbol{v}_i,\boldsymbol{v}_j)=g_{ij}(i,j=1,2,\cdots,n)
-\]</span> <span class="math display">\[
-\boldsymbol{\alpha}=a_1\boldsymbol{v}_1+a_2\boldsymbol{v}_2+\cdots+a_n\boldsymbol{v}_n
-\]</span> <span class="math display">\[
-\boldsymbol{\beta}=b_1\boldsymbol{v}_1+b_2\boldsymbol{v}_2+\cdots+b_n\boldsymbol{v}_n
-\]</span></p>
-<p>利用向量内积的性质，当<span
-class="math inline">\(V\)</span>是欧氏空间（实内积空间）时， <span
-class="math display">\[
-(\boldsymbol{\alpha},\boldsymbol{\beta})=(\sum_{i=1}^n
-a_i\boldsymbol{v_i}, \sum_{j=1}^n b_j\boldsymbol{v_j})=\sum_{i,j=1}^n
-a_i g_{ij} b_j
-\]</span></p>
-<p>写成矩阵形式 <span class="math display">\[
-(\boldsymbol{\alpha},\boldsymbol{\beta})
-=(a_1,a_2,\cdots,a_n)
-\left( \begin{matrix}
-  g_{11} &amp; g_{12} &amp; \cdots &amp; a_{1n}\\
-  g_{21} &amp; g_{22} &amp; \cdots &amp; a_{2n}\\
-  \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
-  g_{n1} &amp; g_{n2} &amp; \cdots &amp; a_{nn}\\
-\end{matrix} \right)
-\left(
-\begin{array}{c}
-  b_1\\
-  b_2\\
-  \vdots\\
-  b_n\\
-\end{array}
-\right)
-\]</span></p>
-<p>其中矩阵 <span class="math display">\[
-\boldsymbol{G}=
-\left( \begin{matrix}
-  g_{11} &amp; g_{12} &amp; \cdots &amp; a_{1n}\\
-  g_{21} &amp; g_{22} &amp; \cdots &amp; a_{2n}\\
-  \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
-  g_{n1} &amp; g_{n2} &amp; \cdots &amp; a_{nn}\\
-\end{matrix} \right)
-=
-\left( \begin{matrix}
-  (\boldsymbol{v}_1,\boldsymbol{v}_1) &amp;
-(\boldsymbol{v}_1,\boldsymbol{v}_2) &amp; \cdots &amp;
-(\boldsymbol{v}_1,\boldsymbol{v}_n)\\
-  (\boldsymbol{v}_2,\boldsymbol{v}_1) &amp;
-(\boldsymbol{v}_2,\boldsymbol{v}_2) &amp; \cdots &amp;
-(\boldsymbol{v}_2,\boldsymbol{v}_n)\\
-  \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
-  (\boldsymbol{v}_n,\boldsymbol{v}_1) &amp;
-(\boldsymbol{v}_n,\boldsymbol{v}_2) &amp; \cdots &amp;
-(\boldsymbol{v}_n,\boldsymbol{v}_n)\\
-\end{matrix} \right)
-\]</span></p>
-<p>称为基向量<span
-class="math inline">\(\{\boldsymbol{v}_1,\boldsymbol{v}_1,\cdots,\boldsymbol{v}_n\}\)</span>的<strong>Gram矩阵</strong>或内积空间<span
-class="math inline">\(V\)</span>在给定基下的<strong>度量矩阵</strong>。于是便得到内积在给定基下的表示
-<span class="math display">\[
-(\boldsymbol{\alpha},\boldsymbol{\beta})=\boldsymbol{x}&#39;\boldsymbol{G}\boldsymbol{y}
-\]</span></p>
-<p>其中<span
-class="math inline">\(\boldsymbol{x},\boldsymbol{y}\)</span>分别是向量<span
-class="math inline">\(\boldsymbol{\alpha},\boldsymbol{\beta}\)</span>在给定基下的坐标向量。容易验证<span
-class="math inline">\(\boldsymbol{G}\)</span>是正定实对称矩阵。由此看出，若给定<span
-class="math inline">\(n\)</span>维欧式空间的一组基，则欧式空间上的内积和<span
-class="math inline">\(n\)</span>阶正定实对称矩阵一一对应。</p>
-<p>设<span
-class="math inline">\(V\)</span>是酉空间（复内积空间），用<span
-class="math inline">\(\boldsymbol{H}\)</span>表示<span
-class="math inline">\(V\)</span>在给定基下的度量矩阵，则有 <span
-class="math display">\[
-(\boldsymbol{\alpha},\boldsymbol{\beta})=\boldsymbol{x}&#39;\boldsymbol{H}\overline{\boldsymbol{y}}
-\]</span></p>
-<p>其中<span
-class="math inline">\(\boldsymbol{x},\boldsymbol{y}\)</span>分别是向量<span
-class="math inline">\(\boldsymbol{\alpha},\boldsymbol{\beta}\)</span>在给定基下的坐标向量，<span
-class="math inline">\(\boldsymbol{H}\)</span>是正定<strong>Hermite矩阵</strong>。</p>
-<p>那么，很自然地会提出这样的问题：<span
-class="math inline">\(V\)</span>中是否存在一组基，它的Gram矩阵是单位阵<span
-class="math inline">\(\boldsymbol{I}_n\)</span>？如果存在，那么在这组基下的内积表示会特别简单。此时度量矩阵<span
-class="math inline">\(\boldsymbol{G}=\boldsymbol{I}_n\)</span>或<span
-class="math inline">\(\boldsymbol{H}=\boldsymbol{I}_n\)</span>，则有
-<span class="math display">\[
-(\boldsymbol{v}_i,\boldsymbol{v}_j)=0(i\ne
-j),\,(\boldsymbol{v}_i,\boldsymbol{v}_i)=1
-\]</span></p>
+<p>则称在$V$上定义了一个<strong>内积</strong>，$(\boldsymbol{\alpha},\boldsymbol{\beta})$是$\boldsymbol{\alpha}$与$\boldsymbol{\beta}$的内积。有限维实内积空间称为Euclid空间或<strong>欧氏空间</strong>，有限维复内积空间称为<strong>酉空间</strong>。</p>
+<p>例如两个列向量$\boldsymbol{\alpha}&#x3D;(x_1,x_2,\cdots,x_n)’,,\boldsymbol{\beta}&#x3D;(y_1,y_2,\cdots,y_n)’$，若是$n$维实列向量空间$\mathbb{R}_n$上的，则标准内积定义为<br>$$<br>(\boldsymbol{\alpha},\boldsymbol{\beta})&#x3D;x_1 y_1 + x_2 y_2 + \cdots + x_n y_n<br>$$</p>
+<p>若是$n$维复列向量空间$\mathbb{C}_n$上的，则标准内积定义为<br>$$<br>(\boldsymbol{\alpha},\boldsymbol{\beta})&#x3D;x_1\overline{y}_1 + x_2\overline{y}_2 + \cdots + x_n\overline{y}_n<br>$$</p>
+<p>再例如，$V$是$\left[a,b\right]$区间上连续函数全体构成的线性空间，$f(t),g(t)\in V$，定义<br>$$<br>(f,g)&#x3D;\int_a^b f(t)g(t)\mathrm{d}t<br>$$</p>
+<p>是一个内积，于是$V$成为无限维实内积空间。</p>
+<p>有了内积的概念后，可以定义向量的长度（或<strong>范数</strong>）。向量$\alpha$的长度（或范数）定义为<br>$$<br>\lVert\boldsymbol{\alpha}\rVert &#x3D; (\boldsymbol{\alpha},\boldsymbol{\alpha})^{\frac{1}{2}}<br>$$</p>
+<p>利用范数可定义内积空间两个向量的距离。设$\boldsymbol{\alpha},\boldsymbol{\beta}\in V$，$\boldsymbol{\alpha}$与$\boldsymbol{\beta}$之间的<strong>距离</strong><br>$$<br>d(\boldsymbol{\alpha},\boldsymbol{\beta}) &#x3D; \lVert\boldsymbol{\alpha}-\boldsymbol{\beta}\rVert<br>$$</p>
+<p>内积与范数之间满足的如下关系称为<strong>Cauchy-Schwarz不等式</strong><br>$$<br>\left\vert (\boldsymbol{\alpha},\boldsymbol{\beta}) \right\vert\le\lVert\boldsymbol{\alpha}\rVert \cdot \lVert\boldsymbol{\beta}\rVert<br>$$</p>
+<p>当$V$是实内积空间时，非零向量$\boldsymbol{\alpha}$与$\boldsymbol{\beta}$之间的夹角满足<br>$$<br>\cos\theta&#x3D;\frac{(\boldsymbol{\alpha},\boldsymbol{\beta})}{\lVert\boldsymbol{\alpha}\rVert \lVert\boldsymbol{\beta}\rVert}<br>$$</p>
+<p>如果$(\boldsymbol{\alpha},\boldsymbol{\beta})&#x3D;0$，则称$\boldsymbol{\alpha}$与$\boldsymbol{\beta}$垂直或<strong>正交</strong>，用$\boldsymbol{\alpha}\perp\boldsymbol{\beta}$来表示，此时$\boldsymbol{\alpha}$与$\boldsymbol{\beta}$的夹角为$90^\circ$。</p>
+<h2 id="内积的表示和正交基"><a href="#内积的表示和正交基" class="headerlink" title="内积的表示和正交基"></a>内积的表示和正交基</h2><p>现研究给定有限维内积空间下的一组基后，如何用坐标向量来表示向量的内积。具体来说，${\boldsymbol{v}_1,\boldsymbol{v}_1,\cdots,\boldsymbol{v}_n}$是内积空间$V$的一组基，如果<br>$$<br>(\boldsymbol{v}_i,\boldsymbol{v}<em>j)&#x3D;g</em>{ij}(i,j&#x3D;1,2,\cdots,n)<br>$$<br>$$<br>\boldsymbol{\alpha}&#x3D;a_1\boldsymbol{v}_1+a_2\boldsymbol{v}_2+\cdots+a_n\boldsymbol{v}_n<br>$$<br>$$<br>\boldsymbol{\beta}&#x3D;b_1\boldsymbol{v}_1+b_2\boldsymbol{v}_2+\cdots+b_n\boldsymbol{v}_n<br>$$</p>
+<p>利用向量内积的性质，当$V$是欧氏空间（实内积空间）时，<br>$$<br>(\boldsymbol{\alpha},\boldsymbol{\beta})&#x3D;(\sum_{i&#x3D;1}^n a_i\boldsymbol{v_i}, \sum_{j&#x3D;1}^n b_j\boldsymbol{v_j})&#x3D;\sum_{i,j&#x3D;1}^n a_i g_{ij} b_j<br>$$</p>
+<p>写成矩阵形式<br>$$<br>(\boldsymbol{\alpha},\boldsymbol{\beta})<br>&#x3D;(a_1,a_2,\cdots,a_n)<br>\left( \begin{matrix}<br>  g_{11} &amp; g_{12} &amp; \cdots &amp; a_{1n}\<br>  g_{21} &amp; g_{22} &amp; \cdots &amp; a_{2n}\<br>  \vdots &amp; \vdots &amp; \ddots &amp; \vdots\<br>  g_{n1} &amp; g_{n2} &amp; \cdots &amp; a_{nn}\<br>\end{matrix} \right)<br>\left(<br>\begin{array}{c}<br>  b_1\<br>  b_2\<br>  \vdots\<br>  b_n\<br>\end{array}<br>\right)<br>$$</p>
+<h1 id="其中矩阵-boldsymbol-G-left-begin-matrix-g-11-g-12-cdots-a-1n-g-21-g-22-cdots-a-2n-vdots-vdots-ddots-vdots-g-n1-g-n2-cdots-a-nn-end-matrix-right"><a href="#其中矩阵-boldsymbol-G-left-begin-matrix-g-11-g-12-cdots-a-1n-g-21-g-22-cdots-a-2n-vdots-vdots-ddots-vdots-g-n1-g-n2-cdots-a-nn-end-matrix-right" class="headerlink" title="其中矩阵$$\boldsymbol{G}&#x3D;\left( \begin{matrix}  g_{11} &amp; g_{12} &amp; \cdots &amp; a_{1n}\  g_{21} &amp; g_{22} &amp; \cdots &amp; a_{2n}\  \vdots &amp; \vdots &amp; \ddots &amp; \vdots\  g_{n1} &amp; g_{n2} &amp; \cdots &amp; a_{nn}\\end{matrix} \right)"></a>其中矩阵<br>$$<br>\boldsymbol{G}&#x3D;<br>\left( \begin{matrix}<br>  g_{11} &amp; g_{12} &amp; \cdots &amp; a_{1n}\<br>  g_{21} &amp; g_{22} &amp; \cdots &amp; a_{2n}\<br>  \vdots &amp; \vdots &amp; \ddots &amp; \vdots\<br>  g_{n1} &amp; g_{n2} &amp; \cdots &amp; a_{nn}\<br>\end{matrix} \right)</h1><p>\left( \begin{matrix}<br>  (\boldsymbol{v}_1,\boldsymbol{v}_1) &amp; (\boldsymbol{v}_1,\boldsymbol{v}_2) &amp; \cdots &amp; (\boldsymbol{v}_1,\boldsymbol{v}_n)\<br>  (\boldsymbol{v}_2,\boldsymbol{v}_1) &amp; (\boldsymbol{v}_2,\boldsymbol{v}_2) &amp; \cdots &amp; (\boldsymbol{v}_2,\boldsymbol{v}_n)\<br>  \vdots &amp; \vdots &amp; \ddots &amp; \vdots\<br>  (\boldsymbol{v}_n,\boldsymbol{v}_1) &amp; (\boldsymbol{v}_n,\boldsymbol{v}_2) &amp; \cdots &amp; (\boldsymbol{v}_n,\boldsymbol{v}_n)\<br>\end{matrix} \right)<br>$$</p>
+<p>称为基向量${\boldsymbol{v}_1,\boldsymbol{v}_1,\cdots,\boldsymbol{v}_n}$的<strong>Gram矩阵</strong>或内积空间$V$在给定基下的<strong>度量矩阵</strong>。于是便得到内积在给定基下的表示<br>$$<br>(\boldsymbol{\alpha},\boldsymbol{\beta})&#x3D;\boldsymbol{x}’\boldsymbol{G}\boldsymbol{y}<br>$$</p>
+<p>其中$\boldsymbol{x},\boldsymbol{y}$分别是向量$\boldsymbol{\alpha},\boldsymbol{\beta}$在给定基下的坐标向量。容易验证$\boldsymbol{G}$是正定实对称矩阵。由此看出，若给定$n$维欧式空间的一组基，则欧式空间上的内积和$n$阶正定实对称矩阵一一对应。</p>
+<p>设$V$是酉空间（复内积空间），用$\boldsymbol{H}$表示$V$在给定基下的度量矩阵，则有<br>$$<br>(\boldsymbol{\alpha},\boldsymbol{\beta})&#x3D;\boldsymbol{x}’\boldsymbol{H}\overline{\boldsymbol{y}}<br>$$</p>
+<p>其中$\boldsymbol{x},\boldsymbol{y}$分别是向量$\boldsymbol{\alpha},\boldsymbol{\beta}$在给定基下的坐标向量，$\boldsymbol{H}$是正定<strong>Hermite矩阵</strong>。</p>
+<p>那么，很自然地会提出这样的问题：$V$中是否存在一组基，它的Gram矩阵是单位阵$\boldsymbol{I}_n$？如果存在，那么在这组基下的内积表示会特别简单。此时度量矩阵$\boldsymbol{G}&#x3D;\boldsymbol{I}_n$或$\boldsymbol{H}&#x3D;\boldsymbol{I}_n$，则有<br>$$<br>(\boldsymbol{v}_i,\boldsymbol{v}_j)&#x3D;0(i\ne j),,(\boldsymbol{v}_i,\boldsymbol{v}_i)&#x3D;1<br>$$</p>
 <p>把内积空间中满足上面条件的一组基称为<strong>标准正交基</strong>。在标准正交基下，度量矩阵就是单位阵。内积空间中线性无关的一组向量可通过<strong>Gram-Schmidt正交化方法</strong>转化成一组正交基。所以，任一有限维内积空间均有标准正交基。</p>
-<p><span class="math inline">\(U\)</span>是内积空间<span
-class="math inline">\(V\)</span>的子空间，令 <span
-class="math display">\[
-U^{\perp}=\{\boldsymbol{v}\in V \vert (\boldsymbol{v},U)=0\}
-\]</span></p>
-<p>容易验证<span class="math inline">\(U^{\perp}\)</span>是<span
-class="math inline">\(V\)</span>的子空间，<span
-class="math inline">\(U^{\perp}\)</span>称为<span
-class="math inline">\(U\)</span>的<strong>正交补空间</strong>。可以得到结论，<span
-class="math inline">\(V=U\oplus U^{\perp}\)</span>，且<span
-class="math inline">\(U\)</span>上任一组标准正交基均可扩张为<span
-class="math inline">\(V\)</span>上的标准正交基，很明显，<span
-class="math inline">\(U\)</span>的一组标准正交基和<span
-class="math inline">\(U^{\perp}\)</span>的一组标准正交基一起组成<span
-class="math inline">\(V\)</span>的一组标准正交基。</p>
-<p>若对任意的<span class="math inline">\(\boldsymbol{\alpha}\in
-V_i\)</span>和任意的<span class="math inline">\(\boldsymbol{\beta}\in
-V_j(j\ne i)\)</span>均有<span
-class="math inline">\((\boldsymbol{\alpha},\boldsymbol{\beta})=0\)</span>，则称子空间<span
-class="math inline">\(V_i\)</span>和<span
-class="math inline">\(V_j\)</span>正交。若<span
-class="math inline">\(V=V_1+V_2+\cdots+V_k\)</span>且<span
-class="math inline">\(V_i\)</span>两两正交，则称<span
-class="math inline">\(V\)</span>是<span
-class="math inline">\(V_i(i=1,2,\cdots,k)\)</span>的正交和，记为 <span
-class="math display">\[
-V=V_1\perp V_2\perp\cdots\perp V_k
-\]</span></p>
-<p>正交和一定是直和，而且任一子空间<span
-class="math inline">\(V_i\)</span>必与其余子空间的和正交。</p>
-<h2 id="伴随算子">伴随算子</h2>
-<p>内积空间的线性变换称为<strong>线性算子</strong>。对于内积空间<span
-class="math inline">\(V\)</span>上的线性算子<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>，若存在<span
-class="math inline">\(V\)</span>上的线性算子<span
-class="math inline">\(\boldsymbol{\varphi}^*\)</span>，使得 <span
-class="math display">\[
-(\boldsymbol{\varphi}(\boldsymbol{\alpha}),\boldsymbol{\beta})=(\boldsymbol{\alpha},\boldsymbol{\varphi}^*(\boldsymbol{\beta}))
-\]</span></p>
-<p>对一切<span
-class="math inline">\(\boldsymbol{\alpha},\boldsymbol{\beta}\in
-V\)</span>都成立，则称<span
-class="math inline">\(\boldsymbol{\varphi}^*\)</span>是<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>的<strong>伴随算子</strong>。可以证明，伴随算子是唯一的。</p>
-<p>内积空间<span class="math inline">\(V\)</span>中的线性算子<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>在标准正交基下的表示矩阵为<span
-class="math inline">\(\boldsymbol{A}\)</span>，如果<span
-class="math inline">\(V\)</span>是酉空间，则<span
-class="math inline">\(\boldsymbol{\varphi}^*\)</span>在同一组基下的表示矩阵为<span
-class="math inline">\(\overline{\boldsymbol{A}}&#39;\)</span>，即共轭转置；如果<span
-class="math inline">\(V\)</span>是欧氏空间，那么<span
-class="math inline">\(\boldsymbol{\varphi}^*\)</span>的表示矩阵为<span
-class="math inline">\(\boldsymbol{A}&#39;\)</span>，即转置。</p>
-<h2 id="正交变换和酉变换">正交变换和酉变换</h2>
-<p>设<span class="math inline">\(V\)</span>和<span
-class="math inline">\(U\)</span>是数域<span
-class="math inline">\(\mathbb{K}\)</span>上的内积空间，<span
-class="math inline">\(\mathbb{K}\)</span>是实数域或复数域，<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>是<span
-class="math inline">\(V \to U\)</span>的线性映射。若对任意<span
-class="math inline">\(\boldsymbol{x},\boldsymbol{y}\in V\)</span>，有
-<span class="math display">\[
-(\boldsymbol{\varphi}(\boldsymbol{x}),\boldsymbol{\varphi}(\boldsymbol{y}))=(\boldsymbol{x},\boldsymbol{y})
-\]</span></p>
-<p>则称<span class="math inline">\(\boldsymbol{\varphi}\)</span>是<span
-class="math inline">\(V \to
-U\)</span>的<strong>保持内积</strong>的线性映射。又若<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>是同构线性映射，则称<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>是<span
-class="math inline">\(V \to U\)</span>的<strong>保积同构</strong>。<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>保持向量的长度和向量间的距离。而且可以证明，若<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>是<span
-class="math inline">\(V \to U\)</span>的保持范数的线性映射，则<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>保持内积。</p>
-<p>进一步地，<span class="math inline">\(V\)</span>和<span
-class="math inline">\(U\)</span>都是<span
-class="math inline">\(n\)</span>维内积空间（同为实空间或复空间），若<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>是<span
-class="math inline">\(V \to U\)</span>的线性映射，则下面命题等价：</p>
-<ol type="1">
-<li><span
-class="math inline">\(\boldsymbol{\varphi}\)</span>保持内积</li>
-<li><span
-class="math inline">\(\boldsymbol{\varphi}\)</span>是保积同构</li>
-<li><span
-class="math inline">\(\boldsymbol{\varphi}\)</span>将任一组标准正交基变成<span
-class="math inline">\(U\)</span>的一组标准正交基</li>
-<li><span
-class="math inline">\(\boldsymbol{\varphi}\)</span>将某一组标准正交基变成<span
-class="math inline">\(U\)</span>的一组标准正交基</li>
+<p>$U$是内积空间$V$的子空间，令<br>$$<br>U^{\perp}&#x3D;{\boldsymbol{v}\in V \vert (\boldsymbol{v},U)&#x3D;0}<br>$$</p>
+<p>容易验证$U^{\perp}$是$V$的子空间，$U^{\perp}$称为$U$的<strong>正交补空间</strong>。可以得到结论，$V&#x3D;U\oplus U^{\perp}$，且$U$上任一组标准正交基均可扩张为$V$上的标准正交基，很明显，$U$的一组标准正交基和$U^{\perp}$的一组标准正交基一起组成$V$的一组标准正交基。</p>
+<p>若对任意的$\boldsymbol{\alpha}\in V_i$和任意的$\boldsymbol{\beta}\in V_j(j\ne i)$均有$(\boldsymbol{\alpha},\boldsymbol{\beta})&#x3D;0$，则称子空间$V_i$和$V_j$正交。若$V&#x3D;V_1+V_2+\cdots+V_k$且$V_i$两两正交，则称$V$是$V_i(i&#x3D;1,2,\cdots,k)$的正交和，记为<br>$$<br>V&#x3D;V_1\perp V_2\perp\cdots\perp V_k<br>$$</p>
+<p>正交和一定是直和，而且任一子空间$V_i$必与其余子空间的和正交。</p>
+<h2 id="伴随算子"><a href="#伴随算子" class="headerlink" title="伴随算子"></a>伴随算子</h2><p>内积空间的线性变换称为<strong>线性算子</strong>。对于内积空间$V$上的线性算子$\boldsymbol{\varphi}$，若存在$V$上的线性算子$\boldsymbol{\varphi}^<em>$，使得<br>$$<br>(\boldsymbol{\varphi}(\boldsymbol{\alpha}),\boldsymbol{\beta})&#x3D;(\boldsymbol{\alpha},\boldsymbol{\varphi}^</em>(\boldsymbol{\beta}))<br>$$</p>
+<p>对一切$\boldsymbol{\alpha},\boldsymbol{\beta}\in V$都成立，则称$\boldsymbol{\varphi}^<em>$是$\boldsymbol{\varphi}$的*<em>伴随算子</em></em>。可以证明，伴随算子是唯一的。</p>
+<p>内积空间$V$中的线性算子$\boldsymbol{\varphi}$在标准正交基下的表示矩阵为$\boldsymbol{A}$，如果$V$是酉空间，则$\boldsymbol{\varphi}^<em>$在同一组基下的表示矩阵为$\overline{\boldsymbol{A}}’$，即共轭转置；如果$V$是欧氏空间，那么$\boldsymbol{\varphi}^</em>$的表示矩阵为$\boldsymbol{A}’$，即转置。</p>
+<h2 id="正交变换和酉变换"><a href="#正交变换和酉变换" class="headerlink" title="正交变换和酉变换"></a>正交变换和酉变换</h2><p>设$V$和$U$是数域$\mathbb{K}$上的内积空间，$\mathbb{K}$是实数域或复数域，$\boldsymbol{\varphi}$是$V \to U$的线性映射。若对任意$\boldsymbol{x},\boldsymbol{y}\in V$，有<br>$$<br>(\boldsymbol{\varphi}(\boldsymbol{x}),\boldsymbol{\varphi}(\boldsymbol{y}))&#x3D;(\boldsymbol{x},\boldsymbol{y})<br>$$</p>
+<p>则称$\boldsymbol{\varphi}$是$V \to U$的<strong>保持内积</strong>的线性映射。又若$\boldsymbol{\varphi}$是同构线性映射，则称$\boldsymbol{\varphi}$是$V \to U$的<strong>保积同构</strong>。$\boldsymbol{\varphi}$保持向量的长度和向量间的距离。而且可以证明，若$\boldsymbol{\varphi}$是$V \to U$的保持范数的线性映射，则$\boldsymbol{\varphi}$保持内积。</p>
+<p>进一步地，$V$和$U$都是$n$维内积空间（同为实空间或复空间），若$\boldsymbol{\varphi}$是$V \to U$的线性映射，则下面命题等价：</p>
+<ol>
+<li>$\boldsymbol{\varphi}$保持内积</li>
+<li>$\boldsymbol{\varphi}$是保积同构</li>
+<li>$\boldsymbol{\varphi}$将任一组标准正交基变成$U$的一组标准正交基</li>
+<li>$\boldsymbol{\varphi}$将某一组标准正交基变成$U$的一组标准正交基</li>
 </ol>
-<p>而且，<span class="math inline">\(V\)</span>和<span
-class="math inline">\(U\)</span>同构的充要条件是它们具有相同的维数。</p>
-<p>若<span class="math inline">\(V\)</span>是欧氏空间，则<span
-class="math inline">\(V\)</span>上保持内积的线性变换<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>称为<strong>正交变换</strong>或正交算子；若<span
-class="math inline">\(V\)</span>是酉空间，则<span
-class="math inline">\(V\)</span>上保持内积的线性变换<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>称为<strong>酉变换</strong>或酉算子。这两种线性变换都是将一组标准正交基变成另一组标准正交基。<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>是正交变换或酉变换的充要条件是<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>非异，且 <span
-class="math display">\[
-\boldsymbol{\varphi}^{-1}=\boldsymbol{\varphi}^*
-\]</span></p>
-<p>若<span class="math inline">\(n\)</span>阶实方阵<span
-class="math inline">\(\boldsymbol{A}\)</span>满足<span
-class="math inline">\(\boldsymbol{A}&#39;=\boldsymbol{A}^{-1}\)</span>，则称<span
-class="math inline">\(\boldsymbol{A}\)</span>是<strong>正交矩阵</strong>。若<span
-class="math inline">\(n\)</span>阶复方阵<span
-class="math inline">\(\boldsymbol{C}\)</span>满足<span
-class="math inline">\(\overline{\boldsymbol{C}}&#39;=\boldsymbol{C}^{-1}\)</span>，则称<span
-class="math inline">\(\boldsymbol{C}\)</span>是<strong>酉矩阵</strong>。若<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>是欧式空间（酉空间）<span
-class="math inline">\(V\)</span>上的正交变换（酉变换），则<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>在<span
-class="math inline">\(V\)</span>的任意一组标准正交基下的表示矩阵为正交矩阵（酉矩阵）。</p>
-<h2 id="自伴随算子">自伴随算子</h2>
-<p>现在有类似的问题，在什么条件下内积空间上的线性变换在一组基下的表示矩阵有比较简单的形状。设<span
-class="math inline">\(n\)</span>维内积空间<span
-class="math inline">\(V\)</span>在两组标准正交基下的表示矩阵分别为<span
-class="math inline">\(\boldsymbol{A}\)</span>和<span
-class="math inline">\(\boldsymbol{A}\)</span>，两组基之间的过渡矩阵为<span
-class="math inline">\(\boldsymbol{P}\)</span>。若<span
-class="math inline">\(V\)</span>是欧氏空间，则两组标准正交基之间的过渡矩阵<span
-class="math inline">\(\boldsymbol{P}\)</span>是正交矩阵，矩阵<span
-class="math inline">\(\boldsymbol{A}\)</span>与<span
-class="math inline">\(\boldsymbol{B}\)</span>正交相似，有 <span
-class="math display">\[
-\boldsymbol{B}=\boldsymbol{P}^{-1}\boldsymbol{A}\boldsymbol{P}=\boldsymbol{P}&#39;\boldsymbol{A}\boldsymbol{P}
-\]</span></p>
-<p>若<span
-class="math inline">\(V\)</span>是酉空间，则两组标准正交基之间的过渡矩阵<span
-class="math inline">\(\boldsymbol{P}\)</span>是酉矩阵，矩阵<span
-class="math inline">\(\boldsymbol{A}\)</span>与<span
-class="math inline">\(\boldsymbol{B}\)</span>酉相似，有 <span
-class="math display">\[
-\boldsymbol{B}=\boldsymbol{P}^{-1}\boldsymbol{A}\boldsymbol{P}=\overline{\boldsymbol{P}}&#39;\boldsymbol{A}\boldsymbol{P}
-\]</span></p>
-<p>一般的矩阵寻找正交（酉）标准型很困难，于是接下来讨论一类特殊的矩阵：<strong>Hermite矩阵</strong>和<strong>实对称矩阵</strong>。若内积空间<span
-class="math inline">\(V\)</span>上的线性变换<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>满足<span
-class="math inline">\(\boldsymbol{\varphi}^{\ast}=\boldsymbol{\varphi}\)</span>，则称<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>是自伴随算子。若<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>是欧式空间，<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>称为对称算子或对称变换；若<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>是酉空间，<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>称为Hermite算子或Hermite变换。</p>
-<p>设<span class="math inline">\(V\)</span>是<span
-class="math inline">\(n\)</span>维酉空间，<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>是<span
-class="math inline">\(V\)</span>上的自伴随算子，则<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>的特征值全是实数，且属于不同特征值的特征向量互相正交。类似地，Hermite矩阵的特征值全部都是实数，实对称矩阵的特征值也全是实数，这两种矩阵属于不同特征值的特征向量互相正交。由此得到如下结论：设<span
-class="math inline">\(V\)</span>是<span
-class="math inline">\(n\)</span>维内积空间，<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>是<span
-class="math inline">\(V\)</span>上的自伴随算子，则存在<span
-class="math inline">\(V\)</span>的一组标准正交基，使得<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>在这组基下的表示矩阵为实对角阵，且这组基恰为<span
-class="math inline">\(\boldsymbol{\varphi}\)</span>的<span
-class="math inline">\(n\)</span>个线性无关的特征向量。</p>
-<p>类似地，对于矩阵也有相应的结论。若<span
-class="math inline">\(\boldsymbol{A}\)</span>是Hermite矩阵，则存在酉矩阵<span
-class="math inline">\(\boldsymbol{P}\)</span>，使得<span
-class="math inline">\(\overline{\boldsymbol{P}}&#39;\boldsymbol{A}\boldsymbol{P}\)</span>为实对角阵，即<strong>Hermite矩阵酉相似于实对角阵</strong>。又若<span
-class="math inline">\(\boldsymbol{A}\)</span>是实对称矩阵，则存在正交矩阵<span
-class="math inline">\(\boldsymbol{P}\)</span>，使得<span
-class="math inline">\(\boldsymbol{P}&#39;\boldsymbol{A}\boldsymbol{P}\)</span>为实对角阵，即<strong>实对称矩阵正交相似于实对角阵</strong>。上述两种情况中的矩阵<span
-class="math inline">\(\boldsymbol{P}\)</span>的<span
-class="math inline">\(n\)</span>个列向量恰为矩阵<span
-class="math inline">\(\boldsymbol{A}\)</span>的<span
-class="math inline">\(n\)</span>个两两正交且长度等于<span
-class="math inline">\(1\)</span>的特征向量。实对称（Hermite）矩阵的特征值是实对称（Hermite）矩阵正交（酉）相似的全系不变量。</p>
-<p>基于上面的结论，可得到实二次型的正定性与矩阵特征值之间的关系：<span
-class="math inline">\(f(\boldsymbol{x})=\boldsymbol{x}&#39;\boldsymbol{A}\boldsymbol{x}\)</span>是<span
-class="math inline">\(n\)</span>变元实二次型，<span
-class="math inline">\(f\)</span>是正定型当且仅当矩阵<span
-class="math inline">\(\boldsymbol{A}\)</span>的特征值全为正数，<span
-class="math inline">\(f\)</span>是负定型当且仅当矩阵<span
-class="math inline">\(\boldsymbol{A}\)</span>的特征值全为负数，<span
-class="math inline">\(f\)</span>是半正定型当且仅当矩阵<span
-class="math inline">\(\boldsymbol{A}\)</span>的特征值全非负，<span
-class="math inline">\(f\)</span>是半负定型当且仅当矩阵<span
-class="math inline">\(\boldsymbol{A}\)</span>的特征值全非正。</p>
+<p>而且，$V$和$U$同构的充要条件是它们具有相同的维数。</p>
+<p>若$V$是欧氏空间，则$V$上保持内积的线性变换$\boldsymbol{\varphi}$称为<strong>正交变换</strong>或正交算子；若$V$是酉空间，则$V$上保持内积的线性变换$\boldsymbol{\varphi}$称为<strong>酉变换</strong>或酉算子。这两种线性变换都是将一组标准正交基变成另一组标准正交基。$\boldsymbol{\varphi}$是正交变换或酉变换的充要条件是$\boldsymbol{\varphi}$非异，且<br>$$<br>\boldsymbol{\varphi}^{-1}&#x3D;\boldsymbol{\varphi}^*<br>$$</p>
+<p>若$n$阶实方阵$\boldsymbol{A}$满足$\boldsymbol{A}’&#x3D;\boldsymbol{A}^{-1}$，则称$\boldsymbol{A}$是<strong>正交矩阵</strong>。若$n$阶复方阵$\boldsymbol{C}$满足$\overline{\boldsymbol{C}}’&#x3D;\boldsymbol{C}^{-1}$，则称$\boldsymbol{C}$是<strong>酉矩阵</strong>。若$\boldsymbol{\varphi}$是欧式空间（酉空间）$V$上的正交变换（酉变换），则$\boldsymbol{\varphi}$在$V$的任意一组标准正交基下的表示矩阵为正交矩阵（酉矩阵）。</p>
+<h2 id="自伴随算子"><a href="#自伴随算子" class="headerlink" title="自伴随算子"></a>自伴随算子</h2><p>现在有类似的问题，在什么条件下内积空间上的线性变换在一组基下的表示矩阵有比较简单的形状。设$n$维内积空间$V$在两组标准正交基下的表示矩阵分别为$\boldsymbol{A}$和$\boldsymbol{A}$，两组基之间的过渡矩阵为$\boldsymbol{P}$。若$V$是欧氏空间，则两组标准正交基之间的过渡矩阵$\boldsymbol{P}$是正交矩阵，矩阵$\boldsymbol{A}$与$\boldsymbol{B}$正交相似，有<br>$$<br>\boldsymbol{B}&#x3D;\boldsymbol{P}^{-1}\boldsymbol{A}\boldsymbol{P}&#x3D;\boldsymbol{P}’\boldsymbol{A}\boldsymbol{P}<br>$$</p>
+<p>若$V$是酉空间，则两组标准正交基之间的过渡矩阵$\boldsymbol{P}$是酉矩阵，矩阵$\boldsymbol{A}$与$\boldsymbol{B}$酉相似，有<br>$$<br>\boldsymbol{B}&#x3D;\boldsymbol{P}^{-1}\boldsymbol{A}\boldsymbol{P}&#x3D;\overline{\boldsymbol{P}}’\boldsymbol{A}\boldsymbol{P}<br>$$</p>
+<p>一般的矩阵寻找正交（酉）标准型很困难，于是接下来讨论一类特殊的矩阵：<strong>Hermite矩阵</strong>和<strong>实对称矩阵</strong>。若内积空间$V$上的线性变换$\boldsymbol{\varphi}$满足$\boldsymbol{\varphi}^{\ast}&#x3D;\boldsymbol{\varphi}$，则称$\boldsymbol{\varphi}$是自伴随算子。若$\boldsymbol{\varphi}$是欧式空间，$\boldsymbol{\varphi}$称为对称算子或对称变换；若$\boldsymbol{\varphi}$是酉空间，$\boldsymbol{\varphi}$称为Hermite算子或Hermite变换。</p>
+<p>设$V$是$n$维酉空间，$\boldsymbol{\varphi}$是$V$上的自伴随算子，则$\boldsymbol{\varphi}$的特征值全是实数，且属于不同特征值的特征向量互相正交。类似地，Hermite矩阵的特征值全部都是实数，实对称矩阵的特征值也全是实数，这两种矩阵属于不同特征值的特征向量互相正交。由此得到如下结论：设$V$是$n$维内积空间，$\boldsymbol{\varphi}$是$V$上的自伴随算子，则存在$V$的一组标准正交基，使得$\boldsymbol{\varphi}$在这组基下的表示矩阵为实对角阵，且这组基恰为$\boldsymbol{\varphi}$的$n$个线性无关的特征向量。</p>
+<p>类似地，对于矩阵也有相应的结论。若$\boldsymbol{A}$是Hermite矩阵，则存在酉矩阵$\boldsymbol{P}$，使得$\overline{\boldsymbol{P}}’\boldsymbol{A}\boldsymbol{P}$为实对角阵，即<strong>Hermite矩阵酉相似于实对角阵</strong>。又若$\boldsymbol{A}$是实对称矩阵，则存在正交矩阵$\boldsymbol{P}$，使得$\boldsymbol{P}’\boldsymbol{A}\boldsymbol{P}$为实对角阵，即<strong>实对称矩阵正交相似于实对角阵</strong>。上述两种情况中的矩阵$\boldsymbol{P}$的$n$个列向量恰为矩阵$\boldsymbol{A}$的$n$个两两正交且长度等于$1$的特征向量。实对称（Hermite）矩阵的特征值是实对称（Hermite）矩阵正交（酉）相似的全系不变量。</p>
+<p>基于上面的结论，可得到实二次型的正定性与矩阵特征值之间的关系：$f(\boldsymbol{x})&#x3D;\boldsymbol{x}’\boldsymbol{A}\boldsymbol{x}$是$n$变元实二次型，$f$是正定型当且仅当矩阵$\boldsymbol{A}$的特征值全为正数，$f$是负定型当且仅当矩阵$\boldsymbol{A}$的特征值全为负数，$f$是半正定型当且仅当矩阵$\boldsymbol{A}$的特征值全非负，$f$是半负定型当且仅当矩阵$\boldsymbol{A}$的特征值全非正。</p>
 
     </div>
 

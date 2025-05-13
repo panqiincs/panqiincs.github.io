@@ -522,8 +522,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="使用qt">使用Qt</h2>
-<p>Qt是跨平台的C++应用程序开发框架，广泛用于开发界面程序。Qt不仅仅是个强大的界面库，它的基础库同样强大，很多库用起来比STL还方便，所以我经常用Qt编写控制台（console）程序。本文介绍如何用Qt处理文本。</p>
+          <h2 id="使用Qt"><a href="#使用Qt" class="headerlink" title="使用Qt"></a>使用Qt</h2><p>Qt是跨平台的C++应用程序开发框架，广泛用于开发界面程序。Qt不仅仅是个强大的界面库，它的基础库同样强大，很多库用起来比STL还方便，所以我经常用Qt编写控制台（console）程序。本文介绍如何用Qt处理文本。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/05/01/qt-text-processing/#more" rel="contents">
@@ -637,8 +636,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>2014年我开始参与实验室的一个自然科学基金项目，从而接触了机器人操作系统（Robot
-Operating System, ROS），这真是个好东西，但在国内好像不是很普及。</p>
+          <p>2014年我开始参与实验室的一个自然科学基金项目，从而接触了机器人操作系统（Robot Operating System, ROS），这真是个好东西，但在国内好像不是很普及。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/04/21/about-ros/#more" rel="contents">
@@ -866,8 +864,7 @@ Operating System, ROS），这真是个好东西，但在国内好像不是很�
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="需求">需求</h2>
-<p>如果想在远程PC上看到树莓派摄像头拍摄的视频，可以将树莓派配置成一个视频流服务器。但要实现精细控制，比如得到每帧图像的时间戳，或用OpenCV处理每帧图像，这种方法就不行。</p>
+          <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>如果想在远程PC上看到树莓派摄像头拍摄的视频，可以将树莓派配置成一个视频流服务器。但要实现精细控制，比如得到每帧图像的时间戳，或用OpenCV处理每帧图像，这种方法就不行。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2016/03/03/compress-transmit-image/#more" rel="contents">
@@ -981,9 +978,7 @@ Operating System, ROS），这真是个好东西，但在国内好像不是很�
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="硬件pwm">硬件PWM</h2>
-<p>本文针对的是Raspberry Pi 2 Model
-B硬件。从理论上讲，对于任意GPIO口，可以通过设定延时来输出PWM信号，这被称作<strong>软件PWM</strong>。由于Linux不是实时操作系统，对于一些要求<strong>硬实时</strong>的应用，例如通过PWM信号控制舵机，最好使用<strong>硬件PWM</strong>。</p>
+          <h2 id="硬件PWM"><a href="#硬件PWM" class="headerlink" title="硬件PWM"></a>硬件PWM</h2><p>本文针对的是Raspberry Pi 2 Model B硬件。从理论上讲，对于任意GPIO口，可以通过设定延时来输出PWM信号，这被称作<strong>软件PWM</strong>。由于Linux不是实时操作系统，对于一些要求<strong>硬实时</strong>的应用，例如通过PWM信号控制舵机，最好使用<strong>硬件PWM</strong>。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/11/19/rpi-hardware-pwm/#more" rel="contents">
@@ -1097,9 +1092,7 @@ B硬件。从理论上讲，对于任意GPIO口，可以通过设定延时来输
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="问题">问题</h2>
-<p><a
-href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I/O多路复用之epoll</a>一文简单介绍了I/O多路复用模型。I/O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行<code>read</code>或<code>write</code>都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。</p>
+          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I&#x2F;O多路复用之epoll</a>一文简单介绍了I&#x2F;O多路复用模型。I&#x2F;O多路复用的API函数返回就绪（ready）的文件描述符，在这些文件描述符上执行<code>read</code>或<code>write</code>都不会阻塞。那么即使描述符是默认的阻塞方式，调用读写函数应该也不会阻塞。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/08/05/multiplexing-nonblocking-io/#more" rel="contents">
@@ -1213,9 +1206,7 @@ href="https://panqiincs.me/2015/08/01/io-multiplexing-with-epoll/">I/O多路复�
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="简介">简介</h2>
-<p>I/O多路复用（I/O
-multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I/O操作。能够进行I/O操作，具体来说就是，在描述符上执行I/O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。</p>
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>I&#x2F;O多路复用（I&#x2F;O multiplexing）使得程序可以同时监测多个文件描述符，查看它们是否就绪（ready），即能否进行I&#x2F;O操作。能够进行I&#x2F;O操作，具体来说就是，在描述符上执行I&#x2F;O相关的系统调用时不会阻塞，函数要么成功返回，要么返回错误，进程不会进入睡眠状态。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/08/01/io-multiplexing-with-epoll/#more" rel="contents">
@@ -1329,10 +1320,7 @@ multiplexing）使得程序可以同时监测多个文件描述符，查看它�
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="需求">需求</h2>
-<p>配置好Emacs的markdown模式后，就可以通过快捷键预览markdown文本对应的网页，配置和使用方法可参考<a
-target="_blank" rel="noopener" href="https://jblevins.org/projects/markdown-mode/">Markdown Mode for
-Emacs</a>。</p>
+          <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>配置好Emacs的markdown模式后，就可以通过快捷键预览markdown文本对应的网页，配置和使用方法可参考<a target="_blank" rel="noopener" href="https://jblevins.org/projects/markdown-mode/">Markdown Mode for Emacs</a>。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2015/07/31/preview-markdown-with-emacs/#more" rel="contents">

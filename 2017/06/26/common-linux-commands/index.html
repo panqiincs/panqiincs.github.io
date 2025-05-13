@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="基本操作 常用的基础命令：">
+    <meta name="description" content="基本操作常用的基础命令：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="实用Linux命令">
 <meta property="og:url" content="https://panqiincs.me/2017/06/26/common-linux-commands/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="基本操作 常用的基础命令：">
+<meta property="og:description" content="基本操作常用的基础命令：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-06-26T14:40:22.000Z">
 <meta property="article:modified_time" content="2023-02-05T09:51:57.436Z">
@@ -301,109 +301,104 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="基本操作">基本操作</h2>
-<p>常用的基础命令：</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>常用的基础命令：</p>
 <span id="more"></span>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> -                     <span class="comment"># 切换到上一次的工作目录</span></span><br><span class="line">Ctrl-R(keyboard)         <span class="comment"># 查找历史命令</span></span><br><span class="line"><span class="built_in">cp</span> -a /source/. /dest    <span class="comment"># 将一个目录下的所有文件拷贝到另一个目录</span></span><br><span class="line"><span class="built_in">ln</span> -s target soft_link   <span class="comment"># 为名为target的文件创建一个软链接，target在前</span></span><br><span class="line"><span class="built_in">du</span> -sh file_path         <span class="comment"># 查看文件夹的大小，不加s选项会列出每个子文件夹大小</span></span><br><span class="line"><span class="comment"># 通过用户名和密码登录远程主机</span></span><br><span class="line">sshpass -p your_password ssh username@hostname</span><br><span class="line"><span class="comment"># 在两个主机之间传输文件</span></span><br><span class="line">scp [options] username1@source_host:dir1/file1 username2@dest_host:dir2/file2</span><br></pre></td></tr></table></figure>
-<h2 id="软件管理">软件管理</h2>
-<p>和rpm文件有关的：</p>
+
+<h2 id="软件管理"><a href="#软件管理" class="headerlink" title="软件管理"></a>软件管理</h2><p>和rpm文件有关的：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep kernel | <span class="built_in">sort</span>                    <span class="comment"># 查看系统安装的所有内核（rpm系）</span></span><br><span class="line">rpm -ivh wps-office-10.1.0.6757-1.x86_64.rpm    <span class="comment"># 安装rpm文件</span></span><br><span class="line">rpm -e wps-office                               <span class="comment"># 卸载通过rpm安装的软件</span></span><br><span class="line">yum remove wps-office                           <span class="comment"># 亦可使用yum命令卸载（rpm系）</span></span><br></pre></td></tr></table></figure>
-<h2 id="进程管理">进程管理</h2>
-<p>查看和管理进程的命令：</p>
+
+<h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><p>查看和管理进程的命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps -ef                                <span class="comment"># 查看系统中所有进程</span></span><br><span class="line">top                                   <span class="comment"># 显示实时的系统状态</span></span><br><span class="line"><span class="built_in">kill</span> -9 3271                          <span class="comment"># -9选项，根据PID杀死进程</span></span><br></pre></td></tr></table></figure>
-<h2 id="压缩解压缩">压缩解压缩</h2>
-<p>使用<code>tar</code>进行压缩、解压缩时需要好几个选项配合使用，只要剖析一下几个常用选项，就很容易记住了:</p>
+
+<h2 id="压缩解压缩"><a href="#压缩解压缩" class="headerlink" title="压缩解压缩"></a>压缩解压缩</h2><p>使用<code>tar</code>进行压缩、解压缩时需要好几个选项配合使用，只要剖析一下几个常用选项，就很容易记住了:</p>
 <ul>
-<li><code>-c, --create</code> 创建新压缩包</li>
-<li><code>-t, --list</code> 查看包的内容</li>
-<li><code>-x, --extract</code> 从包中提取文件</li>
-<li><code>-f, --from=archive</code> 指定包文件名</li>
-<li><code>-r, --append</code> 在末尾添加文件</li>
-<li><code>-u, --update</code> 更新原压缩包中的文件</li>
-<li><code>-v, --verbose</code> 详细列出处理的文件</li>
+<li><code>-c, --create</code>        创建新压缩包</li>
+<li><code>-t, --list</code>          查看包的内容 </li>
+<li><code>-x, --extract</code>       从包中提取文件</li>
+<li><code>-f, --from=archive</code>  指定包文件名</li>
+<li><code>-r, --append</code>        在末尾添加文件</li>
+<li><code>-u, --update</code>        更新原压缩包中的文件</li>
+<li><code>-v, --verbose</code>       详细列出处理的文件</li>
 </ul>
 <p>下面的选项和压缩包的格式相关：</p>
 <ul>
-<li><code>-j</code> 和bzip2相关的</li>
-<li><code>-J, -xz</code> 和xz相关的</li>
-<li><code>-z</code> 和gzip相关的</li>
-<li><code>-Z</code> 和compress相关的</li>
+<li><code>-j</code>       和bzip2相关的</li>
+<li><code>-J, -xz</code>  和xz相关的</li>
+<li><code>-z</code>       和gzip相关的</li>
+<li><code>-Z</code>       和compress相关的</li>
 </ul>
 <p>有了上面的铺垫，很容易理解和记忆下面的命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># .tar文件</span></span><br><span class="line">tar -vcf all.tar *.png     <span class="comment"># 将所有的png文件打包成名为all.tar的包，列出处理过的文件名</span></span><br><span class="line">tar -vrf new.png all.tar   <span class="comment"># 将new.png增加到all.tar包中去，列出处理过的文件名</span></span><br><span class="line">tar -vuf new.png all.tar   <span class="comment"># 更新all.tar包中的new.png文件，列出处理过的文件名</span></span><br><span class="line">tar -tf png.tar            <span class="comment"># 列出png.tar包中包含的文件</span></span><br><span class="line">tar -xf all.tar            <span class="comment"># 解出all.tar中所有的文件</span></span><br><span class="line"><span class="comment"># .gz, .bz2, .Z文件</span></span><br><span class="line">tar -czf all.tar.gz *.png  <span class="comment"># 将所有的png文件打包成名为all.tar的包，并用gzip压缩，压缩包为all.tar.gz</span></span><br><span class="line">tar -cjf all.tar.bz2 *.png <span class="comment"># 将所有的png文件打包成名为all.tar的包，并用bzip2压缩，压缩包名为all.tar.bz2</span></span><br><span class="line">tar -cZf all.tar.Z *.png   <span class="comment"># 将所有的png文件打包成名为all.tar的包，并用compress压缩，压缩包名为all.tar.Z</span></span><br><span class="line">tar -xzvf all.tar.gz       <span class="comment"># 解压all.tar.gz</span></span><br><span class="line">tar -xjvf all.tar.bz2      <span class="comment"># 解压all.tar.bz2</span></span><br></pre></td></tr></table></figure>
-<h2 id="文件查找">文件查找</h2>
-<p>Linux的<code>find</code>命令在目录结构中搜索文件，并执行指定操作。命令的基本格式如下：</p>
+
+<h2 id="文件查找"><a href="#文件查找" class="headerlink" title="文件查找"></a>文件查找</h2><p>Linux的<code>find</code>命令在目录结构中搜索文件，并执行指定操作。命令的基本格式如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find pathname -options [-<span class="built_in">print</span> -<span class="built_in">exec</span> -ok ...]</span><br></pre></td></tr></table></figure>
+
 <p>命令选项<code>-options</code>指定查找的根据，常用的有：</p>
 <ul>
-<li><code>-name</code> 根据文件名查找文件</li>
-<li><code>-size</code> 根据文件大小查找文件</li>
-<li><code>-perm</code> 根据文件权限查找文件</li>
-<li><code>-user</code> 根据文件属主查找文件</li>
-<li><code>-type</code> 根据文件类型查找文件</li>
+<li><code>-name</code>  根据文件名查找文件</li>
+<li><code>-size</code>  根据文件大小查找文件</li>
+<li><code>-perm</code>  根据文件权限查找文件</li>
+<li><code>-user</code>  根据文件属主查找文件</li>
+<li><code>-type</code>  根据文件类型查找文件</li>
 </ul>
 <p>命令参数意义如下：</p>
 <ul>
-<li><code>-print</code> 将匹配的文件名打印出来</li>
-<li><code>-exec</code>
-对匹配的文件执行该参数所给出的shell命令，末尾必须以分号;结尾，一般在分号前加上转义字符，相应命令的形式为<code>cmd &#123;&#125; \</code>;
-其中花括号<code>&#123;&#125;</code>代表搜索出来的文件名</li>
-<li><code>-ok</code>
-和<code>-exec</code>作用相同，每执行一个命令前，会给出提升让用户确认，更加安全</li>
+<li><code>-print</code>  将匹配的文件名打印出来</li>
+<li><code>-exec</code>   对匹配的文件执行该参数所给出的shell命令，末尾必须以分号;结尾，一般在分号前加上转义字符，相应命令的形式为<code>cmd &#123;&#125; \</code>; 其中花括号<code>&#123;&#125;</code>代表搜索出来的文件名</li>
+<li><code>-ok</code>     和<code>-exec</code>作用相同，每执行一个命令前，会给出提升让用户确认，更加安全</li>
 </ul>
 <p>下面是一些例子：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">find . -name <span class="string">&quot;*.log&quot;</span> -<span class="built_in">print</span>           <span class="comment"># 在当前目录查找以.log结尾的文件</span></span><br><span class="line">find /tmp -perm 777                   <span class="comment"># 按照权限查找文件</span></span><br><span class="line">find . -size +1000c 777               <span class="comment"># 按照文件大小查找</span></span><br><span class="line">find . -name <span class="string">&quot;*.jpg&quot;</span> -<span class="built_in">exec</span> <span class="built_in">mv</span> &#123;&#125; ~ \; <span class="comment"># 找到该目录下所有的jpg文件，拷贝到HOME目录下</span></span><br><span class="line">find . -name <span class="string">&#x27;*.py&#x27;</span> | xargs <span class="built_in">wc</span> -l     <span class="comment"># 计算当前目录下代码总行数</span></span><br></pre></td></tr></table></figure>
+
 <p><code>find</code>命令需要遍历路径，速度较慢。<code>locate</code>命令比<code>find</code>快很多，因为它不搜索具体目录，而是搜索一个包含所有本地文件信息的数据库。该数据库每天更新一次，但是使用前最好先使用<code>updatedb</code>命令手动更新一下。</p>
-<h2 id="文本搜索">文本搜索</h2>
-<p>Linux的<code>grep</code>命令是强大的文本搜索工具，命令的基本格式如下：</p>
+<h2 id="文本搜索"><a href="#文本搜索" class="headerlink" title="文本搜索"></a>文本搜索</h2><p>Linux的<code>grep</code>命令是强大的文本搜索工具，命令的基本格式如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep [options] pattern [files]</span><br></pre></td></tr></table></figure>
+
 <p>常用的选项有：</p>
 <ul>
-<li><code>-E</code> 使用拓展正则表达式（Extended Regular Expression,
-ERE）</li>
-<li><code>-G</code> 使用基本正则表达式（Basic Regular Expression,
-BRE）</li>
-<li><code>-e</code> 指定字符串作为查找文件内容的样式（pattern）</li>
-<li><code>-i</code> 忽略大小写</li>
-<li><code>-v</code> 反转查找，匹配不符合特征的内容</li>
-<li><code>-R</code> 递归查找目录下的文件</li>
-<li><code>-c</code> 计算每个文件中符合样式的行数</li>
-<li><code>-n</code> 打印匹配样式内容的行号</li>
-<li><code>-w</code> 只匹配全字符合的内容</li>
+<li><code>-E</code>  使用拓展正则表达式（Extended Regular Expression, ERE）</li>
+<li><code>-G</code>  使用基本正则表达式（Basic Regular Expression, BRE）</li>
+<li><code>-e</code>  指定字符串作为查找文件内容的样式（pattern）</li>
+<li><code>-i</code>  忽略大小写</li>
+<li><code>-v</code>  反转查找，匹配不符合特征的内容</li>
+<li><code>-R</code>  递归查找目录下的文件</li>
+<li><code>-c</code>  计算每个文件中符合样式的行数</li>
+<li><code>-n</code>  打印匹配样式内容的行号</li>
+<li><code>-w</code>  只匹配全字符合的内容</li>
 </ul>
 <p>下面是一些示例：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep -<span class="keyword">in</span> <span class="string">&quot;error&quot;</span> *.<span class="built_in">log</span>                <span class="comment"># 匹配文件中包含字符（不区分大小写）的内容，并打印行号 </span></span><br><span class="line">grep -e <span class="string">&quot;[Aa]rsenal&quot;</span> teams.txt        <span class="comment"># 匹配符合正则表达式的内容</span></span><br><span class="line">grep <span class="string">&quot;fork&quot;</span> ./src -R -n               <span class="comment"># 在目录中对文本进行递归搜索</span></span><br></pre></td></tr></table></figure>
-<h2 id="网络相关">网络相关</h2>
-<p>下面是常用的网络管理命令：</p>
+
+<h2 id="网络相关"><a href="#网络相关" class="headerlink" title="网络相关"></a>网络相关</h2><p>下面是常用的网络管理命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">netstat -npt                          <span class="comment"># 查看所有TCP连接及其相关进程信息</span></span><br><span class="line"><span class="built_in">sudo</span> iftop -i eth0                    <span class="comment"># 监控eth0上的流量</span></span><br><span class="line">nmap -sn 192.168.1.0/24               <span class="comment"># 查看局域网内所有主机</span></span><br><span class="line">nslookup panqiincs.me                 <span class="comment"># 查询域名解析（DNS）信息</span></span><br><span class="line">curl -I https://panqiincs.me          <span class="comment"># 查看HTTP Header</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 防火墙开启service和port</span></span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --permanent --zone=public --add-service=http</span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --permanent --zone=public --add-service=https</span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --permanent --zone=public --add-port=8080/tcp</span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --reload</span><br><span class="line"><span class="built_in">sudo</span> systemctl restart firewalld.service</span><br></pre></td></tr></table></figure>
-<h2 id="二进制文件操作">二进制文件操作</h2>
-<p>提取文件的特定片段：</p>
+
+<h2 id="二进制文件操作"><a href="#二进制文件操作" class="headerlink" title="二进制文件操作"></a>二进制文件操作</h2><p>提取文件的特定片段：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 块大小为4096，跳过第1块（从第4097个字节开始），提取2块数据（共8192个字节）</span></span><br><span class="line"><span class="built_in">dd</span> skip=1 count=2 <span class="keyword">if</span>=input.bin of=output.bin bs=4096</span><br></pre></td></tr></table></figure>
+
 <p>在文件末尾补0：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在二进制文件的末尾补3个0</span></span><br><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/dev/zero bs=1 count=3 &gt;&gt; sample.bin</span><br></pre></td></tr></table></figure>
-<h2 id="编辑pdf文件">编辑pdf文件</h2>
-<p>对pdf进行裁边，四个裁剪长度的顺序是左、下、右、上：</p>
+
+<h2 id="编辑pdf文件"><a href="#编辑pdf文件" class="headerlink" title="编辑pdf文件"></a>编辑pdf文件</h2><p>对pdf进行裁边，四个裁剪长度的顺序是左、下、右、上：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pdfjam --keepinfo --trim <span class="string">&quot;10mm 15mm 10mm 15mm&quot;</span> --clip <span class="literal">true</span> --suffix <span class="string">&quot;cropped&quot;</span> input.pdf</span><br></pre></td></tr></table></figure>
+
 <p>提取pdf部分页：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 提取第1、2、3、5、6、7页</span></span><br><span class="line">pdftk myoldfile.pdf <span class="built_in">cat</span> 1-3 5-7 output mynewfile.pdf</span><br></pre></td></tr></table></figure>
+
 <p>修改pdf的文件属性：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 提取信息到metadata.txt文件</span></span><br><span class="line">pdftk old.pdf dump_data output metadata.txt</span><br><span class="line"><span class="comment"># 修改metadata.txt对应字段的内容，然后更新pdf的属性</span></span><br><span class="line">pdftk old.pdf update_info metadata.txt output new.pdf</span><br></pre></td></tr></table></figure>
+
 <p>pdf转换成文本，尝试转换了非扫描版的中文pdf，效果还不错：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pdftotext input.pdf output.txt</span><br></pre></td></tr></table></figure>
-<h2 id="参考">参考</h2>
-<ol type="1">
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://linux.die.net/man/">Linux man pages</a></li>
-<li><a
-target="_blank" rel="noopener" href="http://www.cnblogs.com/jyaray/archive/2011/04/30/2033362.html">tar压缩解压缩命令详解</a></li>
-<li><a
-target="_blank" rel="noopener" href="https://askubuntu.com/questions/86822/how-can-i-copy-the-contents-of-a-folder-to-another-folder-in-a-different-directo">Ask
-Ubuntu</a></li>
-<li><a
-target="_blank" rel="noopener" href="http://www.cnblogs.com/peida/archive/2012/11/13/2767374.html">每天一个Linux命令</a></li>
-<li><a
-target="_blank" rel="noopener" href="http://www.cnblogs.com/peida/archive/2012/11/14/2769248.html">find命令之exec</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.thegeekstuff.com/2010/11/50-linux-commands/">50
-Most Frequently Used UNIX/Linux Commands</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/jyaray/archive/2011/04/30/2033362.html">tar压缩解压缩命令详解</a></li>
+<li><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/86822/how-can-i-copy-the-contents-of-a-folder-to-another-folder-in-a-different-directo">Ask Ubuntu</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/peida/archive/2012/11/13/2767374.html">每天一个Linux命令</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/peida/archive/2012/11/14/2769248.html">find命令之exec</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.thegeekstuff.com/2010/11/50-linux-commands/">50 Most Frequently Used UNIX&#x2F;Linux Commands</a></li>
 </ol>
 
     </div>

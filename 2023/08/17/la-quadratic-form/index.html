@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="二次型 二次型是个多项式，其中所有项的次数都是二次的，这里的「型」表示齐次多项式。">
+    <meta name="description" content="二次型二次型是个多项式，其中所有项的次数都是二次的，这里的「型」表示齐次多项式。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性代数：二次型与正定性">
 <meta property="og:url" content="https://panqiincs.me/2023/08/17/la-quadratic-form/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="二次型 二次型是个多项式，其中所有项的次数都是二次的，这里的「型」表示齐次多项式。">
+<meta property="og:description" content="二次型二次型是个多项式，其中所有项的次数都是二次的，这里的「型」表示齐次多项式。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-17T02:07:13.000Z">
 <meta property="article:modified_time" content="2023-08-19T14:17:58.160Z">
@@ -126,7 +126,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%AC%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">二次型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%83%AF%E6%80%A7%E5%AE%9A%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">惯性定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%AE%9A%E5%9E%8B%E4%B8%8E%E6%AD%A3%E5%AE%9A%E7%9F%A9%E9%98%B5"><span class="nav-number">3.</span> <span class="nav-text">正定型与正定矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hermite%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">Hermite型</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%AC%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">二次型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%83%AF%E6%80%A7%E5%AE%9A%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">惯性定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%AE%9A%E5%9E%8B%E4%B8%8E%E6%AD%A3%E5%AE%9A%E7%9F%A9%E9%98%B5"><span class="nav-number">3.</span> <span class="nav-text">正定型与正定矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hermite%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">Hermite型</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -299,222 +299,37 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="二次型">二次型</h2>
-<p>二次型是个多项式，其中所有项的次数都是二次的，这里的「型」表示齐次多项式。</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="二次型"><a href="#二次型" class="headerlink" title="二次型"></a>二次型</h2><p>二次型是个多项式，其中所有项的次数都是二次的，这里的「型」表示齐次多项式。</p>
 <span id="more"></span>
-<p>设<span class="math inline">\(f\)</span>是数域<span
-class="math inline">\(\mathbb{K}\)</span>上的<span
-class="math inline">\(n\)</span>元二次齐次多项式 <span
-class="math display">\[
-\begin{align}
-f(x_1,x_2,\cdots,x_n) = &amp; \, a_{11}x_1^2 + 2a_{12} x_1 x_2 + \cdots
-+ 2a_{1n}x_1 x_n\\
-&amp; + a_{22}x_2^2 + \cdots + 2a_{2n}x_2 x_n + \cdots + a_{nn}x_n^2
-\end{align}
-\]</span></p>
-<p>称<span class="math inline">\(f\)</span>为数域<span
-class="math inline">\(\mathbb{K}\)</span>上的<span
-class="math inline">\(n\)</span>元二次型，简称二次型。用矩阵乘法可以写成如下形式
-<span class="math display">\[
-f(x_1,x_2,\cdots,x_n) = \boldsymbol{x}&#39;\boldsymbol{A}\boldsymbol{x}
-\]</span></p>
-<p>其中 <span class="math display">\[
-\boldsymbol{A}=
-\left(\begin{matrix}
-  a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n}\\
-  a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n}\\
-  \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
-  a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}\\
-\end{matrix}\right),\,
-\boldsymbol{x}=
-\left(\begin{array}{c}
-  x_1\\
-  x_2\\
-  \vdots\\
-  x_n\\
-\end{array}\right)
-\]</span></p>
-<p>矩阵<span
-class="math inline">\(\boldsymbol{A}\)</span>是对称阵，即<span
-class="math inline">\(a_{ij}=a_{ji}\)</span>对一切<span
-class="math inline">\(i,j\)</span>成立。</p>
-<p>设二次型<span
-class="math inline">\(f(x_1,x_2,\cdots,x_n)\)</span>是线性空间<span
-class="math inline">\(V\)</span>上的二次函数，<span
-class="math inline">\(V\)</span>有两组基<span
-class="math inline">\(\left\{ \boldsymbol{e}_1, \boldsymbol{e}_2,
-\cdots, \boldsymbol{e}_n \right\}\)</span>和<span
-class="math inline">\(\left\{ \boldsymbol{f}_1, \boldsymbol{f}_2,
-\cdots, \boldsymbol{f}_n \right\}\)</span>，向量<span
-class="math inline">\(\boldsymbol{x}\)</span>在两组基下的坐标有如下关系
-<span class="math display">\[
-\left(\begin{array}{c}
-  x_1\\
-  x_2\\
-  \vdots\\
-  x_n\\
-\end{array}\right) =
-\left(\begin{matrix}
-  c_{11} &amp; c_{12} &amp; \cdots &amp; c_{1n}\\
-  c_{21} &amp; c_{22} &amp; \cdots &amp; c_{2n}\\
-  \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
-  c_{n1} &amp; c_{n2} &amp; \cdots &amp; c_{nn}\\
-\end{matrix}\right)
-\left(\begin{array}{c}
-  y_1\\
-  y_2\\
-  \vdots\\
-  y_n\\
-\end{array}\right)
-\]</span> <span class="math display">\[
-\boldsymbol{x}=\boldsymbol{C}\boldsymbol{y}
-\]</span></p>
-<p>矩阵<span
-class="math inline">\(\boldsymbol{C}=(c_{ij})\)</span>是<span
-class="math inline">\(\left\{ \boldsymbol{e}_1, \boldsymbol{e}_2,
-\cdots, \boldsymbol{e}_n \right\}\)</span>到<span
-class="math inline">\(\left\{ \boldsymbol{f}_1, \boldsymbol{f}_2,
-\cdots, \boldsymbol{f}_n
-\right\}\)</span>的过渡矩阵。关于这个矩阵的意义，也可以看成是两组变元<span
-class="math inline">\(\boldsymbol{x}\)</span>与<span
-class="math inline">\(\boldsymbol{y}\)</span>之间的线性关系。将上面的关系代入到<span
-class="math inline">\(f(x_1,x_2,\cdots,x_n) =
-\boldsymbol{x}&#39;\boldsymbol{A}\boldsymbol{x}\)</span>中，得 <span
-class="math display">\[
-f(x_1,x_2,\cdots,x_n) =
-\boldsymbol{y}&#39;\boldsymbol{C}&#39;\boldsymbol{A}\boldsymbol{C}\boldsymbol{y}
-\]</span></p>
-<p>所以，<span
-class="math inline">\(\boldsymbol{y}&#39;\boldsymbol{C}&#39;\boldsymbol{A}\boldsymbol{C}\boldsymbol{y}\)</span>是以<span
-class="math inline">\(\boldsymbol{y}\)</span>为变元的二次型，<span
-class="math inline">\(\boldsymbol{C}&#39;\boldsymbol{A}\boldsymbol{C}\)</span>也是对称阵。</p>
-<p>数域<span class="math inline">\(\mathbb{K}\)</span>上的矩阵<span
-class="math inline">\(\boldsymbol{A}\)</span>与<span
-class="math inline">\(\boldsymbol{B}\)</span>是<strong>合同</strong>的，若存在<span
-class="math inline">\(n\)</span>阶非奇异阵<span
-class="math inline">\(\boldsymbol{C}\)</span>，使得<span
-class="math inline">\(\boldsymbol{B}=\boldsymbol{C}&#39;\boldsymbol{A}\boldsymbol{C}\)</span>。可以证明，只要<span
-class="math inline">\(\boldsymbol{A}\)</span>是<span
-class="math inline">\(n\)</span>阶对称阵，则一定存在这样的非奇异阵<span
-class="math inline">\(\boldsymbol{C}\)</span>，使<span
-class="math inline">\(\boldsymbol{C}&#39;\boldsymbol{A}\boldsymbol{C}\)</span>为对角阵。</p>
-<h2 id="惯性定理">惯性定理</h2>
-<p>先讨论<strong>实数域</strong>上的二次型，即<strong>实二次型</strong>。任意一个实对称阵合同于一个对角阵，不妨设实对称矩阵<span
-class="math inline">\(\boldsymbol{A}\)</span>已经是对称阵： <span
-class="math display">\[
-\boldsymbol{A}=\mathrm{diag}\{d_1,d_2,\cdots,d_r,0,\cdots,0\}
-\]</span></p>
-<p>任意调换主对角线上的元素得到的矩阵依然与<span
-class="math inline">\(\boldsymbol{A}\)</span>合同，可以将零放在一起，正项和负项放在一起，即设
-<span class="math display">\[
-d_1&gt;0,\cdots,d_p&gt;0;d_{p+1}&lt;0,\cdots,d_r&lt;0.
-\]</span></p>
-<p>做适当的变元替换，可得<span
-class="math inline">\(\boldsymbol{A}\)</span>合同于对角阵 <span
-class="math display">\[
-\mathrm{diag}\{1,\cdots,1;-1,\cdots,-1;0,\cdots,0\}
-\]</span></p>
-<p>其中有<span class="math inline">\(p\)</span>个<span
-class="math inline">\(1\)</span>，<span
-class="math inline">\(q=r-p\)</span>个<span
-class="math inline">\(-1\)</span>，<span
-class="math inline">\(n-r\)</span>个零。</p>
-<p>设<span class="math inline">\(f(x_1,x_2,\cdots,x_n)\)</span>是个<span
-class="math inline">\(n\)</span>元实二次型，且<span
-class="math inline">\(f\)</span>可化为两个标准型： <span
-class="math display">\[
-c_1 y_1^2+\cdots+c_p y_p^2-c_{p+1}y_{p+1}^2-\cdots-c_r y_r^2
-\]</span> <span class="math display">\[
-d_1 z_1^2+\cdots+d_k z_k^2-d_{k+1}z_{k+1}^2-\cdots-d_r z_r^2
-\]</span></p>
-<p>其中<span
-class="math inline">\(c_i&gt;0,\,d_i&gt;0\)</span>，则必有<span
-class="math inline">\(p=k\)</span>，这就是<strong>惯性定理</strong>。式中的二次型称为<span
-class="math inline">\(f\)</span>的规范标准型，<span
-class="math inline">\(r\)</span>是该二次型的<strong>秩</strong>，<span
-class="math inline">\(p\)</span>是它的<strong>正惯性指数</strong>，<span
-class="math inline">\(q=r-p\)</span>是它的<strong>负惯性指数</strong>，<span
-class="math inline">\(s=p-q\)</span>称为<span
-class="math inline">\(f\)</span>的<strong>符号差</strong>。秩与符号差（或正负惯性指数）是<strong>实对称阵</strong>在合同关系下的<strong>全系不变量</strong>。</p>
-<p>再讨论复数域上的二次型，即<strong>复二次型</strong>。由于复二次型
-<span class="math display">\[
-f(x_1,x_2,\cdots,x_n) = d_1 x_1^2 + d_1 x_2^2 + \cdots + d_r x_r^2
-\]</span></p>
-<p>必可以化为<span
-class="math inline">\(z_1^2+z_2^2+\cdots+z_r^2\)</span>的形式，所以秩<span
-class="math inline">\(r\)</span>是是<strong>复对称阵</strong>在合同关系下唯一的<strong>全系不变量</strong>。</p>
-<h2 id="正定型与正定矩阵">正定型与正定矩阵</h2>
-<p>这里讨论的都是<strong>实二次型</strong>。二次型和矩阵<strong>正定</strong>、<strong>负定</strong>、<strong>半正定</strong>、<strong>半负定</strong>的定义在这里就不列出来了。有如下结论：</p>
-<ol type="1">
-<li>实二次型<span
-class="math inline">\(f(x_1,x_2,\cdots,x_n)\)</span>正定的充要条件是<span
-class="math inline">\(f\)</span>的正惯性指数等于<span
-class="math inline">\(n\)</span>，实对称矩阵<span
-class="math inline">\(\boldsymbol{A}\)</span>是正定阵当且仅当它合同于单位阵<span
-class="math inline">\(\boldsymbol{I}_n\)</span></li>
-<li>实二次型<span
-class="math inline">\(f(x_1,x_2,\cdots,x_n)\)</span>负定的充要条件是<span
-class="math inline">\(f\)</span>的负惯性指数等于<span
-class="math inline">\(n\)</span>，实对称矩阵<span
-class="math inline">\(\boldsymbol{A}\)</span>是负定阵当且仅当它合同于单位阵<span
-class="math inline">\(-\boldsymbol{I}_n\)</span></li>
-<li>实二次型<span
-class="math inline">\(f(x_1,x_2,\cdots,x_n)\)</span>半正定的充要条件是<span
-class="math inline">\(f\)</span>的正惯性指数等于<span
-class="math inline">\(f\)</span>的秩<span
-class="math inline">\(r\)</span>，实对称矩阵<span
-class="math inline">\(\boldsymbol{A}\)</span>是半正定阵当且仅当它合同于对角阵
-<span class="math display">\[
-\left(\begin{matrix}
-  \boldsymbol{I}_r &amp; \boldsymbol{O}\\
-  \boldsymbol{O} &amp; \boldsymbol{O}\\
-\end{matrix}\right)
-\]</span></li>
-<li>实二次型<span
-class="math inline">\(f(x_1,x_2,\cdots,x_n)\)</span>半负定的充要条件是<span
-class="math inline">\(f\)</span>的负惯性指数等于<span
-class="math inline">\(f\)</span>的秩<span
-class="math inline">\(r\)</span>，实对称矩阵<span
-class="math inline">\(\boldsymbol{A}\)</span>是半负定阵当且仅当它合同于对角阵
-<span class="math display">\[
-\left(\begin{matrix}
-  -\boldsymbol{I}_r &amp; \boldsymbol{O}\\
-  \boldsymbol{O} &amp; \boldsymbol{O}\\
-\end{matrix}\right)
-\]</span></li>
+
+<p>设$f$是数域$\mathbb{K}$上的$n$元二次齐次多项式<br>$$<br>\begin{align}<br>f(x_1,x_2,\cdots,x_n) &#x3D; &amp; , a_{11}x_1^2 + 2a_{12} x_1 x_2 + \cdots + 2a_{1n}x_1 x_n\<br>&amp; + a_{22}x_2^2 + \cdots + 2a_{2n}x_2 x_n + \cdots + a_{nn}x_n^2<br>\end{align}<br>$$</p>
+<p>称$f$为数域$\mathbb{K}$上的$n$元二次型，简称二次型。用矩阵乘法可以写成如下形式<br>$$<br>f(x_1,x_2,\cdots,x_n) &#x3D; \boldsymbol{x}’\boldsymbol{A}\boldsymbol{x}<br>$$</p>
+<p>其中<br>$$<br>\boldsymbol{A}&#x3D;<br>\left(\begin{matrix}<br>  a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n}\<br>  a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n}\<br>  \vdots &amp; \vdots &amp; \ddots &amp; \vdots\<br>  a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}\<br>\end{matrix}\right),,<br>\boldsymbol{x}&#x3D;<br>\left(\begin{array}{c}<br>  x_1\<br>  x_2\<br>  \vdots\<br>  x_n\<br>\end{array}\right)<br>$$</p>
+<p>矩阵$\boldsymbol{A}$是对称阵，即$a_{ij}&#x3D;a_{ji}$对一切$i,j$成立。</p>
+<p>设二次型$f(x_1,x_2,\cdots,x_n)$是线性空间$V$上的二次函数，$V$有两组基$\left{ \boldsymbol{e}<em>1, \boldsymbol{e}<em>2, \cdots, \boldsymbol{e}<em>n \right}$和$\left{ \boldsymbol{f}<em>1, \boldsymbol{f}<em>2, \cdots, \boldsymbol{f}<em>n \right}$，向量$\boldsymbol{x}$在两组基下的坐标有如下关系<br>$$<br>\left(\begin{array}{c}<br>  x_1\<br>  x_2\<br>  \vdots\<br>  x_n\<br>\end{array}\right) &#x3D;<br>\left(\begin{matrix}<br>  c</em>{11} &amp; c</em>{12} &amp; \cdots &amp; c</em>{1n}\<br>  c</em>{21} &amp; c</em>{22} &amp; \cdots &amp; c</em>{2n}\<br>  \vdots &amp; \vdots &amp; \ddots &amp; \vdots\<br>  c_{n1} &amp; c_{n2} &amp; \cdots &amp; c_{nn}\<br>\end{matrix}\right)<br>\left(\begin{array}{c}<br>  y_1\<br>  y_2\<br>  \vdots\<br>  y_n\<br>\end{array}\right)<br>$$<br>$$<br>\boldsymbol{x}&#x3D;\boldsymbol{C}\boldsymbol{y}<br>$$</p>
+<p>矩阵$\boldsymbol{C}&#x3D;(c_{ij})$是$\left{ \boldsymbol{e}_1, \boldsymbol{e}_2, \cdots, \boldsymbol{e}_n \right}$到$\left{ \boldsymbol{f}_1, \boldsymbol{f}_2, \cdots, \boldsymbol{f}_n \right}$的过渡矩阵。关于这个矩阵的意义，也可以看成是两组变元$\boldsymbol{x}$与$\boldsymbol{y}$之间的线性关系。将上面的关系代入到$f(x_1,x_2,\cdots,x_n) &#x3D; \boldsymbol{x}’\boldsymbol{A}\boldsymbol{x}$中，得<br>$$<br>f(x_1,x_2,\cdots,x_n) &#x3D; \boldsymbol{y}’\boldsymbol{C}’\boldsymbol{A}\boldsymbol{C}\boldsymbol{y}<br>$$</p>
+<p>所以，$\boldsymbol{y}’\boldsymbol{C}’\boldsymbol{A}\boldsymbol{C}\boldsymbol{y}$是以$\boldsymbol{y}$为变元的二次型，$\boldsymbol{C}’\boldsymbol{A}\boldsymbol{C}$也是对称阵。</p>
+<p>数域$\mathbb{K}$上的矩阵$\boldsymbol{A}$与$\boldsymbol{B}$是<strong>合同</strong>的，若存在$n$阶非奇异阵$\boldsymbol{C}$，使得$\boldsymbol{B}&#x3D;\boldsymbol{C}’\boldsymbol{A}\boldsymbol{C}$。可以证明，只要$\boldsymbol{A}$是$n$阶对称阵，则一定存在这样的非奇异阵$\boldsymbol{C}$，使$\boldsymbol{C}’\boldsymbol{A}\boldsymbol{C}$为对角阵。</p>
+<h2 id="惯性定理"><a href="#惯性定理" class="headerlink" title="惯性定理"></a>惯性定理</h2><p>先讨论<strong>实数域</strong>上的二次型，即<strong>实二次型</strong>。任意一个实对称阵合同于一个对角阵，不妨设实对称矩阵$\boldsymbol{A}$已经是对称阵：<br>$$<br>\boldsymbol{A}&#x3D;\mathrm{diag}{d_1,d_2,\cdots,d_r,0,\cdots,0}<br>$$</p>
+<p>任意调换主对角线上的元素得到的矩阵依然与$\boldsymbol{A}$合同，可以将零放在一起，正项和负项放在一起，即设<br>$$<br>d_1&gt;0,\cdots,d_p&gt;0;d_{p+1}&lt;0,\cdots,d_r&lt;0.<br>$$</p>
+<p>做适当的变元替换，可得$\boldsymbol{A}$合同于对角阵<br>$$<br>\mathrm{diag}{1,\cdots,1;-1,\cdots,-1;0,\cdots,0}<br>$$</p>
+<p>其中有$p$个$1$，$q&#x3D;r-p$个$-1$，$n-r$个零。</p>
+<p>设$f(x_1,x_2,\cdots,x_n)$是个$n$元实二次型，且$f$可化为两个标准型：<br>$$<br>c_1 y_1^2+\cdots+c_p y_p^2-c_{p+1}y_{p+1}^2-\cdots-c_r y_r^2<br>$$<br>$$<br>d_1 z_1^2+\cdots+d_k z_k^2-d_{k+1}z_{k+1}^2-\cdots-d_r z_r^2<br>$$</p>
+<p>其中$c_i&gt;0,,d_i&gt;0$，则必有$p&#x3D;k$，这就是<strong>惯性定理</strong>。式中的二次型称为$f$的规范标准型，$r$是该二次型的<strong>秩</strong>，$p$是它的<strong>正惯性指数</strong>，$q&#x3D;r-p$是它的<strong>负惯性指数</strong>，$s&#x3D;p-q$称为$f$的<strong>符号差</strong>。秩与符号差（或正负惯性指数）是<strong>实对称阵</strong>在合同关系下的<strong>全系不变量</strong>。</p>
+<p>再讨论复数域上的二次型，即<strong>复二次型</strong>。由于复二次型<br>$$<br>f(x_1,x_2,\cdots,x_n) &#x3D; d_1 x_1^2 + d_1 x_2^2 + \cdots + d_r x_r^2<br>$$</p>
+<p>必可以化为$z_1^2+z_2^2+\cdots+z_r^2$的形式，所以秩$r$是是<strong>复对称阵</strong>在合同关系下唯一的<strong>全系不变量</strong>。</p>
+<h2 id="正定型与正定矩阵"><a href="#正定型与正定矩阵" class="headerlink" title="正定型与正定矩阵"></a>正定型与正定矩阵</h2><p>这里讨论的都是<strong>实二次型</strong>。二次型和矩阵<strong>正定</strong>、<strong>负定</strong>、<strong>半正定</strong>、<strong>半负定</strong>的定义在这里就不列出来了。有如下结论：</p>
+<ol>
+<li>实二次型$f(x_1,x_2,\cdots,x_n)$正定的充要条件是$f$的正惯性指数等于$n$，实对称矩阵$\boldsymbol{A}$是正定阵当且仅当它合同于单位阵$\boldsymbol{I}_n$</li>
+<li>实二次型$f(x_1,x_2,\cdots,x_n)$负定的充要条件是$f$的负惯性指数等于$n$，实对称矩阵$\boldsymbol{A}$是负定阵当且仅当它合同于单位阵$-\boldsymbol{I}_n$</li>
+<li>实二次型$f(x_1,x_2,\cdots,x_n)$半正定的充要条件是$f$的正惯性指数等于$f$的秩$r$，实对称矩阵$\boldsymbol{A}$是半正定阵当且仅当它合同于对角阵<br>$$<br>\left(\begin{matrix}<br>  \boldsymbol{I}_r &amp; \boldsymbol{O}\<br>  \boldsymbol{O} &amp; \boldsymbol{O}\<br>\end{matrix}\right)<br>$$</li>
+<li>实二次型$f(x_1,x_2,\cdots,x_n)$半负定的充要条件是$f$的负惯性指数等于$f$的秩$r$，实对称矩阵$\boldsymbol{A}$是半负定阵当且仅当它合同于对角阵<br>$$<br>\left(\begin{matrix}<br>  -\boldsymbol{I}_r &amp; \boldsymbol{O}\<br>  \boldsymbol{O} &amp; \boldsymbol{O}\<br>\end{matrix}\right)<br>$$</li>
 </ol>
-<p><span class="math inline">\(n\)</span>阶矩阵<span
-class="math inline">\(\boldsymbol{A}=(a_{ij})\)</span>的<span
-class="math inline">\(n\)</span>个子式 <span class="math display">\[
-\begin{vmatrix}
-  a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1k}\\
-  a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2k}\\
-  \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
-  a_{k1} &amp; a_{k2} &amp; \cdots &amp; a_{kk}\\
-\end{vmatrix}
-\,(k=1,2,\cdots,n)
-\]</span></p>
-<p>称为<span
-class="math inline">\(\boldsymbol{A}\)</span>的<strong>顺序主子式</strong>。<span
-class="math inline">\(n\)</span>阶实对称矩阵<span
-class="math inline">\(\boldsymbol{A}\)</span>是正定阵的充要条件是它的<span
-class="math inline">\(n\)</span>个顺序主子式全大于零。</p>
-<h2 id="hermite型">Hermite型</h2>
-<p>复数域上有<span
-class="math inline">\(n\)</span>个变元的二次齐次函数称为Hermite型：
-<span class="math display">\[
-f(x_1,x_2,\cdots,x_n) =
-\sum_{j=1}^{n}\sum_{i=1}^{n}a_{ij}\overline{x_i}x_j
-\]</span></p>
-<p>其中<span
-class="math inline">\(\overline{a}_{ij}=a_{ji}\)</span>。容易验证，虽然变元和系数都是复数域上的，但函数值却总是实数。当变元和系数都在实数域上，<span
-class="math inline">\(f\)</span>就是实二次型。类似地，Hermite型可以写成矩阵相乘的形式
-<span class="math display">\[
-f(x_1,x_2,\cdots,x_n) =
-\overline{\boldsymbol{x}}&#39;\boldsymbol{A}\boldsymbol{x}
-\]</span></p>
-<p>而且满足<span
-class="math inline">\(\overline{\boldsymbol{A}}&#39;=\boldsymbol{A}\)</span>，这样的矩阵称为<strong>Hermite矩阵</strong>。Hermite矩阵和实对称矩阵特性相似，也有很多类似的结论。</p>
+<p>$n$阶矩阵$\boldsymbol{A}&#x3D;(a_{ij})$的$n$个子式<br>$$<br>\begin{vmatrix}<br>  a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1k}\<br>  a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2k}\<br>  \vdots &amp; \vdots &amp; \ddots &amp; \vdots\<br>  a_{k1} &amp; a_{k2} &amp; \cdots &amp; a_{kk}\<br>\end{vmatrix}<br>,(k&#x3D;1,2,\cdots,n)<br>$$</p>
+<p>称为$\boldsymbol{A}$的<strong>顺序主子式</strong>。$n$阶实对称矩阵$\boldsymbol{A}$是正定阵的充要条件是它的$n$个顺序主子式全大于零。</p>
+<h2 id="Hermite型"><a href="#Hermite型" class="headerlink" title="Hermite型"></a>Hermite型</h2><p>复数域上有$n$个变元的二次齐次函数称为Hermite型：<br>$$<br>f(x_1,x_2,\cdots,x_n) &#x3D; \sum_{j&#x3D;1}^{n}\sum_{i&#x3D;1}^{n}a_{ij}\overline{x_i}x_j<br>$$</p>
+<p>其中$\overline{a}<em>{ij}&#x3D;a</em>{ji}$。容易验证，虽然变元和系数都是复数域上的，但函数值却总是实数。当变元和系数都在实数域上，$f$就是实二次型。类似地，Hermite型可以写成矩阵相乘的形式<br>$$<br>f(x_1,x_2,\cdots,x_n) &#x3D; \overline{\boldsymbol{x}}’\boldsymbol{A}\boldsymbol{x}<br>$$</p>
+<p>而且满足$\overline{\boldsymbol{A}}’&#x3D;\boldsymbol{A}$，这样的矩阵称为<strong>Hermite矩阵</strong>。Hermite矩阵和实对称矩阵特性相似，也有很多类似的结论。</p>
 
     </div>
 

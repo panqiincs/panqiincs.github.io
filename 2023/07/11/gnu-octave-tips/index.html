@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="为什么用Octave MATLAB功能强大，但正版价格非常昂贵，而且有地缘冲突带来的制裁风险。有很多开源免费软件可以替代MATLAB的一部分功能，如Octave、FreeMat、Scilab、R、IDL等，它们当中Octave最兼容MATLAB，而且性能非常好，详情可参考这篇文章。">
+    <meta name="description" content="为什么用OctaveMATLAB功能强大，但正版价格非常昂贵，而且有地缘冲突带来的制裁风险。有很多开源免费软件可以替代MATLAB的一部分功能，如Octave、FreeMat、Scilab、R、IDL等，它们当中Octave最兼容MATLAB，而且性能非常好，详情可参考这篇文章。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Octave软件使用经验">
 <meta property="og:url" content="https://panqiincs.me/2023/07/11/gnu-octave-tips/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="为什么用Octave MATLAB功能强大，但正版价格非常昂贵，而且有地缘冲突带来的制裁风险。有很多开源免费软件可以替代MATLAB的一部分功能，如Octave、FreeMat、Scilab、R、IDL等，它们当中Octave最兼容MATLAB，而且性能非常好，详情可参考这篇文章。">
+<meta property="og:description" content="为什么用OctaveMATLAB功能强大，但正版价格非常昂贵，而且有地缘冲突带来的制裁风险。有很多开源免费软件可以替代MATLAB的一部分功能，如Octave、FreeMat、Scilab、R、IDL等，它们当中Octave最兼容MATLAB，而且性能非常好，详情可参考这篇文章。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-11T02:29:52.000Z">
 <meta property="article:modified_time" content="2025-01-03T06:11:49.180Z">
@@ -127,7 +127,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8octave"><span class="nav-number">1.</span> <span class="nav-text">为什么用Octave</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux%E4%B8%8B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">2.</span> <span class="nav-text">Linux下注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%BB%BF%E7%9C%9F"><span class="nav-number">3.</span> <span class="nav-text">控制系统仿真</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8Octave"><span class="nav-number">1.</span> <span class="nav-text">为什么用Octave</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux%E4%B8%8B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">2.</span> <span class="nav-text">Linux下注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%BB%BF%E7%9C%9F"><span class="nav-number">3.</span> <span class="nav-text">控制系统仿真</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -300,31 +300,21 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="为什么用octave">为什么用Octave</h2>
-<p>MATLAB功能强大，但正版价格非常昂贵，而且有地缘冲突带来的制裁风险。有很多开源免费软件可以替代MATLAB的一部分功能，如Octave、FreeMat、Scilab、R、IDL等，它们当中Octave最兼容MATLAB，而且性能非常好，详情可参考<a
-target="_blank" rel="noopener" href="https://userpages.umbc.edu/~gobbert/papers/BrewsterGobbertTR2011.pdf">这篇文章</a>。</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="为什么用Octave"><a href="#为什么用Octave" class="headerlink" title="为什么用Octave"></a>为什么用Octave</h2><p>MATLAB功能强大，但正版价格非常昂贵，而且有地缘冲突带来的制裁风险。有很多开源免费软件可以替代MATLAB的一部分功能，如Octave、FreeMat、Scilab、R、IDL等，它们当中Octave最兼容MATLAB，而且性能非常好，详情可参考<a target="_blank" rel="noopener" href="https://userpages.umbc.edu/~gobbert/papers/BrewsterGobbertTR2011.pdf">这篇文章</a>。</p>
 <span id="more"></span>
-<p>Octave全称<a target="_blank" rel="noopener" href="https://octave.org/">GNU
-Octave</a>，是开源免费软件，与MATLAB语法高度兼容。相比于MATLAB新版本10GB以上的安装包大小和动辄几十分钟的安装时间，Octave安装包非常小，安装速度很快。而且，Octave还提供了在线版的<a
-target="_blank" rel="noopener" href="https://octave-online.net/">Octave
-Online</a>，非常方便。这几年我在课堂上一直用Octave做演示，积累了一点经验，分享给大家。</p>
-<h2 id="linux下注意事项">Linux下注意事项</h2>
-<p>Octave支持Linux、BSD、macOS、Windows全平台。在Windows下安装，遵照默认配置，不停点击下一步就可以，各个<a
-target="_blank" rel="noopener" href="https://gnu-octave.github.io/packages/">功能包</a>也都默认帮你装好了。在Linux下则要麻烦一些，要注意两点。</p>
-<p>首先，安装完Octave软件之后还要手动安装自己需要的功能包。在我用的Manjaro
-Linux系统下，通过<code>sudo octave</code>以root权限打开Octave，然后在Octave的命令窗口运行<code>pkg install package_name</code>安装相关功能包，而且会提示安装成功，但却无法正常使用。解决办法是，通过操作系统的软件管理工具安装，比如在Manjaro中运行下面的命令即可安装：</p>
+
+<p>Octave全称<a target="_blank" rel="noopener" href="https://octave.org/">GNU Octave</a>，是开源免费软件，与MATLAB语法高度兼容。相比于MATLAB新版本10GB以上的安装包大小和动辄几十分钟的安装时间，Octave安装包非常小，安装速度很快。而且，Octave还提供了在线版的<a target="_blank" rel="noopener" href="https://octave-online.net/">Octave Online</a>，非常方便。这几年我在课堂上一直用Octave做演示，积累了一点经验，分享给大家。</p>
+<h2 id="Linux下注意事项"><a href="#Linux下注意事项" class="headerlink" title="Linux下注意事项"></a>Linux下注意事项</h2><p>Octave支持Linux、BSD、macOS、Windows全平台。在Windows下安装，遵照默认配置，不停点击下一步就可以，各个<a target="_blank" rel="noopener" href="https://gnu-octave.github.io/packages/">功能包</a>也都默认帮你装好了。在Linux下则要麻烦一些，要注意两点。</p>
+<p>首先，安装完Octave软件之后还要手动安装自己需要的功能包。在我用的Manjaro Linux系统下，通过<code>sudo octave</code>以root权限打开Octave，然后在Octave的命令窗口运行<code>pkg install package_name</code>安装相关功能包，而且会提示安装成功，但却无法正常使用。解决办法是，通过操作系统的软件管理工具安装，比如在Manjaro中运行下面的命令即可安装：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S octave-control</span><br></pre></td></tr></table></figure>
-<p>另外一点与性能有关。Octave默认使用<code>blas</code>库来实现线性代数运算，但是<code>blas</code>库没有充分利用好现代CPU的一些指令，为提升性能，可以安装<code>openblas</code>库来替代<code>blas</code>。在Manjaro系统下，安装<code>openblas</code>时会提示卸载<code>blas</code>，完成替代后，实测性能确实有显著提升，这点可以参考<a
-target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Octave">Octave -
-ArchWiki</a>里的测试方法。值得一提的是，OpenBLAS是由国人主导开发和维护的高性能计算库。</p>
-<h2 id="控制系统仿真">控制系统仿真</h2>
-<p>我在课堂上用Octave主要做控制系统仿真演示。在使用之前，需要运行如下命令加载控制功能包：</p>
+
+<p>另外一点与性能有关。Octave默认使用<code>blas</code>库来实现线性代数运算，但是<code>blas</code>库没有充分利用好现代CPU的一些指令，为提升性能，可以安装<code>openblas</code>库来替代<code>blas</code>。在Manjaro系统下，安装<code>openblas</code>时会提示卸载<code>blas</code>，完成替代后，实测性能确实有显著提升，这点可以参考<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Octave">Octave - ArchWiki</a>里的测试方法。值得一提的是，OpenBLAS是由国人主导开发和维护的高性能计算库。</p>
+<h2 id="控制系统仿真"><a href="#控制系统仿真" class="headerlink" title="控制系统仿真"></a>控制系统仿真</h2><p>我在课堂上用Octave主要做控制系统仿真演示。在使用之前，需要运行如下命令加载控制功能包：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg load control</span><br></pre></td></tr></table></figure>
-<p>在该功能包的<a
-target="_blank" rel="noopener" href="https://gnu-octave.github.io/pkg-control/">主页</a>上可以查看所支持的函数，用法和MATLAB基本相同，功能相比MATLAB少很多，但基本够用了。</p>
+
+<p>在该功能包的<a target="_blank" rel="noopener" href="https://gnu-octave.github.io/pkg-control/">主页</a>上可以查看所支持的函数，用法和MATLAB基本相同，功能相比MATLAB少很多，但基本够用了。</p>
 <p>需要注意的是，模型转换函数如<code>tf2zp</code>和<code>zp2tf</code>，不在<code>control</code>中，而在<code>signal</code>中。在根轨迹分析中，MATLAB有个<code>rlocfind</code>函数可以确定根轨迹上的极点对应的根轨迹增益，<code>control</code>里没有这个函数，但有个替代的<code>rlocfindx</code>，它除了确定增益值之外，还能画出时域响应曲线，也比较方便。</p>
-<h2 id="总结">总结</h2>
-<p>当然，Octave肯定没办法完全替代MATLAB，但对大部分人来说是完全够用的，我带的很多学生就用Octave做课程作业。Octave的bug比较多，不过一个开源免费的软件能够做到这个地步，已经很不错了。希望有一天，我也能给这个开源项目作出贡献。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>当然，Octave肯定没办法完全替代MATLAB，但对大部分人来说是完全够用的，我带的很多学生就用Octave做课程作业。Octave的bug比较多，不过一个开源免费的软件能够做到这个地步，已经很不错了。希望有一天，我也能给这个开源项目作出贡献。</p>
 
     </div>
 
