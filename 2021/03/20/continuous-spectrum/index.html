@@ -299,24 +299,73 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>从<a href="https://panqiincs.me/2021/02/02/continuous-time-fourier/">连续信号的傅里叶分析</a>一文可知，周期连续信号可表示为成谐波关系的正弦信号的叠加，其频谱是离散的，傅里叶级数的系数表示每个频率成分的权重，物理意义很明显。非周期连续信号也能表示成不同频率正弦信号的叠加，只不过频率之间没有间隙，频谱是连续的，它的物理意义就没有那么明显了。</p>
+    <div class="post-body" itemprop="articleBody"><p>从<a
+href="https://panqiincs.me/2021/02/02/continuous-time-fourier/">连续信号的傅里叶分析</a>一文可知，周期连续信号可表示为成谐波关系的正弦信号的叠加，其频谱是离散的，傅里叶级数的系数表示每个频率成分的权重，物理意义很明显。非周期连续信号也能表示成不同频率正弦信号的叠加，只不过频率之间没有间隙，频谱是连续的，它的物理意义就没有那么明显了。</p>
 <span id="more"></span>
-
 <p>将连续信号的傅里叶变换公式对列出：</p>
-<p>$$<br>\begin{equation}<br>x(t) &#x3D; \frac{1}{2\pi} \int_{-\infty}^{+\infty} X(j \omega)e^{j \omega t} d \omega<br>\end{equation}<br>$$</p>
-<p>$$<br>\begin{equation}<br>X(j \omega) &#x3D; \int_{-\infty}^{+\infty} x(t) e^{-j \omega t} d t<br>\end{equation}<br>$$</p>
-<p>我们首先假设某信号$x(t)$的傅里叶变换是个脉冲函数，面积为$2\pi$，出现在$\omega &#x3D; \omega_0$处，即：</p>
-<p>$$<br>\begin{equation}<br>X(j \omega) &#x3D; 2\pi \delta(\omega - \omega_0)<br>\end{equation}<br>$$</p>
-<p>通过傅里叶反变换公式$(1)$可以求出对应的时域信号$x(t)$：</p>
-<p>$$<br>\begin{equation}<br>x(t) &#x3D; \frac{1}{2\pi} \int_{-\infty}^{+\infty} \delta(\omega - \omega_0) e^{j \omega t} d \omega &#x3D; e^{j \omega_0 t}<br>\end{equation}<br>$$</p>
-<p>$(4)$式表明，频域中的脉冲$2\pi \delta(\omega - \omega_0)$是时域中的信号$e^{j \omega_0 t}$的频谱。</p>
-<p>我们知道，时域中的信号$x(t)$可以表示成脉冲$\delta(t)$的叠加，可以用卷积来表示：</p>
-<p>$$<br>\begin{equation}<br>x(t) &#x3D; \int_{-\infty}^{+\infty} x(\tau) \delta(t-\tau) d \tau<br>\end{equation}<br>$$</p>
-<p>这一点对频域信号$X(j \omega)$也是适用的，把变量$t$换成$\omega$就行了，即：</p>
-<p>$$<br>\begin{equation}<br>X(j\omega) &#x3D; \int_{-\infty}^{+\infty} X(j\tau) \delta(\omega-\tau) d \tau<br>\end{equation}<br>$$</p>
-<p>把$(6)$式改写一下：</p>
-<p>$$<br>\begin{equation}<br>X(j\omega) &#x3D; \int_{-\infty}^{+\infty} \frac{1}{2\pi} X(j\tau) 2\pi \delta(\omega-\tau) d \tau<br>\end{equation}<br>$$</p>
-<p>所以，我们可以这么理解连续的频谱$X(j\omega)$的意义：$X(j\omega)$可以表示成无数个脉冲函数的叠加，每个脉冲函数对应某个频率的信号，即，非周期连续函数也能表示成正弦信号的叠加，各频率信号所占的比重是脉冲的面积$X(j\omega)$的$1&#x2F;2\pi$倍。</p>
+<p><span class="math display">\[
+\begin{equation}
+x(t) = \frac{1}{2\pi} \int_{-\infty}^{+\infty} X(j \omega)e^{j \omega t}
+d \omega
+\end{equation}
+\]</span></p>
+<p><span class="math display">\[
+\begin{equation}
+X(j \omega) = \int_{-\infty}^{+\infty} x(t) e^{-j \omega t} d t
+\end{equation}
+\]</span></p>
+<p>我们首先假设某信号<span
+class="math inline">\(x(t)\)</span>的傅里叶变换是个脉冲函数，面积为<span
+class="math inline">\(2\pi\)</span>，出现在<span
+class="math inline">\(\omega = \omega_0\)</span>处，即：</p>
+<p><span class="math display">\[
+\begin{equation}
+X(j \omega) = 2\pi \delta(\omega - \omega_0)
+\end{equation}
+\]</span></p>
+<p>通过傅里叶反变换公式<span
+class="math inline">\((1)\)</span>可以求出对应的时域信号<span
+class="math inline">\(x(t)\)</span>：</p>
+<p><span class="math display">\[
+\begin{equation}
+x(t) = \frac{1}{2\pi} \int_{-\infty}^{+\infty} \delta(\omega - \omega_0)
+e^{j \omega t} d \omega = e^{j \omega_0 t}
+\end{equation}
+\]</span></p>
+<p><span class="math inline">\((4)\)</span>式表明，频域中的脉冲<span
+class="math inline">\(2\pi \delta(\omega -
+\omega_0)\)</span>是时域中的信号<span class="math inline">\(e^{j
+\omega_0 t}\)</span>的频谱。</p>
+<p>我们知道，时域中的信号<span
+class="math inline">\(x(t)\)</span>可以表示成脉冲<span
+class="math inline">\(\delta(t)\)</span>的叠加，可以用卷积来表示：</p>
+<p><span class="math display">\[
+\begin{equation}
+x(t) = \int_{-\infty}^{+\infty} x(\tau) \delta(t-\tau) d \tau
+\end{equation}
+\]</span></p>
+<p>这一点对频域信号<span class="math inline">\(X(j
+\omega)\)</span>也是适用的，把变量<span
+class="math inline">\(t\)</span>换成<span
+class="math inline">\(\omega\)</span>就行了，即：</p>
+<p><span class="math display">\[
+\begin{equation}
+X(j\omega) = \int_{-\infty}^{+\infty} X(j\tau) \delta(\omega-\tau) d
+\tau
+\end{equation}
+\]</span></p>
+<p>把<span class="math inline">\((6)\)</span>式改写一下：</p>
+<p><span class="math display">\[
+\begin{equation}
+X(j\omega) = \int_{-\infty}^{+\infty} \frac{1}{2\pi} X(j\tau) 2\pi
+\delta(\omega-\tau) d \tau
+\end{equation}
+\]</span></p>
+<p>所以，我们可以这么理解连续的频谱<span
+class="math inline">\(X(j\omega)\)</span>的意义：<span
+class="math inline">\(X(j\omega)\)</span>可以表示成无数个脉冲函数的叠加，每个脉冲函数对应某个频率的信号，即，非周期连续函数也能表示成正弦信号的叠加，各频率信号所占的比重是脉冲的面积<span
+class="math inline">\(X(j\omega)\)</span>的<span
+class="math inline">\(1/2\pi\)</span>倍。</p>
 
     </div>
 

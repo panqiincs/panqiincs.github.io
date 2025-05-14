@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="多项式矩阵相似标准型这部分内容的目的在于，找一类比较简单的矩阵，使任一同阶矩阵均与这类矩阵中的某一个相似。">
+    <meta name="description" content="多项式矩阵 相似标准型这部分内容的目的在于，找一类比较简单的矩阵，使任一同阶矩阵均与这类矩阵中的某一个相似。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性代数：相似标准型">
 <meta property="og:url" content="https://panqiincs.me/2023/08/16/la-canonical-form/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="多项式矩阵相似标准型这部分内容的目的在于，找一类比较简单的矩阵，使任一同阶矩阵均与这类矩阵中的某一个相似。">
+<meta property="og:description" content="多项式矩阵 相似标准型这部分内容的目的在于，找一类比较简单的矩阵，使任一同阶矩阵均与这类矩阵中的某一个相似。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-16T08:51:59.000Z">
 <meta property="article:modified_time" content="2023-08-18T13:32:16.861Z">
@@ -125,7 +125,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%9F%A9%E9%98%B5"><span class="nav-number">1.</span> <span class="nav-text">多项式矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E7%9A%84%E6%B3%95%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">矩阵的法式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%8F%98%E5%9B%A0%E5%AD%90"><span class="nav-number">3.</span> <span class="nav-text">不变因子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E7%90%86%E6%A0%87%E5%87%86%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">有理标准型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E7%AD%89%E5%9B%A0%E5%AD%90"><span class="nav-number">5.</span> <span class="nav-text">初等因子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jordan%E6%A0%87%E5%87%86%E5%9E%8B"><span class="nav-number">6.</span> <span class="nav-text">Jordan标准型</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%9F%A9%E9%98%B5"><span class="nav-number">1.</span> <span class="nav-text">多项式矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E7%9A%84%E6%B3%95%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">矩阵的法式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%8F%98%E5%9B%A0%E5%AD%90"><span class="nav-number">3.</span> <span class="nav-text">不变因子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E7%90%86%E6%A0%87%E5%87%86%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">有理标准型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E7%AD%89%E5%9B%A0%E5%AD%90"><span class="nav-number">5.</span> <span class="nav-text">初等因子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jordan%E6%A0%87%E5%87%86%E5%9E%8B"><span class="nav-number">6.</span> <span class="nav-text">Jordan标准型</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -298,37 +298,222 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="多项式矩阵"><a href="#多项式矩阵" class="headerlink" title="多项式矩阵"></a>多项式矩阵</h2><p>相似标准型这部分内容的目的在于，找一类比较简单的矩阵，使任一同阶矩阵均与这类矩阵中的某一个相似。</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="多项式矩阵">多项式矩阵</h2>
+<p>相似标准型这部分内容的目的在于，找一类比较简单的矩阵，使任一同阶矩阵均与这类矩阵中的某一个相似。</p>
 <span id="more"></span>
-
 <p>思路是首先找出相似矩阵的不变量，不仅在相似关系下保持不变，而且足以判断两个矩阵是否相似，这叫做<strong>全系不变量</strong>；然后找出一类比较简单的矩阵，利用全系不变量判断与这类矩阵中的某个相似。</p>
-<p>多项式矩阵，或$\lambda$-矩阵，指的是矩阵的元素$a_{ij}(\lambda)$是以$\lambda$为未定元的数域$\mathbb{K}$上的多项式。$\lambda$-矩阵的初等行（列）变换有3种，分别是两行（列）对换、某行（列）乘以非零常数$c$、某行（列）乘以多项式$f(\lambda)$后加到另一行（列）。$\lambda$-矩阵经初等变换得到的矩阵与原来矩阵相抵。3种初等变换对应的矩阵称为初等$\lambda$-矩阵。左（右）乘初等$\lambda$-矩阵等于初等行（列）变换。两个$\lambda$-矩阵相乘等于$\boldsymbol{I}_n$，则互为逆矩阵。</p>
-<p>得到重要的结论：数域$\mathbb{K}$上的矩阵$\boldsymbol{A}$与$\boldsymbol{B}$相似的充要条件是$\lambda$-矩阵$\lambda\boldsymbol{I}-\boldsymbol{A}$与$\lambda\boldsymbol{I}-\boldsymbol{B}$相抵。这里需要再强调下<strong>相似</strong>和<strong>相抵</strong>的区别，$\boldsymbol{A}$与$\boldsymbol{B}$相似则存在可逆阵$\boldsymbol{P}$使得$\boldsymbol{B}&#x3D;\boldsymbol{P}^{-1}\boldsymbol{A}\boldsymbol{P}$，$\lambda\boldsymbol{I}-\boldsymbol{A}$与$\lambda\boldsymbol{I}-\boldsymbol{B}$相抵则二者可以通过初等变换得到对方。相抵也可以称为等价。</p>
-<h2 id="矩阵的法式"><a href="#矩阵的法式" class="headerlink" title="矩阵的法式"></a>矩阵的法式</h2><p>现在求$\lambda$-矩阵的相抵标准型。任一$n$阶$\lambda$-矩阵$\boldsymbol{A}(\lambda)$相抵于对角阵<br>$$<br>\mathrm{diag}{d_1(\lambda),d_2(\lambda),\cdots,d_r(\lambda);0,\cdots,0}&#x3D;<br>\left(\begin{matrix}<br>  d_1(\lambda)  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;\<br>  &amp;  d_2(\lambda)  &amp;  &amp;  &amp;  &amp;  &amp;\<br>  &amp;  &amp;  \ddots  &amp;  &amp;  &amp;  &amp;\<br>  &amp;  &amp;  &amp;  d_r(\lambda)  &amp;  &amp;  &amp;\<br>  &amp;  &amp;  &amp;  &amp;  0  &amp;  &amp;\<br>  &amp;  &amp;  &amp;  &amp;  &amp;  \ddots &amp;\<br>  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  0\<br>\end{matrix}\right)<br>$$</p>
-<p>其中$d_i(\lambda)$是非零首一多项式且$d_i(\lambda) | d_{i+1}(\lambda),(i&#x3D;1,2,\cdots,r-1)$，这里的$r$称为$\boldsymbol{A}(\lambda)$的秩。需要注意，$\lambda$-矩阵的秩$r&#x3D;n$并不意味着它可逆。上面的对角$\lambda$-矩阵称为$\boldsymbol{A}(\lambda)$的<strong>法式</strong>或<strong>相抵标准型</strong>。</p>
-<p>数域$\mathbb{K}$上的$n$阶矩阵$\boldsymbol{A}$的特征矩阵$\lambda\boldsymbol{I}_n-\boldsymbol{A}$必相抵于<br>$$<br>\mathrm{diag}{1,\cdots,1,d_1(\lambda),\cdots,d_m(\lambda)}&#x3D;<br>\left(\begin{matrix}<br>  1  &amp;  &amp;  &amp;  &amp;  &amp;\<br>  &amp;  \ddots  &amp;  &amp;  &amp;  &amp;\<br>  &amp;  &amp;  1  &amp;  &amp;  &amp;\<br>  &amp;  &amp;  &amp;  d_1(\lambda)  &amp;  &amp;\<br>  &amp;  &amp;  &amp;  &amp;  \ddots  &amp;\<br>  &amp;  &amp;  &amp;  &amp;  &amp;  d_m(\lambda)\<br>\end{matrix}\right)<br>$$</p>
-<p>其中$d_i(\lambda) | d_{i+1}(\lambda),(i&#x3D;1,2,\cdots,m-1)$。$\lambda\boldsymbol{I}_n-\boldsymbol{A}$也是$\lambda$-矩阵，这个结论是一个特例。</p>
-<h2 id="不变因子"><a href="#不变因子" class="headerlink" title="不变因子"></a>不变因子</h2><p>$n$阶$\lambda$-矩阵$\boldsymbol{A}(\lambda)$的所有$k$阶子式的非零最大公因子（它是首一多项式）称为$\boldsymbol{A}(\lambda)$的$k$阶<strong>行列式因子</strong>，记为$D_k(\lambda)$。例如，下列矩阵<br>$$<br>\boldsymbol{A}(\lambda)&#x3D;<br>\left(\begin{matrix}<br>  d_1(\lambda)  &amp;  &amp;  &amp;  &amp;  &amp;\<br>  &amp;  \ddots  &amp;  &amp;  &amp;  &amp;\<br>  &amp;  &amp;  d_r(\lambda)  &amp;  &amp;  &amp;\<br>  &amp;  &amp;  &amp;  0  &amp;  &amp;\<br>  &amp;  &amp;  &amp;  &amp;  \ddots &amp;\<br>  &amp;  &amp;  &amp;  &amp;  &amp;  0\<br>\end{matrix}\right)<br>$$</p>
-<p>其中$d_i(\lambda)$为非零首一多项式且$d_i(\lambda) | d_{i+1}(\lambda),(i&#x3D;1,2,\cdots,r-1)$，它的非零行列式因子为<br>$$<br>D_1(\lambda)&#x3D;d_1(\lambda),,D_2(\lambda)&#x3D;d_1(\lambda)d_2(\lambda),,\cdots,,D_r(\lambda)&#x3D;d_1(\lambda) \cdots d_r(\lambda)<br>$$</p>
-<p>容易得到$D_i(\lambda) | D_{i+1}(\lambda),(i&#x3D;1,2,\cdots,r-1)$，相邻阶行列式因子的比称为$\boldsymbol{A}(\lambda)$的<strong>不变因子</strong>。上例中矩阵的不变因子为<br>$$<br>d_1(\lambda),d_2(\lambda),\cdots,d_r(\lambda)<br>$$</p>
-<p>相抵的$\lambda$-矩阵有相同的行列式因子，从而有相同的不变因子。矩阵的法式和不变因子相互唯一确定。两个$\lambda$-矩阵相抵当且仅当它们具有相同法式。所以，法式、行列式因子、不变因子都是$\lambda$-矩阵相抵的全系不变量。</p>
-<p>从前面一系列结论可以推出，数域$\mathbb{K}$上的$n$阶矩阵$\boldsymbol{A}$与$\boldsymbol{B}$相似的充要条件是它们的特征矩阵$\lambda\boldsymbol{I}-\boldsymbol{A}$与$\lambda\boldsymbol{I}-\boldsymbol{B}$具有相同的行列式因子或不变因子。</p>
-<h2 id="有理标准型"><a href="#有理标准型" class="headerlink" title="有理标准型"></a>有理标准型</h2><p>根据不变因子，可以构造矩阵的有理标准型或Frobenius标准型，分块对角阵上的每个分块都是个Frobenius块。</p>
-<h2 id="初等因子"><a href="#初等因子" class="headerlink" title="初等因子"></a>初等因子</h2><p>将不变因子$d_i(\lambda)$在数域$\mathbb{K}$上分解成不可约因式之积，即可得到<strong>初等因子</strong>。举个例子，假设9阶矩阵$\boldsymbol{A}$的不变因子组为<br>$$<br>1,\cdots,1,(\lambda-1)(\lambda^2+1),(\lambda-1)^2(\lambda^2+1)(\lambda^2+2),<br>$$</p>
-<p>则$\boldsymbol{A}$在有理数域上的初等因子组为<br>$$<br>\lambda-1,(\lambda-1)^2,\lambda^2+1,\lambda^2+1,\lambda^2-2,<br>$$</p>
-<p>$\boldsymbol{A}$在实数域上的初等因子组为<br>$$<br>\lambda-1,(\lambda-1)^2,\lambda^2+1,\lambda^2+1,\lambda+\sqrt{2},\lambda-\sqrt{2},<br>$$</p>
-<p>$\boldsymbol{A}$在复数域上的初等因子组为<br>$$<br>\lambda-1,(\lambda-1)^2,\lambda+i,\lambda+i,\lambda-i,\lambda-i,\lambda+\sqrt{2},\lambda-\sqrt{2},<br>$$</p>
-<p>如果已知上面实数域上这组初等因子组，想得到不变因子组，将多项式分类按降幂排列：<br>$$<br>\begin{align}<br>&amp; (\lambda-1)^2,\lambda-1;\<br>&amp; \lambda^2+1,\lambda^2+1;\<br>&amp; \lambda+\sqrt{2};\<br>&amp; \lambda-\sqrt{2}.\<br>\end{align}<br>$$</p>
-<p>分别将各列的元素相乘，得到<br>$$<br>d_2(\lambda)&#x3D;(\lambda-1)^2(\lambda^2+1)(\lambda^2+2),,d_1(\lambda)&#x3D;(\lambda-1)(\lambda^2+1)<br>$$</p>
-<p>其余的7个全部为$1$，与前面的结果相符。</p>
+<p>多项式矩阵，或<span
+class="math inline">\(\lambda\)</span>-矩阵，指的是矩阵的元素<span
+class="math inline">\(a_{ij}(\lambda)\)</span>是以<span
+class="math inline">\(\lambda\)</span>为未定元的数域<span
+class="math inline">\(\mathbb{K}\)</span>上的多项式。<span
+class="math inline">\(\lambda\)</span>-矩阵的初等行（列）变换有3种，分别是两行（列）对换、某行（列）乘以非零常数<span
+class="math inline">\(c\)</span>、某行（列）乘以多项式<span
+class="math inline">\(f(\lambda)\)</span>后加到另一行（列）。<span
+class="math inline">\(\lambda\)</span>-矩阵经初等变换得到的矩阵与原来矩阵相抵。3种初等变换对应的矩阵称为初等<span
+class="math inline">\(\lambda\)</span>-矩阵。左（右）乘初等<span
+class="math inline">\(\lambda\)</span>-矩阵等于初等行（列）变换。两个<span
+class="math inline">\(\lambda\)</span>-矩阵相乘等于<span
+class="math inline">\(\boldsymbol{I}_n\)</span>，则互为逆矩阵。</p>
+<p>得到重要的结论：数域<span
+class="math inline">\(\mathbb{K}\)</span>上的矩阵<span
+class="math inline">\(\boldsymbol{A}\)</span>与<span
+class="math inline">\(\boldsymbol{B}\)</span>相似的充要条件是<span
+class="math inline">\(\lambda\)</span>-矩阵<span
+class="math inline">\(\lambda\boldsymbol{I}-\boldsymbol{A}\)</span>与<span
+class="math inline">\(\lambda\boldsymbol{I}-\boldsymbol{B}\)</span>相抵。这里需要再强调下<strong>相似</strong>和<strong>相抵</strong>的区别，<span
+class="math inline">\(\boldsymbol{A}\)</span>与<span
+class="math inline">\(\boldsymbol{B}\)</span>相似则存在可逆阵<span
+class="math inline">\(\boldsymbol{P}\)</span>使得<span
+class="math inline">\(\boldsymbol{B}=\boldsymbol{P}^{-1}\boldsymbol{A}\boldsymbol{P}\)</span>，<span
+class="math inline">\(\lambda\boldsymbol{I}-\boldsymbol{A}\)</span>与<span
+class="math inline">\(\lambda\boldsymbol{I}-\boldsymbol{B}\)</span>相抵则二者可以通过初等变换得到对方。相抵也可以称为等价。</p>
+<h2 id="矩阵的法式">矩阵的法式</h2>
+<p>现在求<span
+class="math inline">\(\lambda\)</span>-矩阵的相抵标准型。任一<span
+class="math inline">\(n\)</span>阶<span
+class="math inline">\(\lambda\)</span>-矩阵<span
+class="math inline">\(\boldsymbol{A}(\lambda)\)</span>相抵于对角阵 <span
+class="math display">\[
+\mathrm{diag}\{d_1(\lambda),d_2(\lambda),\cdots,d_r(\lambda);0,\cdots,0\}=
+\left(\begin{matrix}
+  d_1(\lambda)  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;\\
+  &amp;  d_2(\lambda)  &amp;  &amp;  &amp;  &amp;  &amp;\\
+  &amp;  &amp;  \ddots  &amp;  &amp;  &amp;  &amp;\\
+  &amp;  &amp;  &amp;  d_r(\lambda)  &amp;  &amp;  &amp;\\
+  &amp;  &amp;  &amp;  &amp;  0  &amp;  &amp;\\
+  &amp;  &amp;  &amp;  &amp;  &amp;  \ddots &amp;\\
+  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  0\\
+\end{matrix}\right)
+\]</span></p>
+<p>其中<span
+class="math inline">\(d_i(\lambda)\)</span>是非零首一多项式且<span
+class="math inline">\(d_i(\lambda) |
+d_{i+1}(\lambda)\,(i=1,2,\cdots,r-1)\)</span>，这里的<span
+class="math inline">\(r\)</span>称为<span
+class="math inline">\(\boldsymbol{A}(\lambda)\)</span>的秩。需要注意，<span
+class="math inline">\(\lambda\)</span>-矩阵的秩<span
+class="math inline">\(r=n\)</span>并不意味着它可逆。上面的对角<span
+class="math inline">\(\lambda\)</span>-矩阵称为<span
+class="math inline">\(\boldsymbol{A}(\lambda)\)</span>的<strong>法式</strong>或<strong>相抵标准型</strong>。</p>
+<p>数域<span class="math inline">\(\mathbb{K}\)</span>上的<span
+class="math inline">\(n\)</span>阶矩阵<span
+class="math inline">\(\boldsymbol{A}\)</span>的特征矩阵<span
+class="math inline">\(\lambda\boldsymbol{I}_n-\boldsymbol{A}\)</span>必相抵于
+<span class="math display">\[
+\mathrm{diag}\{1,\cdots,1,d_1(\lambda),\cdots,d_m(\lambda)\}=
+\left(\begin{matrix}
+  1  &amp;  &amp;  &amp;  &amp;  &amp;\\
+  &amp;  \ddots  &amp;  &amp;  &amp;  &amp;\\
+  &amp;  &amp;  1  &amp;  &amp;  &amp;\\
+  &amp;  &amp;  &amp;  d_1(\lambda)  &amp;  &amp;\\
+  &amp;  &amp;  &amp;  &amp;  \ddots  &amp;\\
+  &amp;  &amp;  &amp;  &amp;  &amp;  d_m(\lambda)\\
+\end{matrix}\right)
+\]</span></p>
+<p>其中<span class="math inline">\(d_i(\lambda) |
+d_{i+1}(\lambda)\,(i=1,2,\cdots,m-1)\)</span>。<span
+class="math inline">\(\lambda\boldsymbol{I}_n-\boldsymbol{A}\)</span>也是<span
+class="math inline">\(\lambda\)</span>-矩阵，这个结论是一个特例。</p>
+<h2 id="不变因子">不变因子</h2>
+<p><span class="math inline">\(n\)</span>阶<span
+class="math inline">\(\lambda\)</span>-矩阵<span
+class="math inline">\(\boldsymbol{A}(\lambda)\)</span>的所有<span
+class="math inline">\(k\)</span>阶子式的非零最大公因子（它是首一多项式）称为<span
+class="math inline">\(\boldsymbol{A}(\lambda)\)</span>的<span
+class="math inline">\(k\)</span>阶<strong>行列式因子</strong>，记为<span
+class="math inline">\(D_k(\lambda)\)</span>。例如，下列矩阵 <span
+class="math display">\[
+\boldsymbol{A}(\lambda)=
+\left(\begin{matrix}
+  d_1(\lambda)  &amp;  &amp;  &amp;  &amp;  &amp;\\
+  &amp;  \ddots  &amp;  &amp;  &amp;  &amp;\\
+  &amp;  &amp;  d_r(\lambda)  &amp;  &amp;  &amp;\\
+  &amp;  &amp;  &amp;  0  &amp;  &amp;\\
+  &amp;  &amp;  &amp;  &amp;  \ddots &amp;\\
+  &amp;  &amp;  &amp;  &amp;  &amp;  0\\
+\end{matrix}\right)
+\]</span></p>
+<p>其中<span
+class="math inline">\(d_i(\lambda)\)</span>为非零首一多项式且<span
+class="math inline">\(d_i(\lambda) |
+d_{i+1}(\lambda)\,(i=1,2,\cdots,r-1)\)</span>，它的非零行列式因子为
+<span class="math display">\[
+D_1(\lambda)=d_1(\lambda),\,D_2(\lambda)=d_1(\lambda)d_2(\lambda),\,\cdots,\,D_r(\lambda)=d_1(\lambda)
+\cdots d_r(\lambda)
+\]</span></p>
+<p>容易得到<span class="math inline">\(D_i(\lambda) |
+D_{i+1}(\lambda)\,(i=1,2,\cdots,r-1)\)</span>，相邻阶行列式因子的比称为<span
+class="math inline">\(\boldsymbol{A}(\lambda)\)</span>的<strong>不变因子</strong>。上例中矩阵的不变因子为
+<span class="math display">\[
+d_1(\lambda),d_2(\lambda),\cdots,d_r(\lambda)
+\]</span></p>
+<p>相抵的<span
+class="math inline">\(\lambda\)</span>-矩阵有相同的行列式因子，从而有相同的不变因子。矩阵的法式和不变因子相互唯一确定。两个<span
+class="math inline">\(\lambda\)</span>-矩阵相抵当且仅当它们具有相同法式。所以，法式、行列式因子、不变因子都是<span
+class="math inline">\(\lambda\)</span>-矩阵相抵的全系不变量。</p>
+<p>从前面一系列结论可以推出，数域<span
+class="math inline">\(\mathbb{K}\)</span>上的<span
+class="math inline">\(n\)</span>阶矩阵<span
+class="math inline">\(\boldsymbol{A}\)</span>与<span
+class="math inline">\(\boldsymbol{B}\)</span>相似的充要条件是它们的特征矩阵<span
+class="math inline">\(\lambda\boldsymbol{I}-\boldsymbol{A}\)</span>与<span
+class="math inline">\(\lambda\boldsymbol{I}-\boldsymbol{B}\)</span>具有相同的行列式因子或不变因子。</p>
+<h2 id="有理标准型">有理标准型</h2>
+<p>根据不变因子，可以构造矩阵的有理标准型或Frobenius标准型，分块对角阵上的每个分块都是个Frobenius块。</p>
+<h2 id="初等因子">初等因子</h2>
+<p>将不变因子<span
+class="math inline">\(d_i(\lambda)\)</span>在数域<span
+class="math inline">\(\mathbb{K}\)</span>上分解成不可约因式之积，即可得到<strong>初等因子</strong>。举个例子，假设9阶矩阵<span
+class="math inline">\(\boldsymbol{A}\)</span>的不变因子组为 <span
+class="math display">\[
+1,\cdots,1,(\lambda-1)(\lambda^2+1),(\lambda-1)^2(\lambda^2+1)(\lambda^2+2),
+\]</span></p>
+<p>则<span
+class="math inline">\(\boldsymbol{A}\)</span>在有理数域上的初等因子组为
+<span class="math display">\[
+\lambda-1,(\lambda-1)^2,\lambda^2+1,\lambda^2+1,\lambda^2-2,
+\]</span></p>
+<p><span
+class="math inline">\(\boldsymbol{A}\)</span>在实数域上的初等因子组为
+<span class="math display">\[
+\lambda-1,(\lambda-1)^2,\lambda^2+1,\lambda^2+1,\lambda+\sqrt{2},\lambda-\sqrt{2},
+\]</span></p>
+<p><span
+class="math inline">\(\boldsymbol{A}\)</span>在复数域上的初等因子组为
+<span class="math display">\[
+\lambda-1,(\lambda-1)^2,\lambda+i,\lambda+i,\lambda-i,\lambda-i,\lambda+\sqrt{2},\lambda-\sqrt{2},
+\]</span></p>
+<p>如果已知上面实数域上这组初等因子组，想得到不变因子组，将多项式分类按降幂排列：
+<span class="math display">\[
+\begin{align}
+&amp; (\lambda-1)^2,\lambda-1;\\
+&amp; \lambda^2+1,\lambda^2+1;\\
+&amp; \lambda+\sqrt{2};\\
+&amp; \lambda-\sqrt{2}.\\
+\end{align}
+\]</span></p>
+<p>分别将各列的元素相乘，得到 <span class="math display">\[
+d_2(\lambda)=(\lambda-1)^2(\lambda^2+1)(\lambda^2+2),\,d_1(\lambda)=(\lambda-1)(\lambda^2+1)
+\]</span></p>
+<p>其余的7个全部为<span
+class="math inline">\(1\)</span>，与前面的结果相符。</p>
 <p>利用初等因子组可以得到比有理标准型更精细的标准型，对每个初等因子都可以构造一个初等因子组就是它的简单矩阵，再将所有这样的矩阵拼成一个分块对角阵就得到标准型，这就是后面要介绍的Jordan标准型。</p>
-<h2 id="Jordan标准型"><a href="#Jordan标准型" class="headerlink" title="Jordan标准型"></a>Jordan标准型</h2><p>复数域上的初等因子都是一次因子的幂，一定具有$(\lambda-\lambda_0)^r$的形状，$\lambda_0$是矩阵的特征值。下列$r$阶矩阵<br>$$<br>\boldsymbol{J}&#x3D;<br>\left(\begin{matrix}<br>  \lambda_0  &amp; 1 &amp;  &amp;  &amp;\<br>  &amp;  \lambda_0  &amp; 1 &amp;  &amp;\<br>  &amp;  &amp;  \ddots &amp; \ddots &amp;\<br>  &amp;  &amp;  &amp;  \ddots  &amp;  1\<br>  &amp;  &amp;  &amp;  &amp;  \lambda_0\<br>\end{matrix}\right)<br>$$</p>
-<p>的初等因子组为$(\lambda-\lambda_0)^r$。</p>
-<p>复数域上的矩阵$\boldsymbol{A}$的初等因子组为<br>$$<br>(\lambda-\lambda_1)^{r_1},(\lambda-\lambda_2)^{r_2},\cdots,(\lambda-\lambda_k)^{r_k}<br>$$</p>
-<p>则$\boldsymbol{A}$相似于如下分块对角阵（Jordan标准型）<br>$$<br>\boldsymbol{J}&#x3D;<br>\left(\begin{matrix}<br>  \boldsymbol{J}_1 &amp;  &amp;  &amp;\<br>  &amp;  \boldsymbol{J}_2  &amp;  &amp;\<br>  &amp;  &amp;  \ddots  &amp;\<br>  &amp;  &amp;  &amp;  \boldsymbol{J}_k\<br>\end{matrix}\right)<br>$$</p>
-<p>其中$\boldsymbol{J}_i$为$r_i$阶矩阵，且<br>$$<br>\boldsymbol{J}_i&#x3D;<br>\left(\begin{matrix}<br>  \lambda_i  &amp; 1 &amp;  &amp;  &amp;\<br>  &amp;  \lambda_i  &amp; 1 &amp;  &amp;\<br>  &amp;  &amp;  \ddots &amp; \ddots &amp;\<br>  &amp;  &amp;  &amp;  \ddots  &amp;  1\<br>  &amp;  &amp;  &amp;  &amp;  \lambda_i\<br>\end{matrix}\right)<br>$$</p>
-<p>所以，我们得到了如下重要结论：$\boldsymbol{\varphi}$是复数域上线性空间$V$上的线性变换，则必存在$V$的一组基，使得$\boldsymbol{\varphi}$在这组基下的表示矩阵为Jordan标准型。<a href="https://panqiincs.me/2023/08/15/la-eigenvalue/">线性代数：特征值</a>一文中的相似于对角矩阵是上面结论的特殊情况，当矩阵的初等因子都是一次多项式或矩阵极小多项式无重根时，则该矩阵可以对角化。</p>
-<p>类似地，$V$上的线性变换$\boldsymbol{\varphi}$可以对角化当且仅当$\boldsymbol{\varphi}$的极小多项式无重根，当且仅当$\boldsymbol{\varphi}$的初等因子都是一次多项式。也就是说，可以找到一组基，使得线性变换$\boldsymbol{\varphi}$在这组基下的表示矩阵为Jordan标准型。</p>
+<h2 id="jordan标准型">Jordan标准型</h2>
+<p>复数域上的初等因子都是一次因子的幂，一定具有<span
+class="math inline">\((\lambda-\lambda_0)^r\)</span>的形状，<span
+class="math inline">\(\lambda_0\)</span>是矩阵的特征值。下列<span
+class="math inline">\(r\)</span>阶矩阵 <span class="math display">\[
+\boldsymbol{J}=
+\left(\begin{matrix}
+  \lambda_0  &amp; 1 &amp;  &amp;  &amp;\\
+  &amp;  \lambda_0  &amp; 1 &amp;  &amp;\\
+  &amp;  &amp;  \ddots &amp; \ddots &amp;\\
+  &amp;  &amp;  &amp;  \ddots  &amp;  1\\
+  &amp;  &amp;  &amp;  &amp;  \lambda_0\\
+\end{matrix}\right)
+\]</span></p>
+<p>的初等因子组为<span
+class="math inline">\((\lambda-\lambda_0)^r\)</span>。</p>
+<p>复数域上的矩阵<span
+class="math inline">\(\boldsymbol{A}\)</span>的初等因子组为 <span
+class="math display">\[
+(\lambda-\lambda_1)^{r_1},(\lambda-\lambda_2)^{r_2},\cdots,(\lambda-\lambda_k)^{r_k}
+\]</span></p>
+<p>则<span
+class="math inline">\(\boldsymbol{A}\)</span>相似于如下分块对角阵（Jordan标准型）
+<span class="math display">\[
+\boldsymbol{J}=
+\left(\begin{matrix}
+  \boldsymbol{J}_1 &amp;  &amp;  &amp;\\
+  &amp;  \boldsymbol{J}_2  &amp;  &amp;\\
+  &amp;  &amp;  \ddots  &amp;\\
+  &amp;  &amp;  &amp;  \boldsymbol{J}_k\\
+\end{matrix}\right)
+\]</span></p>
+<p>其中<span class="math inline">\(\boldsymbol{J}_i\)</span>为<span
+class="math inline">\(r_i\)</span>阶矩阵，且 <span
+class="math display">\[
+\boldsymbol{J}_i=
+\left(\begin{matrix}
+  \lambda_i  &amp; 1 &amp;  &amp;  &amp;\\
+  &amp;  \lambda_i  &amp; 1 &amp;  &amp;\\
+  &amp;  &amp;  \ddots &amp; \ddots &amp;\\
+  &amp;  &amp;  &amp;  \ddots  &amp;  1\\
+  &amp;  &amp;  &amp;  &amp;  \lambda_i\\
+\end{matrix}\right)
+\]</span></p>
+<p>所以，我们得到了如下重要结论：<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>是复数域上线性空间<span
+class="math inline">\(V\)</span>上的线性变换，则必存在<span
+class="math inline">\(V\)</span>的一组基，使得<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>在这组基下的表示矩阵为Jordan标准型。<a
+href="https://panqiincs.me/2023/08/15/la-eigenvalue/">线性代数：特征值</a>一文中的相似于对角矩阵是上面结论的特殊情况，当矩阵的初等因子都是一次多项式或矩阵极小多项式无重根时，则该矩阵可以对角化。</p>
+<p>类似地，<span class="math inline">\(V\)</span>上的线性变换<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>可以对角化当且仅当<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>的极小多项式无重根，当且仅当<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>的初等因子都是一次多项式。也就是说，可以找到一组基，使得线性变换<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>在这组基下的表示矩阵为Jordan标准型。</p>
 
     </div>
 

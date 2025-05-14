@@ -21,22 +21,19 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="引言本文是我在学习四旋翼飞行器建模时做的笔记，主要参考这个项目的文档。文中对基础力学知识进行了必要的阐述，虽不够详尽，但应足以辅助形象理解。">
+    <meta name="description" content="引言 本文是我在学习四旋翼飞行器建模时做的笔记，主要参考这个项目的文档。文中对基础力学知识进行了必要的阐述，虽不够详尽，但应足以辅助形象理解。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="四旋翼飞行器的建模">
 <meta property="og:url" content="https://panqiincs.me/2025/03/18/quadrotor-dynamics/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="引言本文是我在学习四旋翼飞行器建模时做的笔记，主要参考这个项目的文档。文中对基础力学知识进行了必要的阐述，虽不够详尽，但应足以辅助形象理解。">
+<meta property="og:description" content="引言 本文是我在学习四旋翼飞行器建模时做的笔记，主要参考这个项目的文档。文中对基础力学知识进行了必要的阐述，虽不够详尽，但应足以辅助形象理解。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/uav_model_frames.svg">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/uav_model_rotations.svg">
 <meta property="article:published_time" content="2025-03-18T05:03:20.000Z">
 <meta property="article:modified_time" content="2025-05-11T07:59:18.741Z">
 <meta property="article:author" content="辛未羊">
 <meta property="article:tag" content="控制理论">
 <meta property="article:tag" content="四旋翼">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/uav_model_frames.svg">
 
 
 <link rel="canonical" href="https://panqiincs.me/2025/03/18/quadrotor-dynamics/">
@@ -301,69 +298,356 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>本文是我在学习四旋翼飞行器建模时做的笔记，主要参考<a target="_blank" rel="noopener" href="https://github.com/yrlu/quadrotor">这个项目</a>的文档。文中对基础力学知识进行了必要的阐述，虽不够详尽，但应足以辅助形象理解。</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="引言">引言</h2>
+<p>本文是我在学习四旋翼飞行器建模时做的笔记，主要参考<a
+target="_blank" rel="noopener" href="https://github.com/yrlu/quadrotor">这个项目</a>的文档。文中对基础力学知识进行了必要的阐述，虽不够详尽，但应足以辅助形象理解。</p>
 <span id="more"></span>
-
-<h2 id="坐标轴和参考系"><a href="#坐标轴和参考系" class="headerlink" title="坐标轴和参考系"></a>坐标轴和参考系</h2><p>在四旋翼无人机的建模中，定义两种主要的坐标系，<strong>惯性坐标系</strong>和<strong>机体坐标系</strong>。惯性坐标系$\mathcal{A}$由$\mathbf{a}_1$、$\mathbf{a}_2$和$\mathbf{a}_3$定义，其中$\mathbf{a}_3$指向上方。惯性坐标系相当于在地面上观察无人机时所使用的固定坐标系。机体坐标系$\mathcal{B}$附着在无人机的重心$C$上，随着无人机的运动而运动。$\mathbf{b}_1$轴通常指向无人机的正前方，$\mathbf{b}_3$轴垂直于旋翼平面，无人机悬停时$\mathbf{b}_3$指向正上方。机体坐标系用于描述无人机自身各个部件的相对位置和运动。</p>
-<h2 id="惯性特征"><a href="#惯性特征" class="headerlink" title="惯性特征"></a>惯性特征</h2><p>质量是物体抵抗「平动」的能力，而<strong>转动惯量</strong>则是物体抵抗「旋转」的能力。例如，一根长棍子，绕中心旋转容易（转动惯量小），绕端点旋转难（转动惯量大）。</p>
-<p>惯性积描述绕不同轴的旋转之间的耦合效应。由于$\mathbf{b}_i$是主轴，四旋翼绕这些轴旋转时，不会产生交叉的惯性积（类似「不同方向的力不互相干扰」），因此相对于质心的惯性矩阵$I$在$\mathbf{b}_i$坐标系下是一个对角矩阵：</p>
-<p>$$<br>I &#x3D; \begin{bmatrix}<br>绕 \mathbf{b}_1 的转动惯量 &amp; 0 &amp; 0 \<br>0 &amp; 绕 \mathbf{b}_2 的转动惯量 &amp; 0 \<br>0 &amp; 0 &amp; 绕 \mathbf{b}_3 的转动惯量<br>\end{bmatrix}<br>$$</p>
-<p>转动惯量矩阵是对角矩阵时，旋转动力学方程解耦，运动更加简单。从文档中给的实际数值看，绕$\mathbf{b}_3$的转动惯量最大，所以四旋翼绕垂直轴$\mathbf{b}_3$旋转更难，因为四个电机分布在平面内，远离旋转轴。</p>
-<h2 id="电机模型"><a href="#电机模型" class="headerlink" title="电机模型"></a>电机模型</h2><p>回顾<strong>力矩</strong>的概念，力矩描述力对物体产生旋转效果的能力，是力与力臂的叉乘：$\tau &#x3D; r \times F$。其中，$r$是从转动轴到力作用点的位置矢量，$F$是施加的力，向量叉乘$\times$的方向由<strong>右手定则</strong>确定。用扳手拧螺丝时，力越大（$F$越大），或扳手越长（$r$越大），拧螺丝越容易（力矩$\tau$越大）。如果垂直于扳手施力，力矩最大；如果斜着推，力矩会减小（因为只有垂直分量的力有效）。</p>
-<p>记旋翼角速度为$\omega_i$，它的方向由<strong>右手定则</strong>判定。图1中，逆时针转时方向朝上（$+\mathbf{b}_3$方向），顺时针转时方向朝下（$-\mathbf{b}_3$方向）。旋翼旋转产生垂直推力$F_i &#x3D; k_F \omega_i^2$，<strong>推力方向始终朝上（$+\mathbf{b}_3$方向）</strong>，与旋翼旋转方向无关（仅由桨叶攻角决定）。同时，旋翼旋转时，空气反作用产生反扭矩$M_i &#x3D; k_M \omega_i^2$，**反扭矩方向与角速度矢量$\omega_i$方向相反。**电机的响应特性可以用一阶微分方程描述：</p>
-<p>$$<br>\dot{\omega}_i &#x3D; k_m (\omega_i^{\text{des}} - \omega_i)<br>$$</p>
-<p>其中$k_F$、$k_M$、$k_m$均为参数。建模时可以假设电机控制器是理想的，即实际电机速度${\omega}_i$等于指令电机速度${\omega}_i^{\text{des}}$。</p>
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/uav_model_frames.svg" alt="图1 四旋翼飞行器的坐标系"></p>
-<h2 id="刚体动力学"><a href="#刚体动力学" class="headerlink" title="刚体动力学"></a>刚体动力学</h2><h3 id="运动学"><a href="#运动学" class="headerlink" title="运动学"></a>运动学</h3><p>四旋翼飞行器的姿态转换采用Z-X-Y欧拉角体系描述。从惯性坐标系$\mathcal{A}$到机体坐标系为$\mathcal{B}$的坐标系转换通过三次基本旋转实现：</p>
-<ol>
-<li><strong>偏航角</strong>旋转：绕$\mathcal{A}$的Z轴（$\mathbf{a}_3$）旋转$\psi$角（<strong>yaw</strong>），得到中间坐标系$\mathcal{E}$，对应旋转矩阵$R_z(\psi)$</li>
-<li><strong>滚转角</strong>旋转：绕$\mathcal{E}$的X轴（$\mathbf{e}_1$）旋转$\phi$角（<strong>roll</strong>），得到中间坐标系$\mathcal{F}$，对应旋转矩阵$R_x(\phi)$</li>
-<li><strong>俯仰角</strong>旋转：绕$\mathcal{F}$的Y轴（$\mathbf{f}_2$）旋转$\theta$角（<strong>pitch</strong>），最终得到机体坐标系$\mathcal{B}$，对应旋转矩阵$R_y(\theta)$</li>
+<h2 id="坐标轴和参考系">坐标轴和参考系</h2>
+<p>在四旋翼无人机的建模中，定义两种主要的坐标系，<strong>惯性坐标系</strong>和<strong>机体坐标系</strong>。惯性坐标系<span
+class="math inline">\(\mathcal{A}\)</span>由<span
+class="math inline">\(\mathbf{a}_1\)</span>、<span
+class="math inline">\(\mathbf{a}_2\)</span>和<span
+class="math inline">\(\mathbf{a}_3\)</span>定义，其中<span
+class="math inline">\(\mathbf{a}_3\)</span>指向上方。惯性坐标系相当于在地面上观察无人机时所使用的固定坐标系。机体坐标系<span
+class="math inline">\(\mathcal{B}\)</span>附着在无人机的重心<span
+class="math inline">\(C\)</span>上，随着无人机的运动而运动。<span
+class="math inline">\(\mathbf{b}_1\)</span>轴通常指向无人机的正前方，<span
+class="math inline">\(\mathbf{b}_3\)</span>轴垂直于旋翼平面，无人机悬停时<span
+class="math inline">\(\mathbf{b}_3\)</span>指向正上方。机体坐标系用于描述无人机自身各个部件的相对位置和运动。</p>
+<h2 id="惯性特征">惯性特征</h2>
+<p>质量是物体抵抗「平动」的能力，而<strong>转动惯量</strong>则是物体抵抗「旋转」的能力。例如，一根长棍子，绕中心旋转容易（转动惯量小），绕端点旋转难（转动惯量大）。</p>
+<p>惯性积描述绕不同轴的旋转之间的耦合效应。由于<span
+class="math inline">\(\mathbf{b}_i\)</span>是主轴，四旋翼绕这些轴旋转时，不会产生交叉的惯性积（类似「不同方向的力不互相干扰」），因此相对于质心的惯性矩阵<span
+class="math inline">\(I\)</span>在<span
+class="math inline">\(\mathbf{b}_i\)</span>坐标系下是一个对角矩阵：</p>
+<p><span class="math display">\[
+I = \begin{bmatrix}
+绕 \mathbf{b}_1 的转动惯量 &amp; 0 &amp; 0 \\
+0 &amp; 绕 \mathbf{b}_2 的转动惯量 &amp; 0 \\
+0 &amp; 0 &amp; 绕 \mathbf{b}_3 的转动惯量
+\end{bmatrix}
+\]</span></p>
+<p>转动惯量矩阵是对角矩阵时，旋转动力学方程解耦，运动更加简单。从文档中给的实际数值看，绕<span
+class="math inline">\(\mathbf{b}_3\)</span>的转动惯量最大，所以四旋翼绕垂直轴<span
+class="math inline">\(\mathbf{b}_3\)</span>旋转更难，因为四个电机分布在平面内，远离旋转轴。</p>
+<h2 id="电机模型">电机模型</h2>
+<p>回顾<strong>力矩</strong>的概念，力矩描述力对物体产生旋转效果的能力，是力与力臂的叉乘：<span
+class="math inline">\(\tau = r \times F\)</span>。其中，<span
+class="math inline">\(r\)</span>是从转动轴到力作用点的位置矢量，<span
+class="math inline">\(F\)</span>是施加的力，向量叉乘<span
+class="math inline">\(\times\)</span>的方向由<strong>右手定则</strong>确定。用扳手拧螺丝时，力越大（<span
+class="math inline">\(F\)</span>越大），或扳手越长（<span
+class="math inline">\(r\)</span>越大），拧螺丝越容易（力矩<span
+class="math inline">\(\tau\)</span>越大）。如果垂直于扳手施力，力矩最大；如果斜着推，力矩会减小（因为只有垂直分量的力有效）。</p>
+<p>记旋翼角速度为<span
+class="math inline">\(\omega_i\)</span>，它的方向由<strong>右手定则</strong>判定。图1中，逆时针转时方向朝上（<span
+class="math inline">\(+\mathbf{b}_3\)</span>方向），顺时针转时方向朝下（<span
+class="math inline">\(-\mathbf{b}_3\)</span>方向）。旋翼旋转产生垂直推力<span
+class="math inline">\(F_i = k_F
+\omega_i^2\)</span>，<strong>推力方向始终朝上（<span
+class="math inline">\(+\mathbf{b}_3\)</span>方向）</strong>，与旋翼旋转方向无关（仅由桨叶攻角决定）。同时，旋翼旋转时，空气反作用产生反扭矩<span
+class="math inline">\(M_i = k_M
+\omega_i^2\)</span>，<strong>反扭矩方向与角速度矢量<span
+class="math inline">\(\omega_i\)</span>方向相反。</strong>电机的响应特性可以用一阶微分方程描述：</p>
+<p><span class="math display">\[
+\dot{\omega}_i = k_m (\omega_i^{\text{des}} - \omega_i)
+\]</span></p>
+<p>其中<span class="math inline">\(k_F\)</span>、<span
+class="math inline">\(k_M\)</span>、<span
+class="math inline">\(k_m\)</span>均为参数。建模时可以假设电机控制器是理想的，即实际电机速度<span
+class="math inline">\({\omega}_i\)</span>等于指令电机速度<span
+class="math inline">\({\omega}_i^{\text{des}}\)</span>。</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/uav_model_frames.svg"
+alt="图1 四旋翼飞行器的坐标系" />
+<figcaption aria-hidden="true">图1 四旋翼飞行器的坐标系</figcaption>
+</figure>
+<h2 id="刚体动力学">刚体动力学</h2>
+<h3 id="运动学">运动学</h3>
+<p>四旋翼飞行器的姿态转换采用Z-X-Y欧拉角体系描述。从惯性坐标系<span
+class="math inline">\(\mathcal{A}\)</span>到机体坐标系为<span
+class="math inline">\(\mathcal{B}\)</span>的坐标系转换通过三次基本旋转实现：</p>
+<ol type="1">
+<li><strong>偏航角</strong>旋转：绕<span
+class="math inline">\(\mathcal{A}\)</span>的Z轴（<span
+class="math inline">\(\mathbf{a}_3\)</span>）旋转<span
+class="math inline">\(\psi\)</span>角（<strong>yaw</strong>），得到中间坐标系<span
+class="math inline">\(\mathcal{E}\)</span>，对应旋转矩阵<span
+class="math inline">\(R_z(\psi)\)</span></li>
+<li><strong>滚转角</strong>旋转：绕<span
+class="math inline">\(\mathcal{E}\)</span>的X轴（<span
+class="math inline">\(\mathbf{e}_1\)</span>）旋转<span
+class="math inline">\(\phi\)</span>角（<strong>roll</strong>），得到中间坐标系<span
+class="math inline">\(\mathcal{F}\)</span>，对应旋转矩阵<span
+class="math inline">\(R_x(\phi)\)</span></li>
+<li><strong>俯仰角</strong>旋转：绕<span
+class="math inline">\(\mathcal{F}\)</span>的Y轴（<span
+class="math inline">\(\mathbf{f}_2\)</span>）旋转<span
+class="math inline">\(\theta\)</span>角（<strong>pitch</strong>），最终得到机体坐标系<span
+class="math inline">\(\mathcal{B}\)</span>，对应旋转矩阵<span
+class="math inline">\(R_y(\theta)\)</span></li>
 </ol>
-<p>各基本旋转矩阵定义如下（$c_\alpha \equiv \cos\alpha$，$s_\alpha \equiv \sin\alpha$）：</p>
-<p>$$<br>\begin{aligned}<br>R_x(\phi) &amp;&#x3D; \begin{bmatrix}<br>1 &amp; 0 &amp; 0 \<br>0 &amp; c_\phi &amp; -s_\phi \<br>0 &amp; s_\phi &amp; c_\phi<br>\end{bmatrix}, \quad<br>R_y(\theta) &#x3D; \begin{bmatrix}<br>c_\theta &amp; 0 &amp; s_\theta \<br>0 &amp; 1 &amp; 0 \<br>-s_\theta &amp; 0 &amp; c_\theta<br>\end{bmatrix}, \<br>R_z(\psi) &amp;&#x3D; \begin{bmatrix}<br>c_\psi &amp; -s_\psi &amp; 0 \<br>s_\psi &amp; c_\psi &amp; 0 \<br>0 &amp; 0 &amp; 1<br>\end{bmatrix}.<br>\end{aligned}<br>$$</p>
-<p>这里先介绍<strong>坐标变换</strong>基本原理。设向量在惯性坐标系$\mathcal{A}$中的坐标表示为$^\mathcal{A}\mathbf{p}$，当坐标系$\mathcal{A}$旋转角度$\alpha$后得到新坐标系$\mathcal{B}$，同一向量在$\mathcal{B}$中的坐标表示为$^\mathcal{B}\mathbf{p}$，二者的坐标变换关系由旋转矩阵$R(\alpha)$建立：</p>
-<p>$$<br>{}^\mathcal{A}\mathbf{p} &#x3D; R(\alpha) \cdot {}^\mathcal{B}\mathbf{p}<br>$$</p>
-<p>所以，将机体坐标系$\mathcal{B}$中的坐标左乘旋转矩阵$R(\alpha)$，即可得到该向量在惯性坐标系$\mathcal{A}$中的坐标。</p>
-<p>因此，根据坐标系旋转的链式法则，惯性坐标系$\mathcal{A}$与机体坐标系$\mathcal{B}$间的坐标变换关系为：</p>
-<p>$$<br>^\mathcal{A}\mathbf{p} &#x3D; R_z(\psi) R_x(\phi) R_y(\theta) \cdot {}^\mathcal{B}\mathbf{p}<br>$$</p>
-<p>将三个基本旋转矩阵按Z-X-Y顺序相乘，得到完整的将机体坐标系$\mathcal{B}$中的向量转换到惯性坐标系$\mathcal{A}$的姿态<strong>旋转矩阵</strong>：</p>
-<p>$$<br>^\mathcal{A}[R]<em>\mathcal{B} &#x3D;<br>\begin{bmatrix}<br>c</em>\psi c_\theta - s_\phi s_\psi s_\theta &amp; -c_\phi s_\psi &amp; c_\psi s_\theta + c_\theta s_\phi s_\psi \<br>c_\theta s_\psi + c_\psi s_\phi s_\theta &amp; c_\phi c_\psi &amp; s_\psi s_\theta - c_\psi c_\theta s_\phi \<br>-c_\phi s_\theta &amp; s_\phi &amp; c_\phi c_\theta<br>\end{bmatrix} \tag{1}<br>$$</p>
-<p>上标$\mathcal{A}$表示目标坐标系，即我们希望将向量转换到惯性坐标系$\mathcal{A}$中。下标$\mathcal{B}$表示源坐标系，即原始向量是在机体坐标系$\mathcal{B}$中表示的。</p>
-<p>矩阵乘积$R_z R_x R_y$的物理意义为：首先对向量施加绕当前坐标系Y轴的俯仰角旋转，再绕更新后X轴的滚转角旋转，最后绕原始Z轴的偏航角旋转。此矩阵可将机体坐标系$\mathcal{B}$中的向量映射至惯性坐标系$\mathcal{A}$，顺序正好和前面的Z-X-Y相反。</p>
+<p>各基本旋转矩阵定义如下（<span class="math inline">\(c_\alpha \equiv
+\cos\alpha\)</span>，<span class="math inline">\(s_\alpha \equiv
+\sin\alpha\)</span>）：</p>
+<p><span class="math display">\[
+\begin{aligned}
+R_x(\phi) &amp;= \begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; c_\phi &amp; -s_\phi \\
+0 &amp; s_\phi &amp; c_\phi
+\end{bmatrix}, \quad
+R_y(\theta) = \begin{bmatrix}
+c_\theta &amp; 0 &amp; s_\theta \\
+0 &amp; 1 &amp; 0 \\
+-s_\theta &amp; 0 &amp; c_\theta
+\end{bmatrix}, \\
+R_z(\psi) &amp;= \begin{bmatrix}
+c_\psi &amp; -s_\psi &amp; 0 \\
+s_\psi &amp; c_\psi &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}.
+\end{aligned}
+\]</span></p>
+<p>这里先介绍<strong>坐标变换</strong>基本原理。设向量在惯性坐标系<span
+class="math inline">\(\mathcal{A}\)</span>中的坐标表示为<span
+class="math inline">\(^\mathcal{A}\mathbf{p}\)</span>，当坐标系<span
+class="math inline">\(\mathcal{A}\)</span>旋转角度<span
+class="math inline">\(\alpha\)</span>后得到新坐标系<span
+class="math inline">\(\mathcal{B}\)</span>，同一向量在<span
+class="math inline">\(\mathcal{B}\)</span>中的坐标表示为<span
+class="math inline">\(^\mathcal{B}\mathbf{p}\)</span>，二者的坐标变换关系由旋转矩阵<span
+class="math inline">\(R(\alpha)\)</span>建立：</p>
+<p><span class="math display">\[
+{}^\mathcal{A}\mathbf{p} = R(\alpha) \cdot {}^\mathcal{B}\mathbf{p}
+\]</span></p>
+<p>所以，将机体坐标系<span
+class="math inline">\(\mathcal{B}\)</span>中的坐标左乘旋转矩阵<span
+class="math inline">\(R(\alpha)\)</span>，即可得到该向量在惯性坐标系<span
+class="math inline">\(\mathcal{A}\)</span>中的坐标。</p>
+<p>因此，根据坐标系旋转的链式法则，惯性坐标系<span
+class="math inline">\(\mathcal{A}\)</span>与机体坐标系<span
+class="math inline">\(\mathcal{B}\)</span>间的坐标变换关系为：</p>
+<p><span class="math display">\[
+^\mathcal{A}\mathbf{p} = R_z(\psi) R_x(\phi) R_y(\theta) \cdot
+{}^\mathcal{B}\mathbf{p}
+\]</span></p>
+<p>将三个基本旋转矩阵按Z-X-Y顺序相乘，得到完整的将机体坐标系<span
+class="math inline">\(\mathcal{B}\)</span>中的向量转换到惯性坐标系<span
+class="math inline">\(\mathcal{A}\)</span>的姿态<strong>旋转矩阵</strong>：</p>
+<p><span class="math display">\[
+^\mathcal{A}[R]_\mathcal{B} =
+\begin{bmatrix}
+c_\psi c_\theta - s_\phi s_\psi s_\theta &amp; -c_\phi s_\psi &amp;
+c_\psi s_\theta + c_\theta s_\phi s_\psi \\
+c_\theta s_\psi + c_\psi s_\phi s_\theta &amp; c_\phi c_\psi &amp;
+s_\psi s_\theta - c_\psi c_\theta s_\phi \\
+-c_\phi s_\theta &amp; s_\phi &amp; c_\phi c_\theta
+\end{bmatrix} \tag{1}
+\]</span></p>
+<p>上标<span
+class="math inline">\(\mathcal{A}\)</span>表示目标坐标系，即我们希望将向量转换到惯性坐标系<span
+class="math inline">\(\mathcal{A}\)</span>中。下标<span
+class="math inline">\(\mathcal{B}\)</span>表示源坐标系，即原始向量是在机体坐标系<span
+class="math inline">\(\mathcal{B}\)</span>中表示的。</p>
+<p>矩阵乘积<span class="math inline">\(R_z R_x
+R_y\)</span>的物理意义为：首先对向量施加绕当前坐标系Y轴的俯仰角旋转，再绕更新后X轴的滚转角旋转，最后绕原始Z轴的偏航角旋转。此矩阵可将机体坐标系<span
+class="math inline">\(\mathcal{B}\)</span>中的向量映射至惯性坐标系<span
+class="math inline">\(\mathcal{A}\)</span>，顺序正好和前面的Z-X-Y相反。</p>
 <p>角速度矢量</p>
-<p>$$<br>^\mathcal{A}\omega_\mathcal{B} &#x3D; p\mathbf{b}_1 + q\mathbf{b}_2 + r\mathbf{b}_3 \tag{2}<br>$$</p>
-<p>符号$^\mathcal{A}\omega_\mathcal{B}$中的上标$\mathcal{A}$表明角速度的参考系是$\mathcal{A}$，即我们是从参考系$\mathcal{A}$的视角来观察坐标系$\mathcal{B}$的旋转情况。下标$\mathcal{B}$表示这个角速度矢量的分量是在坐标系$\mathcal{B}$中表示的，即我们使用坐标系$\mathcal{B}$的基向量来描述角速度的大小和方向。角速度矢量分解到$\mathcal{B}$的三个正交基向量$\mathbf{b}_1, \mathbf{b}_2, \mathbf{b}_3$上，分别对应绕三个主轴的角速度分量：$p$是绕$\mathbf{b}_1$轴的滚转角速度（roll），$q$是绕$\mathbf{b}_2$轴的俯仰角速度（pitch），$r$是绕$\mathbf{b}_3$轴的偏航角速度（yaw）。</p>
-<p>在惯性坐标系$\mathcal{A}$中分析角速度时需通过旋转矩阵进行分量转换，直接使用机体坐标系$\mathcal{B}$的分量更方便。首先，机载陀螺仪直接测量$p,q,r$，反映机体瞬时旋转状态；其次，姿态控制器设计基于机体坐标系，避免频繁坐标转换；最后，转动惯量矩阵$I$在机体坐标系中为对角阵，动力学方程更简洁。因此，本文分析角速度时采用机体坐标系$\mathcal{B}$的分量，符合工程实际。</p>
-<p>下面的公式描述了四旋翼飞行器的机体角速度$p, q, r$与欧拉角的导数$\dot{\phi}, \dot{\theta}, \dot{\psi}$之间的转换关系：</p>
-<p>$$<br>\begin{bmatrix} p \ q \ r \end{bmatrix} &#x3D;<br>\begin{bmatrix}<br>c_\theta &amp; 0 &amp; -c_\phi s_\theta \<br>0 &amp; 1 &amp; s_\phi \<br>s_\theta &amp; 0 &amp; c_\phi c_\theta<br>\end{bmatrix}<br>\begin{bmatrix} \dot{\phi} \ \dot{\theta} \ \dot{\psi} \end{bmatrix} \tag{3}<br>$$</p>
-<h3 id="平动动力学"><a href="#平动动力学" class="headerlink" title="平动动力学"></a>平动动力学</h3><p>四旋翼飞行器的<strong>平动动力学方程</strong>基于牛顿第二定律（Newton’s laws of motion）建立，描述了质心在惯性坐标系$\mathcal{A}$中的加速度与外力的关系。其形式为：</p>
-<p>$$<br>m \ddot{\mathbf{r}} &#x3D;<br>\begin{bmatrix} 0 \ 0 \ -mg \end{bmatrix} +<br>R \begin{bmatrix} 0 \ 0 \ F_1+F_2+F_3+F_4 \end{bmatrix} \tag{4}<br>$$</p>
-<p>在四旋翼中，合外力由重力和旋翼推力组成。方程中的列向量表示出了这两个力在惯性坐标系$\mathcal{A}$的三个轴$\mathbf{a}_1, \mathbf{a}_2, \mathbf{a}<em>3$上的分量。重力方向竖直向下，大小为$mg$。旋翼推力是四个旋翼产生的总推力$u_1&#x3D;\sum</em>{k&#x3D;1}^4 F_i$，方向垂直于旋翼平面（沿机体坐标系的$\mathbf{b}_3$轴），$u_1$可看作<strong>第一个输入信号</strong>。通过旋转矩阵$R$将推力从机体坐标系$\mathcal{B}$转换到惯性坐标系$\mathcal{A}$。</p>
-<p>**$\mathbf{u}_1$主要用于控制飞行器的垂直运动，并通过姿态调整间接影响其水平移动。**当四旋翼水平悬停时（$\phi &#x3D; \theta &#x3D; 0$），旋转矩阵$R$为单位矩阵，推力完全沿惯性系$Z$轴（$\mathbf{a}_3$）方向，与重力平衡（$u_1 &#x3D; mg$）。当四旋翼倾斜（$\phi \neq 0$或$\theta \neq 0$）时，推力方向在惯性系中产生水平分量，驱动飞行器平动。推力与重力的合力决定飞行器的升降（如$u_1 &gt; mg$时加速上升）。推力的水平分量（由姿态角$\phi$和$\theta$决定）驱动飞行器前后或左右移动。</p>
-<h3 id="转动动力学"><a href="#转动动力学" class="headerlink" title="转动动力学"></a>转动动力学</h3><p>四旋翼飞行器的<strong>转动动力学方程</strong>基于欧拉方程（Euler’s rotation equations）建立，描述了机体角加速度与外力矩（由旋翼推力差产生）及陀螺效应（角速度与角动量的耦合）的关系：</p>
-<p>$$<br>I \begin{bmatrix} \dot{p} \ \dot{q} \ \dot{r} \end{bmatrix} &#x3D;<br>\begin{bmatrix} L(F_2 - F_4) \ L(F_3 - F_1) \ M_1 - M_2 + M_3 - M_4 \end{bmatrix} -<br>\begin{bmatrix} p \ q \ r \end{bmatrix} \times I \begin{bmatrix} p \ q \ r \end{bmatrix} \tag{5}<br>$$</p>
+<p><span class="math display">\[
+^\mathcal{A}\omega_\mathcal{B} = p\mathbf{b}_1 + q\mathbf{b}_2 +
+r\mathbf{b}_3 \tag{2}
+\]</span></p>
+<p>符号<span
+class="math inline">\(^\mathcal{A}\omega_\mathcal{B}\)</span>中的上标<span
+class="math inline">\(\mathcal{A}\)</span>表明角速度的参考系是<span
+class="math inline">\(\mathcal{A}\)</span>，即我们是从参考系<span
+class="math inline">\(\mathcal{A}\)</span>的视角来观察坐标系<span
+class="math inline">\(\mathcal{B}\)</span>的旋转情况。下标<span
+class="math inline">\(\mathcal{B}\)</span>表示这个角速度矢量的分量是在坐标系<span
+class="math inline">\(\mathcal{B}\)</span>中表示的，即我们使用坐标系<span
+class="math inline">\(\mathcal{B}\)</span>的基向量来描述角速度的大小和方向。角速度矢量分解到<span
+class="math inline">\(\mathcal{B}\)</span>的三个正交基向量<span
+class="math inline">\(\mathbf{b}_1, \mathbf{b}_2,
+\mathbf{b}_3\)</span>上，分别对应绕三个主轴的角速度分量：<span
+class="math inline">\(p\)</span>是绕<span
+class="math inline">\(\mathbf{b}_1\)</span>轴的滚转角速度（roll），<span
+class="math inline">\(q\)</span>是绕<span
+class="math inline">\(\mathbf{b}_2\)</span>轴的俯仰角速度（pitch），<span
+class="math inline">\(r\)</span>是绕<span
+class="math inline">\(\mathbf{b}_3\)</span>轴的偏航角速度（yaw）。</p>
+<p>在惯性坐标系<span
+class="math inline">\(\mathcal{A}\)</span>中分析角速度时需通过旋转矩阵进行分量转换，直接使用机体坐标系<span
+class="math inline">\(\mathcal{B}\)</span>的分量更方便。首先，机载陀螺仪直接测量<span
+class="math inline">\(p,q,r\)</span>，反映机体瞬时旋转状态；其次，姿态控制器设计基于机体坐标系，避免频繁坐标转换；最后，转动惯量矩阵<span
+class="math inline">\(I\)</span>在机体坐标系中为对角阵，动力学方程更简洁。因此，本文分析角速度时采用机体坐标系<span
+class="math inline">\(\mathcal{B}\)</span>的分量，符合工程实际。</p>
+<p>下面的公式描述了四旋翼飞行器的机体角速度<span
+class="math inline">\(p, q, r\)</span>与欧拉角的导数<span
+class="math inline">\(\dot{\phi}, \dot{\theta},
+\dot{\psi}\)</span>之间的转换关系：</p>
+<p><span class="math display">\[
+\begin{bmatrix} p \\ q \\ r \end{bmatrix} =
+\begin{bmatrix}
+c_\theta &amp; 0 &amp; -c_\phi s_\theta \\
+0 &amp; 1 &amp; s_\phi \\
+s_\theta &amp; 0 &amp; c_\phi c_\theta
+\end{bmatrix}
+\begin{bmatrix} \dot{\phi} \\ \dot{\theta} \\ \dot{\psi} \end{bmatrix}
+\tag{3}
+\]</span></p>
+<h3 id="平动动力学">平动动力学</h3>
+<p>四旋翼飞行器的<strong>平动动力学方程</strong>基于牛顿第二定律（Newton's
+laws of motion）建立，描述了质心在惯性坐标系<span
+class="math inline">\(\mathcal{A}\)</span>中的加速度与外力的关系。其形式为：</p>
+<p><span class="math display">\[
+m \ddot{\mathbf{r}} =
+\begin{bmatrix} 0 \\ 0 \\ -mg \end{bmatrix} +
+R \begin{bmatrix} 0 \\ 0 \\ F_1+F_2+F_3+F_4 \end{bmatrix} \tag{4}
+\]</span></p>
+<p>在四旋翼中，合外力由重力和旋翼推力组成。方程中的列向量表示出了这两个力在惯性坐标系<span
+class="math inline">\(\mathcal{A}\)</span>的三个轴<span
+class="math inline">\(\mathbf{a}_1, \mathbf{a}_2,
+\mathbf{a}_3\)</span>上的分量。重力方向竖直向下，大小为<span
+class="math inline">\(mg\)</span>。旋翼推力是四个旋翼产生的总推力<span
+class="math inline">\(u_1=\sum_{k=1}^4
+F_i\)</span>，方向垂直于旋翼平面（沿机体坐标系的<span
+class="math inline">\(\mathbf{b}_3\)</span>轴），<span
+class="math inline">\(u_1\)</span>可看作<strong>第一个输入信号</strong>。通过旋转矩阵<span
+class="math inline">\(R\)</span>将推力从机体坐标系<span
+class="math inline">\(\mathcal{B}\)</span>转换到惯性坐标系<span
+class="math inline">\(\mathcal{A}\)</span>。</p>
+<p><strong><span
+class="math inline">\(\mathbf{u}_1\)</span>主要用于控制飞行器的垂直运动，并通过姿态调整间接影响其水平移动。</strong>当四旋翼水平悬停时（<span
+class="math inline">\(\phi = \theta = 0\)</span>），旋转矩阵<span
+class="math inline">\(R\)</span>为单位矩阵，推力完全沿惯性系<span
+class="math inline">\(Z\)</span>轴（<span
+class="math inline">\(\mathbf{a}_3\)</span>）方向，与重力平衡（<span
+class="math inline">\(u_1 = mg\)</span>）。当四旋翼倾斜（<span
+class="math inline">\(\phi \neq 0\)</span>或<span
+class="math inline">\(\theta \neq
+0\)</span>）时，推力方向在惯性系中产生水平分量，驱动飞行器平动。推力与重力的合力决定飞行器的升降（如<span
+class="math inline">\(u_1 &gt;
+mg\)</span>时加速上升）。推力的水平分量（由姿态角<span
+class="math inline">\(\phi\)</span>和<span
+class="math inline">\(\theta\)</span>决定）驱动飞行器前后或左右移动。</p>
+<h3 id="转动动力学">转动动力学</h3>
+<p>四旋翼飞行器的<strong>转动动力学方程</strong>基于欧拉方程（Euler's
+rotation
+equations）建立，描述了机体角加速度与外力矩（由旋翼推力差产生）及陀螺效应（角速度与角动量的耦合）的关系：</p>
+<p><span class="math display">\[
+I \begin{bmatrix} \dot{p} \\ \dot{q} \\ \dot{r} \end{bmatrix} =
+\begin{bmatrix} L(F_2 - F_4) \\ L(F_3 - F_1) \\ M_1 - M_2 + M_3 - M_4
+\end{bmatrix} -
+\begin{bmatrix} p \\ q \\ r \end{bmatrix} \times I \begin{bmatrix} p \\
+q \\ r \end{bmatrix} \tag{5}
+\]</span></p>
 <p>它是根据刚体转动的欧拉方程</p>
-<p>$$<br>I \dot{\boldsymbol{\omega}} + \boldsymbol{\omega} \times I \boldsymbol{\omega} &#x3D; \boldsymbol{\tau}_{\text{ext}}<br>$$</p>
-<p>得到的。其中$I \dot{\boldsymbol{\omega}}$为角加速度引起的惯性力矩，$\boldsymbol{\omega} \times I \boldsymbol{\omega}$为陀螺效应（科里奥利力项），$\boldsymbol{\tau}_{\text{ext}}$为外部力矩。</p>
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/uav_model_rotations.svg" alt="图2 四旋翼飞行器推力与反扭矩的方向"></p>
-<p>如图2所示，旋翼旋转产生的推力$F_i$方向都朝上（$+\mathbf{b}_3$方向）。旋翼2和4的推力差产生滚转力矩，绕$\mathbf{b}_1$轴：</p>
-<p>$$<br>\tau_{\text{roll}} &#x3D; L(F_2 - F_4)<br>$$</p>
-<p>旋翼3和1的推力差产生俯仰力矩，绕$\mathbf{b}_2$轴：</p>
-<p>$$<br>\tau_{\text{pitch}} &#x3D; L(F_3 - F_1)<br>$$</p>
-<p>假设旋翼1和3旋转方向为$-\mathbf{b}_3$方向（顺时针），旋翼2和4旋转方向为$+\mathbf{b}_3$方向（逆时针）。反扭矩方向与旋翼旋转方向相反，所以$M_1$和$M_3$是$+\mathbf{b}_3$方向，$M_2$和$M_4$是$-\mathbf{b}_3$方向，如图2所示。旋翼反扭矩差产生偏航力矩，绕$\mathbf{b}_3$轴：</p>
-<p>$$<br>\tau_{\text{yaw}} &#x3D; M_1 - M_2 + M_3 - M_4<br>$$</p>
-<p>因此，<strong>第二个输入信号</strong>$\mathbf{u}_2$由旋翼推力差和反扭矩产生：</p>
-<p>$$<br>\mathbf{u}_2 &#x3D; \begin{bmatrix}<br>0 &amp; L &amp; 0 &amp; -L \<br>-L &amp; 0 &amp; L &amp; 0 \<br>\gamma &amp; -\gamma &amp; \gamma &amp; -\gamma<br>\end{bmatrix} \begin{bmatrix} F_1 \ F_2 \ F_3 \ F_4 \end{bmatrix}, \quad \gamma &#x3D; \frac{k_M}{k_F} \tag{6}<br>$$</p>
-<p>**$\mathbf{u}_2$通过调整旋翼推力差产生控制力矩，实现对滚转、俯仰和偏航角的调节。**增加旋翼2的推力（$F_2 \uparrow$）或减少旋翼4的推力（$F_4 \downarrow$），产生沿$\mathbf{b}_1$方向的逆时针滚转力矩，进行滚转控制。增加旋翼3的推力（$F_3 \uparrow$）或减少旋翼1的推力（$F_1 \downarrow$），产生沿$\mathbf{b}_2$方向的前倾俯仰力矩，进行俯仰控制。通过反扭矩差（$M_1 + M_3 &gt; M_2 + M_4$），产生沿$\mathbf{b}_3$方向的逆时针偏航，进行偏航控制。</p>
-<p>当四旋翼绕某一轴旋转时，角动量与其他轴的旋转耦合，产生额外的惯性力矩。由于四旋翼通常满足$I_{xx} &#x3D; I_{yy}$（对称设计），因此有</p>
-<p>$$<br>\boldsymbol{\omega} \times I \boldsymbol{\omega} &#x3D;<br>\begin{bmatrix}<br>(I_{zz} - I_{yy}) q r \<br>(I_{xx} - I_{zz}) p r \<br>(I_{yy} - I_{xx}) p q<br>\end{bmatrix} &#x3D;<br>\begin{bmatrix}<br>(I_{zz} - I_{xx}) q r \<br>(I_{xx} - I_{zz}) p r \<br>0<br>\end{bmatrix}<br>$$</p>
-<p>当四旋翼快速滚转（$p$大）时，陀螺效应会导致俯仰轴产生额外的力矩（如$-(I_{xx} - I_{zz}) p r$），需控制器补偿。悬停时有$p \approx q \approx r \approx 0$，陀螺效应可忽略，方程则简化为$I \dot{\boldsymbol{\omega}} &#x3D; \boldsymbol{\tau}_{\text{ext}}$。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>平动动力学方程与转动动力学方程共同构建了四旋翼飞行器的完整动力学模型体系。平动动力学方程在惯性坐标系$\mathcal{A}$中构建，完整表征了质心运动规律：</p>
-<p>$$<br>m\ddot{\mathbf{r}} &#x3D; -mg\mathbf{a}<em>3 + ^\mathcal{A}[R]</em>\mathcal{B}u_1\mathbf{b}_3<br>$$</p>
-<p>该方程通过旋转矩阵$^\mathcal{A}[R]_\mathcal{B}$将机体坐标系下的总推力$u_1\mathbf{b}_3$映射至惯性系，从而实现三维空间中的位置控制。转动动力学方程则在机体坐标系$\mathcal{B}$中构建，揭示刚体旋转特性：</p>
-<p>$$<br>I\dot{\boldsymbol{\omega}} &#x3D; \mathbf{u}_2 - \boldsymbol{\omega} \times I\boldsymbol{\omega}<br>$$</p>
-<p>力矩输入$\mathbf{u}_2$实现三轴独立控制，非线性项$\boldsymbol{\omega} \times I\boldsymbol{\omega}$物理表征陀螺耦合效应。</p>
+<p><span class="math display">\[
+I \dot{\boldsymbol{\omega}} + \boldsymbol{\omega} \times I
+\boldsymbol{\omega} = \boldsymbol{\tau}_{\text{ext}}
+\]</span></p>
+<p>得到的。其中<span class="math inline">\(I
+\dot{\boldsymbol{\omega}}\)</span>为角加速度引起的惯性力矩，<span
+class="math inline">\(\boldsymbol{\omega} \times I
+\boldsymbol{\omega}\)</span>为陀螺效应（科里奥利力项），<span
+class="math inline">\(\boldsymbol{\tau}_{\text{ext}}\)</span>为外部力矩。</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/uav_model_rotations.svg"
+alt="图2 四旋翼飞行器推力与反扭矩的方向" />
+<figcaption aria-hidden="true">图2
+四旋翼飞行器推力与反扭矩的方向</figcaption>
+</figure>
+<p>如图2所示，旋翼旋转产生的推力<span
+class="math inline">\(F_i\)</span>方向都朝上（<span
+class="math inline">\(+\mathbf{b}_3\)</span>方向）。旋翼2和4的推力差产生滚转力矩，绕<span
+class="math inline">\(\mathbf{b}_1\)</span>轴：</p>
+<p><span class="math display">\[
+\tau_{\text{roll}} = L(F_2 - F_4)
+\]</span></p>
+<p>旋翼3和1的推力差产生俯仰力矩，绕<span
+class="math inline">\(\mathbf{b}_2\)</span>轴：</p>
+<p><span class="math display">\[
+\tau_{\text{pitch}} = L(F_3 - F_1)
+\]</span></p>
+<p>假设旋翼1和3旋转方向为<span
+class="math inline">\(-\mathbf{b}_3\)</span>方向（顺时针），旋翼2和4旋转方向为<span
+class="math inline">\(+\mathbf{b}_3\)</span>方向（逆时针）。反扭矩方向与旋翼旋转方向相反，所以<span
+class="math inline">\(M_1\)</span>和<span
+class="math inline">\(M_3\)</span>是<span
+class="math inline">\(+\mathbf{b}_3\)</span>方向，<span
+class="math inline">\(M_2\)</span>和<span
+class="math inline">\(M_4\)</span>是<span
+class="math inline">\(-\mathbf{b}_3\)</span>方向，如图2所示。旋翼反扭矩差产生偏航力矩，绕<span
+class="math inline">\(\mathbf{b}_3\)</span>轴：</p>
+<p><span class="math display">\[
+\tau_{\text{yaw}} = M_1 - M_2 + M_3 - M_4
+\]</span></p>
+<p>因此，<strong>第二个输入信号</strong><span
+class="math inline">\(\mathbf{u}_2\)</span>由旋翼推力差和反扭矩产生：</p>
+<p><span class="math display">\[
+\mathbf{u}_2 = \begin{bmatrix}
+0 &amp; L &amp; 0 &amp; -L \\
+-L &amp; 0 &amp; L &amp; 0 \\
+\gamma &amp; -\gamma &amp; \gamma &amp; -\gamma
+\end{bmatrix} \begin{bmatrix} F_1 \\ F_2 \\ F_3 \\ F_4 \end{bmatrix},
+\quad \gamma = \frac{k_M}{k_F} \tag{6}
+\]</span></p>
+<p><strong><span
+class="math inline">\(\mathbf{u}_2\)</span>通过调整旋翼推力差产生控制力矩，实现对滚转、俯仰和偏航角的调节。</strong>增加旋翼2的推力（<span
+class="math inline">\(F_2 \uparrow\)</span>）或减少旋翼4的推力（<span
+class="math inline">\(F_4 \downarrow\)</span>），产生沿<span
+class="math inline">\(\mathbf{b}_1\)</span>方向的逆时针滚转力矩，进行滚转控制。增加旋翼3的推力（<span
+class="math inline">\(F_3 \uparrow\)</span>）或减少旋翼1的推力（<span
+class="math inline">\(F_1 \downarrow\)</span>），产生沿<span
+class="math inline">\(\mathbf{b}_2\)</span>方向的前倾俯仰力矩，进行俯仰控制。通过反扭矩差（<span
+class="math inline">\(M_1 + M_3 &gt; M_2 + M_4\)</span>），产生沿<span
+class="math inline">\(\mathbf{b}_3\)</span>方向的逆时针偏航，进行偏航控制。</p>
+<p>当四旋翼绕某一轴旋转时，角动量与其他轴的旋转耦合，产生额外的惯性力矩。由于四旋翼通常满足<span
+class="math inline">\(I_{xx} = I_{yy}\)</span>（对称设计），因此有</p>
+<p><span class="math display">\[
+\boldsymbol{\omega} \times I \boldsymbol{\omega} =
+\begin{bmatrix}
+(I_{zz} - I_{yy}) q r \\
+(I_{xx} - I_{zz}) p r \\
+(I_{yy} - I_{xx}) p q
+\end{bmatrix} =
+\begin{bmatrix}
+(I_{zz} - I_{xx}) q r \\
+(I_{xx} - I_{zz}) p r \\
+0
+\end{bmatrix}
+\]</span></p>
+<p>当四旋翼快速滚转（<span
+class="math inline">\(p\)</span>大）时，陀螺效应会导致俯仰轴产生额外的力矩（如<span
+class="math inline">\(-(I_{xx} - I_{zz}) p
+r\)</span>），需控制器补偿。悬停时有<span class="math inline">\(p
+\approx q \approx r \approx
+0\)</span>，陀螺效应可忽略，方程则简化为<span class="math inline">\(I
+\dot{\boldsymbol{\omega}} =
+\boldsymbol{\tau}_{\text{ext}}\)</span>。</p>
+<h2 id="总结">总结</h2>
+<p>平动动力学方程与转动动力学方程共同构建了四旋翼飞行器的完整动力学模型体系。平动动力学方程在惯性坐标系<span
+class="math inline">\(\mathcal{A}\)</span>中构建，完整表征了质心运动规律：</p>
+<p><span class="math display">\[
+m\ddot{\mathbf{r}} = -mg\mathbf{a}_3 +
+^\mathcal{A}[R]_\mathcal{B}u_1\mathbf{b}_3
+\]</span></p>
+<p>该方程通过旋转矩阵<span
+class="math inline">\(^\mathcal{A}[R]_\mathcal{B}\)</span>将机体坐标系下的总推力<span
+class="math inline">\(u_1\mathbf{b}_3\)</span>映射至惯性系，从而实现三维空间中的位置控制。转动动力学方程则在机体坐标系<span
+class="math inline">\(\mathcal{B}\)</span>中构建，揭示刚体旋转特性：</p>
+<p><span class="math display">\[
+I\dot{\boldsymbol{\omega}} = \mathbf{u}_2 - \boldsymbol{\omega} \times
+I\boldsymbol{\omega}
+\]</span></p>
+<p>力矩输入<span
+class="math inline">\(\mathbf{u}_2\)</span>实现三轴独立控制，非线性项<span
+class="math inline">\(\boldsymbol{\omega} \times
+I\boldsymbol{\omega}\)</span>物理表征陀螺耦合效应。</p>
 
     </div>
 

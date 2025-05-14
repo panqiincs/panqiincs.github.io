@@ -21,23 +21,13 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="简介负反馈是控制系统的灵魂。它使系统能够自动调节自身，实现更高的精确度和稳定性，抵抗外部扰动和不确定因素。但反馈也可能引发问题，比如，两个稳定系统通过反馈连接后，整体系统可能变得不稳定。">
+    <meta name="description" content="简介 负反馈是控制系统的灵魂。它使系统能够自动调节自身，实现更高的精确度和稳定性，抵抗外部扰动和不确定因素。但反馈也可能引发问题，比如，两个稳定系统通过反馈连接后，整体系统可能变得不稳定。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="反馈系统的稳定性">
 <meta property="og:url" content="https://panqiincs.me/2024/11/18/feedback-stability/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="简介负反馈是控制系统的灵魂。它使系统能够自动调节自身，实现更高的精确度和稳定性，抵抗外部扰动和不确定因素。但反馈也可能引发问题，比如，两个稳定系统通过反馈连接后，整体系统可能变得不稳定。">
+<meta property="og:description" content="简介 负反馈是控制系统的灵魂。它使系统能够自动调节自身，实现更高的精确度和稳定性，抵抗外部扰动和不确定因素。但反馈也可能引发问题，比如，两个稳定系统通过反馈连接后，整体系统可能变得不稳定。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_diagram.png">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_small_gain.png">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_absolute1.png">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_absolute2.png">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_absolute3.png">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_circle_multi.png">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_nyquist.png">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_circle_single.png">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_popov_system.png">
-<meta property="og:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_popov_system.png">
 <meta property="article:published_time" content="2024-11-18T01:16:17.000Z">
 <meta property="article:modified_time" content="2024-11-19T02:54:14.214Z">
 <meta property="article:author" content="辛未羊">
@@ -45,7 +35,6 @@
 <meta property="article:tag" content="稳定性">
 <meta property="article:tag" content="反馈">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_diagram.png">
 
 
 <link rel="canonical" href="https://panqiincs.me/2024/11/18/feedback-stability/">
@@ -137,7 +126,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E6%BA%90%E6%80%A7%E5%AE%9A%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">无源性定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E5%A2%9E%E7%9B%8A%E5%AE%9A%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">小增益定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%9D%E5%AF%B9%E7%A8%B3%E5%AE%9A%E6%80%A7"><span class="nav-number">4.</span> <span class="nav-text">绝对稳定性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">4.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%86%E5%88%A4%E6%8D%AE"><span class="nav-number">4.2.</span> <span class="nav-text">圆判据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Popov%E5%88%A4%E6%8D%AE"><span class="nav-number">4.3.</span> <span class="nav-text">Popov判据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E6%BA%90%E6%80%A7%E5%AE%9A%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">无源性定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E5%A2%9E%E7%9B%8A%E5%AE%9A%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">小增益定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%9D%E5%AF%B9%E7%A8%B3%E5%AE%9A%E6%80%A7"><span class="nav-number">4.</span> <span class="nav-text">绝对稳定性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">4.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%86%E5%88%A4%E6%8D%AE"><span class="nav-number">4.2.</span> <span class="nav-text">圆判据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#popov%E5%88%A4%E6%8D%AE"><span class="nav-number">4.3.</span> <span class="nav-text">Popov判据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -310,39 +299,194 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>负反馈是控制系统的灵魂。它使系统能够自动调节自身，实现更高的精确度和稳定性，抵抗外部扰动和不确定因素。但反馈也可能引发问题，比如，两个稳定系统通过反馈连接后，整体系统可能变得不稳定。</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="简介">简介</h2>
+<p>负反馈是控制系统的灵魂。它使系统能够自动调节自身，实现更高的精确度和稳定性，抵抗外部扰动和不确定因素。但反馈也可能引发问题，比如，两个稳定系统通过反馈连接后，整体系统可能变得不稳定。</p>
 <span id="more"></span>
-
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_diagram.png" alt="反馈连接"></p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_diagram.png"
+alt="反馈连接" />
+<figcaption aria-hidden="true">反馈连接</figcaption>
+</figure>
 <p>本文首先介绍了无源性定理和小增益定理，它们是Nyquist稳定性判据在非线性系统中的扩展。随后，将系统建模为前向通道为线性时不变模型、反馈通道为无记忆的非线性模型，利用绝对稳定性的理论，通过圆判据和Popov判据来分析系统的稳定性。</p>
-<h2 id="无源性定理"><a href="#无源性定理" class="headerlink" title="无源性定理"></a>无源性定理</h2><p>无源性定理中最基本的结论是：<strong>两个无源系统的反馈连接是无源的</strong>（The feedback connection of two passive systems is passive）。接着便可以利用无源性去研究反馈系统的稳定性和渐进稳定性，本文不再介绍。</p>
-<h2 id="小增益定理"><a href="#小增益定理" class="headerlink" title="小增益定理"></a>小增益定理</h2><p>小增益定理（small-gain theorem）叙述如下：</p>
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_small_gain.png" alt="小增益定理"></p>
-<p>图1中的反馈连接为研究反馈系统的鲁棒性（robustness）问题提供了一个方便的方法。面对模型不确定性的反馈系统，可以表示为一种反馈连接，其中$H_1$是稳定的名义系统（nominal system），$H_2$是稳定的扰动系统。当$\gamma_2$足够小时，就能满足条件$\gamma_1\gamma_2&lt;1$。因此，小增益定理为理解反馈系统中的许多鲁棒性结果提供了一个概念框架。</p>
-<h2 id="绝对稳定性"><a href="#绝对稳定性" class="headerlink" title="绝对稳定性"></a>绝对稳定性</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>对于如下特征的系统：</p>
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_absolute1.png" alt="."></p>
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_absolute2.png" alt="系统描述"></p>
-<p>所研究对象的结构框图如上图所示，它是本文开头所述一般反馈结构的一个特例。前向通道中的$G(s)$是一个线性时不变系统，模型可以用传递函数阵表示。而反馈通道的$\psi(\cdot)$则是一个无记忆系统，可能是时变和非线性的。绝对稳定性研究的是当$\psi$满足扇区条件时，原点的<strong>全局一致渐进稳定性</strong>（globally uniformly asymptotically stable, <strong>GUAS</strong>），其定义如下：</p>
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_absolute3.png" alt="绝对稳定性的定义"></p>
+<h2 id="无源性定理">无源性定理</h2>
+<p>无源性定理中最基本的结论是：<strong>两个无源系统的反馈连接是无源的</strong>（The
+feedback connection of two passive systems is
+passive）。接着便可以利用无源性去研究反馈系统的稳定性和渐进稳定性，本文不再介绍。</p>
+<h2 id="小增益定理">小增益定理</h2>
+<p>小增益定理（small-gain theorem）叙述如下：</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_small_gain.png"
+alt="小增益定理" />
+<figcaption aria-hidden="true">小增益定理</figcaption>
+</figure>
+<p>图1中的反馈连接为研究反馈系统的鲁棒性（robustness）问题提供了一个方便的方法。面对模型不确定性的反馈系统，可以表示为一种反馈连接，其中<span
+class="math inline">\(H_1\)</span>是稳定的名义系统（nominal
+system），<span
+class="math inline">\(H_2\)</span>是稳定的扰动系统。当<span
+class="math inline">\(\gamma_2\)</span>足够小时，就能满足条件<span
+class="math inline">\(\gamma_1\gamma_2&lt;1\)</span>。因此，小增益定理为理解反馈系统中的许多鲁棒性结果提供了一个概念框架。</p>
+<h2 id="绝对稳定性">绝对稳定性</h2>
+<h3 id="定义">定义</h3>
+<p>对于如下特征的系统：</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_absolute1.png"
+alt="." />
+<figcaption aria-hidden="true">.</figcaption>
+</figure>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_absolute2.png"
+alt="系统描述" />
+<figcaption aria-hidden="true">系统描述</figcaption>
+</figure>
+<p>所研究对象的结构框图如上图所示，它是本文开头所述一般反馈结构的一个特例。前向通道中的<span
+class="math inline">\(G(s)\)</span>是一个线性时不变系统，模型可以用传递函数阵表示。而反馈通道的<span
+class="math inline">\(\psi(\cdot)\)</span>则是一个无记忆系统，可能是时变和非线性的。绝对稳定性研究的是当<span
+class="math inline">\(\psi\)</span>满足扇区条件时，原点的<strong>全局一致渐进稳定性</strong>（globally
+uniformly asymptotically stable,
+<strong>GUAS</strong>），其定义如下：</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_absolute3.png"
+alt="绝对稳定性的定义" />
+<figcaption aria-hidden="true">绝对稳定性的定义</figcaption>
+</figure>
 <p>回顾全局一致渐进稳定性的特征：全局表示从任何初始条件出发，系统状态总是收敛到平衡点；一致表示存在一个统一的收敛速率，对所有初始状态都适用；渐进稳定表示状态随着时间无限趋向于平衡点。接下来介绍两个稳定性判据。</p>
-<h3 id="圆判据"><a href="#圆判据" class="headerlink" title="圆判据"></a>圆判据</h3><p>圆判据（circle criterion）要用到扇区条件的定义，详见<a href="https://panqiincs.me/2024/10/19/system-passivity/">系统的无源性</a>。圆判据的第一个结论针对多输入多输出系统，也称为多变量圆判据：</p>
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_circle_multi.png" alt="多变量圆判据"></p>
-<p>对于单输出系统，即$m&#x3D;1$时，可以通过$G(s)$的<strong>Nyquist图</strong>来验证。对于$\psi\in[\alpha,\beta],\beta&gt;\alpha$，如果传递函数<br>$$<br>Z(s)&#x3D;\frac{1+\beta G(s)}{1+\alpha G(s)}    \tag{1}<br>$$<br>是严格正实函数，则系统绝对稳定。$Z(s)$是严格正实的如果它是Hurwitz而且<br>$$<br>\mathrm{Re}\left[\frac{1+\beta G(j\omega)}{1+\alpha G(j\omega)}\right]&gt;0,,\forall,\omega\in[0,\infty]    \tag{2}<br>$$</p>
-<p>对于单输出系统，即$m&#x3D;1$的情况，可以通过$G(s)$的Nyquist图进行验证。对于$\psi\in[\alpha,\beta]$且$\beta&gt;\alpha$，如果传递函数<br>$$<br>Z(s)&#x3D;\frac{1+\beta G(s)}{1+\alpha G(s)}    \tag{3}<br>$$<br>是严格正实函数，则系统是绝对稳定的。传递函数$Z(s)$被称为严格正实函数，当且仅当它是Hurwitz稳定的，并且满足以下条件：<br>$$<br>\mathrm{Re}\left[\frac{1+\beta G(j\omega)}{1+\alpha G(j\omega)}\right]&gt;0,,\forall,\omega\in[0,\infty]    \tag{4}<br>$$</p>
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_nyquist.png" alt="圆判据的图形表示"></p>
-<p>当$\alpha&gt;0$时，上面的表达式可以写作<br>$$<br>\mathrm{Re}\left[\frac{1&#x2F;\beta+G(j\omega)}{1&#x2F;\alpha+G(j\omega)}\right]&gt;0,,\forall,\omega\in[0,\infty]    \tag{5}<br>$$</p>
-<p>对于Nyquist图上的一点$q$，两个复数$1&#x2F;\beta+G(j\omega)$和$1&#x2F;\alpha+G(j\omega)$可以分别表示为从$q$到$-1&#x2F;\beta+j0$和$-1&#x2F;\alpha+j0$的连线。当两个复数之间的角度差小于$\pi&#x2F;2$时，它们的比值的实部是正的，也就是上图中的$(\theta_1-\theta_2)&lt;\pi&#x2F;2$。定义$D(\alpha,\beta)$为如图所示的闭合圆盘，容易发现，当$q$在圆盘外部时$(\theta_1-\theta_2)&lt;\pi&#x2F;2$成立。由于上述条件对所有的$\omega$都成立，所以$G(s)$的Nyquist图上所有的点必须严格位于圆盘之外。另一方面，若$G(s)&#x2F;[1+\alpha G(s)]$是Hurwitz稳定的，则$Z(s)$是Hurwitz稳定的。根据Nyquist判据，当且仅当$G(s)$的Nyquist图不与点$-1&#x2F;\alpha+j0$相交，并且以逆时针方向绕该点恰好$p$圈时，$G(s)&#x2F;[1+\alpha G(s)]$是Hurwitz稳定的，其中$p$是$G(s)$在复数平面的开右半平面内的极点数量。因此，当$G(s)$的Nyquist图不进入圆盘$D(\alpha,\beta)$并以逆时针方向绕其$p$圈时，定理$7.8$的条件得到满足。</p>
-<p>接下来，考虑$\beta&gt;0$且$\alpha&#x3D;0$的情况。对于这种情况，定理$7.8$要求$1+\beta G(s)$为严格正实。这种情况成立的条件是$G(s)$是Hurwitz稳定的，并且<br>$$<br>\mathrm{Re}[1+\beta G(j\omega)]&gt;0\quad\Longleftrightarrow\quad\mathrm{Re}[G(j\omega)]&gt;-\frac{1}{\beta}, ,\forall, \omega\in[0,\infty]<br>$$<br>这等价于图形条件，即$G(s)$的Nyquist图位于由$\mathrm{Re}[s]&#x3D;-1&#x2F;\beta$定义的垂直线的右侧。</p>
-<p>最后，考虑$\alpha&lt;0&lt;\beta$的情况，此时$(4)$等价于<br>$$<br>\mathrm{Re}\left[\frac{1&#x2F;\beta+G(j\omega)}{1&#x2F;\alpha+G(j\omega)}\right]&lt;0, ,\forall, \omega\in[0,\infty]    \tag{6}<br>$$<br>不等号的方向反转是因为在从$(4)$到$(6)$的过程中乘上了$\alpha&#x2F;\beta$，而这个值现在是负的。重复之前的论证可以看到，要使$(6)$成立，$G(s)$的Nyquist图必须位于圆盘$D(\alpha,\beta)$内。因此，Nyquist图不能环绕点$-1&#x2F;\alpha+j0$。因此，根据Nyquist判据可知，为了使$G(s)&#x2F;[1+\alpha G(s)]$稳定，$G(s)$必须是Hurwitz稳定的。</p>
+<h3 id="圆判据">圆判据</h3>
+<p>圆判据（circle criterion）要用到扇区条件的定义，详见<a
+href="https://panqiincs.me/2024/10/19/system-passivity/">系统的无源性</a>。圆判据的第一个结论针对多输入多输出系统，也称为多变量圆判据：</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_circle_multi.png"
+alt="多变量圆判据" />
+<figcaption aria-hidden="true">多变量圆判据</figcaption>
+</figure>
+<p>对于单输出系统，即<span
+class="math inline">\(m=1\)</span>时，可以通过<span
+class="math inline">\(G(s)\)</span>的<strong>Nyquist图</strong>来验证。对于<span
+class="math inline">\(\psi\in[\alpha,\beta],\beta&gt;\alpha\)</span>，如果传递函数
+<span class="math display">\[
+Z(s)=\frac{1+\beta G(s)}{1+\alpha G(s)}    \tag{1}
+\]</span> 是严格正实函数，则系统绝对稳定。<span
+class="math inline">\(Z(s)\)</span>是严格正实的如果它是Hurwitz而且 <span
+class="math display">\[
+\mathrm{Re}\left[\frac{1+\beta G(j\omega)}{1+\alpha
+G(j\omega)}\right]&gt;0,\,\forall\,\omega\in[0,\infty]    \tag{2}
+\]</span></p>
+<p>对于单输出系统，即<span
+class="math inline">\(m=1\)</span>的情况，可以通过<span
+class="math inline">\(G(s)\)</span>的Nyquist图进行验证。对于<span
+class="math inline">\(\psi\in[\alpha,\beta]\)</span>且<span
+class="math inline">\(\beta&gt;\alpha\)</span>，如果传递函数 <span
+class="math display">\[
+Z(s)=\frac{1+\beta G(s)}{1+\alpha G(s)}    \tag{3}
+\]</span> 是严格正实函数，则系统是绝对稳定的。传递函数<span
+class="math inline">\(Z(s)\)</span>被称为严格正实函数，当且仅当它是Hurwitz稳定的，并且满足以下条件：
+<span class="math display">\[
+\mathrm{Re}\left[\frac{1+\beta G(j\omega)}{1+\alpha
+G(j\omega)}\right]&gt;0,\,\forall\,\omega\in[0,\infty]    \tag{4}
+\]</span></p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_nyquist.png"
+alt="圆判据的图形表示" />
+<figcaption aria-hidden="true">圆判据的图形表示</figcaption>
+</figure>
+<p>当<span
+class="math inline">\(\alpha&gt;0\)</span>时，上面的表达式可以写作 <span
+class="math display">\[
+\mathrm{Re}\left[\frac{1/\beta+G(j\omega)}{1/\alpha+G(j\omega)}\right]&gt;0,\,\forall\,\omega\in[0,\infty]    \tag{5}
+\]</span></p>
+<p>对于Nyquist图上的一点<span
+class="math inline">\(q\)</span>，两个复数<span
+class="math inline">\(1/\beta+G(j\omega)\)</span>和<span
+class="math inline">\(1/\alpha+G(j\omega)\)</span>可以分别表示为从<span
+class="math inline">\(q\)</span>到<span
+class="math inline">\(-1/\beta+j0\)</span>和<span
+class="math inline">\(-1/\alpha+j0\)</span>的连线。当两个复数之间的角度差小于<span
+class="math inline">\(\pi/2\)</span>时，它们的比值的实部是正的，也就是上图中的<span
+class="math inline">\((\theta_1-\theta_2)&lt;\pi/2\)</span>。定义<span
+class="math inline">\(D(\alpha,\beta)\)</span>为如图所示的闭合圆盘，容易发现，当<span
+class="math inline">\(q\)</span>在圆盘外部时<span
+class="math inline">\((\theta_1-\theta_2)&lt;\pi/2\)</span>成立。由于上述条件对所有的<span
+class="math inline">\(\omega\)</span>都成立，所以<span
+class="math inline">\(G(s)\)</span>的Nyquist图上所有的点必须严格位于圆盘之外。另一方面，若<span
+class="math inline">\(G(s)/[1+\alpha
+G(s)]\)</span>是Hurwitz稳定的，则<span
+class="math inline">\(Z(s)\)</span>是Hurwitz稳定的。根据Nyquist判据，当且仅当<span
+class="math inline">\(G(s)\)</span>的Nyquist图不与点<span
+class="math inline">\(-1/\alpha+j0\)</span>相交，并且以逆时针方向绕该点恰好<span
+class="math inline">\(p\)</span>圈时，<span
+class="math inline">\(G(s)/[1+\alpha
+G(s)]\)</span>是Hurwitz稳定的，其中<span
+class="math inline">\(p\)</span>是<span
+class="math inline">\(G(s)\)</span>在复数平面的开右半平面内的极点数量。因此，当<span
+class="math inline">\(G(s)\)</span>的Nyquist图不进入圆盘<span
+class="math inline">\(D(\alpha,\beta)\)</span>并以逆时针方向绕其<span
+class="math inline">\(p\)</span>圈时，定理<span
+class="math inline">\(7.8\)</span>的条件得到满足。</p>
+<p>接下来，考虑<span class="math inline">\(\beta&gt;0\)</span>且<span
+class="math inline">\(\alpha=0\)</span>的情况。对于这种情况，定理<span
+class="math inline">\(7.8\)</span>要求<span
+class="math inline">\(1+\beta
+G(s)\)</span>为严格正实。这种情况成立的条件是<span
+class="math inline">\(G(s)\)</span>是Hurwitz稳定的，并且 <span
+class="math display">\[
+\mathrm{Re}[1+\beta
+G(j\omega)]&gt;0\quad\Longleftrightarrow\quad\mathrm{Re}[G(j\omega)]&gt;-\frac{1}{\beta},
+\,\forall\, \omega\in[0,\infty]
+\]</span> 这等价于图形条件，即<span
+class="math inline">\(G(s)\)</span>的Nyquist图位于由<span
+class="math inline">\(\mathrm{Re}[s]=-1/\beta\)</span>定义的垂直线的右侧。</p>
+<p>最后，考虑<span
+class="math inline">\(\alpha&lt;0&lt;\beta\)</span>的情况，此时<span
+class="math inline">\((4)\)</span>等价于 <span class="math display">\[
+\mathrm{Re}\left[\frac{1/\beta+G(j\omega)}{1/\alpha+G(j\omega)}\right]&lt;0,
+\,\forall\, \omega\in[0,\infty]    \tag{6}
+\]</span> 不等号的方向反转是因为在从<span
+class="math inline">\((4)\)</span>到<span
+class="math inline">\((6)\)</span>的过程中乘上了<span
+class="math inline">\(\alpha/\beta\)</span>，而这个值现在是负的。重复之前的论证可以看到，要使<span
+class="math inline">\((6)\)</span>成立，<span
+class="math inline">\(G(s)\)</span>的Nyquist图必须位于圆盘<span
+class="math inline">\(D(\alpha,\beta)\)</span>内。因此，Nyquist图不能环绕点<span
+class="math inline">\(-1/\alpha+j0\)</span>。因此，根据Nyquist判据可知，为了使<span
+class="math inline">\(G(s)/[1+\alpha G(s)]\)</span>稳定，<span
+class="math inline">\(G(s)\)</span>必须是Hurwitz稳定的。</p>
 <p>这三种情况下的稳定性判据总结在以下定理中，该定理被称为圆判据。</p>
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_circle_single.png" alt="圆判据定理"></p>
-<p>圆判据使我们能够仅通过使用$G(s)$的Nyquist图来研究绝对稳定性，而Nyquist图可以直接从实验数据中确定。根据$G(s)$的Nyquist图，我们可以确定系统绝对稳定的允许区间。</p>
-<h3 id="Popov判据"><a href="#Popov判据" class="headerlink" title="Popov判据"></a>Popov判据</h3><p>Popov判据针对下面这类系统：</p>
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_popov_system.png" alt="系统描述"></p>
-<p>其中，$\psi$是时变而且解耦的，即$\psi_i(y)&#x3D;\psi_i(y_i)$。Popov判据的内容如下：</p>
-<p><img src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_popov_system.png" alt="Popov判据"></p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/26986475/">非线性控制</a></li>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_circle_single.png"
+alt="圆判据定理" />
+<figcaption aria-hidden="true">圆判据定理</figcaption>
+</figure>
+<p>圆判据使我们能够仅通过使用<span
+class="math inline">\(G(s)\)</span>的Nyquist图来研究绝对稳定性，而Nyquist图可以直接从实验数据中确定。根据<span
+class="math inline">\(G(s)\)</span>的Nyquist图，我们可以确定系统绝对稳定的允许区间。</p>
+<h3 id="popov判据">Popov判据</h3>
+<p>Popov判据针对下面这类系统：</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_popov_system.png"
+alt="系统描述" />
+<figcaption aria-hidden="true">系统描述</figcaption>
+</figure>
+<p>其中，<span
+class="math inline">\(\psi\)</span>是时变而且解耦的，即<span
+class="math inline">\(\psi_i(y)=\psi_i(y_i)\)</span>。Popov判据的内容如下：</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/feedback_stability_popov_system.png"
+alt="Popov判据" />
+<figcaption aria-hidden="true">Popov判据</figcaption>
+</figure>
+<h2 id="参考资料">参考资料</h2>
+<ol type="1">
+<li><a
+target="_blank" rel="noopener" href="https://book.douban.com/subject/26986475/">非线性控制</a></li>
 </ol>
 
     </div>

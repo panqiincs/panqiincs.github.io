@@ -24,7 +24,9 @@
     <updated>2025-05-11T07:59:18.741Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;本文是我在学习四旋翼飞行器建模时做的笔记，主要参考&lt;a href=&quot;https://github.com/yrlu/quadrotor&quot;&gt;这个项目&lt;/a&gt;的文档。文中对基础力学知识进行了必要的阐述，虽不够详尽，但应足以辅助形象理解。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;引言&quot;&gt;引言&lt;/h2&gt;
+&lt;p&gt;本文是我在学习四旋翼飞行器建模时做的笔记，主要参考&lt;a
+href=&quot;https://github.com/yrlu/quadrotor&quot;&gt;这个项目&lt;/a&gt;的文档。文中对基础力学知识进行了必要的阐述，虽不够详尽，但应足以辅助形象理解。&lt;/p&gt;</summary>
     
     
     
@@ -45,7 +47,8 @@
     <updated>2025-02-26T03:11:36.831Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;老机上演仰卧起坐&quot;&gt;&lt;a href=&quot;#老机上演仰卧起坐&quot; class=&quot;headerlink&quot; title=&quot;老机上演仰卧起坐&quot;&gt;&lt;/a&gt;老机上演仰卧起坐&lt;/h2&gt;&lt;p&gt;前几天，我那台用了十年多的老电脑突然出了问题。按下开机键后，灯亮风扇转，但仅持续约1秒就灯灭风扇停。这个过程反复进行，机器不断开机关机，仿佛在表演仰卧起坐。我以为这台老古董真的要退休了，甚至动了购买新电脑的念头。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;老机上演仰卧起坐&quot;&gt;老机上演仰卧起坐&lt;/h2&gt;
+&lt;p&gt;前几天，我那台用了十年多的老电脑突然出了问题。按下开机键后，灯亮风扇转，但仅持续约1秒就灯灭风扇停。这个过程反复进行，机器不断开机关机，仿佛在表演仰卧起坐。我以为这台老古董真的要退休了，甚至动了购买新电脑的念头。&lt;/p&gt;</summary>
     
     
     
@@ -64,7 +67,9 @@
     <updated>2025-02-05T05:39:16.715Z</updated>
     
     
-    <summary type="html">&lt;p&gt;几年前，为了深入学习模拟电路，我买了套&lt;a href=&quot;https://panqiincs.me/2020/06/28/sedra-smith-electronics/&quot;&gt;台版「Smith电子学」&lt;/a&gt;。这套书是北美人写的经典教材，台版的翻译和制作水准都很高，我非常喜欢。后来由于学习重心转移，两本大部头在书柜里躺了几年，于是去年将它&lt;a href=&quot;https://panqiincs.me/2024/01/10/second-hand-books/&quot;&gt;转卖给了有缘人&lt;/a&gt;。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;几年前，为了深入学习模拟电路，我买了套&lt;a
+href=&quot;https://panqiincs.me/2020/06/28/sedra-smith-electronics/&quot;&gt;台版「Smith电子学」&lt;/a&gt;。这套书是北美人写的经典教材，台版的翻译和制作水准都很高，我非常喜欢。后来由于学习重心转移，两本大部头在书柜里躺了几年，于是去年将它&lt;a
+href=&quot;https://panqiincs.me/2024/01/10/second-hand-books/&quot;&gt;转卖给了有缘人&lt;/a&gt;。&lt;/p&gt;</summary>
     
     
     
@@ -85,7 +90,8 @@
     <updated>2024-11-19T02:54:14.214Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;负反馈是控制系统的灵魂。它使系统能够自动调节自身，实现更高的精确度和稳定性，抵抗外部扰动和不确定因素。但反馈也可能引发问题，比如，两个稳定系统通过反馈连接后，整体系统可能变得不稳定。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;简介&lt;/h2&gt;
+&lt;p&gt;负反馈是控制系统的灵魂。它使系统能够自动调节自身，实现更高的精确度和稳定性，抵抗外部扰动和不确定因素。但反馈也可能引发问题，比如，两个稳定系统通过反馈连接后，整体系统可能变得不稳定。&lt;/p&gt;</summary>
     
     
     
@@ -108,7 +114,8 @@
     <updated>2024-11-19T02:30:14.959Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;与状态空间模型不同，输入输出模型直接将系统的输入和输出联系起来，而无需通过状态方程描述内部结构，通常将系统视为一个黑箱。输入输出稳定性关注输入与输出之间的关系，而Lyapunov稳定性则着重于系统状态的演变。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;简介&lt;/h2&gt;
+&lt;p&gt;与状态空间模型不同，输入输出模型直接将系统的输入和输出联系起来，而无需通过状态方程描述内部结构，通常将系统视为一个黑箱。输入输出稳定性关注输入与输出之间的关系，而Lyapunov稳定性则着重于系统状态的演变。&lt;/p&gt;</summary>
     
     
     
@@ -131,7 +138,8 @@
     <updated>2024-11-19T02:53:02.247Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;术语&quot;&gt;&lt;a href=&quot;#术语&quot; class=&quot;headerlink&quot; title=&quot;术语&quot;&gt;&lt;/a&gt;术语&lt;/h2&gt;&lt;p&gt;Passivity的字面翻译是「被动性」，但在各个领域中通常都翻译为「无源性」，因为这一术语与物理系统中能量传递和消耗的特性有关。Passivity描述系统不会产生能量而只能存储或消耗能量的特性。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;术语&quot;&gt;术语&lt;/h2&gt;
+&lt;p&gt;Passivity的字面翻译是「被动性」，但在各个领域中通常都翻译为「无源性」，因为这一术语与物理系统中能量传递和消耗的特性有关。Passivity描述系统不会产生能量而只能存储或消耗能量的特性。&lt;/p&gt;</summary>
     
     
     
@@ -154,7 +162,8 @@
     <updated>2024-10-20T04:35:35.837Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;系统模型&quot;&gt;&lt;a href=&quot;#系统模型&quot; class=&quot;headerlink&quot; title=&quot;系统模型&quot;&gt;&lt;/a&gt;系统模型&lt;/h2&gt;&lt;p&gt;本文介绍如下形式线性系统的状态观测器设计：&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;系统模型&quot;&gt;系统模型&lt;/h2&gt;
+&lt;p&gt;本文介绍如下形式线性系统的状态观测器设计：&lt;/p&gt;</summary>
     
     
     
@@ -324,7 +333,9 @@
     <updated>2024-03-02T08:29:25.797Z</updated>
     
     
-    <summary type="html">&lt;p&gt;我从2022年6月开始使用&lt;a href=&quot;https://51.la/&quot;&gt;51LA&lt;/a&gt;统计网站访问数据，和Google Analytics各有优点，非常好用。2023年是第一个完整统计的自然年，在新年的第一天把2023年的统计数据贴出来给大家看看。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;我从2022年6月开始使用&lt;a
+href=&quot;https://51.la/&quot;&gt;51LA&lt;/a&gt;统计网站访问数据，和Google
+Analytics各有优点，非常好用。2023年是第一个完整统计的自然年，在新年的第一天把2023年的统计数据贴出来给大家看看。&lt;/p&gt;</summary>
     
     
     
@@ -364,7 +375,8 @@
     <updated>2024-10-20T05:11:40.225Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;系统离散化&quot;&gt;&lt;a href=&quot;#系统离散化&quot; class=&quot;headerlink&quot; title=&quot;系统离散化&quot;&gt;&lt;/a&gt;系统离散化&lt;/h2&gt;&lt;p&gt;由于计算机控制在实际中占绝对主导地位，所以离散系统非常重要。当采用零阶保持器时，连续系统到离散系统的转换方法如下图所示：&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;系统离散化&quot;&gt;系统离散化&lt;/h2&gt;
+&lt;p&gt;由于计算机控制在实际中占绝对主导地位，所以离散系统非常重要。当采用零阶保持器时，连续系统到离散系统的转换方法如下图所示：&lt;/p&gt;</summary>
     
     
     
@@ -393,7 +405,9 @@
     <updated>2024-01-18T14:41:01.217Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;状态估计原理&quot;&gt;&lt;a href=&quot;#状态估计原理&quot; class=&quot;headerlink&quot; title=&quot;状态估计原理&quot;&gt;&lt;/a&gt;状态估计原理&lt;/h2&gt;&lt;p&gt;在&lt;a href=&quot;https://panqiincs.me/2023/11/09/pendulum-control-design/&quot;&gt;倒立摆的状态反馈控制&lt;/a&gt;一文中，我们默认系统状态可以直接获得。但实际中有的状态无法直接测量，而且还要考虑噪声的影响，所以经常需要设计状态观测器估计系统状态。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;状态估计原理&quot;&gt;状态估计原理&lt;/h2&gt;
+&lt;p&gt;在&lt;a
+href=&quot;https://panqiincs.me/2023/11/09/pendulum-control-design/&quot;&gt;倒立摆的状态反馈控制&lt;/a&gt;一文中，我们默认系统状态可以直接获得。但实际中有的状态无法直接测量，而且还要考虑噪声的影响，所以经常需要设计状态观测器估计系统状态。&lt;/p&gt;</summary>
     
     
     
@@ -422,7 +436,8 @@
     <updated>2024-01-24T09:11:23.425Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;系统模型&quot;&gt;&lt;a href=&quot;#系统模型&quot; class=&quot;headerlink&quot; title=&quot;系统模型&quot;&gt;&lt;/a&gt;系统模型&lt;/h2&gt;&lt;p&gt;一阶倒立摆是控制理论学习中常见的被控对象，本文使用它的近似线性模型，状态方程为&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;系统模型&quot;&gt;系统模型&lt;/h2&gt;
+&lt;p&gt;一阶倒立摆是控制理论学习中常见的被控对象，本文使用它的近似线性模型，状态方程为&lt;/p&gt;</summary>
     
     
     
@@ -447,7 +462,9 @@
     <updated>2025-02-06T08:08:04.255Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;启程&quot;&gt;&lt;a href=&quot;#启程&quot; class=&quot;headerlink&quot; title=&quot;启程&quot;&gt;&lt;/a&gt;启程&lt;/h2&gt;&lt;p&gt;2022年初，我想&lt;a href=&quot;https://panqiincs.me/2022/02/18/attempt-amann-analysis/&quot;&gt;尝试下Amann的数学分析&lt;/a&gt;，这个很深的坑从这篇文章开始挖起。本系列文章将首先翻译前言，梳理核心内容和脉络，然后总结学习过程中的重要思考和理解，重点关注我以前从未接触过的内容。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;启程&quot;&gt;启程&lt;/h2&gt;
+&lt;p&gt;2022年初，我想&lt;a
+href=&quot;https://panqiincs.me/2022/02/18/attempt-amann-analysis/&quot;&gt;尝试下Amann的数学分析&lt;/a&gt;，这个很深的坑从这篇文章开始挖起。本系列文章将首先翻译前言，梳理核心内容和脉络，然后总结学习过程中的重要思考和理解，重点关注我以前从未接触过的内容。&lt;/p&gt;</summary>
     
     
     

@@ -21,12 +21,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="特征值和特征向量从线性代数：线性空间与线性映射一文可知，一个线性变换在不同基下的表示矩阵是相似的。现在探讨哪类矩阵相似于对角阵，以及如何找到对应的基。">
+    <meta name="description" content="特征值和特征向量 从线性代数：线性空间与线性映射一文可知，一个线性变换在不同基下的表示矩阵是相似的。现在探讨哪类矩阵相似于对角阵，以及如何找到对应的基。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性代数：特征值">
 <meta property="og:url" content="https://panqiincs.me/2023/08/15/la-eigenvalue/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="特征值和特征向量从线性代数：线性空间与线性映射一文可知，一个线性变换在不同基下的表示矩阵是相似的。现在探讨哪类矩阵相似于对角阵，以及如何找到对应的基。">
+<meta property="og:description" content="特征值和特征向量 从线性代数：线性空间与线性映射一文可知，一个线性变换在不同基下的表示矩阵是相似的。现在探讨哪类矩阵相似于对角阵，以及如何找到对应的基。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-15T09:32:36.000Z">
 <meta property="article:modified_time" content="2025-02-21T11:04:02.673Z">
@@ -298,24 +298,155 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="特征值和特征向量"><a href="#特征值和特征向量" class="headerlink" title="特征值和特征向量"></a>特征值和特征向量</h2><p>从<a href="https://panqiincs.me/2023/08/09/la-linear-space-map/">线性代数：线性空间与线性映射</a>一文可知，一个线性变换在不同基下的表示矩阵是相似的。现在探讨哪类矩阵相似于对角阵，以及如何找到对应的基。</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="特征值和特征向量">特征值和特征向量</h2>
+<p>从<a
+href="https://panqiincs.me/2023/08/09/la-linear-space-map/">线性代数：线性空间与线性映射</a>一文可知，一个线性变换在不同基下的表示矩阵是相似的。现在探讨哪类矩阵相似于对角阵，以及如何找到对应的基。</p>
 <span id="more"></span>
-
-<p>设$\boldsymbol{\varphi}$是数域$\mathbb{K}$上的线性空间$V$的线性变换，如果$\lambda \in \mathbb{K}$， $\boldsymbol{x} \in V$且$\boldsymbol{x} \neq \boldsymbol{0}$满足<br>$$<br>\boldsymbol{\varphi}(\boldsymbol{x}) &#x3D; \lambda\boldsymbol{x}<br>$$</p>
-<p>则称$\lambda$是线性变换$\boldsymbol{\varphi}$的一个<strong>特征值</strong>，$\boldsymbol{x}$称为$\boldsymbol{\varphi}$关于特征值$\lambda$的<strong>特征向量</strong>。从几何上看，该线性变换仅改变了向量的长度。$\boldsymbol{\varphi}$属于特征值$\lambda$的全体特征向量加上零向量构成$V$的一个子空间，记为$V_{\lambda}$，是$\boldsymbol{\varphi}$的不变子空间，也称为特征子空间。如果$\boldsymbol{\varphi}$在某组基下的表示矩阵为$\boldsymbol{A}$，则有<br>$$<br>\boldsymbol{A}\boldsymbol{\alpha}&#x3D;\lambda\boldsymbol{\alpha}<br>$$<br>$$<br>(\lambda \boldsymbol{I}_n - \boldsymbol{A})\boldsymbol{\alpha} &#x3D; \boldsymbol{0}<br>$$</p>
-<p>上面方程的解空间$V_{\lambda}$称为$\boldsymbol{A}$关于特征值$\lambda$的特征子空间。即要求解<br>$$<br>\left\vert \lambda\boldsymbol{I}_n - \boldsymbol{A} \right\vert &#x3D; \boldsymbol{0}<br>$$</p>
-<p>该行列式称为$\boldsymbol{A}$的<strong>特征多项式</strong>。相似矩阵具有相同的特征多项式和相同的特征值。先解特征方程求出特征值（可能有复根和重根），再将各个特征值代入到方程$(\lambda \boldsymbol{I}_n - \boldsymbol{A})\boldsymbol{\alpha} &#x3D; \boldsymbol{0}$中，求出特征值对应的特征向量。</p>
-<h2 id="对角化"><a href="#对角化" class="headerlink" title="对角化"></a>对角化</h2><p>$n$阶方阵$\boldsymbol{A}$相似于对角阵的充要条件是$\boldsymbol{A}$有$n$个线性无关的特征向量。类似地，存在一组基使得$n$维线性空间$V$上的线性变换$\boldsymbol{\varphi}$在该组基下的表示矩阵为对角阵的充要条件是$\boldsymbol{\varphi}$有$n$个线性无关的特征向量。</p>
-<p>如果$\boldsymbol{\varphi}$有$n$个不同的特征值，则$\boldsymbol{\varphi}$可以对角化，原因是属于不同特征值的特征向量是线性无关的。如果特征方程有重根，即特征值有重数，也是可以对角化的。假设$\boldsymbol{\varphi}$有$k$个不同特征值，$k\leq n$，$V_i(i&#x3D;1,2,\cdots,k)$是特征值$\lambda_i$的特征子空间，则$\boldsymbol{\varphi}$可以对角化的充要条件是<br>$$<br>V &#x3D; V_1 \oplus V_2 \oplus \cdots \oplus V_k<br>$$</p>
-<p>基于上述结论，得到从计算层面上判断可对角化的方法：对于每个特征根$\lambda_i$，只要其重数与属于$\lambda_i$的特征子空间$V_i$的维数相等，就可以对角化。简单来说，有重根不可怕，但最后一定要凑齐$n$个线性无关的特征向量，所以$r$重特征值必须要有$r$个线性无关的特征向量。</p>
-<p>现假设$\boldsymbol{A}$的特征值为$\lambda_1,\lambda_2,\cdots,\lambda_n$，属于它们的特征向量$\boldsymbol{\alpha}_1,\boldsymbol{\alpha}_2,\cdots,\boldsymbol{\alpha}_n$是线性无关的，根据定义有<br>$$<br>\boldsymbol{A}\boldsymbol{\alpha}_i &#x3D; \lambda_i \boldsymbol{\alpha}_i, , i&#x3D;1,2,\cdots,n<br>$$<br>$$<br>\left(<br>  \boldsymbol{A}\boldsymbol{\alpha}_1, \boldsymbol{A}\boldsymbol{\alpha}_2, \cdots, \boldsymbol{A}\boldsymbol{\alpha}_n<br>\right)&#x3D;<br>\left(<br>  \lambda_1\boldsymbol{\alpha}_1, \lambda_2\boldsymbol{\alpha}_2, \cdots, \lambda_n\boldsymbol{\alpha}_n<br>\right)<br>$$<br>$$<br>\boldsymbol{A}<br>\left(<br>  \boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \cdots, \boldsymbol{\alpha}_n<br>\right)&#x3D;<br>\left(<br>  \boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \cdots, \boldsymbol{\alpha}_n<br>\right)<br>\left(\begin{matrix}<br>   \lambda_1  &amp;  &amp;  &amp; \<br>   &amp;  \lambda_2  &amp;  &amp; \<br>   &amp;  &amp;  \ddots  &amp;    \<br>   &amp;  &amp;  &amp;  \lambda_3 \<br>\end{matrix}\right)<br>$$</p>
-<p>记$\left(\boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \cdots, \boldsymbol{\alpha}_n\right)$是$\boldsymbol{P}$的列向量分块，$\boldsymbol{\Lambda}$为$\lambda_1,\lambda_2,\cdots,\lambda_n$构成的对角阵，则上面的结果可以写成<br>$$<br>\boldsymbol{A}\boldsymbol{P} &#x3D; \boldsymbol{P}\boldsymbol{\Lambda}<br>$$</p>
-<p>所以<br>$$<br>\boldsymbol{\Lambda} &#x3D; \boldsymbol{P}^{-1}\boldsymbol{A}\boldsymbol{P}<br>$$</p>
-<p>$\boldsymbol{A}$与对角阵$\boldsymbol{\Lambda}$相似，对角化要求的矩阵$\boldsymbol{P}$的求法也一目了然。</p>
-<h2 id="极小多项式"><a href="#极小多项式" class="headerlink" title="极小多项式"></a>极小多项式</h2><p>数域$\mathbb{K}$上的全体$n \times n$矩阵组成了$\mathbb{K}$上的线性空间，维数为$n^2$，所以下列$n^2+1$个矩阵必然线性相关：<br>$$<br>\boldsymbol{A}^{n^2},\boldsymbol{A}^{n^2-1},\cdots,\boldsymbol{A},\boldsymbol{I}_n<br>$$</p>
-<p>所以存在$\mathbb{K}$中不全为零的数$c_i(i&#x3D;0,1,2,\cdots,c_{n^2})$，使得<br>$$<br>c_{n^2}\boldsymbol{A}^{n^2}+c_{n^2-1}\boldsymbol{A}^{n^2-1}+\cdots+c_1\boldsymbol{A}+c_0\boldsymbol{I}_n&#x3D;\boldsymbol{O}<br>$$</p>
-<p>这表明矩阵$\boldsymbol{A}$适合数域$\mathbb{K}$上的多项式。所适合的非零多项式中次数最小的，称为<strong>极小多项式</strong>或最小多项式。任一$n$阶矩阵的极小多项式是唯一的。相似的矩阵具有相同的极小多项式。</p>
-<p><strong>Cayley-Hamilton定理</strong>：设$\boldsymbol{A}$是数域$\mathbb{K}$上的$n$阶矩阵，若$f(x)$是$\boldsymbol{A}$的特征多项式，则$f(\boldsymbol{A})&#x3D;\boldsymbol{O}$，该结论对线性变换同样成立。</p>
+<p>设<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>是数域<span
+class="math inline">\(\mathbb{K}\)</span>上的线性空间<span
+class="math inline">\(V\)</span>的线性变换，如果<span
+class="math inline">\(\lambda \in \mathbb{K}\)</span>， <span
+class="math inline">\(\boldsymbol{x} \in V\)</span>且<span
+class="math inline">\(\boldsymbol{x} \neq \boldsymbol{0}\)</span>满足
+<span class="math display">\[
+\boldsymbol{\varphi}(\boldsymbol{x}) = \lambda\boldsymbol{x}
+\]</span></p>
+<p>则称<span class="math inline">\(\lambda\)</span>是线性变换<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>的一个<strong>特征值</strong>，<span
+class="math inline">\(\boldsymbol{x}\)</span>称为<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>关于特征值<span
+class="math inline">\(\lambda\)</span>的<strong>特征向量</strong>。从几何上看，该线性变换仅改变了向量的长度。<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>属于特征值<span
+class="math inline">\(\lambda\)</span>的全体特征向量加上零向量构成<span
+class="math inline">\(V\)</span>的一个子空间，记为<span
+class="math inline">\(V_{\lambda}\)</span>，是<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>的不变子空间，也称为特征子空间。如果<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>在某组基下的表示矩阵为<span
+class="math inline">\(\boldsymbol{A}\)</span>，则有 <span
+class="math display">\[
+\boldsymbol{A}\boldsymbol{\alpha}=\lambda\boldsymbol{\alpha}
+\]</span> <span class="math display">\[
+(\lambda \boldsymbol{I}_n - \boldsymbol{A})\boldsymbol{\alpha} =
+\boldsymbol{0}
+\]</span></p>
+<p>上面方程的解空间<span
+class="math inline">\(V_{\lambda}\)</span>称为<span
+class="math inline">\(\boldsymbol{A}\)</span>关于特征值<span
+class="math inline">\(\lambda\)</span>的特征子空间。即要求解 <span
+class="math display">\[
+\left\vert \lambda\boldsymbol{I}_n - \boldsymbol{A} \right\vert =
+\boldsymbol{0}
+\]</span></p>
+<p>该行列式称为<span
+class="math inline">\(\boldsymbol{A}\)</span>的<strong>特征多项式</strong>。相似矩阵具有相同的特征多项式和相同的特征值。先解特征方程求出特征值（可能有复根和重根），再将各个特征值代入到方程<span
+class="math inline">\((\lambda \boldsymbol{I}_n -
+\boldsymbol{A})\boldsymbol{\alpha} =
+\boldsymbol{0}\)</span>中，求出特征值对应的特征向量。</p>
+<h2 id="对角化">对角化</h2>
+<p><span class="math inline">\(n\)</span>阶方阵<span
+class="math inline">\(\boldsymbol{A}\)</span>相似于对角阵的充要条件是<span
+class="math inline">\(\boldsymbol{A}\)</span>有<span
+class="math inline">\(n\)</span>个线性无关的特征向量。类似地，存在一组基使得<span
+class="math inline">\(n\)</span>维线性空间<span
+class="math inline">\(V\)</span>上的线性变换<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>在该组基下的表示矩阵为对角阵的充要条件是<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>有<span
+class="math inline">\(n\)</span>个线性无关的特征向量。</p>
+<p>如果<span class="math inline">\(\boldsymbol{\varphi}\)</span>有<span
+class="math inline">\(n\)</span>个不同的特征值，则<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>可以对角化，原因是属于不同特征值的特征向量是线性无关的。如果特征方程有重根，即特征值有重数，也是可以对角化的。假设<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>有<span
+class="math inline">\(k\)</span>个不同特征值，<span
+class="math inline">\(k\leq n\)</span>，<span
+class="math inline">\(V_i(i=1,2,\cdots,k)\)</span>是特征值<span
+class="math inline">\(\lambda_i\)</span>的特征子空间，则<span
+class="math inline">\(\boldsymbol{\varphi}\)</span>可以对角化的充要条件是
+<span class="math display">\[
+V = V_1 \oplus V_2 \oplus \cdots \oplus V_k
+\]</span></p>
+<p>基于上述结论，得到从计算层面上判断可对角化的方法：对于每个特征根<span
+class="math inline">\(\lambda_i\)</span>，只要其重数与属于<span
+class="math inline">\(\lambda_i\)</span>的特征子空间<span
+class="math inline">\(V_i\)</span>的维数相等，就可以对角化。简单来说，有重根不可怕，但最后一定要凑齐<span
+class="math inline">\(n\)</span>个线性无关的特征向量，所以<span
+class="math inline">\(r\)</span>重特征值必须要有<span
+class="math inline">\(r\)</span>个线性无关的特征向量。</p>
+<p>现假设<span
+class="math inline">\(\boldsymbol{A}\)</span>的特征值为<span
+class="math inline">\(\lambda_1,\lambda_2,\cdots,\lambda_n\)</span>，属于它们的特征向量<span
+class="math inline">\(\boldsymbol{\alpha}_1,\boldsymbol{\alpha}_2,\cdots,\boldsymbol{\alpha}_n\)</span>是线性无关的，根据定义有
+<span class="math display">\[
+\boldsymbol{A}\boldsymbol{\alpha}_i = \lambda_i \boldsymbol{\alpha}_i,
+\, i=1,2,\cdots,n
+\]</span> <span class="math display">\[
+\left(
+  \boldsymbol{A}\boldsymbol{\alpha}_1,
+\boldsymbol{A}\boldsymbol{\alpha}_2, \cdots,
+\boldsymbol{A}\boldsymbol{\alpha}_n
+\right)=
+\left(
+  \lambda_1\boldsymbol{\alpha}_1, \lambda_2\boldsymbol{\alpha}_2,
+\cdots, \lambda_n\boldsymbol{\alpha}_n
+\right)
+\]</span> <span class="math display">\[
+\boldsymbol{A}
+\left(
+  \boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \cdots,
+\boldsymbol{\alpha}_n
+\right)=
+\left(
+  \boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \cdots,
+\boldsymbol{\alpha}_n
+\right)
+\left(\begin{matrix}
+   \lambda_1  &amp;  &amp;  &amp; \\
+   &amp;  \lambda_2  &amp;  &amp; \\
+   &amp;  &amp;  \ddots  &amp;    \\
+   &amp;  &amp;  &amp;  \lambda_3 \\
+\end{matrix}\right)
+\]</span></p>
+<p>记<span class="math inline">\(\left(\boldsymbol{\alpha}_1,
+\boldsymbol{\alpha}_2, \cdots,
+\boldsymbol{\alpha}_n\right)\)</span>是<span
+class="math inline">\(\boldsymbol{P}\)</span>的列向量分块，<span
+class="math inline">\(\boldsymbol{\Lambda}\)</span>为<span
+class="math inline">\(\lambda_1,\lambda_2,\cdots,\lambda_n\)</span>构成的对角阵，则上面的结果可以写成
+<span class="math display">\[
+\boldsymbol{A}\boldsymbol{P} = \boldsymbol{P}\boldsymbol{\Lambda}
+\]</span></p>
+<p>所以 <span class="math display">\[
+\boldsymbol{\Lambda} = \boldsymbol{P}^{-1}\boldsymbol{A}\boldsymbol{P}
+\]</span></p>
+<p><span class="math inline">\(\boldsymbol{A}\)</span>与对角阵<span
+class="math inline">\(\boldsymbol{\Lambda}\)</span>相似，对角化要求的矩阵<span
+class="math inline">\(\boldsymbol{P}\)</span>的求法也一目了然。</p>
+<h2 id="极小多项式">极小多项式</h2>
+<p>数域<span class="math inline">\(\mathbb{K}\)</span>上的全体<span
+class="math inline">\(n \times n\)</span>矩阵组成了<span
+class="math inline">\(\mathbb{K}\)</span>上的线性空间，维数为<span
+class="math inline">\(n^2\)</span>，所以下列<span
+class="math inline">\(n^2+1\)</span>个矩阵必然线性相关： <span
+class="math display">\[
+\boldsymbol{A}^{n^2},\boldsymbol{A}^{n^2-1},\cdots,\boldsymbol{A},\boldsymbol{I}_n
+\]</span></p>
+<p>所以存在<span
+class="math inline">\(\mathbb{K}\)</span>中不全为零的数<span
+class="math inline">\(c_i(i=0,1,2,\cdots,c_{n^2})\)</span>，使得 <span
+class="math display">\[
+c_{n^2}\boldsymbol{A}^{n^2}+c_{n^2-1}\boldsymbol{A}^{n^2-1}+\cdots+c_1\boldsymbol{A}+c_0\boldsymbol{I}_n=\boldsymbol{O}
+\]</span></p>
+<p>这表明矩阵<span
+class="math inline">\(\boldsymbol{A}\)</span>适合数域<span
+class="math inline">\(\mathbb{K}\)</span>上的多项式。所适合的非零多项式中次数最小的，称为<strong>极小多项式</strong>或最小多项式。任一<span
+class="math inline">\(n\)</span>阶矩阵的极小多项式是唯一的。相似的矩阵具有相同的极小多项式。</p>
+<p><strong>Cayley-Hamilton定理</strong>：设<span
+class="math inline">\(\boldsymbol{A}\)</span>是数域<span
+class="math inline">\(\mathbb{K}\)</span>上的<span
+class="math inline">\(n\)</span>阶矩阵，若<span
+class="math inline">\(f(x)\)</span>是<span
+class="math inline">\(\boldsymbol{A}\)</span>的特征多项式，则<span
+class="math inline">\(f(\boldsymbol{A})=\boldsymbol{O}\)</span>，该结论对线性变换同样成立。</p>
 
     </div>
 
