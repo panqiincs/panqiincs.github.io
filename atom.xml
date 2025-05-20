@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2025-05-11T07:59:18.741Z</updated>
+  <updated>2025-05-20T03:24:21.599Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>南宁城区FM调频广播实测</title>
+    <link href="https://panqiincs.me/2025/05/20/nanning-fm-channels/"/>
+    <id>https://panqiincs.me/2025/05/20/nanning-fm-channels/</id>
+    <published>2025-05-20T02:10:38.000Z</published>
+    <updated>2025-05-20T03:24:21.599Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;上周末赴南宁参加会议，行前收拾行李时，顺手捎上了自己的收音机，借此机会手动搜索了南宁城区的FM调频广播信号。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="旅行" scheme="https://panqiincs.me/tags/%E6%97%85%E8%A1%8C/"/>
+    
+    <category term="广播" scheme="https://panqiincs.me/tags/%E5%B9%BF%E6%92%AD/"/>
+    
+    <category term="收音机" scheme="https://panqiincs.me/tags/%E6%94%B6%E9%9F%B3%E6%9C%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>四旋翼飞行器的建模</title>
@@ -451,25 +474,6 @@ href=&quot;https://panqiincs.me/2023/11/09/pendulum-control-design/&quot;&gt;倒
     <category term="控制系统仿真" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%BB%BF%E7%9C%9F/"/>
     
     <category term="倒立摆" scheme="https://panqiincs.me/tags/%E5%80%92%E7%AB%8B%E6%91%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Amann数学分析：基础知识</title>
-    <link href="https://panqiincs.me/2023/11/07/amann-foundations/"/>
-    <id>https://panqiincs.me/2023/11/07/amann-foundations/</id>
-    <published>2023-11-07T14:32:36.000Z</published>
-    <updated>2025-02-06T08:08:04.255Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;启程&quot;&gt;启程&lt;/h2&gt;
-&lt;p&gt;2022年初，我想&lt;a
-href=&quot;https://panqiincs.me/2022/02/18/attempt-amann-analysis/&quot;&gt;尝试下Amann的数学分析&lt;/a&gt;，这个很深的坑从这篇文章开始挖起。本系列文章将首先翻译前言，梳理核心内容和脉络，然后总结学习过程中的重要思考和理解，重点关注我以前从未接触过的内容。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
-    
     
   </entry>
   
