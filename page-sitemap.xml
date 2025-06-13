@@ -10,17 +10,8 @@
     
     
     <url>
-        <loc>https://panqiincs.me/links/</loc>
-        <lastmod>2025-06-12T09:06:00.013Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    
-    
-    <url>
         <loc>https://panqiincs.me/study/</loc>
-        <lastmod>2025-06-12T08:56:12.521Z</lastmod>
+        <lastmod>2025-06-13T06:34:49.005Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -29,7 +20,16 @@
     
     <url>
         <loc>https://panqiincs.me/about/</loc>
-        <lastmod>2025-05-27T08:54:36.519Z</lastmod>
+        <lastmod>2025-06-13T06:33:03.252Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    
+    
+    <url>
+        <loc>https://panqiincs.me/links/</loc>
+        <lastmod>2025-06-12T09:06:00.013Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
