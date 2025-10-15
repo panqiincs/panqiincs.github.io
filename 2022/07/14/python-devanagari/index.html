@@ -29,7 +29,7 @@
 <meta property="og:description" content="文字特性 天城文（Devanagari）是诸多南亚语言采用的文字，其中最有名的当属梵语（Sanskrit）。天城文作为婆罗米系元音附标文字，特点鲜明，下面介绍用计算机处理天城文所需的基础知识。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-14T01:41:52.000Z">
-<meta property="article:modified_time" content="2025-05-21T08:44:14.460Z">
+<meta property="article:modified_time" content="2025-10-15T09:28:10.785Z">
 <meta property="article:author" content="辛未羊">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="天城文">
@@ -352,14 +352,14 @@ KI，即辅音字母和非独立元音组合时替代了固有元音。</li>
 <li>其他特殊字符。如U+0900-U+0903，详情参考文档。</li>
 </ol>
 <h3 id="字素">字素</h3>
-<p><strong>字素</strong>（grapheme）可看成<strong>基本书写单元</strong>，要么是占单个码位的符号，要么是由多个码位构成的组合符号。本文中字素和基本书写单元表达相同的意义。例如，क和क्都是字素，其中क是单个码位，क्则由两个码位组合而成。但是非独立元音ि就不是字素，因为它和辅音字母组合后的书写形态才有意义。</p>
+<p><strong>字素</strong>（grapheme）可看成<strong>基本书写单元</strong>，要么是占单个码位的符号，要么是由多个码位构成的组合符号。本文中，字素和基本书写单元表达相同的意义。例如，क和क्都是字素，其中क是单个码位，क्则由两个码位组合而成。但是非独立元音ि就不是字素，因为它和辅音字母组合后的书写形态才有意义。</p>
 <p>天城文中有大量由辅音、非独立元音和特殊符号所组成的字素。如下字素均由两个码位组成，辅音字母分别位于组合后得到的基本书写单元的上下左右方向：गु
 = ग + ु ， धँ = ध + ँ ， यी = य + ी ， नि = न + ि 。</p>
 <p>需要注意，Unicode字符中除了一些特殊符号和非独立元音字母外，其它可独立出现的字符也是基本书写单元。</p>
 <h3 id="合字">合字</h3>
-<p>其间去除元音的连续辅音（或称为辅音丛）按照法则连写在一起，称为<strong>合字</strong>（ligature），थ्व
+<p>合字（ligature）是将连续辅音丛中的元音去除后，按照特定规则连写形成的复合字符。例如थ्व
 = थ् + व ， न्त्य = न् + त् + य ， क्ष्म्य = क् + ष् + म् +
-य分别是由2、3、4个字素构成合字的例子。其中前面几个字符是利用virama符号去除固有元音后得到的死辅音（dead
+य都是由字素构成合字。其中前面几个字符是利用virama符号去除固有元音后得到的死辅音（dead
 consonant），末尾是附着固有元音的活辅音（live
 consonant）。合字规则可看成多个字素组合形成新的形态。</p>
 <p>天城文的合写规则非常繁杂，详情可参考<a
@@ -479,7 +479,7 @@ Unicode character in Python? - Stack Overflow</a></li>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">9:45</span>
+    <span title="站点阅读时长">9:44</span>
   </span>
 </div>
 
