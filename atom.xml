@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2025-10-15T09:23:33.070Z</updated>
+  <updated>2025-11-23T09:38:54.302Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>高中母校的回礼</title>
+    <link href="https://panqiincs.me/2025/11/22/huanggao-donation/"/>
+    <id>https://panqiincs.me/2025/11/22/huanggao-donation/</id>
+    <published>2025-11-22T09:22:07.000Z</published>
+    <updated>2025-11-23T09:38:54.302Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;2024年11月，我的高中母校黄冈中学迎来了建校120周年庆典，并同步举办了校友峰会。许多校友和社会各界爱心人士纷纷慷慨解囊，捐资捐物，我也尽了一份小心意，捐赠了1200元。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="黄冈" scheme="https://panqiincs.me/tags/%E9%BB%84%E5%86%88/"/>
+    
+    <category term="黄冈中学" scheme="https://panqiincs.me/tags/%E9%BB%84%E5%86%88%E4%B8%AD%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>业余无线电：操作证考试</title>
@@ -424,36 +445,6 @@ Analytics各有优点，非常好用。2023年是第一个完整统计的自然�
     <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
     
     <category term="倒立摆" scheme="https://panqiincs.me/tags/%E5%80%92%E7%AB%8B%E6%91%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>离散状态观测器设计与仿真</title>
-    <link href="https://panqiincs.me/2023/12/07/discrete-observer-design/"/>
-    <id>https://panqiincs.me/2023/12/07/discrete-observer-design/</id>
-    <published>2023-12-07T05:13:42.000Z</published>
-    <updated>2024-10-20T05:11:40.225Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;系统离散化&quot;&gt;系统离散化&lt;/h2&gt;
-&lt;p&gt;由于计算机控制在实际中占绝对主导地位，所以离散系统非常重要。当采用零阶保持器时，连续系统到离散系统的转换方法如下图所示：&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
-    
-    
-    <category term="控制理论" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/"/>
-    
-    <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
-    
-    <category term="控制系统仿真" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E4%BB%BF%E7%9C%9F/"/>
-    
-    <category term="状态观测器" scheme="https://panqiincs.me/tags/%E7%8A%B6%E6%80%81%E8%A7%82%E6%B5%8B%E5%99%A8/"/>
-    
-    <category term="luenberger" scheme="https://panqiincs.me/tags/luenberger/"/>
-    
-    <category term="离散系统" scheme="https://panqiincs.me/tags/%E7%A6%BB%E6%95%A3%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
