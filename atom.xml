@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2025-11-23T10:57:23.368Z</updated>
+  <updated>2025-12-03T13:21:20.570Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>业余无线电：电台执照和呼号</title>
+    <link href="https://panqiincs.me/2025/12/03/ham-station-license/"/>
+    <id>https://panqiincs.me/2025/12/03/ham-station-license/</id>
+    <published>2025-12-03T12:23:27.000Z</published>
+    <updated>2025-12-03T13:21:20.570Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;10月11日，业余无线电操作证编号分配完成，我买的对讲机也到手了。我把玩了多日，但还不能与别人通联，得先申请无线电台执照才行。10月16日，我连上了桂林城区的中继台，晚上非常热闹，我却只能听不能喊，心里非常着急。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="业余无线电" scheme="https://panqiincs.me/tags/%E4%B8%9A%E4%BD%99%E6%97%A0%E7%BA%BF%E7%94%B5/"/>
+    
+  </entry>
+  
+  <entry>
     <title>高中母校的回礼</title>
     <link href="https://panqiincs.me/2025/11/22/huanggao-donation/"/>
     <id>https://panqiincs.me/2025/11/22/huanggao-donation/</id>
     <published>2025-11-22T09:22:07.000Z</published>
-    <updated>2025-11-23T10:57:23.368Z</updated>
+    <updated>2025-11-26T10:04:51.645Z</updated>
     
     
     <summary type="html">&lt;p&gt;2024年11月，我的高中母校黄冈中学迎来了建校120周年庆典，并同步举办了校友峰会。许多校友和社会各界爱心人士纷纷慷慨解囊，捐资捐物，我也尽了一份小心意，捐赠了1200元。&lt;/p&gt;</summary>
@@ -424,27 +443,6 @@ Analytics各有优点，非常好用。2023年是第一个完整统计的自然�
     
     
     <category term="blog" scheme="https://panqiincs.me/tags/blog/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MATLAB实现倒立摆演示动画</title>
-    <link href="https://panqiincs.me/2023/12/28/pendulum-animation/"/>
-    <id>https://panqiincs.me/2023/12/28/pendulum-animation/</id>
-    <published>2023-12-28T13:30:49.000Z</published>
-    <updated>2024-01-23T10:04:26.202Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;前几篇文章以一阶倒立摆为例介绍了状态反馈控制器和状态观测器的设计与仿真，系统状态变化通过曲线展现。本文用MATLAB实现倒立摆的动画演示，相比图像更加直观，其效果如下图所示。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="工具使用" scheme="https://panqiincs.me/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
-    
-    
-    <category term="matlab" scheme="https://panqiincs.me/tags/matlab/"/>
-    
-    <category term="倒立摆" scheme="https://panqiincs.me/tags/%E5%80%92%E7%AB%8B%E6%91%86/"/>
     
   </entry>
   
