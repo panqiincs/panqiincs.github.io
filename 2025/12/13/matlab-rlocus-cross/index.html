@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+  <meta name="baidu-site-verification" content="code-J9YbvwThrX">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github","dark":"tomorrow-night"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="思路与实现 本文介绍如何使用MATLAB找到根轨迹与虚轴的交点。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MATLAB求解根轨迹与虚轴交点">
+<meta property="og:url" content="https://panqiincs.me/2025/12/13/matlab-rlocus-cross/index.html">
+<meta property="og:site_name" content="辛未羊的网络日志">
+<meta property="og:description" content="思路与实现 本文介绍如何使用MATLAB找到根轨迹与虚轴的交点。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-13T11:53:18.000Z">
+<meta property="article:modified_time" content="2025-12-13T13:26:03.239Z">
+<meta property="article:author" content="辛未羊">
+<meta property="article:tag" content="matlab">
+<meta property="article:tag" content="根轨迹">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://panqiincs.me/2025/12/13/matlab-rlocus-cross/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://panqiincs.me/2025/12/13/matlab-rlocus-cross/","path":"2025/12/13/matlab-rlocus-cross/","title":"MATLAB求解根轨迹与虚轴交点"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>MATLAB求解根轨迹与虚轴交点 | 辛未羊的网络日志</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-39536948-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
+
+
+
+
+  <script>
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "blyiajm41p");
+</script>
+
+
+
+
+  
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+<link rel="dns-prefetch" href="https://vercel.panqiincs.me">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="辛未羊的网络日志" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">辛未羊的网络日志</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-series"><a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.</span> <span class="nav-text">思路与实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E7%94%A8%E5%A5%BDai%E5%A4%A7%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">如何用好AI大模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%A0%B9%E8%BD%A8%E8%BF%B9%E7%9A%84%E8%BE%A9%E8%AE%BA"><span class="nav-number">3.</span> <span class="nav-text">关于根轨迹的辩论</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="辛未羊"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">辛未羊</p>
+  <div class="site-description" itemprop="description">记录生活和学习</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">219</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/panqiincs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;panqiincs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          友情链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.kawabangga.com/" title="https:&#x2F;&#x2F;www.kawabangga.com&#x2F;" rel="noopener" target="_blank">卡瓦邦噶</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.feidaoboke.com/" title="https:&#x2F;&#x2F;www.feidaoboke.com&#x2F;" rel="noopener" target="_blank">飞刀博客</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.ohyee.cc/" title="https:&#x2F;&#x2F;www.ohyee.cc&#x2F;" rel="noopener" target="_blank">OhYee</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://dusays.com/" title="https:&#x2F;&#x2F;dusays.com&#x2F;" rel="noopener" target="_blank">杜老师说</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://oba.by/" title="https:&#x2F;&#x2F;oba.by&#x2F;" rel="noopener" target="_blank">obaby</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://zyq.today/" title="https:&#x2F;&#x2F;zyq.today&#x2F;" rel="noopener" target="_blank">小乔</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.yt-blog.top/" title="https:&#x2F;&#x2F;www.yt-blog.top&#x2F;" rel="noopener" target="_blank">Fgaoxing</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://it3q.com/" title="https:&#x2F;&#x2F;it3q.com&#x2F;" rel="noopener" target="_blank">呱牛笔记</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://imcbc.cn/" title="https:&#x2F;&#x2F;imcbc.cn&#x2F;" rel="noopener" target="_blank">BBing</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://panqiincs.me/2025/12/13/matlab-rlocus-cross/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="辛未羊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的网络日志">
+      <meta itemprop="description" content="记录生活和学习">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="MATLAB求解根轨迹与虚轴交点 | 辛未羊的网络日志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MATLAB求解根轨迹与虚轴交点
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-12-13 19:53:18" itemprop="dateCreated datePublished" datetime="2025-12-13T19:53:18+08:00">2025-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">大学课程</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2025/12/13/matlab-rlocus-cross/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2025/12/13/matlab-rlocus-cross/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="思路与实现">思路与实现</h2>
+<p>本文介绍如何使用MATLAB找到根轨迹与虚轴的交点。</p>
+<span id="more"></span>
+<p>求解根轨迹与虚轴交点的思路很简单。当闭环极点恰好落在虚轴上时，系统处于临界稳定状态，此时极点可表示为纯虚数<span
+class="math inline">\(s = j\omega\)</span>。将其代入闭环特征方程<span
+class="math inline">\(1 + K G(s)H(s) =
+0\)</span>，分离实部与虚部并令两者同时为零，即可解出临界频率<span
+class="math inline">\(\omega\)</span>及对应的临界增益<span
+class="math inline">\(K\)</span>。此外，也可借助Routh判据中「全零行」对应的辅助方程来求解，该方法在经典控制理论教材中均有详细说明。</p>
+<p>最初我尝试利用MATLAB的符号运算直接求解特征方程，该方法思路直观，但当系统阶次较高或根轨迹形状复杂时，容易遗漏与虚轴的交点。因此，我转向采用MATLAB更擅长的数值计算方法。其思路同样简单清晰，先通过<code>rlocus</code>函数生成根轨迹的离散数据点，接着扫描相邻增益对应的极点，若某段区间内极点实部符号发生突变，则判定该<strong>区间存在「跨轴」</strong>。随后在每个跨轴区间内使用二分搜索，逐步将极点的实部收敛到接近于零，从而精确得到根轨迹与虚轴的交点。下图展示了一个根轨迹走向复杂且有多个交点的例子，应用效果非常好。全部代码在<a
+target="_blank" rel="noopener" href="https://gist.github.com/panqiincs/59813b1f4701ac93587e044a260dc5e1">这里</a>。</p>
+<figure>
+<img
+src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/matlab_rlocus_cross.svg"
+alt="根轨迹与虚轴交点" />
+<figcaption aria-hidden="true">根轨迹与虚轴交点</figcaption>
+</figure>
+<h2 id="如何用好ai大模型">如何用好AI大模型</h2>
+<p>在借助AI大模型辅助编程的过程中，我发现它生成基础代码模块的能力很强，但偶尔仍会出现低级错误。例如，在实现上述二分法时，模型曾在区间选择方向上出错，我在后续调试中才发现并予以修正的。此外，根据近期频繁尝试的经验，大模型更擅长实现局部功能，而在将多个模块整合方面则相对薄弱。因此，<strong>自身的技术能力从根本上决定了对大模型的运用效果</strong>。只有具备扎实的代码能力，才能借助大模型高效推进项目开发；只有保持清晰的逻辑与表达，才能准确识别并筛选出优质的生成结果。</p>
+<h2 id="关于根轨迹的辩论">关于根轨迹的辩论</h2>
+<p>最近，我就根轨迹与一位网友展开了<strong>友好且理性的辩论</strong>。现将全部回合的原文（仅将引号修改为「
+」）贴于下方，供大家批评指正。</p>
+<blockquote>
+<p><strong>对方：</strong>根轨迹是上世纪算力太捞搞出的定性分析线性系统极点随某个参数变化趋势的方法，因为求特征方程的根过于复杂，所以期望从根轨迹判断极点大致运动趋势。
+根轨迹绘制的各种条件都来源于复数的幅角表示。
+现在再讲根轨迹实在是不合时宜。早该被丢进时代的垃圾桶的玩意，却反复出现在自控试题上，颇为唏嘘，我们的教育确实有问题。</p>
+</blockquote>
+<blockquote>
+<p><strong>我：</strong>根轨迹的概念和用法还是很重要的，当然，细讲手绘根轨迹就没什么意义。很多现象用根轨迹一下子就能解释清楚，模拟电路、电力电子中会用到根轨迹，很多实际工程中也有人用根轨迹做设计的。</p>
+</blockquote>
+<blockquote>
+<p><strong>对方：</strong>请具体指出场景，我没想到什么是现代设计工具无法取代的。
+根轨迹严格局限于线性时不变系统，只能反应性能/稳定性随单个参数变化，对于多设计自由度的系统根本无能为力，还是需要通过迭代，既然如此那为什么不用敏感性分析？
+若要反应变化趋势，完全可以采样多个增益下的频率-对数增益相位图或绘制Nyquist图，看disk
+margin比根轨迹直观得多。</p>
+</blockquote>
+<blockquote>
+<p><strong>我：</strong>在模拟集成电路设计中，根轨迹法可用于分析如何改变极点位置，确保反馈电路的稳定。你可以找下模拟集成电路设计的经典书籍，Razavi的Design
+of Analog CMOS Integrated
+Circuit一书，在里面找下关键词。或者你去搜下EE214 Advanced Analog
+Integrated Circuit
+Design这个课程，课件里面也有根轨迹内容。类似地，开关电源设计（自动化专业电力电子课程的完美应用领域）中也会用到。
+你所说的，根轨迹（以及以Bode图、Nyquist图为基本工具的经典频域法）严格局限于线性时不变系统，这没问题。但在很多场景中，用经典控制理论工具非常足够，并不需要现代设计工具。我读研究生时，有位航空航天的院士去我院做讲座，说他们航空航天也用PID控制器。我曾经在某做手机的企业中做过一段时间手机摄像头防抖，用的就是经典控制理论中的传递函数模型，并没有用到高大上的现代设计工具。
+最后，举个我最近用根轨迹的例子，有个毕业设计，对二阶系统采用PID控制器，调参数时，采用等幅振荡法。他给我们展示用比例控制先让系统等幅振荡的效果。我用根轨迹的简单法则判断两个闭环极点不可能跑到虚轴上，所以指出他的等幅振荡有问题，他不服，我把根轨迹一画，他就没说话了。</p>
+</blockquote>
+<blockquote>
+<p><strong>对方：</strong>1.现代设计工具不是指大家喜欢说的「现代控制」（状态空间法）进行设计
+2.根轨迹的目的就是分析系统性能（极点位置）随某个参数的改变。敏感性分析对此可以做得更好，论鲁棒性则可以直接看margin。
+3.「传统」控制（频域法）不止有PID。hinf/μ综合/qft、loop shaping/transfer
+recovery等都很常用。
+4.PID的经验调参本来就是针对近似二阶系统生成的法则。虽然建模得到的闭环传递函数不会因增益改变进入右半平面，但实际因为模型摄动、外部扰动及观测噪声，仍然可能使根轨迹发生偏移。</p>
+</blockquote>
+<blockquote>
+<p><strong>我：</strong>1.是的
+2.根轨迹的优势在于直观展示全局变化趋势，快速分析参数的定性影响，尤其适用于初步设计和调试。敏感性分析在定量分析方面做得更好。各种方法可以互补，说根轨迹可以丢到垃圾桶中，有些武断了。更何况，根轨迹在很多工程场景下确实用到了，这是铁的事实。
+3.你说的hinf这些方法应该算后现代控制理论。
+4.学生做纯仿真，用精确模型，不考虑模型摄动、扰动和噪声。</p>
+</blockquote>
+<p><strong>反正我觉得我更加有理有据一些。</strong></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>辛未羊
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://panqiincs.me/2025/12/13/matlab-rlocus-cross/" title="MATLAB求解根轨迹与虚轴交点">https://panqiincs.me/2025/12/13/matlab-rlocus-cross/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/matlab/" rel="tag"># matlab</a>
+              <a href="/tags/%E6%A0%B9%E8%BD%A8%E8%BF%B9/" rel="tag"># 根轨迹</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/12/03/ham-station-license/" rel="prev" title="业余无线电：电台执照和呼号">
+                  <i class="fa fa-angle-left"></i> 业余无线电：电台执照和呼号
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2013 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">辛未羊</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">164k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">9:55</span>
+  </span>
+</div>
+
+
+
+
+
+  <div>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id: "JjD4gEghP0h7Vn4U",ck: "JjD4gEghP0h7Vn4U"})</script>
+  </div>
+
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"https://vercel.panqiincs.me","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"欢迎留言交流","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/2025/12/13/matlab-rlocus-cross/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>
