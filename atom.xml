@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2025-12-13T13:26:03.239Z</updated>
+  <updated>2025-12-14T03:01:05.397Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="https://panqiincs.me/2025/12/13/matlab-rlocus-cross/"/>
     <id>https://panqiincs.me/2025/12/13/matlab-rlocus-cross/</id>
     <published>2025-12-13T11:53:18.000Z</published>
-    <updated>2025-12-13T13:26:03.239Z</updated>
+    <updated>2025-12-14T03:01:05.397Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;思路与实现&quot;&gt;思路与实现&lt;/h2&gt;
-&lt;p&gt;本文介绍如何使用MATLAB找到根轨迹与虚轴的交点。&lt;/p&gt;</summary>
+&lt;p&gt;本文介绍如何使用MATLAB找到根轨迹与虚轴的全部交点。&lt;/p&gt;</summary>
     
     
     

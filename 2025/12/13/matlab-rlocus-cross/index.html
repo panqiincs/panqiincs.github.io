@@ -21,15 +21,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github","dark":"tomorrow-night"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="思路与实现 本文介绍如何使用MATLAB找到根轨迹与虚轴的交点。">
+    <meta name="description" content="思路与实现 本文介绍如何使用MATLAB找到根轨迹与虚轴的全部交点。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MATLAB求解根轨迹与虚轴交点">
 <meta property="og:url" content="https://panqiincs.me/2025/12/13/matlab-rlocus-cross/index.html">
 <meta property="og:site_name" content="辛未羊的网络日志">
-<meta property="og:description" content="思路与实现 本文介绍如何使用MATLAB找到根轨迹与虚轴的交点。">
+<meta property="og:description" content="思路与实现 本文介绍如何使用MATLAB找到根轨迹与虚轴的全部交点。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-13T11:53:18.000Z">
-<meta property="article:modified_time" content="2025-12-13T13:26:03.239Z">
+<meta property="article:modified_time" content="2025-12-14T03:01:05.397Z">
 <meta property="article:author" content="辛未羊">
 <meta property="article:tag" content="matlab">
 <meta property="article:tag" content="根轨迹">
@@ -307,7 +307,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.8k</span>
+      <span>1.9k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -325,7 +325,7 @@
     
     
     <div class="post-body" itemprop="articleBody"><h2 id="思路与实现">思路与实现</h2>
-<p>本文介绍如何使用MATLAB找到根轨迹与虚轴的交点。</p>
+<p>本文介绍如何使用MATLAB找到根轨迹与虚轴的全部交点。</p>
 <span id="more"></span>
 <p>求解根轨迹与虚轴交点的思路很简单。当闭环极点恰好落在虚轴上时，系统处于临界稳定状态，此时极点可表示为纯虚数<span
 class="math inline">\(s = j\omega\)</span>。将其代入闭环特征方程<span
@@ -333,8 +333,8 @@ class="math inline">\(1 + K G(s)H(s) =
 0\)</span>，分离实部与虚部并令两者同时为零，即可解出临界频率<span
 class="math inline">\(\omega\)</span>及对应的临界增益<span
 class="math inline">\(K\)</span>。此外，也可借助Routh判据中「全零行」对应的辅助方程来求解，该方法在经典控制理论教材中均有详细说明。</p>
-<p>最初我尝试利用MATLAB的符号运算直接求解特征方程，该方法思路直观，但当系统阶次较高或根轨迹形状复杂时，容易遗漏与虚轴的交点。因此，我转向采用MATLAB更擅长的数值计算方法。其思路同样简单清晰，先通过<code>rlocus</code>函数生成根轨迹的离散数据点，接着扫描相邻增益对应的极点，若某段区间内极点实部符号发生突变，则判定该<strong>区间存在「跨轴」</strong>。随后在每个跨轴区间内使用二分搜索，逐步将极点的实部收敛到接近于零，从而精确得到根轨迹与虚轴的交点。下图展示了一个根轨迹走向复杂且有多个交点的例子，应用效果非常好。全部代码在<a
-target="_blank" rel="noopener" href="https://gist.github.com/panqiincs/59813b1f4701ac93587e044a260dc5e1">这里</a>。</p>
+<p>最初我尝试利用MATLAB的符号运算直接求解特征方程，该方法思路直观，但当系统阶次较高或根轨迹形状复杂时，容易遗漏与虚轴的交点。因此，我转向采用MATLAB更擅长的数值计算方法。其思路同样简单清晰，先通过<code>rlocus</code>函数生成根轨迹的离散数据点，接着扫描相邻增益对应的极点，若某段区间内极点实部符号发生突变，则判定该<strong>区间存在「跨轴」</strong>。随后在每个跨轴区间内使用二分搜索，逐步将极点的实部收敛到接近于零，从而精确得到根轨迹与虚轴的交点。下图所示为一个根轨迹走向复杂且存在多个交点的例子，我用符号运算方法始终无法找出全部交点，而采用跨轴区间判定结合二分搜索的策略则取得了很好的效果。完整代码可见<a
+target="_blank" rel="noopener" href="https://gist.github.com/panqiincs/59813b1f4701ac93587e044a260dc5e1">此处</a>。</p>
 <figure>
 <img
 src="https://images-1254088545.cos.ap-shanghai.myqcloud.com/blog/matlab_rlocus_cross.svg"
@@ -342,10 +342,10 @@ alt="根轨迹与虚轴交点" />
 <figcaption aria-hidden="true">根轨迹与虚轴交点</figcaption>
 </figure>
 <h2 id="如何用好ai大模型">如何用好AI大模型</h2>
-<p>在借助AI大模型辅助编程的过程中，我发现它生成基础代码模块的能力很强，但偶尔仍会出现低级错误。例如，在实现上述二分法时，模型曾在区间选择方向上出错，我在后续调试中才发现并予以修正的。此外，根据近期频繁尝试的经验，大模型更擅长实现局部功能，而在将多个模块整合方面则相对薄弱。因此，<strong>自身的技术能力从根本上决定了对大模型的运用效果</strong>。只有具备扎实的代码能力，才能借助大模型高效推进项目开发；只有保持清晰的逻辑与表达，才能准确识别并筛选出优质的生成结果。</p>
+<p>在使用AI大模型辅助编写代码实现上述功能时，我发现它生成基础代码模块的能力很强，但偶尔仍会出现低级错误。例如，在实现上述二分法时，模型曾在区间选择方向上出错，我在后续调试中才发现并予以修正的。</p>
+<p>在近期复现论文实验的过程中，我进一步认识到，大模型虽能有效实现具体、独立的功能模块，但在多模块的系统性整合与衔接上仍显不足，这部分最体现综合能力的工作，最终仍需自己完成。因此，<strong>自身的技术能力从根本上决定了大模型的应用效果</strong>。只有具备扎实的编程能力，才能借助大模型高效推进项目开发；也只有拥有良好的语言功底，才能准确判断出文本润色与翻译结果的质量。</p>
 <h2 id="关于根轨迹的辩论">关于根轨迹的辩论</h2>
-<p>最近，我就根轨迹与一位网友展开了<strong>友好且理性的辩论</strong>。现将全部回合的原文（仅将引号修改为「
-」）贴于下方，供大家批评指正。</p>
+<p>最近，我就根轨迹与一位网友展开了<strong>友好且理性的辩论</strong>。现将全部回合的原文贴于下方，供大家批评指正。</p>
 <blockquote>
 <p><strong>对方：</strong>根轨迹是上世纪算力太捞搞出的定性分析线性系统极点随某个参数变化趋势的方法，因为求特征方程的根过于复杂，所以期望从根轨迹判断极点大致运动趋势。
 根轨迹绘制的各种条件都来源于复数的幅角表示。
