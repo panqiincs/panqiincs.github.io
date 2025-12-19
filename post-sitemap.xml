@@ -10,7 +10,15 @@
 
     <url>
         <loc>https://panqiincs.me/2025/12/17/blackboard-writing/</loc>
-        <lastmod>2025-12-19T04:22:47.532Z</lastmod>
+        <lastmod>2025-12-19T13:34:31.870Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2023/07/11/gnu-octave-tips/</loc>
+        <lastmod>2025-12-19T13:28:07.738Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -251,14 +259,6 @@
     <url>
         <loc>https://panqiincs.me/2020/06/28/sedra-smith-electronics/</loc>
         <lastmod>2025-01-24T05:24:02.730Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2023/07/11/gnu-octave-tips/</loc>
-        <lastmod>2025-01-03T06:11:49.180Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
