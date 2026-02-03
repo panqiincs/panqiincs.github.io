@@ -10,7 +10,23 @@
 
     <url>
         <loc>https://panqiincs.me/2026/01/30/ham-qsl-design/</loc>
-        <lastmod>2026-01-31T05:58:39.960Z</lastmod>
+        <lastmod>2026-02-03T10:05:11.595Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2025/10/13/ham-certificate-exam/</loc>
+        <lastmod>2026-02-03T09:31:19.883Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2025/12/03/ham-station-license/</loc>
+        <lastmod>2026-02-03T09:31:12.730Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -65,14 +81,6 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2025/12/03/ham-station-license/</loc>
-        <lastmod>2025-12-04T02:58:09.439Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://panqiincs.me/2025/11/22/huanggao-donation/</loc>
         <lastmod>2025-11-26T10:04:51.645Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -83,14 +91,6 @@
     <url>
         <loc>https://panqiincs.me/2022/07/14/python-devanagari/</loc>
         <lastmod>2025-10-15T09:28:10.785Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2025/10/13/ham-certificate-exam/</loc>
-        <lastmod>2025-10-15T09:23:33.070Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -897,7 +897,7 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2021/08/17/manjaro-update-errors/</loc>
+        <loc>https://panqiincs.me/2021/07/19/hometown-and-flood/</loc>
         <lastmod>2023-02-04T02:43:13.393Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -905,7 +905,7 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2021/07/19/hometown-and-flood/</loc>
+        <loc>https://panqiincs.me/2021/08/17/manjaro-update-errors/</loc>
         <lastmod>2023-02-04T02:43:13.393Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
