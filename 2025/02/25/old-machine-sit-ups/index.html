@@ -161,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">156</span>
+          <span class="site-state-item-count">157</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -324,33 +324,21 @@
     
     <div class="post-body" itemprop="articleBody"><p>前几天，我那台用了十年多的老电脑突然出了问题。按下开机键后，灯亮风扇转，但仅持续约1秒就灯灭风扇停。这个过程反复进行，机器不断开机关机，仿佛在表演仰卧起坐。我以为这台老古董真的要退休了，甚至动了购买新电脑的念头。</p>
 <span id="more"></span>
+
 <p>抱着死马当活马医的心态，我先清理了机箱内部的灰尘，更换了CPU的导热硅胶，还把内存条抽出来擦了擦金边，最后随手拍了几下机箱。没想到，经过这么一番鼓捣，电脑竟然可以开机了。本以为问题已解决，但却无法进入到Manjaro桌面系统，黑乎乎的屏幕上显示如下字符：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mount: /new_root: cannot mount; probably corrupted filesystem on /dev/sda1</span><br><span class="line">       dmesg(1) may have more information after failed mount system call.</span><br><span class="line">ERROR: Failed to mount &#x27;UUlD=f4fa94dd-3085-4d82-a3d3-cc4910298a92&#x27; on real root.</span><br><span class="line">You are now being dropped into an emergency shell.</span><br><span class="line">sh: can&#x27;t access tty; job control turned off</span><br><span class="line">[rootfs ~]#</span><br></pre></td></tr></table></figure>
+
 <p>提示<code>/dev/sda1</code>的文件系统损坏，无法挂载。这正是系统分区，所以无法正常进入到操作系统，转到紧急救援模式。</p>
 <p>查阅资料后，我了解到可以在命令行中修复文件系统，但紧急救援模式下的Shell环境只有一些非常基础的命令。于是，我制作了一个系统启动U盘，进入BIOS，将启动项更改为U盘启动。进入到U盘中的Manjaro系统后，使用<code>fsck</code>命令修复了文件系统。修复完成后重启，电脑终于能够正常进入Manjaro桌面系统。我的解决方案来自Gemini，关键信息如下：</p>
 <blockquote>
-<p><strong>Live USB/DVD (Important Fallback):</strong> If you can't get
-into the emergency shell, or if <code>fsck</code> isn't working from
-there, you <em>need</em> a Manjaro (or other Linux) live USB/DVD. This
-is a bootable environment that runs from the USB drive or DVD,
-<em>without</em> touching your hard drive. You can create one on another
-computer. Boot from the live environment, and then:</p>
+<p><strong>Live USB&#x2F;DVD (Important Fallback):</strong> If you can’t get into the emergency shell, or if <code>fsck</code> isn’t working from there, you <em>need</em> a Manjaro (or other Linux) live USB&#x2F;DVD.  This is a bootable environment that runs from the USB drive or DVD, <em>without</em> touching your hard drive.  You can create one on another computer.  Boot from the live environment, and then:</p>
 <ul>
-<li><strong>Identify your partitions:</strong> Use <code>lsblk</code> or
-<code>sudo fdisk -l</code> to be <em>absolutely certain</em> you know
-the correct partition name (e.g., <code>/dev/sda1</code>).</li>
-<li><strong>Run <code>fsck</code>:</strong> Open a terminal in the live
-environment and run <code>fsck -y /dev/sda1</code> (again, replacing
-<code>/dev/sda1</code> if necessary).</li>
-<li><strong>Access your files (if needed):</strong> If <code>fsck</code>
-fixes the problem, you can mount your partition (in the live
-environment) and copy any critical files to a safe location (like
-another USB drive) <em>before</em> you reboot. This is a good precaution
-in case something goes wrong.</li>
+<li><strong>Identify your partitions:</strong> Use <code>lsblk</code> or <code>sudo fdisk -l</code> to be <em>absolutely certain</em> you know the correct partition name (e.g., <code>/dev/sda1</code>).</li>
+<li><strong>Run <code>fsck</code>:</strong> Open a terminal in the live environment and run <code>fsck -y /dev/sda1</code> (again, replacing <code>/dev/sda1</code> if necessary).</li>
+<li><strong>Access your files (if needed):</strong> If <code>fsck</code> fixes the problem, you can mount your partition (in the live environment) and copy any critical files to a safe location (like another USB drive) <em>before</em> you reboot.  This is a good precaution in case something goes wrong.</li>
 </ul>
 </blockquote>
-<p>这台功勋老将上次做大保养还是五年多前（详见<a
-href="https://panqiincs.me/2019/05/04/renovate-my-computer/">台式机翻新记</a>），用了这么久，本以为它要彻底退休了，没想到整一整硬件和软件之后，它又复活了，太高兴了！</p>
+<p>这台功勋老将上次做大保养还是五年多前（详见<a href="https://panqiincs.me/2019/05/04/renovate-my-computer/">台式机翻新记</a>），用了这么久，本以为它要彻底退休了，没想到整一整硬件和软件之后，它又复活了，太高兴了！</p>
 
     </div>
 
@@ -429,7 +417,7 @@ href="https://panqiincs.me/2019/05/04/renovate-my-computer/">台式机翻新记<
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">10:03</span>
+    <span title="站点阅读时长">10:04</span>
   </span>
 </div>
 
