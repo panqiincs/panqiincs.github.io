@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2026-03-09T14:01:46.268Z</updated>
+  <updated>2026-02-04T03:46:06.949Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,25 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>2026年春节返乡：我来，我见，我思</title>
-    <link href="https://panqiincs.me/2026/03/09/bingwu-spring-festival/"/>
-    <id>https://panqiincs.me/2026/03/09/bingwu-spring-festival/</id>
-    <published>2026-03-09T13:12:04.000Z</published>
-    <updated>2026-03-09T14:01:46.268Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;标题&quot;&gt;&lt;a href=&quot;#标题&quot; class=&quot;headerlink&quot; title=&quot;标题&quot;&gt;&lt;/a&gt;标题&lt;/h2&gt;&lt;p&gt;本文记录我2026年春节返乡期间的见闻与思考。有人应该能一眼看出，标题中的「我来，我见，我思」是模仿凯撒的「我来，我见，我征服」[^1]。由于三月初开学后有多项重要事情，本文自3月9日起动笔，有空就断断续续写一点，可能要到4月初才能完稿。预计文章内容会比较丰富，图文并茂，强烈推荐。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
-    
-    
-    <category term="旅行" scheme="https://panqiincs.me/tags/%E6%97%85%E8%A1%8C/"/>
-    
-  </entry>
   
   <entry>
     <title>业余无线电QSL卡片设计</title>
@@ -102,7 +83,8 @@
     <updated>2025-12-31T04:54:33.012Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;思路与实现&quot;&gt;&lt;a href=&quot;#思路与实现&quot; class=&quot;headerlink&quot; title=&quot;思路与实现&quot;&gt;&lt;/a&gt;思路与实现&lt;/h2&gt;&lt;p&gt;本文介绍如何使用MATLAB找到根轨迹与虚轴的全部交点。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;思路与实现&quot;&gt;思路与实现&lt;/h2&gt;
+&lt;p&gt;本文介绍如何使用MATLAB找到根轨迹与虚轴的全部交点。&lt;/p&gt;</summary>
     
     
     
@@ -224,7 +206,9 @@
     <updated>2025-05-11T07:59:18.741Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;本文是我在学习四旋翼飞行器建模时做的笔记，主要参考&lt;a href=&quot;https://github.com/yrlu/quadrotor&quot;&gt;这个项目&lt;/a&gt;的文档。文中对基础力学知识进行了必要的阐述，虽不够详尽，但应足以辅助形象理解。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;引言&quot;&gt;引言&lt;/h2&gt;
+&lt;p&gt;本文是我在学习四旋翼飞行器建模时做的笔记，主要参考&lt;a
+href=&quot;https://github.com/yrlu/quadrotor&quot;&gt;这个项目&lt;/a&gt;的文档。文中对基础力学知识进行了必要的阐述，虽不够详尽，但应足以辅助形象理解。&lt;/p&gt;</summary>
     
     
     
@@ -264,7 +248,9 @@
     <updated>2025-08-01T06:36:32.034Z</updated>
     
     
-    <summary type="html">&lt;p&gt;几年前，为了深入学习模拟电路，我买了套&lt;a href=&quot;https://panqiincs.me/2020/06/28/sedra-smith-electronics/&quot;&gt;台版「Smith电子学」&lt;/a&gt;。这套书是北美人写的经典教材，台版的翻译和制作水准都很高，我非常喜欢。后来由于学习重心转移，两本大部头在书柜里躺了几年，于是去年将它&lt;a href=&quot;https://panqiincs.me/2024/01/10/second-hand-books/&quot;&gt;转卖给了有缘人&lt;/a&gt;。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;几年前，为了深入学习模拟电路，我买了套&lt;a
+href=&quot;https://panqiincs.me/2020/06/28/sedra-smith-electronics/&quot;&gt;台版「Smith电子学」&lt;/a&gt;。这套书是北美人写的经典教材，台版的翻译和制作水准都很高，我非常喜欢。后来由于学习重心转移，两本大部头在书柜里躺了几年，于是去年将它&lt;a
+href=&quot;https://panqiincs.me/2024/01/10/second-hand-books/&quot;&gt;转卖给了有缘人&lt;/a&gt;。&lt;/p&gt;</summary>
     
     
     
@@ -285,7 +271,8 @@
     <updated>2024-11-19T02:54:14.214Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;负反馈是控制系统的灵魂。它使系统能够自动调节自身，实现更高的精确度和稳定性，抵抗外部扰动和不确定因素。但反馈也可能引发问题，比如，两个稳定系统通过反馈连接后，整体系统可能变得不稳定。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;简介&lt;/h2&gt;
+&lt;p&gt;负反馈是控制系统的灵魂。它使系统能够自动调节自身，实现更高的精确度和稳定性，抵抗外部扰动和不确定因素。但反馈也可能引发问题，比如，两个稳定系统通过反馈连接后，整体系统可能变得不稳定。&lt;/p&gt;</summary>
     
     
     
@@ -308,7 +295,8 @@
     <updated>2024-11-19T02:30:14.959Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;与状态空间模型不同，输入输出模型直接将系统的输入和输出联系起来，而无需通过状态方程描述内部结构，通常将系统视为一个黑箱。输入输出稳定性关注输入与输出之间的关系，而Lyapunov稳定性则着重于系统状态的演变。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;简介&lt;/h2&gt;
+&lt;p&gt;与状态空间模型不同，输入输出模型直接将系统的输入和输出联系起来，而无需通过状态方程描述内部结构，通常将系统视为一个黑箱。输入输出稳定性关注输入与输出之间的关系，而Lyapunov稳定性则着重于系统状态的演变。&lt;/p&gt;</summary>
     
     
     
@@ -331,7 +319,8 @@
     <updated>2024-11-19T02:53:02.247Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;术语&quot;&gt;&lt;a href=&quot;#术语&quot; class=&quot;headerlink&quot; title=&quot;术语&quot;&gt;&lt;/a&gt;术语&lt;/h2&gt;&lt;p&gt;Passivity的字面翻译是「被动性」，但在各个领域中通常都翻译为「无源性」，因为这一术语与物理系统中能量传递和消耗的特性有关。Passivity描述系统不会产生能量而只能存储或消耗能量的特性。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;术语&quot;&gt;术语&lt;/h2&gt;
+&lt;p&gt;Passivity的字面翻译是「被动性」，但在各个领域中通常都翻译为「无源性」，因为这一术语与物理系统中能量传递和消耗的特性有关。Passivity描述系统不会产生能量而只能存储或消耗能量的特性。&lt;/p&gt;</summary>
     
     
     
@@ -354,7 +343,8 @@
     <updated>2024-10-20T04:35:35.837Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;系统模型&quot;&gt;&lt;a href=&quot;#系统模型&quot; class=&quot;headerlink&quot; title=&quot;系统模型&quot;&gt;&lt;/a&gt;系统模型&lt;/h2&gt;&lt;p&gt;本文介绍如下形式线性系统的状态观测器设计：&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;系统模型&quot;&gt;系统模型&lt;/h2&gt;
+&lt;p&gt;本文介绍如下形式线性系统的状态观测器设计：&lt;/p&gt;</summary>
     
     
     
@@ -439,6 +429,27 @@
     <category term="黄州" scheme="https://panqiincs.me/tags/%E9%BB%84%E5%B7%9E/"/>
     
     <category term="童年" scheme="https://panqiincs.me/tags/%E7%AB%A5%E5%B9%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>拓扑相关概念的演化</title>
+    <link href="https://panqiincs.me/2024/05/16/bourbaki-topology/"/>
+    <id>https://panqiincs.me/2024/05/16/bourbaki-topology/</id>
+    <published>2024-05-16T12:56:02.000Z</published>
+    <updated>2024-10-17T10:08:04.021Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;拓扑学是学习现代数学时绕不开的内容。布尔巴基数学原理《拓扑学》引言中透彻阐述了拓扑相关概念的演化，对初学者极具启发和指导意义，本文是它的中文翻译。我后续可能会写一些拓扑学的笔记，以这篇译文作为开篇非常合适。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
+    
+    
+    <category term="拓扑学" scheme="https://panqiincs.me/tags/%E6%8B%93%E6%89%91%E5%AD%A6/"/>
+    
+    <category term="布尔巴基" scheme="https://panqiincs.me/tags/%E5%B8%83%E5%B0%94%E5%B7%B4%E5%9F%BA/"/>
     
   </entry>
   
