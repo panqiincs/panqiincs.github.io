@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2026-02-04T03:46:06.949Z</updated>
+  <updated>2026-03-14T12:59:43.145Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2026年春节：我来，我见，我思</title>
+    <link href="https://panqiincs.me/2026/03/09/bingwu-spring-festival/"/>
+    <id>https://panqiincs.me/2026/03/09/bingwu-spring-festival/</id>
+    <published>2026-03-09T13:12:04.000Z</published>
+    <updated>2026-03-14T12:59:43.145Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;标题来由&quot;&gt;标题来由&lt;/h2&gt;
+&lt;p&gt;本文记录我2026年春节期间的见闻与思考，标题借用了凯撒那句「我来，我见，我征服」&lt;a
+href=&quot;#fn1&quot; class=&quot;footnote-ref&quot; id=&quot;fnref1&quot;
+role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;。三月初开学后有几件要紧事，3月9日才动笔，有空就断断续续写一点，大概要到月底才能完稿。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="旅行" scheme="https://panqiincs.me/tags/%E6%97%85%E8%A1%8C/"/>
+    
+  </entry>
   
   <entry>
     <title>业余无线电QSL卡片设计</title>
@@ -429,27 +451,6 @@ href=&quot;https://panqiincs.me/2024/01/10/second-hand-books/&quot;&gt;转卖给
     <category term="黄州" scheme="https://panqiincs.me/tags/%E9%BB%84%E5%B7%9E/"/>
     
     <category term="童年" scheme="https://panqiincs.me/tags/%E7%AB%A5%E5%B9%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>拓扑相关概念的演化</title>
-    <link href="https://panqiincs.me/2024/05/16/bourbaki-topology/"/>
-    <id>https://panqiincs.me/2024/05/16/bourbaki-topology/</id>
-    <published>2024-05-16T12:56:02.000Z</published>
-    <updated>2024-10-17T10:08:04.021Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;拓扑学是学习现代数学时绕不开的内容。布尔巴基数学原理《拓扑学》引言中透彻阐述了拓扑相关概念的演化，对初学者极具启发和指导意义，本文是它的中文翻译。我后续可能会写一些拓扑学的笔记，以这篇译文作为开篇非常合适。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
-    
-    
-    <category term="拓扑学" scheme="https://panqiincs.me/tags/%E6%8B%93%E6%89%91%E5%AD%A6/"/>
-    
-    <category term="布尔巴基" scheme="https://panqiincs.me/tags/%E5%B8%83%E5%B0%94%E5%B7%B4%E5%9F%BA/"/>
     
   </entry>
   
