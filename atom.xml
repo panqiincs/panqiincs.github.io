@@ -6,7 +6,7 @@
   <link href="https://panqiincs.me/atom.xml" rel="self"/>
   
   <link href="https://panqiincs.me/"/>
-  <updated>2026-03-15T02:12:02.517Z</updated>
+  <updated>2026-03-22T09:03:12.746Z</updated>
   <id>https://panqiincs.me/</id>
   
   <author>
@@ -17,17 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>2026年春节：我来，我见，我思</title>
+    <title>时间敏感网络简介</title>
+    <link href="https://panqiincs.me/2026/03/22/tsn-introduction/"/>
+    <id>https://panqiincs.me/2026/03/22/tsn-introduction/</id>
+    <published>2026-03-22T08:08:51.000Z</published>
+    <updated>2026-03-22T09:03:12.746Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一tsn是什么&quot;&gt;一、TSN是什么&lt;/h2&gt;
+&lt;p&gt;TSN全称时间敏感网络（Time-Sensitive
+Networking），是一套由IEEE制定、对标准以太网的&lt;strong&gt;功能扩展包&lt;/strong&gt;。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
+    
+    
+    <category term="时间敏感网络" scheme="https://panqiincs.me/tags/%E6%97%B6%E9%97%B4%E6%95%8F%E6%84%9F%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="tsn" scheme="https://panqiincs.me/tags/tsn/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>愉快的2026年春节</title>
     <link href="https://panqiincs.me/2026/03/09/bingwu-spring-festival/"/>
     <id>https://panqiincs.me/2026/03/09/bingwu-spring-festival/</id>
     <published>2026-03-09T13:12:04.000Z</published>
-    <updated>2026-03-15T02:12:02.517Z</updated>
+    <updated>2026-03-20T10:08:51.894Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;标题来由&quot;&gt;标题来由&lt;/h2&gt;
-&lt;p&gt;本文记录我2026年春节期间的见闻与思考，标题借用了凯撒那句「我来，我见，我征服」&lt;a
-href=&quot;#fn1&quot; class=&quot;footnote-ref&quot; id=&quot;fnref1&quot;
-role=&quot;doc-noteref&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;。三月初开学后有几件要紧事，3月9日才动笔，有空就断断续续写一点，大概要到月底才能完稿。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文记录我2026年春节期间的见闻与思考。三月初开学后有几件要紧事，3月9日才动笔，有空就断断续续写一点，大概要到月底才能完稿。&lt;/p&gt;</summary>
     
     
     
@@ -430,27 +450,6 @@ href=&quot;https://panqiincs.me/2024/01/10/second-hand-books/&quot;&gt;转卖给
     <category term="英语" scheme="https://panqiincs.me/tags/%E8%8B%B1%E8%AF%AD/"/>
     
     <category term="自然拼读" scheme="https://panqiincs.me/tags/%E8%87%AA%E7%84%B6%E6%8B%BC%E8%AF%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我记忆中的7月13日</title>
-    <link href="https://panqiincs.me/2024/07/13/today-in-history/"/>
-    <id>https://panqiincs.me/2024/07/13/today-in-history/</id>
-    <published>2024-07-13T09:00:30.000Z</published>
-    <updated>2024-09-15T08:07:56.880Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;我对7月13日这个日期特别敏感，主要因为遥远的2001年7月13日给我留下了太深刻的印象。而且很巧合，0713正好是我家乡的电话区号。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="生活记录" scheme="https://panqiincs.me/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
-    
-    
-    <category term="黄州" scheme="https://panqiincs.me/tags/%E9%BB%84%E5%B7%9E/"/>
-    
-    <category term="童年" scheme="https://panqiincs.me/tags/%E7%AB%A5%E5%B9%B4/"/>
     
   </entry>
   
