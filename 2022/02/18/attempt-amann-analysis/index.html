@@ -17,9 +17,9 @@
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github","dark":"tomorrow-night"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github","dark":"tomorrow-night"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="高等代数我比较熟悉，因为经常用，还系统地复习过，但数学分析就生疏很多。我想尝试用Amann和Escher合著的Analysis来复习数学分析，一共有3卷，是德语国家常用的教材。">
 <meta property="og:type" content="article">
@@ -88,7 +88,119 @@
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
-<link rel="alternate" href="/atom.xml" title="辛未羊的网络日志" type="application/atom+xml">
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><link rel="alternate" href="/atom.xml" title="辛未羊的网络日志" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -325,26 +437,22 @@
     
     <div class="post-body" itemprop="articleBody"><p>高等代数我比较熟悉，因为经常用，还系统地复习过，但数学分析就生疏很多。我想尝试用Amann和Escher合著的Analysis来复习数学分析，一共有3卷，是德语国家常用的教材。</p>
 <span id="more"></span>
-<p>我选择它最大的原因是它包含了数学系本科要学的大部分内容，比如实分析、复分析、泛函分析、拓扑学、抽象代数等等，虽说很多都讲得不深入，但用来开拓眼界和补足数学基础也足够了。知乎上有网友<a
-target="_blank" rel="noopener" href="https://www.zhihu.com/question/366915371/answer/980436546">如此评论</a>这本书：</p>
+<p>我选择它最大的原因是它包含了数学系本科要学的大部分内容，比如实分析、复分析、泛函分析、拓扑学、抽象代数等等，虽说很多都讲得不深入，但用来开拓眼界和补足数学基础也足够了。知乎上有网友<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/366915371/answer/980436546">如此评论</a>这本书：</p>
 <blockquote>
 <p>至少学完测度与积分部分，本科的实分析可以不用学了，复分析与微分流形已经入门了。并且从极限开始，大部分内容都是在常见的空间上讨论的，比如度量空间、Banach空间，这样对于常见的泛函空间也都熟悉了。很多内容都建立在群环域代数上，对学习抽象代数也有帮助。</p>
 </blockquote>
-<p>此外，它的写法很现代，国外有网友详细描述了<a
-target="_blank" rel="noopener" href="https://www.reddit.com/r/math/comments/k17hur/ideal_approach_to_selfstudying_real_analysis/">该书的特点</a>，翻译如下：</p>
+<p>此外，它的写法很现代，国外有网友详细描述了<a target="_blank" rel="noopener" href="https://www.reddit.com/r/math/comments/k17hur/ideal_approach_to_selfstudying_real_analysis/">该书的特点</a>，翻译如下：</p>
 <blockquote>
 <p>Amann和Escher的教材很好。它是为德国本科生编写的，他们在大学前3个学期学习该课程。所以这本书的开头有一些预备知识，因为有的学生从未接触过基于证明的数学。</p>
 </blockquote>
 <blockquote>
-<p>该教材的基本哲学是使用自顶而下的描述方法，从一般的情况出发引入概念，而不专注于某个特殊情况。比如，讨论收敛时引入度量空间（然后引入赋范向量空间作为度量空间的例子），讨论连续时引入拓扑空间，讨论Fourier级数时引入Hilbert空间的正交基等等。其他教材多从特殊情况开始，比如可能先讨论实数的收敛，然后再引入度量空间。这种方法成功的例子是处理中值定理：没有从<span
-class="math inline">\(\varepsilon\)</span>语言开始，而是先介绍连通拓扑空间，然后给出中值定理的概念性证明，即，连续映射将连通集映射到连通集上。</p>
+<p>该教材的基本哲学是使用自顶而下的描述方法，从一般的情况出发引入概念，而不专注于某个特殊情况。比如，讨论收敛时引入度量空间（然后引入赋范向量空间作为度量空间的例子），讨论连续时引入拓扑空间，讨论Fourier级数时引入Hilbert空间的正交基等等。其他教材多从特殊情况开始，比如可能先讨论实数的收敛，然后再引入度量空间。这种方法成功的例子是处理中值定理：没有从<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.05ex;" xmlns="http://www.w3.org/2000/svg" width="1.054ex" height="1.072ex" role="img" focusable="false" viewBox="0 -452 466 474"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D700" d="M190 -22Q124 -22 76 11T27 107Q27 174 97 232L107 239L99 248Q76 273 76 304Q76 364 144 408T290 452H302Q360 452 405 421Q428 405 428 392Q428 381 417 369T391 356Q382 356 371 365T338 383T283 392Q217 392 167 368T116 308Q116 289 133 272Q142 263 145 262T157 264Q188 278 238 278H243Q308 278 308 247Q308 206 223 206Q177 206 142 219L132 212Q68 169 68 112Q68 39 201 39Q253 39 286 49T328 72T345 94T362 105Q376 103 376 88Q376 79 365 62T334 26T275 -8T190 -22Z"></path></g></g></g></svg></mjx-container></span>语言开始，而是先介绍连通拓扑空间，然后给出中值定理的概念性证明，即，连续映射将连通集映射到连通集上。</p>
 </blockquote>
 <blockquote>
 <p>如果你读完教材的全部3卷，你会学到统一的分析方法，这种方法从最基础的内容开始介绍，覆盖测度理论、全纯函数、流形上的积分、Fourier变换等高级内容。</p>
 </blockquote>
 <p>还有网友认为，这本书难度很大，新手直接上这本书会扛不住（大神除外），把数学系的主干课程学完之后再来读这本书，效果会很好。所以我估计试水完后会认清现实，老老实实地去补充基础，以后再读这本书……</p>
-<p>原书是用德语写的，没有中文版，但有英文翻译版。东南大学李逸教授的<a
-target="_blank" rel="noopener" href="https://math.seu.edu.cn/ly/list.htm">主页</a>上有他写的「基本分析讲义」，大量内容参考了Amann的书，配合这本讲义学习会很有帮助。</p>
+<p>原书是用德语写的，没有中文版，但有英文翻译版。东南大学李逸教授的<a target="_blank" rel="noopener" href="https://math.seu.edu.cn/ly/list.htm">主页</a>上有他写的「基本分析讲义」，大量内容参考了Amann的书，配合这本讲义学习会很有帮助。</p>
 
     </div>
 
