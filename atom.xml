@@ -22,7 +22,9 @@
     <link href="https://panqiincs.me/2026/03/22/tsn-introduction/"/>
     <published>2026-03-22T08:08:51.000Z</published>
     <summary>
-      <![CDATA[<h2 id="一、TSN是什么"><a href="#一、TSN是什么" class="headerlink" title="一、TSN是什么"></a>一、TSN是什么</h2><p>TSN全称是<strong>时间敏感网络</strong>（Time-Sensitive Networking），它由IEEE制定，扩展了标准以太网的功能。</p>]]>
+      <![CDATA[<h2 id="一tsn是什么">一、TSN是什么</h2>
+<p>TSN全称是<strong>时间敏感网络</strong>（Time-Sensitive
+Networking），它由IEEE制定，扩展了标准以太网的功能。</p>]]>
     </summary>
     <title>时间敏感网络简介</title>
     <updated>2026-03-23T05:21:59.736Z</updated>
@@ -38,10 +40,11 @@
     <link href="https://panqiincs.me/2026/03/09/bingwu-spring-festival/"/>
     <published>2026-03-09T13:12:04.000Z</published>
     <summary>
-      <![CDATA[<h2 id="往返"><a href="#往返" class="headerlink" title="往返"></a>往返</h2><p>2026年春节期间我在家一共待了12天，见到了不少人，玩了不少地方，忙碌但非常开心和满足。</p>]]>
+      <![CDATA[<h2 id="往返">往返</h2>
+<p>2026年春节期间我在家一共待了12天，见到了不少人，玩了不少地方，忙碌但非常开心和满足。</p>]]>
     </summary>
     <title>愉快的2026年春节</title>
-    <updated>2026-03-25T11:42:10.911Z</updated>
+    <updated>2026-03-25T11:50:26.008Z</updated>
   </entry>
   <entry>
     <author>
@@ -100,7 +103,8 @@
     <link href="https://panqiincs.me/2025/12/13/matlab-rlocus-cross/"/>
     <published>2025-12-13T11:53:18.000Z</published>
     <summary>
-      <![CDATA[<h2 id="思路与实现"><a href="#思路与实现" class="headerlink" title="思路与实现"></a>思路与实现</h2><p>本文介绍如何使用MATLAB找到根轨迹与虚轴的全部交点。</p>]]>
+      <![CDATA[<h2 id="思路与实现">思路与实现</h2>
+<p>本文介绍如何使用MATLAB找到根轨迹与虚轴的全部交点。</p>]]>
     </summary>
     <title>MATLAB求解根轨迹与虚轴交点</title>
     <updated>2025-12-31T04:54:33.012Z</updated>
@@ -194,7 +198,8 @@
     <link href="https://panqiincs.me/2025/03/18/quadrotor-dynamics/"/>
     <published>2025-03-18T05:03:20.000Z</published>
     <summary>
-      <![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>本文是我在学习四旋翼飞行器建模时做的笔记，主要参考<a href="https://github.com/yrlu/quadrotor">这个项目</a>的文档。文中对基础力学知识进行了必要的阐述，虽不够详尽，但应足以辅助形象理解。</p>]]>
+      <![CDATA[<h2 id="引言">引言</h2>
+<p>本文是我在学习四旋翼飞行器建模时做的笔记，主要参考<a href="https://github.com/yrlu/quadrotor">这个项目</a>的文档。文中对基础力学知识进行了必要的阐述，虽不够详尽，但应足以辅助形象理解。</p>]]>
     </summary>
     <title>四旋翼飞行器的建模</title>
     <updated>2025-05-11T07:59:18.741Z</updated>
@@ -225,7 +230,9 @@
     <link href="https://panqiincs.me/2025/01/22/new-smith-electronics/"/>
     <published>2025-01-22T07:42:30.000Z</published>
     <summary>
-      <![CDATA[<p>几年前，为了深入学习模拟电路，我买了套<a href="https://panqiincs.me/2020/06/28/sedra-smith-electronics/">台版「Smith电子学」</a>。这套书是北美人写的经典教材，台版的翻译和制作水准都很高，我非常喜欢。后来由于学习重心转移，两本大部头在书柜里躺了几年，于是去年将它<a href="https://panqiincs.me/2024/01/10/second-hand-books/">转卖给了有缘人</a>。</p>]]>
+      <![CDATA[<p>几年前，为了深入学习模拟电路，我买了套<a
+href="https://panqiincs.me/2020/06/28/sedra-smith-electronics/">台版「Smith电子学」</a>。这套书是北美人写的经典教材，台版的翻译和制作水准都很高，我非常喜欢。后来由于学习重心转移，两本大部头在书柜里躺了几年，于是去年将它<a
+href="https://panqiincs.me/2024/01/10/second-hand-books/">转卖给了有缘人</a>。</p>]]>
     </summary>
     <title>再次入手「Smith电子学」</title>
     <updated>2025-08-01T06:36:32.034Z</updated>
@@ -242,7 +249,8 @@
     <link href="https://panqiincs.me/2024/11/18/feedback-stability/"/>
     <published>2024-11-18T01:16:17.000Z</published>
     <summary>
-      <![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>负反馈是控制系统的灵魂。它使系统能够自动调节自身，实现更高的精确度和稳定性，抵抗外部扰动和不确定因素。但反馈也可能引发问题，比如，两个稳定系统通过反馈连接后，整体系统可能变得不稳定。</p>]]>
+      <![CDATA[<h2 id="简介">简介</h2>
+<p>负反馈是控制系统的灵魂。它使系统能够自动调节自身，实现更高的精确度和稳定性，抵抗外部扰动和不确定因素。但反馈也可能引发问题，比如，两个稳定系统通过反馈连接后，整体系统可能变得不稳定。</p>]]>
     </summary>
     <title>反馈系统的稳定性</title>
     <updated>2024-11-19T02:54:14.214Z</updated>
@@ -259,7 +267,8 @@
     <link href="https://panqiincs.me/2024/10/26/input-output-stability/"/>
     <published>2024-10-26T04:08:29.000Z</published>
     <summary>
-      <![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>与状态空间模型不同，输入输出模型直接将系统的输入和输出联系起来，而无需通过状态方程描述内部结构，通常将系统视为一个黑箱。输入输出稳定性关注输入与输出之间的关系，而Lyapunov稳定性则着重于系统状态的演变。</p>]]>
+      <![CDATA[<h2 id="简介">简介</h2>
+<p>与状态空间模型不同，输入输出模型直接将系统的输入和输出联系起来，而无需通过状态方程描述内部结构，通常将系统视为一个黑箱。输入输出稳定性关注输入与输出之间的关系，而Lyapunov稳定性则着重于系统状态的演变。</p>]]>
     </summary>
     <title>系统的输入输出稳定性</title>
     <updated>2024-11-19T02:30:14.959Z</updated>
@@ -276,7 +285,8 @@
     <link href="https://panqiincs.me/2024/10/19/system-passivity/"/>
     <published>2024-10-19T11:59:20.000Z</published>
     <summary>
-      <![CDATA[<h2 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h2><p>Passivity的字面翻译是「被动性」，但在各个领域中通常都翻译为「无源性」，因为这一术语与物理系统中能量传递和消耗的特性有关。Passivity描述系统不会产生能量而只能存储或消耗能量的特性。</p>]]>
+      <![CDATA[<h2 id="术语">术语</h2>
+<p>Passivity的字面翻译是「被动性」，但在各个领域中通常都翻译为「无源性」，因为这一术语与物理系统中能量传递和消耗的特性有关。Passivity描述系统不会产生能量而只能存储或消耗能量的特性。</p>]]>
     </summary>
     <title>系统的无源性</title>
     <updated>2024-11-19T02:53:02.247Z</updated>
@@ -298,7 +308,8 @@
     <link href="https://panqiincs.me/2024/10/18/hinf-observer-design/"/>
     <published>2024-10-18T13:19:59.000Z</published>
     <summary>
-      <![CDATA[<h2 id="系统模型"><a href="#系统模型" class="headerlink" title="系统模型"></a>系统模型</h2><p>本文介绍如下形式线性系统的状态观测器设计：</p>]]>
+      <![CDATA[<h2 id="系统模型">系统模型</h2>
+<p>本文介绍如下形式线性系统的状态观测器设计：</p>]]>
     </summary>
     <title>H无穷大状态观测器设计与仿真</title>
     <updated>2024-10-20T04:35:35.837Z</updated>
