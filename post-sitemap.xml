@@ -9,16 +9,16 @@
 
 
     <url>
-        <loc>https://panqiincs.me/2026/03/09/bingwu-spring-festival/</loc>
-        <lastmod>2026-04-04T08:01:15.393Z</lastmod>
+        <loc>https://panqiincs.me/2026/03/22/tsn-introduction/</loc>
+        <lastmod>2026-04-10T08:41:50.921Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2026/03/22/tsn-introduction/</loc>
-        <lastmod>2026-03-23T05:21:59.736Z</lastmod>
+        <loc>https://panqiincs.me/2026/03/09/bingwu-spring-festival/</loc>
+        <lastmod>2026-04-05T13:13:56.332Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -913,14 +913,6 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2021/08/17/manjaro-update-errors/</loc>
-        <lastmod>2023-02-04T02:43:13.393Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://panqiincs.me/2021/07/19/hometown-and-flood/</loc>
         <lastmod>2023-02-04T02:43:13.393Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -929,15 +921,15 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2017/01/07/bingshen-year-summary/</loc>
-        <lastmod>2023-02-04T02:43:13.390Z</lastmod>
+        <loc>https://panqiincs.me/2021/08/17/manjaro-update-errors/</loc>
+        <lastmod>2023-02-04T02:43:13.393Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2017/07/03/eliminate-unused-functions/</loc>
+        <loc>https://panqiincs.me/2017/01/07/bingshen-year-summary/</loc>
         <lastmod>2023-02-04T02:43:13.390Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -954,6 +946,14 @@
 
     <url>
         <loc>https://panqiincs.me/2017/09/10/after-installing-leap/</loc>
+        <lastmod>2023-02-04T02:43:13.390Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2017/07/03/eliminate-unused-functions/</loc>
         <lastmod>2023-02-04T02:43:13.390Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
