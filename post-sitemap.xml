@@ -9,8 +9,8 @@
 
 
     <url>
-        <loc>https://panqiincs.me/2026/05/20/arsenal-champions/</loc>
-        <lastmod>2026-06-07T09:40:30.692Z</lastmod>
+        <loc>https://panqiincs.me/2026/06/29/russian-phonetics/</loc>
+        <lastmod>2026-06-29T13:41:35.070Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -18,7 +18,15 @@
 
     <url>
         <loc>https://panqiincs.me/2026/03/09/bingwu-spring-festival/</loc>
-        <lastmod>2026-05-05T07:24:05.839Z</lastmod>
+        <lastmod>2026-06-21T13:45:12.905Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2026/05/20/arsenal-champions/</loc>
+        <lastmod>2026-06-07T09:40:30.692Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
