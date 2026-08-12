@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+  <meta name="baidu-site-verification" content="code-J9YbvwThrX">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github","dark":"tomorrow-night"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="概略 丙午年六月，从7月14日到8月12日，共三十天。从江苏出差回来没歇几天，又赶去南宁出差。天气炎热，一路在不同城市和交通工具之间辗转，还要应付各种事情，疲惫不堪。于是暑假不想再出远门，就安心做点事，好好休养。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="丙午六月纪事：舟车劳顿">
+<meta property="og:url" content="https://panqiincs.me/2026/08/12/bingwu-sixth/index.html">
+<meta property="og:site_name" content="辛未羊的网络日志">
+<meta property="og:description" content="概略 丙午年六月，从7月14日到8月12日，共三十天。从江苏出差回来没歇几天，又赶去南宁出差。天气炎热，一路在不同城市和交通工具之间辗转，还要应付各种事情，疲惫不堪。于是暑假不想再出远门，就安心做点事，好好休养。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-08-12T07:17:37.000Z">
+<meta property="article:modified_time" content="2026-08-12T07:22:27.125Z">
+<meta property="article:author" content="辛未羊">
+<meta property="article:tag" content="linux fourier 傅里叶 控制理论 算法导论 黄冈">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://panqiincs.me/2026/08/12/bingwu-sixth/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://panqiincs.me/2026/08/12/bingwu-sixth/","path":"2026/08/12/bingwu-sixth/","title":"丙午六月纪事：舟车劳顿"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>丙午六月纪事：舟车劳顿 | 辛未羊的网络日志</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-39536948-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
+
+
+
+
+  <script>
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "blyiajm41p");
+</script>
+
+
+
+
+  
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://unpkg.com/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+<link rel="dns-prefetch" href="https://vercel.panqiincs.me">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="辛未羊的网络日志" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">辛未羊的网络日志</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-series"><a href="/series/" rel="section"><i class="fa fa-list fa-fw"></i>系列</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E7%95%A5"><span class="nav-number">1.</span> <span class="nav-text">概略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%B2%E5%8E%86"><span class="nav-number">2.</span> <span class="nav-text">亲历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E8%AE%B0"><span class="nav-number">3.</span> <span class="nav-text">读记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%86%E5%BE%80"><span class="nav-number">4.</span> <span class="nav-text">忆往</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A2%8E%E8%AF%AD"><span class="nav-number">5.</span> <span class="nav-text">碎语</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="辛未羊"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">辛未羊</p>
+  <div class="site-description" itemprop="description">记录生活和学习</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">163</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">226</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/panqiincs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;panqiincs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          友情链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.kawabangga.com/" title="https:&#x2F;&#x2F;www.kawabangga.com&#x2F;" rel="noopener" target="_blank">卡瓦邦噶</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.feidaoboke.com/" title="https:&#x2F;&#x2F;www.feidaoboke.com&#x2F;" rel="noopener" target="_blank">飞刀博客</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.ohyee.cc/" title="https:&#x2F;&#x2F;www.ohyee.cc&#x2F;" rel="noopener" target="_blank">OhYee</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://dusays.com/" title="https:&#x2F;&#x2F;dusays.com&#x2F;" rel="noopener" target="_blank">杜老师说</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://oba.by/" title="https:&#x2F;&#x2F;oba.by&#x2F;" rel="noopener" target="_blank">obaby</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://zyq.today/" title="https:&#x2F;&#x2F;zyq.today&#x2F;" rel="noopener" target="_blank">小乔</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.yt-blog.top/" title="https:&#x2F;&#x2F;www.yt-blog.top&#x2F;" rel="noopener" target="_blank">Fgaoxing</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://it3q.com/" title="https:&#x2F;&#x2F;it3q.com&#x2F;" rel="noopener" target="_blank">呱牛笔记</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://imcbc.cn/" title="https:&#x2F;&#x2F;imcbc.cn&#x2F;" rel="noopener" target="_blank">BBing</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://panqiincs.me/2026/08/12/bingwu-sixth/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="辛未羊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="辛未羊的网络日志">
+      <meta itemprop="description" content="记录生活和学习">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="丙午六月纪事：舟车劳顿 | 辛未羊的网络日志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          丙午六月纪事：舟车劳顿
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-08-12 15:17:37" itemprop="dateCreated datePublished" datetime="2026-08-12T15:17:37+08:00">2026-08-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">生活记录</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2026/08/12/bingwu-sixth/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2026/08/12/bingwu-sixth/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>12 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="概略">概略</h2>
+<p>丙午年六月，从7月14日到8月12日，共三十天。从江苏出差回来没歇几天，又赶去南宁出差。天气炎热，一路在不同城市和交通工具之间辗转，还要应付各种事情，疲惫不堪。于是暑假不想再出远门，就安心做点事，好好休养。</p>
+<span id="more"></span>
+<h2 id="亲历">亲历</h2>
+<p>因为台风，比赛停了两天，初一正式开赛。今年我们队的表现不太好。我在现场看了很多场，除了排名最靠前的几支队伍，多数一等奖的表现也算不上多出色。可能是今年题目偏难，导致中下游队伍差距不大。一等奖并非遥不可及，得好好加油了。</p>
+<p>初六返程，在南京转车，停留时间比较长，于是去了玄武门、鸡鸣寺和中华门。南京到处是鸭子店，我买了烤鸭和盐水鸭各一只，让老板切好打包，晚上大家一起吃饭，很快就吃光了。味道我觉得都不错，以后可以网购，很适合下酒。在卧铺车厢里熬了二十多个小时，初七深夜回到桂林。</p>
+<p>初八凌晨看了场沉闷的决赛。阿根廷整场龟缩防守，直到比分落后才有了第一脚射门。西班牙还是保持传统，控球倒脚，踢得也乏味，最后抓住机会一击致命，剧情和2010年差不多。西班牙夺冠实至名归，半决赛依靠强大的太极功夫将法国队的刚猛掌力化于无形，让对手输得毫无脾气，是经典之座。这届世界杯，阿根廷队在舆论上像是遭到了有组织的攻击。印象最深的是对埃及那场，我从头看到尾。中场休息时，懂球帝评论区清一色说裁判偏袒阿根廷，我当时完全没有这种感觉；直到比赛快结束时出了几个争议判罚，我才觉得有些偏向。但赛后科里纳和孙葆洁都指出，全场关键判罚没什么大问题，还有详细的分析佐证，我自然信这些顶级裁判的专业判断。后来有视频指出，转播镜头喜欢回放阿根廷的犯规，轮到对手犯规就回避。不出意料，这类内容热度很低。网络上，有组织的造谣和恶意诋毁非常普遍，组织者的层级有高有低。</p>
+<p>初十晚上，国际数学家大会开幕式揭晓了菲尔兹奖名单，和之前泄露的完全一致。两位中国籍青年数学家邓煜、王虹获奖，实现了零的突破。没想到之后冒出大量自媒体诋毁北大数院，主要是围着王虹做文章。既有「王虹在北大期间被忽视」、「北大数院不给她写推荐信」这类无耻谣言，还有许多文章说北大对她起了反作用，以及抓住discourage这个词断章取义。他们把北大说得像个恶棍，把王虹塑造成受害者，她本人看到估计要被气死。北大数院一次出了两位菲尔兹奖得主，这次大会还有十几位北大校友和教师受邀作报告，居然还有人说北大只筛选不培养、甚至起反作用，简直是天大的笑话。不得奖被骂，得奖也被骂，真神奇。</p>
+<p>十一，我们和学生去南宁参加另一项比赛。这次准备时间很短，出发前一晚还出了突发状况，到现场发现实际情况和预想的不一样。于是大家各自分工，都手忙脚乱赶工，从落地开始，一直忙到深夜。再加上各种安排都不尽合理，这趟出差是我最累的一次。整个暑假两次出差，在外一共待了两周。</p>
+<p>我用上了早就听说过的Codex，它差不多是低权限的龙虾，能调用本地机器上的程序自动干活，比如调用MATLAB跑程序，看运行结果，然后再改进程序，让我特别惊讶。现在的大模型已经能解决高难度的数学问题，而且还在不断进化。数学界正经历和十年前围棋界同样的冲击。作为人类智力天花板的数学都这样了，更别说其他学科。以后纯理论研究只会越来越不值钱，学术期刊会更看重依托特定设备和实验数据的论文。照这么下去，大多数科研都会向资源型发展，普通人想出头会越来越难。</p>
+<p>连续高强度忙了几天，月末终于达成了阶段性目标，总算有心情放松几天了。廿八去邮局，给两位通联过的业余无线电爱好者寄去了QSL卡片，一封寄往桂林，一封寄往武汉。还把过年时在黄州买的东坡主题邮票寄给了在合肥的同学。我已经好多年没贴过邮票寄信了。</p>
+<p>放暑假后，留校学生无几，学校门口的店面大多歇业。我明显发现，张贴转让公告的比往年多了不少。可能这两年新店开得太多，市场规模增长又有限。我住处附近的两家烧烤店这个月也倒闭了，那条路晚上本就不热闹，倒也正常。这年头，创业做生意要谨慎。</p>
+<p>同事在暑假返乡的路上给我发消息：「看看湖北的天，想落叶归根。刚路过武汉，搞得我都有点感伤，熟悉的陌生感。」不同的年龄有不同的心态，这就是所谓的血脉里的某些东西被唤醒了吧。</p>
+<p>这个月满三十五岁，是个重要的里程碑。</p>
+<h2 id="读记">读记</h2>
+<p>刷到胡锡进的一条微博，笑了很久：</p>
+<blockquote>
+<p>网络上这些年黑老胡的东西很多，其中有一个，黑得挺有水平，让我大约两三年前最早看到它时拍案叫绝。它是这样写的：「公孙敖向霍去病请教，每次攻打匈奴，为何别人都迷路，而你却每次都能找到匈奴主力，到底用什么方法呢？霍去病说了，其实匈奴军队在胡地来去行动迅速，不见踪影，无迹可寻，但他们晚上必定会在溪流边驻扎休息，在营地外用犬只警戒。我每次领军，都会循犬声追踪，只要听到狗叫，便是离胡溪近了。」</p>
+<p>这个谐音梗，不带脏字就把老胡当「狗」骂了，一般人可是搞不出来。第一次看到时，我担心别是《汉书》中真有个类似故事，查了后确认，就是骂我的人自己编的。但他为了最后「胡溪近了”这几个字，倒编出去挺长的情节，相当有迷惑性，对汉匈战争的实际情形很有嵌入感，一般人根本读不出破绽。这位编梗骂老胡的人何其用心，并且展示了才气，老胡不仅要领这个经典之骂，而且得向那位原创者作个揖。</p>
+<p>网上如果多些这种不带脏字的挖苦、笑骂，也是蛮好玩的事情。只是别造谣，别喷出来的都是脏字，那也是互怼的一种境界。</p>
+</blockquote>
+<p>第一位两次拿下IMO金牌的王崧，是黄冈的传奇。在网上读到一篇多年前写他事迹的文章，作者是黄冈中学教师徐海元。其中有一段让我捧腹大笑：</p>
+<blockquote>
+<p>1990年5月，在为王崧和库超赴京参赛而举行的欢送会上，王崧一不长篇大论，二不寡言少语，而是一抖精神，一扬大手，一串连吼：「临行喝妈一碗酒，浑身是胆雄赳赳……」在港台歌星满地跑、新潮歌曲震天响、摇滚卡拉满堂转的今天，王崧如此这般地吼了一段现代京剧清唱，而且那样如痴如醉，豪气干霄，莫不令举座皆惊。</p>
+</blockquote>
+<p>为什么别人能写出这么生动的文字呢？</p>
+<p>看到一条关于股市赚钱的经验总结，觉得挺有道理：</p>
+<blockquote>
+<p>对普通人来说，在股市里赚钱，大概就这六种方法。</p>
+<p>第一种，等大跌，买指数。平时什么都不做，该上班上班，该生活生活。只用闲钱，等到市场出现那种「股灾式」的大跌，再买入宽基ETF。不用选股，一轮行情赚个30%-40%是可能的。</p>
+<p>第二种，专注一两只股票，反复做波段。找到一两只你认为真正值得投资的股票，永远保留现金。涨的时候卖一点，跌的时候买一点，来回做，目标是把成本一路做低，甚至做成负数。</p>
+<p>第三种，攒股收股息。买入那些股息率能到5%左右的国企、央企，在它们跌透的时候买进去，然后拿着吃分红。就像有朋友买公路股，本来只想每年拿4%的利息，结果赶上行情，股价还翻了一倍。</p>
+<p>第四种，看懂周期，反向布局。远离现在炒上天的板块，去找那些没人关注、被低估的板块。比如2022年，大家都在追光伏、医药、白酒，有朋友那时布局跌了好几年的银行股，现在市值已经翻了一倍。</p>
+<p>第五种，价值投资，等好公司打折。说白了就是「数月亮不数星星」，只买龙头公司。等它们因为市场情绪被打到极度便宜时，分批重仓买进去。你的目标不是赚几个点，而是等它价值回归，赚两倍、三倍甚至更多。</p>
+<p>第六种，赚企业成长的钱。这个比较有难度，就是去投那些市值还小、但前景很好，未来可能翻几倍甚至几十倍的公司。这需要你对行业有深刻的理解，就像「数星星」，考验的是你超级的选股能力。</p>
+</blockquote>
+<p>四、五、六对大多数人来说难度太大。一对A股不适用，暴跌后能低位横盘好几年，谁能拿得住？所以，二、三这两条路更好操作一些。</p>
+<h2 id="忆往">忆往</h2>
+<p>7月25日凌晨，拖着疲惫的身躯从学生住的酒店出来，忽然想起这是我工作满十周年的日子。十年前的7月25日，到百草园报到的场景还历历在目。白天在酒店电梯里碰到一群参加银行入职培训的年轻人，个个青春靓丽朝气蓬勃，真让人羡慕。但大多数人终究免不了被工作消磨，身上的少年气会慢慢褪去，这就是残酷的职场和社会，还有时间。</p>
+<p>楚超联赛黄冈队对恩施队的比赛，2026年8月8日晚8点开赛，正好是北京奥运会开幕十八周年。2008年暑假，我们即将升到高三，学校正好定在开幕式那天返校补课。中午和高一宿舍的室友去学生街吃饭庆生，晚上全班在教室一起看盛大的开幕式，阳光灿烂的日子。</p>
+<h2 id="碎语">碎语</h2>
+<p>人太容易被网络舆论牵着走了，就像前面提到的阿根廷队被诋毁、北大数院被造谣这两件事。有人能及时醒悟，有人则死不悔改。我常常在不同人嘴里听到同样的论调，很多都是在网上刷屏的、明显错误的观点，稍微用逻辑和事实一对照就能看出来。散布这些言论的人，很多都是坏人，为了流量不择手段。大多数普通人则是人云亦云，别人说什么就信什么。错误的认知，小了影响个人选择，大了败坏社会风气。要学会获取优质信息，学会正确思考问题，不要做正常的傻瓜，被人牵着鼻子走。现在有了大模型，它集合了人类所有的智慧，遇事不决都可以问，非常有帮助。</p>
+<p>下班回家，如果不想刷那些没营养的内容，可以看点对自己有用又不费脑子的视频课程。比如这个月，我断断续续看完了一套讲解电子元器件的视频，以我的基础学起来一点不费脑，跟看剧差不多，还补充了不少实用的细节，比如器件的物理原理、制作工艺和基本特性。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>辛未羊
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://panqiincs.me/2026/08/12/bingwu-sixth/" title="丙午六月纪事：舟车劳顿">https://panqiincs.me/2026/08/12/bingwu-sixth/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/08/05/system-sensitivity/" rel="prev" title="控制系统的灵敏度">
+                  <i class="fa fa-angle-left"></i> 控制系统的灵敏度
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2013 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">辛未羊</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">188k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">11:22</span>
+  </span>
+</div>
+
+
+
+
+
+  <div>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id: "JjD4gEghP0h7Vn4U",ck: "JjD4gEghP0h7Vn4U"})</script>
+  </div>
+
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"https://vercel.panqiincs.me","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"欢迎留言交流","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/2026/08/12/bingwu-sixth/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>
