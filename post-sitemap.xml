@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://panqiincs.me/2026/08/05/system-sensitivity/</loc>
+        <lastmod>2026-08-13T13:36:23.224Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://panqiincs.me/2026/08/13/internal-model/</loc>
+        <lastmod>2026-08-13T13:27:47.392Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://panqiincs.me/2026/08/12/bingwu-sixth/</loc>
         <lastmod>2026-08-13T02:53:17.140Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -19,14 +35,6 @@
     <url>
         <loc>https://panqiincs.me/2026/07/13/bingwu-fifth/</loc>
         <lastmod>2026-08-11T09:11:37.512Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://panqiincs.me/2026/08/05/system-sensitivity/</loc>
-        <lastmod>2026-08-05T11:28:34.008Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -865,7 +873,7 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2022/09/18/supported-glyphs/</loc>
+        <loc>https://panqiincs.me/2022/09/19/polyglot-lang-trans/</loc>
         <lastmod>2023-02-04T02:43:13.396Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -873,7 +881,7 @@
     </url>
 
     <url>
-        <loc>https://panqiincs.me/2022/09/19/polyglot-lang-trans/</loc>
+        <loc>https://panqiincs.me/2022/09/18/supported-glyphs/</loc>
         <lastmod>2023-02-04T02:43:13.396Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

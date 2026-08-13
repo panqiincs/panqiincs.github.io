@@ -10,7 +10,25 @@
   <rights>All rights reserved 2026, 辛未羊</rights>
   <subtitle>记录生活和学习</subtitle>
   <title>辛未羊的网络日志</title>
-  <updated>2026-08-13T02:53:17.140Z</updated>
+  <updated>2026-08-13T13:27:47.392Z</updated>
+  <entry>
+    <author>
+      <name>辛未羊</name>
+    </author>
+    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
+    <category term="控制理论" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/"/>
+    <category term="内模原理" scheme="https://panqiincs.me/tags/%E5%86%85%E6%A8%A1%E5%8E%9F%E7%90%86/"/>
+    <category term="稳态误差" scheme="https://panqiincs.me/tags/%E7%A8%B3%E6%80%81%E8%AF%AF%E5%B7%AE/"/>
+    <id>https://panqiincs.me/2026/08/13/internal-model/</id>
+    <link href="https://panqiincs.me/2026/08/13/internal-model/"/>
+    <published>2026-08-13T13:16:08.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="稳态误差">稳态误差</h2>
+<p>本科自动控制原理教材在讨论稳态误差时，通常会介绍系统型别和静态误差系数法。对于单位负反馈系统，通过位置、速度和加速度误差系数，可以快速判断阶跃、斜坡和加速度信号输入下的稳态误差。</p>]]>
+    </summary>
+    <title>控制理论拾遗：内模原理</title>
+    <updated>2026-08-13T13:27:47.392Z</updated>
+  </entry>
   <entry>
     <author>
       <name>辛未羊</name>
@@ -40,8 +58,8 @@
       <![CDATA[<h2 id="灵敏度函数">灵敏度函数</h2>
 <p>国内很多控制理论教材详细介绍了Nyquist稳定性判据、增益裕度和相位裕度，却没有包含灵敏度（sensitivity）函数这一重要内容。</p>]]>
     </summary>
-    <title>控制系统的灵敏度</title>
-    <updated>2026-08-05T11:28:34.008Z</updated>
+    <title>控制理论拾遗：灵敏度函数</title>
+    <updated>2026-08-13T13:36:23.224Z</updated>
   </entry>
   <entry>
     <author>
@@ -317,23 +335,5 @@ href="https://panqiincs.me/2024/01/10/second-hand-books/">转卖给了有缘人<
     </summary>
     <title>再次入手「Smith电子学」</title>
     <updated>2025-08-01T06:36:32.034Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>辛未羊</name>
-    </author>
-    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
-    <category term="控制理论" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/"/>
-    <category term="稳定性" scheme="https://panqiincs.me/tags/%E7%A8%B3%E5%AE%9A%E6%80%A7/"/>
-    <category term="反馈" scheme="https://panqiincs.me/tags/%E5%8F%8D%E9%A6%88/"/>
-    <id>https://panqiincs.me/2024/11/18/feedback-stability/</id>
-    <link href="https://panqiincs.me/2024/11/18/feedback-stability/"/>
-    <published>2024-11-18T01:16:17.000Z</published>
-    <summary>
-      <![CDATA[<h2 id="简介">简介</h2>
-<p>负反馈是控制系统的灵魂。它使系统能够自动调节自身，实现更高的精确度和稳定性，抵抗外部扰动和不确定因素。但反馈也可能引发问题，比如，两个稳定系统通过反馈连接后，整体系统可能变得不稳定。</p>]]>
-    </summary>
-    <title>反馈系统的稳定性</title>
-    <updated>2024-11-19T02:54:14.214Z</updated>
   </entry>
 </feed>
