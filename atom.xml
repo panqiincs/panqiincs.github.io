@@ -10,7 +10,25 @@
   <rights>All rights reserved 2026, 辛未羊</rights>
   <subtitle>记录生活和学习</subtitle>
   <title>辛未羊的网络日志</title>
-  <updated>2026-08-21T04:10:23.589Z</updated>
+  <updated>2026-09-03T14:15:25.808Z</updated>
+  <entry>
+    <author>
+      <name>辛未羊</name>
+    </author>
+    <category term="大学课程" scheme="https://panqiincs.me/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
+    <category term="控制理论" scheme="https://panqiincs.me/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/"/>
+    <category term="bode图" scheme="https://panqiincs.me/tags/bode%E5%9B%BE/"/>
+    <id>https://panqiincs.me/2026/09/03/bode-gain-phase/</id>
+    <link href="https://panqiincs.me/2026/09/03/bode-gain-phase/"/>
+    <published>2026-09-03T14:08:08.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="bode增益相位关系">Bode增益相位关系</h2>
+<p>本科自动控制原理教材讲 Bode
+图时，通常将幅频与相频特性分开讨论。但实际上，对最小相位系统，幅频特性与相频特性并不独立。</p>]]>
+    </summary>
+    <title>控制理论拾遗：增益相位关系</title>
+    <updated>2026-09-03T14:15:25.808Z</updated>
+  </entry>
   <entry>
     <author>
       <name>辛未羊</name>
@@ -317,20 +335,5 @@ Networking），是一套由IEEE制定、对标准以太网的<strong>功能扩�
     </summary>
     <title>四旋翼飞行器的建模</title>
     <updated>2025-05-11T07:59:18.741Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>辛未羊</name>
-    </author>
-    <category term="工具使用" scheme="https://panqiincs.me/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
-    <category term="manjaro" scheme="https://panqiincs.me/tags/manjaro/"/>
-    <id>https://panqiincs.me/2025/02/25/old-machine-sit-ups/</id>
-    <link href="https://panqiincs.me/2025/02/25/old-machine-sit-ups/"/>
-    <published>2025-02-25T13:01:01.000Z</published>
-    <summary>
-      <![CDATA[<p>前几天，我那台用了十年多的老电脑突然出了问题。按下开机键后，灯亮风扇转，但仅持续约1秒就灯灭风扇停。这个过程反复进行，机器不断开机关机，仿佛在表演仰卧起坐。我以为这台老古董真的要退休了，甚至动了购买新电脑的念头。</p>]]>
-    </summary>
-    <title>电脑仰卧起坐抢救记</title>
-    <updated>2025-10-09T04:19:32.055Z</updated>
   </entry>
 </feed>
