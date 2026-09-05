@@ -10,7 +10,7 @@
   <rights>All rights reserved 2026, 辛未羊</rights>
   <subtitle>记录生活和学习</subtitle>
   <title>辛未羊的网络日志</title>
-  <updated>2026-09-03T14:15:25.808Z</updated>
+  <updated>2026-09-05T10:49:31.744Z</updated>
   <entry>
     <author>
       <name>辛未羊</name>
@@ -23,11 +23,10 @@
     <published>2026-09-03T14:08:08.000Z</published>
     <summary>
       <![CDATA[<h2 id="bode增益相位关系">Bode增益相位关系</h2>
-<p>本科自动控制原理教材讲 Bode
-图时，通常将幅频与相频特性分开讨论。但实际上，对最小相位系统，幅频特性与相频特性并不独立。</p>]]>
+<p>本科自动控制原理教材讲Bode图时，通常将幅频与相频特性分开讨论。但实际上，对最小相位系统，幅频特性与相频特性并不独立。</p>]]>
     </summary>
-    <title>控制理论拾遗：增益相位关系</title>
-    <updated>2026-09-03T14:15:25.808Z</updated>
+    <title>控制理论拾遗：增益与相位的关系</title>
+    <updated>2026-09-05T10:49:31.744Z</updated>
   </entry>
   <entry>
     <author>
