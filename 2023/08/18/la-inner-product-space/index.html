@@ -19,13 +19,13 @@
 
 <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"panqiincs.me","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github","dark":"tomorrow-night"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"numden.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github","dark":"tomorrow-night"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="内积空间 现将「长度」、「距离」的概念推广到一般的线性空间中。距离可以看作是长度的派生概念，而长度又可以看成是内积的派生概念。这里给出复数域上内积的定义，因为实数域可以看成是复数域的特例。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性代数：内积空间">
-<meta property="og:url" content="https://panqiincs.me/2023/08/18/la-inner-product-space/index.html">
-<meta property="og:site_name" content="辛未羊的网络日志">
+<meta property="og:url" content="https://numden.com/2023/08/18/la-inner-product-space/index.html">
+<meta property="og:site_name" content="北州店子">
 <meta property="og:description" content="内积空间 现将「长度」、「距离」的概念推广到一般的线性空间中。距离可以看作是长度的派生概念，而长度又可以看成是内积的派生概念。这里给出复数域上内积的定义，因为实数域可以看成是复数域的特例。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-18T07:01:12.000Z">
@@ -40,13 +40,13 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://panqiincs.me/2023/08/18/la-inner-product-space/">
+<link rel="canonical" href="https://numden.com/2023/08/18/la-inner-product-space/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://panqiincs.me/2023/08/18/la-inner-product-space/","path":"2023/08/18/la-inner-product-space/","title":"线性代数：内积空间"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://numden.com/2023/08/18/la-inner-product-space/","path":"2023/08/18/la-inner-product-space/","title":"线性代数：内积空间"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>线性代数：内积空间 | 辛未羊的网络日志</title>
+<title>线性代数：内积空间 | 北州店子</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-39536948-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
@@ -203,7 +203,7 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style><link rel="alternate" href="/atom.xml" title="辛未羊的网络日志" type="application/atom+xml">
+</style><link rel="alternate" href="/atom.xml" title="北州店子" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -224,7 +224,7 @@ mjx-container[display="true"] + br {
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">辛未羊的网络日志</p>
+      <p class="site-title">北州店子</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -360,7 +360,7 @@ mjx-container[display="true"] + br {
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://panqiincs.me/2023/08/18/la-inner-product-space/">
+    <link itemprop="mainEntityOfPage" href="https://numden.com/2023/08/18/la-inner-product-space/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -368,12 +368,12 @@ mjx-container[display="true"] + br {
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="辛未羊的网络日志">
+      <meta itemprop="name" content="北州店子">
       <meta itemprop="description" content="记录生活和学习">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="线性代数：内积空间 | 辛未羊的网络日志">
+      <meta itemprop="name" content="线性代数：内积空间 | 北州店子">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
@@ -520,7 +520,7 @@ mjx-container[display="true"] + br {
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://panqiincs.me/2023/08/18/la-inner-product-space/" title="线性代数：内积空间">https://panqiincs.me/2023/08/18/la-inner-product-space/</a>
+      <a href="https://numden.com/2023/08/18/la-inner-product-space/" title="线性代数：内积空间">https://numden.com/2023/08/18/la-inner-product-space/</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！

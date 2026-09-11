@@ -10,4 +10,4 @@ Disallow: /images/
 Disallow: /js/
 Disallow: /lib/
 
-Sitemap: https://panqiincs.me/sitemap.xml
+Sitemap: https://numden.com/sitemap.xml
