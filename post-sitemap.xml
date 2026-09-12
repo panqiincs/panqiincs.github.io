@@ -9,6 +9,30 @@
 
 
     <url>
+        <loc>https://numden.com/2026/08/13/internal-model/</loc>
+        <lastmod>2026-09-12T15:12:04.986Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://numden.com/2026/09/10/bingwu-seventh/</loc>
+        <lastmod>2026-09-12T15:09:35.957Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://numden.com/2026/08/05/system-sensitivity/</loc>
+        <lastmod>2026-09-12T15:03:57.978Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://numden.com/2021/03/20/continuous-spectrum/</loc>
         <lastmod>2026-09-11T12:30:36.086Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -89,7 +113,7 @@
     </url>
 
     <url>
-        <loc>https://numden.com/2023/08/15/la-eigenvalue/</loc>
+        <loc>https://numden.com/2023/08/16/la-canonical-form/</loc>
         <lastmod>2026-09-11T12:30:36.086Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -97,7 +121,7 @@
     </url>
 
     <url>
-        <loc>https://numden.com/2023/08/16/la-canonical-form/</loc>
+        <loc>https://numden.com/2023/08/15/la-eigenvalue/</loc>
         <lastmod>2026-09-11T12:30:36.086Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -153,14 +177,6 @@
     </url>
 
     <url>
-        <loc>https://numden.com/2024/10/26/input-output-stability/</loc>
-        <lastmod>2026-09-11T12:30:36.086Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://numden.com/2024/11/18/feedback-stability/</loc>
         <lastmod>2026-09-11T12:30:36.086Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -169,7 +185,7 @@
     </url>
 
     <url>
-        <loc>https://numden.com/2025/01/22/new-smith-electronics/</loc>
+        <loc>https://numden.com/2024/10/26/input-output-stability/</loc>
         <lastmod>2026-09-11T12:30:36.086Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -178,6 +194,14 @@
 
     <url>
         <loc>https://numden.com/2025/02/25/old-machine-sit-ups/</loc>
+        <lastmod>2026-09-11T12:30:36.086Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://numden.com/2025/01/22/new-smith-electronics/</loc>
         <lastmod>2026-09-11T12:30:36.086Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -321,24 +345,8 @@
     </url>
 
     <url>
-        <loc>https://numden.com/2026/09/10/bingwu-seventh/</loc>
-        <lastmod>2026-09-09T15:47:56.698Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://numden.com/2026/09/03/bode-gain-phase/</loc>
         <lastmod>2026-09-09T14:25:30.151Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://numden.com/2026/08/05/system-sensitivity/</loc>
-        <lastmod>2026-08-22T06:28:20.104Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -355,14 +363,6 @@
     <url>
         <loc>https://numden.com/2026/08/12/bingwu-sixth/</loc>
         <lastmod>2026-08-20T13:09:02.356Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://numden.com/2026/08/13/internal-model/</loc>
-        <lastmod>2026-08-20T12:52:35.218Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1073,7 +1073,7 @@
     </url>
 
     <url>
-        <loc>https://numden.com/2021/07/19/hometown-and-flood/</loc>
+        <loc>https://numden.com/2021/08/17/manjaro-update-errors/</loc>
         <lastmod>2023-02-04T02:43:13.393Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -1081,7 +1081,7 @@
     </url>
 
     <url>
-        <loc>https://numden.com/2021/08/17/manjaro-update-errors/</loc>
+        <loc>https://numden.com/2021/07/19/hometown-and-flood/</loc>
         <lastmod>2023-02-04T02:43:13.393Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
