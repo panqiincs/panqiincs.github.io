@@ -9,16 +9,16 @@
 
 
     <url>
-        <loc>https://numden.com/2026/08/13/internal-model/</loc>
-        <lastmod>2026-09-12T15:12:04.986Z</lastmod>
+        <loc>https://numden.com/2026/08/20/new-domain-name/</loc>
+        <lastmod>2026-09-18T17:30:34.124Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://numden.com/2026/09/10/bingwu-seventh/</loc>
-        <lastmod>2026-09-12T15:09:35.957Z</lastmod>
+        <loc>https://numden.com/2026/08/13/internal-model/</loc>
+        <lastmod>2026-09-18T14:33:44.047Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -26,7 +26,23 @@
 
     <url>
         <loc>https://numden.com/2026/08/05/system-sensitivity/</loc>
-        <lastmod>2026-09-12T15:03:57.978Z</lastmod>
+        <lastmod>2026-09-17T16:43:38.923Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://numden.com/2026/09/10/bingwu-seventh/</loc>
+        <lastmod>2026-09-14T16:39:10.674Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://numden.com/2026/09/11/new-domain-new-blog/</loc>
+        <lastmod>2026-09-14T16:36:39.948Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -113,7 +129,7 @@
     </url>
 
     <url>
-        <loc>https://numden.com/2023/08/16/la-canonical-form/</loc>
+        <loc>https://numden.com/2023/08/15/la-eigenvalue/</loc>
         <lastmod>2026-09-11T12:30:36.086Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -121,7 +137,7 @@
     </url>
 
     <url>
-        <loc>https://numden.com/2023/08/15/la-eigenvalue/</loc>
+        <loc>https://numden.com/2023/08/16/la-canonical-form/</loc>
         <lastmod>2026-09-11T12:30:36.086Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -177,14 +193,6 @@
     </url>
 
     <url>
-        <loc>https://numden.com/2024/11/18/feedback-stability/</loc>
-        <lastmod>2026-09-11T12:30:36.086Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://numden.com/2024/10/26/input-output-stability/</loc>
         <lastmod>2026-09-11T12:30:36.086Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -193,7 +201,7 @@
     </url>
 
     <url>
-        <loc>https://numden.com/2025/02/25/old-machine-sit-ups/</loc>
+        <loc>https://numden.com/2024/11/18/feedback-stability/</loc>
         <lastmod>2026-09-11T12:30:36.086Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -209,7 +217,7 @@
     </url>
 
     <url>
-        <loc>https://numden.com/2025/05/20/nanning-fm-channels/</loc>
+        <loc>https://numden.com/2025/02/25/old-machine-sit-ups/</loc>
         <lastmod>2026-09-11T12:30:36.086Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -217,7 +225,7 @@
     </url>
 
     <url>
-        <loc>https://numden.com/2026/09/11/new-domain-new-blog/</loc>
+        <loc>https://numden.com/2025/05/20/nanning-fm-channels/</loc>
         <lastmod>2026-09-11T12:30:36.086Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -347,14 +355,6 @@
     <url>
         <loc>https://numden.com/2026/09/03/bode-gain-phase/</loc>
         <lastmod>2026-09-09T14:25:30.151Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://numden.com/2026/08/20/new-domain-name/</loc>
-        <lastmod>2026-08-21T04:10:23.589Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1073,7 +1073,7 @@
     </url>
 
     <url>
-        <loc>https://numden.com/2021/08/17/manjaro-update-errors/</loc>
+        <loc>https://numden.com/2021/07/19/hometown-and-flood/</loc>
         <lastmod>2023-02-04T02:43:13.393Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -1081,7 +1081,7 @@
     </url>
 
     <url>
-        <loc>https://numden.com/2021/07/19/hometown-and-flood/</loc>
+        <loc>https://numden.com/2021/08/17/manjaro-update-errors/</loc>
         <lastmod>2023-02-04T02:43:13.393Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

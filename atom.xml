@@ -10,7 +10,7 @@
   <rights>All rights reserved 2026, 辛未羊</rights>
   <subtitle>记录生活和学习</subtitle>
   <title>北州店子</title>
-  <updated>2026-09-11T12:30:36.086Z</updated>
+  <updated>2026-09-14T16:36:39.948Z</updated>
   <entry>
     <author>
       <name>辛未羊</name>
@@ -21,10 +21,10 @@
     <link href="https://numden.com/2026/09/11/new-domain-new-blog/"/>
     <published>2026-09-11T13:37:46.000Z</published>
     <summary>
-      <![CDATA[<p>8月19日买下这个新域名时，就打算找时间把网站完整迁移过去。今天是9月11日，这件事终于完成了。</p>]]>
+      <![CDATA[<p>8月19日买下这个新域名时，就打算抽时间把网站完整迁移过去。今天是9月11日，终于把这件事办完了。</p>]]>
     </summary>
     <title>十年后网站再次搬家</title>
-    <updated>2026-09-11T12:30:36.086Z</updated>
+    <updated>2026-09-14T16:36:39.948Z</updated>
   </entry>
   <entry>
     <author>
@@ -39,7 +39,7 @@
 <p>丙午年七月，从8月13日到9月10日，共二十九天。立秋已过，暑气渐消，天气转凉，不时有秋雨落下，气温维持在二十多度，十分舒适。月底多为晴天，干燥凉爽，简直是最舒服的季节。暑假稀里糊涂就结束了，开学后慢慢回归正常的工作状态和作息。</p>]]>
     </summary>
     <title>丙午七月纪事：秋意渐浓</title>
-    <updated>2026-09-12T15:09:35.957Z</updated>
+    <updated>2026-09-14T16:39:10.674Z</updated>
   </entry>
   <entry>
     <author>
@@ -71,7 +71,7 @@
       <![CDATA[<p>给网站换个新域名的念头，已经有好几年了。域名之于网站，正如名字之于新生儿，是要相伴多年的标识，所以一直不敢轻易定夺。前后也考虑过不少名字，但始终没有满意的。</p>]]>
     </summary>
     <title>买了个很棒的新域名</title>
-    <updated>2026-08-21T04:10:23.589Z</updated>
+    <updated>2026-09-18T17:30:34.124Z</updated>
   </entry>
   <entry>
     <author>
@@ -89,7 +89,7 @@
 <p>本科自动控制原理教材在讨论稳态误差时，通常会介绍系统型别和静态误差系数法。对于负反馈系统，通过位置、速度和加速度误差系数，可以快速判断阶跃、斜坡和加速度信号输入下的稳态误差。</p>]]>
     </summary>
     <title>控制理论拾遗：内模原理</title>
-    <updated>2026-09-12T15:12:04.986Z</updated>
+    <updated>2026-09-18T14:33:44.047Z</updated>
   </entry>
   <entry>
     <author>
@@ -121,7 +121,7 @@
 <p>国内很多控制理论教材详细介绍了Nyquist稳定性判据、增益裕度和相位裕度，却没有包含灵敏度（sensitivity）函数这一重要内容。</p>]]>
     </summary>
     <title>控制理论拾遗：灵敏度函数</title>
-    <updated>2026-09-12T15:03:57.978Z</updated>
+    <updated>2026-09-17T16:43:38.923Z</updated>
   </entry>
   <entry>
     <author>
