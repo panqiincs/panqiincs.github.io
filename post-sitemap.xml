@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://numden.com/2026/10/01/cutoff-bandwidth/</loc>
+        <lastmod>2026-09-30T16:37:40.305Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://numden.com/2026/09/03/bode-gain-phase/</loc>
         <lastmod>2026-09-24T15:15:41.731Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -217,7 +225,7 @@
     </url>
 
     <url>
-        <loc>https://numden.com/2025/02/25/old-machine-sit-ups/</loc>
+        <loc>https://numden.com/2025/01/22/new-smith-electronics/</loc>
         <lastmod>2026-09-11T12:30:36.086Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -225,7 +233,7 @@
     </url>
 
     <url>
-        <loc>https://numden.com/2025/01/22/new-smith-electronics/</loc>
+        <loc>https://numden.com/2025/02/25/old-machine-sit-ups/</loc>
         <lastmod>2026-09-11T12:30:36.086Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

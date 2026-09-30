@@ -10,7 +10,26 @@
   <rights>All rights reserved 2026, 辛未羊</rights>
   <subtitle>记录生活和学习</subtitle>
   <title>北州店子</title>
-  <updated>2026-09-14T16:36:39.948Z</updated>
+  <updated>2026-09-30T16:37:40.305Z</updated>
+  <entry>
+    <author>
+      <name>辛未羊</name>
+    </author>
+    <category term="大学课程" scheme="https://numden.com/categories/%E5%A4%A7%E5%AD%A6%E8%AF%BE%E7%A8%8B/"/>
+    <category term="控制理论" scheme="https://numden.com/tags/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/"/>
+    <category term="bode图" scheme="https://numden.com/tags/bode%E5%9B%BE/"/>
+    <category term="截止频率" scheme="https://numden.com/tags/%E6%88%AA%E6%AD%A2%E9%A2%91%E7%8E%87/"/>
+    <category term="带宽" scheme="https://numden.com/tags/%E5%B8%A6%E5%AE%BD/"/>
+    <id>https://numden.com/2026/10/01/cutoff-bandwidth/</id>
+    <link href="https://numden.com/2026/10/01/cutoff-bandwidth/"/>
+    <published>2026-09-30T16:36:20.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="截止频率">截止频率</h2>
+<p>在频域分析中，开环系统的截止频率和闭环系统的带宽都是常用的性能指标。教材通常会指出：闭环带宽越大，系统响应越快；开环截止频率越高，系统响应通常也越快。两个指标分别由开环和闭环频率特性定义，为什么都能反映系统的快速性？二者之间又有什么关系？</p>]]>
+    </summary>
+    <title>控制理论拾遗：截止频率与闭环带宽</title>
+    <updated>2026-09-30T16:37:40.305Z</updated>
+  </entry>
   <entry>
     <author>
       <name>辛未羊</name>
@@ -316,19 +335,5 @@ Networking），是一套由IEEE制定、对标准以太网的<strong>功能扩�
     </summary>
     <title>业余无线电操作证考试</title>
     <updated>2026-02-03T09:31:19.883Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>辛未羊</name>
-    </author>
-    <category term="生活记录" scheme="https://numden.com/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
-    <id>https://numden.com/2025/08/16/expressway-speeding/</id>
-    <link href="https://numden.com/2025/08/16/expressway-speeding/"/>
-    <published>2025-08-16T10:06:51.000Z</published>
-    <summary>
-      <![CDATA[<p>我行走高速六年多，从没收到过罚单，没想到8月份接连收到两张高速公路超速罚单。两小时内连续被拍到两次超速，加起来一共扣了6分罚了400元，真是肉痛！</p>]]>
-    </summary>
-    <title>连收两张高速超速罚单</title>
-    <updated>2025-08-17T09:18:09.336Z</updated>
   </entry>
 </feed>
