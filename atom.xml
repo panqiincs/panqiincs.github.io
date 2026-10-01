@@ -10,7 +10,7 @@
   <rights>All rights reserved 2026, 辛未羊</rights>
   <subtitle>记录生活和学习</subtitle>
   <title>北州店子</title>
-  <updated>2026-09-30T16:56:18.089Z</updated>
+  <updated>2026-10-01T06:06:54.760Z</updated>
   <entry>
     <author>
       <name>辛未羊</name>
@@ -28,7 +28,7 @@
 <p>在频域分析中，开环系统的截止频率和闭环系统的带宽都是常用的性能指标。教材通常会指出：闭环带宽越大，系统响应越快；开环截止频率越高，系统响应通常也越快。两个指标分别由开环和闭环频率特性定义，为什么都能反映系统的快速性？二者之间又有什么关系？</p>]]>
     </summary>
     <title>控制理论拾遗：截止频率与闭环带宽</title>
-    <updated>2026-09-30T16:56:18.089Z</updated>
+    <updated>2026-10-01T06:06:54.760Z</updated>
   </entry>
   <entry>
     <author>
