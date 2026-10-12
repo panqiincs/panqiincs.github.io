@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="FFCf4ftiyUodvYUWgmrZN369T0_S9we5eW47HIBiIFk">
+  <meta name="msvalidate.01" content="91403D93ADA147CB9AEF6C082F77469A">
+  <meta name="baidu-site-verification" content="code-J9YbvwThrX">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"numden.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github","dark":"tomorrow-night"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="概略 丙午年八月，从9月11日到10月9日，共二十九天。暑气散尽，天晴干燥，只零星下过几场雨，正是秋高气爽的好时节。中秋和国庆假期夹杂其间，有长假相伴，忙里偷闲，过得格外松弛惬意。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="丙午八月纪事：桂香满秋">
+<meta property="og:url" content="https://numden.com/2026/10/09/bingwu-eighth/index.html">
+<meta property="og:site_name" content="北州店子">
+<meta property="og:description" content="概略 丙午年八月，从9月11日到10月9日，共二十九天。暑气散尽，天晴干燥，只零星下过几场雨，正是秋高气爽的好时节。中秋和国庆假期夹杂其间，有长假相伴，忙里偷闲，过得格外松弛惬意。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-08T16:13:58.000Z">
+<meta property="article:modified_time" content="2026-10-12T16:23:55.891Z">
+<meta property="article:author" content="辛未羊">
+<meta property="article:tag" content="控制理论 自动化 linux 数学 数据结构 黄冈">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://numden.com/2026/10/09/bingwu-eighth/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://numden.com/2026/10/09/bingwu-eighth/","path":"2026/10/09/bingwu-eighth/","title":"丙午八月纪事：桂香满秋"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>丙午八月纪事：桂香满秋 | 北州店子</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39536948-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-39536948-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js" defer></script>
+
+
+
+
+  <script>
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "blyiajm41p");
+</script>
+
+
+
+
+  
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","display_overflow":"scroll","js":{"url":"https://unpkg.com/mathjax@4.1.3/tex-mml-chtml.js","integrity":"sha256-ihPtDDm7pTmSF9ViEsItlvsrBTsNkz0MOXMchzOwCQw="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+<link rel="dns-prefetch" href="https://waline.numden.com/">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="北州店子" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">北州店子</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E7%95%A5"><span class="nav-number">1.</span> <span class="nav-text">概略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%B2%E5%8E%86"><span class="nav-number">2.</span> <span class="nav-text">亲历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E8%AE%B0"><span class="nav-number">3.</span> <span class="nav-text">读记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A2%8E%E8%AF%AD"><span class="nav-number">4.</span> <span class="nav-text">碎语</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="辛未羊"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">辛未羊</p>
+  <div class="site-description" itemprop="description">记录生活和学习</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">170</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">231</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/panqiincs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;panqiincs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:panqihg@hotmail.com" title="E-Mail → mailto:panqihg@hotmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          友情链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.kawabangga.com/" title="https:&#x2F;&#x2F;www.kawabangga.com&#x2F;" rel="noopener" target="_blank">卡瓦邦噶</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.feidaoboke.com/" title="https:&#x2F;&#x2F;www.feidaoboke.com&#x2F;" rel="noopener" target="_blank">飞刀博客</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.ohyee.cc/" title="https:&#x2F;&#x2F;www.ohyee.cc&#x2F;" rel="noopener" target="_blank">OhYee</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://dusays.com/" title="https:&#x2F;&#x2F;dusays.com&#x2F;" rel="noopener" target="_blank">杜老师说</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://oba.by/" title="https:&#x2F;&#x2F;oba.by&#x2F;" rel="noopener" target="_blank">obaby</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://zyq.today/" title="https:&#x2F;&#x2F;zyq.today&#x2F;" rel="noopener" target="_blank">小乔</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://imcbc.cn/" title="https:&#x2F;&#x2F;imcbc.cn&#x2F;" rel="noopener" target="_blank">ImCBC</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://numden.com/2026/10/09/bingwu-eighth/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="辛未羊">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="北州店子">
+      <meta itemprop="description" content="记录生活和学习">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="丙午八月纪事：桂香满秋 | 北州店子">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          丙午八月纪事：桂香满秋
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-10-09 00:13:58" itemprop="dateCreated datePublished" datetime="2026-10-09T00:13:58+08:00">2026-10-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">生活记录</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/2026/10/09/bingwu-eighth/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2026/10/09/bingwu-eighth/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="概略">概略</h2>
+<p>丙午年八月，从9月11日到10月9日，共二十九天。暑气散尽，天晴干燥，只零星下过几场雨，正是秋高气爽的好时节。中秋和国庆假期夹杂其间，有长假相伴，忙里偷闲，过得格外松弛惬意。</p>
+<span id="more"></span>
+<h2 id="亲历">亲历</h2>
+<p>初一，完成网站域名迁移，这个域名打算长期用下去，网站也算开启了新的阶段。</p>
+<p>初三，去电影院重看《肖申克的救赎》。这部电影我看过很多遍，大概是剧情太熟，全程看下来心情很平淡，没什么起伏。</p>
+<p>初四，晚上出门偶然抬头，看见弯月左上方有颗特别亮的星，是金星，正好是金星伴月的景象，很好看。</p>
+<p>初六到十一，开始连着在倒立摆机构上做实验，采集数据、做系统辨识、改进控制算法，全程有大模型指导。看着它分析数据、给出结论、输出优化方案，学到不少东西，干劲特别足，要不是调用额度有限制，根本停不下来。</p>
+<p>初十，干脆加钱升级了套餐，再也不用担心额度不够用。打算这个月把这工具用足，给研究多帮帮忙，争取出点像样的成果。</p>
+<p>十二，下午肩颈不舒服，当即就去游泳了，游完浑身都轻松。刚从游泳馆出来就碰上大雨大风，等雨小了往回走，看见路边好多大树的树枝都被吹断了，桂林这妖风是真的猛。</p>
+<p>十五，中秋节，和老乡们聚餐过节。今年忘了买月饼，一口都没吃上。</p>
+<p>十七，给电驴换了新电池，动力特别足，跑五十公里都不减速，再也不用担心半路没电，骑起来太爽了。晚上还特意骑去不太熟的象山区逛了一圈才回来。为了让电池耐用点，还专门学了些充电保养的知识。</p>
+<p>廿四，中午吃完饭往回走，半路电驴没电了，只好在附近充电桩充了三个小时。期间四处闲逛，又遇上大雨，看样子一时半会儿停不了，就进超市买了点东西，后来又去肯德基坐了坐，靠着玻璃窗看外面雨哗哗地下，反倒不急着赶回去干活，偷得了一下午的清闲。</p>
+<p>廿七，第一次观测到心心念念的水星，觉得特别幸运。水星离太阳太近，平时大多隐没在太阳光里，很难见到。这次能用肉眼看到，一是天特别晴，万里无云；二是水星在金星上方，离太阳相对远些。傍晚金星先像小灯笼似的挂在晚霞里，等太阳落山、天色暗下来、金星渐渐沉向地平线时，水星便跟着显现出来。之后连着几天都是好天气，连续几天都能看到水星，还带了两位同事一起看，他们也觉得挺有意思。</p>
+<p>廿九，晚上骑电驴出去兜风，闻到了今年第一缕桂花香。之后几天校园里也到处都是桂花香，仿佛一夜之间桂花就全开了。</p>
+<h2 id="读记">读记</h2>
+<p>苏轼贬谪黄州期间留下了大量诗词短文，除了那些广为流传的名篇，我又发现了一首，格外喜欢：</p>
+<blockquote>
+<p><strong>《浣溪沙·遊蘄水清泉寺》</strong></p>
+<p><em>遊蘄水清泉寺。寺臨蘭溪，溪水西流。</em></p>
+<p>山下蘭芽短浸溪，松間沙路淨無泥，蕭蕭暮雨子規啼。
+誰道人生無再少？門前流水尚能西！休將白髮唱黃雞。</p>
+</blockquote>
+<p>这首词以溪水西流的寻常景致翻出新意，藏着一股不认老不服输的韧劲。三十多岁的年纪，更不该轻易言老，该有做事的干劲，保持对知识与智慧的追求。蕲水就是今湖北浠水，是我爷爷出生长大的地方。</p>
+<h2 id="碎语">碎语</h2>
+<p>读研的时候我就能流畅读专业相关的英文书籍、论文和文档，十多年来很少依赖翻译。现在大模型功能这么强，我也开始直接把资料丢给它，让它翻译加讲解，学习效率高了不少。尤其是接触新领域的时候，生词多，知识也新，毕竟不是母语，硬啃还是挺累的，有大模型带着入门，轻松多了。几年前我写过一篇文章聊英语的作用，它固然重要，但没必要过分拔高。到了2026年，大模型已经这么普及，英语的权重更该降一降。高考满分设100分就够了，考研总分也该继续降低，而且不应该设置英语单科线。</p>
+<p>不懂的知识就问大模型，让它掰开揉碎了讲，聊上几轮之后，还能让它把对话整理成一篇系统的文章，甚至能生成配图的代码。这种学习方式真的很好用，近两个月我那几篇控制理论的文章就是这么写出来的。同样，总结论文内容的时候，可以让它输出成HTML文件，不仅讲解细致、排版舒服，还有精美的交互式动画。工具太强大了，学习的方法也该跟着更新。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>辛未羊
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://numden.com/2026/10/09/bingwu-eighth/" title="丙午八月纪事：桂香满秋">https://numden.com/2026/10/09/bingwu-eighth/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/10/01/cutoff-bandwidth/" rel="prev" title="控制理论拾遗：截止频率与闭环带宽">
+                  <i class="fa fa-angle-left"></i> 控制理论拾遗：截止频率与闭环带宽
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2013 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">辛未羊</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">199k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">12:04</span>
+  </span>
+</div>
+
+
+
+
+
+  <div>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id: "JjD4gEghP0h7Vn4U",ck: "JjD4gEghP0h7Vn4U"})</script>
+  </div>
+
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-CN","enable":true,"serverURL":"https://waline.numden.com/","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"comment":true,"locale":{"placeholder":"欢迎留言！可匿名评论，无需填写信息。"},"meta":["nick","mail","link"],"requiredMeta":[],"pageSize":10,"el":"#waline","libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","path":"/2026/10/09/bingwu-eighth/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>

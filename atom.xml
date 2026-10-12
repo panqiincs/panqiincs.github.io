@@ -10,7 +10,22 @@
   <rights>All rights reserved 2026, 辛未羊</rights>
   <subtitle>记录生活和学习</subtitle>
   <title>北州店子</title>
-  <updated>2026-10-01T06:06:54.760Z</updated>
+  <updated>2026-10-12T16:23:55.891Z</updated>
+  <entry>
+    <author>
+      <name>辛未羊</name>
+    </author>
+    <category term="生活记录" scheme="https://numden.com/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+    <id>https://numden.com/2026/10/09/bingwu-eighth/</id>
+    <link href="https://numden.com/2026/10/09/bingwu-eighth/"/>
+    <published>2026-10-08T16:13:58.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="概略">概略</h2>
+<p>丙午年八月，从9月11日到10月9日，共二十九天。暑气散尽，天晴干燥，只零星下过几场雨，正是秋高气爽的好时节。中秋和国庆假期夹杂其间，有长假相伴，忙里偷闲，过得格外松弛惬意。</p>]]>
+    </summary>
+    <title>丙午八月纪事：桂香满秋</title>
+    <updated>2026-10-12T16:23:55.891Z</updated>
+  </entry>
   <entry>
     <author>
       <name>辛未羊</name>
@@ -319,21 +334,5 @@ Networking），是一套由IEEE制定、对标准以太网的<strong>功能扩�
     </summary>
     <title>高中母校的回礼</title>
     <updated>2025-11-26T10:04:51.645Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>辛未羊</name>
-    </author>
-    <category term="生活记录" scheme="https://numden.com/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
-    <category term="业余无线电" scheme="https://numden.com/tags/%E4%B8%9A%E4%BD%99%E6%97%A0%E7%BA%BF%E7%94%B5/"/>
-    <category term="操作证" scheme="https://numden.com/tags/%E6%93%8D%E4%BD%9C%E8%AF%81/"/>
-    <id>https://numden.com/2025/10/13/ham-certificate-exam/</id>
-    <link href="https://numden.com/2025/10/13/ham-certificate-exam/"/>
-    <published>2025-10-13T08:30:49.000Z</published>
-    <summary>
-      <![CDATA[<p>或许从去年购买收音机开始，就注定了我会入坑业余无线电。以我的性格，绝不会满足于只接收，肯定也想发射电波。所以，找到并加入业余无线电这个圈子，是必然的事情。我最近顺利通过<strong>业余无线电A类操作证</strong>考试。</p>]]>
-    </summary>
-    <title>业余无线电操作证考试</title>
-    <updated>2026-02-03T09:31:19.883Z</updated>
   </entry>
 </feed>
