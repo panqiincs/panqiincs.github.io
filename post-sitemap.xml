@@ -10,7 +10,15 @@
 
     <url>
         <loc>https://numden.com/2026/10/09/bingwu-eighth/</loc>
-        <lastmod>2026-10-12T17:14:12.727Z</lastmod>
+        <lastmod>2026-10-25T15:40:15.188Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://numden.com/2026/10/01/cutoff-bandwidth/</loc>
+        <lastmod>2026-10-25T15:06:17.804Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -19,14 +27,6 @@
     <url>
         <loc>https://numden.com/2026/09/03/bode-gain-phase/</loc>
         <lastmod>2026-10-01T06:30:45.782Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://numden.com/2026/10/01/cutoff-bandwidth/</loc>
-        <lastmod>2026-10-01T06:06:54.760Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
