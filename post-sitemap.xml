@@ -9,8 +9,24 @@
 
 
     <url>
+        <loc>https://numden.com/2019/03/10/clrs-growth-of-functions/</loc>
+        <lastmod>2026-11-09T16:02:00.133Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://numden.com/2026/09/11/new-domain-new-blog/</loc>
+        <lastmod>2026-11-09T15:50:02.150Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://numden.com/2026/10/09/bingwu-eighth/</loc>
-        <lastmod>2026-10-25T15:40:15.188Z</lastmod>
+        <lastmod>2026-10-25T16:13:57.168Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -59,14 +75,6 @@
     <url>
         <loc>https://numden.com/2026/09/10/bingwu-seventh/</loc>
         <lastmod>2026-09-14T16:39:10.674Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://numden.com/2026/09/11/new-domain-new-blog/</loc>
-        <lastmod>2026-09-14T16:36:39.948Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -579,14 +587,6 @@
     <url>
         <loc>https://numden.com/2019/03/14/clrs-divide-and-conquer/</loc>
         <lastmod>2025-02-21T11:08:42.746Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://numden.com/2019/03/10/clrs-growth-of-functions/</loc>
-        <lastmod>2025-02-21T11:08:30.619Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
